@@ -1,0 +1,6 @@
+# DOKKU checks file for 0 Downtime Deployments
+WAIT=2
+TIMEOUT=10
+ATTEMPTS=5
+
+/

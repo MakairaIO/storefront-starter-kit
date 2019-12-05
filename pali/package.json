@@ -1,0 +1,66 @@
+{
+  "name": "pattern-library",
+  "version": "1.0.0",
+  "description": "Makaira Pattern Library",
+  "author": "René Mäkeler <maekeler@marmalade.de>",
+  "dependencies": {
+    "@zeit/next-stylus": "^1.0.1",
+    "dotenv-webpack": "^1.7.0",
+    "iframe-resizer": "^4.2.9",
+    "next": "^9.2.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "autoprefixer-stylus": "^1.0.0",
+    "babel-eslint": "^10.0.2",
+    "eslint": "^5.16.0",
+    "eslint-config-react-app": "^4.0.1",
+    "eslint-plugin-flowtype": "^3.12.1",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "lint-staged": "^10.0.2",
+    "npm-run-all": "^4.1.5",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.19.1",
+    "stylus": "^0.54.7",
+    "svgo": "^1.3.2",
+    "svgstore-cli": "^1.3.1",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.9"
+  },
+  "scripts": {
+    "clean": "mkdir -p public/dist && rm -rf public/dist/* ",
+    "clean:postbuild": "rm -rf public/dist/* && rm -rf public/components && rm -rf public/utils",
+    "predev": "npm run clean",
+    "dev": "npm-run-all --parallel build:svgs dev:*",
+    "dev:next": "next",
+    "start": "next start",
+    "dev:styles": "stylus  --sourcemap --watch styles/index.styl --out public/dist/main.css",
+    "build": "npm-run-all --parallel build:svgs build:styles build:next",
+    "build:svgs": "svgstore  --inline public/images/svgs/*.svg | svgo --input - --output public/dist/icons.svg",
+    "build:styles": "stylus --use autoprefixer-stylus --compress styles/index.styl --out public/dist/main.css",
+    "build:next": "next build",
+    "build:enterprise:local": "npm run clean && npm-run-all --parallel build:svgs build:styles copy:components && npm run copy:next && npm run clean:postbuild",
+    "build:enterprise:ci": "npm run clean && npm-run-all --parallel build:svgs build:styles copy:components",
+    "copy:components": "cp -r utils public/&& cp -r components public/",
+    "copy:next": "cp -r public ../frontend/",
+    "export": "next export",
+    "pre-commit": "lint-staged"
+  },
+  "pre-commit": [
+    "pre-commit"
+  ],
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": "12.13.1"
+  }
+}
