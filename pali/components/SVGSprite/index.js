@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import './sprite.styl'
 
 class SVGSprite extends Component {
   state = {
@@ -6,7 +7,7 @@ class SVGSprite extends Component {
   }
 
   async componentDidMount() {
-    const response = await fetch('/dist/icons.svg')
+    const response = await fetch('/static/dist/icons.svg')
     const svgData = await response.text()
 
     this.setState({ svgData })

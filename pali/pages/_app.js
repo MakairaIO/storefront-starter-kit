@@ -1,7 +1,6 @@
 import { Fragment } from 'react'
 import App from 'next/app'
-import paliCSS from '../pattern-library/pali.styl'
-import applicationCSS from '../styles/index.styl'
+import '../pattern-library/pali.styl'
 import { SVGSprite } from '../components'
 
 class MyApp extends App {

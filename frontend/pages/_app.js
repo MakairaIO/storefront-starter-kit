@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 import App from 'next/app'
 import Router from 'next/router'
+import { BaseLayout } from '../public/components'
 
 class MyApp extends App {
   static async getInitialProps(appContext) {
@@ -24,7 +25,9 @@ class MyApp extends App {
 
     return (
       <Fragment>
-        <Component {...pageProps} />
+        <BaseLayout>
+          <Component {...pageProps} />
+        </BaseLayout>
       </Fragment>
     )
   }

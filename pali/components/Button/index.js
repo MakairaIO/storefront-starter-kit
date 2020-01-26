@@ -1,3 +1,4 @@
+import './button.styl'
 import { Icon } from '..'
 
 export default function Button(props) {

@@ -14,6 +14,16 @@ app
 
     server.use(cors({ origin: true, credentials: true }))
 
+    /**
+     * Route handler for all static assets, e.g. images, ...
+     */
+    server.get('/static/*', (req, res) => {
+      return handle(req, res)
+    })
+
+    /**
+     * Route handler page requests
+     */
     server.get(/^(.*)$/, (req, res) => {
       app.render(req, res, '/index', {
         seoUrl: req.params[0],

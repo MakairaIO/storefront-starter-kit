@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import { LandingPage, ListingPage, DetailPage } from '../next-components'
-import { TranslationProvider } from '../public/static/utils'
+import { Header } from '../public/components'
+import { TranslationProvider } from '../public/utils'
 import qs from 'qs'
 import { GlobalDataProvider, fetchPageData, fetchMenuData } from '../next-utils'
 import ErrorPage from './_error'
@@ -72,6 +73,8 @@ function IndexPage(props) {
   return (
     <GlobalDataProvider {...pageProps}>
       <TranslationProvider language={language}>
+        <Header />
+
         <PageComponent key={`${page.data.id}-${language}`} />
       </TranslationProvider>
     </GlobalDataProvider>

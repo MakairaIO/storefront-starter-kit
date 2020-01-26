@@ -1,5 +1,5 @@
 import { useGlobalData } from '../../next-utils'
-import { useTranslation } from '../../public/static/utils'
+import { useTranslation } from '../../public/utils'
 
 function Test() {
   return <h1>Hi from Component Test</h1>
