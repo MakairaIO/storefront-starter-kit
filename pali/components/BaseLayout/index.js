@@ -7,10 +7,7 @@ import './variables.styl'
 export default function BaseLayout({ children }) {
   return (
     <Fragment>
-      <div className="site-wrapper">
-        <span>Base</span>
-        {children}
-      </div>
+      <div className="site-wrapper">{children}</div>
     </Fragment>
   )
 }
