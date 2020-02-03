@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="11.531" height="11.531" viewBox="0 0 11.531 11.531">
+    <g data-name="Gruppe 224">
+        <path data-name="Pfad 214" d="M5.766 0a5.766 5.766 0 1 0 5.766 5.766A5.766 5.766 0 0 0 5.766 0zm0 10.483a4.717 4.717 0 1 1 4.717-4.717 4.717 4.717 0 0 1-4.717 4.717z" />
+        <g data-name="Komponente 1 – 1">
+            <path data-name="Rechteck 1" d="M4.07 6.709l2.444-2.444.978.977-2.444 2.445z"/>
+            <path data-name="Rechteck 2" d="M8.312 4.423l-.61.61-.979-.977.611-.61z"/>
+            <path data-name="Polygon 1" d="M3.64 8.143l.244-1.221.977.977z"/>
+        </g>
+    </g>
+</svg>
