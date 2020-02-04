@@ -19,7 +19,7 @@ class MyDocument extends Document {
           <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
           <link
             rel="shortcut icon"
-            href="/images/favicon/favicon.ico"
+            href="/pattern-library/favicon.ico"
             type="image/ico"
           />
         </Head>
