@@ -10,9 +10,11 @@
     "next": "^9.2.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-iframe-resizer-super": "^0.2.2",
     "stylus": "^0.54.7"
   },
   "devDependencies": {
+    "autoprefixer-stylus": "^1.0.0",
     "babel-eslint": "^10.0.2",
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.20.1",
@@ -28,18 +30,20 @@
     "webpack-cli": "^3.3.11"
   },
   "scripts": {
-    "clean": "mkdir -p public/dist && rm -rf public/dist/* ",
+    "clean": "mkdir -p public/static/dist && rm -rf public/static/dist/* ",
     "clean:postbuild": "rm -rf public/dist/* && rm -rf public/components && rm -rf public/utils",
     "predev": "npm run clean",
     "dev": "npm-run-all --parallel build:svgs dev:*",
     "dev:next": "next",
+    "dev:styles": "stylus --watch styles/index.styl --out public/static/dist/sc-main.css",
     "start": "next start",
-    "build": "npm-run-all --parallel build:svgs  build:next",
-    "build:svgs": "svgstore  --inline public/static/images/svgs/*.svg | svgo --input - --output public/static/dist/icons.svg",
+    "build": "npm-run-all --parallel build:svgs build:styles build:next",
+    "build:svgs": "svgstore  --inline public/static/svgs/*.svg | svgo --input - --output public/static/dist/icons.svg",
+    "build:styles": "stylus --use autoprefixer-stylus --compress styles/index.styl --out public/static/dist/main.css",
     "build:next": "next build",
-    "build:enterprise:local": "npm run clean && npm-run-all --parallel build:svgs copy:components && npm run copy:next && npm run clean:postbuild",
+    "build:enterprise:local": "npm run clean && npm-run-all --parallel build:svgs build:styles copy:components && npm run copy:next && npm run clean:postbuild",
     "build:enterprise:ci": "npm run clean && npm-run-all --parallel build:svgs copy:components",
-    "copy:components": "cp -r utils public/&& cp -r components public/",
+    "copy:components": "cp -r utils public/ && cp -r components public/",
     "copy:next": "cp -r public ../frontend/",
     "export": "next export",
     "pre-commit": "lint-staged"

@@ -1,5 +1,3 @@
-import './header.styl'
-
 function Header(props) {
   return (
     <header className="header">

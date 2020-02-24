@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import App from 'next/app'
 import Router from 'next/router'
 import { BaseLayout } from '../public/components'
+import '../public/static/dist/main.css'
 
 class MyApp extends App {
   static async getInitialProps(appContext) {

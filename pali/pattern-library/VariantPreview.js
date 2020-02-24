@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
+import ReactIframeResizer from 'react-iframe-resizer-super'
 import ExternalLinkIcon from './ExternalLinkIcon'
 import { allLanguages, TranslationProvider, useTranslation } from '../utils'
 import { SVGSprite } from '../components'
@@ -39,7 +40,12 @@ export default function VariantPreview({
         {variant.name}
 
         <Link href="/variants/[id]" as={variantLinkTarget}>
-          <a href={variantLinkTarget} className="pali__external-link">
+          <a
+            href={variantLinkTarget}
+            className="pali__external-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <ExternalLinkIcon />
           </a>
         </Link>
@@ -48,11 +54,19 @@ export default function VariantPreview({
       </h2>
 
       <div className="pali__component-wrapper">
-        <SVGSprite />
+        <ReactIframeResizer iframeResizerOptions={{ checkOrigin: false }}>
+          <link
+            href="/static/dist/sc-main.css"
+            rel="stylesheet"
+            type="text/css"
+          />
 
-        <TranslationProvider language={currentLanguage}>
-          <Component {...variant.props} useTranslation={useTranslation} />
-        </TranslationProvider>
+          <SVGSprite />
+
+          <TranslationProvider language={currentLanguage}>
+            <Component {...variant.props} useTranslation={useTranslation} />
+          </TranslationProvider>
+        </ReactIframeResizer>
       </div>
     </section>
   )

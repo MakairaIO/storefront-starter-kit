@@ -1,5 +1,4 @@
 import { Component } from 'react'
-import './sprite.styl'
 
 class SVGSprite extends Component {
   state = {

@@ -1,10 +1,10 @@
 require('dotenv').config()
 
-const withStylus = require('@zeit/next-stylus')
+const withCSS = require('@zeit/next-css')
 const path = require('path')
 const Dotenv = require('dotenv-webpack')
 
-module.exports = withStylus({
+module.exports = withCSS({
   webpack: config => {
     config.plugins = config.plugins || []
 

@@ -1,8 +1,4 @@
 import { Fragment } from 'react'
-import './reset.styl'
-import './fonts.styl'
-import './general.styl'
-import './variables.styl'
 
 export default function BaseLayout({ children }) {
   return (
