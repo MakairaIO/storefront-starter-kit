@@ -55,11 +55,7 @@ export default function VariantPreview({
 
       <div className="pali__component-wrapper">
         <ReactIframeResizer iframeResizerOptions={{ checkOrigin: false }}>
-          <link
-            href="/static/dist/sc-main.css"
-            rel="stylesheet"
-            type="text/css"
-          />
+          <link href="/static/dist/main.css" rel="stylesheet" type="text/css" />
 
           <SVGSprite />
 

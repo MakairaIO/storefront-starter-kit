@@ -35,7 +35,7 @@
     "predev": "npm run clean",
     "dev": "npm-run-all --parallel build:svgs dev:*",
     "dev:next": "next",
-    "dev:styles": "stylus --watch styles/index.styl --out public/static/dist/sc-main.css",
+    "dev:styles": "stylus --watch styles/index.styl --out public/static/dist/main.css",
     "start": "next start",
     "build": "npm-run-all --parallel build:svgs build:styles build:next",
     "build:svgs": "svgstore  --inline public/static/svgs/*.svg | svgo --input - --output public/static/dist/icons.svg",
