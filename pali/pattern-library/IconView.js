@@ -1,26 +1,21 @@
+import { Icon } from '../components'
+import icons from '../styles/icons'
+
 export default function IconView() {
   return (
     <div className="pali__icons">
-      {iconConfig.map(icon => (
-        <div key={icon.name} className="pali__icon-container">
-          <span
-            className="pali__icon-example"
-            dangerouslySetInnerHTML={{ __html: icon.value }}
-          />
-          <span className="pali__icon-title">{icon.name}</span>
-          <span className="pali__icon-usage">
-            <span>{icon.usage}</span>
-          </span>
+      {Object.entries(icons).map(([iconName, iconInfo]) => (
+        <div key={iconName} className="pali__icon-container">
+          <Icon symbol={iconInfo.value} />
+
+          <div>
+            <span className="pali__icon-title">{iconName}</span>
+            <pre>
+              <code>{`<Icon symbol={${iconInfo.value}} />`}</code>
+            </pre>
+          </div>
         </div>
       ))}
     </div>
   )
 }
-
-const iconConfig = [
-  {
-    name: 'Times',
-    value: '<svg role="img" class="icon"><use xlink:href="#times"></use></svg>',
-    usage: 'times',
-  },
-]

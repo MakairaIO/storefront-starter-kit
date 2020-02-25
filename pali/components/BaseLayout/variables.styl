@@ -1,5 +1,16 @@
+// Define Custom Properties for Colors
+colors = json('../../styles/colors.json', { hash: true })
+
+:root
+  for color in colors
+    name = colors[color]["variableName"]
+    value = colors[color]["value"]
+
+    {name}: value
+
 :root
   --font-size-base 1.6rem
+
   --z-index-lowest = 1
   --z-index-low = 10
   --z-index-medium = 50
