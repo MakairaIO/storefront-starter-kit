@@ -1,24 +1,28 @@
 import { Fragment } from 'react'
-import { fontConfig } from './DynamicStyleProvider'
+import fonts from '../styles/fonts'
+
+const SIZES = ['10px', '14px', '16px', '18px']
 
 export default function TypographyView() {
   return (
     <Fragment>
-      {fontConfig.map(font => (
-        <div key={font.name} className="pali__typography-container">
-          <h2>
-            {font.name}
-            <span>({font.variable})</span>
+      {Object.entries(fonts).map(([fontName, fontInfo]) => (
+        <div key={fontName} className="pali__typography-container">
+          <h2 className="pali__typography-title">
+            {fontName}
+            <span>({fontInfo.variableName})</span>
           </h2>
 
-          {font.sizes.map(size => {
+          {SIZES.map(size => {
             const fontStyle = {
-              ...font.value,
               fontSize: size,
+              fontFamily: fontInfo.family,
+              fontWeight: fontInfo.weight,
+              fontStyle: fontInfo.isItalic ? 'italic' : 'normal',
             }
 
             return (
-              <p key={`${font.name}_${size}`} className="pali__typography-text">
+              <p key={`${fontName}_${size}`} className="pali__typography-text">
                 <span>{size}</span>
 
                 <span key={size} style={fontStyle}>

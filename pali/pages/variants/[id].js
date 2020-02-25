@@ -1,5 +1,4 @@
-import Head from 'next/head'
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { BaseLayout } from '../../components'
 import { default as componentConfig } from '../../components/config.js'
@@ -43,18 +42,12 @@ export default function Variant() {
   const props = variantEntry.props
 
   return (
-    <Fragment>
-      <Head>
-        <link href="/static/dist/main.css" rel="stylesheet" type="text/css" />
-      </Head>
+    <TranslationProvider language={currentLanguage}>
+      <BaseLayout>
+        <Component {...props} useTranslation={useTranslation} />
+      </BaseLayout>
 
-      <TranslationProvider language={currentLanguage}>
-        <BaseLayout>
-          <Component {...props} useTranslation={useTranslation} />
-        </BaseLayout>
-
-        <LanguageSelect />
-      </TranslationProvider>
-    </Fragment>
+      <LanguageSelect />
+    </TranslationProvider>
   )
 }

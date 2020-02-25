@@ -1,0 +1,51 @@
+{
+  "FiraSans Regular": {
+    "family": "FiraSans",
+    "fileName": "FiraSans-Regular",
+    "weight": 400,
+    "isItalic": false,
+    "variableName": "--Fira-regular"
+  },
+  "FiraSans Regular Italic": {
+    "family": "FiraSans",
+    "fileName": "FiraSans-Italic",
+    "weight": 400,
+    "isItalic": true,
+    "variableName": "--Fira-regular-italic"
+  },
+  "FiraSans Medium": {
+    "family": "FiraSans",
+    "fileName": "FiraSans-Medium",
+    "weight": 500,
+    "isItalic": false,
+    "variableName": "--Fira-medium"
+  },
+  "FiraSans Semi-Bold": {
+    "family": "FiraSans",
+    "fileName": "FiraSans-SemiBold",
+    "weight": 600,
+    "isItalic": false,
+    "variableName": "--Fira-semi-bold"
+  },
+  "FiraSans Semi-Bold Italic": {
+    "family": "FiraSans",
+    "fileName": "FiraSans-SemiBoldItalic",
+    "weight": 600,
+    "isItalic": true,
+    "variableName": "--Fira-semi-bold-italic"
+  },
+  "FiraSans Bold": {
+    "family": "FiraSans",
+    "fileName": "FiraSans-Bold",
+    "weight": 700,
+    "isItalic": false,
+    "variableName": "--Fira-bold"
+  },
+  "Domine Bold": {
+    "family": "Domine",
+    "fileName": "Domine-Bold",
+    "weight": 700,
+    "isItalic": false,
+    "variableName": "--domine-bold"
+  }
+}
