@@ -1,6 +1,6 @@
-import { Fragment } from 'react'
 import App from 'next/app'
 import Router from 'next/router'
+import { TranslationProvider } from '../public/utils'
 import { BaseLayout } from '../public/components'
 import '../public/static/dist/main.css'
 
@@ -8,6 +8,7 @@ class MyApp extends App {
   static async getInitialProps(appContext) {
     // calls page's `getInitialProps` and fills `appProps.pageProps`
     const appProps = await App.getInitialProps(appContext)
+
     return { ...appProps }
   }
 
@@ -25,11 +26,11 @@ class MyApp extends App {
     const { Component, pageProps } = this.props
 
     return (
-      <Fragment>
+      <TranslationProvider>
         <BaseLayout>
           <Component {...pageProps} />
         </BaseLayout>
-      </Fragment>
+      </TranslationProvider>
     )
   }
 }

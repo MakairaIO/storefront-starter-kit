@@ -13,7 +13,7 @@ export default async function fetchMenuData() {
 }
 
 async function fetchMenuFromApi() {
-  const apiMenuResponse = await fetch(
+  const apiResponse = await fetch(
     `${process.env.MAKAIRA_API_URL}/enterprise/menu`,
     {
       method: 'GET',
@@ -23,18 +23,9 @@ async function fetchMenuFromApi() {
     }
   )
 
-  if (apiMenuResponse.status !== 200) {
-    const { status, statusText } = apiMenuResponse
-    const errorBody = await apiMenuResponse.json()
-
-    const error = new Error()
-    error.code = status
-    error.message = statusText
-    error.cause = errorBody.message
-    error.stack = 'fetchMenuData.js'
-
-    throw error
+  if (apiResponse.status !== 200) {
+    throw new Error()
   }
 
-  return apiMenuResponse.json()
+  return apiResponse.json()
 }

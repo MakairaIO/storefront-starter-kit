@@ -15,16 +15,7 @@ export default async function fetchFromMakaira(body) {
   )
 
   if (apiResponse.status !== 200) {
-    const { status, statusText } = apiResponse
-    const errorBody = await apiResponse.json()
-
-    const error = new Error()
-    error.code = status
-    error.message = statusText
-    error.cause = errorBody.message || 'No Page found for URL'
-    error.stack = 'fetchFromMakaira.js'
-
-    throw error
+    throw new Error()
   }
 
   return apiResponse.json()

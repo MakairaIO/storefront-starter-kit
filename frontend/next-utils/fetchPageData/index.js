@@ -1,6 +1,6 @@
 import { RequestBuilder, fetchFromMakaira } from '..'
 
-export default async function fetchPageData({ ctx, setConfiguratorInfo }) {
+export default async function fetchPageData({ ctx }) {
   const {
     query: { seoUrl: url },
   } = ctx
@@ -23,7 +23,7 @@ export default async function fetchPageData({ ctx, setConfiguratorInfo }) {
     constraints,
   }
 
-  let page = await fetchFromMakaira(body)
+  const page = await fetchFromMakaira(body)
 
   return page
 }
