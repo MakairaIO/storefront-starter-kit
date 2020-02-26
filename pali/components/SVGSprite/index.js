@@ -1,25 +1,23 @@
-import { Component } from 'react'
+import { useState, useEffect } from 'react'
+import { logError } from '../../utils'
 
-class SVGSprite extends Component {
-  state = {
-    svgData: '',
-  }
+export default function SVGSprite() {
+  const [svgData, setData] = useState('')
 
-  async componentDidMount() {
-    const response = await fetch('/static/dist/icons.svg')
-    const svgData = await response.text()
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch('/static/dist/icons.svg')
+        const sprite = await response.text()
 
-    this.setState({ svgData })
-  }
+        setData(sprite)
+      } catch (error) {
+        logError(error)
+      }
+    }
 
-  render() {
-    return (
-      <div
-        id="svg-wrapper"
-        dangerouslySetInnerHTML={{ __html: this.state.svgData }}
-      />
-    )
-  }
+    fetchData()
+  }, [])
+
+  return <div id="svg-wrapper" dangerouslySetInnerHTML={{ __html: svgData }} />
 }
-
-export default SVGSprite
