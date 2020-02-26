@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { LandingPage, ListingPage, DetailPage } from '../next-components'
-import { Header, Link } from '../public/components'
+import { Header } from '../public/components'
 import { TranslationProvider } from '../public/utils'
 import qs from 'qs'
 import {

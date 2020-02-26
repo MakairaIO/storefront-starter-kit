@@ -1,6 +1,5 @@
 import App from 'next/app'
 import Router from 'next/router'
-import { TranslationProvider } from '../public/utils'
 import { BaseLayout } from '../public/components'
 import '../public/static/dist/main.css'
 
@@ -26,11 +25,9 @@ class MyApp extends App {
     const { Component, pageProps } = this.props
 
     return (
-      <TranslationProvider>
-        <BaseLayout>
-          <Component {...pageProps} />
-        </BaseLayout>
-      </TranslationProvider>
+      <BaseLayout>
+        <Component {...pageProps} />
+      </BaseLayout>
     )
   }
 }
