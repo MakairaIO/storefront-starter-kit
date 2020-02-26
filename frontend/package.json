@@ -2,7 +2,7 @@
   "name": "makaira-enterprise-cloud-frontend",
   "version": "1.0.0",
   "description": "Makaira MEC Frontend",
-  "author": "René Mäkeleer <maekeler@marmalade.de>",
+  "author": "René Mäkeler <rm@marmalade.group>",
   "scripts": {
     "dev": "node server.js",
     "build": "next build",

@@ -2,7 +2,7 @@
   "name": "pattern-library",
   "version": "1.0.0",
   "description": "Makaira Pattern Library",
-  "author": "René Mäkeler <maekeler@marmalade.de>",
+  "author": "René Mäkeler <rm@marmalade.group>",
   "dependencies": {
     "@zeit/next-stylus": "^1.0.1",
     "dotenv-webpack": "^1.7.0",
@@ -59,6 +59,6 @@
     ]
   },
   "engines": {
-    "node": "12.13.1"
+    "node": "13.9.0"
   }
 }

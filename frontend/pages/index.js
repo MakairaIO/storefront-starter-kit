@@ -26,11 +26,11 @@ export default class Index extends Component {
     try {
       const [pageData, menuData] = await Promise.all([
         fetchPageData({ ctx }),
-        fetchMenuData({ ctx }),
+        fetchMenuData(),
       ])
 
       return { menuData, pageData }
-    } catch (err) {
+    } catch (error) {
       /**
        * Catching an error inside getInitialProps means that - in most cases - the
        * current URL was not found in any ElasticSearch document.
@@ -51,7 +51,7 @@ export default class Index extends Component {
        * to show up before actually reloading the page. To work around this issue, we set a
        * timeout after changing `window.location.href`.
        */
-      console.error(`Error for URL: '${seoUrl}' \n`, err)
+      console.error(`Error for URL: '${seoUrl}' \n`, error)
 
       if (res) {
         res.statusCode = 404

@@ -1,6 +1,7 @@
 const express = require('express')
 const next = require('next')
 const cors = require('cors')
+const allLanguages = require('./public/utils/i18n/allLanguages')
 
 const dev = process.env.NODE_ENV !== 'production'
 const port = process.env.NODE_PORT ? process.env.NODE_PORT : 5000
@@ -19,6 +20,15 @@ app
      */
     server.get('/static/*', (req, res) => {
       return handle(req, res)
+    })
+
+    /**
+     * Route handler search result page
+     */
+    allLanguages.forEach(lang => {
+      server.get(lang.searchRoute, (req, res) => {
+        app.render(req, res, '/search', req.query)
+      })
     })
 
     /**
