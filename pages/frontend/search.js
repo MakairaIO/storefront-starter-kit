@@ -1,20 +1,12 @@
 import { Component } from 'react'
-import { LandingPage, ListingPage, DetailPage } from '../next-components'
-import { Header } from '../public/components'
-import { TranslationProvider } from '../public/utils'
+import { BaseLayout, Header } from '../../patterns'
 import {
   GlobalDataProvider,
+  TranslationProvider,
   fetchSearchResult,
   fetchMenuData,
-} from '../next-utils'
-import ErrorPage from './_error'
-
-const pageComponents = {
-  page: LandingPage,
-  category: ListingPage,
-  manufacturer: ListingPage,
-  product: DetailPage,
-}
+} from '../../utils'
+import ErrorPage from '../_error'
 
 export default class Index extends Component {
   static async getInitialProps(ctx) {
@@ -48,15 +40,14 @@ export default class Index extends Component {
     }
 
     const { pageData } = this.props
-    const { type, language, ...page } = pageData
-    const PageComponent = pageComponents[type]
+    const { language } = pageData
 
     return (
       <GlobalDataProvider {...this.props}>
         <TranslationProvider language={language}>
-          <Header />
-
-          <PageComponent key={`${page.data.id}-${language}`} />
+          <BaseLayout>
+            <Header />
+          </BaseLayout>
         </TranslationProvider>
       </GlobalDataProvider>
     )
