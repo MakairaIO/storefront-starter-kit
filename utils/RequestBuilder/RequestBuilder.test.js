@@ -69,10 +69,6 @@ describe('RequestBuilder', () => {
 
     const constraints = builder.getConstraints()
 
-    it('should return a the shop-id of 1', () => {
-      expect(constraints['query.shop_id']).toEqual(1)
-    })
-
     it('should return use_stock of true', () => {
       expect(constraints['query.use_stock']).toBe(true)
     })
@@ -92,10 +88,6 @@ describe('RequestBuilder', () => {
 
     const constraints = builder.getConstraints()
 
-    it('should return a the shop-id of 1', () => {
-      expect(constraints['query.shop_id']).toEqual(1)
-    })
-
     it('should return use_stock of true', () => {
       expect(constraints['query.use_stock']).toBe(true)
     })
@@ -106,21 +98,6 @@ describe('RequestBuilder', () => {
 
     it('should return the ip-address', () => {
       expect(constraints['oi.user.ip']).toEqual(IP_ADDRESS.split(',')[0])
-    })
-
-    it('should return the language', () => {
-      expect(constraints['query.language']).toEqual(LANGUAGE)
-    })
-  })
-
-  describe('getConstraints()', () => {
-    const ctx = { query: {}, req: REQUEST, res: RESPONSE }
-    const builder = new RequestBuilder(ctx)
-
-    const constraints = builder.getConstraints('de')
-
-    it('should return the language', () => {
-      expect(constraints['query.language']).toEqual('de')
     })
   })
 
@@ -164,23 +141,6 @@ describe('RequestBuilder', () => {
       expect(sorting).toEqual({})
     })
 
-    it('should return sorting with uppercased keys sortOption starts with "ox"', () => {
-      const params = {
-        sortBy: 'oxvarminprice',
-        order: 'desc',
-      }
-      const ctx = {
-        req: REQUEST,
-        res: RESPONSE,
-        query: { ...params },
-      }
-      const builder = new RequestBuilder(ctx)
-
-      const sorting = builder.getSorting()
-
-      expect(sorting).toEqual({ OXVARMINPRICE: 'desc' })
-    })
-
     it('should return sorting with uppercased keys sortOption does not start with "ox"', () => {
       const params = {
         sortBy: 'onesaison',
@@ -200,7 +160,7 @@ describe('RequestBuilder', () => {
 
     it('should default to a ascending sort order', () => {
       const params = {
-        sortBy: 'oxvarminprice',
+        sortBy: 'title',
       }
       const ctx = {
         req: REQUEST,
@@ -211,7 +171,7 @@ describe('RequestBuilder', () => {
 
       const sorting = builder.getSorting()
 
-      expect(sorting).toEqual({ OXVARMINPRICE: 'asc' })
+      expect(sorting).toEqual({ title: 'asc' })
     })
   })
 
@@ -231,18 +191,6 @@ describe('RequestBuilder', () => {
       const pagination = builder.getPagination()
 
       expect(pagination).toEqual(['25', '15'])
-    })
-
-    it('should default to count of 36 and offset of 0', () => {
-      const ctx = {
-        req: REQUEST,
-        res: RESPONSE,
-      }
-      const builder = new RequestBuilder(ctx)
-
-      const pagination = builder.getPagination()
-
-      expect(pagination).toEqual(['36', '0'])
     })
   })
 })
