@@ -14,7 +14,7 @@
     "build:next": "next build",
     "build:svgs": "svgstore public/assets/svgs/*.svg -o public/assets/svgs/icons.svg",
     "build:styles": "stylus --compress patterns/index.styl --out public/assets/library/main.css",
-    "start": "next start",
+    "start": "NODE_ENV=production node server/index.js",
     "test": "jest --watch",
     "pre-commit": "jest --all && lint-staged"
   },
