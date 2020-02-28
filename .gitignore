@@ -12,6 +12,8 @@ coverage
 .env
 build
 .next
+public/assets/svgs/icons.svg
+public/assets/library/main.css
 
 # misc
 .idea

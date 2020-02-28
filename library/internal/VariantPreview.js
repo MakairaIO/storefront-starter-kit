@@ -58,6 +58,11 @@ export default function VariantPreview({
         <ReactIframeResizer iframeResizerOptions={{ checkOrigin: false }}>
           <TranslationProvider language={currentLanguage}>
             <BaseLayout>
+              <link
+                href="/assets/library/main.css"
+                rel="stylesheet"
+                type="text/css"
+              />
               <SVGSprite />
 
               <Component {...variant.props} useTranslation={useTranslation} />
