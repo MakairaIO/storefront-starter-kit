@@ -1,0 +1,47 @@
+{
+  "Primärfarbe": {
+    "value": "#64B4C7",
+    "variableName": "--primary-color",
+    "group": "primary"
+  },
+  "Sekundärfarbe": {
+    "value": "#E96E67",
+    "variableName": "--secondary-color",
+    "group": "primary"
+  },
+  "Tertiärfarbe": {
+    "value": "#F8CF66",
+    "variableName": "--tertiary-color",
+    "group": "primary"
+  },
+  "Akzenttextfarbe": {
+    "value": "#612F4C",
+    "variableName": "--accent-text-color",
+    "group": "secondary"
+  },
+  "Akzentfarbe 1": {
+    "value": "#FADEA6",
+    "variableName": "--accent-color-1",
+    "group": "secondary"
+  },
+  "Akzentfarbe 2": {
+    "value": "#FDF7E0",
+    "variableName": "--accent-color-2",
+    "group": "secondary"
+  },
+  "Fehlerfarbe": {
+    "value": "red",
+    "variableName": "--color-error",
+    "group": "secondary"
+  },
+  "Textfarbe": {
+    "value": "#292929",
+    "variableName": "--text-color-dark",
+    "group": "neutral"
+  },
+  "Black": {
+    "value": "#292929",
+    "variableName": "--color-light-black",
+    "group": "neutral"
+  }
+}

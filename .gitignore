@@ -11,9 +11,7 @@ coverage
 # production
 .env
 build
-frontend/public
 .next
-dist
 
 # misc
 .idea
