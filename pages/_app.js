@@ -1,5 +1,6 @@
 import App from 'next/app'
 import Router from 'next/router'
+import { SVGSprite } from '../patterns'
 import '../patterns/index.styl'
 
 class MyApp extends App {
@@ -23,7 +24,13 @@ class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props
 
-    return <Component {...pageProps} />
+    return (
+      <>
+        <SVGSprite />
+
+        <Component {...pageProps} />
+      </>
+    )
   }
 }
 

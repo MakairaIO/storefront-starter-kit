@@ -7,7 +7,7 @@ export default function SVGSprite() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch('/static/dist/icons.svg')
+        const response = await fetch('/assets/svgs/icons.svg')
         const sprite = await response.text()
 
         setData(sprite)

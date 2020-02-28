@@ -18,7 +18,7 @@ app
     /**
      * Route handler for all static assets, e.g. images, ...
      */
-    server.get('/static/*', (req, res) => {
+    server.get('/assets/*', (req, res) => {
       return handle(req, res)
     })
 

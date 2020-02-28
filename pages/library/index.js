@@ -65,7 +65,7 @@ export default function Index() {
     <div className="pali__wrapper">
       <nav className="pali__nav">
         <figure className="pali__home-icon">
-          <img src="/static/pattern-library/makaira-logo.png" alt="logo" />
+          <img src="/assets/library/makaira-logo.png" alt="logo" />
         </figure>
 
         <ul className="pali__list">

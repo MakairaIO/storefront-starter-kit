@@ -1,5 +1,11 @@
 {
-  "Times": {
-    "value": "times"
+  "Shopping Cart": {
+    "value": "cart"
+  },
+  "User": {
+    "value": "user"
+  },
+  "Search": {
+    "value": "search"
   }
 }

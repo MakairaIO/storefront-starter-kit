@@ -1,6 +1,9 @@
-function Header(props) {
+import { Icon } from '..'
+
+function Header() {
   return (
     <header className="header">
+      <Icon symbol="user" />
       <h1>Insert Header Here</h1>
     </header>
   )
