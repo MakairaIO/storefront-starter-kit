@@ -1,4 +1,3 @@
-import { Fragment, useState } from 'react'
 import componentConfig from '../../library/config'
 import {
   ColorView,
@@ -17,7 +16,7 @@ const mainComponents = {
 
 function NavigationList({ entries, visibleEntry, setVisibleEntry }) {
   return (
-    <Fragment>
+    <>
       {entries.map(entry => {
         const isActive = entry.name === visibleEntry.entry.name
         const listItemClasses =
@@ -33,7 +32,7 @@ function NavigationList({ entries, visibleEntry, setVisibleEntry }) {
           </li>
         )
       })}
-    </Fragment>
+    </>
   )
 }
 

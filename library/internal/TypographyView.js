@@ -1,11 +1,10 @@
-import { Fragment } from 'react'
 import fonts from '../../config/fonts'
 
 const SIZES = ['10px', '14px', '16px', '18px']
 
 export default function TypographyView() {
   return (
-    <Fragment>
+    <>
       {Object.entries(fonts).map(([fontName, fontInfo]) => (
         <div key={fontName} className="pali__typography-container">
           <h2 className="pali__typography-title">
@@ -33,6 +32,6 @@ export default function TypographyView() {
           })}
         </div>
       ))}
-    </Fragment>
+    </>
   )
 }
