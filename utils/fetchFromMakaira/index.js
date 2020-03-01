@@ -9,7 +9,7 @@ export default async function fetchFromMakaira(body) {
     url += '/enterprise/page'
   }
 
-  const apiResponse = await fetch(url, {
+  const response = await fetch(url, {
     method: 'POST',
     credentials: 'include',
     headers: {
@@ -19,9 +19,18 @@ export default async function fetchFromMakaira(body) {
     body: JSON.stringify(body),
   })
 
-  if (apiResponse.status !== 200) {
-    throw new Error()
+  if (response.status !== 200) {
+    const { status, statusText } = response
+    const errorBody = await response.json()
+
+    const error = new Error()
+    error.code = status
+    error.message = statusText
+    error.cause = errorBody.message
+    error.stack = 'fetchFromMakaira()'
+
+    throw error
   }
 
-  return apiResponse.json()
+  return response.json()
 }

@@ -8,8 +8,20 @@ export default function SVGSprite() {
     async function fetchData() {
       try {
         const response = await fetch('/assets/svgs/icons.svg')
-        const sprite = await response.text()
 
+        if (response.status !== 200) {
+          const { status, statusText } = response
+
+          const error = new Error()
+          error.code = status
+          error.message = statusText
+          error.cause = 'Could not fetch sprite'
+          error.stack = '<SVGSprite />'
+
+          throw error
+        }
+
+        const sprite = await response.text()
         setData(sprite)
       } catch (error) {
         logError(error)
