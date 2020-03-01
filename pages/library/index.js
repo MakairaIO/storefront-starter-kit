@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import componentConfig from '../../library/config'
 import {
+  MobileHeader,
   ColorView,
   TypographyView,
   IconView,
@@ -51,6 +52,8 @@ function NavigationEntryBasic({ type, label, visibleEntry, setVisibleEntry }) {
 }
 
 export default function Index() {
+  const [isNavigationVisible, toggleNavigation] = useState(false)
+
   const [visibleEntry, setVisibleEntry] = useState({
     type: 'color',
     entry: {},
@@ -61,9 +64,18 @@ export default function Index() {
 
   const MainComponent = mainComponents[visibleEntry.type]
 
+  const navigationClasses =
+    'pali__nav' + (isNavigationVisible ? ' pali__nav--visible' : '')
+
   return (
     <div className="pali__wrapper">
-      <nav className="pali__nav">
+      <MobileHeader
+        isNavigationVisible={isNavigationVisible}
+        toggleNavigation={toggleNavigation}
+        visibleEntry={visibleEntry}
+      />
+
+      <nav className={navigationClasses}>
         <figure className="pali__home-icon">
           <img src="/assets/library/makaira-logo.png" alt="logo" />
         </figure>
