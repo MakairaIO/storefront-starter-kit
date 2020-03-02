@@ -7,7 +7,7 @@ import { BaseLayout } from '../../patterns'
 
 export default function Variant() {
   const [currentLanguage, changeLanguage] = useState('de')
-  const [barsVisible, toggleBars] = useState(true)
+  const [barsVisible, toggleBars] = useState(false)
   const router = useRouter()
   const dynamicSegment = router.query.id
   const [componentName, variantName] = dynamicSegment.split('_')
