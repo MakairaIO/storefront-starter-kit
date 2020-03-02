@@ -8,3 +8,5 @@ deploy-whitelabel:
     - master
   script:
     - git-push ssh://dokku@production.makaira.cloud:22/whitelabel
+  tags:
+    - marmalade-docker
