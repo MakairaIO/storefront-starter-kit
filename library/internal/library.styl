@@ -11,6 +11,31 @@
 $tablet-breakpoint = 700px
 $desktop-breakpoint = 1024px
 
+:root {
+  --bar-color: hsla(204, 80%, 72%, 0.25);
+  // 1px bars, repeating every 6px
+  --background-baseline: repeating-linear-gradient(
+    to bottom,
+    var(--bar-color),
+    var(--bar-color),
+    transparent 1px,
+    transparent 6px
+  );
+}
+
+html::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-height: 100vh;
+  content: '';
+  background-image: var(--background-baseline);
+  z-index: 1000;
+  pointer-events: none;
+}
+
 .pali__wrapper
   line-height 2.5rem
   background-color #F8FAFC
