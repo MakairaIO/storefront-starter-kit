@@ -7,6 +7,7 @@ import { BaseLayout } from '../../patterns'
 
 export default function Variant() {
   const [currentLanguage, changeLanguage] = useState('de')
+  const [barsVisible, toggleBars] = useState(true)
   const router = useRouter()
   const dynamicSegment = router.query.id
   const [componentName, variantName] = dynamicSegment.split('_')
@@ -35,6 +36,24 @@ export default function Variant() {
     )
   }
 
+  function BarToggle() {
+    return (
+      <>
+        <select
+          value={barsVisible}
+          onChange={() => toggleBars(!barsVisible)}
+          onBlue={() => toggleBars(!barsVisible)}
+          className="pali__bars-select"
+        >
+          <option value={false}>Bars off</option>
+          <option value={true}>Bars on</option>
+        </select>
+
+        {barsVisible && <div className="pali__bars"></div>}
+      </>
+    )
+  }
+
   const Component = componentEntry.component
   const props = variantEntry.props
 
@@ -45,6 +64,8 @@ export default function Variant() {
       </BaseLayout>
 
       <LanguageSelect />
+
+      <BarToggle />
     </TranslationProvider>
   )
 }
