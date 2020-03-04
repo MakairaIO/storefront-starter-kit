@@ -1,8 +1,13 @@
 export {
+  default as ConfigurationContext,
+  ConfigurationProvider,
+  useConfiguration,
+} from './ConfigurationProvider'
+export {
   default as TranslationContext,
   TranslationProvider,
   useTranslation,
-} from './i18n/TranslationProvider'
+} from './TranslationProvider'
 export {
   default as GlobalDataContext,
   GlobalDataProvider,

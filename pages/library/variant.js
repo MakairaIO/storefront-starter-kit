@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import componentConfig from '../../library/config'
-import { TranslationProvider, useTranslation } from '../../utils'
+import { ConfigurationProvider, TranslationProvider } from '../../utils'
 import allLanguages from '../../config/allLanguages'
 import { BaseLayout } from '../../patterns'
 
@@ -58,14 +58,16 @@ export default function Variant() {
   const props = variantEntry.props
 
   return (
-    <TranslationProvider language={currentLanguage}>
-      <BaseLayout>
-        <Component {...props} useTranslation={useTranslation} />
-      </BaseLayout>
+    <ConfigurationProvider>
+      <TranslationProvider language={currentLanguage}>
+        <BaseLayout>
+          <Component {...props} />
+        </BaseLayout>
 
-      <LanguageSelect />
+        <LanguageSelect />
 
-      <BarToggle />
-    </TranslationProvider>
+        <BarToggle />
+      </TranslationProvider>
+    </ConfigurationProvider>
   )
 }
