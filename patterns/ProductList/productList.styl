@@ -1,9 +1,30 @@
+$breakpoint-small = 400px
+$breakpoint-medium = 650px
+$breakpoint-large = 900px
+$breakpoint-huge = 1000px
+
 .product-list
   display grid
   grid-template-columns 1fr
   grid-gap 2.4rem 0
   padding 0 1.5rem
   margin-top 2.4rem
+
+  @media (min-width $breakpoint-small)
+    // see https://stackoverflow.com/a/52861514
+    grid-template-columns repeat(2, minmax(0,1fr))
+    grid-gap 2.4rem 1rem
+
+  @media (min-width $breakpoint-medium)
+    grid-template-columns repeat(3, minmax(0,1fr))
+    grid-gap 2.4rem 2rem
+
+  @media (min-width $breakpoint-large)
+    grid-template-columns repeat(4, minmax(0,1fr))
+
+  @media (min-width $breakpoint-large)
+    max-width 100rem
+    margin-left auto
 
 .product-item
   border-top 1px solid var(--heather)
