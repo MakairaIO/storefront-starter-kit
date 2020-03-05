@@ -1,26 +1,36 @@
 import { Icon } from '..'
 
-export default function Button(props) {
-  const {
-    order = '1st',
-    size = '125',
-    icon,
-    iconPosition,
-    isLoading,
-    className,
-    disabled = false,
-    ...rest
-  } = props
+function Button(props) {
+  const { type = '', className = '', icon = '', iconPosition = 'right' } = props
 
-  const iconClasses = icon && iconPosition ? `icon--${iconPosition}` : ''
-  const loadingClasses = isLoading ? 'button--loading' : ''
-  const buttonClasses = `button button--${order} button--${size} ${iconClasses} ${loadingClasses} ${className}`
+  const typeClasses = type != '' ? 'button--' + type : ''
+  const iconClasses = icon && iconPosition ? 'button--icon-' + iconPosition : ''
+
+  const classes = `button ${typeClasses} ${iconClasses} ${className}`
 
   return (
-    <button disabled={disabled} className={buttonClasses} {...rest}>
-      {icon && <Icon symbol={icon} />}
+    <div
+      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+    >
+      <button type="button" className={classes}>
+        <span
+          className="button__text"
+          style={{ display: 'block', maxWidth: 120 }}
+        >
+          {props.children} {props.children}
+        </span>
 
-      {props.children}
-    </button>
+        {icon && <Icon symbol={icon} />}
+      </button>
+
+      <button type="button" className={classes}>
+        <span className="button__text">{props.children}</span>
+
+        {icon && <Icon symbol={icon} />}
+      </button>
+    </div>
   )
 }
+
+export default Button
+export { default as buttonVariants } from './variants.js'

@@ -1,2 +1,33 @@
 .button
-  text-transform uppercase
+  color var(--fountain-blue)
+  font-size 1.4rem
+  font-weight var(--font-weight-medium)
+  line-height 1.8rem
+  letter-spacing 0.03rem
+  background var(--white)
+  border 1px solid var(--trout)
+  border-radius 4px
+  // padding 1rem 1.2rem 0.8rem
+  padding 0.8rem 1.2rem 0.8rem
+  margin 0.7rem 0 0.5rem
+
+  &:hover
+    cursor pointer
+
+  &--icon-right
+  &--icon-left
+    display inline-flex
+    align-items center
+
+    .icon
+      height 1.8rem
+      width 0.7rem
+
+  &--icon-right
+    .button__text
+      margin-right 1.2rem
+
+  &--icon-left
+    .button__text
+      margin-left 1.2rem
+

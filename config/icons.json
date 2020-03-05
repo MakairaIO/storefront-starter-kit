@@ -7,5 +7,11 @@
   },
   "Search": {
     "value": "search"
+  },
+  "Chevron Right": {
+    "value": "chevron-right"
+  },
+  "Chevron Left": {
+    "value": "chevron-left"
   }
 }
