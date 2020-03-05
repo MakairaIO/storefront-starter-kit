@@ -1,26 +1,35 @@
 import { Icon } from '..'
 
-export default function Button(props) {
+function Button(props) {
   const {
-    order = '1st',
-    size = '125',
-    icon,
-    iconPosition,
-    isLoading,
-    className,
-    disabled = false,
-    ...rest
+    type = '',
+    className = '',
+    icon = '',
+    iconPosition = 'right',
+    href = '',
   } = props
 
-  const iconClasses = icon && iconPosition ? `icon--${iconPosition}` : ''
-  const loadingClasses = isLoading ? 'button--loading' : ''
-  const buttonClasses = `button button--${order} button--${size} ${iconClasses} ${loadingClasses} ${className}`
+  const typeClasses = type != '' ? 'button--' + type : ''
+  const iconClasses = icon && iconPosition ? 'button--icon-' + iconPosition : ''
+
+  const classes = `button ${typeClasses} ${iconClasses} ${className}`
+
+  if (href != '') {
+    return (
+      <a href={href} className={classes}>
+        {props.children}
+      </a>
+    )
+  }
 
   return (
-    <button disabled={disabled} className={buttonClasses} {...rest}>
-      {icon && <Icon symbol={icon} />}
+    <button type="button" className={classes}>
+      <span className="button__text">{props.children}</span>
 
-      {props.children}
+      {icon && <Icon symbol={icon} />}
     </button>
   )
 }
+
+export default Button
+export { default as buttonVariants } from './variants.js'
