@@ -1,34 +1,34 @@
+import classNames from 'classnames'
 import { Icon } from '..'
 
 function Button(props) {
-  const { type = '', className = '', icon = '', iconPosition = 'right' } = props
+  const {
+    type = '',
+    className = '',
+    icon = '',
+    iconPosition = 'right',
+    href = '',
+  } = props
 
-  const typeClasses = type != '' ? 'button--' + type : ''
-  const iconClasses = icon && iconPosition ? 'button--icon-' + iconPosition : ''
+  const classes = classNames('button', className, {
+    [`button--${type}`]: type,
+    [`button--icon-${iconPosition}`]: icon && iconPosition,
+  })
 
-  const classes = `button ${typeClasses} ${iconClasses} ${className}`
+  if (href != '') {
+    return (
+      <a href={href} className={classes}>
+        {props.children}
+      </a>
+    )
+  }
 
   return (
-    <div
-      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
-    >
-      <button type="button" className={classes}>
-        <span
-          className="button__text"
-          style={{ display: 'block', maxWidth: 120 }}
-        >
-          {props.children} {props.children}
-        </span>
+    <button type="button" className={classes}>
+      <span className="button__text">{props.children}</span>
 
-        {icon && <Icon symbol={icon} />}
-      </button>
-
-      <button type="button" className={classes}>
-        <span className="button__text">{props.children}</span>
-
-        {icon && <Icon symbol={icon} />}
-      </button>
-    </div>
+      {icon && <Icon symbol={icon} />}
+    </button>
   )
 }
 

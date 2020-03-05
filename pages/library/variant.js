@@ -42,7 +42,7 @@ export default function Variant() {
         <select
           value={barsVisible}
           onChange={() => toggleBars(!barsVisible)}
-          onBlue={() => toggleBars(!barsVisible)}
+          onBlur={() => toggleBars(!barsVisible)}
           className="pali__bars-select"
         >
           <option value={false}>Bars off</option>

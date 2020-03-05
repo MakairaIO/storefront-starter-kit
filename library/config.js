@@ -3,6 +3,7 @@ import Copytext, { copytextVariants } from '../patterns/Copytext'
 import Button, { buttonVariants } from '../patterns/Button'
 import Header, { headerVariants } from '../patterns/Header'
 import SingleTeaser, { singleTeaserVariants } from '../patterns/SingleTeaser'
+import ProductList, { productListVariants } from '../patterns/ProductList'
 
 import Home from './examplePages/Home'
 
@@ -36,6 +37,12 @@ export default [
     name: 'Teaser (Single)',
     component: SingleTeaser,
     variants: singleTeaserVariants,
+  },
+  {
+    type: 'component',
+    name: 'Product List',
+    component: ProductList,
+    variants: productListVariants,
   },
   {
     type: 'page',
