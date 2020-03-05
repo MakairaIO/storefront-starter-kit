@@ -59,6 +59,18 @@ export default function VariantPreview({
           <ConfigurationProvider>
             <TranslationProvider language={currentLanguage}>
               <BaseLayout>
+                <style
+                  dangerouslySetInnerHTML={{
+                    __html: `
+                    #iframe-root {
+                      padding: 10px 0;
+                      background: #fff;
+                      border-radius: 8px;
+                    }
+                  `,
+                  }}
+                ></style>
+
                 <link
                   href="/assets/library/main.css"
                   rel="stylesheet"
