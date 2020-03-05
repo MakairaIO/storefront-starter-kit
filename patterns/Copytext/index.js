@@ -1,6 +1,8 @@
+import classNames from 'classnames'
+
 function Copytext(props) {
   const { className = '' } = props
-  const classes = `copytext ${className}`
+  const classes = classNames('copyText', className)
 
   return <p className={classes}>{props.children}</p>
 }

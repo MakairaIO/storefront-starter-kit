@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import { Icon } from '..'
 
 function Button(props) {
@@ -9,10 +10,10 @@ function Button(props) {
     href = '',
   } = props
 
-  const typeClasses = type != '' ? 'button--' + type : ''
-  const iconClasses = icon && iconPosition ? 'button--icon-' + iconPosition : ''
-
-  const classes = `button ${typeClasses} ${iconClasses} ${className}`
+  const classes = classNames('button', className, {
+    [`button--${type}`]: type,
+    [`button--icon-${iconPosition}`]: icon && iconPosition,
+  })
 
   if (href != '') {
     return (
