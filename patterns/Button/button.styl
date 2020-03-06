@@ -35,14 +35,12 @@
       background var(--buckthorn)
       color var(--white)
 
-  &--icon-right
-  &--icon-left
+  &--icon
     display inline-flex
     align-items center
 
-    .icon
-      height 1.8rem
-      width 0.7rem
+  &--icon-only
+    padding 0.8rem 0
 
   &--icon-right
     .button__text
@@ -54,6 +52,16 @@
 
     .icon
       order -1
+
+  .icon
+    // styles for icon-only buttons
+    height 1.8rem
+    width 3.4rem // 36px - 2px border
+
+    &--chevron-right
+    &--chevron-left
+      height 1.8rem
+      width 0.7rem
 
 a.button
   text-decoration none

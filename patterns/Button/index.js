@@ -8,24 +8,29 @@ function Button(props) {
     icon = '',
     iconPosition = 'right',
     href = '',
+    children,
   } = props
 
   const classes = classNames('button', className, {
     [`button--${type}`]: type,
-    [`button--icon-${iconPosition}`]: icon && iconPosition,
+    [`button--icon`]: icon,
+    [`button--icon-only`]: icon && !children,
+    [`button--icon-${iconPosition}`]: icon && iconPosition && children,
   })
 
   if (href != '') {
     return (
       <a href={href} className={classes}>
         {props.children}
+
+        {icon && <Icon symbol={icon} />}
       </a>
     )
   }
 
   return (
     <button type="button" className={classes}>
-      <span className="button__text">{props.children}</span>
+      <span className="button__text">{children}</span>
 
       {icon && <Icon symbol={icon} />}
     </button>

@@ -41,4 +41,10 @@ export default [
       type: 'secondary',
     },
   },
+  {
+    name: 'Icon Button',
+    props: {
+      icon: 'bars',
+    },
+  },
 ]
