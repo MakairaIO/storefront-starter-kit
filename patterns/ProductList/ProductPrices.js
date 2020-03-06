@@ -6,10 +6,8 @@ import classNames from 'classnames'
 export default function ProductPrices(props) {
   const { price = 0.0 } = props
 
-  const hasReducedPrice = Math.random() > 0.5
-  if (hasReducedPrice) {
-    var reducedPrice = 399.99
-  }
+  const hasReducedPrice = true
+  const reducedPrice = 399.99
 
   const classes = classNames('product-item__price', {
     ['product-item__price--current']: hasReducedPrice,
@@ -17,13 +15,10 @@ export default function ProductPrices(props) {
 
   return (
     <div className="product-item__prices">
-      {hasReducedPrice ? (
-        <span className="product-item__price product-item__price--reduced">
-          € {reducedPrice}
-        </span>
-      ) : (
-        ''
-      )}
+      <span className="product-item__price product-item__price--reduced">
+        € {reducedPrice}
+      </span>
+
       <span className={classes}>€ {price}</span>
     </div>
   )
