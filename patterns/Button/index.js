@@ -11,7 +11,7 @@ function Button(props) {
     children,
   } = props
 
-  const classes = classNames('button', className, {
+  const classes = classNames(className, 'button', {
     [`button--${type}`]: type,
     [`button--icon`]: icon,
     [`button--icon-only`]: icon && !children,
@@ -21,7 +21,7 @@ function Button(props) {
   if (href != '') {
     return (
       <a href={href} className={classes}>
-        {props.children}
+        <span className="button__text">{children}</span>
 
         {icon && <Icon symbol={icon} />}
       </a>

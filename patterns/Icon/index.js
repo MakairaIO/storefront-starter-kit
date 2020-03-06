@@ -2,7 +2,7 @@ import classNames from 'classnames'
 
 export default function Icon(props) {
   const { symbol, className } = props
-  const classes = classNames('icon', `icon--${symbol}`, className)
+  const classes = classNames(className, 'icon', `icon--${symbol}`)
 
   return (
     <span className={classes}>
