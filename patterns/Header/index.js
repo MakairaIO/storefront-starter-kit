@@ -1,30 +1,95 @@
-import { Button } from '..'
+import { Component } from 'react'
+import { Button, GlobalNavigation } from '..'
 import InfoLinks from './InfoLinks'
 import Search from './Search'
 import Actions from './Actions'
+import { throttle } from '../../utils'
 
-function Header() {
-  return (
-    <header className="header">
-      <Button icon="bars" className="header__menu-button" />
+const DESKTOP_MENU_BREAKPOINT = 800
 
-      <img
-        src="/assets/images/header/logo_dummy.svg"
-        alt="Logo"
-        className="header__logo"
-      />
+class Header extends Component {
+  constructor(props) {
+    super(props)
 
-      <div className="header__outer-container">
-        <InfoLinks />
+    this.state = {
+      renderMobileNavigation: false,
+      isMobileNavigationVisible: false,
+    }
 
-        <div className="header__inner-container">
-          <Search />
+    this.handleResize = throttle(this.handleResize, 200)
+  }
 
-          <Actions />
-        </div>
-      </div>
-    </header>
-  )
+  componentDidMount() {
+    window.addEventListener('resize', this.handleResize)
+
+    // initial check for what navigation to render
+    this.handleResize()
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize)
+  }
+
+  handleResize = () => {
+    const { renderMobileNavigation } = this.state
+
+    if (window.innerWidth < DESKTOP_MENU_BREAKPOINT) {
+      if (renderMobileNavigation === false) {
+        this.setState({ renderMobileNavigation: true })
+      }
+    } else {
+      if (renderMobileNavigation === true) {
+        this.setState({ renderMobileNavigation: false })
+      }
+    }
+  }
+
+  toggleMobileNavigation = () => {
+    this.setState(prevState => {
+      return {
+        isMobileNavigationVisible: !prevState.isMobileNavigationVisible,
+      }
+    })
+  }
+
+  render() {
+    const { menu = [] } = this.props
+
+    return (
+      <>
+        <header className="header">
+          <Button
+            icon="bars"
+            className="header__menu-button"
+            onClick={this.toggleMobileNavigation}
+          />
+
+          <img
+            src="/assets/images/header/logo_dummy.svg"
+            alt="Logo"
+            className="header__logo"
+          />
+
+          <div className="header__outer-container">
+            <InfoLinks />
+
+            <div className="header__inner-container">
+              <Search />
+
+              <Actions />
+            </div>
+          </div>
+        </header>
+
+        <GlobalNavigation
+          menu={menu}
+          renderMobileNavigation={this.state.renderMobileNavigation}
+          isMobileNavigationVisible={this.state.isMobileNavigationVisible}
+          toggleMobileNavigation={this.toggleMobileNavigation}
+        />
+      </>
+    )
+  }
 }
 
 export default Header

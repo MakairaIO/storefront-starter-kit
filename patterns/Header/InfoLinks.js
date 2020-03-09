@@ -1,16 +1,16 @@
 // TODO: Translations
 export default function InfoLinks() {
   return (
-    <div className="header__links">
-      <a href="/privacy" className="header__link">
+    <nav className="header__info-links" arial-label="Secondary Navigation">
+      <a href="/privacy" className="header__info-link">
         Datenschutz
       </a>
-      <a href="/privacy" className="header__link">
+      <a href="/privacy" className="header__info-link">
         Impressum
       </a>
-      <a href="/privacy" className="header__link">
+      <a href="/privacy" className="header__info-link">
         Versandkosten
       </a>
-    </div>
+    </nav>
   )
 }

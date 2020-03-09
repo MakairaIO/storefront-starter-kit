@@ -16,5 +16,14 @@
   },
   "Bars": {
     "value": "bars"
+  },
+  "Times": {
+    "value": "times"
+  },
+  "Plus": {
+    "value": "plus"
+  },
+  "Minus": {
+    "value": "minus"
   }
 }
