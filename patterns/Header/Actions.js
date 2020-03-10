@@ -1,9 +1,11 @@
 import { Button } from '..'
+import { useTranslation } from '../../utils'
 
-// TODO: Translations
 // TODO: format prices via helper-function
 // TODO: Remove hard-coded implementation
 export default function Actions() {
+  const { t } = useTranslation()
+
   return (
     <>
       <div className="header__actions header__actions--mobile">
@@ -19,7 +21,7 @@ export default function Actions() {
           className="header__action"
           iconPosition="left"
         >
-          Mein Konto
+          {t('HEADER_ACCOUNT_AREA')}
         </Button>
 
         <Button

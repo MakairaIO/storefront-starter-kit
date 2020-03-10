@@ -3,7 +3,6 @@ import { Button, Icon } from '../..'
 import NavigationItem from './NavigationItem'
 import InfoLinks from './InfoLinks'
 
-// TODO: Translations
 export default function MobileNavigation(props) {
   const {
     menu = [],
