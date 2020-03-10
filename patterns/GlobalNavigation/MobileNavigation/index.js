@@ -5,16 +5,20 @@ import InfoLinks from './InfoLinks'
 
 // TODO: Translations
 export default function MobileNavigation(props) {
-  const { menu = [], isVisible = false, closeFlyout } = props
+  const {
+    menu = [],
+    isMobileNavigationVisible = false,
+    toggleMobileNavigation,
+  } = props
 
   const flyoutClasses = classNames('mobile-navigation__flyout', {
-    'mobile-navigation__flyout--visible': isVisible,
+    'mobile-navigation__flyout--visible': isMobileNavigationVisible,
   })
 
   return (
     <div className={flyoutClasses}>
       <div className="mobile-navigation__header">
-        <Button icon="times" onClick={closeFlyout} />
+        <Button icon="times" onClick={toggleMobileNavigation} />
 
         <label className="mobile-navigation__search">
           <Icon symbol="search" />

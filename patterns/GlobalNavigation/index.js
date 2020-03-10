@@ -1,21 +1,12 @@
 import MobileNavigation from './MobileNavigation'
+import DesktopNavigation from './DesktopNavigation'
 
 export default function GlobalNavigation(props) {
-  const {
-    renderMobileNavigation,
-    isMobileNavigationVisible,
-    toggleMobileNavigation,
-  } = props
+  const { renderMobileNavigation } = props
 
   if (renderMobileNavigation) {
-    return (
-      <MobileNavigation
-        {...props}
-        isVisible={isMobileNavigationVisible}
-        closeFlyout={toggleMobileNavigation}
-      />
-    )
+    return <MobileNavigation {...props} />
   }
 
-  return null
+  return <DesktopNavigation {...props} />
 }

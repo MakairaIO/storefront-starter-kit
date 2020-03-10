@@ -1,0 +1,89 @@
+$breakpoint-large = 800px
+
+.desktop-navigation__wrapper
+  display none
+
+  @media (min-width $breakpoint-large)
+    display block
+    width calc(100% - 3rem) // 1.5rem "padding" on each side
+    margin 0 auto
+    border-bottom 1px solid var(--heather)
+
+// FIXME: Implement behaviour for overflowing menu-entries
+.desktop-navigation
+  display flex
+  height 3.5rem
+  position relative
+
+.desktop-navigation__item
+  color var(--fountain-blue)
+  font-size 1.7rem
+  font-weight var(--font-weight-semi-bold)
+  line-height 2.4rem
+  letter-spacing 0.025rem
+
+  > a
+    display flex
+    align-items center
+    height 100%
+    padding 0 1.5rem
+    position relative
+
+    &:hover:after
+      display block
+      content ''
+      height 0.3rem
+      width calc(100% - 3rem) // 1.5rem padding on each side of the text
+      background var(--fountain-blue)
+      position absolute
+      bottom 0
+      left 1.5rem
+
+.desktop-navigation__flyout
+  display grid
+  grid-template-columns repeat(auto-fill, minmax(21rem, 1fr))
+  grid-gap 2rem
+  flex-wrap wrap
+  width 100%
+  background var(--white)
+  position absolute
+  top calc(100% + 0.5rem) // 1px for the border
+  z-index var(--z-index-medium)
+  padding 2.5rem 2rem
+  border 1px solid var(--heather)
+  border-radius 4px
+  box-shadow 0 3px 10px -4px rgba(16,28,45,0.35), 0 2px 4px 0 rgba(16,28,45,0.25)
+
+
+.desktop-navigation__flyout-column-header
+  display flex
+  align-items center
+  height 3rem
+  font-size 1.4rem
+  font-weight var(--font-weight-medium)
+  line-height 1.8rem
+  letter-spacing 0.02rem
+
+.desktop-navigation__flyout-column-list
+  font-size 1.4rem
+  font-weight var(--font-weight-regular)
+  line-height 1.8rem
+  letter-spacing 0.02rem
+
+  li
+    border-top 1px solid var(--athena)
+
+    &:last-of-type
+      border-bottom 1px solid var(--athena)
+
+  a
+    display flex
+    align-items center
+    height 3rem
+    padding-right 0.5rem
+
+    .icon
+      height 1.3rem
+      width 0.8rem
+      margin-left auto
+      color var(--chateau)

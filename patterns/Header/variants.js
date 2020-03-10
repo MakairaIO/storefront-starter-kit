@@ -224,18 +224,6 @@ export default [
           children: [],
           expanded: true,
         },
-        {
-          text: {
-            en: 'Premium',
-            de: 'Premium',
-          },
-          link: {
-            en: '/',
-            de: '/',
-          },
-          uuid: '840e8394-1de2-41ae-9b1e-d87b9efc3237',
-          children: [],
-        },
       ],
     },
   },
