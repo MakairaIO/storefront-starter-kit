@@ -23,6 +23,14 @@ export default [
     name: 'Heading 125 - Subheading',
     props: {
       children: 'Lorem ipsum dolor sit amet',
+      size: '125',
+    },
+  },
+  {
+    name: 'Heading 110 - Magazine',
+    props: {
+      children: 'Lorem ipsum dolor sit amet',
+      size: '110',
     },
   },
   {
