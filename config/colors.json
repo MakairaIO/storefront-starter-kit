@@ -1,57 +1,132 @@
 {
-  "Fountain Blue": {
-    "value": "#101C2D",
-    "variableName": "--fountain-blue",
-    "group": "primary"
-  },
-  "Indigo": {
-    "value": "#4277C2",
-    "variableName": "--indigo",
-    "group": "primary"
-  },
-  "Zest": {
-    "value": "#E09122",
-    "variableName": "--zest",
-    "group": "secondary"
-  },
-  "Seo Buckthorn": {
-    "value": "#FAA125",
-    "variableName": "--buckthorn",
-    "group": "secondary"
-  },
-  "Thunderbird": {
-    "value": "#AD1A1A",
-    "variableName": "--thunderbird",
-    "group": "secondary"
-  },
-  "Trout": {
+  "Primary": {
     "value": "#4F5967",
-    "variableName": "--trout",
-    "group": "neutral"
+    "variableName": "--primary",
+    "group": "core"
   },
-  "Gray Chateau": {
-    "value": "#98A1AD",
-    "variableName": "--chateau",
-    "group": "neutral"
+  "Secondary": {
+    "value": "#FF8E00",
+    "variableName": "--secondary",
+    "group": "core"
   },
-  "Heather": {
-    "value": "#C1C9D4",
-    "variableName": "--heather",
-    "group": "neutral"
-  },
-  "Athena Gray": {
+  "Tertiary": {
     "value": "#E9ECF1",
-    "variableName": "--athena",
+    "variableName": "--tertiary",
+    "group": "core"
+  },
+  "Brand 1": {
+    "value": "#2F77C8",
+    "variableName": "--brand-1",
+    "group": "brand"
+  },
+  "Brand 2": {
+    "value": "#AD1A1A",
+    "variableName": "--brand-2",
+    "group": "brand"
+  },
+  "Brand 3": {
+    "value": "#FFAE16",
+    "variableName": "--brand-3",
+    "group": "brand"
+  },
+  "Brand 4": {
+    "value": "#79B6E2",
+    "variableName": "--brand-4",
+    "group": "brand"
+  },
+  "Neutral 00": {
+    "value": "#fff",
+    "variableName": "--neutral-00",
     "group": "neutral"
   },
-  "Catskill White": {
+  "Neutral 10": {
     "value": "#F5F7FA",
-    "variableName": "--catskill",
+    "variableName": "--neutral-10",
     "group": "neutral"
   },
-  "White": {
-    "value": "#FFFFFF",
-    "variableName": "--white",
+  "Neutral 20": {
+    "value": "#E9ECF1",
+    "variableName": "--neutral-20",
     "group": "neutral"
+  },
+  "Neutral 30": {
+    "value": "#DDE0E6",
+    "variableName": "--neutral-30",
+    "group": "neutral"
+  },
+  "Neutral 40": {
+    "value": "#C1C9D4",
+    "variableName": "--neutral-40",
+    "group": "neutral"
+  },
+  "Neutral 50": {
+    "value": "#98A1AD",
+    "variableName": "--neutral-50",
+    "group": "neutral"
+  },
+  "Neutral 60": {
+    "value": "#767F8A",
+    "variableName": "--neutral-60",
+    "group": "neutral"
+  },
+  "Neutral 70": {
+    "value": "#4C5969",
+    "variableName": "--neutral-70",
+    "group": "neutral"
+  },
+  "Neutral 80": {
+    "value": "#303B47",
+    "variableName": "--neutral-80",
+    "group": "neutral"
+  },
+  "Neutral 90": {
+    "value": "#101C2D",
+    "variableName": "--neutral-90",
+    "group": "neutral"
+  },
+  "Neutral 100": {
+    "value": "#000",
+    "variableName": "--neutral-100",
+    "group": "neutral"
+  },
+  "Texture 1": {
+    "value": "#FFF9EE",
+    "variableName": "--texture-1",
+    "group": "helper"
+  },
+  "Texture 2": {
+    "value": "#F5EFE6",
+    "variableName": "--texture-2",
+    "group": "helper"
+  },
+  "Error": {
+    "value": "#DD3636",
+    "variableName": "--error",
+    "group": "state"
+  },
+  "Fatal": {
+    "value": "#0C1C2E",
+    "variableName": "--fatal",
+    "group": "state"
+  },
+  "Idle": {
+    "value": "#E9ECF1",
+    "variableName": "--idle",
+    "group": "state"
+  },
+  "Info": {
+    "value": "#BFC9D5",
+    "variableName": "--info",
+    "group": "state"
+  },
+  "Notification": {
+    "value": "#6FC4FF",
+    "variableName": "--notification",
+    "group": "state"
+  },
+  "Positive": {
+    "value": "#91C11E",
+    "variableName": "--positive",
+    "group": "state"
   }
 }

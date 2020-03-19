@@ -7,7 +7,7 @@ $breakpoint-large = 800px
     display block
     width calc(100% - 3rem) // 1.5rem "padding" on each side
     margin 0 auto
-    border-bottom 1px solid var(--heather)
+    border-bottom 1px solid var(--neutral-40)
 
 // FIXME: Implement behaviour for overflowing menu-entries
 .desktop-navigation
@@ -16,7 +16,7 @@ $breakpoint-large = 800px
   position relative
 
 .desktop-navigation__item
-  color var(--fountain-blue)
+  color var(--neutral-90)
   font-size 1.7rem
   font-weight var(--font-weight-semi-bold)
   line-height 2.4rem
@@ -34,7 +34,7 @@ $breakpoint-large = 800px
       content ''
       height 0.3rem
       width calc(100% - 3rem) // 1.5rem padding on each side of the text
-      background var(--fountain-blue)
+      background var(--neutral-90)
       position absolute
       bottom 0
       left 1.5rem
@@ -45,12 +45,12 @@ $breakpoint-large = 800px
   grid-gap 2rem
   flex-wrap wrap
   width 100%
-  background var(--white)
+  background var(--neutral-00)
   position absolute
   top calc(100% + 0.5rem) // 1px for the border
   z-index var(--z-index-medium)
   padding 2.5rem 2rem
-  border 1px solid var(--heather)
+  border 1px solid var(--neutral-40)
   border-radius 4px
   box-shadow 0 3px 10px -4px rgba(16,28,45,0.35), 0 2px 4px 0 rgba(16,28,45,0.25)
 
@@ -71,10 +71,10 @@ $breakpoint-large = 800px
   letter-spacing 0.02rem
 
   li
-    border-top 1px solid var(--athena)
+    border-top 1px solid var(--tertiary)
 
     &:last-of-type
-      border-bottom 1px solid var(--athena)
+      border-bottom 1px solid var(--tertiary)
 
   a
     display flex
@@ -86,4 +86,4 @@ $breakpoint-large = 800px
       height 1.3rem
       width 0.8rem
       margin-left auto
-      color var(--chateau)
+      color var(--neutral-50)
