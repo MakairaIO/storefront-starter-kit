@@ -4,11 +4,17 @@ $breakpoint-large = 900px
 $breakpoint-huge = 1000px
 
 .product-list
+  padding 0 1.5rem
+  margin-top 2.4rem
+
+.product-list__actions
+  margin-bottom 1.8rem
+
+
+.product-list__list
   display grid
   grid-template-columns 1fr
   grid-gap 2.4rem 0
-  padding 0 1.5rem
-  margin-top 2.4rem
 
   @media (min-width $breakpoint-small)
     // see https://stackoverflow.com/a/52861514
