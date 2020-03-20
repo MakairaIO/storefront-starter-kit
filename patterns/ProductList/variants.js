@@ -3,17 +3,19 @@ export default [
     name: 'Default',
     props: {
       aggregations: {
-        // price: {
-        // title: 'mf_Price',
-        // key: 'price',
-        // type: 'range_slider',
-        // values: null,
-        // min: 17.95,
-        // max: 579.95,
-        // selectedValues: null,
-        // position: 10,
-        // showDocCount: null,
-        // },
+        price: {
+          title: 'mf_Price',
+          key: 'price',
+          type: 'range_slider',
+          values: null,
+          min: 17.95,
+          max: 579.95,
+          selectedValues: {
+            from: 88.0,
+          },
+          position: 10,
+          showDocCount: null,
+        },
         color: {
           title: 'Color',
           key: 'color',

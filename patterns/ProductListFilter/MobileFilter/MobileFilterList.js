@@ -1,7 +1,9 @@
 import MultiSelectFilter from './MultiSelectFilter'
+import RangeFilter from './RangeFilter'
 
 const filterComponents = {
   list_multiselect: MultiSelectFilter,
+  range_slider: RangeFilter,
 }
 
 export default function MobileFilterList(props) {
