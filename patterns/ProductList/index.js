@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import ProductTile from './ProductTile'
 import { Button, ProductListFilter } from '..'
+import { dispatchBodyOverflowEvent } from '../../utils'
 
 class ProductList extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class ProductList extends Component {
   }
 
   toggleMobileFilter = () => {
+    dispatchBodyOverflowEvent()
     this.setState(prevState => {
       return {
         isMobileFilterVisible: !prevState.isMobileFilterVisible,
