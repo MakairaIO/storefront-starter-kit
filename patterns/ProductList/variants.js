@@ -2,6 +2,152 @@ export default [
   {
     name: 'Default',
     props: {
+      aggregations: {
+        // price: {
+        // title: 'mf_Price',
+        // key: 'price',
+        // type: 'range_slider',
+        // values: null,
+        // min: 17.95,
+        // max: 579.95,
+        // selectedValues: null,
+        // position: 10,
+        // showDocCount: null,
+        // },
+        color: {
+          title: 'Color',
+          key: 'color',
+          // type: 'list_multiselect_custom_1',
+          type: 'list_multiselect',
+          values: {
+            red: {
+              key: 'red',
+              count: 378,
+            },
+            lavendel: {
+              key: 'lavendel',
+              count: 127,
+            },
+            blue: {
+              key: 'blue',
+              count: 124,
+            },
+            purple: {
+              key: 'purple',
+              count: 115,
+            },
+            pink: {
+              key: 'pink',
+              count: 86,
+            },
+            yellow: {
+              key: 'yellow',
+              count: 62,
+            },
+            orange: {
+              key: 'orange',
+              count: 61,
+            },
+            olive: {
+              key: 'olive',
+              count: 55,
+            },
+            turquoise: {
+              key: 'turquoise',
+              count: 44,
+            },
+            white: {
+              key: 'white',
+              count: 41,
+            },
+          },
+          min: null,
+          max: null,
+          selectedValues: ['red'],
+          position: 50,
+          showDocCount: true,
+        },
+        size: {
+          title: 'Size',
+          key: 'size',
+          type: 'list_multiselect',
+          values: {
+            XXS: {
+              key: 'XXS',
+              count: 5,
+            },
+            XS: {
+              key: 'XS',
+              count: 44,
+            },
+            S: {
+              key: 'S',
+              count: 47,
+            },
+            M: {
+              key: 'M',
+              count: 56,
+            },
+            L: {
+              key: 'L',
+              count: 43,
+            },
+            XL: {
+              key: 'XL',
+              count: 29,
+            },
+            XXL: {
+              key: 'XXL',
+              count: 28,
+            },
+            ONE: {
+              key: 'ONE',
+              count: 27,
+            },
+          },
+          min: null,
+          max: null,
+          selectedValues: ['L'],
+          position: 170,
+          showDocCount: true,
+        },
+        features: {
+          title: 'Features',
+          key: 'features',
+          type: 'list_multiselect',
+          values: {
+            'USB-C': {
+              key: 'USB-C',
+              count: 37,
+            },
+            HDMI: {
+              key: 'HDMI',
+              count: 96,
+            },
+            SCSI: {
+              key: 'SCSI',
+              count: 278,
+            },
+            SERIAL: {
+              key: 'SERIAL',
+              count: 123,
+            },
+            DDD: {
+              key: 'DDD',
+              count: 164,
+            },
+            FW400: {
+              key: 'FW400',
+              count: 741,
+            },
+          },
+          min: null,
+          max: null,
+          selectedValues: ['DDD'],
+          position: 173,
+          showDocCount: true,
+        },
+      },
       products: [
         {
           id: '270115',

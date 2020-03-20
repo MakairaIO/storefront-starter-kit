@@ -11,6 +11,9 @@
   "Chevron Right": {
     "value": "chevron-right"
   },
+  "Chevron Down": {
+    "value": "chevron-down"
+  },
   "Chevron Left": {
     "value": "chevron-left"
   },
@@ -25,5 +28,8 @@
   },
   "Minus": {
     "value": "minus"
+  },
+  "Check Mark": {
+    "value": "check"
   }
 }
