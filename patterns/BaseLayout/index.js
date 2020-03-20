@@ -1,25 +1,16 @@
 import { Component } from 'react'
 
-const OVERFLOW_CLASS = 'body--no-overflow'
-
 export default class BaseLayout extends Component {
   componentDidMount() {
-    window.addEventListener('body:overflow', this.handleBodyOverflow)
+    window.addEventListener('body:overflow', this.toggleBodyOverflow)
   }
 
   componentWillUnmount() {
-    window.removeEventListener('body:overflow', this.handleBodyOverflow)
+    window.removeEventListener('body:overflow', this.toggleBodyOverflow)
   }
 
-  handleBodyOverflow = () => {
-    const bodyElement = document.querySelector('body')
-    const hasOverFlowClass = bodyElement.classList.contains(OVERFLOW_CLASS)
-
-    if (hasOverFlowClass) {
-      bodyElement.classList.remove(OVERFLOW_CLASS)
-    } else {
-      bodyElement.classList.add(OVERFLOW_CLASS)
-    }
+  toggleBodyOverflow = () => {
+    document.querySelector('body').classList.toggle('body--no-overflow')
   }
 
   render() {
