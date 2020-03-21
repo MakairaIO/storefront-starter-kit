@@ -1,5 +1,5 @@
 import MultiSelectFilter from './MultiSelectFilter'
-import RangeFilter from '../MobileFilter/RangeFilter'
+import RangeFilter from './RangeFilter'
 import { Heading } from '../..'
 import { useTranslation } from '../../../utils'
 
