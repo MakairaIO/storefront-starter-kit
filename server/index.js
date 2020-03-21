@@ -32,7 +32,7 @@ app
     })
 
     server.get('/pali', (req, res) => {
-      app.render(req, res, '/library/index', req.query)
+      app.render(req, res, '/library/entry', req.query)
     })
 
     /**
@@ -48,7 +48,7 @@ app
      * Route handler page requests
      */
     server.get(/^(.*)$/, (req, res) => {
-      app.render(req, res, '/frontend/index', {
+      app.render(req, res, '/frontend/entry', {
         seoUrl: req.params[0],
         ...req.query,
       })
