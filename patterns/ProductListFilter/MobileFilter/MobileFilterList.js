@@ -9,13 +9,18 @@ const filterComponents = {
 
 export default function MobileFilterList(props) {
   const { t } = useTranslation()
-  const { isVisible = false, id, type, closeFilter } = props
+  const { isVisible = false, id, type, submitForms, closeFilter } = props
 
   if (!isVisible) return null
 
   const Component = filterComponents[type]
 
   if (!Component) return null
+
+  async function handleSave() {
+    await submitForms()
+    closeFilter()
+  }
 
   return (
     <div className="mobile-filter__list">
@@ -32,7 +37,7 @@ export default function MobileFilterList(props) {
       </div>
 
       <div className="mobile-filter__list-footer">
-        <button type="button" onClick={closeFilter}>
+        <button type="button" onClick={handleSave}>
           {t('MOBILE_FILTER_SAVE')}
         </button>
       </div>

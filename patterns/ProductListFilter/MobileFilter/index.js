@@ -13,6 +13,7 @@ export default function MobileFilter(props) {
     isMobileFilterVisible = false,
     aggregations = {},
     hideMobileFilter,
+    submitForms,
   } = props
 
   const classes = classNames('mobile-filter', {
@@ -20,7 +21,7 @@ export default function MobileFilter(props) {
   })
 
   return (
-    <div className={classes}>
+    <form className={classes}>
       <div className="mobile-filter__header">
         <span>Filter</span>
       </div>
@@ -50,6 +51,7 @@ export default function MobileFilter(props) {
               {...aggregation}
               isVisible={visibleFilter == key}
               closeFilter={() => setVisibleFilter(null)}
+              submitForms={submitForms}
             />
           </div>
         )
@@ -60,6 +62,6 @@ export default function MobileFilter(props) {
           {t('MOBILE_FILTER_CLOSE')}
         </button>
       </div>
-    </div>
+    </form>
   )
 }

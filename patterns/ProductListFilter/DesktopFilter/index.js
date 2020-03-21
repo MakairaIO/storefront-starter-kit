@@ -15,7 +15,7 @@ export default function DesktopFilter(props) {
   return (
     <form className="desktop-filter">
       {Object.values(aggregations).map(aggregation => {
-        const { key, type } = aggregation
+        const { key, type, min, max } = aggregation
 
         const Component = filterComponents[type]
 
@@ -27,7 +27,15 @@ export default function DesktopFilter(props) {
               {t(`FILTER_LABEL_${key.toUpperCase()}`)}
             </Heading>
 
-            <Component id={key} {...aggregation} submitForms={submitForms} />
+            <Component
+              // Care: The order of properties matters here, since the aggregations
+              // have a field 'key' which could override our custom-built key below
+              // which we need for properly updating/reseting the RangeFilter
+              {...aggregation}
+              id={key}
+              key={min ? `${key}-${min}-${max}` : key}
+              submitForms={submitForms}
+            />
           </div>
         )
       })}

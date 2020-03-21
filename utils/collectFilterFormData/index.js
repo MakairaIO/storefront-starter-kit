@@ -9,7 +9,10 @@ export default function collectFilterFormData() {
     filterForm = document.querySelector('.desktop-filter')
   }
 
-  // TODO: Error Handling
+  // Defensive Coding:
+  if (!filterForm) {
+    return new FormData()
+  }
 
   return new FormData(filterForm)
 }

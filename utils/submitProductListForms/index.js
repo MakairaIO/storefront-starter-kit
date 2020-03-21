@@ -2,7 +2,7 @@ import Router from 'next/router'
 import qs from 'qs'
 import { collectFilterFormData, prepareFilterForQueryString } from '..'
 
-export default function submitProductListForms({ aggregations = {} }) {
+export default async function submitProductListForms({ aggregations = {} }) {
   const filterFormData = collectFilterFormData()
   const makairaFilter = prepareFilterForQueryString(
     filterFormData,
@@ -20,7 +20,7 @@ export default function submitProductListForms({ aggregations = {} }) {
 
   const queryString = qs.stringify(parameters)
 
-  Router.push(
+  await Router.push(
     `/frontend/entry?seoUrl=${seoUrl}&${queryString}`,
     `${seoUrl}?${queryString}`
   )
