@@ -10,10 +10,7 @@ class ProductList extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      // rendeMobileFilter: false,
-      isMobileFilterVisible: false,
-    }
+    this.state = { isMobileFilterVisible: false }
   }
 
   componentDidMount() {
