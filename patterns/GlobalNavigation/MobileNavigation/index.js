@@ -7,7 +7,7 @@ export default function MobileNavigation(props) {
   const {
     menu = [],
     isMobileNavigationVisible = false,
-    toggleMobileNavigation,
+    hideMobileNavigation,
   } = props
 
   const flyoutClasses = classNames('mobile-navigation__flyout', {
@@ -17,7 +17,7 @@ export default function MobileNavigation(props) {
   return (
     <div className={flyoutClasses}>
       <div className="mobile-navigation__header">
-        <Button icon="times" onClick={toggleMobileNavigation} />
+        <Button icon="times" onClick={hideMobileNavigation} />
 
         <label className="mobile-navigation__search">
           <Icon symbol="search" />

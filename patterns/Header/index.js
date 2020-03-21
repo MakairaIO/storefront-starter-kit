@@ -3,7 +3,11 @@ import { Button, GlobalNavigation } from '..'
 import InfoLinks from './InfoLinks'
 import Search from './Search'
 import Actions from './Actions'
-import { throttle } from '../../utils'
+import {
+  throttle,
+  dispatchShowOverlayEvent,
+  dispatchOverlayClickedEvent,
+} from '../../utils'
 
 const DESKTOP_MENU_BREAKPOINT = 800
 
@@ -20,6 +24,7 @@ class Header extends Component {
   }
 
   componentDidMount() {
+    window.addEventListener('overlay:clicked', this.hideMobileNavigation)
     window.addEventListener('resize', this.handleResize)
 
     // initial check for what navigation to render
@@ -27,6 +32,7 @@ class Header extends Component {
   }
 
   componentWillUnmount() {
+    window.removeEventListener('overlay:clicked', this.hideMobileNavigation)
     window.removeEventListener('resize', this.handleResize)
   }
 
@@ -44,12 +50,13 @@ class Header extends Component {
     }
   }
 
-  toggleMobileNavigation = () => {
-    this.setState(prevState => {
-      return {
-        isMobileNavigationVisible: !prevState.isMobileNavigationVisible,
-      }
-    })
+  showMobileNavigation = () => {
+    dispatchShowOverlayEvent()
+    this.setState({ isMobileNavigationVisible: true })
+  }
+
+  hideMobileNavigation = () => {
+    this.setState({ isMobileNavigationVisible: false })
   }
 
   render() {
@@ -61,7 +68,7 @@ class Header extends Component {
           <Button
             icon="bars"
             className="header__menu-button"
-            onClick={this.toggleMobileNavigation}
+            onClick={this.showMobileNavigation}
           />
 
           <img
@@ -85,7 +92,7 @@ class Header extends Component {
           menu={menu}
           renderMobileNavigation={this.state.renderMobileNavigation}
           isMobileNavigationVisible={this.state.isMobileNavigationVisible}
-          toggleMobileNavigation={this.toggleMobileNavigation}
+          hideMobileNavigation={dispatchOverlayClickedEvent} // for simplicity, we just simulate a click on the overlay and let the lifecycle of this component take care of everything
         />
       </>
     )

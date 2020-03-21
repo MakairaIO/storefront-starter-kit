@@ -1,0 +1,18 @@
+.overlay
+  height 100%
+  width 100%
+  background var(--neutral-00)
+  position fixed
+  top 0
+  left 0
+  z-index var(--z-index-overlay)
+  opacity 0
+  pointer-events none
+  visibility hidden
+  transition opacity 200ms ease-in
+
+  &--visible
+    opacity 0.8
+    pointer-events auto
+    visibility visible
+

@@ -1,21 +1,11 @@
-import { Component } from 'react'
+import { Overlay } from '..'
 
-export default class BaseLayout extends Component {
-  componentDidMount() {
-    window.addEventListener('body:overflow', this.toggleBodyOverflow)
-  }
+export default function BaseLayout({ children }) {
+  return (
+    <>
+      <div className="site-wrapper">{children}</div>
 
-  componentWillUnmount() {
-    window.removeEventListener('body:overflow', this.toggleBodyOverflow)
-  }
-
-  toggleBodyOverflow = () => {
-    document.querySelector('body').classList.toggle('body--no-overflow')
-  }
-
-  render() {
-    const { children } = this.props
-
-    return <div className="site-wrapper">{children}</div>
-  }
+      <Overlay />
+    </>
+  )
 }
