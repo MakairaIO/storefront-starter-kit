@@ -24,8 +24,8 @@ export default class RangeFilter extends Component {
     const { min, max, selectedValues = {} } = props
 
     this.state = {
-      selectedMin: Math.ceil(selectedValues?.from ?? min),
-      selectedMax: Math.ceil(selectedValues?.to ?? max),
+      selectedMin: Math.trunc(selectedValues?.from ?? min),
+      selectedMax: Math.trunc(selectedValues?.to ?? max),
     }
   }
 

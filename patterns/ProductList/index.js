@@ -31,7 +31,7 @@ class ProductList extends Component {
   }
 
   render() {
-    const { products = [], aggregations = {} } = this.props
+    const { products = [], aggregations = {}, submitForms } = this.props
 
     return (
       <section className="product-list">
@@ -50,6 +50,7 @@ class ProductList extends Component {
             aggregations={aggregations}
             isMobileFilterVisible={this.state.isMobileFilterVisible}
             hideMobileFilter={dispatchOverlayClickedEvent} // for simplicity, we just simulate a click on the overlay and let the lifecycle of this component take care of everything
+            submitForms={submitForms}
           />
 
           <div className="product-list__list">

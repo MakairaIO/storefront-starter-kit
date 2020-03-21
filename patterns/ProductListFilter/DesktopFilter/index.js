@@ -10,14 +10,13 @@ const filterComponents = {
 
 export default function DesktopFilter(props) {
   const { t } = useTranslation()
-  const { aggregations = {} } = props
+  const { aggregations = {}, submitForms } = props
 
   return (
-    <div className="desktop-filter">
+    <form className="desktop-filter">
       {Object.values(aggregations).map(aggregation => {
         const { key, type } = aggregation
 
-        console.log({ key, type })
         const Component = filterComponents[type]
 
         if (!Component) return null
@@ -28,10 +27,10 @@ export default function DesktopFilter(props) {
               {t(`FILTER_LABEL_${key.toUpperCase()}`)}
             </Heading>
 
-            <Component {...aggregation} />
+            <Component id={key} {...aggregation} submitForms={submitForms} />
           </div>
         )
       })}
-    </div>
+    </form>
   )
 }

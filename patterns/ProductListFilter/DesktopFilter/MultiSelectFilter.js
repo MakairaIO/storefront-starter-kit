@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 
 export default function MultiSelectFilter(props) {
-  const { id, values: filterValues, selectedValues } = props
+  const { id, values: filterValues, selectedValues, submitForms } = props
 
   return (
     <ul className="desktop-filter__multi-select">
@@ -32,8 +32,8 @@ export default function MultiSelectFilter(props) {
                 type="checkbox"
                 name={id}
                 checked={isActive}
-                // TODO
-                // onChange={() => setActive(!isActive)}
+                value={filterValue}
+                onChange={submitForms}
               />
             </label>
           </li>

@@ -1,7 +1,9 @@
+import ProductList from './ProductListWithProps'
+
 function ListingPage() {
   return (
     <main>
-      <h1>Hello from ListingPage</h1>
+      <ProductList />
     </main>
   )
 }

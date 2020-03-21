@@ -46,6 +46,7 @@ function FilterEntry(props) {
           type="checkbox"
           name={id}
           checked={isActive}
+          value={filterValue}
           onChange={() => setActive(!isActive)}
         />
       </label>
