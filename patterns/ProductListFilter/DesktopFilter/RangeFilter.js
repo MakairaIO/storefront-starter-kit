@@ -36,7 +36,7 @@ export default class RangeFilter extends Component {
   }
 
   render() {
-    const { id, min, max } = this.props
+    const { id, min, max, submitForms } = this.props
     const { selectedMin, selectedMax } = this.state
 
     // FIXME: Currently € is hard-coded -> Change to dynamic slider-labels
@@ -66,6 +66,7 @@ export default class RangeFilter extends Component {
           max={max}
           defaultValue={[selectedMin, selectedMax]}
           onChange={this.handleChange}
+          onAfterChange={submitForms}
           handleStyle={styles.handleStyle}
           trackStyle={styles.trackStyle}
           railStyle={styles.railStyle}
