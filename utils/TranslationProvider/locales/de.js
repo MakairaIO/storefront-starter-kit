@@ -6,4 +6,11 @@ export default {
   INFO_LINK_IMPRINT: '#todo',
   INFO_TEXT_SHIPPING: 'Versandkosten',
   INFO_LINK_SHIPPING: '#todo',
+  FILTER_LABEL_PRICE: 'Preis',
+  FILTER_LABEL_COLOR: 'Farbe',
+  FILTER_LABEL_SIZE: 'Größe',
+  FILTER_LABEL_FEATURES: 'Eigenschaften',
+  MOBILE_FILTER_CLOSE: 'Schließen',
+  MOBILE_FILTER_SAVE: 'Speichern',
+  MOBILE_FILTER_BACK: 'Zurück',
 }

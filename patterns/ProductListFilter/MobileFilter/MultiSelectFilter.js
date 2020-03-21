@@ -20,12 +20,16 @@ export default function MultiSelectFilter(props) {
 }
 
 function FilterEntry(props) {
-  const { id, filterValue, selectedValues } = props
+  const { id, filterValue, selectedValues = [] } = props
 
-  // lowercase values for normalization purposes
-  const isInitiallyActive = selectedValues
-    .map(val => val.toLowerCase())
-    .includes(filterValue.toLowerCase())
+  let isInitiallyActive = false
+
+  if (Array.isArray(selectedValues)) {
+    // lowercase values for normalization purposes
+    isInitiallyActive = selectedValues
+      .map(val => val.toLowerCase())
+      .includes(filterValue.toLowerCase())
+  }
 
   const [isActive, setActive] = useState(isInitiallyActive)
 

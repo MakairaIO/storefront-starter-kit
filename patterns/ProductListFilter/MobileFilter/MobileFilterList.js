@@ -1,5 +1,6 @@
 import MultiSelectFilter from './MultiSelectFilter'
 import RangeFilter from './RangeFilter'
+import { useTranslation } from '../../../utils'
 
 const filterComponents = {
   list_multiselect: MultiSelectFilter,
@@ -7,6 +8,7 @@ const filterComponents = {
 }
 
 export default function MobileFilterList(props) {
+  const { t } = useTranslation()
   const { isVisible = false, id, type, closeFilter } = props
 
   if (!isVisible) return null
@@ -21,7 +23,7 @@ export default function MobileFilterList(props) {
         <span>{id}</span>
 
         <button type="button" onClick={closeFilter}>
-          close
+          {t('MOBILE_FILTER_BACK')}
         </button>
       </div>
 
@@ -31,7 +33,7 @@ export default function MobileFilterList(props) {
 
       <div className="mobile-filter__list-footer">
         <button type="button" onClick={closeFilter}>
-          save
+          {t('MOBILE_FILTER_SAVE')}
         </button>
       </div>
     </div>

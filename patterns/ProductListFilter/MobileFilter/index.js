@@ -1,8 +1,12 @@
 import { useState } from 'react'
 import classNames from 'classnames'
+import ActiveFilters from './ActiveFilters'
 import MobileFilterList from './MobileFilterList'
+import { useTranslation } from '../../../utils'
+import { Icon } from '../..'
 
 export default function MobileFilter(props) {
+  const { t } = useTranslation()
   const [visibleFilter, setVisibleFilter] = useState(null)
 
   const {
@@ -31,7 +35,14 @@ export default function MobileFilter(props) {
               className="mobile-filter__button"
               onClick={() => setVisibleFilter(key)}
             >
-              {key}
+              {t(`FILTER_LABEL_${key.toUpperCase()}`)}
+
+              <ActiveFilters {...aggregation} />
+
+              <Icon
+                symbol="chevron-right"
+                className="mobile-filter__button-chevron"
+              />
             </button>
 
             <MobileFilterList
@@ -46,7 +57,7 @@ export default function MobileFilter(props) {
 
       <div className="mobile-filter__footer">
         <button type="button" onClick={hideMobileFilter}>
-          Close
+          {t('MOBILE_FILTER_CLOSE')}
         </button>
       </div>
     </div>
