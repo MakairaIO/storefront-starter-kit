@@ -1,10 +1,11 @@
 import MultiSelectFilter from './MultiSelectFilter'
+import RangeFilter from '../MobileFilter/RangeFilter'
 import { Heading } from '../..'
 import { useTranslation } from '../../../utils'
 
 const filterComponents = {
   list_multiselect: MultiSelectFilter,
-  // range_slider: RangeFilter,
+  range_slider: RangeFilter,
 }
 
 export default function DesktopFilter(props) {

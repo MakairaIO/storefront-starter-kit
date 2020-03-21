@@ -13,4 +13,5 @@ export default {
   MOBILE_FILTER_CLOSE: 'Close',
   MOBILE_FILTER_SAVE: 'Save',
   MOBILE_FILTER_BACK: 'Back',
+  PRODUCT_TILE_ADD_TO_CART: 'Add to Cart',
 }
