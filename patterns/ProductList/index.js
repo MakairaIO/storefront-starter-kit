@@ -1,6 +1,10 @@
 import { Component } from 'react'
 import ProductTile from './ProductTile'
 import { Button, ProductListFilter } from '..'
+import {
+  dispatchShowOverlayEvent,
+  dispatchOverlayClickedEvent,
+} from '../../utils'
 
 class ProductList extends Component {
   constructor(props) {
@@ -12,12 +16,21 @@ class ProductList extends Component {
     }
   }
 
-  toggleMobileFilter = () => {
-    this.setState(prevState => {
-      return {
-        isMobileFilterVisible: !prevState.isMobileFilterVisible,
-      }
-    })
+  componentDidMount() {
+    window.addEventListener('overlay:clicked', this.hideMobileFilter)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('overlay:clicked', this.hideMobileFilter)
+  }
+
+  showMobileFilter = () => {
+    dispatchShowOverlayEvent()
+    this.setState({ isMobileFilterVisible: true })
+  }
+
+  hideMobileFilter = () => {
+    this.setState({ isMobileFilterVisible: false })
   }
 
   render() {
@@ -29,7 +42,7 @@ class ProductList extends Component {
           <Button
             className="product-list__filter-button"
             icon="chevron-down"
-            onClick={this.toggleMobileFilter}
+            onClick={this.showMobileFilter}
           >
             Filter
           </Button>
@@ -38,7 +51,7 @@ class ProductList extends Component {
         <ProductListFilter
           aggregations={aggregations}
           isMobileFilterVisible={this.state.isMobileFilterVisible}
-          closeMobileFilter={this.toggleMobileFilter}
+          hideMobileFilter={dispatchOverlayClickedEvent} // for simplicity, we just simulate a click on the overlay and let the lifecycle of this component take care of everything
         />
 
         <div className="product-list__list">

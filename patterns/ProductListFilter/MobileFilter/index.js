@@ -8,7 +8,7 @@ export default function MobileFilter(props) {
   const {
     isMobileFilterVisible = false,
     aggregations = {},
-    closeMobileFilter,
+    hideMobileFilter,
   } = props
 
   const classes = classNames('mobile-filter', {
@@ -45,7 +45,7 @@ export default function MobileFilter(props) {
       })}
 
       <div className="mobile-filter__footer">
-        <button type="button" onClick={closeMobileFilter}>
+        <button type="button" onClick={hideMobileFilter}>
           Close
         </button>
       </div>
