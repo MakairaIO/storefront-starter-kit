@@ -1,0 +1,57 @@
+$breakpoint-large = 1000px
+$breakpoint-huge = 1250px
+
+.desktop-filter
+  display none
+
+  @media (min-width $breakpoint-large)
+    display block
+    flex 0 0 24rem
+    padding-right 2rem
+
+  @media (min-width $breakpoint-huge)
+    flex-basis 30rem
+
+.desktop-filter__section
+
+  & + &
+    margin-top 2.5rem
+
+.desktop-filter__multi-select
+  display grid
+  grid-template-columns repeat(3, 1fr)
+  grid-gap 1rem
+  grid-auto-flow dense
+
+.desktop-filter__item
+  background var(--neutral-00)
+  border 1px solid var(--neutral-20)
+  border-radius 5px
+
+  &--active
+    border-color var(--neutral-90)
+    background var(--primary)
+    color var(--neutral-10)
+
+  &--2-col
+    grid-column span 2
+
+  &--3-col
+    grid-column span 3
+
+  label
+    display flex
+    justify-content center
+    align-items center
+    text-align center
+    min-height 3rem
+    font-size 1.4rem
+    font-weight var(--font-weight-medium)
+    line-height 1.8rem
+    letter-spacing 0.02rem
+
+    &:hover
+      cursor pointer
+
+  input
+    display none

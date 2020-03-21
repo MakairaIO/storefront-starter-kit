@@ -134,6 +134,14 @@ export default [
               key: 'SERIAL',
               count: 123,
             },
+            Long: {
+              key: 'LONG TITLE',
+              count: 123,
+            },
+            VeryLong: {
+              key: 'WHAT AN EXTREMELY LONG TITLE',
+              count: 123,
+            },
             DDD: {
               key: 'DDD',
               count: 164,

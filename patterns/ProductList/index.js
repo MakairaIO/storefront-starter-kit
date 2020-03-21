@@ -48,16 +48,18 @@ class ProductList extends Component {
           </Button>
         </div>
 
-        <ProductListFilter
-          aggregations={aggregations}
-          isMobileFilterVisible={this.state.isMobileFilterVisible}
-          hideMobileFilter={dispatchOverlayClickedEvent} // for simplicity, we just simulate a click on the overlay and let the lifecycle of this component take care of everything
-        />
+        <div className="product-list__wrapper">
+          <ProductListFilter
+            aggregations={aggregations}
+            isMobileFilterVisible={this.state.isMobileFilterVisible}
+            hideMobileFilter={dispatchOverlayClickedEvent} // for simplicity, we just simulate a click on the overlay and let the lifecycle of this component take care of everything
+          />
 
-        <div className="product-list__list">
-          {products.map(product => (
-            <ProductTile key={product.id} {...product.fields} />
-          ))}
+          <div className="product-list__list">
+            {products.map(product => (
+              <ProductTile key={product.id} {...product.fields} />
+            ))}
+          </div>
         </div>
       </section>
     )

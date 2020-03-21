@@ -38,14 +38,13 @@ function FilterEntry(props) {
   })
 
   return (
-    <li key={filterValue} className={classes}>
+    <li className={classes}>
       <label>
         {filterValue}
 
         <input
           type="checkbox"
           name={id}
-          className="sc-filter__input sc-filter__input--checkbox"
           checked={isActive}
           onChange={() => setActive(!isActive)}
         />
