@@ -1,6 +1,7 @@
 import { Component } from 'react'
+import FilterButton from './FilterButton'
 import ProductTile from './ProductTile'
-import { Button, ProductListFilter } from '..'
+import { ProductListFilter } from '..'
 import {
   dispatchShowOverlayEvent,
   dispatchOverlayClickedEvent,
@@ -36,13 +37,10 @@ class ProductList extends Component {
     return (
       <section className="product-list">
         <div className="product-list__actions">
-          <Button
-            className="product-list__filter-button"
-            icon="chevron-down"
-            onClick={this.showMobileFilter}
-          >
-            Filter
-          </Button>
+          <FilterButton
+            aggregations={aggregations}
+            showMobileFilter={this.showMobileFilter}
+          />
         </div>
 
         <div className="product-list__wrapper">

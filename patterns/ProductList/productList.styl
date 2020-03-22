@@ -124,3 +124,20 @@ $breakpoint-huge = 1150px
 .product-list__filter-button
   @media (min-width $breakpoint-large)
     display none
+
+  &--active
+    .button__text
+      margin-right 0.4rem
+
+.product-list__active-filter-hint
+  background var(--secondary)
+  color var(--neutral-00)
+  border-radius 12px
+  font-size 1.1rem
+  font-weight var(--font-weight-semi-bold)
+  line-height 1.5rem
+  letter-spacing 0.024rem
+  padding 0.35rem 0.7rem
+  position relative
+  top -1px
+  left 4px
