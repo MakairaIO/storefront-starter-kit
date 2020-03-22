@@ -18,7 +18,7 @@ const overlayProps = {
 
 export default [
   {
-    name: 'Full Features',
+    name: 'Fully featured',
     props: {
       heading: { ...headingProps },
       overlay: { ...overlayProps },
