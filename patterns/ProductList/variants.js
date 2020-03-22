@@ -7,8 +7,9 @@ export default [
         sortBy: 'price',
         order: 'desc',
         count: '50',
-        offset: '50',
+        offset: '0',
       },
+      totalProductCount: 300,
       aggregations: {
         price: {
           title: 'mf_Price',

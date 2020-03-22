@@ -174,3 +174,18 @@ $breakpoint-huge = 1150px
   .product-list__sort-option-input:checked + &
     font-weight var(--font-weight-semi-bold)
 
+.product-list__pagination
+  grid-column 1 / -1 // always span all available columns
+  display flex
+  justify-content center
+  align-items center
+  width 100%
+  max-width 56rem
+  justify-self center
+  margin-top 2.4rem
+
+  .button + .button
+    margin-left 0.6rem
+
+.product-list__pagination-text
+  margin 0 auto

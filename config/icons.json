@@ -8,14 +8,20 @@
   "Search": {
     "value": "search"
   },
+  "Chevron Left": {
+    "value": "chevron-left"
+  },
+  "Chevron Double Left": {
+    "value": "chevron-double-left"
+  },
   "Chevron Right": {
     "value": "chevron-right"
   },
+  "Chevron Double Right": {
+    "value": "chevron-double-right"
+  },
   "Chevron Down": {
     "value": "chevron-down"
-  },
-  "Chevron Left": {
-    "value": "chevron-left"
   },
   "Bars": {
     "value": "bars"

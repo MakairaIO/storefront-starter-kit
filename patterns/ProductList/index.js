@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import FilterButton from './FilterButton'
 import Sorter from './Sorter'
+import Pagination from './Pagination'
 import ProductTile from './ProductTile'
 import { ProductListFilter } from '..'
 import {
@@ -38,6 +39,7 @@ class ProductList extends Component {
       aggregations = {},
       submitForms,
       queryParams = {},
+      totalProductCount = 0,
     } = this.props
 
     return (
@@ -63,6 +65,12 @@ class ProductList extends Component {
             {products.map(product => (
               <ProductTile key={product.id} {...product.fields} />
             ))}
+
+            <Pagination
+              queryParams={queryParams}
+              totalProductCount={totalProductCount}
+              submitForms={submitForms}
+            />
           </div>
         </div>
       </section>

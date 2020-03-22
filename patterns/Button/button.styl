@@ -17,6 +17,12 @@
     border-color var(--neutral-40)
     color var(--primary)
 
+  &:disabled
+    cursor auto
+    background var(--neutral-20)
+    border-color var(--neutral-20)
+    color var(--neutral-40)
+
   &--primary
     background var(--primary)
     border-color var(--primary)
@@ -53,13 +59,16 @@
     .icon
       order -1
 
+
+.button--icon
   .icon
     // styles for icon-only buttons
     height 1.8rem
     width 3.4rem // 36px - 2px border
 
-    &--chevron-right
-    &--chevron-left
+  &:not(.button--icon-only)
+    .icon--chevron-right
+    .icon--chevron-left
       height 1.8rem
       width 0.7rem
 

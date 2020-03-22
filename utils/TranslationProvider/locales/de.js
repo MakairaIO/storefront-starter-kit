@@ -11,6 +11,7 @@ export default {
   SORT_OPTION_PRICE_DESC: 'Höchster Preis',
   SORT_OPTION_TITLE_DESC: 'Titel absteigend',
   SORT_OPTION_TITLE_ASC: 'Titel aufsteigend',
+  PAGINATION: (current, total) => `Seite ${current} von ${total}`,
   FILTER_LABEL_PRICE: 'Preis',
   FILTER_LABEL_COLOR: 'Farben',
   FILTER_LABEL_SIZE: 'Größen',

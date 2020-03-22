@@ -47,4 +47,11 @@ export default [
       icon: 'bars',
     },
   },
+  {
+    name: 'Icon Button (disabled)',
+    props: {
+      icon: 'bars',
+      disabled: true,
+    },
+  },
 ]

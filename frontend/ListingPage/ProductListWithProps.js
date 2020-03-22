@@ -9,12 +9,14 @@ export default function ProductListWithProps() {
 
   const products = pageData.data.product.items
   const aggregations = pageData.data.product.aggregations
+  const totalProductCount = pageData.data.product.total
 
   const productListProps = {
     products,
     aggregations,
     submitForms: () => submitProductListForms({ aggregations }),
     queryParams: restParams,
+    totalProductCount,
   }
 
   return (
