@@ -2,6 +2,7 @@ export default [
   {
     name: 'Default',
     props: {
+      submitForms: async () => {},
       aggregations: {
         price: {
           title: 'mf_Price',
