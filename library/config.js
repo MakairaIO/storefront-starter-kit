@@ -35,6 +35,12 @@ export default [
   },
   {
     type: 'component',
+    name: 'Product List',
+    component: ProductList,
+    variants: productListVariants,
+  },
+  {
+    type: 'component',
     name: 'Teaser (Hero)',
     component: TeaserHero,
     variants: teaserHeroVariants,
@@ -44,12 +50,6 @@ export default [
     name: 'Teaser (Single)',
     component: TeaserSingle,
     variants: teaserSingleVariants,
-  },
-  {
-    type: 'component',
-    name: 'Product List',
-    component: ProductList,
-    variants: productListVariants,
   },
   {
     type: 'page',
