@@ -12,7 +12,7 @@ function Landingpage() {
   const { pageData } = useGlobalData()
   const config = pageData.data.config
 
-  if (!config.main) return null
+  if (!config?.main) return null
 
   const elements = config.main.elements
 
