@@ -1,12 +1,16 @@
 $breakpoint-small = 560px
 $breakpoint-medium = 750px
+$breakpoint-large = 950px
 
 .single-teaser
   background var(--tertiary)
 
   @media (min-width $breakpoint-small)
     display flex
-    margin 0 1.5rem
+    padding 0 1.5rem
+
+  @media (min-width $breakpoint-large)
+    padding 0 2rem
 
 .single-teaser__image
   display flex

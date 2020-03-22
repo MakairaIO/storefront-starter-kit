@@ -2,6 +2,7 @@ import Heading, { headingVariants } from '../patterns/Heading'
 import Copytext, { copytextVariants } from '../patterns/Copytext'
 import Button, { buttonVariants } from '../patterns/Button'
 import Header, { headerVariants } from '../patterns/Header'
+import TeaserHero, { teaserHeroVariants } from '../patterns/TeaserHero'
 import TeaserSingle, { teaserSingleVariants } from '../patterns/TeaserSingle'
 import ProductList, { productListVariants } from '../patterns/ProductList'
 
@@ -31,6 +32,12 @@ export default [
     name: 'Header',
     component: Header,
     variants: headerVariants,
+  },
+  {
+    type: 'component',
+    name: 'Teaser (Hero)',
+    component: TeaserHero,
+    variants: teaserHeroVariants,
   },
   {
     type: 'component',
