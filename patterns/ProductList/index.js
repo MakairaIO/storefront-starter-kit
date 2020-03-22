@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import FilterButton from './FilterButton'
+import Sorter from './Sorter'
 import ProductTile from './ProductTile'
 import { ProductListFilter } from '..'
 import {
@@ -32,7 +33,12 @@ class ProductList extends Component {
   }
 
   render() {
-    const { products = [], aggregations = {}, submitForms } = this.props
+    const {
+      products = [],
+      aggregations = {},
+      submitForms,
+      queryParams = {},
+    } = this.props
 
     return (
       <section className="product-list">
@@ -41,6 +47,8 @@ class ProductList extends Component {
             aggregations={aggregations}
             showMobileFilter={this.showMobileFilter}
           />
+
+          <Sorter queryParams={queryParams} submitForms={submitForms} />
         </div>
 
         <div className="product-list__wrapper">

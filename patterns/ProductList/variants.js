@@ -3,6 +3,12 @@ export default [
     name: 'Default',
     props: {
       submitForms: async () => {},
+      queryParams: {
+        sortBy: 'price',
+        order: 'desc',
+        count: '50',
+        offset: '50',
+      },
       aggregations: {
         price: {
           title: 'mf_Price',

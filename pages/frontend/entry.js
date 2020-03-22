@@ -22,7 +22,7 @@ const pageComponents = {
 export default class Index extends Component {
   static async getInitialProps(ctx) {
     const { query, res } = ctx
-    const { seoUrl } = qs.parse(query)
+    const { seoUrl, ...params } = qs.parse(query)
 
     try {
       const [pageData, menuData] = await Promise.all([
@@ -30,7 +30,7 @@ export default class Index extends Component {
         fetchMenuData(),
       ])
 
-      return { menuData: menuData.menu, pageData }
+      return { menuData: menuData.menu, pageData, params }
     } catch (error) {
       /**
        * Catching an error inside getInitialProps means that - in most cases - the

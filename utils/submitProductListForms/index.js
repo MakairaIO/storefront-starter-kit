@@ -1,6 +1,11 @@
 import Router from 'next/router'
 import qs from 'qs'
-import { collectFilterFormData, prepareFilterForQueryString } from '..'
+import {
+  collectFilterFormData,
+  collectSorterFormData,
+  prepareFilterForQueryString,
+  prepareSortingForQueryString,
+} from '..'
 
 export default async function submitProductListForms({ aggregations = {} }) {
   const filterFormData = collectFilterFormData()
@@ -9,11 +14,14 @@ export default async function submitProductListForms({ aggregations = {} }) {
     aggregations
   )
 
+  const sorterFormData = collectSorterFormData()
+  const { sortBy, order } = prepareSortingForQueryString(sorterFormData)
+
   const seoUrl = Router.asPath.replace(/\?.*$/, '') // remove queryString
   let parameters = {
     makairaFilter,
-    // sortBy,
-    // order,
+    sortBy,
+    order,
     // count,
     // offset,
   }

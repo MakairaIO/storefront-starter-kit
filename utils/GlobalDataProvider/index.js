@@ -9,21 +9,22 @@ class GlobalDataProvider extends Component {
   constructor(props) {
     super(props)
 
-    const { menuData, pageData } = props
+    const { children, ...initialState } = props
 
-    this.state = { menuData, pageData }
+    this.state = initialState
   }
 
   static getDerivedStateFromProps(props, state) {
-    // Update Page Data when needed (e.g. navigating client-side)
+    // Update State when needed (e.g. navigating client-side)
     if (!isEqual(props.pageData, state.pageData)) {
-      return {
-        pageData: props.pageData,
-        constraints: props.constraints,
-      }
+      // We don't need to update menuData though
+      const { children, menuData, ...updatedState } = props
+
+      return updatedState
     }
 
-    return {}
+    // No updates
+    return null
   }
 
   componentDidMount() {
