@@ -1,7 +1,7 @@
 import { Heading, Copytext, Button } from '..'
 
-function SingleTeaser(props) {
-  const { headline = '', text = '', image = {}, button = {} } = props
+function TeaserSingle(props) {
+  const { heading = '', text = '', image = {}, button = {} } = props
 
   return (
     <section className="single-teaser">
@@ -10,7 +10,7 @@ function SingleTeaser(props) {
       </picture>
 
       <div className="single-teaser__content">
-        <Heading>{headline}</Heading>
+        <Heading>{heading}</Heading>
 
         <Copytext>{text}</Copytext>
 
@@ -22,5 +22,5 @@ function SingleTeaser(props) {
   )
 }
 
-export default SingleTeaser
-export { default as singleTeaserVariants } from './variants.js'
+export default TeaserSingle
+export { default as teaserSingleVariants } from './variants.js'
