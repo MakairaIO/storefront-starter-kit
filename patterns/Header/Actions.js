@@ -1,7 +1,6 @@
-import { Button } from '..'
+import { Button, FormattedPrice } from '..'
 import { useTranslation } from '../../utils'
 
-// TODO: format prices via helper-function
 // TODO: Remove hard-coded implementation
 export default function Actions() {
   const { t } = useTranslation()
@@ -31,7 +30,8 @@ export default function Actions() {
           iconPosition="left"
         >
           <span className="header__basket-bubble">2</span>
-          259,80 €
+
+          <FormattedPrice price="259.89" />
         </Button>
       </div>
     </>

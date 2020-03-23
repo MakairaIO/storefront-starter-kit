@@ -62,7 +62,7 @@ class ProductList extends Component {
           />
 
           <div className="product-list__list">
-            {products.map(product => (
+            {products.map((product) => (
               <ProductTile key={product.id} {...product.fields} />
             ))}
 
