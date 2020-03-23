@@ -33,7 +33,7 @@ export default function DesktopFilter(props) {
               // which we need for properly updating/reseting the RangeFilter
               {...aggregation}
               id={key}
-              key={min ? `${key}-${min}-${max}` : key}
+              key={max ? `${key}-${min}-${max}` : key}
               submitForms={submitForms}
             />
           </div>
