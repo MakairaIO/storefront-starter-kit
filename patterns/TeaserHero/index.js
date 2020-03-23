@@ -1,42 +1,22 @@
-import { Link } from '..'
+import { ConditionalLink } from '..'
 import Image from './Image'
 import Title from './Title'
 import Overlay from './Overlay'
 
-function InnerTeaser(props) {
-  const { heading = {}, overlay = {}, image = {} } = props
-
-  return (
-    <>
-      <div className="hero-teaser__image-wrapper">
-        <Image {...image} />
-
-        <Title {...heading} />
-      </div>
-
-      <Overlay {...overlay} />
-    </>
-  )
-}
-
 function TeaserHero(props) {
-  const { link = '' } = props
-
-  if (link != '') {
-    return (
-      <section className="hero-teaser">
-        <Link href={link} className="hero-teaser__container">
-          <InnerTeaser {...props} />
-        </Link>
-      </section>
-    )
-  }
+  const { heading = {}, overlay = {}, image = {}, link = '' } = props
 
   return (
     <section className="hero-teaser">
-      <div className="hero-teaser__container">
-        <InnerTeaser {...props} />
-      </div>
+      <ConditionalLink href={link} className="hero-teaser__container">
+        <div className="hero-teaser__image-wrapper">
+          <Image {...image} />
+
+          <Title {...heading} />
+        </div>
+
+        <Overlay {...overlay} />
+      </ConditionalLink>
     </section>
   )
 }
