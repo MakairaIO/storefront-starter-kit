@@ -1,62 +1,7 @@
-import { Heading, Copytext, Button, Link } from '..'
-
-function Image(props) {
-  const { src = '', alt = '' } = props
-
-  return (
-    <picture className="hero-teaser__image">
-      <img src={src} alt={alt} />
-    </picture>
-  )
-}
-
-function Title(props) {
-  const { isVisible = false, text = '', pre = '', sub = '' } = props
-
-  if (!isVisible) return null
-
-  return (
-    <p className="hero-teaser__title-wrapper">
-      {pre && <span className="hero-teaser__title--pre">{pre}</span>}
-
-      <span className="hero-teaser__title--text">{text}</span>
-
-      {sub && <span className="hero-teaser__title--sub">{sub}</span>}
-    </p>
-  )
-}
-
-function Overlay(props) {
-  const {
-    isVisible = false,
-    heading = '',
-    text = '',
-    button = {},
-    link = '',
-  } = props
-
-  if (!isVisible) return null
-
-  return (
-    <p className="hero-teaser__overlay">
-      {heading && (
-        <span className="hero-teaser__overlay-heading">{heading}</span>
-      )}
-
-      {text && <span className="hero-teaser__overlay-text">{text}</span>}
-
-      {button.isVisible && (
-        <Button
-          className="hero-teaser__button"
-          icon="chevron-right"
-          href={link}
-        >
-          {button.text}
-        </Button>
-      )}
-    </p>
-  )
-}
+import { Link } from '..'
+import Image from './Image'
+import Title from './Title'
+import Overlay from './Overlay'
 
 function InnerTeaser(props) {
   const { heading = {}, overlay = {}, image = {} } = props

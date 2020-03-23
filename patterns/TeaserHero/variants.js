@@ -66,7 +66,7 @@ export default [
     },
   },
   {
-    name: 'Image only',
+    name: 'Image only - no link',
     props: {
       heading: { ...headingProps, isVisible: false },
       overlay: { ...overlayProps, isVisible: false },
@@ -74,7 +74,7 @@ export default [
         src: '/assets/images/teaserHero/example.jpg',
         alt: 'Alt Text',
       },
-      link: '#todo',
+      link: '',
     },
   },
 ]
