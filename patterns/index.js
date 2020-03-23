@@ -1,6 +1,7 @@
 export { default as SVGSprite } from './SVGSprite'
 export { default as Link } from './Link'
 export { default as ConditionalLink } from './ConditionalLink'
+export { default as FormattedPrice } from './FormattedPrice'
 export { default as BaseLayout } from './BaseLayout'
 export { default as Overlay } from './Overlay'
 export { default as Icon } from './Icon'

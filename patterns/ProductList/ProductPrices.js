@@ -1,6 +1,6 @@
 import classNames from 'classnames'
+import { FormattedPrice } from '..'
 
-// TODO: format prices via helper-function
 // TODO: real check for reduced prices
 // TODO: handle reduced pricing and related styling properly
 export default function ProductPrices(props) {
@@ -15,11 +15,12 @@ export default function ProductPrices(props) {
 
   return (
     <div className="product-item__prices">
-      <span className="product-item__price product-item__price--reduced">
-        € {reducedPrice}
-      </span>
+      <FormattedPrice
+        price={reducedPrice}
+        className="product-item__price product-item__price--reduced"
+      />
 
-      <span className={classes}>€ {price}</span>
+      <FormattedPrice price={price} className={classes} />
     </div>
   )
 }
