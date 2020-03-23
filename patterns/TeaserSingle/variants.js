@@ -13,6 +13,7 @@ export default [
         isVisible: true,
         text: 'Discover this',
       },
+      link: '#todo',
     },
   },
   {

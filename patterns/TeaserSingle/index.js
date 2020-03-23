@@ -1,13 +1,15 @@
-import { Heading, Copytext, Button } from '..'
+import { Heading, Copytext, Button, ConditionalLink } from '..'
 
 function TeaserSingle(props) {
-  const { heading = '', text = '', image = {}, button = {} } = props
+  const { heading = '', text = '', image = {}, button = {}, link = '' } = props
 
   return (
     <section className="single-teaser">
-      <picture className="single-teaser__image">
-        <img src={image.src} alt={image.alt} />
-      </picture>
+      <ConditionalLink href={link}>
+        <picture className="single-teaser__image">
+          <img src={image.src} alt={image.alt} />
+        </picture>
+      </ConditionalLink>
 
       <div className="single-teaser__content">
         <Heading>{heading}</Heading>
@@ -15,7 +17,9 @@ function TeaserSingle(props) {
         <Copytext>{text}</Copytext>
 
         {button.isVisible && (
-          <Button className="single-teaser__button">{button.text}</Button>
+          <Button href={link} className="single-teaser__button">
+            {button.text}
+          </Button>
         )}
       </div>
     </section>
