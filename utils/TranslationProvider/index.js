@@ -16,8 +16,8 @@ const TranslationContext = React.createContext()
 class TranslationProvider extends Component {
   static defaultProps = { language: 'de' }
 
-  translate = key => {
-    return translations[this.props.language][key]
+  translate = (key, fallback = '') => {
+    return translations[this.props.language][key] ?? fallback
   }
 
   render() {

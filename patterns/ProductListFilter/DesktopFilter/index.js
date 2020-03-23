@@ -15,7 +15,7 @@ export default function DesktopFilter(props) {
   return (
     <form className="desktop-filter">
       {Object.values(aggregations).map(aggregation => {
-        const { key, type, min, max } = aggregation
+        const { key, type, title, min, max } = aggregation
 
         const Component = filterComponents[type]
 
@@ -24,7 +24,7 @@ export default function DesktopFilter(props) {
         return (
           <div key={key} className="desktop-filter__section">
             <Heading size="125" className="desktop-filter__filter-title">
-              {t(`FILTER_LABEL_${key.toUpperCase()}`)}
+              {t(`FILTER_LABEL_${key.toUpperCase()}`, title)}
             </Heading>
 
             <Component
