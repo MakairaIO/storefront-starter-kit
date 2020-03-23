@@ -15,7 +15,7 @@ export default async function fetchPageData({ ctx }) {
     searchPhrase: '',
     isSearch: false,
     enableAggregations: true,
-    url,
+    url: encodeURI(url),
     aggregations,
     sorting,
     count,
