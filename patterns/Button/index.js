@@ -24,6 +24,7 @@ function Button(props) {
       href={href}
       fallbackElement="button"
       className={classes}
+      type="button"
       {...rest}
     >
       <span className="button__text">{children}</span>
