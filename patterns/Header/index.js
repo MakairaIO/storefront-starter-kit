@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { Button, GlobalNavigation } from '..'
+import { Button, GlobalNavigation, Link } from '..'
 import InfoLinks from './InfoLinks'
 import Search from './Search'
 import Actions from './Actions'
@@ -71,11 +71,13 @@ class Header extends Component {
             onClick={this.showMobileNavigation}
           />
 
-          <img
-            src="/assets/images/header/logo_dummy.svg"
-            alt="Logo"
-            className="header__logo"
-          />
+          <Link href="/">
+            <img
+              src="/assets/images/header/logo_dummy.svg"
+              alt="Logo"
+              className="header__logo"
+            />
+          </Link>
 
           <div className="header__outer-container">
             <InfoLinks />

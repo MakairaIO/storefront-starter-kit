@@ -1,5 +1,17 @@
 import classNames from 'classnames'
-import { Icon } from '..'
+import { Icon, Link } from '..'
+
+function InnerButton(props) {
+  const { icon, children } = props
+
+  return (
+    <>
+      <span className="button__text">{children}</span>
+
+      {icon && <Icon symbol={icon} />}
+    </>
+  )
+}
 
 function Button(props) {
   const {
@@ -21,19 +33,15 @@ function Button(props) {
 
   if (href != '') {
     return (
-      <a href={href} className={classes} {...rest}>
-        <span className="button__text">{children}</span>
-
-        {icon && <Icon symbol={icon} />}
-      </a>
+      <Link href={href} className={classes} {...rest}>
+        <InnerButton {...props} />
+      </Link>
     )
   }
 
   return (
     <button type="button" className={classes} {...rest}>
-      <span className="button__text">{children}</span>
-
-      {icon && <Icon symbol={icon} />}
+      <InnerButton {...props} />
     </button>
   )
 }

@@ -16,7 +16,7 @@ const pageComponents = {
   page: LandingPage,
   category: ListingPage,
   manufacturer: ListingPage,
-  product: DetailPage,
+  'makaira-productgroup': DetailPage,
 }
 
 export default class Index extends Component {

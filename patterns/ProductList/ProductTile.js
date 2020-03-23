@@ -1,4 +1,4 @@
-import { Heading, Copytext } from '..'
+import { Heading, Copytext, Link } from '..'
 import ProductVariants from './ProductVariants'
 import ProductPrices from './ProductPrices'
 import ProductPriceHint from './ProductPriceHint'
@@ -10,29 +10,32 @@ export default function ProductTile(props) {
     picture_url_main = '',
     manufacturer_title = '',
     shortdesc = '',
+    url = '',
   } = props
 
   return (
     <article className="product-item">
-      <picture className="product-item__image">
-        <img src={picture_url_main} alt={title} />
-      </picture>
+      <Link href={url}>
+        <picture className="product-item__image">
+          <img src={picture_url_main} alt={title} />
+        </picture>
 
-      <ProductVariants {...props} />
+        <ProductVariants {...props} />
 
-      <Heading size="125" className="product-item__title">
-        {title}
-      </Heading>
+        <Heading size="125" className="product-item__title">
+          {title}
+        </Heading>
 
-      <span className="product-item__manufacturer">{manufacturer_title}</span>
+        <span className="product-item__manufacturer">{manufacturer_title}</span>
 
-      <Copytext className="product-item__shortdesc">{shortdesc}</Copytext>
+        <Copytext className="product-item__shortdesc">{shortdesc}</Copytext>
 
-      <ProductPrices {...props} />
+        <ProductPrices {...props} />
 
-      <ProductPriceHint {...props} />
+        <ProductPriceHint {...props} />
 
-      <ProductActions {...props} />
+        <ProductActions {...props} />
+      </Link>
     </article>
   )
 }
