@@ -16,7 +16,7 @@ export default {
   FILTER_LABEL_COLOR: 'Color',
   FILTER_LABEL_SIZE: 'Size',
   FILTER_LABEL_FEATURES: 'Features',
-  MOBILE_FILTER_CLOSE: 'Close',
+  MOBILE_FILTER_CLOSE: 'Show products',
   MOBILE_FILTER_SAVE: 'Save',
   MOBILE_FILTER_BACK: 'Back',
   PRODUCT_TILE_ADD_TO_CART: 'Add to Cart',

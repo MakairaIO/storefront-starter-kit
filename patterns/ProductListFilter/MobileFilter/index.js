@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import ActiveFilters from './ActiveFilters'
 import MobileFilterList from './MobileFilterList'
 import { useTranslation } from '../../../utils'
-import { Icon } from '../..'
+import { Icon, Heading } from '../..'
 
 export default function MobileFilter(props) {
   const { t } = useTranslation()
@@ -22,9 +22,9 @@ export default function MobileFilter(props) {
 
   return (
     <form className={classes}>
-      <div className="mobile-filter__header">
-        <span>Filter</span>
-      </div>
+      <Heading size="150" className="mobile-filter__header">
+        Filter
+      </Heading>
 
       {Object.values(aggregations).map(aggregation => {
         const { key } = aggregation

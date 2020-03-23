@@ -16,7 +16,7 @@ export default {
   FILTER_LABEL_COLOR: 'Farben',
   FILTER_LABEL_SIZE: 'Größen',
   FILTER_LABEL_FEATURES: 'Eigenschaften',
-  MOBILE_FILTER_CLOSE: 'Schließen',
+  MOBILE_FILTER_CLOSE: 'Produkte anzeigen',
   MOBILE_FILTER_SAVE: 'Speichern',
   MOBILE_FILTER_BACK: 'Zurück',
   PRODUCT_TILE_ADD_TO_CART: 'In den Warenkorb',
