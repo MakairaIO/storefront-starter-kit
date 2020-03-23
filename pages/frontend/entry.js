@@ -1,7 +1,12 @@
 import { Component } from 'react'
 import qs from 'qs'
-import { LandingPage, ListingPage, DetailPage } from '../../frontend'
-import { BaseLayout, Header } from '../../patterns'
+import {
+  HeaderWithProps,
+  LandingPage,
+  ListingPage,
+  DetailPage,
+} from '../../frontend'
+import { BaseLayout } from '../../patterns'
 import {
   GlobalDataProvider,
   TranslationProvider,
@@ -85,7 +90,7 @@ export default class Index extends Component {
       <GlobalDataProvider {...this.props}>
         <TranslationProvider language={language}>
           <BaseLayout>
-            <Header />
+            <HeaderWithProps />
 
             <PageComponent key={`${page.data.id}-${language}`} />
           </BaseLayout>

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import classNames from 'classnames'
 import { useTranslation } from '../../../utils'
 import NavigationFlyout from './NavigationFlyout'
 
@@ -12,9 +13,13 @@ export default function FirstLevelNavigationItem(props) {
 
   const hasSubcategories = children.length > 0
 
+  const itemClasses = classNames('desktop-navigation__item', {
+    ['desktop-navigation__item--expanded']: isExpanded,
+  })
+
   return (
     <li
-      className="desktop-navigation__item"
+      className={itemClasses}
       onMouseEnter={() => {
         clearTimeout(timerId)
 
@@ -28,7 +33,9 @@ export default function FirstLevelNavigationItem(props) {
         )
       }}
     >
-      <a href={link[language]}>{text[language]}</a>
+      <a href={link[language]} className="desktop-navigation__item-link">
+        {text[language]}
+      </a>
 
       <NavigationFlyout
         isVisible={hasSubcategories && isExpanded}

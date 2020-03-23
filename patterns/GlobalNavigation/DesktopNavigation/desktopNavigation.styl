@@ -22,22 +22,22 @@ $breakpoint-large = 800px
   line-height 2.4rem
   letter-spacing 0.025rem
 
-  > a
-    display flex
-    align-items center
-    height 100%
-    padding 0 1.5rem
-    position relative
+.desktop-navigation__item-link
+  display flex
+  align-items center
+  height 100%
+  padding 0 1.5rem
+  position relative
 
-    &:hover:after
-      display block
-      content ''
-      height 0.3rem
-      width calc(100% - 3rem) // 1.5rem padding on each side of the text
-      background var(--neutral-90)
-      position absolute
-      bottom 0
-      left 1.5rem
+  .desktop-navigation__item--expanded &:after
+    display block
+    content ''
+    height 0.3rem
+    width calc(100% - 3rem) // 1.5rem padding on each side of the text
+    background var(--neutral-90)
+    position absolute
+    bottom 0
+    left 1.5rem
 
 .desktop-navigation__flyout
   display grid
@@ -48,6 +48,7 @@ $breakpoint-large = 800px
   background var(--neutral-00)
   position absolute
   top calc(100% + 0.5rem) // 1px for the border
+  left 0
   z-index var(--z-index-medium)
   padding 2.5rem 2rem
   border 1px solid var(--neutral-40)
