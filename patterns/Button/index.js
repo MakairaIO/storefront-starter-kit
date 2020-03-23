@@ -1,17 +1,5 @@
 import classNames from 'classnames'
-import { Icon, Link } from '..'
-
-function InnerButton(props) {
-  const { icon, children } = props
-
-  return (
-    <>
-      <span className="button__text">{children}</span>
-
-      {icon && <Icon symbol={icon} />}
-    </>
-  )
-}
+import { Icon, ConditionalLink } from '..'
 
 function Button(props) {
   const {
@@ -31,18 +19,17 @@ function Button(props) {
     [`button--icon-${iconPosition}`]: icon && iconPosition && children,
   })
 
-  if (href != '') {
-    return (
-      <Link href={href} className={classes} {...rest}>
-        <InnerButton {...props} />
-      </Link>
-    )
-  }
-
   return (
-    <button type="button" className={classes} {...rest}>
-      <InnerButton {...props} />
-    </button>
+    <ConditionalLink
+      href={href}
+      fallbackElement="button"
+      className={classes}
+      {...rest}
+    >
+      <span className="button__text">{children}</span>
+
+      {icon && <Icon symbol={icon} />}
+    </ConditionalLink>
   )
 }
 
