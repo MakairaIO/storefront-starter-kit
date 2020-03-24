@@ -1,23 +1,44 @@
 export default function getFullUrl(url = '') {
-  if (url.startsWith('http')) {
-    return url
-  }
-
-  if (url.startsWith('www')) {
-    return 'https://' + url
-  }
-
-  /**
-   * Rest of the function handles relative URLs
-   */
   const domain = process.env.SHOP_DOMAIN
   const normalizedDomain = domain.replace(/\/$/, '') // replace trailing slash
 
-  if (url == '/') {
-    return normalizedDomain + '/'
+  let normalizedInput
+  if (url.startsWith('http')) {
+    normalizedInput = url
   }
 
-  const normalizedPath = url
+  if (url.startsWith('www')) {
+    normalizedInput = 'https://' + url
+  }
+
+  if (url.startsWith('/')) {
+    normalizedInput = normalizedDomain + url
+  }
+
+  if (url == '') {
+    normalizedInput = normalizedDomain + '/'
+  }
+
+  let fullUrl, isExternalLink
+  if (normalizedInput?.includes(domain)) {
+    isExternalLink = false
+
+    fullUrl = processInternalUrl(normalizedInput)
+  } else {
+    isExternalLink = true
+
+    fullUrl = normalizedInput
+  }
+
+  return { fullUrl, isExternalLink }
+}
+
+function processInternalUrl(url) {
+  const domain = process.env.SHOP_DOMAIN
+  const normalizedDomain = domain.replace(/\/$/, '') // replace trailing slash
+
+  const path = url.replace(normalizedDomain, '')
+  const normalizedPath = path
     .replace(/^\//, '') // replace leading slash from path
     .replace(/\/\/+/g, '/') // replace double slashes
 

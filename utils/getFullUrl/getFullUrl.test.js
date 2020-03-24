@@ -3,14 +3,15 @@ import { getFullUrl } from '..'
 describe('getFullUrl()', () => {
   // Setup for consistent tests no matter where performed
   const OLD_ENV = process.env
-  const MOCK_DOMAIN = 'https://my-test-domain.com'
+  const SHOP_DOMAIN_MOCK = 'https://www.my-test-domain.com'
+  const EXTERNAL_DOMAIN_MOCK = 'https://www.external-domain.com'
 
   beforeEach(() => {
     jest.resetModules() // this is important - it clears the cache
 
     process.env = {
       ...OLD_ENV,
-      SHOP_DOMAIN: MOCK_DOMAIN,
+      SHOP_DOMAIN: SHOP_DOMAIN_MOCK,
     }
   })
 
@@ -18,47 +19,68 @@ describe('getFullUrl()', () => {
     process.env = OLD_ENV
   })
 
-  it('should return input URLs starting with "http(s)" without modification', () => {
-    const withHttp = 'http://www.test.com'
-    let fullUrl = getFullUrl(withHttp)
+  describe('internal URLs', () => {
+    it('should return absolute input URLs with "http(s)" without modification', () => {
+      const withHttps = SHOP_DOMAIN_MOCK + '/test'
+      let { fullUrl, isExternalLink } = getFullUrl(withHttps)
 
-    expect(fullUrl).toEqual(withHttp)
+      expect(fullUrl).toEqual(withHttps)
+      expect(isExternalLink).toEqual(false)
+    })
 
-    const withHttps = 'https://www.test.com'
-    fullUrl = getFullUrl(withHttps)
+    it('should return absolute input URLs with "www" with added HTTPS scheme', () => {
+      const withWWW = (SHOP_DOMAIN_MOCK + '/test').replace('https://', '')
+      let { fullUrl, isExternalLink } = getFullUrl(withWWW)
+      const expected = SHOP_DOMAIN_MOCK + '/test'
 
-    expect(fullUrl).toEqual(withHttps)
+      expect(fullUrl).toEqual(expected)
+      expect(isExternalLink).toEqual(false)
+    })
+
+    it('should return relative input URLs with added scheme and domain', () => {
+      const relativeUrl = '/my-fancy-page'
+      const { fullUrl, isExternalLink } = getFullUrl(relativeUrl)
+      const expectedUrl = SHOP_DOMAIN_MOCK + relativeUrl
+
+      expect(fullUrl).toEqual(expectedUrl)
+      expect(isExternalLink).toEqual(false)
+    })
+
+    it('should return normalize input URLs containing double slashes', () => {
+      const relativeUrl = '/my-fancy-page//deep//link'
+      const { fullUrl, isExternalLink } = getFullUrl(relativeUrl)
+      const expectedUrl = SHOP_DOMAIN_MOCK + '/my-fancy-page/deep/link'
+
+      expect(fullUrl).toEqual(expectedUrl)
+      expect(isExternalLink).toEqual(false)
+    })
+
+    it('should return homepage when no url is provided', () => {
+      const emptyUrl = ''
+      const { fullUrl, isExternalLink } = getFullUrl(emptyUrl)
+      const expectedUrl = SHOP_DOMAIN_MOCK + '/'
+
+      expect(fullUrl).toEqual(expectedUrl)
+      expect(isExternalLink).toEqual(false)
+    })
   })
 
-  it('should return input URLs starting with "www" with added HTTPS scheme', () => {
-    const withWWW = 'www.test.com'
-    const fullUrl = getFullUrl(withWWW)
-    const expected = 'https://' + withWWW
+  describe('external URLs', () => {
+    it('should return absolute input URLs with "http(s)" without modification', () => {
+      const externalUrl = EXTERNAL_DOMAIN_MOCK
+      const { fullUrl, isExternalLink } = getFullUrl(externalUrl)
 
-    expect(fullUrl).toEqual(expected)
-  })
+      expect(fullUrl).toEqual(externalUrl)
+      expect(isExternalLink).toEqual(true)
+    })
 
-  it('should return relative input URLs with added scheme and domain from `window.location`', () => {
-    const relativeUrl = '/my-fancy-page'
-    const fullUrl = getFullUrl(relativeUrl)
-    const expected = MOCK_DOMAIN + relativeUrl
+    it('should return absolute input URLs with "www" with added HTTPS scheme', () => {
+      const withWWW = (EXTERNAL_DOMAIN_MOCK + '/test').replace('https://', '')
+      let { fullUrl, isExternalLink } = getFullUrl(withWWW)
+      const expected = EXTERNAL_DOMAIN_MOCK + '/test'
 
-    expect(fullUrl).toEqual(expected)
-  })
-
-  it('should return normalize input URLs containing double slashes', () => {
-    const relativeUrl = '/my-fancy-page//deep//link'
-    const fullUrl = getFullUrl(relativeUrl)
-    const expected = MOCK_DOMAIN + '/my-fancy-page/deep/link'
-
-    expect(fullUrl).toEqual(expected)
-  })
-
-  it('should return homepage when no url is provided', () => {
-    const emptyUrl = ''
-    const fullUrl = getFullUrl(emptyUrl)
-    const expected = MOCK_DOMAIN + '/'
-
-    expect(fullUrl).toEqual(expected)
+      expect(fullUrl).toEqual(expected)
+      expect(isExternalLink).toEqual(true)
+    })
   })
 })
