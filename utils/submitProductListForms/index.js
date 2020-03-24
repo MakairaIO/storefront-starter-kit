@@ -9,7 +9,11 @@ import {
   preparePaginationForQueryString,
 } from '..'
 
-export default async function submitProductListForms({ aggregations = {} }) {
+export default async function submitProductListForms({
+  aggregations = {},
+  isSearch = false,
+  searchPhrase = '',
+}) {
   const count = process.env.PRODUCTS_PER_PAGE
 
   const filterFormData = collectFilterFormData()
@@ -33,10 +37,16 @@ export default async function submitProductListForms({ aggregations = {} }) {
     offset,
   }
 
+  let internalRoute = '/frontend/entry'
+  if (isSearch) {
+    internalRoute = '/frontend/search'
+    parameters.searchPhrase = searchPhrase
+  }
+
   const queryString = qs.stringify(parameters)
 
   await Router.push(
-    `/frontend/entry?seoUrl=${seoUrl}&${queryString}`,
+    `${internalRoute}?seoUrl=${seoUrl}&${queryString}`,
     `${seoUrl}?${queryString}`
   )
 }

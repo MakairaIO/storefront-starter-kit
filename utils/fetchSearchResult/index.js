@@ -6,7 +6,9 @@ export default async function fetchSearchResult({ ctx }) {
     .replace(/\?.*/, '') // remove query string
     .replace(/\/$/, '') // replace trailing slash to match definition in allLanguages
 
-  const language = allLanguages.find(lang => lang.searchRoute == path)['value']
+  const language = allLanguages.find((lang) => lang.searchRoute == path)[
+    'value'
+  ]
 
   const builder = new RequestBuilder(ctx)
   const constraints = builder.getConstraints()
@@ -29,6 +31,7 @@ export default async function fetchSearchResult({ ctx }) {
   }
 
   let page = await fetchFromMakaira(body)
+  page.language = language
 
   return page
 }

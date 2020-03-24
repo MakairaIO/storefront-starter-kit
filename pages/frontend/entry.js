@@ -83,7 +83,7 @@ export default class Index extends Component {
     }
 
     const { pageData } = this.props
-    const { type, language, ...page } = pageData
+    const { type, language } = pageData
     const PageComponent = pageComponents[type]
 
     return (
@@ -92,7 +92,7 @@ export default class Index extends Component {
           <BaseLayout>
             <HeaderWithProps />
 
-            <PageComponent key={`${page.data.id}-${language}`} />
+            <PageComponent />
           </BaseLayout>
         </TranslationProvider>
       </GlobalDataProvider>
