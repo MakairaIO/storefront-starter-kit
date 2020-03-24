@@ -6,9 +6,8 @@ export default async function fetchSearchResult({ ctx }) {
     .replace(/\?.*/, '') // remove query string
     .replace(/\/$/, '') // replace trailing slash to match definition in allLanguages
 
-  const language = allLanguages.find((lang) => lang.searchRoute == path)[
-    'value'
-  ]
+  const languageObject = allLanguages.find((lang) => lang.searchRoute == path)
+  const language = languageObject['value']
 
   const builder = new RequestBuilder(ctx)
   const constraints = builder.getConstraints()

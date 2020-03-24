@@ -2,6 +2,7 @@ export default [
   {
     name: 'Default',
     props: {
+      submitSearchForm: async () => {},
       menu: [
         {
           text: {

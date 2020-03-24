@@ -18,6 +18,7 @@ class Header extends Component {
     this.state = {
       renderMobileNavigation: false,
       isMobileNavigationVisible: false,
+      searchPhrase: '',
     }
 
     this.handleResize = throttle(this.handleResize, 200)
@@ -59,6 +60,17 @@ class Header extends Component {
     this.setState({ isMobileNavigationVisible: false })
   }
 
+  handleSearchPhraseChange = (event) => {
+    this.setState({ searchPhrase: event.target.value })
+  }
+
+  handleSearchFormSubmit = (event) => {
+    event.preventDefault()
+
+    const { searchPhrase } = this.state
+    this.props.submitSearchForm(searchPhrase)
+  }
+
   render() {
     const { menu = [] } = this.props
 
@@ -83,7 +95,11 @@ class Header extends Component {
             <InfoLinks />
 
             <div className="header__inner-container">
-              <Search />
+              <Search
+                searchPhrase={this.state.searchPhrase}
+                changeSearchPhrase={this.handleSearchPhraseChange}
+                submitForm={this.handleSearchFormSubmit}
+              />
 
               <Actions />
             </div>
