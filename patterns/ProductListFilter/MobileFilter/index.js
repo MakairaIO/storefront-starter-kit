@@ -27,7 +27,7 @@ export default function MobileFilter(props) {
       </Heading>
 
       {Object.values(aggregations).map(aggregation => {
-        const { key } = aggregation
+        const { key, title } = aggregation
 
         return (
           <div key={key} className="mobile-filter__section">
@@ -36,7 +36,7 @@ export default function MobileFilter(props) {
               className="mobile-filter__button"
               onClick={() => setVisibleFilter(key)}
             >
-              {t(`FILTER_LABEL_${key.toUpperCase()}`)}
+              {t(`FILTER_LABEL_${key.toUpperCase()}`, title)}
 
               <ActiveFilters {...aggregation} />
 
