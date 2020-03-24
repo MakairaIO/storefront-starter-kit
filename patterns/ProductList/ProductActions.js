@@ -6,7 +6,7 @@ export default function ProductActions() {
 
   return (
     <div className="product-item__actions">
-      <Button type="primary">{t('PRODUCT_TILE_ADD_TO_CART')}</Button>
+      <Button variant="primary">{t('PRODUCT_TILE_ADD_TO_CART')}</Button>
     </div>
   )
 }

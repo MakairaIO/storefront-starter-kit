@@ -31,14 +31,14 @@ export default [
     name: 'Primary',
     props: {
       children: 'Add to cart',
-      type: 'primary',
+      variant: 'primary',
     },
   },
   {
     name: 'Secondary',
     props: {
       children: 'Abort',
-      type: 'secondary',
+      variant: 'secondary',
     },
   },
   {
