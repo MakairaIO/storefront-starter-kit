@@ -1,5 +1,5 @@
 import { useTranslation } from '../../../utils'
-import { Icon } from '../..'
+import { Icon, Link } from '../..'
 
 export default function NavigationFlyoutColumn(props) {
   const { language } = useTranslation()
@@ -9,23 +9,23 @@ export default function NavigationFlyoutColumn(props) {
 
   return (
     <div className="desktop-navigation__flyout-column">
-      <a
+      <Link
         href={link[language]}
         className="desktop-navigation__flyout-column-header"
       >
         {text[language]}
-      </a>
+      </Link>
 
       {hasSubcategories && (
         <ul className="desktop-navigation__flyout-column-list">
-          {children.map(entry => (
+          {children.map((entry) => (
             // FIXME: Only show icon when entry has subcategories itself
             <li key={entry.uuid}>
-              <a href={entry['link'][language]}>
+              <Link href={entry['link'][language]}>
                 {entry['text'][language]}
 
                 <Icon symbol="chevron-right" />
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

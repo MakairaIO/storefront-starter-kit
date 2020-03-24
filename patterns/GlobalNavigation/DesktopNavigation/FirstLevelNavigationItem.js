@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import classNames from 'classnames'
 import { useTranslation } from '../../../utils'
+import { Link } from '../..'
 import NavigationFlyout from './NavigationFlyout'
 
 const TRANSITION_DELAY_IN_MS = 200
@@ -33,9 +34,9 @@ export default function FirstLevelNavigationItem(props) {
         )
       }}
     >
-      <a href={link[language]} className="desktop-navigation__item-link">
+      <Link href={link[language]} className="desktop-navigation__item-link">
         {text[language]}
-      </a>
+      </Link>
 
       <NavigationFlyout
         isVisible={hasSubcategories && isExpanded}

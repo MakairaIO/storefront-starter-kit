@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import classNames from 'classnames'
 import { useTranslation } from '../../../utils'
+import { Link } from '../..'
 import ExpandIcon from './ExpandIcon'
 import SubcategoryList from './SubcategoryList'
 
@@ -33,7 +34,7 @@ export default function NavigationItem(props) {
   return (
     <>
       <li className={itemClasses}>
-        <a
+        <Link
           href={link[language]}
           onClick={handleClick}
           className="mobile-navigation__link"
@@ -49,7 +50,7 @@ export default function NavigationItem(props) {
             isVisible={hasSubcategories && !isMainCategory}
             isExpanded={isExpanded}
           />
-        </a>
+        </Link>
       </li>
 
       <SubcategoryList
