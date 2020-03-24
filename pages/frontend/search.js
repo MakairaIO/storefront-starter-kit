@@ -22,7 +22,7 @@ export default class Index extends Component {
         fetchMenuData(),
       ])
 
-      return { menuData: menuData.menu, searchResult, params }
+      return { menuData, searchResult, params }
     } catch (error) {
       logError(error)
 

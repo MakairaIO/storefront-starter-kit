@@ -35,7 +35,7 @@ export default class Index extends Component {
         fetchMenuData(),
       ])
 
-      return { menuData: menuData.menu, pageData, params }
+      return { menuData, pageData, params }
     } catch (error) {
       /**
        * Catching an error inside getInitialProps means that - in most cases - the
