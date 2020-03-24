@@ -1,21 +1,35 @@
 import { Button, Icon } from '..'
 
-export default function Search() {
+export default function Search(props) {
+  const {
+    searchPhrase,
+    changeSearchPhrase,
+    submitForm,
+    activateMobileSearch,
+  } = props
+
   return (
     <>
-      <label className="header__search">
-        <Icon symbol="search" />
+      <form className="header__search" onSubmit={submitForm}>
+        <label>
+          <Icon symbol="search" />
 
-        <input
-          type="text"
-          name=""
-          // value=""
-          required="required"
-          className="header__search-input"
-        />
-      </label>
+          <input
+            type="text"
+            name="searchPhrase"
+            value={searchPhrase}
+            onChange={changeSearchPhrase}
+            required="required"
+            className="header__search-input"
+          />
+        </label>
+      </form>
 
-      <Button icon="search" className="header__action header__action--search" />
+      <Button
+        icon="search"
+        className="header__action header__action--search"
+        onClick={activateMobileSearch}
+      />
     </>
   )
 }

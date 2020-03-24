@@ -15,8 +15,11 @@ class GlobalDataProvider extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    // Update State when needed (e.g. navigating client-side)
-    if (!isEqual(props.pageData, state.pageData)) {
+    // Update State when needed (e.g. filtering, paginating, etc)
+    if (
+      !isEqual(props.pageData, state.pageData) ||
+      !isEqual(props.searchResult, state.searchResult)
+    ) {
       // We don't need to update menuData though
       const { children, menuData, ...updatedState } = props
 

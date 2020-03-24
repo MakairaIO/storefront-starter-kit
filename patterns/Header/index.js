@@ -1,4 +1,5 @@
-import { Component } from 'react'
+import { Component, createRef } from 'react'
+import Router from 'next/router'
 import { Button, GlobalNavigation, Link } from '..'
 import InfoLinks from './InfoLinks'
 import Search from './Search'
@@ -18,14 +19,19 @@ class Header extends Component {
     this.state = {
       renderMobileNavigation: false,
       isMobileNavigationVisible: false,
+      searchPhrase: '',
     }
 
     this.handleResize = throttle(this.handleResize, 200)
+
+    this.mobileSearchInputRef = createRef()
   }
 
   componentDidMount() {
     window.addEventListener('overlay:clicked', this.hideMobileNavigation)
     window.addEventListener('resize', this.handleResize)
+
+    Router.events.on('routeChangeComplete', dispatchOverlayClickedEvent)
 
     // initial check for what navigation to render
     this.handleResize()
@@ -34,6 +40,8 @@ class Header extends Component {
   componentWillUnmount() {
     window.removeEventListener('overlay:clicked', this.hideMobileNavigation)
     window.removeEventListener('resize', this.handleResize)
+
+    Router.events.off('routeChangeComplete', dispatchOverlayClickedEvent)
   }
 
   handleResize = () => {
@@ -57,6 +65,22 @@ class Header extends Component {
 
   hideMobileNavigation = () => {
     this.setState({ isMobileNavigationVisible: false })
+  }
+
+  handleSearchPhraseChange = (event) => {
+    this.setState({ searchPhrase: event.target.value })
+  }
+
+  handleSearchFormSubmit = (event) => {
+    event.preventDefault()
+
+    const { searchPhrase } = this.state
+    this.props.submitSearchForm(searchPhrase)
+  }
+
+  activateMobileSearch = () => {
+    this.showMobileNavigation()
+    this.mobileSearchInputRef.current.focus()
   }
 
   render() {
@@ -83,7 +107,12 @@ class Header extends Component {
             <InfoLinks />
 
             <div className="header__inner-container">
-              <Search />
+              <Search
+                searchPhrase={this.state.searchPhrase}
+                changeSearchPhrase={this.handleSearchPhraseChange}
+                submitForm={this.handleSearchFormSubmit}
+                activateMobileSearch={this.activateMobileSearch}
+              />
 
               <Actions />
             </div>
@@ -95,6 +124,10 @@ class Header extends Component {
           renderMobileNavigation={this.state.renderMobileNavigation}
           isMobileNavigationVisible={this.state.isMobileNavigationVisible}
           hideMobileNavigation={dispatchOverlayClickedEvent} // for simplicity, we just simulate a click on the overlay and let the lifecycle of this component take care of everything
+          mobileSearchInputRef={this.mobileSearchInputRef}
+          searchPhrase={this.state.searchPhrase}
+          changeSearchPhrase={this.handleSearchPhraseChange}
+          submitForm={this.handleSearchFormSubmit}
         />
       </>
     )

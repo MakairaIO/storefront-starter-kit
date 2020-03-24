@@ -11,7 +11,6 @@ export default async function fetchFromMakaira(body) {
 
   const response = await fetch(url, {
     method: 'POST',
-    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
       'X-Makaira-Instance': process.env.MAKAIRA_API_INSTANCE,

@@ -8,6 +8,10 @@ export default function MobileNavigation(props) {
     menu = [],
     isMobileNavigationVisible = false,
     hideMobileNavigation,
+    mobileSearchInputRef,
+    searchPhrase,
+    changeSearchPhrase,
+    submitForm,
   } = props
 
   const flyoutClasses = classNames('mobile-navigation__flyout', {
@@ -19,22 +23,26 @@ export default function MobileNavigation(props) {
       <div className="mobile-navigation__header">
         <Button icon="times" onClick={hideMobileNavigation} />
 
-        <label className="mobile-navigation__search">
-          <Icon symbol="search" />
+        <form className="mobile-navigation__search" onSubmit={submitForm}>
+          <label>
+            <Icon symbol="search" />
 
-          <input
-            type="text"
-            name=""
-            // value=""
-            required="required"
-            className="mobile-navgation__search-input"
-          />
-        </label>
+            <input
+              type="text"
+              name="searchPhraseMobile"
+              value={searchPhrase}
+              onChange={changeSearchPhrase}
+              required="required"
+              className="mobile-navgation__search-input"
+              ref={mobileSearchInputRef}
+            />
+          </label>
+        </form>
       </div>
 
       <nav className="mobile-navigation" arial-label="Primary Navigation">
         <ul>
-          {menu.map(entry => (
+          {menu.map((entry) => (
             <NavigationItem key={entry.uuid} {...entry} isMainCategory={true} />
           ))}
         </ul>

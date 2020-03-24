@@ -1,26 +1,31 @@
 import { Component } from 'react'
-import { BaseLayout, Header } from '../../patterns'
+import qs from 'qs'
+import { HeaderWithProps, SearchResultPage } from '../../frontend'
+import { BaseLayout } from '../../patterns'
 import {
   GlobalDataProvider,
   TranslationProvider,
   fetchSearchResult,
   fetchMenuData,
+  logError,
 } from '../../utils'
 import ErrorPage from '../_error'
 
 export default class Index extends Component {
   static async getInitialProps(ctx) {
+    const { query, res } = ctx
+    const { seoUrl, ...params } = qs.parse(query)
+
     try {
       const [searchResult, menuData] = await Promise.all([
         fetchSearchResult({ ctx }),
         fetchMenuData(),
       ])
 
-      return { menuData, searchResult }
+      return { menuData, searchResult, params }
     } catch (error) {
-      console.error(error)
+      logError(error)
 
-      const { res } = ctx
       if (res) {
         res.statusCode = 500
 
@@ -34,19 +39,20 @@ export default class Index extends Component {
   }
 
   render() {
-    return <h1>search</h1>
     if (Object.entries(this.props).length === 0) {
       return <ErrorPage statusCode={500} />
     }
 
-    const { pageData } = this.props
-    const { language } = pageData
+    const { searchResult = {} } = this.props
+    const { language } = searchResult
 
     return (
       <GlobalDataProvider {...this.props}>
         <TranslationProvider language={language}>
           <BaseLayout>
-            <Header />
+            <HeaderWithProps />
+
+            <SearchResultPage />
           </BaseLayout>
         </TranslationProvider>
       </GlobalDataProvider>

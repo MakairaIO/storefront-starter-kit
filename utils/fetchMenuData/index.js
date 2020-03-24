@@ -6,7 +6,9 @@ export default async function fetchMenuData() {
 
     data = JSON.parse(menuString)
   } else {
-    data = await fetchMenuFromApi()
+    const response = await fetchMenuFromApi()
+
+    data = response.menu
   }
 
   return data
