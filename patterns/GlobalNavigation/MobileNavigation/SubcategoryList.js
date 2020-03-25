@@ -7,7 +7,7 @@ export default function SubcategoryList(props) {
 
   return (
     <ul className="mobile-navigation__subcategories">
-      {subcategories.map(entry => (
+      {subcategories.map((entry) => (
         <NavigationItem key={entry.uuid} {...entry} />
       ))}
     </ul>

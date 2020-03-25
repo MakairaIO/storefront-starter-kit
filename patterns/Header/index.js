@@ -31,7 +31,10 @@ class Header extends Component {
     window.addEventListener('overlay:clicked', this.hideMobileNavigation)
     window.addEventListener('resize', this.handleResize)
 
-    Router.events.on('routeChangeComplete', dispatchOverlayClickedEvent)
+    Router.events.on(
+      'routeChangeComplete',
+      this.hideMobileNavigationOnPageChange
+    )
 
     // initial check for what navigation to render
     this.handleResize()
@@ -41,7 +44,10 @@ class Header extends Component {
     window.removeEventListener('overlay:clicked', this.hideMobileNavigation)
     window.removeEventListener('resize', this.handleResize)
 
-    Router.events.off('routeChangeComplete', dispatchOverlayClickedEvent)
+    Router.events.off(
+      'routeChangeComplete',
+      this.hideMobileNavigationOnPageChange
+    )
   }
 
   handleResize = () => {
@@ -65,6 +71,16 @@ class Header extends Component {
 
   hideMobileNavigation = () => {
     this.setState({ isMobileNavigationVisible: false })
+  }
+
+  hideMobileNavigationOnPageChange = () => {
+    const { isMobileNavigationVisible } = this.state
+
+    // Perform an explicit check here to avoid accidentally closing the <MobileFilter> on page navigations
+    if (isMobileNavigationVisible) {
+      // for simplicity, we just simulate a click on the overlay and let the lifecycle of the components take care of everything
+      dispatchOverlayClickedEvent()
+    }
   }
 
   handleSearchPhraseChange = (event) => {
@@ -123,7 +139,7 @@ class Header extends Component {
           menu={menu}
           renderMobileNavigation={this.state.renderMobileNavigation}
           isMobileNavigationVisible={this.state.isMobileNavigationVisible}
-          hideMobileNavigation={dispatchOverlayClickedEvent} // for simplicity, we just simulate a click on the overlay and let the lifecycle of this component take care of everything
+          hideMobileNavigation={dispatchOverlayClickedEvent} // for simplicity, we just simulate a click on the overlay and let the lifecycle of the components take care of everything
           mobileSearchInputRef={this.mobileSearchInputRef}
           searchPhrase={this.state.searchPhrase}
           changeSearchPhrase={this.handleSearchPhraseChange}

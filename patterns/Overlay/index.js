@@ -9,11 +9,13 @@ export default class Overlay extends Component {
 
   componentDidMount() {
     window.addEventListener('overlay:show', this.showOverlay)
+    window.addEventListener('overlay:hide', this.hideOverlay)
     window.addEventListener('overlay:clicked', this.hideOverlay)
   }
 
   componentWillUnmount() {
     window.removeEventListener('overlay:show', this.showOverlay)
+    window.removeEventListener('overlay:hide', this.hideOverlay)
     window.removeEventListener('overlay:clicked', this.hideOverlay)
   }
 
