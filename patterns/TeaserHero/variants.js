@@ -26,7 +26,7 @@ export default [
         src: '/assets/images/teaserHero/example.jpg',
         alt: 'Alt Text',
       },
-      link: '#todo',
+      link: '/',
     },
   },
   {
