@@ -21,7 +21,11 @@ export default function MobileNavigation(props) {
   return (
     <div className={flyoutClasses}>
       <div className="mobile-navigation__header">
-        <Button icon="times" onClick={hideMobileNavigation} />
+        <Button
+          variant="icon-only"
+          icon="times"
+          onClick={hideMobileNavigation}
+        />
 
         <form className="mobile-navigation__search" onSubmit={submitForm}>
           <label>

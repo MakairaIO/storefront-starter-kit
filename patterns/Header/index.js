@@ -106,6 +106,7 @@ class Header extends Component {
       <>
         <header className="header">
           <Button
+            variant="icon-only"
             icon="bars"
             className="header__menu-button"
             onClick={this.showMobileNavigation}

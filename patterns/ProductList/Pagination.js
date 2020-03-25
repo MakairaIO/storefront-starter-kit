@@ -22,7 +22,7 @@ export default class Pagination extends Component {
   }
 
   previousPage = () => {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       return {
         currentPageNr: prevState.currentPageNr - 1,
       }
@@ -30,7 +30,7 @@ export default class Pagination extends Component {
   }
 
   nextPage = () => {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       return {
         currentPageNr: prevState.currentPageNr + 1,
       }
@@ -64,11 +64,13 @@ export default class Pagination extends Component {
         <input type="hidden" name="pageNumber" value={currentPageNr} />
 
         <Button
+          variant="icon-only"
           icon="chevron-double-left"
           disabled={!canJumpToFirst}
           onClick={this.firstPage}
         />
         <Button
+          variant="icon-only"
           icon="chevron-left"
           disabled={isFirstPage}
           onClick={this.previousPage}
@@ -80,11 +82,13 @@ export default class Pagination extends Component {
         />
 
         <Button
+          variant="icon-only"
           icon="chevron-right"
           disabled={isLastPage}
           onClick={this.nextPage}
         />
         <Button
+          variant="icon-only"
           icon="chevron-double-right"
           disabled={!canJumpToLast}
           onClick={this.lastPage}

@@ -8,9 +8,19 @@ export default function Actions() {
   return (
     <>
       <div className="header__actions header__actions--mobile">
-        <Button icon="user" href="#todo" className="header__action" />
+        <Button
+          variant="icon-only"
+          icon="user"
+          href="#todo"
+          className="header__action"
+        />
 
-        <Button icon="cart" href="#todo" className="header__action" />
+        <Button
+          variant="icon-only"
+          icon="cart"
+          href="#todo"
+          className="header__action"
+        />
       </div>
 
       <div className="header__actions header__actions--desktop">
