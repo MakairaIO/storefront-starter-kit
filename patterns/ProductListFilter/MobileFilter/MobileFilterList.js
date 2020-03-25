@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import MultiSelectFilter from './MultiSelectFilter'
 import RangeFilter from './RangeFilter'
 import { useTranslation } from '../../../utils'
@@ -12,8 +13,6 @@ export default function MobileFilterList(props) {
   const { t } = useTranslation()
   const { isVisible = false, id, title, type, submitForms, closeFilter } = props
 
-  if (!isVisible) return null
-
   const Component = filterComponents[type]
 
   if (!Component) return null
@@ -23,8 +22,12 @@ export default function MobileFilterList(props) {
     closeFilter()
   }
 
+  const classes = classNames('mobile-filter__list', {
+    'mobile-filter__list--visible': isVisible,
+  })
+
   return (
-    <div className="mobile-filter__list">
+    <div className={classes}>
       <Heading className="mobile-filter__list-header">
         {t(`FILTER_LABEL_${id.toUpperCase()}`, title)}
       </Heading>

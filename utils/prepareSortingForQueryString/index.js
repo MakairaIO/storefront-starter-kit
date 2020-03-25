@@ -5,7 +5,9 @@ export default function prepareSortingForQuerySring(formData) {
 
   if (optionId === 'custom') return {}
 
-  const selectedSorting = sortOptions.find(option => option.value === optionId)
+  const selectedSorting = sortOptions.find(
+    (option) => option.value === optionId
+  )
   const { sortBy, order } = selectedSorting
 
   return { sortBy, order }
