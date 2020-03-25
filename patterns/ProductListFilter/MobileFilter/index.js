@@ -3,17 +3,20 @@ import classNames from 'classnames'
 import ActiveFilters from './ActiveFilters'
 import MobileFilterList from './MobileFilterList'
 import { useTranslation } from '../../../utils'
-import { Icon, Heading } from '../..'
+import { Icon, Heading, Button } from '../..'
 
 export default function MobileFilter(props) {
   const { t } = useTranslation()
   const [visibleFilter, setVisibleFilter] = useState(null)
 
   const {
-    isMobileFilterVisible = false,
     aggregations = {},
+    totalProductCount = 0,
+    numberOfActiveFilters = 0,
+    isMobileFilterVisible = false,
     hideMobileFilter,
     submitForms,
+    resetAllFilters,
   } = props
 
   const classes = classNames('mobile-filter', {
@@ -22,11 +25,22 @@ export default function MobileFilter(props) {
 
   return (
     <form className={classes}>
-      <Heading size="150" className="mobile-filter__header">
-        Filter
-      </Heading>
+      <div className="mobile-filter__header">
+        <Heading>Filter</Heading>
 
-      {Object.values(aggregations).map(aggregation => {
+        {numberOfActiveFilters > 0 && (
+          <Button
+            variant="link"
+            icon="ban"
+            iconPosition="left"
+            onClick={resetAllFilters}
+          >
+            {t('MOBILE_FILTER_RESET_ALL')}
+          </Button>
+        )}
+      </div>
+
+      {Object.values(aggregations).map((aggregation) => {
         const { key, title } = aggregation
 
         return (
@@ -58,9 +72,9 @@ export default function MobileFilter(props) {
       })}
 
       <div className="mobile-filter__footer">
-        <button type="button" onClick={hideMobileFilter}>
-          {t('MOBILE_FILTER_CLOSE')}
-        </button>
+        <Button variant="primary" icon="check" onClick={hideMobileFilter}>
+          {t('MOBILE_FILTER_CLOSE')(totalProductCount)}
+        </Button>
       </div>
     </form>
   )

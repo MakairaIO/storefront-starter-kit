@@ -1,11 +1,8 @@
 import classNames from 'classnames'
 import { Button } from '..'
-import { getNumberOfActiveFilters } from '../../utils'
 
 export default function FilterButton(props) {
-  const { aggregations = {}, showMobileFilter } = props
-
-  const numberOfActiveFilters = getNumberOfActiveFilters({ aggregations })
+  const { numberOfActiveFilters = 0, showMobileFilter } = props
 
   const classes = classNames('product-list__filter-button', {
     ['product-list__filter-button--active']: numberOfActiveFilters > 0,

@@ -1,5 +1,6 @@
 import MultiSelectFilter from './MultiSelectFilter'
 import RangeFilter from './RangeFilter'
+import FilterResetButton from '../../ProductList/FilterResetButton'
 import { Heading } from '../..'
 import { useTranslation } from '../../../utils'
 
@@ -10,21 +11,26 @@ const filterComponents = {
 
 export default function DesktopFilter(props) {
   const { t } = useTranslation()
-  const { aggregations = {}, submitForms } = props
+  const {
+    aggregations = {},
+    numberOfActiveFilters = 0,
+    submitForms,
+    resetAllFilters,
+  } = props
 
   return (
     <form className="desktop-filter">
-      {Object.values(aggregations).map(aggregation => {
-        const { key, type, title, min, max } = aggregation
+      {Object.values(aggregations).map((aggregation) => {
+        const { key: id, type, title, min, max } = aggregation
 
         const Component = filterComponents[type]
 
         if (!Component) return null
 
         return (
-          <div key={key} className="desktop-filter__section">
+          <div key={id} className="desktop-filter__section">
             <Heading size="125" className="desktop-filter__filter-title">
-              {t(`FILTER_LABEL_${key.toUpperCase()}`, title)}
+              {t(`FILTER_LABEL_${id.toUpperCase()}`, title)}
             </Heading>
 
             <Component
@@ -32,13 +38,18 @@ export default function DesktopFilter(props) {
               // have a field 'key' which could override our custom-built key below
               // which we need for properly updating/reseting the RangeFilter
               {...aggregation}
-              id={key}
-              key={max ? `${key}-${min}-${max}` : key}
+              id={id}
+              key={max ? `${id}-${min}-${max}` : id}
               submitForms={submitForms}
             />
           </div>
         )
       })}
+
+      <FilterResetButton
+        numberOfActiveFilters={numberOfActiveFilters}
+        resetAllFilters={resetAllFilters}
+      />
     </form>
   )
 }

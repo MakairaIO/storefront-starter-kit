@@ -1,10 +1,12 @@
 import { Component } from 'react'
 import FilterButton from './FilterButton'
+import FilterResetButton from './FilterResetButton'
 import Sorter from './Sorter'
 import Pagination from './Pagination'
 import ProductTile from './ProductTile'
 import { ProductListFilter } from '..'
 import {
+  getNumberOfActiveFilters,
   dispatchShowOverlayEvent,
   dispatchOverlayClickedEvent,
 } from '../../utils'
@@ -38,16 +40,24 @@ class ProductList extends Component {
       products = [],
       aggregations = {},
       submitForms,
+      resetAllFilters,
       queryParams = {},
       totalProductCount = 0,
     } = this.props
+
+    const numberOfActiveFilters = getNumberOfActiveFilters({ aggregations })
 
     return (
       <section className="product-list">
         <div className="product-list__actions">
           <FilterButton
-            aggregations={aggregations}
+            numberOfActiveFilters={numberOfActiveFilters}
             showMobileFilter={this.showMobileFilter}
+          />
+
+          <FilterResetButton
+            numberOfActiveFilters={numberOfActiveFilters}
+            resetAllFilters={resetAllFilters}
           />
 
           <Sorter queryParams={queryParams} submitForms={submitForms} />
@@ -56,9 +66,12 @@ class ProductList extends Component {
         <div className="product-list__wrapper">
           <ProductListFilter
             aggregations={aggregations}
+            numberOfActiveFilters={numberOfActiveFilters}
+            totalProductCount={totalProductCount}
             isMobileFilterVisible={this.state.isMobileFilterVisible}
             hideMobileFilter={dispatchOverlayClickedEvent} // for simplicity, we just simulate a click on the overlay and let the lifecycle of this component take care of everything
             submitForms={submitForms}
+            resetAllFilters={resetAllFilters}
           />
 
           <div className="product-list__list">

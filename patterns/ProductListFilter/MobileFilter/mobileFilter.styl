@@ -12,6 +12,9 @@ $breakpoint-small = 475px
   z-index var(--z-index-high)
   overflow-y auto
 
+.mobile-filter__list
+  font-weight var(--font-weight-regular)
+
 .mobile-filter
   font-size 1.6rem
   font-weight var(--font-weight-medium)
@@ -30,12 +33,11 @@ $breakpoint-small = 475px
 
 .mobile-filter__section
   background var(--neutral-00)
+  border-bottom 1px solid var(--neutral-20)
 
-  & + &
+  // first element gets top border as well
+  .mobile-filter__header + &
     border-top 1px solid var(--neutral-20)
-
-  &:last-of-type
-    border-bottom 1px solid var(--neutral-20)
 
 .mobile-filter__button
   display flex
@@ -68,18 +70,19 @@ $breakpoint-small = 475px
   .mobile-filter__active-filters + &
     margin-left 0
 
-
 .mobile-filter__header
 .mobile-filter__list-header
   display flex
   align-items center
-  height 4rem
+  background var(--neutral-00)
   position sticky
   top 0
-  padding 1.2rem 1.5rem 1.2rem
+  padding 1.5rem
 
-  button
-    color var(--secondary)
+.mobile-filter__header
+  .button
+    font-weight var(--font-weight-regular)
+    margin-left auto
 
 .mobile-filter__list-header
 
@@ -90,21 +93,13 @@ $breakpoint-small = 475px
 
 .mobile-filter__footer
 .mobile-filter__list-footer
-  height 6rem
-  background var(--primary)
-  position fixed
-  left 0
-  right 0
+  display flex
+  justify-content center
+  align-items center
+  background var(--neutral-00)
+  padding 1.2rem 0
+  position sticky
   bottom 0
-
-  button
-    display block
-    height 100%
-    width 100%
-    color var(--neutral-10)
-
-.mobile-filter__list-values
-  padding-bottom 6rem // height of list-footer
 
 .mobile-filter__item
   display flex
@@ -112,18 +107,16 @@ $breakpoint-small = 475px
   font-size 1.4rem
   letter-spacing 0.02rem
   background var(--neutral-00)
+  border-bottom 1px solid var(--neutral-20)
 
-  & + &
+  &:first-of-type
     border-top 1px solid var(--neutral-20)
 
-  &:last-of-type
-    border-bottom 1px solid var(--neutral-20)
-
   &--active
-    color var(--secondary)
+    font-weight var(--font-weight-medium)
 
   label
-    display block
+    display flex
     align-items center
     width 100%
     height 3.8rem
@@ -131,8 +124,10 @@ $breakpoint-small = 475px
     padding 0 1.5rem
 
   .icon
+    display block
     height 1.4rem
-    width 3.6rem
+    width 1.4rem
+    margin-right 1rem
 
   input
     display none

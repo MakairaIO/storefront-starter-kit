@@ -1,11 +1,15 @@
 import { ProductList } from '../../patterns'
-import { useGlobalData, submitProductListForms } from '../../utils'
+import {
+  useGlobalData,
+  submitProductListForms,
+  resetAllProductListFilters,
+} from '../../utils'
 
 export default function ProductListWithProps() {
   const { pageData, params = {} } = useGlobalData()
 
   // restParams = sorting, pagination, ...
-  const { seoUrl, makairaFilter, ...restParams } = params
+  const { makairaFilter, ...restParams } = params
 
   const products = pageData.data.product.items
   const aggregations = pageData.data.product.aggregations
@@ -15,6 +19,7 @@ export default function ProductListWithProps() {
     products,
     aggregations,
     submitForms: () => submitProductListForms({ aggregations }),
+    resetAllFilters: resetAllProductListFilters,
     queryParams: restParams,
     totalProductCount,
   }

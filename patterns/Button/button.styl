@@ -108,6 +108,7 @@
       border none
       color var(--neutral-30)
 
+    // Overrides of generic styling for Link-Button
     &.button--icon-right
       .button__text
         margin-right 0
@@ -176,11 +177,17 @@
     height 1.8rem
     width 3.4rem // 36px - 2px border
 
+  // Overrides for specific icons
   &:not(.button--icon-only)
     .icon--chevron-right
     .icon--chevron-left
-      height 1.8rem
       width 0.7rem
+
+    .icon--check
+      width 1.3rem
+
+    .icon--ban
+      width 2rem
 
 a.button
   text-decoration none

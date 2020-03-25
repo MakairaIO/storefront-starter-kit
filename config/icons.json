@@ -35,6 +35,12 @@
   "Minus": {
     "value": "minus"
   },
+  "Circle": {
+    "value": "circle"
+  },
+  "Check Circle": {
+    "value": "check-circle"
+  },
   "Check Mark": {
     "value": "check"
   },

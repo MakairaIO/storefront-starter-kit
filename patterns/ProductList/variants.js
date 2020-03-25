@@ -3,6 +3,7 @@ export default [
     name: 'Default',
     props: {
       submitForms: async () => {},
+      resetAllFilters: async () => {},
       queryParams: {
         sortBy: 'price',
         order: 'desc',

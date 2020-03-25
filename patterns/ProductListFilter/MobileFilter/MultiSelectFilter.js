@@ -7,7 +7,7 @@ export default function MultiSelectFilter(props) {
 
   return (
     <ul>
-      {Object.values(filterValues).map(filter => (
+      {Object.values(filterValues).map((filter) => (
         <FilterEntry
           key={filter.key}
           id={id}
@@ -27,7 +27,7 @@ function FilterEntry(props) {
   if (Array.isArray(selectedValues)) {
     // lowercase values for normalization purposes
     isInitiallyActive = selectedValues
-      .map(val => val.toLowerCase())
+      .map((val) => val.toLowerCase())
       .includes(filterValue.toLowerCase())
   }
 
@@ -40,6 +40,8 @@ function FilterEntry(props) {
   return (
     <li className={classes}>
       <label>
+        <Icon symbol={isActive ? 'check-circle' : 'circle'} />
+
         {filterValue}
 
         <input
@@ -50,8 +52,6 @@ function FilterEntry(props) {
           onChange={() => setActive(!isActive)}
         />
       </label>
-
-      {isActive && <Icon symbol="check" />}
     </li>
   )
 }
