@@ -4,6 +4,7 @@ import Button, { buttonVariants } from '../patterns/Button'
 import Header, { headerVariants } from '../patterns/Header'
 import TeaserHero, { teaserHeroVariants } from '../patterns/TeaserHero'
 import TeaserSingle, { teaserSingleVariants } from '../patterns/TeaserSingle'
+import TwoColumnText, { twoColumnTextVariants } from '../patterns/TwoColumnText'
 import ProductList, { productListVariants } from '../patterns/ProductList'
 
 import Home from './examplePages/Home'
@@ -50,6 +51,12 @@ export default [
     name: 'Teaser (Single)',
     component: TeaserSingle,
     variants: teaserSingleVariants,
+  },
+  {
+    type: 'component',
+    name: 'Text (zweispaltig)',
+    component: TwoColumnText,
+    variants: twoColumnTextVariants,
   },
   {
     type: 'page',

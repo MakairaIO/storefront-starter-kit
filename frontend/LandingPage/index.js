@@ -1,11 +1,9 @@
 import { useGlobalData, useTranslation } from '../../utils'
-
-function Test() {
-  return <h1>Hi from Component Test</h1>
-}
+import { TeaserHero, TwoColumnText } from '../../patterns'
 
 const collection = {
-  SeoHeader: Test,
+  'teaser-hero': TeaserHero,
+  'two-column-text': TwoColumnText,
 }
 
 function Landingpage() {

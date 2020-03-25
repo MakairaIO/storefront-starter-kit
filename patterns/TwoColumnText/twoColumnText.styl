@@ -1,0 +1,37 @@
+$breakpoint-small = 600px
+$breakpoint-medium = 900px
+
+.two-column-text
+  padding 1.2rem
+  margin 0 auto
+
+  &--1-column
+    max-width 64rem
+
+  &--2-column
+    max-width 115rem
+
+    @media (min-width $breakpoint-small)
+      display flex
+      flex-wrap wrap
+
+  .heading
+    @media (min-width $breakpoint-small)
+      flex-basis 100%
+
+.two-column-text--2-column
+
+  .two-column-text__column
+    @media (min-width $breakpoint-small)
+      flex-basis calc(50% - 1.5rem) // 3rem margin
+
+    @media (min-width $breakpoint-medium)
+      flex-basis calc(50% - 3rem) // 3rem margin
+
+
+  .two-column-text__column + .two-column-text__column
+    @media (min-width $breakpoint-small)
+      margin-left 3rem
+
+    @media (min-width $breakpoint-medium)
+      margin-left 6rem
