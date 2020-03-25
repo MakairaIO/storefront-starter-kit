@@ -3,7 +3,7 @@ import { Icon, ConditionalLink } from '..'
 
 function Button(props) {
   const {
-    variant = '',
+    variant = 'secondary',
     className = '',
     icon = '',
     iconPosition = 'right',
@@ -15,7 +15,6 @@ function Button(props) {
   const classes = classNames(className, 'button', {
     [`button--${variant}`]: variant,
     [`button--icon`]: icon,
-    [`button--icon-only`]: icon && !children,
     [`button--icon-${iconPosition}`]: icon && iconPosition && children,
   })
 

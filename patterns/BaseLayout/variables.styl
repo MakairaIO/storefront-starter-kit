@@ -39,6 +39,21 @@ colors = json('../../config/colors.json', { hash: true })
 
     {name} value
 
+// Unforatunately, we can not use Stylus-built-in operators like
+// 'alpha, 'lighten' or 'darken' on CSS Custom Properties.
+// But we still do need a couple of "one-of"-colors, for example
+// to use on hover states in the Button component.
+//
+// To achieve this, we define a couple of custom properties below
+// that make use of the operators and will be used in rare cases.
+// If you want to change the overall theming, you will have to
+// make manual adjustments here according to the changes you made
+// in `config/colors.json`.
+:root
+  --hero-teaser-overlay-background-opaque alpha(#101C2D, 0.6) // based on var(--neutral-90)
+  --button-primary-alt-hover darken(#FF8E00, 2%) // based on var(--secondary)
+  --button-primary-alt-active darken(#FF8E00, 4%) // based var(--secondary)
+
 
 // define Custom Properties for z-indices
 :root

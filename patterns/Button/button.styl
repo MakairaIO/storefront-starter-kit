@@ -2,7 +2,6 @@
   display inline-block
   color var(--neutral-90)
   font-size 1.4rem
-  font-weight var(--font-weight-medium)
   line-height 1.8rem
   letter-spacing 0.03rem
   background var(--neutral-00)
@@ -13,35 +12,109 @@
 
   &:hover
     cursor pointer
-    background var(--tertiary)
-    border-color var(--neutral-40)
-    color var(--primary)
 
   &:disabled
     cursor auto
-    border-color var(--neutral-40)
-    color var(--neutral-40)
-
-    &:hover
-      background var(--neutral-00)
 
   &--primary
     background var(--primary)
     border-color var(--primary)
-    color var(--tertiary)
+    color var(--neutral-00)
+    font-weight var(--font-weight-medium)
 
     &:hover
-      background var(--neutral-50)
-      color var(--neutral-00)
+      background var(--neutral-90)
 
-  &--secondary
+    &:active
+      background var(--neutral-60)
+
+    &:disabled
+      background var(--idle)
+      border-color var(--neutral-30)
+      color var(--neutral-10)
+
+  &--primary-alt
     background var(--secondary)
     border-color var(--secondary)
     color var(--neutral-00)
+    font-weight var(--font-weight-medium)
 
     &:hover
-      background var(--brand-3)
-      color var(--neutral-00)
+      background var(--button-primary-alt-hover)
+
+    &:active
+      background var(--button-primary-alt-active)
+
+    &:disabled
+      background var(--neutral-30)
+      border-color var(--neutral-30)
+
+  &--secondary
+    background var(--neutral-00)
+    border-color var(--neutral-40)
+    color var(--primary)
+    font-weight var(--font-weight-medium)
+
+    &:hover
+      border-color var(--neutral-50)
+      color var(--neutral-90)
+
+    &:active
+      background var(--neutral-10)
+      border-color var(--primary)
+      color var(--neutral-90)
+
+    &:disabled
+      background var(--neutral-00)
+      border-color var(--neutral-20)
+      color var(--neutral-30)
+
+  &--tertiary
+    background var(--neutral-00)
+    border-color var(--neutral-40)
+    color var(--neutral-80)
+
+    &:hover
+      background var(--idle)
+      border-color var(--neutral-30)
+      color var(--primary)
+
+    &:active
+      background var(--neutral-00)
+      border-color var(--primary)
+      color var(--neutral-90)
+
+    &:disabled
+      background var(--neutral-00)
+      border-color var(--tertiary)
+      color var(--neutral-30)
+
+  &--link
+    color var(--neutral-70)
+    border none
+    padding 0.4rem 0.7rem 0.3rem
+    margin 0.4rem 0 0.2rem
+
+    &:hover
+      border 1px solid var(--neutral-40)
+
+    &:active
+      background var(--neutral-40)
+      border 1px solid var(--neutral-40)
+      color var(--neutral-80)
+
+    &:disabled
+      background var(--neutral-00)
+      border none
+      color var(--neutral-30)
+
+    &.button--icon-right
+      .button__text
+        margin-right 0
+
+    &.button--icon-left
+      .button__text
+        margin-left 00
 
   &--icon
     display inline-flex
@@ -49,6 +122,41 @@
 
   &--icon-only
     padding 0.8rem 0
+
+    &:hover
+      background var(--idle)
+      border-color var(--neutral-30)
+      color var(--primary)
+
+    &:active
+      background var(--neutral-00)
+      border-color var(--primary)
+      color var(--neutral-90)
+
+    &:disabled
+      background var(--neutral-00)
+      border-color var(--tertiary)
+      color var(--neutral-30)
+
+
+  &--link-icon
+    padding 0.8rem 0
+    background var(--neutral-00)
+    border none
+    color var(--neutral-90)
+
+    &:hover
+      background var(--neutral-10)
+      border 1px solid var(--neutral-10)
+
+    &:active
+      background var(--neutral-20)
+      border 1px solid var(--neutral-20)
+
+    &:disabled
+      background var(--neutral-00)
+      border none
+      color var(--neutral-30)
 
   &--icon-right
     .button__text
