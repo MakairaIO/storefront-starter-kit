@@ -22,7 +22,7 @@ export default function NavigationFlyoutColumn(props) {
             // FIXME: Only show icon when entry has subcategories itself
             <li key={entry.uuid}>
               <Link href={entry['link'][language]}>
-                {entry['text'][language]}
+                <span>{entry['text'][language]}</span>
 
                 <Icon symbol="chevron-right" />
               </Link>
