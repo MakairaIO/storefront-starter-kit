@@ -6,6 +6,7 @@ import { Heading, Button } from '../..'
 
 const filterComponents = {
   list_multiselect: MultiSelectFilter,
+  list_multiselect_custom_1: MultiSelectFilter,
   range_slider: RangeFilter,
 }
 

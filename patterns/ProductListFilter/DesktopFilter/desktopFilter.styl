@@ -20,13 +20,40 @@ $breakpoint-huge = 1250px
   &:last-of-type
     margin-bottom 3rem
 
-.desktop-filter__multi-select
+.desktop-filter__multi-select-item--default
+  font-size 1.4rem
+  line-height 1.8rem
+
+  &--active
+    font-weight var(--font-weight-medium)
+
+  & + &
+    margin-top 1.2rem
+
+  label
+    display flex
+    align-items center
+
+    &:hover
+      cursor pointer
+
+  .icon
+    display block
+    height 1.8rem
+    width 1.8rem
+    margin-right 0.6rem
+    color var(--neutral-70)
+
+  input
+    display none
+
+.desktop-filter__multi-select--grid
   display grid
   grid-template-columns repeat(3, 1fr)
   grid-gap 1rem
   grid-auto-flow dense
 
-.desktop-filter__item
+.desktop-filter__multi-select-item--grid
   background var(--neutral-00)
   border 1px solid var(--neutral-20)
   border-radius 5px
@@ -36,10 +63,10 @@ $breakpoint-huge = 1250px
     background var(--primary)
     color var(--neutral-10)
 
-  &--2-col
+  &-2-col
     grid-column span 2
 
-  &--3-col
+  &-3-col
     grid-column span 3
 
   label

@@ -1,4 +1,5 @@
 import MultiSelectFilter from './MultiSelectFilter'
+import MultiSelectFilterGrid from './MultiSelectFilterGrid'
 import RangeFilter from './RangeFilter'
 import FilterResetButton from '../../ProductList/FilterResetButton'
 import { Heading } from '../..'
@@ -6,6 +7,7 @@ import { useTranslation } from '../../../utils'
 
 const filterComponents = {
   list_multiselect: MultiSelectFilter,
+  list_multiselect_custom_1: MultiSelectFilterGrid,
   range_slider: RangeFilter,
 }
 

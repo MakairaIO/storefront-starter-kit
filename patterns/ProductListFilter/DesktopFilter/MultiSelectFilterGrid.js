@@ -1,11 +1,10 @@
 import classNames from 'classnames'
-import { Icon } from '../..'
 
-export default function MultiSelectFilter(props) {
+export default function MultiSelectFilterGrid(props) {
   const { id, values: filterValues, selectedValues, submitForms } = props
 
   return (
-    <ul className="desktop-filter__multi-select">
+    <ul className="desktop-filter__multi-select--grid">
       {Object.values(filterValues).map((filter) => {
         const { key: filterValue } = filter
 
@@ -18,18 +17,17 @@ export default function MultiSelectFilter(props) {
             .includes(filterValue.toLowerCase())
         }
 
-        const classes = classNames(
-          'desktop-filter__multi-select-item--default',
-          {
-            ['desktop-filter__multi-select-item--active']: isActive,
-          }
-        )
+        const classes = classNames('desktop-filter__multi-select-item--grid', {
+          ['desktop-filter__multi-select-item--grid-2-col']:
+            filterValue.length > 8,
+          ['desktop-filter__multi-select-item--grid-3-col']:
+            filterValue.length > 20,
+          ['desktop-filter__multi-select-item--grid-active']: isActive,
+        })
 
         return (
           <li key={filterValue} className={classes}>
             <label>
-              <Icon symbol={isActive ? 'check-circle' : 'circle'} />
-
               {filterValue}
 
               <input

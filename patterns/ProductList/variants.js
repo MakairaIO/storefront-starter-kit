@@ -25,11 +25,33 @@ export default [
           position: 10,
           showDocCount: null,
         },
+        manufacturer: {
+          title: 'Weingut',
+          key: 'manufacturer',
+          type: 'list_multiselect',
+          values: {
+            'Weingut Zelt': { key: 'Weingut Zelt', count: 6 },
+            'Weingut Zehnthof Luckert': {
+              key: 'Weingut Zehnthof Luckert',
+              count: 7,
+            },
+            'Weingut Wohlmuth': { key: 'Weingut Wohlmuth', count: 10 },
+            'Weingut William Fèvre': { key: 'Weingut William Fèvre', count: 4 },
+            'Weingut Walter': { key: 'Weingut Walter', count: 2 },
+            'Weingut Vierlinghof': { key: 'Weingut Vierlinghof', count: 2 },
+            'Weingut Van Volxem': { key: 'Weingut Van Volxem', count: 8 },
+            'Weingut Trenz': { key: 'Weingut Trenz', count: 5 },
+          },
+          min: null,
+          max: null,
+          selectedValues: ['Weingut Wohlmuth'],
+          position: 999,
+          showDocCount: false,
+        },
         color: {
           title: 'Color',
           key: 'color',
-          // type: 'list_multiselect_custom_1',
-          type: 'list_multiselect',
+          type: 'list_multiselect_custom_1',
           values: {
             red: {
               key: 'red',
@@ -81,7 +103,7 @@ export default [
         size: {
           title: 'Size',
           key: 'size',
-          type: 'list_multiselect',
+          type: 'list_multiselect_custom_1',
           values: {
             XXS: {
               key: 'XXS',
@@ -125,7 +147,7 @@ export default [
         features: {
           title: 'Features',
           key: 'features',
-          type: 'list_multiselect',
+          type: 'list_multiselect_custom_1',
           values: {
             'USB-C': {
               key: 'USB-C',
