@@ -1,5 +1,5 @@
 import { useTranslation } from '../../../utils'
-import { Icon, Link } from '../..'
+import { Icon, Link, ConditionalLink } from '../..'
 
 export default function NavigationFlyoutColumn(props) {
   const { language } = useTranslation()
@@ -9,12 +9,13 @@ export default function NavigationFlyoutColumn(props) {
 
   return (
     <div className="desktop-navigation__flyout-column">
-      <Link
+      <ConditionalLink
         href={link[language]}
         className="desktop-navigation__flyout-column-header"
+        fallbackElement="span"
       >
         {text[language]}
-      </Link>
+      </ConditionalLink>
 
       {hasSubcategories && (
         <ul className="desktop-navigation__flyout-column-list">
