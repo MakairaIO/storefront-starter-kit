@@ -14,6 +14,15 @@ export default class Pagination extends Component {
     this.state = { currentPageNr }
   }
 
+  static getDerivedStateFromProps(props) {
+    const { queryParams = {} } = props
+    const offset = queryParams.offset ?? 0
+
+    if (offset == 0) {
+      return { currentPageNr: 1 }
+    }
+  }
+
   calculateTotalNumberOfPages = () => {
     const { queryParams = {}, totalProductCount = 0 } = this.props
     const count = queryParams.count ?? process.env.PRODUCTS_PER_PAGE
