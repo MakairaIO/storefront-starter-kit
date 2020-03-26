@@ -153,8 +153,8 @@ export default [
             de: 'Technik',
           },
           link: {
-            en: '/',
-            de: '/',
+            en: '',
+            de: '',
           },
           uuid: '1ad7a6ee-c844-4ba6-879a-a94204026e87',
           children: [],

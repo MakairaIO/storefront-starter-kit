@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import classNames from 'classnames'
 import { useTranslation } from '../../../utils'
-import { Link } from '../..'
+import { ConditionalLink } from '../..'
 import ExpandIcon from './ExpandIcon'
 import SubcategoryList from './SubcategoryList'
 
@@ -34,10 +34,11 @@ export default function NavigationItem(props) {
   return (
     <>
       <li className={itemClasses}>
-        <Link
+        <ConditionalLink
           href={link[language]}
           onClick={handleClick}
           className="mobile-navigation__link"
+          fallbackElement="span"
         >
           <ExpandIcon
             isVisible={hasSubcategories && isMainCategory}
@@ -50,7 +51,7 @@ export default function NavigationItem(props) {
             isVisible={hasSubcategories && !isMainCategory}
             isExpanded={isExpanded}
           />
-        </Link>
+        </ConditionalLink>
       </li>
 
       <SubcategoryList
