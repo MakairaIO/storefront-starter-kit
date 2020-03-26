@@ -19,7 +19,6 @@ export default function NavigationFlyoutColumn(props) {
       {hasSubcategories && (
         <ul className="desktop-navigation__flyout-column-list">
           {children.map((entry) => (
-            // FIXME: Only show icon when entry has subcategories itself
             <li key={entry.uuid}>
               <Link href={entry['link'][language]}>
                 <span>{entry['text'][language]}</span>
