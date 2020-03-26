@@ -26,6 +26,7 @@ export default function Search(props) {
       </form>
 
       <Button
+        variant="icon-only"
         icon="search"
         className="header__action header__action--search"
         onClick={activateMobileSearch}
