@@ -17,10 +17,7 @@ export default async function submitProductListForms({
   const count = process.env.PRODUCTS_PER_PAGE
 
   const filterFormData = collectFilterFormData()
-  const makairaFilter = prepareFilterForQueryString(
-    filterFormData,
-    aggregations
-  )
+  const filter = prepareFilterForQueryString(filterFormData, aggregations)
 
   const sorterFormData = collectSorterFormData()
   const { sortBy, order } = prepareSortingForQueryString(sorterFormData)
@@ -30,7 +27,7 @@ export default async function submitProductListForms({
 
   const seoUrl = Router.asPath.replace(/\?.*$/, '') // remove queryString
   let parameters = {
-    makairaFilter,
+    filter,
     sortBy,
     order,
     count,

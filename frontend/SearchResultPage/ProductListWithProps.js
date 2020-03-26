@@ -9,7 +9,7 @@ export default function ProductListWithProps() {
   const { searchResult, params = {} } = useGlobalData()
 
   // restParams = sorting, pagination, ...
-  const { seoUrl, makairaFilter, searchPhrase, ...restParams } = params
+  const { seoUrl, filter, searchPhrase, ...restParams } = params
 
   const products = searchResult.product.items
   const aggregations = searchResult.product.aggregations

@@ -8,7 +8,7 @@
  * @returns {Object} Key-Value-Object containing the selected filter values
  */
 export default function prepareFilterForQueryString(formData, aggregations) {
-  const makairaFilter = Array.from(formData).reduce((filterObject, current) => {
+  const filter = Array.from(formData).reduce((filterObject, current) => {
     const [key, value] = current
 
     if (key.includes('_to') || key.includes('_from')) {
@@ -37,5 +37,5 @@ export default function prepareFilterForQueryString(formData, aggregations) {
     return filterObject
   }, {})
 
-  return makairaFilter
+  return filter
 }

@@ -111,9 +111,9 @@ describe('RequestBuilder', () => {
       expect(aggregations).toEqual({})
     })
 
-    it('should return makairaFilter when present in params', () => {
+    it('should return filter when present in params', () => {
       const params = {
-        makairaFilter: {
+        filter: {
           category: ['0f40c6a077b68c21f164767c4a903fd2'],
           price_from_price: '253',
         },
@@ -127,7 +127,7 @@ describe('RequestBuilder', () => {
 
       const aggregations = builder.getAggregations()
 
-      expect(aggregations).toEqual(params['makairaFilter'])
+      expect(aggregations).toEqual(params['filter'])
     })
   })
 

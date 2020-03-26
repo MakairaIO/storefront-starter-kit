@@ -21,11 +21,11 @@ class RequestBuilder {
   }
 
   getAggregations() {
-    const { makairaFilter } = this.params
+    const { filter } = this.params
 
-    if (!makairaFilter || isEmpty(makairaFilter)) return {}
+    if (!filter || isEmpty(filter)) return {}
 
-    return { ...makairaFilter }
+    return { ...filter }
   }
 
   getSorting() {
@@ -50,9 +50,9 @@ class RequestBuilder {
     if (process.browser) {
       const [, encodedUserAgent] = document.cookie
         .split(';')
-        .map(el => el.trim())
-        .map(el => el.split('='))
-        .find(el => el[0] === 'userAgent')
+        .map((el) => el.trim())
+        .map((el) => el.split('='))
+        .find((el) => el[0] === 'userAgent')
 
       userAgent = decodeURIComponent(encodedUserAgent)
     } else {
@@ -70,9 +70,9 @@ class RequestBuilder {
     if (process.browser) {
       const [, encodedIp] = document.cookie
         .split(';')
-        .map(el => el.trim())
-        .map(el => el.split('='))
-        .find(el => el[0] === 'ip')
+        .map((el) => el.trim())
+        .map((el) => el.split('='))
+        .find((el) => el[0] === 'ip')
 
       ip = decodeURIComponent(encodedIp)
     } else {
