@@ -1,7 +1,15 @@
-export default function preparePaginationForQuerySring(formData, count) {
+export default function preparePaginationForQuerySring(
+  formData,
+  count,
+  resetPagination
+) {
+  let offset = 0
+
+  if (resetPagination) return { offset }
+
   const pageNumber = formData.get('pageNumber') ?? 1
 
-  const offset = (pageNumber - 1) * count
+  offset = (pageNumber - 1) * count
 
   return { offset }
 }

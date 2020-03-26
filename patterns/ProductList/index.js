@@ -35,6 +35,10 @@ class ProductList extends Component {
     this.setState({ isMobileFilterVisible: false })
   }
 
+  submitFormsAndResetPagination = () => {
+    this.props.submitForms({ resetPagination: true })
+  }
+
   render() {
     const {
       products = [],
@@ -70,7 +74,7 @@ class ProductList extends Component {
             totalProductCount={totalProductCount}
             isMobileFilterVisible={this.state.isMobileFilterVisible}
             hideMobileFilter={dispatchOverlayClickedEvent} // for simplicity, we just simulate a click on the overlay and let the lifecycle of this component take care of everything
-            submitForms={submitForms}
+            submitForms={this.submitFormsAndResetPagination}
             resetAllFilters={resetAllFilters}
           />
 

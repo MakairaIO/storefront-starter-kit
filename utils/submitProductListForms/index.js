@@ -13,6 +13,7 @@ export default async function submitProductListForms({
   aggregations = {},
   isSearch = false,
   searchPhrase = '',
+  resetPagination = false,
 }) {
   const count = process.env.PRODUCTS_PER_PAGE
 
@@ -23,7 +24,11 @@ export default async function submitProductListForms({
   const { sortBy, order } = prepareSortingForQueryString(sorterFormData)
 
   const paginationFormData = collectPaginationFormData()
-  const { offset } = preparePaginationForQueryString(paginationFormData, count)
+  const { offset } = preparePaginationForQueryString(
+    paginationFormData,
+    count,
+    resetPagination
+  )
 
   const seoUrl = Router.asPath.replace(/\?.*$/, '') // remove queryString
   let parameters = {
