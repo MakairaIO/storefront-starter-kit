@@ -29,7 +29,7 @@ export default class RangeFilter extends Component {
     }
   }
 
-  handleChange = values => {
+  handleChange = (values) => {
     const [selectedMin, selectedMax] = values
 
     this.setState({ selectedMin, selectedMax })
@@ -62,8 +62,8 @@ export default class RangeFilter extends Component {
         </span>
 
         <Range
-          min={min}
-          max={max}
+          min={Math.trunc(min)}
+          max={Math.trunc(max)}
           defaultValue={[selectedMin, selectedMax]}
           onChange={this.handleChange}
           handleStyle={styles.handleStyle}
