@@ -119,6 +119,11 @@
     "variableName": "--info",
     "group": "state"
   },
+  "Link": {
+    "value": "#2669B3",
+    "variableName": "--link",
+    "group": "state"
+  },
   "Notification": {
     "value": "#6FC4FF",
     "variableName": "--notification",

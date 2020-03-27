@@ -18,3 +18,57 @@
       line-height 2.4rem
       padding 0
 
+
+  // Styling for generic html elements, e.g. in cases
+  // of WYSIWYG texts
+  p
+    margin-bottom 1.2rem
+
+  * + p
+    margin-top 0.6rem
+
+  a
+    text-decoration underline
+    color var(--link)
+    font-weight var(--font-weight-medium)
+    letter-spacing 0.02rem
+
+    &:hover
+      text-decoration none
+
+    &:active
+      color var(--notification)
+      text-decoration none
+
+  strong
+    font-weight var(--font-weight-semi-bold)
+
+  ul
+  ol
+    padding-left 3.6rem
+
+    li
+      padding-left 0.2rem
+
+    li + li
+      margin-top 1.2rem
+
+  ol
+    list-style-type decimal
+
+  ul
+    li
+      position relative
+
+    li:before
+      display block
+      content ''
+      height 0.8rem
+      width 0.8rem
+      background var(--neutral-60)
+      border 1px solid var(--primary)
+      border-radius 4px
+      position absolute
+      left -1.6rem
+      top 0.4rem
+
