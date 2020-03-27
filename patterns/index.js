@@ -1,4 +1,5 @@
 export { default as SVGSprite } from './SVGSprite'
+export { default as ContentElements } from './ContentElements'
 export { default as Link } from './Link'
 export { default as ConditionalLink } from './ConditionalLink'
 export { default as FormattedPrice } from './FormattedPrice'
