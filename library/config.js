@@ -1,11 +1,15 @@
-import Heading, { headingVariants } from '../patterns/Heading'
-import Copytext, { copytextVariants } from '../patterns/Copytext'
-import Button, { buttonVariants } from '../patterns/Button'
-import Header, { headerVariants } from '../patterns/Header'
-import TeaserHero, { teaserHeroVariants } from '../patterns/TeaserHero'
-import TeaserSingle, { teaserSingleVariants } from '../patterns/TeaserSingle'
-import TwoColumnText, { twoColumnTextVariants } from '../patterns/TwoColumnText'
-import ProductList, { productListVariants } from '../patterns/ProductList'
+import Heading, { headingVariants } from '../patterns/core/Heading'
+import Copytext, { copytextVariants } from '../patterns/core/Copytext'
+import Button, { buttonVariants } from '../patterns/core/Button'
+import Header, { headerVariants } from '../patterns/core/Header'
+import TeaserHero, { teaserHeroVariants } from '../patterns/core/TeaserHero'
+import TeaserSingle, {
+  teaserSingleVariants,
+} from '../patterns/core/TeaserSingle'
+import TwoColumnText, {
+  twoColumnTextVariants,
+} from '../patterns/core/TwoColumnText'
+import ProductList, { productListVariants } from '../patterns/core/ProductList'
 
 import Home from './examplePages/Home'
 
