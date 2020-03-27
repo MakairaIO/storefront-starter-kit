@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
-class MyDocument extends Document {
+export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx)
 
@@ -17,6 +17,8 @@ class MyDocument extends Document {
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
           />
           <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
+
+          <Favicon />
         </Head>
         <body>
           <Main />
@@ -37,4 +39,6 @@ class MyDocument extends Document {
   }
 }
 
-export default MyDocument
+function Favicon() {
+  return null
+}
