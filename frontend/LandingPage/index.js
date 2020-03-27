@@ -1,4 +1,5 @@
 import { useGlobalData, useTranslation } from '../../utils'
+import Metadata from './Metadata'
 import { TeaserHero, TwoColumnText } from '../../patterns'
 
 const collection = {
@@ -16,6 +17,8 @@ function Landingpage() {
 
   return (
     <main>
+      <Metadata />
+
       {elements.map((entry, index) => {
         const Component = collection[entry.component]
 
