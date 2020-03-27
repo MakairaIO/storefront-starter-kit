@@ -84,6 +84,7 @@ class ProductList extends Component {
             ))}
 
             <Pagination
+              key={queryParams.offset ?? 0} // reset Pagination to re-run constructor when offset change (e.g. when a filter is clicked)
               queryParams={queryParams}
               totalProductCount={totalProductCount}
               submitForms={submitForms}
