@@ -6,6 +6,9 @@ import TeaserHero, { teaserHeroVariants } from '../patterns/TeaserHero'
 import TeaserSingle, { teaserSingleVariants } from '../patterns/TeaserSingle'
 import TwoColumnText, { twoColumnTextVariants } from '../patterns/TwoColumnText'
 import ProductList, { productListVariants } from '../patterns/ProductList'
+import ProductPlacement, {
+  productPlacementVariants,
+} from '../patterns/ProductPlacement'
 
 import Home from './examplePages/Home'
 
@@ -39,6 +42,12 @@ export default [
     name: 'Product List',
     component: ProductList,
     variants: productListVariants,
+  },
+  {
+    type: 'component',
+    name: 'Product Placement',
+    component: ProductPlacement,
+    variants: productPlacementVariants,
   },
   {
     type: 'component',
