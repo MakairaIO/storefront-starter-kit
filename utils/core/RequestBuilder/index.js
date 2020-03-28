@@ -2,7 +2,7 @@ import isEmpty from 'lodash/isEmpty'
 import qs from 'qs'
 
 class RequestBuilder {
-  constructor(ctx) {
+  constructor(ctx = {}) {
     const { req, res, query = {} } = ctx
     const { seoUrl, ...params } = qs.parse(query)
 
@@ -11,13 +11,21 @@ class RequestBuilder {
     this.params = params
   }
 
-  getConstraints() {
-    return {
+  getConstraints(additionalConstraints = {}) {
+    let constraints = {
       'query.shop_id': process.env.SHOP_ID,
       'query.use_stock': true,
       'oi.user.agent': this.getUserAgent(),
       'oi.user.ip': this.getIpAddress(),
     }
+
+    const { language } = additionalConstraints
+
+    if (language) {
+      constraints['query.language'] = language
+    }
+
+    return constraints
   }
 
   getAggregations() {

@@ -23,7 +23,7 @@ export default async function fetchPageData({ ctx }) {
     constraints,
   }
 
-  const page = await fetchFromMakaira(body)
+  const page = await fetchFromMakaira({ body })
 
   return page
 }

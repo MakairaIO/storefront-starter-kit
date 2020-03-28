@@ -15,9 +15,11 @@ export default async function fetchSearchResult({ ctx }) {
   const sorting = builder.getSorting()
   const [count, offset] = builder.getPagination()
 
+  const isSearch = true
+
   const body = {
     searchPhrase: ctx.query.searchPhrase,
-    isSearch: true,
+    isSearch,
     enableAggregations: true,
     aggregations,
     sorting,
@@ -29,7 +31,7 @@ export default async function fetchSearchResult({ ctx }) {
     },
   }
 
-  let page = await fetchFromMakaira(body)
+  let page = await fetchFromMakaira({ body, isSearch })
   page.language = language
 
   return page

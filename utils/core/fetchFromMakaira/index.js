@@ -1,13 +1,21 @@
 import fetch from 'isomorphic-unfetch'
 
-export default async function fetchFromMakaira(body) {
+function getEndpoint({ isSearch, isSnippet }) {
   let url = process.env.MAKAIRA_API_URL
 
-  if (body.isSearch) {
-    url += '/search/public'
-  } else {
-    url += '/enterprise/page'
-  }
+  if (isSearch) return url + '/search/public'
+
+  if (isSnippet) return url + '/enterprise/snippets'
+
+  return url + '/enterprise/page'
+}
+
+export default async function fetchFromMakaira({
+  body,
+  isSearch = false,
+  isSnippet = false,
+}) {
+  const url = getEndpoint({ isSnippet, isSearch })
 
   const response = await fetch(url, {
     method: 'POST',
