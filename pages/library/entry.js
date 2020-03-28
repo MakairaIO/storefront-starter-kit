@@ -19,7 +19,7 @@ const mainComponents = {
 function NavigationList({ entries, visibleEntry, setVisibleEntry }) {
   return (
     <>
-      {entries.map(entry => {
+      {entries.map((entry) => {
         const isActive = entry.name === visibleEntry.entry.name
         const listItemClasses =
           'pali__list-item' + (isActive ? ' pali__list-item--active' : '')
@@ -59,13 +59,20 @@ export default function Index() {
     entry: {},
   })
 
-  const components = componentConfig.filter(entry => entry.type === 'component')
-  const pages = componentConfig.filter(entry => entry.type === 'page')
+  const components = componentConfig.filter(
+    (entry) => entry.type === 'component'
+  )
+  const pages = componentConfig.filter((entry) => entry.type === 'page')
 
   const MainComponent = mainComponents[visibleEntry.type]
 
   const navigationClasses =
     'pali__nav' + (isNavigationVisible ? ' pali__nav--visible' : '')
+
+  function handleNavigationClick(entry) {
+    toggleNavigation(false)
+    setVisibleEntry(entry)
+  }
 
   return (
     <div className="pali__wrapper">
@@ -87,21 +94,21 @@ export default function Index() {
             label="Colors"
             type="color"
             visibleEntry={visibleEntry}
-            setVisibleEntry={setVisibleEntry}
+            setVisibleEntry={handleNavigationClick}
           />
 
           <NavigationEntryBasic
             label="Typography"
             type="typography"
             visibleEntry={visibleEntry}
-            setVisibleEntry={setVisibleEntry}
+            setVisibleEntry={handleNavigationClick}
           />
 
           <NavigationEntryBasic
             label="Icons"
             type="icon"
             visibleEntry={visibleEntry}
-            setVisibleEntry={setVisibleEntry}
+            setVisibleEntry={handleNavigationClick}
           />
 
           <li className="pali__list-item pali__list-header">Components</li>
@@ -109,7 +116,7 @@ export default function Index() {
           <NavigationList
             entries={components}
             visibleEntry={visibleEntry}
-            setVisibleEntry={setVisibleEntry}
+            setVisibleEntry={handleNavigationClick}
           />
 
           <li className="pali__list-item pali__list-header">Example Pages</li>
@@ -117,7 +124,7 @@ export default function Index() {
           <NavigationList
             entries={pages}
             visibleEntry={visibleEntry}
-            setVisibleEntry={setVisibleEntry}
+            setVisibleEntry={handleNavigationClick}
           />
         </ul>
       </nav>
