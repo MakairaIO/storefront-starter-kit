@@ -16,6 +16,6 @@ export { default as ProductList } from './core/ProductList'
 export { default as ProductListFilter } from './core/ProductListFilter'
 export { default as TeaserSingle } from './core/TeaserSingle'
 export { default as TeaserHero } from './core/TeaserHero'
-export { default as TwoColumnText } from './core/TwoColumnText'
+export { default as MultiColumnText } from './core/MultiColumnText'
 
 /* Add project specific patterns here */

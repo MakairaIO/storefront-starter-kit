@@ -6,9 +6,9 @@ import TeaserHero, { teaserHeroVariants } from '../patterns/core/TeaserHero'
 import TeaserSingle, {
   teaserSingleVariants,
 } from '../patterns/core/TeaserSingle'
-import TwoColumnText, {
-  twoColumnTextVariants,
-} from '../patterns/core/TwoColumnText'
+import MultiColumnText, {
+  multiColumnTextVariants,
+} from '../patterns/core/MultiColumnText'
 import ProductList, { productListVariants } from '../patterns/core/ProductList'
 
 import Home from './examplePages/Home'
@@ -58,9 +58,9 @@ export default [
   },
   {
     type: 'component',
-    name: 'Text (zweispaltig)',
-    component: TwoColumnText,
-    variants: twoColumnTextVariants,
+    name: 'Text (mehrspaltig)',
+    component: MultiColumnText,
+    variants: multiColumnTextVariants,
   },
   {
     type: 'page',
