@@ -17,7 +17,7 @@ export default function ProductTile(props) {
     <article className="product-item">
       <Link href={url}>
         <picture className="product-item__image">
-          <img src={picture_url_main} alt={title} />
+          <img data-src={picture_url_main} alt={title} />
         </picture>
 
         <ProductVariants {...props} />

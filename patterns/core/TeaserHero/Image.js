@@ -1,4 +1,4 @@
-import { useConfiguration } from '../../../utils'
+import { useConfiguration, useLazyLoading } from '../../../utils'
 
 export default function Image(props) {
   const { getImageLink } = useConfiguration()
@@ -6,9 +6,11 @@ export default function Image(props) {
 
   const imageLink = getImageLink({ source: src })
 
+  useLazyLoading({ selector: '.hero-teaser__image', dependency: src })
+
   return (
     <picture className="hero-teaser__image">
-      <img src={imageLink} alt={alt} />
+      <img data-src={imageLink} alt={alt} />
     </picture>
   )
 }

@@ -13,6 +13,7 @@ export {
   TranslationProvider,
   useTranslation,
 } from './core/TranslationProvider'
+export { default as useLazyLoading } from './core/useLazyLoading'
 export { default as logError } from './core/logError'
 export { default as throttle } from './core/throttle'
 export { default as debounce } from './core/debounce'

@@ -1,4 +1,4 @@
-import { useConfiguration } from '../../../utils'
+import { useConfiguration, useLazyLoading } from '../../../utils'
 import { Heading, Copytext, Button, ConditionalLink } from '../..'
 
 function TeaserSingle(props) {
@@ -7,11 +7,13 @@ function TeaserSingle(props) {
 
   const imageLink = getImageLink({ source: image.src })
 
+  useLazyLoading({ selector: '.single-teaser', dependency: image.src })
+
   return (
     <section className="single-teaser">
       <ConditionalLink href={link}>
         <picture className="single-teaser__image">
-          <img src={imageLink} alt={image.alt} />
+          <img data-src={imageLink} alt={image.alt} />
         </picture>
       </ConditionalLink>
 

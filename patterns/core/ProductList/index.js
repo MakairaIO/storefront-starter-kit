@@ -2,8 +2,8 @@ import { Component } from 'react'
 import FilterButton from './FilterButton'
 import FilterResetButton from './FilterResetButton'
 import Sorter from './Sorter'
+import List from './List'
 import Pagination from './Pagination'
-import ProductTile from './ProductTile'
 import { ProductListFilter } from '../..'
 import {
   getNumberOfActiveFilters,
@@ -79,9 +79,7 @@ class ProductList extends Component {
           />
 
           <div className="product-list__list">
-            {products.map((product) => (
-              <ProductTile key={product.id} {...product.fields} />
-            ))}
+            <List products={products} />
 
             <Pagination
               key={queryParams.offset ?? 0} // reset Pagination to re-run constructor when offset change (e.g. when a filter is clicked)

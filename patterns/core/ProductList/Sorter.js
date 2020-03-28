@@ -20,10 +20,10 @@ export default function Sorter(props) {
     }
   }
 
-  useEffect(() => {
+  useEffect(function handleClickOutside() {
     window.addEventListener('click', hideWhenClickOutside)
 
-    return () => {
+    return function cleanup() {
       window.removeEventListener('click', hideWhenClickOutside)
     }
   })
