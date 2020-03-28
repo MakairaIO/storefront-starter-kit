@@ -36,12 +36,10 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "chalk": "^3.0.0",
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.1",
-    "inquirer": "^7.1.0",
     "jest": "^25.1.0",
     "lint-staged": "^10.0.8",
     "nodemon": "^2.0.2",
@@ -58,9 +56,6 @@
       "eslint --fix",
       "prettier --write"
     ]
-  },
-  "bin": {
-    "makaira": "./bin/index.js"
   },
   "engines": {
     "node": "13.9.0"
