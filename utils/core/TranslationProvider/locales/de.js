@@ -6,6 +6,7 @@ export default {
   INFO_LINK_IMPRINT: '#todo',
   INFO_TEXT_SHIPPING: 'Versandkosten',
   INFO_LINK_SHIPPING: '#todo',
+  MOBILE_FILTER_PARENT_ITEM: 'Übersicht',
   SORT_OPTION_DEFAULT: 'Relevanz',
   SORT_OPTION_PRICE_ASC: 'Niedrigster Preis',
   SORT_OPTION_PRICE_DESC: 'Höchster Preis',

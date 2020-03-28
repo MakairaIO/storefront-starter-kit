@@ -57,6 +57,7 @@ export default function NavigationItem(props) {
       <SubcategoryList
         isVisible={hasSubcategories && isExpanded}
         subcategories={children}
+        parent={{ link, shouldRender: !!link[language] }}
       />
     </>
   )
