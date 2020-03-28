@@ -23,7 +23,7 @@ export default [
       heading: { ...headingProps },
       overlay: { ...overlayProps },
       image: {
-        src: '/assets/images/teaserHero/example.jpg',
+        src: 'assets/images/teaserHero/example.jpg',
         alt: 'Alt Text',
       },
       link: '/',
@@ -35,7 +35,7 @@ export default [
       heading: { ...headingProps },
       overlay: { ...overlayProps, button: { isVisible: false } },
       image: {
-        src: '/assets/images/teaserHero/example.jpg',
+        src: 'assets/images/teaserHero/example.jpg',
         alt: 'Alt Text',
       },
       link: '#todo',
@@ -47,7 +47,7 @@ export default [
       heading: { ...headingProps },
       overlay: { ...overlayProps, isVisible: false },
       image: {
-        src: '/assets/images/teaserHero/example.jpg',
+        src: 'assets/images/teaserHero/example.jpg',
         alt: 'Alt Text',
       },
       link: '#todo',
@@ -59,7 +59,7 @@ export default [
       heading: { ...headingProps, isVisible: false },
       overlay: { ...overlayProps },
       image: {
-        src: '/assets/images/teaserHero/example.jpg',
+        src: 'assets/images/teaserHero/example.jpg',
         alt: 'Alt Text',
       },
       link: '#todo',
@@ -71,7 +71,7 @@ export default [
       heading: { ...headingProps, isVisible: false },
       overlay: { ...overlayProps, isVisible: false },
       image: {
-        src: '/assets/images/teaserHero/example.jpg',
+        src: 'assets/images/teaserHero/example.jpg',
         alt: 'Alt Text',
       },
       link: '',

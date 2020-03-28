@@ -9,6 +9,7 @@ import {
 import { BaseLayout } from '../../patterns'
 import {
   GlobalDataProvider,
+  ConfigurationProvider,
   TranslationProvider,
   fetchPageData,
   fetchMenuData,
@@ -88,13 +89,15 @@ export default class Index extends Component {
 
     return (
       <GlobalDataProvider {...this.props}>
-        <TranslationProvider language={language}>
-          <BaseLayout>
-            <HeaderWithProps />
+        <ConfigurationProvider assetUrl={process.env.MAKAIRA_ASSET_URL}>
+          <TranslationProvider language={language}>
+            <BaseLayout>
+              <HeaderWithProps />
 
-            <PageComponent />
-          </BaseLayout>
-        </TranslationProvider>
+              <PageComponent />
+            </BaseLayout>
+          </TranslationProvider>
+        </ConfigurationProvider>
       </GlobalDataProvider>
     )
   }

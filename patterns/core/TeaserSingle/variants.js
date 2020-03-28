@@ -6,7 +6,7 @@ export default [
       text:
         'Copytext Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna accusam et justo duo.',
       image: {
-        src: '/assets/images/teaserSingle/example.jpg',
+        src: 'assets/images/teaserSingle/example.jpg',
         alt: 'Alt Text',
       },
       button: {
@@ -23,7 +23,7 @@ export default [
       text:
         'Copytext Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna accusam et justo duo.',
       image: {
-        src: '/assets/images/teaserSingle/example.jpg',
+        src: 'assets/images/teaserSingle/example.jpg',
         alt: 'Alt Text',
       },
       button: {
