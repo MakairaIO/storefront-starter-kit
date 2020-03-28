@@ -1,13 +1,17 @@
+import { useConfiguration } from '../../../utils'
 import { Heading, Copytext, Button, ConditionalLink } from '../..'
 
 function TeaserSingle(props) {
+  const { getImageLink } = useConfiguration()
   const { heading = '', text = '', image = {}, button = {}, link = '' } = props
+
+  const imageLink = getImageLink({ source: image.src })
 
   return (
     <section className="single-teaser">
       <ConditionalLink href={link}>
         <picture className="single-teaser__image">
-          <img src={image.src} alt={image.alt} />
+          <img src={imageLink} alt={image.alt} />
         </picture>
       </ConditionalLink>
 
