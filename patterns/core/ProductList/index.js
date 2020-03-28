@@ -3,7 +3,6 @@ import FilterButton from './FilterButton'
 import FilterResetButton from './FilterResetButton'
 import Sorter from './Sorter'
 import List from './List'
-import Pagination from './Pagination'
 import { ProductListFilter } from '../..'
 import {
   getNumberOfActiveFilters,
@@ -78,16 +77,12 @@ class ProductList extends Component {
             resetAllFilters={resetAllFilters}
           />
 
-          <div className="product-list__list">
-            <List products={products} />
-
-            <Pagination
-              key={queryParams.offset ?? 0} // reset Pagination to re-run constructor when offset change (e.g. when a filter is clicked)
-              queryParams={queryParams}
-              totalProductCount={totalProductCount}
-              submitForms={submitForms}
-            />
-          </div>
+          <List
+            products={products}
+            queryParams={queryParams}
+            totalProductCount={totalProductCount}
+            submitForms={submitForms}
+          />
         </div>
       </section>
     )

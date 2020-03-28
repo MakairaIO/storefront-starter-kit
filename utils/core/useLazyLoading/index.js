@@ -1,7 +1,15 @@
 import { useEffect } from 'react'
 
+/**
+ * In case you are wondering, why we go the extra mile here and
+ * use refs instead of simple selectors:
+ * When you try to select elements based on `document.querySelectorAll`,
+ * the patterns will fail to work in the variant-preview of the pattern library.
+ * Reason for that is, that the iframes in the variant-preview will have different
+ * document-contexts and are therefore not able to select the correct elements. :/
+ */
 export default function useLazyLoading({
-  selector = '',
+  ref = {},
   dependency = null,
   customOptions = {},
 }) {
@@ -18,6 +26,10 @@ export default function useLazyLoading({
 
   useEffect(
     function initLazyLoading() {
+      const { current: containingElement } = ref
+
+      if (!containingElement) return
+
       const callback = (entries, observer) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) {
@@ -36,8 +48,8 @@ export default function useLazyLoading({
 
       const observer = new IntersectionObserver(callback, options)
 
-      document
-        .querySelectorAll(`${selector} [data-src], ${selector} [data-srcset]`)
+      containingElement
+        .querySelectorAll(`[data-src], [data-srcset]`)
         .forEach((element) => {
           observer.observe(element)
         })
@@ -46,6 +58,6 @@ export default function useLazyLoading({
         observer.disconnect()
       }
     },
-    [selector, dependency, options]
+    [ref, dependency, options]
   )
 }
