@@ -1,5 +1,5 @@
-import { Button } from '..'
-import { useTranslation } from '../../utils'
+import { Button } from '../..'
+import { useTranslation } from '../../../utils'
 
 export default function ProductActions() {
   const { t } = useTranslation()

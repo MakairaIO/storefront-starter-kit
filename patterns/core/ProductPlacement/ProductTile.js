@@ -1,4 +1,4 @@
-import { Heading, Link } from '..'
+import { Heading, Link } from '../..'
 import ProductPrices from './ProductPrices'
 import ProductPriceHint from './ProductPriceHint'
 import ProductActions from './ProductActions'

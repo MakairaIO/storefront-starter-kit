@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { FormattedPrice } from '..'
+import { FormattedPrice } from '../..'
 
 // TODO: real check for reduced prices
 // TODO: handle reduced pricing and related styling properly

@@ -5,7 +5,7 @@ import Header, { headerVariants } from '../patterns/core/Header'
 import ProductList, { productListVariants } from '../patterns/core/ProductList'
 import ProductPlacement, {
   productPlacementVariants,
-} from '../patterns/ProductPlacement'
+} from '../patterns/core/ProductPlacement'
 import TeaserHero, { teaserHeroVariants } from '../patterns/core/TeaserHero'
 import TeaserProducts, {
   teaserProductsVariants,
