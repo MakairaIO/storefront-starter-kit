@@ -3,6 +3,9 @@ import Copytext, { copytextVariants } from '../patterns/core/Copytext'
 import Button, { buttonVariants } from '../patterns/core/Button'
 import Header, { headerVariants } from '../patterns/core/Header'
 import TeaserHero, { teaserHeroVariants } from '../patterns/core/TeaserHero'
+import TeaserProducts, {
+  teaserProductsVariants,
+} from '../patterns/core/TeaserProducts'
 import TeaserSingle, {
   teaserSingleVariants,
 } from '../patterns/core/TeaserSingle'
@@ -55,6 +58,12 @@ export default [
     name: 'Teaser (Single)',
     component: TeaserSingle,
     variants: teaserSingleVariants,
+  },
+  {
+    type: 'component',
+    name: 'Teaser (Products)',
+    component: TeaserProducts,
+    variants: teaserProductsVariants,
   },
   {
     type: 'component',

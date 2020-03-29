@@ -23,4 +23,5 @@ export default {
   MOBILE_FILTER_RESET_ALL: 'alle Filter zurücksetzen',
   DESKTOP_FILTER_RESET_ALL: 'Alle Filter zurücksetzen',
   PRODUCT_TILE_ADD_TO_CART: 'In den Warenkorb',
+  PRODUCT_TILE_TO_PRODUCT: 'Zum Produkt',
 }

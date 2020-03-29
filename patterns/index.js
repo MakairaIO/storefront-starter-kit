@@ -14,8 +14,9 @@ export { default as Header } from './core/Header'
 export { default as GlobalNavigation } from './core/GlobalNavigation'
 export { default as ProductList } from './core/ProductList'
 export { default as ProductListFilter } from './core/ProductListFilter'
-export { default as TeaserSingle } from './core/TeaserSingle'
 export { default as TeaserHero } from './core/TeaserHero'
+export { default as TeaserProducts } from './core/TeaserProducts'
+export { default as TeaserSingle } from './core/TeaserSingle'
 export { default as MultiColumnText } from './core/MultiColumnText'
 
 /* Add project specific patterns here */
