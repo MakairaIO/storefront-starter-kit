@@ -14,8 +14,8 @@ class ProductPlacement extends Component {
     return (
       <section className="product-placement">
         <div className="product-placement__text">
-          <Heading>{heading}</Heading>
-          <Copytext>{text}</Copytext>
+          {heading && <Heading>{heading}</Heading>}
+          {text && <Copytext>{text}</Copytext>}
         </div>
 
         <div className="product-placement__list">
