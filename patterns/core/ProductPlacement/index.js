@@ -13,7 +13,7 @@ function ProductPlacement(props) {
 
       <div className="product-placement__list">
         {products.map((product) => (
-          <ProductTile key={product.id} {...product.fields} />
+          <ProductTile key={product.ean} {...product} />
         ))}
       </div>
     </section>
