@@ -18,10 +18,10 @@ export default function ProductListWithProps() {
   const productListProps = {
     products,
     aggregations,
-    submitForms: (options = {}) => {
+    submitForms: async (options = {}) => {
       const { resetPagination = false } = options
 
-      submitProductListForms({ aggregations, resetPagination })
+      await submitProductListForms({ aggregations, resetPagination })
     },
     resetAllFilters: resetAllProductListFilters,
     queryParams: restParams,

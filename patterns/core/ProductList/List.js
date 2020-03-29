@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import classNames from 'classnames'
 import { useLazyLoading } from '../../../utils'
 import ProductTile from './ProductTile'
 import Pagination from './Pagination'
@@ -9,13 +10,18 @@ export default function List(props) {
     queryParams = {},
     totalProductCount = 0,
     submitForms,
+    isLoading = false,
   } = props
   const listRef = useRef(null)
 
   useLazyLoading({ ref: listRef, dependency: products })
 
+  const classes = classNames('product-list__list', {
+    ['product-list__list--loading']: isLoading,
+  })
+
   return (
-    <div ref={listRef} className="product-list__list">
+    <div ref={listRef} className={classes}>
       {products.map((product) => (
         <ProductTile key={product.id} {...product.fields} />
       ))}

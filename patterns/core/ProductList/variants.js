@@ -1,8 +1,10 @@
+import { wait } from '../../../utils'
+
 export default [
   {
     name: 'Default',
     props: {
-      submitForms: async () => {},
+      submitForms: async () => await wait(200),
       resetAllFilters: async () => {},
       queryParams: {
         sortBy: 'price',

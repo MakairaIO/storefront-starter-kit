@@ -8,13 +8,14 @@ import {
   getNumberOfActiveFilters,
   dispatchShowOverlayEvent,
   dispatchOverlayClickedEvent,
+  scrollTo,
 } from '../../../utils'
 
 class ProductList extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { isMobileFilterVisible: false }
+    this.state = { isMobileFilterVisible: false, isLoading: false }
   }
 
   componentDidMount() {
@@ -34,15 +35,28 @@ class ProductList extends Component {
     this.setState({ isMobileFilterVisible: false })
   }
 
-  submitFormsAndResetPagination = () => {
-    this.props.submitForms({ resetPagination: true })
+  handleFormSubmit = async (options = {}) => {
+    const { resetPagination = false } = options
+
+    this.setState({ isLoading: true })
+    await this.props.submitForms({ resetPagination })
+    this.setState({ isLoading: false })
+  }
+
+  handleFormSubmitWithPaginationReset = () => {
+    this.handleFormSubmit({ resetPagination: true })
+  }
+
+  handlePagination = () => {
+    scrollTo({ id: 'body' })
+
+    this.handleFormSubmit()
   }
 
   render() {
     const {
       products = [],
       aggregations = {},
-      submitForms,
       resetAllFilters,
       queryParams = {},
       totalProductCount = 0,
@@ -63,7 +77,10 @@ class ProductList extends Component {
             resetAllFilters={resetAllFilters}
           />
 
-          <Sorter queryParams={queryParams} submitForms={submitForms} />
+          <Sorter
+            queryParams={queryParams}
+            submitForms={this.handleFormSubmit}
+          />
         </div>
 
         <div className="product-list__wrapper">
@@ -73,7 +90,7 @@ class ProductList extends Component {
             totalProductCount={totalProductCount}
             isMobileFilterVisible={this.state.isMobileFilterVisible}
             hideMobileFilter={dispatchOverlayClickedEvent} // for simplicity, we just simulate a click on the overlay and let the lifecycle of this component take care of everything
-            submitForms={this.submitFormsAndResetPagination}
+            submitForms={this.handleFormSubmitWithPaginationReset}
             resetAllFilters={resetAllFilters}
           />
 
@@ -81,7 +98,8 @@ class ProductList extends Component {
             products={products}
             queryParams={queryParams}
             totalProductCount={totalProductCount}
-            submitForms={submitForms}
+            submitForms={this.handlePagination}
+            isLoading={this.state.isLoading}
           />
         </div>
       </section>

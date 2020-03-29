@@ -22,6 +22,10 @@ $breakpoint-huge = 1150px
   grid-template-columns 1fr
   grid-gap 2.4rem 0
   width 100%
+  transition opacity 100ms ease-in
+
+  &--loading
+    opacity 0.2
 
   @media (min-width $breakpoint-small)
     // see https://stackoverflow.com/a/52861514
