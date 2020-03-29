@@ -8,11 +8,15 @@ import MultiColumnText, {
 import TeaserProducts, {
   teaserProductsVariants,
 } from '../../../patterns/core/TeaserProducts'
+import ProductPlacement, {
+  productPlacementVariants,
+} from '../../../patterns/core/ProductPlacement'
 
 const headerProps = headerVariants[0].props
 const teaserHeroProps = teaserHeroVariants[0].props
 const multiColumnTextProps = multiColumnTextVariants[6].props
 const teaserProductsProps = teaserProductsVariants[0].props
+const productPlacementProps = productPlacementVariants[0].props
 
 export default function Home(props) {
   return (
@@ -21,6 +25,7 @@ export default function Home(props) {
       <TeaserHero {...props} {...teaserHeroProps} />
       <MultiColumnText {...props} {...multiColumnTextProps} />
       <TeaserProducts {...props} {...teaserProductsProps} />
+      <ProductPlacement {...props} {...productPlacementProps} />
     </>
   )
 }
