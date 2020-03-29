@@ -14,8 +14,8 @@ function TeaserSingle(props) {
 
   return (
     <section className="single-teaser">
-      <ConditionalLink href={link}>
-        <picture ref={pictureRef} className="single-teaser__image">
+      <ConditionalLink href={link} className="single-teaser__image">
+        <picture ref={pictureRef}>
           <img data-src={imageLink} alt={image.alt} />
         </picture>
       </ConditionalLink>

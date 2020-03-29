@@ -35,4 +35,20 @@ export default [
       },
     },
   },
+  {
+    name: 'With little content',
+    props: {
+      image: {
+        src: 'assets/images/teaserSingle/example.jpg',
+        alt: 'Alt Text',
+      },
+      content: {
+        heading: 'Heading ipsum',
+        text: 'Copytext Lorem ipsum.',
+      },
+      button: {
+        isVisible: false,
+      },
+    },
+  },
 ]
