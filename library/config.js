@@ -2,6 +2,10 @@ import Heading, { headingVariants } from '../patterns/core/Heading'
 import Copytext, { copytextVariants } from '../patterns/core/Copytext'
 import Button, { buttonVariants } from '../patterns/core/Button'
 import Header, { headerVariants } from '../patterns/core/Header'
+import ProductList, { productListVariants } from '../patterns/core/ProductList'
+import ProductPlacement, {
+  productPlacementVariants,
+} from '../patterns/ProductPlacement'
 import TeaserHero, { teaserHeroVariants } from '../patterns/core/TeaserHero'
 import TeaserProducts, {
   teaserProductsVariants,
@@ -12,9 +16,9 @@ import TeaserSingle, {
 import MultiColumnText, {
   multiColumnTextVariants,
 } from '../patterns/core/MultiColumnText'
-import ProductList, { productListVariants } from '../patterns/core/ProductList'
 
 import Home from './examplePages/Home'
+import Listing from './examplePages/Listing'
 
 export default [
   {
@@ -49,6 +53,12 @@ export default [
   },
   {
     type: 'component',
+    name: 'Product Placement',
+    component: ProductPlacement,
+    variants: productPlacementVariants,
+  },
+  {
+    type: 'component',
     name: 'Teaser (Hero)',
     component: TeaserHero,
     variants: teaserHeroVariants,
@@ -75,6 +85,12 @@ export default [
     type: 'page',
     name: 'Landing Page',
     component: Home,
-    variants: [{ name: 'Beispiel Seite' }],
+    variants: [{ name: 'Home' }],
+  },
+  {
+    type: 'page',
+    name: 'Listing Page',
+    component: Listing,
+    variants: [{ name: 'Listing Page Example' }],
   },
 ]
