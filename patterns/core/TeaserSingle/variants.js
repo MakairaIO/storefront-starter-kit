@@ -2,12 +2,14 @@ export default [
   {
     name: 'With button',
     props: {
-      heading: 'Heading ipsum dolor sit amet, consetetur sadipscing',
-      text:
-        'Copytext Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna accusam et justo duo.',
       image: {
         src: 'assets/images/teaserSingle/example.jpg',
         alt: 'Alt Text',
+      },
+      content: {
+        heading: 'Heading ipsum dolor sit amet, consetetur sadipscing',
+        text:
+          'Copytext Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna accusam et justo duo.',
       },
       button: {
         isVisible: true,
@@ -19,12 +21,14 @@ export default [
   {
     name: 'Without button',
     props: {
-      heading: 'Heading ipsum dolor sit amet, consetetur sadipscing',
-      text:
-        'Copytext Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna accusam et justo duo.',
       image: {
         src: 'assets/images/teaserSingle/example.jpg',
         alt: 'Alt Text',
+      },
+      content: {
+        heading: 'Heading ipsum dolor sit amet, consetetur sadipscing',
+        text:
+          'Copytext Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna accusam et justo duo.',
       },
       button: {
         isVisible: false,

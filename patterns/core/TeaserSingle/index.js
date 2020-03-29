@@ -5,7 +5,8 @@ import { Heading, Copytext, Button, ConditionalLink } from '../..'
 function TeaserSingle(props) {
   const pictureRef = useRef(null)
   const { getImageLink } = useConfiguration()
-  const { heading = '', text = '', image = {}, button = {}, link = '' } = props
+  const { image = {}, content = {}, button = {}, link = '' } = props
+  const { heading = '', text = '' } = content
 
   const imageLink = getImageLink({ source: image.src })
 
@@ -22,7 +23,7 @@ function TeaserSingle(props) {
       <div className="single-teaser__content">
         <Heading>{heading}</Heading>
 
-        <Copytext>{text}</Copytext>
+        <Copytext dangerouslySetInnerHTML={{ __html: text }} />
 
         {button.isVisible && (
           <Button href={link} className="single-teaser__button">
