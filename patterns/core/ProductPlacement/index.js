@@ -8,7 +8,7 @@ function ProductPlacement(props) {
     <section className="product-placement">
       <div className="product-placement__text">
         {heading && <Heading>{heading}</Heading>}
-        {text && <Copytext>{text}</Copytext>}
+        {text && <Copytext dangerouslySetInnerHTML={{ __html: text }} />}
       </div>
 
       <div className="product-placement__list">
