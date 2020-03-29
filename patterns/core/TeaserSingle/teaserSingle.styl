@@ -36,8 +36,10 @@ $breakpoint-huge = 1400px
 .single-teaser__content
   padding 1.2rem 1.5rem
 
-  @media (min-width $breakpoint-medium)
+  @media (min-width $breakpoint-small)
     flex-shrink 0
+
+  @media (min-width $breakpoint-medium)
     display flex
     flex-direction column
     align-items flex-start
