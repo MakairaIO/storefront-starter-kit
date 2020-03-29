@@ -20,7 +20,7 @@ export default class MyDocument extends Document {
 
           <Favicon />
         </Head>
-        <body>
+        <body id="body">
           <Main />
 
           {/*

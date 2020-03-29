@@ -1,0 +1,56 @@
+$breakpoint-small = 560px
+$breakpoint-medium = 750px
+$breakpoint-large = 950px
+$breakpoint-huge = 1400px
+
+.single-teaser
+  background var(--tertiary)
+  padding 1.2rem 0
+  margin 1.2rem 0
+
+  @media (min-width $breakpoint-small)
+    display flex
+    padding 1.2rem 1.5rem
+    margin 1.2rem 1.5rem
+
+  @media (min-width $breakpoint-large)
+    padding 1.2rem 2rem
+    margin 1.2rem 2rem
+
+.single-teaser__image
+  display block
+  height 29.4rem
+
+  @media (min-width $breakpoint-small)
+    height 26.4rem
+
+  @media (min-width $breakpoint-medium)
+    height 31.2rem
+    max-width 36.8rem
+    flex 1 0 auto
+
+  picture
+    display flex
+    height 100%
+
+  img
+    width 100%
+    object-fit cover
+
+.single-teaser__content
+  padding 1.2rem 1.5rem
+
+  @media (min-width $breakpoint-small)
+    flex 1 0 50%
+
+  @media (min-width $breakpoint-medium)
+    display flex
+    flex-direction column
+    align-items flex-start
+
+.single-teaser__button
+  margin-top 1.2rem
+
+  @media (min-width $breakpoint-medium)
+    margin-top auto
+

@@ -23,7 +23,17 @@ export default function MobileHeader({
     <header className="pali__mobile-header">
       <button
         type="button"
-        onClick={() => toggleNavigation(!isNavigationVisible)}
+        onClick={() => {
+          const newIsVisible = !isNavigationVisible
+
+          if (newIsVisible) {
+            document.querySelector('body').style.overflow = 'hidden'
+          } else {
+            document.querySelector('body').style.overflow = 'auto'
+          }
+
+          toggleNavigation(newIsVisible)
+        }}
       >
         {isNavigationVisible ? <CloseIcon /> : <MenuIcon />}
       </button>

@@ -1,0 +1,131 @@
+$breakpoint-small = 400px
+$breakpoint-medium = 720px
+$breakpoint-large = 1200px
+
+teaserLeft()
+  .product-teaser__teaser-image
+    margin-left -1.8rem
+
+    @media (min-width $breakpoint-small)
+      margin-left 0
+
+teaserRight()
+  .product-teaser__content
+    order -1
+    align-items flex-end
+    text-align right
+
+    @media (min-width $breakpoint-medium)
+      order 0
+      align-items flex-start
+      text-align left
+
+  .product-teaser__teaser-image
+    margin-right -1.8rem
+
+    @media (min-width $breakpoint-small)
+      margin-right 0
+
+
+.product-teaser
+  padding 1.2rem 1.5rem
+
+  @media (min-width $breakpoint-medium)
+    display grid
+    grid-template-columns 1fr 1fr
+    grid-gap 3rem 2rem
+
+  @media (min-width $breakpoint-large)
+    grid-template-columns 1fr 1fr 1fr
+    padding 1.2rem 2rem
+
+.product-teaser__teaser
+  display flex
+  height 37.2rem
+  overflow hidden
+
+  @media (min-width $breakpoint-small)
+    justify-content center
+    padding 1rem
+
+  & + &
+    margin-top 3rem
+
+    @media (min-width $breakpoint-medium)
+      margin-top 0
+
+.product-teaser__teaser-image
+  height 28.9rem
+  align-self center
+
+  img
+    display block
+    height 100%
+
+.product-teaser__content
+  display flex
+  flex-direction column
+  align-items flex-start
+  padding 8.6rem 1rem 4.9rem
+
+  @media (min-width $breakpoint-small)
+    max-width 26rem
+    padding-left 2rem
+    padding-right 2rem
+
+.product-teaser__pre-title
+  display block
+  margin-bottom 2.2rem
+  font-size 1.3rem
+  font-weight var(--font-weight-semi-bold)
+  line-height 1.2rem
+  letter-spacing 0.1rem
+
+
+.product-teaser__button
+  margin-top auto
+
+.product-teaser--white
+
+  .product-teaser__teaser
+    border 1px solid var(--tertiary)
+
+  .product-teaser__pre-title
+    color var(--neutral-50)
+
+.product-teaser--colorized
+
+  .product-teaser__teaser
+    border-radius 5px
+
+    &:nth-child(6n+1)
+      teaserLeft()
+      background-image linear-gradient(to bottom, #EB6E68 0%, #61304D 100%)
+
+
+    &:nth-child(6n+2)
+      teaserRight()
+      background-image linear-gradient(to bottom, #FDD165 0%, #63B6C8 100%)
+
+
+    &:nth-child(6n+3)
+      teaserLeft()
+      background-image linear-gradient(to bottom, #FDD165 0%, #63B6C8 100%)
+
+    &:nth-child(6n+4)
+      teaserRight()
+      background #EB6E68
+
+    &:nth-child(6n+5)
+      teaserLeft()
+      background #FDD165
+
+    &:nth-child(6n+6)
+      teaserRight()
+      background #63B6C8
+
+  .product-teaser__pre-title
+    color var(--tertiary)
+
+  .product-teaser__title
+    color var(--neutral-10)

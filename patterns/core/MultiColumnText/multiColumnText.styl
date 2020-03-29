@@ -1,0 +1,113 @@
+$breakpoint-2-column-small = 600px
+$breakpoint-2-column-medium = 900px
+
+$breakpoint-3-column-small = 840px
+
+$breakpoint-huge = 1200px
+
+$max-column-width = 55rem
+
+$column-spacing-small = 3rem
+$column-spacing-large = 6rem
+
+$side-padding-small = 1.5rem
+$side-padding-large = 2rem
+
+.multi-column-text
+  padding 1.2rem $side-padding-small
+  margin 0 auto
+
+  @media (min-width $breakpoint-huge)
+    padding 1.2rem $side-padding-large
+
+  .heading
+    flex-basis 100%
+
+/* Columnrs */
+.multi-column-text--1-column
+  max-width "calc(%s + (2 * %s))" % ($max-column-width $side-padding-large)
+
+.multi-column-text--2-column
+  // max-width calc((2 * $max-column-width) + $column-spacing-small)
+  max-width "calc((2 * %s) + %s + (2 * %s))" % ($max-column-width $column-spacing-large $side-padding-large)
+
+  @media (min-width $breakpoint-2-column-small)
+    display flex
+    flex-wrap wrap
+
+  .multi-column-text__column
+    @media (min-width $breakpoint-2-column-small)
+      flex 1
+      max-width "calc(50% - (%s / 2))" % ($column-spacing-small)
+
+    @media (min-width $breakpoint-2-column-medium)
+      max-width "calc(50% - (%s / 2))" % ($column-spacing-large)
+
+  .multi-column-text__column + .multi-column-text__column
+    @media (min-width $breakpoint-2-column-small)
+      margin-left $column-spacing-small
+
+    @media (min-width $breakpoint-2-column-medium)
+      margin-left $column-spacing-large
+
+.multi-column-text--3-column
+  max-width "calc(%s + (2 * %s))" % ($max-column-width $side-padding-large)
+
+  @media (min-width $breakpoint-3-column-small)
+    display flex
+    flex-wrap wrap
+    max-width none
+
+  .multi-column-text__column
+    @media (min-width $breakpoint-3-column-small)
+      flex 1
+      max-width "calc(33% - (%s / 3))" % ($column-spacing-small)
+
+  .multi-column-text__column + .multi-column-text__column
+    @media (min-width $breakpoint-3-column-small)
+      margin-left $column-spacing-small
+
+    @media (min-width $breakpoint-huge)
+      margin-left $column-spacing-large
+
+
+/* Colors */
+.multi-column-text__section--with-backgrund-brand-1
+.multi-column-text__section--with-backgrund-brand-2
+.multi-column-text__section--with-backgrund-brand-3
+.multi-column-text__section--with-backgrund-brand-4
+  max-width 136rem // max-width of site-wrapper minus 2rem "padding" left and right
+  margin 1.2rem auto
+
+  @media (min-width $breakpoint-huge)
+    margin 2.4rem auto
+
+.multi-column-text__section--with-backgrund-brand-1
+  background var(--brand-1)
+
+.multi-column-text__section--with-backgrund-brand-2
+  background var(--brand-2)
+
+.multi-column-text__section--with-backgrund-brand-3
+  background var(--brand-3)
+
+.multi-column-text__section--with-backgrund-brand-4
+  background var(--brand-4)
+
+.multi-column-text__section--text-color-light
+  color var(--neutral-00)
+  padding-top 2.4rem
+  padding-bottom 2.4rem
+
+  @media (min-width $breakpoint-huge)
+    padding-top 2.4rem
+    padding-bottom 2.4rem
+
+  a
+    color var(--neutral-00)
+
+  ul li:before
+    border-color var(--neutral-00)
+    background var(--neutral-00)
+    height 0.6rem
+    width 0.6rem

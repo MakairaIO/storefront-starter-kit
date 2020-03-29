@@ -1,0 +1,73 @@
+// generate font-face declartions
+fonts = json('../../../config/fonts.json', { hash: true })
+
+for font in fonts
+  family = fonts[font]["family"]
+  weight = fonts[font]["weight"]
+  fileName = fonts[font]["fileName"]
+  isItalic = fonts[font]["isItalic"]
+
+  @font-face
+    font-display fallback
+    font-family family
+    font-weight weight
+    src url('/assets/fonts/' + fileName + '.ttf') format('truetype')
+    if isItalic
+      font-style italic
+
+
+// define Custom Properties for fonts
+:root
+  --font-family-regular 'FiraSans'
+  --font-family-highlight 'Domine'
+
+  --font-size-base 1.3rem
+
+  --font-weight-regular 400
+  --font-weight-medium 500
+  --font-weight-semi-bold 600
+  --font-weight-bold 700
+
+
+// define Custom Properties for colors
+colors = json('../../../config/colors.json', { hash: true })
+
+:root
+  for color in colors
+    name = colors[color]["variableName"]
+    value = colors[color]["value"]
+
+    {name} value
+
+// Unforatunately, we can not use Stylus-built-in operators like
+// 'alpha, 'lighten' or 'darken' on CSS Custom Properties.
+// But we still do need a couple of "one-of"-colors, for example
+// to use on hover states in the Button component.
+//
+// To achieve this, we define a couple of custom properties below
+// that make use of the operators and will be used in rare cases.
+// If you want to change the overall theming, you will have to
+// make manual adjustments here according to the changes you made
+// in `config/colors.json`.
+:root
+  --hero-teaser-overlay-background-opaque alpha(#101C2D, 0.6) // based on var(--neutral-90)
+  --button-primary-alt-hover darken(#FF8E00, 2%) // based on var(--secondary)
+  --button-primary-alt-active darken(#FF8E00, 4%) // based var(--secondary)
+
+
+// define Custom Properties for elevations
+:root
+  --elevation-s 0 0 2px 0 rgba(0,0,0,0.05), 0 1px 3px 0 rgba(0,0,0,0.15)
+  --elevation-m 0 2px 5px -1px rgba(0,0,0,0.15), 0 1px 3px 0 rgba(0,0,0,0.08)
+  --elevation-l 0 3px 8px -1px rgba(0,0,0,0.15), 0 1px 3px 0 rgba(0,0,0,0.05)
+  --elevation-xl 0 8px 20px -3px rgba(0,0,0,0.12), 0 2px 5px 0 rgba(0,0,0,0.07)
+  --elevation-xxl 0 12px 40px -8px rgba(0,0,0,0.12), 0 5px 10px 0 rgba(0,0,0,0.07)
+
+// define Custom Properties for z-indices
+:root
+  --z-index-lowest 1
+  --z-index-low 10
+  --z-index-medium 50
+  --z-index-overlay 60
+  --z-index-high 70
+  --z-index-highest 100
