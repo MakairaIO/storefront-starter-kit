@@ -15,6 +15,7 @@ import MultiColumnText, {
 import ProductList, { productListVariants } from '../patterns/core/ProductList'
 
 import Home from './examplePages/Home'
+import Listing from './examplePages/Listing'
 
 export default [
   {
@@ -75,6 +76,12 @@ export default [
     type: 'page',
     name: 'Landing Page',
     component: Home,
-    variants: [{ name: 'Beispiel Seite' }],
+    variants: [{ name: 'Home' }],
+  },
+  {
+    type: 'page',
+    name: 'Listing Page',
+    component: Listing,
+    variants: [{ name: 'Listing Page Example' }],
   },
 ]

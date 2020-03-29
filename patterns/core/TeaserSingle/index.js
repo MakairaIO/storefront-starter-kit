@@ -26,7 +26,11 @@ function TeaserSingle(props) {
         <Copytext dangerouslySetInnerHTML={{ __html: text }} />
 
         {button.isVisible && (
-          <Button href={link} className="single-teaser__button">
+          <Button
+            href={link}
+            className="single-teaser__button"
+            icon="chevron-right"
+          >
             {button.text}
           </Button>
         )}
