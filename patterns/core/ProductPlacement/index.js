@@ -4,6 +4,8 @@ import { Heading, Copytext } from '../..'
 function ProductPlacement(props) {
   const { products = [], heading = '', text = '' } = props
 
+  if (products.length == 0) return null
+
   return (
     <section className="product-placement">
       <div className="product-placement__text">
