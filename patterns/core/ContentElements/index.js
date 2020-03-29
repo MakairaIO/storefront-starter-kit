@@ -1,4 +1,10 @@
-import { TeaserSingle, TeaserHero, MultiColumnText } from '../..'
+import {
+  ProductPlacement,
+  TeaserHero,
+  TeaserSingle,
+  TeaserProducts,
+  MultiColumnText,
+} from '../..'
 
 export default function ContentElements(props) {
   const { elements = [] } = props
@@ -7,8 +13,10 @@ export default function ContentElements(props) {
 
   // Declare your additional content patterns here
   const components = {
-    'teaser-single': TeaserSingle,
+    'product-placement': ProductPlacement,
     'teaser-hero': TeaserHero,
+    'teaser-single': TeaserSingle,
+    'teaser-products': TeaserProducts,
     'multi-column-text': MultiColumnText,
   }
 
