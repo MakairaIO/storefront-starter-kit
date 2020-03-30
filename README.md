@@ -9,7 +9,10 @@
 
 ### Installation
 
-* Clone this repository
+* Clone this repository using the `--origin <name>` flag to set an remote name other than `origin` (for example `upstream`)
+* Configure your own origin remote using `git remote add origin <your repository url>`
+* Initial push of master branch to your own remote: `git push origin master`
+* Configure default remote to be your own remote: `git branch --set-upstream-to origin/master`
 * Install dependencies: `npm ci`
 * Configure your individual `.env` file in the root directory (see `.env.example`)
 
