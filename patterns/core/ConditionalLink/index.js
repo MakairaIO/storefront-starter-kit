@@ -11,6 +11,10 @@ export default function ConditionalLink(props) {
     )
   }
 
+  if (fallbackElement.toLowerCase() == 'fragment') {
+    return <>{children}</>
+  }
+
   const Element = fallbackElement
 
   return <Element {...rest}>{children}</Element>
