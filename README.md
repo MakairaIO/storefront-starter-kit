@@ -78,7 +78,7 @@ By default, this application is not supporting IE11. If you need to support IE11
 
 The application makes heavy use of CSS Custom Properties. In order to add a fallback for IE11, you will need to perform the following steps:
 
-- `npm install -D poststylus postcss-css-variables`
+- `npm install poststylus postcss-css-variables`
 - Modify file `next.config.js` to look like the following:
 
 ```javascript
