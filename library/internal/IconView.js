@@ -1,5 +1,8 @@
 import { Icon } from '../../patterns'
-import icons from '../../config/icons'
+import coreIcons from '../../config/core/icons'
+import projectIcons from '../../config/icons'
+
+const icons = Object.keys(projectIcons).length ? projectIcons : coreIcons
 
 export default function IconView() {
   return (

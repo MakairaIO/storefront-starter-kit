@@ -1,0 +1,50 @@
+{
+  "Shopping Cart": {
+    "value": "cart"
+  },
+  "User": {
+    "value": "user"
+  },
+  "Search": {
+    "value": "search"
+  },
+  "Chevron Left": {
+    "value": "chevron-left"
+  },
+  "Chevron Double Left": {
+    "value": "chevron-double-left"
+  },
+  "Chevron Right": {
+    "value": "chevron-right"
+  },
+  "Chevron Double Right": {
+    "value": "chevron-double-right"
+  },
+  "Chevron Down": {
+    "value": "chevron-down"
+  },
+  "Bars": {
+    "value": "bars"
+  },
+  "Times": {
+    "value": "times"
+  },
+  "Plus": {
+    "value": "plus"
+  },
+  "Minus": {
+    "value": "minus"
+  },
+  "Circle": {
+    "value": "circle"
+  },
+  "Check Circle": {
+    "value": "check-circle"
+  },
+  "Check Mark": {
+    "value": "check"
+  },
+  "Ban": {
+    "value": "ban"
+  }
+}

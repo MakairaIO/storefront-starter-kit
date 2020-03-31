@@ -56,6 +56,20 @@ For all steps, replace `<SERVER>`,`<APP_NAME>` and other placeholders (`< ... > 
 
 ## FAQ
 
+### How to add project specific colors/fonts/icon
+
+This applications comes with a default palette of colors, icons and typography. The related configuration files can be cound in the `config/core` directory.
+
+We use these config files to generate CSS custom properties (found in `patterns/core/BaseLayout/variables.styl`) and render basic overviews in the pattern library (e.g., see `library/internal/ColorView.js`).
+
+Of course, it is possible to override the default configuration your own, project-specific colors, fonts and icons. In the `config` directory you can find three empty files:
+- `colors.json`
+- `icons.json`
+- `fonts.json`
+
+These configuration files are empty by default, therefore the application uses the default configuration. As soon as you start adding your own colors, icons or fonts to the empty configuration files, these will be used instead of the default files.
+
+
 ### IE11 Compatability
 
 By default, this application is not supporting IE11. If you need to support IE11, there are a couple of APIs and features that you will need to polyfill or refactor:
