@@ -41,11 +41,13 @@ generateFontFaceDeclarations(fonts, assetPath)
 
 
 // define Custom Properties for colors
-colors = json('../../../config/core/colors.json', { hash: true })
+coreColors = json('../../../config/core/colors.json', { hash: true })
 projectColors = json('../../../config/colors.json', { hash: true })
 
 if length(projectColors) > 0
   colors = projectColors
+else
+  colors = coreColors
 
 :root
   for color in colors
