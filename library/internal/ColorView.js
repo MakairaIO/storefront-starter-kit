@@ -1,4 +1,7 @@
-import colors from '../../config/colors'
+import coreColors from '../../config/core/colors'
+import projectColors from '../../config/colors'
+
+const colors = Object.keys(projectColors).length ? projectColors : coreColors
 
 function filterColorsByGroup(group) {
   return Object.entries(colors).reduce((filteredColors, currentColor) => {

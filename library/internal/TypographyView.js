@@ -1,4 +1,7 @@
-import fonts from '../../config/fonts'
+import coreFonts from '../../config/core/fonts'
+import projectFonts from '../../config/fonts'
+
+const fonts = Object.keys(projectFonts).length ? projectFonts : coreFonts
 
 const SIZES = ['10px', '14px', '16px', '18px']
 
@@ -12,7 +15,7 @@ export default function TypographyView() {
             <span>({fontInfo.variableName})</span>
           </h2>
 
-          {SIZES.map(size => {
+          {SIZES.map((size) => {
             const fontStyle = {
               fontSize: size,
               fontFamily: fontInfo.family,
