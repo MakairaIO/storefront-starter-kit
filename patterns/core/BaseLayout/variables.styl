@@ -1,25 +1,31 @@
 // generate font-face declartions
 
-fonts = json('../../../config/core/fonts.json', { hash: true })
+coreFonts = json('../../../config/core/fonts.json', { hash: true })
 projectFonts = json('../../../config/fonts.json', { hash: true })
+
+generateFontFaceDeclarations(fonts, assetPath)
+  for font in fonts
+    family = fonts[font]["family"]
+    weight = fonts[font]["weight"]
+    fileName = fonts[font]["fileName"]
+    isItalic = fonts[font]["isItalic"]
+
+    @font-face
+      font-display fallback
+      font-family family
+      font-weight weight
+      src url(assetPath + fileName + '.ttf') format('truetype')
+      if isItalic
+        font-style italic
 
 if length(projectFonts) > 0
   fonts = projectFonts
+  assetPath = '/assets/fonts/'
+else
+  fonts = coreFonts
+  assetPath = '/assets/fonts/core/'
 
-for font in fonts
-  family = fonts[font]["family"]
-  weight = fonts[font]["weight"]
-  fileName = fonts[font]["fileName"]
-  isItalic = fonts[font]["isItalic"]
-
-  @font-face
-    font-display fallback
-    font-family family
-    font-weight weight
-    src url('/assets/fonts/' + fileName + '.ttf') format('truetype')
-    if isItalic
-      font-style italic
-
+generateFontFaceDeclarations(fonts, assetPath)
 
 // define Custom Properties for fonts
 :root
