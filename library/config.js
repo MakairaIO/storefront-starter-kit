@@ -1,3 +1,4 @@
+/* Core imports */
 import Heading, { headingVariants } from '../patterns/core/Heading'
 import Copytext, { copytextVariants } from '../patterns/core/Copytext'
 import Button, { buttonVariants } from '../patterns/core/Button'
@@ -19,6 +20,8 @@ import MultiColumnText, {
 
 import Home from './examplePages/Home'
 import Listing from './examplePages/Listing'
+
+/* Add project specific imports here */
 
 export default [
   {
