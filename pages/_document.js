@@ -18,6 +18,9 @@ export default class MyDocument extends Document {
           />
           <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
 
+          <link rel="dns-prefetch" href="https://cdn.polyfill.io" />
+          <link rel="preconnect" href="https://cdn.polyfill.io" />
+
           <Favicon />
         </Head>
         <body id="body">
@@ -26,10 +29,12 @@ export default class MyDocument extends Document {
           {/*
            *   WARNING: Do not polyfill Symbol.prototype.description -> it will break Portals in both Safari13 and IE11
            *   -> see: https://github.com/facebook/react/issues/8379#issuecomment-263962787 and https://github.com/facebook/react/issues/8379#issuecomment-418542006
+
           <script
             crossOrigin="anonymous"
-            src="https://cdn.polyfill.io/v3/polyfill.min.js?features=Array.prototype.findIndex,String.prototype.repeat,CustomEvent,NodeList.prototype.forEach,Element.prototype.closest,Array.from,Array.isArray,Array.prototype.entries,Array.prototype.filter,Array.prototype.find,Array.prototype.forEach,Array.prototype.includes,Array.prototype.indexOf,Array.prototype.keys,Array.prototype.map,Array.prototype.reduce,Array.prototype.some,Array.prototype.values,ArrayBuffer,console,DataView,Date.now,document,Event,Function.prototype.bind,getComputedStyle,Map,Math.trunc,modernizr:es5object,MutationObserver,Object.assign,Object.entries,Object.getOwnPropertyDescriptors,Object.getOwnPropertySymbols,Object.is,Object.isExtensible,Object.preventExtensions,Object.setPrototypeOf,Promise,Set,String.prototype.includes,String.prototype.trim,Symbol,Symbol.for,Symbol.iterator,Symbol.toStringTag,WeakMap,WeakSet,URL,String.prototype.startsWith"
+            src="https://cdn.polyfill.io/v3/polyfill.min.js?features=Array.from,Array.isArray,Array.prototype.entries,Array.prototype.every,Array.prototype.filter,Array.prototype.find,Array.prototype.forEach,Array.prototype.includes,Array.prototype.indexOf,Array.prototype.keys,Array.prototype.map,Array.prototype.reduce,Array.prototype.some,Array.prototype.values,ArrayBuffer,console,DataView,Date.now,Date.prototype.toISOString,document,Element,Event,fetch,Function.prototype.bind,IntersectionObserver,Intl,JSON,localStorage,Map,Math.trunc,modernizr:es5object,MutationObserver,Number.isInteger,Number.isNaN,Object.assign,Object.entries,Object.getOwnPropertyDescriptors,Object.getOwnPropertySymbols,Object.isExtensible,Object.preventExtensions,Object.setPrototypeOf,Object.values,Promise,Reflect,Reflect.construct,requestAnimationFrame,Set,String.prototype.includes,String.prototype.repeat,String.prototype.startsWith,String.prototype.trim,Symbol,Symbol.iterator,URL,WeakMap,WeakSet,NodeList.prototype.forEach,IntersectionObserver,IntersectionObserverEntry"
           />
+
            */}
 
           <NextScript />
