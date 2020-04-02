@@ -1,30 +1,38 @@
-import { useTranslation } from '../../../utils'
+import { useState, useEffect } from 'react'
+import { useTranslation, logError } from '../../../utils'
 import { Copytext, Link } from '../..'
 
 export default function ErrorPage(props) {
   const { t } = useTranslation()
+  const [data, setData] = useState({})
   const { statusCode, error = null } = props
 
-  let data = {}
-  if (process.browser) {
-    const { origin, pathname } = window.location
-    const { platform, userAgent } = window.navigator
+  useEffect(
+    function collectDataAndLogError() {
+      const { origin, pathname } = window.location
+      const { platform, userAgent } = window.navigator
 
-    data = {
-      Status: statusCode,
-      Domain: origin,
-      Path: pathname,
-      Platform: platform,
-      'User-Agent': userAgent,
-    }
+      let data = {
+        Status: statusCode,
+        Host: origin,
+        Path: pathname,
+        Platform: platform,
+        'User-Agent': userAgent,
+      }
 
-    if (error != null) {
-      const { message, stack } = error
+      if (error != null) {
+        const { message, stack } = error
 
-      data['Error'] = message
-      data['Stacktracke'] = stack
-    }
-  }
+        data['Error'] = message
+        data['Stacktracke'] = stack
+      }
+
+      setData(data)
+      logError(data)
+    },
+    [error, statusCode]
+  )
+
   return (
     <main className="error-page">
       <Link href="/" className="error-page__logo">

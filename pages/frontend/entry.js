@@ -14,7 +14,6 @@ import {
   fetchPageData,
   fetchMenuData,
   wait,
-  logError,
 } from '../../utils'
 import ErrorPage from '../_error'
 
@@ -58,8 +57,6 @@ export default class Index extends Component {
        * to show up before actually reloading the page. To work around this issue, we set a
        * timeout after changing `window.location.href`.
        */
-      logError(error)
-
       if (res) {
         res.statusCode = 404
 

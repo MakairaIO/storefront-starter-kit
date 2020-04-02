@@ -8,7 +8,6 @@ import {
   TranslationProvider,
   fetchSearchResult,
   fetchMenuData,
-  logError,
 } from '../../utils'
 import ErrorPage from '../_error'
 
@@ -25,8 +24,6 @@ export default class Index extends Component {
 
       return { menuData, searchResult, params }
     } catch (error) {
-      logError(error)
-
       if (res) {
         res.statusCode = 500
 

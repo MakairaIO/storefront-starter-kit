@@ -7,13 +7,16 @@ class Error extends Component {
   static getInitialProps({ res, err }) {
     const statusCode = res ? res.statusCode : err ? err.statusCode : null
 
-    return {
-      statusCode,
-      error: {
+    let props = { statusCode }
+
+    if (err) {
+      props['error'] = {
         message: err.message,
         stack: err.stack.toString(),
-      },
+      }
     }
+
+    return props
   }
 
   render() {

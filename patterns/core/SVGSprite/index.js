@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { logError } from '../../../utils'
 
 export default function SVGSprite() {
   const [svgData, setData] = useState('')
@@ -23,7 +22,7 @@ export default function SVGSprite() {
       const sprite = await response.text()
       setData(sprite)
     } catch (error) {
-      logError(error)
+      console.error(error)
     }
   }
 
