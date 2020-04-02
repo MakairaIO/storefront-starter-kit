@@ -28,11 +28,7 @@ export default function ErrorPage(props) {
   return (
     <main className="error-page">
       <Link href="/" className="error-page__logo">
-        <img
-          src="/assets/images/header/logo_dummy.svg"
-          alt="Logo"
-          className="header__logo"
-        />
+        <img src="/assets/images/header/logo_dummy.svg" alt="Logo" />
       </Link>
 
       <div className="error-page__gradient">
