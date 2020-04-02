@@ -38,7 +38,7 @@ app
     /**
      * Generate search routes for each languages
      */
-    allLanguages.forEach(lang => {
+    allLanguages.forEach((lang) => {
       server.get(lang.searchRoute, (req, res) => {
         app.render(req, res, '/frontend/search', req.query)
       })
@@ -58,13 +58,13 @@ app
       return handle(req, res)
     })
 
-    server.listen(port, err => {
+    server.listen(port, (err) => {
       if (err) throw err
 
       console.log('> Ready on http://localhost:' + port)
     })
   })
-  .catch(ex => {
+  .catch((ex) => {
     console.error(ex.stack)
     process.exit(1)
   })

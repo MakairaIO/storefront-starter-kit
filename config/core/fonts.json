@@ -41,6 +41,13 @@
     "isItalic": false,
     "variableName": "--fira-bold"
   },
+  "FiraSans Black Italic": {
+    "family": "FiraSans",
+    "fileName": "FiraSans-BlackItalic",
+    "weight": 900,
+    "isItalic": true,
+    "variableName": "--fira-black-italic"
+  },
   "Domine Bold": {
     "family": "Domine",
     "fileName": "Domine-Bold",
