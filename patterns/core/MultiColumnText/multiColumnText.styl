@@ -21,7 +21,7 @@ $side-padding-large = 2rem
     padding 1.2rem $side-padding-large
 
   .heading
-    flex-basis 100%
+    flex 1 0 100%
 
 /* Columnrs */
 .multi-column-text--1-column
@@ -37,11 +37,10 @@ $side-padding-large = 2rem
 
   .multi-column-text__column
     @media (min-width $breakpoint-2-column-small)
-      flex 1
-      max-width "calc(50% - (%s / 2))" % ($column-spacing-small)
+      flex 1 0 "calc(50% - (%s / 2))" % ($column-spacing-small)
 
     @media (min-width $breakpoint-2-column-medium)
-      max-width "calc(50% - (%s / 2))" % ($column-spacing-large)
+      flex 1 0 "calc(50% - (%s / 2))" % ($column-spacing-large)
 
   .multi-column-text__column + .multi-column-text__column
     @media (min-width $breakpoint-2-column-small)
@@ -60,8 +59,7 @@ $side-padding-large = 2rem
 
   .multi-column-text__column
     @media (min-width $breakpoint-3-column-small)
-      flex 1
-      max-width "calc(33% - (%s / 3))" % ($column-spacing-small)
+      flex 1 0 "calc(30% - (%s / 3))" % ($column-spacing-small)
 
   .multi-column-text__column + .multi-column-text__column
     @media (min-width $breakpoint-3-column-small)
