@@ -158,23 +158,25 @@ $breakpoint-medium = 1000px
 
   ul
     margin-top 2rem
-    font-family 'monospace'
+    font-family 'courier'
     font-size 1.3rem
     line-height 1.8rem
 
     li
       display flex
+      flex-direction column
+
+      @media (min-width $breakpoint-small)
+        flex-direction row
 
     li + li
       margin-top 0.5rem
 
     span:first-of-type
       font-weight bold
-      // margin-right 0.5rem
-      flex 0 0 8rem
 
-
-
+      @media (min-width $breakpoint-small)
+        flex 0 0 9.5rem
 
 .cloud-1
 .cloud-2
