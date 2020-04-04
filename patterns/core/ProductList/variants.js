@@ -94,6 +94,16 @@ const products = [
     },
   },
   {
+    title: 'image-title',
+    imageMobile: 'assets/images/productList/Banner@2x.jpg',
+    imageDesktop: 'assets/images/productList/Banner@2x.jpg',
+    link: '/gin',
+    type: '1-spaltig',
+    searchAutosuggestBoth: null,
+    position: '3',
+    isBanner: true,
+  },
+  {
     id: '470006',
     fields: {
       ean: '735850483894',

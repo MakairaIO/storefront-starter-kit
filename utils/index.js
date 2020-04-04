@@ -41,3 +41,4 @@ export { default as collectPaginationFormData } from './core/collectPaginationFo
 export { default as prepareFilterForQueryString } from './core/prepareFilterForQueryString'
 export { default as prepareSortingForQueryString } from './core/prepareSortingForQueryString'
 export { default as preparePaginationForQueryString } from './core/preparePaginationForQueryString'
+export { default as mergeProductsAndBanners } from './core/mergeProductsAndBanners'

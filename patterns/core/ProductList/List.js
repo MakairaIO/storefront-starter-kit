@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import classNames from 'classnames'
 import { useLazyLoading } from '../../../utils'
+import Banner from './Banner'
 import ProductTile from './ProductTile'
 import Pagination from './Pagination'
 
@@ -22,9 +23,13 @@ export default function List(props) {
 
   return (
     <div ref={listRef} className={classes}>
-      {products.map((product) => (
-        <ProductTile key={product.id} {...product.fields} />
-      ))}
+      {products.map((entry) => {
+        if (entry.isBanner) {
+          return <Banner key={entry.title} {...entry} />
+        } else {
+          return <ProductTile key={entry.id} {...entry.fields} />
+        }
+      })}
 
       <Pagination
         key={queryParams.offset ?? 0} // reset Pagination to re-run constructor when offset change (e.g. when a filter is clicked)

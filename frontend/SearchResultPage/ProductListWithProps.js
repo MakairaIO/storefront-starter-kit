@@ -1,6 +1,7 @@
 import { ProductList } from '../../patterns'
 import {
   useGlobalData,
+  mergeProductsAndBanners,
   submitProductListForms,
   resetAllProductListFilters,
 } from '../../utils'
@@ -12,11 +13,14 @@ export default function ProductListWithProps() {
   const { seoUrl, filter, searchPhrase, ...restParams } = params
 
   const products = searchResult.product.items
+  const banners = searchResult.banners
+  const merged = mergeProductsAndBanners({ products, banners })
+
   const aggregations = searchResult.product.aggregations
   const totalProductCount = searchResult.product.total
 
   const productListProps = {
-    products,
+    products: merged,
     aggregations,
     submitForms: async (options = {}) => {
       const { resetPagination = false } = options
