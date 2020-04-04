@@ -5,7 +5,7 @@ import { Copytext, Link } from '../..'
 export default function ErrorPage(props) {
   const { t } = useTranslation()
   const [data, setData] = useState({})
-  const { statusCode, error = null } = props
+  const { statusCode = 500, error = null } = props
 
   useEffect(
     function collectDataAndLogError() {
