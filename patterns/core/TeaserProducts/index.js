@@ -1,16 +1,20 @@
+import { useRef } from 'react'
 import classNames from 'classnames'
-import { useTranslation } from '../../../utils'
+import { useTranslation, useLazyLoading } from '../../../utils'
 import { Heading, Button } from '../..'
 
 function TeaserProducts(props) {
+  const listRef = useRef(null)
   const { products = [], variant = 'white' } = props
+
+  useLazyLoading({ ref: listRef, dependency: products })
 
   if (products.length == 0) return null
 
   const classes = classNames('product-teaser', `product-teaser--${variant}`)
 
   return (
-    <section className={classes}>
+    <section ref={listRef} className={classes}>
       {products.map((product) => (
         <Teaser key={product.ean} {...product} />
       ))}
@@ -30,7 +34,7 @@ function Teaser(props) {
   return (
     <div className="product-teaser__teaser">
       <picture className="product-teaser__teaser-image">
-        <img src={picture_url_main} alt={title} />
+        <img data-src={picture_url_main} alt={title} />
       </picture>
 
       <p className="product-teaser__content">
