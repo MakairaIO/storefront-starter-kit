@@ -104,6 +104,11 @@
     "variableName": "--error",
     "group": "state"
   },
+  "Reduced Price": {
+    "value": "#AD1A1A",
+    "variableName": "--reduced-price",
+    "group": "state"
+  },
   "Fatal": {
     "value": "#0C1C2E",
     "variableName": "--fatal",

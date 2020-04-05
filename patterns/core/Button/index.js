@@ -26,7 +26,7 @@ function Button(props) {
       type="button"
       {...rest}
     >
-      <span className="button__text">{children}</span>
+      {children && <span className="button__text">{children}</span>}
 
       {icon && <Icon symbol={icon} />}
     </ConditionalLink>

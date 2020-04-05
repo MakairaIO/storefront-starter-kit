@@ -1,0 +1,48 @@
+.dropdown
+  display inline-flex
+  position relative
+
+  button
+    width 100%
+
+.dropdown--with-label
+
+  .button__text
+    display flex
+    justify-content space-between
+
+    span:first-child
+      font-weight var(--font-weight-regular)
+      margin-right 6rem
+
+    span:last-child
+      font-weight var(--font-weight-bold)
+
+.dropdown__listbox
+  display none
+  min-width 100%
+  z-index var(--z-index-low)
+
+  &--visible
+    display block
+    background var(--neutral-00)
+    box-shadow var(--elevation-s)
+    position absolute
+    top 100%
+
+  &--anchor-left
+    left 0
+
+  &--anchor-right
+    right 0
+
+.dropdown__option
+  line-height 3rem
+  padding 0.4rem 1.5rem
+  white-space nowrap
+
+  &:hover
+    cursor pointer
+
+  &--selected
+    font-weight var(--font-weight-semi-bold)

@@ -24,6 +24,8 @@ export default {
   DESKTOP_FILTER_RESET_ALL: 'Alle Filter zurücksetzen',
   PRODUCT_TILE_ADD_TO_CART: 'In den Warenkorb',
   PRODUCT_TILE_TO_PRODUCT: 'Zum Produkt',
+  PRODUCT_DETAIL_DESCRIPTION_TITLE: 'Produktbeschreibung',
+  PRODUCT_DETAIL_ADD_TO_CART: 'In den Warenkorb',
   ERROR_PAGE_TITLE: 'Willkommen auf der peinlichsten Seite des Internets',
   ERROR_PAGE_TEXT_LEFT_1:
     'Wirklich schade, dass das jetzt passieren musste, denn es ist wirklich eine absolute Seltenheit. Ja, klar, das kennt man. Das Thema Limited Edition und so. Beim Gin z.B. ja immer gerne gesehen. Da macht ein Hersteller den totalen Affen und bring ein paar Tausend Flaschen auf den Markt. EIn paar Tausend. Tja und dann ist das schon limitiert.',

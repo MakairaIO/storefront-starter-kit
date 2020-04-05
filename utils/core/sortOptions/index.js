@@ -10,14 +10,12 @@ export default [
     value: 'priceAsc',
     sortBy: 'price',
     order: 'asc',
-    icon: 'price-sort-asc.png',
   },
   {
     label: 'SORT_OPTION_PRICE_DESC',
     value: 'priceDesc',
     sortBy: 'price',
     order: 'desc',
-    icon: 'price-sort-desc.png',
   },
   {
     label: 'SORT_OPTION_TITLE_DESC',

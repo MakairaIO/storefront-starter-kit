@@ -2,8 +2,12 @@
 import Heading, { headingVariants } from '../patterns/core/Heading'
 import Copytext, { copytextVariants } from '../patterns/core/Copytext'
 import Button, { buttonVariants } from '../patterns/core/Button'
+import Dropdown, { dropdownVariants } from '../patterns/core/Dropdown'
 import Header, { headerVariants } from '../patterns/core/Header'
 import ProductList, { productListVariants } from '../patterns/core/ProductList'
+import ProductDetailInformation, {
+  productDetailInformationVariants,
+} from '../patterns/core/ProductDetailInformation'
 import ProductPlacement, {
   productPlacementVariants,
 } from '../patterns/core/ProductPlacement'
@@ -20,6 +24,7 @@ import MultiColumnText, {
 
 import Home from './examplePages/Home'
 import Listing from './examplePages/Listing'
+import Detail from './examplePages/Detail'
 
 /* Add project specific imports here */
 
@@ -44,6 +49,12 @@ export default [
   },
   {
     type: 'component',
+    name: 'Dropdown',
+    component: Dropdown,
+    variants: dropdownVariants,
+  },
+  {
+    type: 'component',
     name: 'Header',
     component: Header,
     variants: headerVariants,
@@ -53,6 +64,12 @@ export default [
     name: 'Product List',
     component: ProductList,
     variants: productListVariants,
+  },
+  {
+    type: 'component',
+    name: 'Product Information',
+    component: ProductDetailInformation,
+    variants: productDetailInformationVariants,
   },
   {
     type: 'component',
@@ -95,5 +112,11 @@ export default [
     name: 'Listing Page',
     component: Listing,
     variants: [{ name: 'Listing Page Example' }],
+  },
+  {
+    type: 'page',
+    name: 'Detail Page',
+    component: Detail,
+    variants: [{ name: 'Detail Page Example' }],
   },
 ]

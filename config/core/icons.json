@@ -46,5 +46,8 @@
   },
   "Ban": {
     "value": "ban"
+  },
+  "Heart": {
+    "value": "heart"
   }
 }

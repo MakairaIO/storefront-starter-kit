@@ -161,30 +161,39 @@
 
   &--icon-right
     .button__text
-      margin-right 1.2rem
+      margin-right 1.1rem
 
   &--icon-left
     .button__text
-      margin-left 1.2rem
+      margin-left 1.1rem
 
     .icon
       order -1
 
+.button__text
+  width 100%
 
 .button--icon
   .icon
     // styles for icon-only buttons
     height 1.8rem
-    width 3.4rem // 36px - 2px border
+    width 3.4rem // FIXME: Why is flexbox breaking all buttons if we remove the explicit width here?!
+    flex 0 0 3.4rem // 36px - 2px border
 
   // Overrides for specific icons
   &:not(.button--icon-only)
     .icon--chevron-right
     .icon--chevron-left
-      width 0.7rem
+      flex 0 0 0.7rem
+
+    .icon--chevron-down
+      flex 0 0 1.6rem
 
     .icon--check
-      width 1.3rem
+      flex 0 0 1.3rem
+
+    .icon--cart
+      flex 0 0 2rem
 
 a.button
   text-decoration none
