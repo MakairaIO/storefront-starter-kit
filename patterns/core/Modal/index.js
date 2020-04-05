@@ -1,0 +1,50 @@
+import { Component } from 'react'
+import { createPortal } from 'react-dom'
+import PropTypes from 'prop-types'
+import { Button } from '../..'
+import { dispatchShowOverlayEvent } from '../../../utils'
+
+const MODAL_ROOT_ID = 'moda-root'
+
+export default class Modal extends Component {
+  static propTypes = {
+    closeModal: PropTypes.func.isRequired,
+  }
+
+  componentDidMount() {
+    dispatchShowOverlayEvent()
+
+    this.element = document.getElementById(MODAL_ROOT_ID)
+    setTimeout(() => this.forceUpdate(), 50) // small delay to account for overlay transitioning in
+
+    window.addEventListener('overlay:clicked', this.props.closeModal)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('overlay:clicked', this.props.closeModal)
+  }
+
+  render() {
+    if (this.element === undefined) {
+      return null
+    }
+
+    return createPortal(
+      <div className="modal">
+        <Button
+          variant="link-icon"
+          icon="times"
+          className="modal__close-button"
+          onClick={this.props.closeModal}
+        />
+
+        {this.props.children}
+      </div>,
+      this.element
+    )
+  }
+}
+
+export function ModalRoot() {
+  return <div id={MODAL_ROOT_ID}></div>
+}

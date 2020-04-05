@@ -1,4 +1,4 @@
-import { Overlay } from '../..'
+import { Overlay, ModalRoot } from '../..'
 
 export default function BaseLayout({ children }) {
   return (
@@ -6,6 +6,8 @@ export default function BaseLayout({ children }) {
       <div className="site-wrapper">{children}</div>
 
       <Overlay />
+
+      <ModalRoot />
     </>
   )
 }
