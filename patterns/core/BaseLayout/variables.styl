@@ -1,4 +1,4 @@
-// generate font-face declartions
+// generate font-face declarations
 
 coreFonts = json('../../../config/core/fonts.json', { hash: true })
 projectFonts = json('../../../config/fonts.json', { hash: true })
@@ -8,13 +8,27 @@ generateFontFaceDeclarations(fonts, assetPath)
     family = fonts[font]["family"]
     weight = fonts[font]["weight"]
     fileName = fonts[font]["fileName"]
+    fileTypes = fonts[font]["fileTypes"]
     isItalic = fonts[font]["isItalic"]
 
     @font-face
       font-display fallback
       font-family family
       font-weight weight
-      src url(assetPath + fileName + '.ttf') format('truetype')
+      for i, type in fileTypes
+        file = fileName + '.' + type
+
+        // For most fileTypes we can just use the the extension as the
+        // 'format' in the font-face declartions.
+        // Unforatunately, 'ttf' we have to implemenet an exception here:
+        if (type  == 'ttf')
+          type = truetype
+
+        format = "format('%s')" % (type)
+
+        // Put together the final source
+        src url(pathjoin(assetPath, file)) format
+
       if isItalic
         font-style italic
 
