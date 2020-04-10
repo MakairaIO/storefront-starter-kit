@@ -4,55 +4,48 @@
     "fileName": "FiraSans-Regular",
     "weight": 400,
     "isItalic": false,
-    "fileTypes": ["ttf"]
+    "fileTypes": ["woff2", "woff", "ttf"]
   },
   "FiraSans Regular Italic": {
     "family": "FiraSans",
     "fileName": "FiraSans-Italic",
     "weight": 400,
     "isItalic": true,
-    "fileTypes": ["ttf"]
+    "fileTypes": ["woff2", "woff", "ttf"]
   },
   "FiraSans Medium": {
     "family": "FiraSans",
     "fileName": "FiraSans-Medium",
     "weight": 500,
     "isItalic": false,
-    "fileTypes": ["ttf"]
+    "fileTypes": ["woff2", "woff", "ttf"]
   },
   "FiraSans Semi-Bold": {
     "family": "FiraSans",
     "fileName": "FiraSans-SemiBold",
     "weight": 600,
     "isItalic": false,
-    "fileTypes": ["ttf"]
+    "fileTypes": ["woff2", "woff", "ttf"]
   },
   "FiraSans Semi-Bold Italic": {
     "family": "FiraSans",
     "fileName": "FiraSans-SemiBoldItalic",
     "weight": 600,
     "isItalic": true,
-    "fileTypes": ["ttf"]
+    "fileTypes": ["woff2", "woff", "ttf"]
   },
   "FiraSans Bold": {
     "family": "FiraSans",
     "fileName": "FiraSans-Bold",
     "weight": 700,
     "isItalic": false,
-    "fileTypes": ["ttf"]
+    "fileTypes": ["woff2", "woff", "ttf"]
   },
   "FiraSans Black Italic": {
     "family": "FiraSans",
     "fileName": "FiraSans-BlackItalic",
     "weight": 900,
     "isItalic": true,
-    "fileTypes": ["ttf"]
-  },
-  "Domine Bold": {
-    "family": "Domine",
-    "fileName": "Domine-Bold",
-    "weight": 700,
-    "isItalic": false,
-    "fileTypes": ["ttf"]
+    "fileTypes": ["woff2", "woff", "ttf"]
   }
 }
