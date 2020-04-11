@@ -32,7 +32,7 @@ function MultiColumnText(props) {
 
         <Copytext
           dangerouslySetInnerHTML={{ __html: columnLeft }}
-          className="multi-column-text__column multi-column-text__column--right"
+          className="multi-column-text__column multi-column-text__column--left"
         />
 
         {columnMiddle && (
@@ -45,7 +45,7 @@ function MultiColumnText(props) {
         {columnRight && (
           <Copytext
             dangerouslySetInnerHTML={{ __html: columnRight }}
-            className="multi-column-text__column multi-column-text__column--left"
+            className="multi-column-text__column multi-column-text__column--right"
           />
         )}
       </div>
