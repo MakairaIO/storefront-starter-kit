@@ -11,6 +11,7 @@ import ProductDetailInformation, {
 import ProductPlacement, {
   productPlacementVariants,
 } from '../patterns/core/ProductPlacement'
+import Promotion, { promotionVariants } from '../patterns/core/Promotion'
 import TeaserHero, { teaserHeroVariants } from '../patterns/core/TeaserHero'
 import TeaserProducts, {
   teaserProductsVariants,
@@ -76,6 +77,12 @@ export default [
     name: 'Product Placement',
     component: ProductPlacement,
     variants: productPlacementVariants,
+  },
+  {
+    type: 'component',
+    name: 'Promotion',
+    component: Promotion,
+    variants: promotionVariants,
   },
   {
     type: 'component',

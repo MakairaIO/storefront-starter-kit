@@ -1,0 +1,95 @@
+$breakpoint-small = 550px
+$breakpoint-medium = 850px
+$breakpoint-large = 1100px
+
+.promotion
+  padding 1.2rem 1.5rem
+
+  @media (min-width $breakpoint-large)
+    padding 1.2rem 2rem
+
+.promotion__container
+  background var(--neutral-90)
+  padding 3.2rem 2rem 3rem
+
+  @media (min-width $breakpoint-medium)
+    display flex
+    justify-content center
+
+.promotion__title-wrapper
+.promotion__content-wrapper
+  max-width 34.8rem
+  margin 0 auto
+  text-align center
+
+  @media (min-width $breakpoint-small)
+    max-width 55rem
+
+  @media (min-width $breakpoint-medium)
+    flex 1
+    max-width none
+    margin 0
+
+.promotion__title-wrapper
+  @media (min-width $breakpoint-medium)
+    max-width 32.5rem
+    padding-top 2.4rem
+
+.promotion__content-wrapper
+
+  @media (min-width $breakpoint-medium)
+    max-width 44rem
+    text-align left
+    margin-left 4rem
+    padding 1.6rem 0 1.6rem 5rem
+    border-left 1px solid var(--neutral-20)
+
+  @media (min-width $breakpoint-large)
+    max-width 51rem
+    margin-left 6rem
+    padding 1.6rem 0 1.6rem 6.6rem
+
+
+.promotion__pre-title
+  display block
+  color var(--neutral-50)
+  font-size 1.3rem
+  font-weight var(--font-weight-semi-bold)
+  letter-spacing 0.1rem
+  line-height 1.2rem
+  margin-bottom 1.6rem
+
+  @media (min-width $breakpoint-small)
+    margin-bottom 2.8rem
+
+.promotion__title
+  display block
+  color var(--secondary)
+  text-align center
+  margin-bottom 1.8rem
+
+  @media (min-width $breakpoint-medium)
+    margin-bottom 0
+
+.promotion__text
+  color var(--neutral-10)
+
+.promotion__button
+  margin-top 1.3rem
+
+  @media (min-width $breakpoint-small)
+    margin-top 1.9rem
+
+  @media (min-width $breakpoint-large)
+    margin-top 2.5rem
+
+.promotion--inverted
+  .promotion__container
+    background var(--neutral-20)
+
+  .promotion__text
+    color var(--primary)
+
+  .promotion__content-wrapper
+    border-color var(--primary)
+
