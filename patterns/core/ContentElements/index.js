@@ -1,5 +1,6 @@
 import {
   ProductPlacement,
+  Promotion,
   TeaserHero,
   TeaserSingle,
   TeaserProducts,
@@ -14,6 +15,7 @@ export default function ContentElements(props) {
   // Declare your additional content patterns here
   const components = {
     'product-placement': ProductPlacement,
+    promotion: Promotion,
     'teaser-hero': TeaserHero,
     'teaser-single': TeaserSingle,
     'teaser-products': TeaserProducts,
