@@ -1,5 +1,21 @@
 import { useEffect } from 'react'
 
+function callback(entries, observer) {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) {
+      return
+    }
+
+    const { dataset } = entry.target
+
+    if (dataset.src) entry.target.src = dataset.src
+
+    if (dataset.srcset) entry.target.srcset = dataset.srcset
+
+    observer.unobserve(entry.target)
+  })
+}
+
 /**
  * In case you are wondering, why we go the extra mile here and
  * use refs instead of simple selectors:
@@ -30,32 +46,40 @@ export default function useLazyLoading({
 
       if (!containingElement) return
 
-      const callback = (entries, observer) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) {
-            return
-          }
+      /**
+       * Defensive Coding:
+       * Even though you can attempt to polyfill IntersectionObserver,
+       * we still saw in our logs that some versions of Safarai managed
+       * to produce errors when attempting to initialize an observer.
+       * Therefore, we do a separate check here if the IntersectionObserver
+       * really is available
+       */
+      if (
+        'IntersectionObserver' in window &&
+        'IntersectionObserverEntry' in window &&
+        'intersectionRatio' in window.IntersectionObserverEntry.prototype
+      ) {
+        const observer = new IntersectionObserver(callback, options)
 
-          const { dataset } = entry.target
+        containingElement
+          .querySelectorAll(`[data-src], [data-srcset]`)
+          .forEach((element) => {
+            observer.observe(element)
+          })
 
-          if (dataset.src) entry.target.src = dataset.src
+        return function cleanup() {
+          observer.disconnect()
+        }
+      } else {
+        containingElement
+          .querySelectorAll(`[data-src], [data-srcset]`)
+          .forEach((element) => {
+            const { dataset } = element
 
-          if (dataset.srcset) entry.target.srcset = dataset.srcset
+            if (dataset.src) element.src = dataset.src
 
-          observer.unobserve(entry.target)
-        })
-      }
-
-      const observer = new IntersectionObserver(callback, options)
-
-      containingElement
-        .querySelectorAll(`[data-src], [data-srcset]`)
-        .forEach((element) => {
-          observer.observe(element)
-        })
-
-      return function cleanup() {
-        observer.disconnect()
+            if (dataset.srcset) element.srcset = dataset.srcset
+          })
       }
     },
     [ref, dependency, options]
