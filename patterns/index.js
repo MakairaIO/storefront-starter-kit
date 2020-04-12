@@ -22,6 +22,7 @@ export { default as ProductDetailInformation } from './core/ProductDetailInforma
 export { default as ProductPlacement } from './core/ProductPlacement'
 export { default as Promotion } from './core/Promotion'
 export { default as TeaserHero } from './core/TeaserHero'
+export { default as TeaserGrid } from './core/TeaserGrid'
 export { default as TeaserProducts } from './core/TeaserProducts'
 export { default as TeaserSingle } from './core/TeaserSingle'
 export { default as MultiColumnText } from './core/MultiColumnText'

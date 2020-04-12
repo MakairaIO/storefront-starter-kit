@@ -13,12 +13,13 @@ import ProductPlacement, {
 } from '../patterns/core/ProductPlacement'
 import Promotion, { promotionVariants } from '../patterns/core/Promotion'
 import TeaserHero, { teaserHeroVariants } from '../patterns/core/TeaserHero'
-import TeaserProducts, {
-  teaserProductsVariants,
-} from '../patterns/core/TeaserProducts'
+import TeaserGrid, { teaserGridVariants } from '../patterns/core/TeaserGrid'
 import TeaserSingle, {
   teaserSingleVariants,
 } from '../patterns/core/TeaserSingle'
+import TeaserProducts, {
+  teaserProductsVariants,
+} from '../patterns/core/TeaserProducts'
 import MultiColumnText, {
   multiColumnTextVariants,
 } from '../patterns/core/MultiColumnText'
@@ -89,6 +90,12 @@ export default [
     name: 'Teaser (Hero)',
     component: TeaserHero,
     variants: teaserHeroVariants,
+  },
+  {
+    type: 'component',
+    name: 'Teaser (Grid)',
+    component: TeaserGrid,
+    variants: teaserGridVariants,
   },
   {
     type: 'component',
