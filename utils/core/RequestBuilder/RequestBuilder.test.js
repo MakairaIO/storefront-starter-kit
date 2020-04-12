@@ -18,51 +18,6 @@ describe('RequestBuilder', () => {
     RESPONSE.cookie.mockClear()
   })
 
-  describe('getUserAgent()', () => {
-    it('should return the user-agent', () => {
-      const ctx = { req: REQUEST, res: RESPONSE }
-      const builder = new RequestBuilder(ctx)
-
-      const userAgent = builder.getUserAgent()
-
-      expect(userAgent).toEqual(USER_AGENT)
-    })
-
-    it('should save the user-agent in cookie', () => {
-      const ctx = { req: REQUEST, res: RESPONSE }
-      const builder = new RequestBuilder(ctx)
-
-      builder.getUserAgent()
-
-      expect(RESPONSE.cookie).toHaveBeenCalledTimes(1)
-      expect(RESPONSE.cookie).toHaveBeenCalledWith('userAgent', USER_AGENT)
-    })
-  })
-
-  describe('getIpAddress()', () => {
-    it('should return the ip-address', () => {
-      const ctx = { req: REQUEST, res: RESPONSE }
-      const builder = new RequestBuilder(ctx)
-
-      const ip = builder.getIpAddress()
-
-      expect(ip).toEqual(IP_ADDRESS.split(',')[0])
-    })
-
-    it('should save the ip-address in cookie', () => {
-      const ctx = { req: REQUEST, res: RESPONSE }
-      const builder = new RequestBuilder(ctx)
-
-      builder.getIpAddress()
-
-      expect(RESPONSE.cookie).toHaveBeenCalledTimes(1)
-      expect(RESPONSE.cookie).toHaveBeenCalledWith(
-        'ip',
-        IP_ADDRESS.split(',')[0]
-      )
-    })
-  })
-
   describe('getConstraints()', () => {
     const ctx = { req: REQUEST, res: RESPONSE }
     const builder = new RequestBuilder(ctx)
@@ -71,14 +26,6 @@ describe('RequestBuilder', () => {
 
     it('should return use_stock of true', () => {
       expect(constraints['query.use_stock']).toBe(true)
-    })
-
-    it('should return the user-agent', () => {
-      expect(constraints['oi.user.agent']).toEqual(USER_AGENT)
-    })
-
-    it('should return the ip-address', () => {
-      expect(constraints['oi.user.ip']).toEqual(IP_ADDRESS.split(',')[0])
     })
   })
 
@@ -90,14 +37,6 @@ describe('RequestBuilder', () => {
 
     it('should return use_stock of true', () => {
       expect(constraints['query.use_stock']).toBe(true)
-    })
-
-    it('should return the user-agent', () => {
-      expect(constraints['oi.user.agent']).toEqual(USER_AGENT)
-    })
-
-    it('should return the ip-address', () => {
-      expect(constraints['oi.user.ip']).toEqual(IP_ADDRESS.split(',')[0])
     })
   })
 
