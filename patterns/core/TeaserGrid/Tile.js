@@ -3,15 +3,15 @@ import { useConfiguration } from '../../../utils'
 import { Copytext, Heading, Button, ConditionalLink } from '../..'
 
 function Content(props) {
-  const { headline = '', text = '', link = '' } = props
+  const { heading = '', text = '', link = '' } = props
 
-  if (headline == '' && text == '') return null
+  if (heading == '' && text == '') return null
 
   return (
     <div className="teaser-grid__content">
-      {headline && (
+      {heading && (
         <Heading size="110" element="span">
-          {headline}
+          {heading}
         </Heading>
       )}
 

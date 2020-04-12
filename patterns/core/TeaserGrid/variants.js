@@ -1,7 +1,7 @@
 const tiles = {
   topRight: {
     content: {
-      headline: '[1] Magazine Heading for the Teaser',
+      heading: '[1] Magazine Heading for the Teaser',
       text:
         'Teaser Type of Lorem ipsum sit amet, consetetur sadipscing elitr, sed diam nonumy.',
     },
@@ -13,7 +13,7 @@ const tiles = {
   },
   left: {
     content: {
-      headline: '[2] Magazine Heading for the Teaser',
+      heading: '[2] Magazine Heading for the Teaser',
       text:
         'Teaser Type of Lorem ipsum sit amet, consetetur sadipscing elitr, sed diam nonumy.',
     },
@@ -25,7 +25,7 @@ const tiles = {
   },
   middle: {
     content: {
-      headline: '[3] Magazine Heading for the Teaser',
+      heading: '[3] Magazine Heading for the Teaser',
       text:
         'Teaser Type of Lorem ipsum sit amet, consetetur sadipscing elitr, sed diam nonumy.',
     },
@@ -37,7 +37,7 @@ const tiles = {
   },
   bottomRight: {
     content: {
-      headline: '[4] Magazine Heading for the Teaser',
+      heading: '[4] Magazine Heading for the Teaser',
       text:
         'Teaser Type of Lorem ipsum sit amet, consetetur sadipscing elitr, sed diam nonumy.',
     },
@@ -64,35 +64,35 @@ export default [
     },
   },
   {
-    name: 'More visual with less headlines and text',
+    name: 'More visual with less headings and text',
     props: {
       variant: 'inverted',
       tiles: {
         topRight: {
           ...tiles.topRight,
           content: {
-            headline: '',
+            heading: '',
             text: '',
           },
         },
         left: {
           ...tiles.left,
           content: {
-            headline: '',
+            heading: '',
             text: '',
           },
         },
         middle: {
           ...tiles.middle,
           content: {
-            headline: '',
+            heading: '',
             text: '',
           },
         },
         bottomRight: {
           ...tiles.bottomRight,
           content: {
-            headline: '',
+            heading: '',
             text: '',
           },
         },
