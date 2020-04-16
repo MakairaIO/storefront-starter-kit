@@ -11,7 +11,13 @@ function MultiColumnText(props) {
     textColor = 'dark',
   } = props
 
-  const classes = classNames('multi-column-text', {
+  const sectionClasses = classNames('multi-column-text__section', {
+    [`multi-column-text__section--with-backgrund-${backgroundColor}`]:
+      backgroundColor != '',
+    [`multi-column-text__section--text-color-${textColor}`]: !!textColor,
+  })
+
+  const wrapperClasses = classNames('multi-column-text', {
     ['multi-column-text--1-column']: columnMiddle == '' && columnRight == '',
     ['multi-column-text--2-column']:
       (columnMiddle == '' && columnRight != '') ||
@@ -19,15 +25,9 @@ function MultiColumnText(props) {
     ['multi-column-text--3-column']: columnMiddle != '' && columnRight != '',
   })
 
-  const sectionClasses = classNames('multi-column-text__section', {
-    [`multi-column-text__section--with-backgrund-${backgroundColor}`]:
-      backgroundColor != '',
-    [`multi-column-text__section--text-color-${textColor}`]: !!textColor,
-  })
-
   return (
     <section className={sectionClasses}>
-      <div className={classes}>
+      <div className={wrapperClasses}>
         {heading && <Heading>{heading}</Heading>}
 
         <Copytext
