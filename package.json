@@ -1,7 +1,7 @@
 {
-  "name": "makaira-enterprise-cloud",
+  "name": "makaira-storefront",
   "version": "1.0.0",
-  "description": "Makaira Enterprise Cloud",
+  "description": "Makaira Storefront",
   "author": "René Mäkeler <rm@marmalade.group>",
   "scripts": {
     "clean": "rm -f public/assets/svgs/icons.svg && rm -f public/assets/library/main.css",

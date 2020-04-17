@@ -9,6 +9,8 @@
 
 ### Installation
 
+*Disclaimer: The following steps assume that you will keep the the upstream to the base repository for continous updates. If you don't want that, you can skip some of the steps and simply clone the repository and override the default remote `origin` with your own.*
+
 * Clone this repository using the `--origin <name>` flag to set an remote name other than `origin` (for example `upstream`)
 * Configure your own origin remote using `git remote add origin <your repository url>`
 * Initial push of master branch to your own remote: `git push origin master`
