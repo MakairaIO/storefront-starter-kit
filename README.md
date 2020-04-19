@@ -28,7 +28,7 @@
 
 ### Creating new Patterns
 
-The Storefront comes included with a CLI to help you generate all necessary files for a new and register them so you can see them in the Pattern Library.
+The Storefront comes included with a CLI to help you generate all necessary files for new patterns and register them, so they will show up in the Pattern library.
 
 To create a new pattern, run the following command:
 `npx storefront create:pattern PatternName`
