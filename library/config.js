@@ -29,6 +29,7 @@ import Listing from './examplePages/Listing'
 import Detail from './examplePages/Detail'
 
 /* Add project specific imports here */
+/* CLI MARKER - PATTER IMPORT - DO NOT REMOVE */
 
 export default [
   {
@@ -115,6 +116,7 @@ export default [
     component: MultiColumnText,
     variants: multiColumnTextVariants,
   },
+  /* CLI MARKER - PATTERN CONFIG - DO NOT REMOVE */
   {
     type: 'page',
     name: 'Landing Page',

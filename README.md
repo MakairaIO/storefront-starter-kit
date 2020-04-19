@@ -26,6 +26,17 @@
 * Visit Storefront at [http://localhost:5000/](http://localhost:5000/)
 
 
+### Creating new Patterns
+
+The Storefront comes included with a CLI to help you generate all necessary files for a new and register them so you can see them in the Pattern Library.
+
+To create a new pattern, run the following command:
+`npx storefront create:pattern PatternName`
+
+You can also create multiple patterns at once, e.g.:
+`npx storefront create:pattern Pattern1 Pattern2 Patten3`
+
+
 ### Running Tests
 
 * Run tests in watch-mode: `npm run test`
