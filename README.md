@@ -63,9 +63,29 @@ For all steps, replace `<SERVER>`,`<APP_NAME>` and other placeholders (`< ... > 
 
 `ssh dokku@<SERVER>.makaira.cloud ps:rebuild <APP_NAME>`
 
+4. Create GitLab CI process
 
+- Create the variable `SSH_PRIVATE_KEY` with the same value as the other storefron projects.
+You can do this in Settings -> CI / CD Variables
 
+- Enable shared runners in the section above
 
+- Your `.gitlab-ci.yml` should look like this:
+``` yaml
+stages:
+  - deploy
+
+deploy-<APP_NAME>:
+  image: makaira/gitlab-ci-git-push
+  stage: deploy
+  only:
+    - master
+  script:
+    - git-push ssh://dokku@<SERVER>.makaira.cloud:22/<APP_NAME>
+  tags:
+    - marmalade-docker
+```
+- you can push your changes afterwards and see if it works
 
 ## FAQ
 
