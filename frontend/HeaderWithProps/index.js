@@ -1,10 +1,9 @@
 import { Header } from '../../patterns'
-import { useGlobalData, submitSearchForm } from '../../utils'
+import { useGlobalData, useTranslation, submitSearchForm } from '../../utils'
 
 export default function HeaderWithProps() {
-  const { menuData, pageData, searchResult } = useGlobalData()
-
-  const language = pageData?.language ?? searchResult.language
+  const { menuData } = useGlobalData()
+  const { language } = useTranslation()
 
   const headerProps = {
     menu: menuData,
