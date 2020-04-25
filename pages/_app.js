@@ -1,7 +1,7 @@
 import App from 'next/app'
 import Router from 'next/router'
 import { SVGSprite } from '../patterns'
-import '../patterns/index.styl'
+import '../public/assets/styles/main.css'
 
 class MyApp extends App {
   static async getInitialProps(appContext) {

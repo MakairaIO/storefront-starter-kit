@@ -13,7 +13,7 @@ coverage
 build
 .next
 public/assets/svgs/icons.svg
-public/assets/library/main.css
+public/assets/styles/main.css
 
 # misc
 .idea

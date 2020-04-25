@@ -7,7 +7,7 @@ import {
   IconView,
   ComponentView,
 } from '../../library/internal'
-import '../../library/internal/library.styl'
+import '../../public/assets/library/library.css'
 
 const mainComponents = {
   color: ColorView,
