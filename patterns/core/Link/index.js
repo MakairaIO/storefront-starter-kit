@@ -14,11 +14,11 @@ export default function Link(props) {
    * Internal Routes
    */
   if (isInternalRoute) {
-    const { as } = rest
+    const { as, ...htmlAttributes } = rest
 
     return (
       <NextLink href={href} as={as}>
-        <a {...rest}>{children}</a>
+        <a {...htmlAttributes}>{children}</a>
       </NextLink>
     )
   }
