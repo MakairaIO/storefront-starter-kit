@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import qs from 'qs'
+import isEmpty from 'lodash/isEmpty'
 import { HeaderWithProps, SearchResultPage } from '../../frontend'
 import { BaseLayout } from '../../patterns'
 import {
@@ -8,6 +9,7 @@ import {
   TranslationProvider,
   fetchSearchResult,
   fetchMenuData,
+  redirect,
 } from '../../utils'
 import ErrorPage from '../_error'
 
@@ -15,6 +17,8 @@ export default class Index extends Component {
   static async getInitialProps(ctx) {
     const { query, res } = ctx
     const { seoUrl, ...params } = qs.parse(query)
+
+    if (isEmpty(query)) redirect({ ctx, target: '/' })
 
     try {
       const [searchResult, menuData] = await Promise.all([
@@ -26,13 +30,13 @@ export default class Index extends Component {
     } catch (error) {
       if (res) {
         res.statusCode = 500
-
-        /**
-         * Returning an empty here is intentional, see:
-         * https://github.com/zeit/next.js/blob/master/errors/empty-object-getInitialProps.md
-         */
-        return {}
       }
+
+      /**
+       * Returning an empty here is intentional, see:
+       * https://github.com/zeit/next.js/blob/master/errors/empty-object-getInitialProps.md
+       */
+      return {}
     }
   }
 
