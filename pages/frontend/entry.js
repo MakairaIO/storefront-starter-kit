@@ -13,6 +13,7 @@ import {
   TranslationProvider,
   fetchPageData,
   fetchMenuData,
+  redirect,
   wait,
 } from '../../utils'
 import ErrorPage from '../_error'
@@ -34,6 +35,14 @@ export default class Index extends Component {
         fetchPageData({ ctx }),
         fetchMenuData(),
       ])
+
+      if (pageData.type == 'redirect') {
+        const {
+          data: { target, code },
+        } = pageData
+
+        redirect({ ctx, target, code })
+      }
 
       return { menuData, pageData, params }
     } catch (error) {
