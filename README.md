@@ -110,7 +110,7 @@ If you want to use external CSS libraries you can install them using NPM and inc
 **Bootstrap**
 1. Install the dependency: `npm install bootstrap`
 2. Use the distributable, either:
- a) Include it in the stylus entry file `patterns/index.styl`:
+ a) Include it in the stylus entry file `patterns/index.styl` (preferred):
     `@import 'node_modules/bootstrap/dist/css/bootstrap.css'`
  b) Import directly in the application entry file `pages/_app.js`:
     `import 'bootstrap/dist/css/bootstrap.css'`
