@@ -17,11 +17,11 @@ export default function VariantPreview({
     return (
       <select
         value={currentLanguage}
-        onChange={event => changeLanguage(event.currentTarget.value)}
-        onBlur={event => changeLanguage(event.currentTarget.value)}
+        onChange={(event) => changeLanguage(event.currentTarget.value)}
+        onBlur={(event) => changeLanguage(event.currentTarget.value)}
         className="pali__language-select pali__language-select--overview"
       >
-        {allLanguages.map(language => (
+        {allLanguages.map((language) => (
           <option key={language.value} value={language.value}>
             {language.label}
           </option>
@@ -72,7 +72,7 @@ export default function VariantPreview({
                 ></style>
 
                 <link
-                  href="/assets/library/main.css"
+                  href="/assets/styles/main.css"
                   rel="stylesheet"
                   type="text/css"
                 />

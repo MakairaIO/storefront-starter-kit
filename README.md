@@ -89,7 +89,7 @@ deploy-<APP_NAME>:
 
 ## FAQ
 
-### How to add project specific colors/fonts/icon
+### Adding project specific colors/fonts/icon
 
 This applications comes with a default palette of colors, icons and typography. The related configuration files can be cound in the `config/core` directory.
 
@@ -103,6 +103,19 @@ Of course, it is possible to override the default configuration your own, projec
 These configuration files are empty by default, therefore the application uses the default configuration. As soon as you start adding your own colors, icons or fonts to the empty configuration files, these will be used instead of the default files.
 
 
+### Adding external CSS libraries
+
+If you want to use external CSS libraries you can install them using NPM and include the necessary files.
+
+**Bootstrap**
+1. Install the dependency: `npm install bootstrap`
+2. Use the distributable, either:
+ a) Include it in the stylus entry file `patterns/index.styl`:
+    `@import 'node_modules/bootstrap/dist/css/bootstrap.css'`
+ b) Import directly in the application entry file `pages/_app.js`:
+    `import 'bootstrap/dist/css/bootstrap.css'`
+
+
 ### IE11 Compatability
 
 By default, this application is not supporting IE11. If you need to support IE11, there are a couple of APIs and features that you will need to polyfill or refactor:
@@ -111,44 +124,15 @@ By default, this application is not supporting IE11. If you need to support IE11
 
 The application makes heavy use of CSS Custom Properties. In order to add a fallback for IE11, you will need to perform the following steps:
 
-- `npm install poststylus postcss-css-variables`
-- Modify file `next.config.js` to look like the following:
+- `npm install postcss-css-variables`
+- Create a `postcss.config.js` and add:
 
 ```javascript
-require('dotenv').config()
-
-const withStylus = require('@zeit/next-stylus')
-const poststylus = require('poststylus')
-const cssvariables = require('postcss-css-variables')
-const path = require('path')
-const Dotenv = require('dotenv-webpack')
-
-const stylusLoaderOptions = {
-  use: [
-    poststylus([
-      cssvariables({
-        preserve: true, // set this to false if you don't need custom properties at runtime
-      }),
-    ]),
-  ],
-}
-
-module.exports = withStylus({
-  stylusLoaderOptions,
-  webpack: (config) => {
-    config.plugins = config.plugins || []
-
-    config.plugins = [
-      ...config.plugins,
-
-      // Read the .env file
-      new Dotenv({
-        path: path.join(__dirname, '.env'),
-        systemvars: true,
-      }),
-    ]
-
-    return config
+module.exports = {
+  plugins: {
+    'postcss-css-variables': {
+      preserve: true, // set this to false if you don't need custom properties at runtime
+    },
   },
-})
+}
 ```
