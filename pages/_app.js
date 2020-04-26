@@ -1,6 +1,9 @@
 import App from 'next/app'
 import Router from 'next/router'
 import { SVGSprite } from '../patterns'
+
+// The next line is excluded from linting since the file gets generated at runtime.
+/* eslint-disable-next-line import/no-unresolved */
 import '../public/assets/styles/main.css'
 
 class MyApp extends App {
