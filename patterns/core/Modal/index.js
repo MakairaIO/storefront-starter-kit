@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { Button } from '../..'
 import { dispatchShowOverlayEvent } from '../../../utils'
 
-const MODAL_ROOT_ID = 'moda-root'
+const MODAL_ROOT_ID = 'modal-root'
 
 export default class Modal extends Component {
   static propTypes = {
