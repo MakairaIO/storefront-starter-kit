@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import { Range } from 'rc-slider'
+import isEqual from 'lodash/isEqual'
 
 const handleStyle = {
   backgroundColor: 'var(--neutral-00)',
@@ -21,12 +22,28 @@ export default class RangeFilter extends Component {
   constructor(props) {
     super(props)
 
-    const { min, max, selectedValues = {} } = props
+    const initialState = this.getStateFromProps()
 
-    this.state = {
-      selectedMin: Math.trunc(selectedValues?.from ?? min),
-      selectedMax: Math.trunc(selectedValues?.to ?? max),
+    this.state = initialState
+  }
+
+  componentDidUpdate(prevProps) {
+    // If props change from the outside (e.g. when resetting filters) we need to update
+    // the state of the range slider accordingly
+    if (!isEqual(prevProps.selectedValues, this.props.selectedValues)) {
+      const updatedState = this.getStateFromProps()
+
+      this.setState(updatedState)
     }
+  }
+
+  getStateFromProps = () => {
+    const { min, max, selectedValues = {} } = this.props
+
+    const selectedMin = Math.trunc(selectedValues?.from ?? min)
+    const selectedMax = Math.trunc(selectedValues?.to ?? max)
+
+    return { selectedMin, selectedMax }
   }
 
   handleChange = (values) => {
@@ -64,7 +81,7 @@ export default class RangeFilter extends Component {
         <Range
           min={Math.trunc(min)}
           max={Math.trunc(max)}
-          defaultValue={[selectedMin, selectedMax]}
+          value={[selectedMin, selectedMax]}
           onChange={this.handleChange}
           handleStyle={styles.handleStyle}
           trackStyle={styles.trackStyle}
