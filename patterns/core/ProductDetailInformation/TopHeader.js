@@ -6,7 +6,9 @@ export default function TopHeader(props) {
 
   return (
     <div className="product-detail-information__top-header">
-      <Heading>{title}</Heading>
+      <Heading size="diana" weight="600">
+        {title}
+      </Heading>
 
       <ProductPrices {...props} />
     </div>

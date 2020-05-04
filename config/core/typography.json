@@ -1,0 +1,81 @@
+{
+  "Zero": {
+    "mixin": "zero",
+    "size": 9,
+    "line": 12,
+    "spacing": 0.2,
+    "paddingTop": 3,
+    "paddingBottom": 3
+  },
+  "Aphrodite": {
+    "mixin": "aphrodite",
+    "size": 13,
+    "line": 18,
+    "spacing": 0.05,
+    "paddingTop": 5,
+    "paddingBottom": 1
+  },
+  "Bacchus": {
+    "mixin": "bacchus",
+    "size": 16,
+    "line": 24,
+    "paddingTop": 1,
+    "paddingBottom": 5
+  },
+  "Cupid": {
+    "mixin": "cupid",
+    "size": 20,
+    "line": 24,
+    "spacing": -0.1,
+    "paddingTop": 5,
+    "paddingBottom": 1
+  },
+  "Diana": {
+    "mixin": "diana",
+    "size": 24,
+    "line": 30,
+    "spacing": -0.15,
+    "paddingTop": 1,
+    "paddingBottom": 5
+  },
+  "Eos": {
+    "mixin": "eos",
+    "size": 30,
+    "line": 36,
+    "spacing": -0.25,
+    "paddingTop": 2,
+    "paddingBottom": 4
+  },
+  "Fortuna": {
+    "mixin": "fortuna",
+    "size": 36,
+    "line": 42,
+    "spacing": -0.5,
+    "paddingTop": 3,
+    "paddingBottom": 3
+  },
+  "Gaia": {
+    "mixin": "gaia",
+    "size": 42,
+    "line": 48,
+    "spacing": -0.7,
+    "paddingTop": 4,
+    "paddingBottom": 2
+  },
+  "Herakles": {
+    "mixin": "herakles",
+    "size": 54,
+    "line": 66,
+    "spacing": -1.1,
+    "paddingTop": 3,
+    "paddingBottom": 3
+  },
+  "Isis": {
+    "mixin": "isis",
+    "size": 66,
+    "line": 72,
+    "spacing": -1.6,
+    "paddingTop": 2,
+    "paddingBottom": 4
+  }
+}

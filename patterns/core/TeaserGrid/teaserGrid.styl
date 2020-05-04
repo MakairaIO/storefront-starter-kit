@@ -69,6 +69,14 @@ $breakpoint-huge = 1400px
   background var(--grid-teaser-overlay-background-opaque-default)
   padding 1.2rem 1.5rem 1.8rem
 
+  .heading
+    @media (min-width $breakpoint-small)
+      diana()
+
+  .copytext
+    @media (min-width $breakpoint-small)
+      bacchus()
+
   button
     align-self flex-end
 

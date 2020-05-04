@@ -10,12 +10,12 @@ function Content(props) {
   return (
     <div className="teaser-grid__content">
       {heading && (
-        <Heading size="110" element="span">
+        <Heading element="span" weight="semi-bold">
           {heading}
         </Heading>
       )}
 
-      {text && <Copytext size="110">{text}</Copytext>}
+      {text && <Copytext>{text}</Copytext>}
 
       {link && <Button variant="icon-only" icon="chevron-right" />}
     </div>

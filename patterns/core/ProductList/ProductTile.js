@@ -1,4 +1,4 @@
-import { Heading, Copytext, Link } from '../..'
+import { Heading, Copytext, Text, Link } from '../..'
 import ProductVariants from './ProductVariants'
 import ProductPrices from './ProductPrices'
 import ProductPriceHint from './ProductPriceHint'
@@ -22,11 +22,17 @@ export default function ProductTile(props) {
 
         <ProductVariants {...props} />
 
-        <Heading size="125" className="product-item__title">
+        <Heading size="bacchus" weight="600" className="product-item__title">
           {title}
         </Heading>
 
-        <span className="product-item__manufacturer">{manufacturer_title}</span>
+        <Text
+          size="aphrodite"
+          weight="600"
+          className="product-item__manufacturer"
+        >
+          {manufacturer_title}
+        </Text>
 
         <Copytext className="product-item__shortdesc">{shortdesc}</Copytext>
 

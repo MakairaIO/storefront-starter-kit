@@ -17,9 +17,7 @@ export default function Content(props) {
 
   return (
     <div className="promotion__content-wrapper">
-      <Copytext size="110" className="promotion__text">
-        {text}
-      </Copytext>
+      <Copytext className="promotion__text">{text}</Copytext>
 
       <PromotionButton {...button} />
     </div>

@@ -21,7 +21,7 @@ function TeaserSingle(props) {
       </ConditionalLink>
 
       <div className="single-teaser__content">
-        <Heading>{heading}</Heading>
+        <Heading weight="semi-bold">{heading}</Heading>
 
         <Copytext dangerouslySetInnerHTML={{ __html: text }} />
 

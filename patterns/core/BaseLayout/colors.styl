@@ -1,0 +1,34 @@
+// define Custom Properties for colors
+coreColors = json('../../../config/core/colors.json', { hash: true })
+projectColors = json('../../../config/colors.json', { hash: true })
+
+if length(projectColors) > 0
+  colors = projectColors
+else
+  colors = coreColors
+
+:root
+  for color in colors
+    name = colors[color]["variableName"]
+    value = colors[color]["value"]
+
+    {name} value
+
+// Unforatunately, we can not use Stylus-built-in operators like
+// 'alpha, 'lighten' or 'darken' on CSS Custom Properties.
+// But we still do need a couple of "one-of"-colors, for example
+// to use on hover states in the Button component.
+//
+// To achieve this, we define a couple of custom properties below
+// that make use of the operators and will be used in rare cases.
+// If you want to change the overall theming, you will have to
+// make manual adjustments here according to the changes you made
+// in `config/colors.json`.
+:root
+  --hero-teaser-overlay-background-opaque alpha(#101C2D, 0.6) // based on var(--neutral-90)
+  --grid-teaser-overlay-background-opaque-default alpha(#fff, 0.65) // based on var(--neutral-00)
+  --grid-teaser-overlay-background-opaque-inverted alpha(#101C2D, 0.65) // based on var(--neutral-90)
+  --button-primary-alt-hover darken(#FF8E00, 2%) // based on var(--secondary)
+  --button-primary-alt-active darken(#FF8E00, 4%)  // based var(--secondary)
+  --product-detail-information-zoom-button-background alpha(#E9ECF1, 0.35)  // based var(--neutral-20)
+

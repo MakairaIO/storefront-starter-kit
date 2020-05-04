@@ -1,13 +1,15 @@
 import classNames from 'classnames'
+import { Text } from '../..'
 
 function Copytext(props) {
   const {
-    size = '150',
+    size = 'aphrodite',
+    weight = 'regular',
     className = '',
     element = 'p',
     dangerouslySetInnerHTML = '',
   } = props
-  const classes = classNames(className, 'copytext', `copytext--${size}`)
+  const classes = classNames(className, 'copytext')
 
   if (dangerouslySetInnerHTML) {
     /**
@@ -16,16 +18,21 @@ function Copytext(props) {
      * to use <p> tags as a container.
      */
     return (
-      <div
+      <Text
+        element="div"
+        size={size}
+        weight={weight}
         className={classes}
         dangerouslySetInnerHTML={dangerouslySetInnerHTML}
       />
     )
   }
 
-  const Element = element
-
-  return <Element className={classes}>{props.children}</Element>
+  return (
+    <Text element={element} size={size} weight={weight} className={classes}>
+      {props.children}
+    </Text>
+  )
 }
 
 export default Copytext
