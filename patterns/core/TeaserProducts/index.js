@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import classNames from 'classnames'
 import { useTranslation, useLazyLoading } from '../../../utils'
-import { Heading, Button } from '../..'
+import { Heading, Copytext, Button } from '../..'
 
 function TeaserProducts(props) {
   const listRef = useRef(null)
@@ -38,9 +38,19 @@ function Teaser(props) {
       </picture>
 
       <p className="product-teaser__content">
-        <span className="product-teaser__pre-title">{manufacturer_title}</span>
+        <Copytext
+          weight="semi-bold"
+          element="span"
+          className="product-teaser__pre-title"
+        >
+          {manufacturer_title}
+        </Copytext>
 
-        <Heading size="110" element="span" className="product-teaser__title">
+        <Heading
+          weight="semi-bold"
+          element="span"
+          className="product-teaser__title"
+        >
           {title}
         </Heading>
 

@@ -1,4 +1,4 @@
-import { Heading, Link } from '../..'
+import { Heading, Text, Link } from '../..'
 import ProductPrices from './ProductPrices'
 import ProductPriceHint from './ProductPriceHint'
 import ProductActions from './ProductActions'
@@ -19,16 +19,21 @@ export default function ProductTile(props) {
         </picture>
 
         <Heading
-          size="100"
+          size="bacchus"
+          weight="600"
           className="product-placement-item__title"
           element="h3"
         >
           {title}
         </Heading>
 
-        <span className="product-placement-item__manufacturer">
+        <Text
+          size="aphrodite"
+          weight="600"
+          className="product-placement-item__manufacturer"
+        >
           {manufacturer_title}
-        </span>
+        </Text>
 
         <ProductPrices {...props} />
 

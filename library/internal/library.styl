@@ -232,21 +232,24 @@ $desktop-breakpoint = 1024px
 .pali__typography-container
 
   & + &
-    margin-top 4rem
+    margin-top 3rem
 
-.pali__typography-title span
-  margin-left 1rem
-
-.pali__typography-text
+.pali__typography-line
   display flex
+  align-items baseline
 
   & + &
-    margin-top 1.5rem
+    margin-top 0.4rem
 
-  span:first-of-type
-    font-size 1.2rem
-    width 4.5rem
-    color rgba(0, 0, 0, 0.6)
+.pali__typography-size-title
+  font-size 1.1rem
+  line-height 1.2rem
+  letter-spacing 0.02rem
+  color #2F77C8
+  margin-bottom 0.8rem
+
+.pali__typography-font-title
+  flex 0 0 15rem
 
 .pali__icons
   display flex

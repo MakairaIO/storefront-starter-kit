@@ -1,4 +1,11 @@
 {
+  "FiraSans Light": {
+    "family": "FiraSans",
+    "fileName": "FiraSans-Light",
+    "weight": 300,
+    "isItalic": false,
+    "fileTypes": ["woff2", "woff", "ttf"]
+  },
   "FiraSans Regular": {
     "family": "FiraSans",
     "fileName": "FiraSans-Regular",
@@ -38,6 +45,13 @@
     "family": "FiraSans",
     "fileName": "FiraSans-Bold",
     "weight": 700,
+    "isItalic": false,
+    "fileTypes": ["woff2", "woff", "ttf"]
+  },
+  "FiraSans Black": {
+    "family": "FiraSans",
+    "fileName": "FiraSans-Black",
+    "weight": 900,
     "isItalic": false,
     "fileTypes": ["woff2", "woff", "ttf"]
   },

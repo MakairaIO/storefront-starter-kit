@@ -7,7 +7,7 @@ export default function Title(props) {
     <div className="promotion__title-wrapper">
       {pre && <span className="promotion__pre-title">{pre}</span>}
 
-      <Heading size="110" element="span" className="promotion__title">
+      <Heading element="span" weight="semi-bold" className="promotion__title">
         {text}
       </Heading>
     </div>
