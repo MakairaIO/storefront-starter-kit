@@ -2,8 +2,8 @@ import classNames from 'classnames'
 
 function Text(props) {
   const {
-    size = '150',
-    weight = 400,
+    size = 'aphrodite',
+    weight = 'regular',
     className = '',
     element = 'span',
     ...rest // dangerouslySetInnerHTML etc.
