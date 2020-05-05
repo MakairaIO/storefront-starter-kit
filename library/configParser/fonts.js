@@ -35,7 +35,7 @@ function writeFontFaceDeclarations() {
 
   const useProjectConfig = Object.keys(projectConfig).length > 0
   const config = useProjectConfig ? projectConfig : coreConfig
-  const assetPath = useProjectConfig ? '/assets/fonts' : '/assets/fonts/core/'
+  const assetPath = useProjectConfig ? '/assets/fonts/' : '/assets/fonts/core/'
 
   const declarations = Object.values(config)
     .map((entry) => createDeclaration(entry, assetPath))
