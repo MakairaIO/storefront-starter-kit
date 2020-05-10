@@ -20,6 +20,7 @@
     "library:build": "stylus --compress library/internal/library.styl --out public/assets/library/library.css",
     "start": "NODE_ENV=production node server/index.js",
     "test": "jest --watch",
+    "analyze": "ANALYZE=true npm run build",
     "pre-commit": "jest --all && lint-staged"
   },
   "dependencies": {
@@ -39,6 +40,7 @@
     "stylus": "^0.54.7"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^9.3.6",
     "babel-eslint": "^10.1.0",
     "chokidar-cli": "^2.1.0",
     "eslint": "^7.0.0",
