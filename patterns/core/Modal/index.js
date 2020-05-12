@@ -2,7 +2,10 @@ import { Component } from 'react'
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import { Button } from '../..'
-import { dispatchShowOverlayEvent } from '../../../utils'
+import {
+  dispatchShowOverlayEvent,
+  dispatchOverlayClickedEvent,
+} from '../../../utils'
 
 const MODAL_ROOT_ID = 'modal-root'
 
@@ -35,7 +38,7 @@ export default class Modal extends Component {
           variant="link-icon"
           icon="times"
           className="modal__close-button"
-          onClick={this.props.closeModal}
+          onClick={dispatchOverlayClickedEvent}
         />
 
         {this.props.children}
