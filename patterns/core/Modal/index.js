@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 import { Button } from '../..'
 import {
   dispatchShowOverlayEvent,
@@ -32,8 +33,11 @@ export default class Modal extends Component {
       return null
     }
 
+    const { className = '' } = this.props
+    const classes = classNames('modal', className)
+
     return createPortal(
-      <div className="modal">
+      <div className={classes}>
         <Button
           variant="link-icon"
           icon="times"
