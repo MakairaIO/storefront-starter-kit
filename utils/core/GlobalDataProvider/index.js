@@ -18,7 +18,8 @@ class GlobalDataProvider extends Component {
     // Update State when needed (e.g. filtering, paginating, etc)
     if (
       !isEqual(props.pageData, state.pageData) ||
-      !isEqual(props.searchResult, state.searchResult)
+      !isEqual(props.searchResult, state.searchResult) ||
+      !isEqual(props.params, state.params)
     ) {
       // We don't need to update menuData though
       const { children, menuData, ...updatedState } = props
