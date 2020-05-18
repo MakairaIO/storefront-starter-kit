@@ -22,7 +22,7 @@ function Button(props) {
   const { disabled } = rest
   if (disabled) {
     return (
-      <button className={classes} type="button" {...rest}>
+      <button className={classes} type="button" disabled={disabled}>
         <span className="button__text">{children}</span>
 
         {icon && <Icon symbol={icon} />}
