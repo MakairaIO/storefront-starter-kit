@@ -18,6 +18,18 @@ function Button(props) {
     [`button--icon-${iconPosition}`]: icon && iconPosition && children,
   })
 
+  // Separate check to properly render disabled link-buttons
+  const { disabled } = rest
+  if (disabled) {
+    return (
+      <button className={classes} type="button" {...rest}>
+        <span className="button__text">{children}</span>
+
+        {icon && <Icon symbol={icon} />}
+      </button>
+    )
+  }
+
   return (
     <ConditionalLink
       href={href}
