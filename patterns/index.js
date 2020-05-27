@@ -27,5 +27,6 @@ export { default as TeaserGrid } from './core/TeaserGrid'
 export { default as TeaserProducts } from './core/TeaserProducts'
 export { default as TeaserSingle } from './core/TeaserSingle'
 export { default as MultiColumnText } from './core/MultiColumnText'
+export { default as BrowserHintPage } from './core/BrowserHintPage'
 
 /* Add project specific patterns here */

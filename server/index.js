@@ -2,6 +2,7 @@ const express = require('express')
 const next = require('next')
 const cors = require('cors')
 const allLanguages = require('../config/allLanguages')
+const parser = require('ua-parser-js')
 
 const dev = process.env.NODE_ENV !== 'production'
 const port = process.env.NODE_PORT ? process.env.NODE_PORT : 5000
@@ -20,6 +21,18 @@ app
      */
     server.get('/assets/*', (req, res) => {
       return handle(req, res)
+    })
+
+    /**
+     * Middleware to detect if a user is using Internet Explorer.
+     */
+    server.use((req, res, next) => {
+      const ua = parser(req.headers['user-agent'])
+      if ('IE' !== ua.browser.name) {
+        next()
+      } else {
+        app.render(req, res, '/frontend/browser', req.query)
+      }
     })
 
     /**
