@@ -118,7 +118,9 @@ If you want to use external CSS libraries you can install them using NPM and inc
 
 ### IE11 Compatability
 
-By default, this application is not supporting IE11. If you need to support IE11, there are a couple of APIs and features that you will need to polyfill or refactor:
+By default, this application is not supporting IE11. Therefore, we have a middleware in `server/index.js` that detects if a user is coming with IE and if so, we render a page which suggests downloading a modern browser.
+
+If you need to support IE11, you have to remove this middleware. In addition, there are a couple of APIs and features that you will need to polyfill or refactor:
 
 **CSS Custom Properties**
 
