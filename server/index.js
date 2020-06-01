@@ -28,6 +28,7 @@ app
      */
     server.use((req, res, next) => {
       const ua = parser(req.headers['user-agent'])
+
       if ('IE' !== ua.browser.name) {
         next()
       } else {
