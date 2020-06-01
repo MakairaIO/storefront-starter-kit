@@ -2,6 +2,7 @@ export default [
   {
     name: 'Default',
     props: {
+      fetchAutosuggestResult: async () => {},
       submitSearchForm: async () => {},
       menu: [
         {

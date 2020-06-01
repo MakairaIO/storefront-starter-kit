@@ -6,6 +6,7 @@ import Search from './Search'
 import Actions from './Actions'
 import {
   throttle,
+  debounce,
   dispatchShowOverlayEvent,
   dispatchOverlayClickedEvent,
 } from '../../../utils'
@@ -20,9 +21,11 @@ class Header extends Component {
       renderMobileNavigation: false,
       isMobileNavigationVisible: false,
       searchPhrase: '',
+      autosuggestResult: {},
     }
 
     this.handleResize = throttle(this.handleResize, 200)
+    this.fetchAutosuggestResult = debounce(this.fetchAutosuggestResult, 250)
 
     this.mobileSearchInputRef = createRef()
   }
@@ -84,7 +87,18 @@ class Header extends Component {
   }
 
   handleSearchPhraseChange = (event) => {
-    this.setState({ searchPhrase: event.target.value })
+    this.setState(
+      { searchPhrase: event.target.value },
+      this.fetchAutosuggestResult
+    )
+  }
+
+  fetchAutosuggestResult = async () => {
+    const { searchPhrase } = this.state
+
+    const result = await this.props.fetchAutosuggestResult(searchPhrase)
+
+    this.setState({ autosuggestResult: result })
   }
 
   handleSearchFormSubmit = (event) => {
