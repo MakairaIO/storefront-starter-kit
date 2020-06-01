@@ -12,8 +12,12 @@ coverage
 .env
 build
 .next
+
+# dynamically generated files
 public/assets/svgs/icons.svg
 public/assets/styles/main.css
+patterns/core/BaseLayout/fonts.styl
+patterns/core/BaseLayout/typography.styl
 
 # misc
 .idea
