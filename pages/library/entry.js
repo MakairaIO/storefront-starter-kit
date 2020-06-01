@@ -55,14 +55,9 @@ export default function Index() {
   const [isNavigationVisible, toggleNavigation] = useState(false)
 
   const [visibleEntry, setVisibleEntry] = useState({
-    type: 'color',
+    type: '',
     entry: {},
   })
-
-  const components = componentConfig.filter(
-    (entry) => entry.type === 'component'
-  )
-  const pages = componentConfig.filter((entry) => entry.type === 'page')
 
   const MainComponent = mainComponents[visibleEntry.type]
 
@@ -73,6 +68,18 @@ export default function Index() {
     toggleNavigation(false)
     setVisibleEntry(entry)
   }
+
+  const pages = componentConfig.filter((entry) => entry.type === 'page')
+  const placeables = componentConfig.filter(
+    (entry) => entry.type === 'placeable'
+  )
+  const statics = componentConfig.filter((entry) => entry.type === 'static')
+  const atomsAndMolecules = componentConfig.filter(
+    (entry) =>
+      entry.type === 'atom' ||
+      entry.type === 'molecule' ||
+      entry.type === 'component' // catch 'component' type here for backwards compatibility
+  )
 
   return (
     <div className="pali__wrapper">
@@ -88,6 +95,44 @@ export default function Index() {
         </figure>
 
         <ul className="pali__list">
+          <li className="pali__list-item pali__list-header">Example Pages</li>
+
+          <NavigationList
+            entries={pages}
+            visibleEntry={visibleEntry}
+            setVisibleEntry={handleNavigationClick}
+          />
+
+          <li className="pali__list-item pali__list-header">
+            Placeable Components
+          </li>
+
+          <NavigationList
+            entries={placeables}
+            visibleEntry={visibleEntry}
+            setVisibleEntry={handleNavigationClick}
+          />
+
+          <li className="pali__list-item pali__list-header">
+            Static Components
+          </li>
+
+          <NavigationList
+            entries={statics}
+            visibleEntry={visibleEntry}
+            setVisibleEntry={handleNavigationClick}
+          />
+
+          <li className="pali__list-item pali__list-header">
+            Atoms & Molecules
+          </li>
+
+          <NavigationList
+            entries={atomsAndMolecules}
+            visibleEntry={visibleEntry}
+            setVisibleEntry={handleNavigationClick}
+          />
+
           <li className="pali__list-item pali__list-header">Basics</li>
 
           <NavigationEntryBasic
@@ -110,27 +155,16 @@ export default function Index() {
             visibleEntry={visibleEntry}
             setVisibleEntry={handleNavigationClick}
           />
-
-          <li className="pali__list-item pali__list-header">Components</li>
-
-          <NavigationList
-            entries={components}
-            visibleEntry={visibleEntry}
-            setVisibleEntry={handleNavigationClick}
-          />
-
-          <li className="pali__list-item pali__list-header">Example Pages</li>
-
-          <NavigationList
-            entries={pages}
-            visibleEntry={visibleEntry}
-            setVisibleEntry={handleNavigationClick}
-          />
         </ul>
       </nav>
 
       <main className="pali__main">
-        <MainComponent {...visibleEntry.entry} type={visibleEntry.entry.type} />
+        {visibleEntry.type != '' && (
+          <MainComponent
+            {...visibleEntry.entry}
+            type={visibleEntry.entry.type}
+          />
+        )}
       </main>
     </div>
   )
