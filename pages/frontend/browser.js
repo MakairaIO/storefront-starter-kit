@@ -7,25 +7,21 @@ export default class BrowserHint extends Component {
   static async getInitialProps(ctx) {
     const { req } = ctx
 
-    const languageHeader =
-      req.headers['accept-language'] !== undefined
-        ? req.headers['accept-language']
-        : ['de'] // fallback
-
-    const acceptedLanguages = languageHeader
-      .split(',')
-      .map((entry) => entry.replace(/;q=.*/, '')) // remove Quality values (see: https://developer.mozilla.org/en-US/docs/Glossary/quality_values)
-
     let targetLanguage = 'de' // fallback language
-    for (let acceptedLanguage of acceptedLanguages) {
-      const isLanguageSupported = allLanguages.find(
-        (lang) => lang.value == acceptedLanguage
-      )
 
-      if (isLanguageSupported) {
-        targetLanguage = acceptedLanguage
-        break
+    try {
+      for (let acceptedLanguage of req.acceptsLanguages()) {
+        const isLanguageSupported = allLanguages.find(
+          (lang) => lang.value == acceptedLanguage
+        )
+
+        if (isLanguageSupported) {
+          targetLanguage = acceptedLanguage
+          break
+        }
       }
+    } catch (error) {
+      // intentionally left blank since in some edge cases the IE11 seems to be not sending the relevant header
     }
 
     return {
