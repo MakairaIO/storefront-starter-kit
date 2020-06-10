@@ -7,7 +7,12 @@ export default class BrowserHint extends Component {
   static async getInitialProps(ctx) {
     const { req } = ctx
 
-    const acceptedLanguages = req.headers['accept-language']
+    const languageHeader =
+      req.headers['accept-language'] !== undefined
+        ? req.headers['accept-language']
+        : ['de'] // fallback
+
+    const acceptedLanguages = languageHeader
       .split(',')
       .map((entry) => entry.replace(/;q=.*/, '')) // remove Quality values (see: https://developer.mozilla.org/en-US/docs/Glossary/quality_values)
 
