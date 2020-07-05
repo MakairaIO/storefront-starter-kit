@@ -3,6 +3,12 @@ import projectColors from '../../config/colors'
 
 const colors = Object.keys(projectColors).length ? projectColors : coreColors
 
+function getColorGroups() {
+  const groups = Object.values(colors).map((c) => c.group)
+
+  return Array.from(new Set(groups)) // new Set() to remove duplicates
+}
+
 function filterColorsByGroup(group) {
   return Object.entries(colors).reduce((filteredColors, currentColor) => {
     const [name, info] = currentColor
@@ -16,27 +22,26 @@ function filterColorsByGroup(group) {
 }
 
 export default function ColorView() {
-  const coreColors = filterColorsByGroup('core')
-  const brandColors = filterColorsByGroup('brand')
-  const neutralColors = filterColorsByGroup('neutral')
-  const helperColors = filterColorsByGroup('helper')
-  const stateColors = filterColorsByGroup('state')
+  const colorGroups = getColorGroups()
 
   return (
     <div className="pali__colors">
-      <ColorSection heading="Core" colors={coreColors} />
-      <ColorSection heading="Brand" colors={brandColors} />
-      <ColorSection heading="Neutrals" colors={neutralColors} />
-      <ColorSection heading="Helper" colors={helperColors} />
-      <ColorSection heading="States" colors={stateColors} />
+      {colorGroups.map((group) => {
+        const colors = filterColorsByGroup(group)
+
+        return <ColorSection key={group} heading={group} colors={colors} />
+      })}
     </div>
   )
 }
 
 function ColorSection({ heading, colors }) {
+  const displayHeading = heading.charAt(0).toUpperCase() + heading.slice(1)
+
   return (
     <div className="pali__color-wrapper">
-      <h2>{heading}</h2>
+      <h2>{displayHeading}</h2>
+
       {Object.entries(colors).map(([name, info]) => (
         <ColorTile key={name} name={name} {...info} />
       ))}
