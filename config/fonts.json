@@ -1,1 +1,58 @@
-{}
+{
+  "Merriweather Sans Light": {
+    "family": "Merriweather Sans",
+    "fileName": "MerriweatherSans-Light",
+    "weight": 300,
+    "isItalic": false,
+    "fileTypes": ["ttf"]
+  },
+  "Merriweather Sans Light Italic": {
+    "family": "Merriweather Sans",
+    "fileName": "MerriweatherSans-LightItalic",
+    "weight": 300,
+    "isItalic": true,
+    "fileTypes": ["ttf"]
+  },
+  "Merriweather Sans Regular": {
+    "family": "Merriweather Sans",
+    "fileName": "MerriweatherSans-Regular",
+    "weight": 400,
+    "isItalic": false,
+    "fileTypes": ["ttf"]
+  },
+  "Merriweather Sans Regular Italic": {
+    "family": "Merriweather Sans",
+    "fileName": "MerriweatherSans-Italic",
+    "weight": 400,
+    "isItalic": true,
+    "fileTypes": ["ttf"]
+  },
+  "Merriweather Sans Bold": {
+    "family": "Merriweather Sans",
+    "fileName": "MerriweatherSans-Bold",
+    "weight": 700,
+    "isItalic": false,
+    "fileTypes": ["ttf"]
+  },
+  "Merriweather Sans Bold Italic": {
+    "family": "Merriweather Sans",
+    "fileName": "MerriweatherSans-BoldItalic",
+    "weight": 700,
+    "isItalic": true,
+    "fileTypes": ["ttf"]
+  },
+  "Merriweather Sans Extra-Bold": {
+    "family": "Merriweather Sans",
+    "fileName": "MerriweatherSans-ExtraBold",
+    "weight": 800,
+    "isItalic": false,
+    "fileTypes": ["ttf"]
+  },
+  "Merriweather Sans Extra-Bold Italic": {
+    "family": "Merriweather Sans",
+    "fileName": "MerriweatherSans-ExtraBoldItalic",
+    "weight": 800,
+    "isItalic": true,
+    "fileTypes": ["ttf"]
+  }
+}
