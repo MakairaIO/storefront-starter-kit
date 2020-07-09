@@ -15,7 +15,13 @@ class BackgroundVideo extends Component {
   render() {
     return (
       <>
-        <video loop muted autoPlay onClick={(e) => this.playPause(e)}>
+        <video
+          className="video-teaser__video"
+          loop
+          muted
+          autoPlay
+          onClick={(e) => this.playPause(e)}
+        >
           <source src={this.props.videoURL} type="video/mp4" />
           <source src={this.props.videoURL} type="video/ogg" />
           Your browser does not support the video tag.
@@ -26,4 +32,3 @@ class BackgroundVideo extends Component {
 }
 
 export default BackgroundVideo
-export { default as backgroundVideoVariants } from './variants.js'
