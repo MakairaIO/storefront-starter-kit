@@ -34,9 +34,12 @@ class VideoTeaser extends Component {
             <Text weight="bold" className="video-teaser__buy-box-hint">
               {this.props.hint}
             </Text>
-            <ConditionalLink href={this.props.link}>
-              <StandardButton />
-            </ConditionalLink>
+
+            {this.props.link && (
+              <ConditionalLink href={this.props.link}>
+                <StandardButton />
+              </ConditionalLink>
+            )}
           </div>
         </div>
 
