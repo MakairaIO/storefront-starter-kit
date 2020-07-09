@@ -1,45 +1,129 @@
+$breakpoint-medium = 600px
+$breakpoint-large = 1024px
+$breakpoint-huge = 1400px
+
 .video-teaser
   font-family "Merriweather Sans"
   display block
   position relative
   color var(--neutral-00)
+  @media (min-width $breakpoint-large)
+    max-height 60.5rem
+    overflow hidden
 
 .video-teaser__video
   display block
   height 49.8rem
-  border 1px solid red
-
+  @media (min-width $breakpoint-large)
+    width 100%
+    height auto
   video
     height 100%
 
 .video-teaser__sub-heading
-  text-transform: uppercase;
-  font-size: 1rem;
-  line-height: 1.3rem;
-  letter-spacing: 0.3rem;
+  text-transform uppercase;
+  font-size 1rem;
+  line-height 1.3rem;
+  letter-spacing 0.3rem;
+  @media (min-width $breakpoint-large)
+    font-size 1.5rem
+
 .video-teaser__heading
-  border 1px solid yellow
   position absolute
   margin 4.8rem 0 0 1.5rem;
   top 0
   left 0
-  max-width 21.2rem
+  .video-teaser__hint
+    display none
+    @media (min-width $breakpoint-large)
+      display block
+      left 0
+      top 0
+      position relative
+
   .heading
     color #EE3F28
-    text-transform: uppercase;
+    text-transform uppercase;
     font-size 2.6rem
     line-height 3.3rem
     letter-spacing 0.118rem
+    max-width 21.2rem
+    @media (min-width $breakpoint-large)
+      font-size 4rem
+      line-height 5rem
+      margin-top 2rem
+      max-width 32.5rem
+
 .video-teaser__content
-  border 1px solid blue
   background-color #152429;
   padding 10px 15px;
+  position relative
+  @media (min-width $breakpoint-medium)
+    width 22rem;
+    position absolute;
+    top 0;
+    right 0;
+    height 100%;
+    padding 5rem 2rem
+  @media (min-width $breakpoint-large)
+    width: 26.7rem
+    right 2rem
+    opacity 0.85
+  @media (min-width $breakpoint-huge)
+    right 5.5rem
+    padding 13.5rem 2rem 2rem 2.7rem
+
+  .heading
+    font-size 1.5rem
+    var(--font-weight-bold)
+    @media (min-width $breakpoint-large)
+      font-size: 2.3rem
+      line-height: 2.5rem
+
+  .copytext
+    font-size 1.3rem
+    line-height 2rem
+    @media (min-width $breakpoint-large)
+      font-size: 1.5rem
+      line-height: 2.5rem
 
 .video-teaser__buy-box
-  text-transform: uppercase
+  display flex;
+  align-items center;
+  justify-content space-between;
+  position absolute;
+  top -5rem;
+  left 0;
+  padding 0 1.5rem;
+  width 100%;
+  text-transform uppercase
+  @media (min-width $breakpoint-medium)
+    position relative;
+    top 0;
+    padding 0;
+    margin-top 3.5rem;
+    .video-teaser__buy-box-hint
+      display none
+
+.video-teaser__buy-box-hint
+  padding 0
 
 .video-teaser__button
-  width: 145px;
-  height: 30px;
-  padding: 0;
-  font-size: 1.3rem;
+  width 145px;
+  height 30px;
+  border-radius 8px
+  padding 0;
+  margin 0
+  text-transform uppercase
+  font-size 1.3rem;
+
+.video-teaser__hint
+  display none
+  @media (min-width $breakpoint-medium)
+    display block
+    position absolute
+    bottom 2.5rem
+    left 1.5rem
+    text-transform uppercase
+  @media (min-width $breakpoint-large)
+    display none

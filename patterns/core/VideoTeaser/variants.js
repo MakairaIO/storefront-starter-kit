@@ -9,9 +9,11 @@ export default [
       subheading: 'Premium Gin',
       hint: 'ab 32,99 €',
       link: '#todo',
-      descriptionHeading: 'Ein besonderes Erlebnis',
-      description:
-        'Foraging used to be all we knew; we were self-reliant, adaptive creatures in a dynamic natural world. Those instincts have gone to sleep in bland days of convenience and blasé consumption.',
+      description: {
+        heading: 'Ein besonderes Erlebnis',
+        text:
+          'Foraging used to be all we knew; we were self-reliant, adaptive creatures in a dynamic natural world. Those instincts have gone to sleep in bland days of convenience and blas\u00e9 consumption.',
+      },
     },
   },
 ]

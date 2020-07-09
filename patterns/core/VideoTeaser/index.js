@@ -19,12 +19,15 @@ class VideoTeaser extends Component {
           </Text>
 
           <Heading weight="semi-bold">{this.props.heading}</Heading>
+          <Text weight="bold" className="video-teaser__hint">
+            {this.props.hint}
+          </Text>
         </div>
 
         <div className="video-teaser__content">
-          <Heading weight="semi-bold">{this.props.descriptionHeading}</Heading>
+          <Heading weight="semi-bold">{this.props.description.heading}</Heading>
           <Copytext
-            dangerouslySetInnerHTML={{ __html: this.props.description }}
+            dangerouslySetInnerHTML={{ __html: this.props.description.text }}
           />
 
           <div className="video-teaser__buy-box">
@@ -36,6 +39,10 @@ class VideoTeaser extends Component {
             </ConditionalLink>
           </div>
         </div>
+
+        <Text weight="bold" className="video-teaser__hint">
+          {this.props.hint}
+        </Text>
       </section>
     )
   }
