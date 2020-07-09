@@ -2,7 +2,6 @@ export default [
   {
     name: 'Default',
     props: {
-      src: 'assets/images/teaserSingle/example.jpg',
       videoUrl:
         'https://s3.eu-central-1.amazonaws.com/rotkaeppchen/mecs-5e2fe9514e65a-Testvideo-xVqk139wmJo.mp4',
       heading: 'The Botanist Islay Dry Gin',
@@ -19,7 +18,6 @@ export default [
   {
     name: 'Without button',
     props: {
-      src: 'assets/images/teaserSingle/example.jpg',
       videoUrl:
         'https://s3.eu-central-1.amazonaws.com/rotkaeppchen/mecs-5e2fe9514e65a-Testvideo-xVqk139wmJo.mp4',
       heading: 'The Botanist Islay Dry Gin',
