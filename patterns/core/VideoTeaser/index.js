@@ -9,34 +9,41 @@ class VideoTeaser extends Component {
   }
 
   render() {
+    const {
+      videoUrl = '',
+      heading = '',
+      subheading = '',
+      hint = '',
+      link = '',
+      description = {},
+    } = this.props
+
     return (
       <section className="video-teaser">
-        <BackgroundVideo videoURL={this.props.videoUrl} />
+        <BackgroundVideo videoURL={videoUrl} />
 
         <div className="video-teaser__heading">
           <Text weight="bold" className="video-teaser__sub-heading">
-            {this.props.subheading}
+            {subheading}
           </Text>
 
-          <Heading weight="semi-bold">{this.props.heading}</Heading>
+          <Heading weight="semi-bold">{heading}</Heading>
           <Text weight="bold" className="video-teaser__hint">
-            {this.props.hint}
+            {hint}
           </Text>
         </div>
 
         <div className="video-teaser__content">
-          <Heading weight="semi-bold">{this.props.description.heading}</Heading>
-          <Copytext
-            dangerouslySetInnerHTML={{ __html: this.props.description.text }}
-          />
+          <Heading weight="semi-bold">{description.heading}</Heading>
+          <Copytext dangerouslySetInnerHTML={{ __html: description.text }} />
 
           <div className="video-teaser__buy-box">
             <Text weight="bold" className="video-teaser__buy-box-hint">
-              {this.props.hint}
+              {hint}
             </Text>
 
-            {this.props.link && (
-              <ConditionalLink href={this.props.link}>
+            {link && (
+              <ConditionalLink href={link}>
                 <StandardButton />
               </ConditionalLink>
             )}
@@ -44,7 +51,7 @@ class VideoTeaser extends Component {
         </div>
 
         <Text weight="bold" className="video-teaser__hint">
-          {this.props.hint}
+          {hint}
         </Text>
       </section>
     )
