@@ -1,11 +1,10 @@
 import { Component, createRef } from 'react'
-import { Icon } from '../../'
+import { Icon } from '../..'
 
 class BackgroundVideo extends Component {
   constructor(props) {
     super(props)
     this.buttonRef = createRef()
-
     this.state = {
       showButton: false,
     }

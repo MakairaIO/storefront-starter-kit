@@ -1,13 +1,9 @@
 import { Component } from 'react'
 import { Heading, Copytext, ConditionalLink, Text } from '../..'
-import StandardButton from './standardButton'
-import BackgroundVideo from './backgroundVideo'
+import StandardButton from './StandardButton'
+import BackgroundVideo from './BackgroundVideo'
 
 class VideoTeaser extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const {
       heading = '',
