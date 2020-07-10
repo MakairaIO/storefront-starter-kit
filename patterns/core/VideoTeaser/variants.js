@@ -22,8 +22,12 @@ export default [
     props: { ...props, poster: 'assets/images/teaserSingle/example.jpg' },
   },
   {
-    name: 'Video error',
-    props: { ...props, videoUrl: '' },
+    name: 'Default with video poster - video error',
+    props: {
+      ...props,
+      poster: 'assets/images/teaserSingle/example.jpg',
+      videoUrl: '',
+    },
   },
   {
     name: 'Without button',
