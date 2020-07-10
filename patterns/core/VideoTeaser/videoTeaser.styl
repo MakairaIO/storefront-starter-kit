@@ -3,17 +3,13 @@ $breakpoint-large = 1024px
 $breakpoint-huge = 1400px
 
 .video-teaser
-  font-family "Merriweather Sans"
   display block
   position relative
   color var(--neutral-00)
-  @media (min-width $breakpoint-large)
-    max-height 60.5rem
-    overflow hidden
 
 .video-teaser__video
   display block
-  height 49.8rem
+  width 100%
   @media (min-width $breakpoint-large)
     width 100%
     height auto
@@ -29,18 +25,6 @@ $breakpoint-huge = 1400px
     font-size 1.5rem
 
 .video-teaser__heading
-  position absolute
-  margin 4.8rem 0 0 1.5rem;
-  top 0
-  left 0
-  .video-teaser__hint
-    display none
-    @media (min-width $breakpoint-large)
-      display block
-      left 0
-      top 0
-      position relative
-
   .heading
     color #EE3F28
     text-transform uppercase;
@@ -58,24 +42,18 @@ $breakpoint-huge = 1400px
   background-color #152429;
   padding 10px 15px;
   position relative
-  @media (min-width $breakpoint-medium)
-    width 22rem;
-    position absolute;
-    top 0;
-    right 0;
-    height 100%;
-    padding 5rem 2rem
   @media (min-width $breakpoint-large)
-    width: 26.7rem
+    position absolute;
+    top 0
     right 2rem
+    width 26.7rem
+    height 100%
     opacity 0.85
   @media (min-width $breakpoint-huge)
     right 5.5rem
     padding 13.5rem 2rem 2rem 2.7rem
 
   .heading
-    font-size 1.5rem
-    var(--font-weight-bold)
     @media (min-width $breakpoint-large)
       font-size: 2.3rem
       line-height: 2.5rem
@@ -91,10 +69,7 @@ $breakpoint-huge = 1400px
   display flex;
   align-items center;
   justify-content space-between;
-  position absolute;
-  top -5rem;
-  left 0;
-  padding 0 1.5rem;
+  margin 2rem 0;
   width 100%;
   text-transform uppercase
   @media (min-width $breakpoint-medium)
@@ -102,11 +77,6 @@ $breakpoint-huge = 1400px
     top 0;
     padding 0;
     margin-top 3.5rem;
-    .video-teaser__buy-box-hint
-      display none
-
-.video-teaser__buy-box-hint
-  padding 0
 
 .video-teaser__button
   width 145px;
@@ -118,12 +88,27 @@ $breakpoint-huge = 1400px
   font-size 1.3rem;
 
 .video-teaser__hint
-  display none
-  @media (min-width $breakpoint-medium)
-    display block
-    position absolute
-    bottom 2.5rem
-    left 1.5rem
-    text-transform uppercase
+  text-transform uppercase
+
+.video-teaser__play-wrapper
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
   @media (min-width $breakpoint-large)
-    display none
+    right 30.7rem
+  @media (min-width $breakpoint-huge)
+    right 33rem
+
+.video-teaser__play-button
+  color #484f51
+  width 4.5rem
+  height 4.5rem
+  &:hover
+    cursor pointer
+    color #adb5bd
+  @media (min-width $breakpoint-large)
+    width 3rem
+    height 3rem
+
+.video-teaser-player
+  position relative

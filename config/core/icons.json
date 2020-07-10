@@ -49,5 +49,8 @@
   },
   "Heart": {
     "value": "heart"
+  },
+  "Play Circle": {
+    "value": "play-circle"
   }
 }

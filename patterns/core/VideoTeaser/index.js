@@ -10,7 +10,6 @@ class VideoTeaser extends Component {
 
   render() {
     const {
-      videoUrl = '',
       heading = '',
       subheading = '',
       hint = '',
@@ -20,28 +19,23 @@ class VideoTeaser extends Component {
 
     return (
       <section className="video-teaser">
-        <BackgroundVideo videoURL={videoUrl} />
-
-        <div className="video-teaser__heading">
-          <Text weight="bold" className="video-teaser__sub-heading">
-            {subheading}
-          </Text>
-
-          <Heading weight="semi-bold">{heading}</Heading>
-          <Text weight="bold" className="video-teaser__hint">
-            {hint}
-          </Text>
-        </div>
-
+        <BackgroundVideo {...this.props} />
         <div className="video-teaser__content">
+          <div className="video-teaser__heading">
+            <Text weight="bold" className="video-teaser__sub-heading">
+              {subheading}
+            </Text>
+
+            <Heading weight="semi-bold">{heading}</Heading>
+
+            <Text weight="bold" className="video-teaser__hint">
+              {hint}
+            </Text>
+          </div>
           <Heading weight="semi-bold">{description.heading}</Heading>
           <Copytext dangerouslySetInnerHTML={{ __html: description.text }} />
 
           <div className="video-teaser__buy-box">
-            <Text weight="bold" className="video-teaser__buy-box-hint">
-              {hint}
-            </Text>
-
             {link && (
               <ConditionalLink href={link}>
                 <StandardButton />
@@ -49,10 +43,6 @@ class VideoTeaser extends Component {
             )}
           </div>
         </div>
-
-        <Text weight="bold" className="video-teaser__hint">
-          {hint}
-        </Text>
       </section>
     )
   }
