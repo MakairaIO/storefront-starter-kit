@@ -29,6 +29,7 @@ import Listing from './examplePages/Listing'
 import Detail from './examplePages/Detail'
 
 /* Add project specific imports here */
+import DuoTeaser, { duoTeaserVariants } from '../patterns/core/DuoTeaser'
 /* CLI MARKER - PATTER IMPORT - DO NOT REMOVE */
 
 export default [
@@ -115,6 +116,12 @@ export default [
     name: 'Text (mehrspaltig)',
     component: MultiColumnText,
     variants: multiColumnTextVariants,
+  },
+  {
+    type: 'placeable',
+    name: 'Duo Teaser',
+    component: DuoTeaser,
+    variants: duoTeaserVariants,
   },
   /* CLI MARKER - PATTERN CONFIG - DO NOT REMOVE */
   {

@@ -30,3 +30,4 @@ export { default as MultiColumnText } from './core/MultiColumnText'
 export { default as BrowserHintPage } from './core/BrowserHintPage'
 
 /* Add project specific patterns here */
+export { default as DuoTeaser } from './core/DuoTeaser'
