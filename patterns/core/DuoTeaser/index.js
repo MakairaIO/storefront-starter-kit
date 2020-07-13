@@ -60,7 +60,6 @@ class DuoTeaser extends Component {
 
         {this.state.renderRightTile && !isEmpty(rightTile) && (
           <section className="duo-teaser duo-teaser--right">
-            (
             <ConditionalLink
               href={rightTile.link}
               className="duo-teaser__container"
@@ -71,7 +70,6 @@ class DuoTeaser extends Component {
               </div>
               <Overlay {...rightTile.description} />
             </ConditionalLink>
-            )
           </section>
         )}
       </section>
