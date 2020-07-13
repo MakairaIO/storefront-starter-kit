@@ -65,6 +65,8 @@ $breakpoint-large = 1440px
     bottom 4.8rem
     width 100%
     max-width calc(100% - 6rem)
+  @media (min-width $breakpoint-large)
+    bottom 2.6rem
 
 .duo-teaser__title--heading
   font-size 2.6rem
@@ -83,10 +85,7 @@ $breakpoint-large = 1440px
   line-height 1.7rem
   text-transform uppercase
   font-weight var(--font-weight-bold)
-
-  @media (min-width $breakpoint-medium)
-    font-size 1.8rem
-    line-height 2.4rem
+  margin-top auto
 
 .duo-teaser__title--sub-heading
   margin-bottom 0.5rem
@@ -95,9 +94,6 @@ $breakpoint-large = 1440px
 .duo-teaser__title--heading
   text-align right
   text-transform uppercase
-
-.duo-teaser__title--hint
-  margin-top auto
 
 .duo-teaser__overlay
   background #152429
