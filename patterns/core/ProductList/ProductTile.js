@@ -11,13 +11,20 @@ export default function ProductTile(props) {
     manufacturer_title = '',
     shortdesc = '',
     url = '',
+    isLazyLoad = true,
+    children,
   } = props
 
   return (
     <article className="product-item">
+      {children}
       <Link href={url}>
         <picture className="product-item__image">
-          <img data-src={picture_url_main} alt={title} />
+          {isLazyLoad ? (
+            <img data-src={picture_url_main} alt={title} />
+          ) : (
+            <img src={picture_url_main} alt={title} />
+          )}
         </picture>
 
         <ProductVariants {...props} />

@@ -1,0 +1,151 @@
+$breakpoint-medium = 768px
+
+.discovery-image
+  display flex
+  min-width 0
+  width 100%
+
+  .products
+    overflow hidden
+    padding 0
+    position relative
+    flex 1
+    min-height 0
+    min-width 0
+
+    .product-item
+      position relative
+      width 180px
+      margin 0 auto
+      padding 0
+      border-top 0
+
+      .product-item__image
+        width 180px
+        height 180px
+        border 1px solid #E9ECF1
+        
+        img
+          object-fit cover
+      
+      .product-spot-index
+        top 8px
+        left 8px
+        background linear-gradient(180deg, #FFFFFF 0%, #ECEFF3 100%)
+
+    .slick-active
+      .product-spot-index
+        color #FFFFFF
+        background linear-gradient(180deg, #4F5967 0%, #303B47 100%)
+
+      .product-item__image
+        position relative
+        border 1px solid #4F5967
+
+        &:after, &:before {
+          bottom -1px
+          left 50%
+          border solid transparent
+          content " "
+          height 0
+          width 0
+          position absolute
+          pointer-events none
+        }
+
+        &:after {
+          border-bottom-color #ffffff
+          border-width 10px
+          margin-left -10px
+        }
+        &:before {
+          border-bottom-color #222
+          border-width 11px
+          margin-left -11px
+        }
+
+    &:before, &:after
+      content ''
+      height 100%
+      width 48px
+      position absolute
+      z-index 10
+      top 0
+
+    &:before
+      left 0
+      background linear-gradient(90deg, rgba(255,255,255,1) 30%, rgba(255,255,255,0) 100%)
+
+    &:after
+      right 0
+      background linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,1) 70%)
+
+  .spots
+    width 500px
+    position relative
+    display block
+
+    img.product-image
+      width 500px
+    
+  .spot
+    position absolute
+    box-sizing border-box
+    background-color #FFFFFF
+    border 2px solid #FFFFFF
+    box-shadow 0 0px 2px 0px rgba(48,59,71,1)
+    display block
+    border-radius 50%
+    color #101C2D
+    text-align center
+    line-height 20px
+    font-size 14px
+    font-weight 500
+    width 24px
+    height 24px
+    cursor pointer
+    top 0
+    left 0
+
+    &__active
+      color #FFFFFF
+      background linear-gradient(180deg, #4F5967 0%, #303B47 100%)
+
+@media (max-width $breakpoint-medium)
+  .discovery-image
+    max-width 500px
+    margin 0 auto
+    flex-direction column
+
+    .products
+      margin-top 20px
+
+    .spots
+      width 100%
+      max-width 500px
+
+      img.product-image
+        width 100%
+        max-width 500px
+
+      &:after, &:before {
+        bottom 2px
+        left 50%
+        border solid transparent
+        content " "
+        height 0
+        width 0
+        position absolute
+        pointer-events none
+      }
+
+      &:after {
+        border-bottom-color #ffffff
+        border-width 10px
+        margin-left -10px
+      }
+      &:before {
+        border-bottom-color #222
+        border-width 11px
+        margin-left -11px
+      }
