@@ -1,15 +1,13 @@
 export default function Title(props) {
-  const { isVisible = false, text = '', pre = '', sub = '' } = props
-
-  if (!isVisible) return null
+  const { heading = '', subheading = '', hint = '' } = props
 
   return (
-    <p className="hero-teaser__title-wrapper">
-      {pre && <span className="hero-teaser__title--pre">{pre}</span>}
-
-      <span className="hero-teaser__title--text">{text}</span>
-
-      {sub && <span className="hero-teaser__title--sub">{sub}</span>}
+    <p className="duo-teaser__title-wrapper">
+      {subheading && (
+        <span className="duo-teaser__title--sub-heading">{subheading}</span>
+      )}
+      {heading && <span className="duo-teaser__title--heading">{heading}</span>}
+      {hint && <span className="duo-teaser__title--hint">{hint}</span>}
     </p>
   )
 }

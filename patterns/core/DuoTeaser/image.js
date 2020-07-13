@@ -11,7 +11,7 @@ export default function Image(props) {
   useLazyLoading({ ref: pictureRef, dependency: src })
 
   return (
-    <picture ref={pictureRef} className="hero-teaser__image">
+    <picture ref={pictureRef} className="duo-teaser__image">
       <img data-src={imageLink} alt={alt} />
     </picture>
   )

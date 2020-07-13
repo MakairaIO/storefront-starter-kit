@@ -1,87 +1,38 @@
-// export default [
-//   {
-//     name: 'Default',
-//     props: {},
-//   },
-// ]
-
-const headingProps = {
-  isVisible: true,
-  text: 'The Botanist Islay Dry Gin',
-  pre: 'Premium Gin',
-  sub: 'ab 32,99 €',
+const teaserProps = {
+  heading: 'Turicum Gin',
+  subheading: 'Barrel aged',
+  hint: 'ab 32,99 €',
+  link: '#todo',
+  description: {
+    heading: 'Ein besonderes Erlebnis',
+    text:
+      'Foraging used to be all we knew; we were self-reliant, adaptive creatures in a dynamic natural world. Those instincts have gone to sleep in bland days of convenience and blasé consumption.',
+  },
 }
 
-const overlayProps = {
-  isVisible: true,
-  heading: 'Ein besonderes Erlebnis',
-  text:
-    'Foraging used to be all we knew; we were self-reliant, adaptive creatures in a dynamic natural world. Those instincts have gone to sleep in bland days of convenience and blasé consumption.',
-  button: {
-    isVisible: true,
-    text: 'Discover this',
-  },
+const imageLeft = {
+  src: 'assets/images/duoTeaser/example.jpg',
+  alt: 'Alt Text',
+}
+
+const imageRight = {
+  src: 'assets/images/duoTeaser/example_2.jpg',
+  alt: 'Alt Text',
 }
 
 export default [
   {
-    name: 'Fully featured',
+    name: 'Default',
     props: {
-      heading: { ...headingProps },
-      overlay: { ...overlayProps },
-      image: {
-        src: 'assets/images/teaserHero/example.jpg',
-        alt: 'Alt Text',
-      },
-      link: '/',
+      leftTile: { ...teaserProps, image: { ...imageLeft } },
+      rightTile: { ...teaserProps, image: { ...imageRight } },
     },
   },
   {
-    name: 'Without Button',
+    name: 'Without right',
     props: {
-      heading: { ...headingProps },
-      overlay: { ...overlayProps, button: { isVisible: false } },
-      image: {
-        src: 'assets/images/teaserHero/example.jpg',
-        alt: 'Alt Text',
-      },
-      link: '#todo',
-    },
-  },
-  {
-    name: 'Without Overlay',
-    props: {
-      heading: { ...headingProps },
-      overlay: { ...overlayProps, isVisible: false },
-      image: {
-        src: 'assets/images/teaserHero/example.jpg',
-        alt: 'Alt Text',
-      },
-      link: '#todo',
-    },
-  },
-  {
-    name: 'Without Heading',
-    props: {
-      heading: { ...headingProps, isVisible: false },
-      overlay: { ...overlayProps },
-      image: {
-        src: 'assets/images/teaserHero/example.jpg',
-        alt: 'Alt Text',
-      },
-      link: '#todo',
-    },
-  },
-  {
-    name: 'Image only - no link',
-    props: {
-      heading: { ...headingProps, isVisible: false },
-      overlay: { ...overlayProps, isVisible: false },
-      image: {
-        src: 'assets/images/teaserHero/example.jpg',
-        alt: 'Alt Text',
-      },
-      link: '',
+      leftTile: { ...teaserProps, image: { ...imageLeft } },
+      // rightTile: { ...teaserProps, image: {...imageRight}}
     },
   },
 ]
