@@ -1,6 +1,6 @@
 const props = {
   videoUrl:
-    'https://s3.eu-central-1.amazonaws.com/rotkaeppchen/mecs-5e2fe9514e65a-Testvideo-xVqk139wmJo.mp4',
+    'https://s3.eu-central-1.amazonaws.com/marmalade-group/mecs-5f0b6dd63e2cc-LeTributeGinTonic-NINJAV_S001_S001_T016s.mp4',
   heading: 'The Botanist Islay Dry Gin',
   subheading: 'Premium Gin',
   hint: 'ab 32,99 €',
@@ -19,13 +19,13 @@ export default [
   },
   {
     name: 'Default with video poster',
-    props: { ...props, poster: 'assets/images/teaserSingle/example.jpg' },
+    props: { ...props, poster: 'assets/images/videoTeaser/example.jpg' },
   },
   {
     name: 'Default with video poster - video error',
     props: {
       ...props,
-      poster: 'assets/images/teaserSingle/example.jpg',
+      poster: 'assets/images/videoTeaser/example.jpg',
       videoUrl: '',
     },
   },
