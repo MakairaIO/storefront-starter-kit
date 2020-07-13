@@ -28,5 +28,6 @@ export { default as TeaserProducts } from './core/TeaserProducts'
 export { default as TeaserSingle } from './core/TeaserSingle'
 export { default as MultiColumnText } from './core/MultiColumnText'
 export { default as BrowserHintPage } from './core/BrowserHintPage'
+export { default as Footer } from './core/Footer'
 
 /* Add project specific patterns here */
