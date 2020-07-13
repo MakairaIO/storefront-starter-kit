@@ -32,7 +32,6 @@ export default [
     name: 'Without right',
     props: {
       leftTile: { ...teaserProps, image: { ...imageLeft } },
-      // rightTile: { ...teaserProps, image: {...imageRight}}
     },
   },
 ]

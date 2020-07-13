@@ -2,13 +2,10 @@ import { Button } from '../..'
 
 export default function Overlay(props) {
   const {
-    isVisible = true,
     heading = '',
     text = '',
     button = { text: 'Zum Produkt', isVisible: true },
   } = props
-
-  if (!isVisible) return null
 
   return (
     <p className="duo-teaser__overlay">
