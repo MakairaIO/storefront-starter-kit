@@ -10,6 +10,8 @@ import {
   dispatchShowOverlayEvent,
   dispatchOverlayClickedEvent,
 } from '../../../utils'
+import AutosuggestBox from './AutoSuggestion/AutosuggestBox'
+import get from 'lodash/get'
 
 const DESKTOP_MENU_BREAKPOINT = 800
 
@@ -20,6 +22,7 @@ class Header extends Component {
     this.state = {
       renderMobileNavigation: false,
       isMobileNavigationVisible: false,
+      isAutosuggestBoxVisible: false,
       searchPhrase: '',
       autosuggestResult: {},
     }
@@ -34,10 +37,7 @@ class Header extends Component {
     window.addEventListener('overlay:clicked', this.hideMobileNavigation)
     window.addEventListener('resize', this.handleResize)
 
-    Router.events.on(
-      'routeChangeComplete',
-      this.hideMobileNavigationOnPageChange
-    )
+    Router.events.on('routeChangeComplete', this.handleRouteChange)
 
     // initial check for what navigation to render
     this.handleResize()
@@ -47,10 +47,7 @@ class Header extends Component {
     window.removeEventListener('overlay:clicked', this.hideMobileNavigation)
     window.removeEventListener('resize', this.handleResize)
 
-    Router.events.off(
-      'routeChangeComplete',
-      this.hideMobileNavigationOnPageChange
-    )
+    Router.events.off('routeChangeComplete', this.handleRouteChange)
   }
 
   handleResize = () => {
@@ -76,6 +73,14 @@ class Header extends Component {
     this.setState({ isMobileNavigationVisible: false })
   }
 
+  showAutosuggestBox = () => {
+    this.setState({ isAutosuggestBoxVisible: true })
+  }
+
+  hideAutosuggestBox = () => {
+    this.setState({ isAutosuggestBoxVisible: false })
+  }
+
   hideMobileNavigationOnPageChange = () => {
     const { isMobileNavigationVisible } = this.state
 
@@ -93,12 +98,25 @@ class Header extends Component {
     )
   }
 
+  handleSearchResult = () => {
+    const result = this.state.autosuggestResult
+    let total =
+      get(result, 'category.total') +
+      get(result, 'links.total') +
+      get(result, 'manufacturer.total') +
+      get(result, 'product.total')
+    if (this.state.searchPhrase && total > 0) {
+      this.showAutosuggestBox()
+    } else {
+      this.hideAutosuggestBox()
+    }
+  }
+
   fetchAutosuggestResult = async () => {
     const { searchPhrase } = this.state
 
     const result = await this.props.fetchAutosuggestResult(searchPhrase)
-
-    this.setState({ autosuggestResult: result })
+    this.setState({ autosuggestResult: result }, this.handleSearchResult)
   }
 
   handleSearchFormSubmit = (event) => {
@@ -111,6 +129,11 @@ class Header extends Component {
   activateMobileSearch = () => {
     this.showMobileNavigation()
     this.mobileSearchInputRef.current.focus()
+  }
+
+  handleRouteChange = () => {
+    this.hideMobileNavigationOnPageChange()
+    this.hideAutosuggestBox()
   }
 
   render() {
@@ -149,6 +172,10 @@ class Header extends Component {
             </div>
           </div>
         </header>
+
+        {this.state.isAutosuggestBoxVisible && (
+          <AutosuggestBox {...this.state.autosuggestResult} />
+        )}
 
         <GlobalNavigation
           menu={menu}

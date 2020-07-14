@@ -52,4 +52,6 @@ export default {
   BROWSER_HINT_PAGE_DOWNLOAD_HINT:
     'Jetzt kostenlos einen modernen Browser downloaden',
   BROWSER_HINT_PAGE_RECOMMENDATIONS: 'Unsere Empfehlungen',
+  FILTER_LABEL_PRODUCT: 'Produkt',
+  FILTER_LABEL_PRODUCTS: 'Produkte',
 }
