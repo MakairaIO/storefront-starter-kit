@@ -41,16 +41,16 @@ export default function MobileFilter(props) {
       </div>
 
       {Object.values(aggregations).map((aggregation) => {
-        const { key, title } = aggregation
+        const { key: id, title, min, max } = aggregation
 
         return (
-          <div key={key} className="mobile-filter__section">
+          <div key={id} className="mobile-filter__section">
             <button
               type="button"
               className="mobile-filter__button"
-              onClick={() => setVisibleFilter(key)}
+              onClick={() => setVisibleFilter(id)}
             >
-              {t(`FILTER_LABEL_${key.toUpperCase()}`, title)}
+              {t(`FILTER_LABEL_${id.toUpperCase()}`, title)}
 
               <ActiveFilters {...aggregation} />
 
@@ -61,9 +61,13 @@ export default function MobileFilter(props) {
             </button>
 
             <MobileFilterList
-              id={key}
+              // Care: The order of properties matters here, since the aggregations
+              // have a field 'key' which could override our custom-built key below
+              // which we need for properly updating/reseting the RangeFilter
               {...aggregation}
-              isVisible={visibleFilter == key}
+              id={id}
+              key={max ? `${id}-${min}-${max}` : id}
+              isVisible={visibleFilter == id}
               closeFilter={() => setVisibleFilter(null)}
               submitForms={submitForms}
             />
