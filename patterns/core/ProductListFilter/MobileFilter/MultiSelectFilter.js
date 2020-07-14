@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import classNames from 'classnames'
 import { Icon } from '../../..'
 
@@ -22,16 +22,21 @@ export default function MultiSelectFilter(props) {
 function FilterEntry(props) {
   const { id, filterValue, selectedValues = [] } = props
 
-  let isInitiallyActive = false
+  const [isActive, setActive] = useState(false)
 
-  if (Array.isArray(selectedValues)) {
-    // lowercase values for normalization purposes
-    isInitiallyActive = selectedValues
-      .map((val) => val.toLowerCase())
-      .includes(filterValue.toLowerCase())
+  function updateActiveState() {
+    let updated = false
+
+    if (Array.isArray(selectedValues)) {
+      updated = selectedValues
+        .map((val) => val.toLowerCase())
+        .includes(filterValue.toLowerCase())
+    }
+
+    setActive(updated)
   }
 
-  const [isActive, setActive] = useState(isInitiallyActive)
+  useEffect(updateActiveState, [selectedValues, filterValue])
 
   const classes = classNames('mobile-filter__item', {
     ['mobile-filter__item--active']: isActive,
