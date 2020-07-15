@@ -6,7 +6,6 @@ function ProductList(props) {
   const { products = [], count = 1 } = props
   const { t } = useTranslation()
 
-  console.log(props)
   return (
     <>
       <Heading size="bacchus" element="h2">

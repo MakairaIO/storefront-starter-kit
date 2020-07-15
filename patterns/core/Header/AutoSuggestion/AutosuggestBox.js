@@ -1,12 +1,25 @@
 import ProductList from './ProductList'
+import Links from './Links'
+import { Button } from '../../../'
 
 function AutosuggestBox(props) {
-  const { category = {}, links = {}, manufacturer = {}, product = {} } = props
-  console.log({ category, links, manufacturer, product })
+  const { product = {}, closeSearchPopup, ...rest } = props
   return (
-    <>
-      <ProductList products={product.items} count={product.count} />
-    </>
+    <div className="autosuggest-box">
+      <Button
+        variant="icon-only"
+        icon="times"
+        className="autosuggest-box__close"
+      />
+      <section className="autosuggest-box__links">
+        <Links {...rest}></Links>
+      </section>
+      <section className="autosuggest-box__products">
+        {product.count > 0 && (
+          <ProductList products={product.items} count={product.count} />
+        )}
+      </section>
+    </div>
   )
 }
 
