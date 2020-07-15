@@ -3,6 +3,8 @@ import ProductVariants from './ProductVariants'
 import ProductPrices from './ProductPrices'
 import ProductPriceHint from './ProductPriceHint'
 import ProductActions from './ProductActions'
+import Ribbon from './Ribbon'
+import classNames from 'classnames'
 
 export default function ProductTile(props) {
   const {
@@ -11,10 +13,15 @@ export default function ProductTile(props) {
     manufacturer_title = '',
     shortdesc = '',
     url = '',
+    mak_paid_placement = false,
   } = props
 
+  const classes = classNames('product-item', {
+    ['highlight']: mak_paid_placement,
+  })
+
   return (
-    <article className="product-item">
+    <article className={classes}>
       <Link href={url}>
         <picture className="product-item__image">
           <img data-src={picture_url_main} alt={title} />
@@ -42,6 +49,8 @@ export default function ProductTile(props) {
 
         <ProductActions {...props} />
       </Link>
+
+      {mak_paid_placement && <Ribbon />}
     </article>
   )
 }

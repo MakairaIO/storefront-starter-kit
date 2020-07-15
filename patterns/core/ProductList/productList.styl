@@ -41,6 +41,8 @@ $breakpoint-huge = 1150px
 .product-item
   border-top 1px solid var(--neutral-40)
   padding 2.3rem 1rem 0 // top = 2.4rem - 1px border
+  &.highlight
+    position relative
 
 .product-item__image
   display flex
@@ -180,3 +182,50 @@ $breakpoint-huge = 1150px
     width 100%
     height 100% // Safari-Fix
     object-fit cover
+
+.ribbon
+    position absolute
+    right -0.5rem
+    top -0.5rem
+    z-index 1
+    overflow hidden
+    width 7.5rem
+    height 7.5rem
+    text-align right
+    span
+        font-size 1rem
+        color #fff
+        text-transform uppercase
+        text-align center
+        font-weight bold
+        line-height 2rem
+        transform rotate(45deg)
+        -webkit-transform rotate(45deg)
+        width 10rem
+        display block
+        background #79A70A
+        background linear-gradient(#9BC90D 0%, #79A70A 100%)
+        box-shadow 0 0.3rem 1rem -0.5rem rgba(0, 0, 0, 1)
+        position absolute
+        top 1.9rem
+        right -2.1rem
+        &::before
+            content ''
+            position absolute
+            left 0
+            top 100%
+            z-index -1
+            border-left 0.3rem solid #79A70A
+            border-right 0.3rem solid transparent
+            border-bottom 0.3rem solid transparent
+            border-top 0.3rem solid #79A70A
+        &::after
+            content ''
+            position absolute
+            right 0%
+            top 100%
+            z-index -1
+            border-right 0.3rem solid #79A70A
+            border-left 0.3rem solid transparent
+            border-bottom 0.3rem solid transparent
+            border-top 0.3rem solid #79A70A
