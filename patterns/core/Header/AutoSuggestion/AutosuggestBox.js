@@ -3,7 +3,16 @@ import Links from './Links'
 import { Button } from '../../../'
 
 function AutosuggestBox(props) {
-  const { product = {}, closeSearchPopup, ...rest } = props
+  const {
+    product = {},
+    category = {},
+    links = {},
+    manufacturer = {},
+    closeSearchPopup,
+  } = props
+  const linkList = { category, links, manufacturer }
+  const hasLinks = category.count + links.count + manufacturer.count > 0
+
   return (
     <div className="autosuggest-box">
       <Button
@@ -12,14 +21,18 @@ function AutosuggestBox(props) {
         className="autosuggest-box__close"
         onClick={closeSearchPopup}
       />
-      <section className="autosuggest-box__links">
-        <Links {...rest}></Links>
-      </section>
-      <section className="autosuggest-box__products">
-        {product.count > 0 && (
+
+      {hasLinks && (
+        <section className="autosuggest-box__links">
+          <Links {...linkList}></Links>
+        </section>
+      )}
+
+      {product.count > 0 && (
+        <section className="autosuggest-box__products">
           <ProductList products={product.items} count={product.count} />
-        )}
-      </section>
+        </section>
+      )}
     </div>
   )
 }
