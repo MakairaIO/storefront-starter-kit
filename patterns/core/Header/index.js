@@ -174,7 +174,10 @@ class Header extends Component {
         </header>
 
         {this.state.isAutosuggestBoxVisible && (
-          <AutosuggestBox {...this.state.autosuggestResult} />
+          <AutosuggestBox
+            {...this.state.autosuggestResult}
+            closeSearchPopup={this.hideAutosuggestBox}
+          />
         )}
 
         <GlobalNavigation

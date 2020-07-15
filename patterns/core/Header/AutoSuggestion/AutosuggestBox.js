@@ -10,6 +10,7 @@ function AutosuggestBox(props) {
         variant="icon-only"
         icon="times"
         className="autosuggest-box__close"
+        onClick={closeSearchPopup}
       />
       <section className="autosuggest-box__links">
         <Links {...rest}></Links>
