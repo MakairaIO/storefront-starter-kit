@@ -1,0 +1,39 @@
+$breakpoint-medium = 768px
+$breakpoint-small = 400px
+
+.footer
+  display flex
+  flex-wrap wrap
+  width calc(100% - 3rem) // 1.5rem "padding" on each side
+  margin 0 auto
+  padding 0.6rem 0 0.8rem
+  border-top 1px solid var(--neutral-40)
+
+  .footer-column
+    padding 0
+    margin 0
+    flex-grow 1
+    margin-bottom 1rem
+
+  .footer-heading
+    font-size: 1.7rem;
+    line-height: 3.2rem;
+    margin-bottom: 1rem
+    font-weight: var(--font-weight-semi-bold);
+
+  .footer-link
+    display block
+    font-size: 1.4rem;
+    line-height: 2rem;
+
+@media (max-width $breakpoint-medium)
+  .footer
+    .footer-column
+      width 50%
+      flex-grow 2
+
+@media (max-width $breakpoint-small)
+  .footer
+    .footer-column
+      width 100%
+      flex-grow 1
