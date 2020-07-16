@@ -29,6 +29,7 @@ import Listing from './examplePages/Listing'
 import Detail from './examplePages/Detail'
 
 /* Add project specific imports here */
+import VideoTeaser, { videoTeaserVariants } from '../patterns/core/VideoTeaser'
 /* CLI MARKER - PATTER IMPORT - DO NOT REMOVE */
 
 export default [
@@ -115,6 +116,12 @@ export default [
     name: 'Text (mehrspaltig)',
     component: MultiColumnText,
     variants: multiColumnTextVariants,
+  },
+  {
+    type: 'placeable',
+    name: 'Video Teaser',
+    component: VideoTeaser,
+    variants: videoTeaserVariants,
   },
   /* CLI MARKER - PATTERN CONFIG - DO NOT REMOVE */
   {
