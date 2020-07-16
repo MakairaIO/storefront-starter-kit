@@ -39,6 +39,7 @@
     "react-dom": "^16.13.1",
     "react-iframe-resizer-super": "^0.2.2",
     "react-image-magnifiers": "^1.4.0",
+    "react-slick": "^0.26.1",
     "stylus": "^0.54.7",
     "ua-parser-js": "^0.7.21"
   },

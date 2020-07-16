@@ -29,6 +29,7 @@ export { default as TeaserSingle } from './core/TeaserSingle'
 export { default as MultiColumnText } from './core/MultiColumnText'
 export { default as BrowserHintPage } from './core/BrowserHintPage'
 export { default as Footer } from './core/Footer'
+export { default as DiscoveryImage } from './core/DiscoveryImage'
 
 /* Add project specific patterns here */
 export { default as VideoTeaser } from './core/VideoTeaser'

@@ -32,6 +32,9 @@ import Detail from './examplePages/Detail'
 /* Add project specific imports here */
 import VideoTeaser, { videoTeaserVariants } from '../patterns/core/VideoTeaser'
 import DuoTeaser, { duoTeaserVariants } from '../patterns/core/DuoTeaser'
+import DiscoveryImage, {
+  discoveryImageVariants,
+} from '../patterns/core/DiscoveryImage'
 /* CLI MARKER - PATTER IMPORT - DO NOT REMOVE */
 
 export default [
@@ -136,6 +139,12 @@ export default [
     name: 'Footer',
     component: Footer,
     variants: footerVariants,
+  },
+  {
+    type: 'placeable',
+    name: 'Discovery Image',
+    component: DiscoveryImage,
+    variants: discoveryImageVariants,
   },
   /* CLI MARKER - PATTERN CONFIG - DO NOT REMOVE */
   {

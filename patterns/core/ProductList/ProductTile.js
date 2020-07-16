@@ -14,6 +14,8 @@ export default function ProductTile(props) {
     shortdesc = '',
     url = '',
     mak_paid_placement = false,
+    isLazyLoad = true,
+    children,
   } = props
 
   const classes = classNames('product-item', {
@@ -22,9 +24,14 @@ export default function ProductTile(props) {
 
   return (
     <article className={classes}>
+      {children}
       <Link href={url}>
         <picture className="product-item__image">
-          <img data-src={picture_url_main} alt={title} />
+          {isLazyLoad ? (
+            <img data-src={picture_url_main} alt={title} />
+          ) : (
+            <img src={picture_url_main} alt={title} />
+          )}
         </picture>
 
         <ProductVariants {...props} />
