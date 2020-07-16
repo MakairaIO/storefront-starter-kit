@@ -1,0 +1,164 @@
+$breakpoint-small = 600px
+$breakpoint-medium = 1024px
+$breakpoint-large = 1440px
+
+.duo-teaser-box
+  display flex
+  padding 11.2rem 0
+
+  @media (min-width $breakpoint-medium)
+    padding 9rem 0
+
+.duo-teaser
+  color var(--neutral-10)
+  display block
+
+.duo-teaser--right
+  @media (min-width $breakpoint-medium)
+    margin-left 1rem
+
+  @media (min-width $breakpoint-large)
+    margin-left 4rem
+
+  .duo-teaser__title--sub-heading
+  .duo-teaser__title--heading
+    text-align left
+
+.duo-teaser__container
+  @media (min-width $breakpoint-small)
+    display flex
+
+  @media (min-width $breakpoint-medium)
+    display block
+    position relative
+
+  @media (min-width $breakpoint-large)
+    display flex
+
+.duo-teaser__image-wrapper
+  position relative
+
+  @media (min-width $breakpoint-small)
+    flex 1
+
+.duo-teaser__image
+  display flex
+  height 50rem
+
+  img
+    width 100%
+    object-fit cover
+
+.duo-teaser__title-wrapper
+  position absolute
+  top 3.4rem
+  left 1.5rem
+  right 1.5rem
+  bottom 2.6rem
+  display flex
+  flex-direction column
+
+  @media (min-width $breakpoint-medium)
+    top 4.8rem
+    left 3rem
+    right auto
+    bottom 4.8rem
+    width 100%
+    max-width calc(100% - 6rem)
+  @media (min-width $breakpoint-large)
+    bottom 2.6rem
+
+.duo-teaser__title--heading
+  font-size 2.6rem
+  font-weight var(--font-weight-semi-bold)
+  line-height 3.6rem
+  letter-spacing 0.05rem
+  color #FDA354
+
+.duo-teaser__title--sub-heading
+  font-size 1rem
+  line-height 1.3rem
+  font-weight var(--font-weight-bold)
+
+.duo-teaser__title--hint
+  font-size 1.3rem
+  line-height 1.7rem
+  text-transform uppercase
+  font-weight var(--font-weight-bold)
+  margin-top auto
+
+.duo-teaser__title--sub-heading
+  margin-bottom 0.5rem
+
+.duo-teaser__title--sub-heading
+.duo-teaser__title--heading
+  text-align right
+  text-transform uppercase
+
+.duo-teaser__overlay
+  background #152429
+  padding 1rem 1.5rem
+  position relative
+
+  @media (min-width $breakpoint-small)
+    display flex
+    flex-direction column
+    align-items flex-start
+    flex 0 0 22rem
+    padding 4.8rem 2rem 2rem
+
+  @media (min-width $breakpoint-medium)
+    padding 2rem 2rem 2rem 3rem
+
+  @media (min-width $breakpoint-large)
+    padding 5rem 2rem
+
+.duo-teaser__overlay-heading
+  display block
+  font-weight var(--font-weight-bold)
+  font-size 1.5rem
+  line-height 2rem
+  letter-spacing 0.054rem
+  padding 0.5rem 0 0.1rem
+  margin-bottom 1.1rem
+
+  @media (min-width $breakpoint-small)
+    margin-bottom 1.2rem
+
+  @media (min-width $breakpoint-medium)
+    font-size 1.5rem
+    line-height 2rem
+    letter-spacing 0.07rem
+
+.duo-teaser__overlay-text
+  font-weight var(--font-weight-regular)
+  font-size 1.3rem
+  line-height 2rem
+  padding 0.5rem 0 0.1rem
+
+.duo-teaser__button
+  position absolute
+  top -6.2rem
+  right 1.5rem
+  font-size 1.3rem;
+  font-weight var(--font-weight-bold);
+  color #5B6B6F;
+  text-transform uppercase;
+
+  @media (min-width $breakpoint-small)
+    position relative
+    top 0
+    right 0
+    margin-top 3.5rem
+
+  @media (min-width $breakpoint-medium)
+    top -8.6rem;
+    right 3rem;
+    position absolute;
+    margin-top 0
+
+  @media (min-width $breakpoint-large)
+    position relative
+    top 0
+    right 0
+    margin-top 3.5rem

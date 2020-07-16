@@ -30,6 +30,7 @@ import Detail from './examplePages/Detail'
 
 /* Add project specific imports here */
 import VideoTeaser, { videoTeaserVariants } from '../patterns/core/VideoTeaser'
+import DuoTeaser, { duoTeaserVariants } from '../patterns/core/DuoTeaser'
 /* CLI MARKER - PATTER IMPORT - DO NOT REMOVE */
 
 export default [
@@ -122,6 +123,12 @@ export default [
     name: 'Video Teaser',
     component: VideoTeaser,
     variants: videoTeaserVariants,
+  },
+  {
+    type: 'placeable',
+    name: 'Duo Teaser',
+    component: DuoTeaser,
+    variants: duoTeaserVariants,
   },
   /* CLI MARKER - PATTERN CONFIG - DO NOT REMOVE */
   {
