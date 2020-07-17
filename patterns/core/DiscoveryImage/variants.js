@@ -69,8 +69,10 @@ export default [
   {
     name: 'Discovery Image',
     props: {
-      image,
-      spots,
+      discoveryImage: {
+        image,
+        spots,
+      },
     },
   },
 ]

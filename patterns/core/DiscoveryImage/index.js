@@ -2,7 +2,16 @@ import React from 'react'
 import Slider from 'react-slick'
 import classNames from 'classnames'
 
+import { useConfiguration } from '../../../utils'
 import ProductTile from '../ProductList/ProductTile'
+
+const ProductImage = ({ image }) => {
+  const { getImageLink } = useConfiguration()
+  const imageLink = getImageLink({ source: image })
+  return (
+    <img className="product-image" src={imageLink} alt={'Discovery Image'} />
+  )
+}
 
 class DiscoveryImage extends React.Component {
   state = {
@@ -28,7 +37,8 @@ class DiscoveryImage extends React.Component {
   }
 
   render() {
-    const { image = '', spots = [] } = this.props
+    const { discoveryImage } = this.props
+    const { image = '', spots = [] } = discoveryImage
     const { slideIndex, centerPadding } = this.state
 
     const settings = {
@@ -47,7 +57,7 @@ class DiscoveryImage extends React.Component {
     return (
       <section ref={this.diRef} className="discovery-image">
         <div className="spots">
-          <img className="product-image" src={image} alt={'Discovery Image'} />
+          <ProductImage image={image} />
           {spots.map((spot, i) => {
             const spotClasses = classNames('spot', {
               ['spot__active']: slideIndex === i,

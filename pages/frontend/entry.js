@@ -2,6 +2,7 @@ import { Component } from 'react'
 import qs from 'qs'
 import {
   HeaderWithProps,
+  FooterWithProps,
   LandingPage,
   ListingPage,
   DetailPage,
@@ -101,6 +102,8 @@ export default class Index extends Component {
               <HeaderWithProps />
 
               <PageComponent />
+
+              <FooterWithProps />
             </BaseLayout>
           </TranslationProvider>
         </ConfigurationProvider>

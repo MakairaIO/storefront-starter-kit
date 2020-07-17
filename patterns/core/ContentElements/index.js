@@ -8,6 +8,7 @@ import {
   MultiColumnText,
   DuoTeaser,
   VideoTeaser,
+  DiscoveryImage,
 } from '../..'
 
 export default function ContentElements(props) {
@@ -26,6 +27,7 @@ export default function ContentElements(props) {
     'multi-column-text': MultiColumnText,
     'duo-teaser': DuoTeaser,
     'video-teaser': VideoTeaser,
+    'discovery-image': DiscoveryImage,
   }
 
   return (

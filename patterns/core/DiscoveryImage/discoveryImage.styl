@@ -3,7 +3,9 @@ $breakpoint-medium = 768px
 .discovery-image
   display flex
   min-width 0
-  width 100%
+  width calc(100% - 3rem)
+  margin 2rem auto
+  
 
   .products
     overflow hidden
@@ -114,7 +116,6 @@ $breakpoint-medium = 768px
 @media (max-width $breakpoint-medium)
   .discovery-image
     max-width 500px
-    margin 0 auto
     flex-direction column
 
     .products
