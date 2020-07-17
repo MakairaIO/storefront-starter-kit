@@ -9,12 +9,7 @@ import {
 import { Button } from '../..'
 
 export default function Image(props) {
-  const {
-    title = '',
-    picture_url_main = '',
-    picture_url_small = '',
-    magnifier_type = 'tap',
-  } = props
+  const { title = '', picture_url_main = '', magnifier_type = 'tap' } = props
 
   return (
     <div className="product-detail-information__image">
@@ -32,7 +27,7 @@ export default function Image(props) {
         <GlassMagnifier
           magnifierSize={'40%'}
           square={true}
-          imageSrc={picture_url_small}
+          imageSrc={picture_url_main}
           imageAlt={title}
           largeImageSrc={picture_url_main}
         />
@@ -40,7 +35,7 @@ export default function Image(props) {
 
       {magnifier_type === 'side_by_side' && (
         <SideBySideMagnifier
-          imageSrc={picture_url_small}
+          imageSrc={picture_url_main}
           imageAlt={title}
           largeImageSrc={picture_url_main}
           alwaysInPlace={false}
