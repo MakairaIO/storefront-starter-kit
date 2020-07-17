@@ -1,7 +1,7 @@
 import { Component } from 'react'
-import { Heading, Copytext, ConditionalLink, Text } from '../..'
-import StandardButton from './StandardButton'
+import { Heading, Copytext, ConditionalLink, Text, Button } from '../..'
 import BackgroundVideo from './BackgroundVideo'
+import { useTranslation } from '../../../utils'
 
 class VideoTeaser extends Component {
   render() {
@@ -34,7 +34,9 @@ class VideoTeaser extends Component {
           <div className="video-teaser__buy-box">
             {link && (
               <ConditionalLink href={link}>
-                <StandardButton />
+                <Button className="text--bold" icon="chevron-right">
+                  <ButtonText />
+                </Button>
               </ConditionalLink>
             )}
           </div>
@@ -42,6 +44,11 @@ class VideoTeaser extends Component {
       </section>
     )
   }
+}
+
+function ButtonText() {
+  const { t } = useTranslation()
+  return <>{t('PRODUCT_TILE_TO_PRODUCT')}</>
 }
 
 export default VideoTeaser
