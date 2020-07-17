@@ -177,6 +177,7 @@ class Header extends Component {
           <AutosuggestBox
             {...this.state.autosuggestResult}
             closeSearchPopup={this.hideAutosuggestBox}
+            goToSearchPage={this.handleSearchFormSubmit}
           />
         )}
 

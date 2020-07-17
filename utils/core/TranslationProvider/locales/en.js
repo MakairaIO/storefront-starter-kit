@@ -50,4 +50,5 @@ export default {
   FILTER_LABEL_CATEGORIES: 'Categories',
   FILTER_LABEL_MANUFACTURER: 'Manufacturer',
   FILTER_LABEL_MANUFACTURERS: 'Manufacturers',
+  FILTER_LABEL_SEE_ALL_RESULTS: (total) => `See all ${total} results`,
 }
