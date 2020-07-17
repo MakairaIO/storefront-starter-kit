@@ -3,7 +3,7 @@ $breakpoint-medium = 800px
 .autosuggest__image
   display flex
   flex-direction row
-  height 7rem
+  height 5rem
 
   picture
     height 100%
@@ -18,7 +18,6 @@ $breakpoint-medium = 800px
     padding-left 2rem
 
 .autosuggest-box
-  display flex
   position absolute
   right 0
   max-width 80rem
@@ -27,10 +26,13 @@ $breakpoint-medium = 800px
   padding 3rem 1.5rem
   z-index var(--z-index-highest)
   background-color var(--neutral-00)
-  flex-direction column
   max-height: calc(100vh - 6rem);
   overflow-y: auto;
-  height: 100%;
+
+.autosuggest-box__wrapper
+  display flex
+  flex-direction column
+
 
   @media (min-width $breakpoint-medium)
     flex-direction row
@@ -59,3 +61,15 @@ $breakpoint-medium = 800px
 
 .autosuggest__link-item
   margin-bottom 0.5rem
+
+.autosuggest-box__total-result
+  font-weight var(--font-weight-bold)
+  cursor pointer
+  display: flex;
+  align-items: center;
+
+  .icon--chevron-right
+    width: 1rem;
+    display: inline-block;
+    height: 2rem;
+    margin-left: 1rem;
