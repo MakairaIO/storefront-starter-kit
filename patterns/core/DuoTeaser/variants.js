@@ -28,10 +28,4 @@ export default [
       rightTile: { ...teaserProps, image: { ...imageRight } },
     },
   },
-  {
-    name: 'Without right',
-    props: {
-      leftTile: { ...teaserProps, image: { ...imageLeft } },
-    },
-  },
 ]
