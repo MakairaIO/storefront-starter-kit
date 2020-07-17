@@ -17,7 +17,7 @@ export default function ProductTile(props) {
   } = props
 
   const classes = classNames('product-item', {
-    ['highlight']: mak_paid_placement,
+    ['product-item--highlight']: mak_paid_placement,
   })
 
   return (
@@ -50,7 +50,7 @@ export default function ProductTile(props) {
         <ProductActions {...props} />
       </Link>
 
-      {mak_paid_placement && <Ribbon />}
+      <Ribbon isVisible={mak_paid_placement} />
     </article>
   )
 }
