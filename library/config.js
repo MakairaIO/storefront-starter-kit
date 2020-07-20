@@ -29,6 +29,9 @@ import Listing from './examplePages/Listing'
 import Detail from './examplePages/Detail'
 
 /* Add project specific imports here */
+import DiscoveryImage, {
+  discoveryImageVariants,
+} from '../patterns/core/DiscoveryImage'
 /* CLI MARKER - PATTER IMPORT - DO NOT REMOVE */
 
 export default [
@@ -115,6 +118,12 @@ export default [
     name: 'Text (mehrspaltig)',
     component: MultiColumnText,
     variants: multiColumnTextVariants,
+  },
+  {
+    type: 'placeable',
+    name: 'Discovery Image',
+    component: DiscoveryImage,
+    variants: discoveryImageVariants,
   },
   /* CLI MARKER - PATTERN CONFIG - DO NOT REMOVE */
   {
