@@ -1,8 +1,8 @@
 function Footer(props) {
-  const { footerColumns = [] } = props
+  const { footerData = [] } = props
   return (
     <section className="footer">
-      {footerColumns.map((column, i) => {
+      {footerData.map((column, i) => {
         const { heading = '', links = [] } = column
         return (
           <div className="footer__column" key={`footer__heading-${i}`}>

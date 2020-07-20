@@ -89,7 +89,7 @@ export default [
   {
     name: 'Default',
     props: {
-      footerColumns,
+      footerData: footerColumns,
     },
   },
 ]

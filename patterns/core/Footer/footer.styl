@@ -5,7 +5,7 @@ $breakpoint-small = 400px
   display flex
   flex-wrap wrap
   width calc(100% - 3rem) // 1.5rem "padding" on each side
-  margin 0 auto
+  margin 2rem auto 0
   padding 0.6rem 0 0.8rem
   border-top 1px solid var(--neutral-40)
 
@@ -16,14 +16,14 @@ $breakpoint-small = 400px
     margin-bottom 1rem
 
   &__heading
-    font-size 1.7rem
+    font-size 1.8rem
     line-height 3.2rem
     margin-bottom 1rem
     font-weight var(--font-weight-semi-bold)
 
   &__link
     display block
-    font-size 1.4rem
+    font-size 1.6rem
     line-height 2rem
 
 @media (max-width $breakpoint-medium)
@@ -32,6 +32,7 @@ $breakpoint-small = 400px
       width 50%
       flex-grow 2
       margin-bottom 1.5rem
+      text-align center
     
     &__link
       font-size 1.6rem
@@ -42,4 +43,3 @@ $breakpoint-small = 400px
     &__column
       width 100%
       flex-grow 1
-      text-align center

@@ -1,7 +1,11 @@
 import { Component } from 'react'
 import qs from 'qs'
 import isEmpty from 'lodash/isEmpty'
-import { HeaderWithProps, SearchResultPage } from '../../frontend'
+import {
+  HeaderWithProps,
+  FooterWithProps,
+  SearchResultPage,
+} from '../../frontend'
 import { BaseLayout } from '../../patterns'
 import {
   GlobalDataProvider,
@@ -56,6 +60,8 @@ export default class Index extends Component {
               <HeaderWithProps />
 
               <SearchResultPage />
+
+              <FooterWithProps />
             </BaseLayout>
           </TranslationProvider>
         </ConfigurationProvider>
