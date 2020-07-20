@@ -4,6 +4,7 @@ import Copytext, { copytextVariants } from '../patterns/core/Copytext'
 import Button, { buttonVariants } from '../patterns/core/Button'
 import Dropdown, { dropdownVariants } from '../patterns/core/Dropdown'
 import Header, { headerVariants } from '../patterns/core/Header'
+import Footer, { footerVariants } from '../patterns/core/Footer'
 import ProductList, { productListVariants } from '../patterns/core/ProductList'
 import ProductDetailInformation, {
   productDetailInformationVariants,
@@ -115,6 +116,12 @@ export default [
     name: 'Text (mehrspaltig)',
     component: MultiColumnText,
     variants: multiColumnTextVariants,
+  },
+  {
+    type: 'static',
+    name: 'Footer',
+    component: Footer,
+    variants: footerVariants,
   },
   /* CLI MARKER - PATTERN CONFIG - DO NOT REMOVE */
   {

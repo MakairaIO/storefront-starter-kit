@@ -1,0 +1,27 @@
+function Footer(props) {
+  const { footerColumns = [] } = props
+  return (
+    <section className="footer">
+      {footerColumns.map((column, i) => {
+        const { heading = '', links = [] } = column
+        return (
+          <div className="footer__column" key={`footer__heading-${i}`}>
+            <h4 className="footer__heading">{heading}</h4>
+            {links.map((link, y) => (
+              <a
+                className="footer__link"
+                key={`footer__link-${y}`}
+                href={link.link}
+              >
+                {link.text}
+              </a>
+            ))}
+          </div>
+        )
+      })}
+    </section>
+  )
+}
+
+export default Footer
+export { default as footerVariants } from './variants.js'
