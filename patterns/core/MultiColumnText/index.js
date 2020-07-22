@@ -12,7 +12,7 @@ function MultiColumnText(props) {
   } = props
 
   const sectionClasses = classNames('multi-column-text__section', {
-    [`multi-column-text__section--with-backgrund-${backgroundColor}`]:
+    [`multi-column-text__section--with-background-${backgroundColor}`]:
       backgroundColor != '',
     [`multi-column-text__section--text-color-${textColor}`]: !!textColor,
   })
