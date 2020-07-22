@@ -5,12 +5,12 @@ function Footer(props) {
       {footerData.map((column, i) => {
         const { heading = '', links = [] } = column
         return (
-          <div className="footer-column" key={`footer-heading-${i}`}>
-            <h4 className="footer-heading">{heading}</h4>
+          <div className="footer__column" key={`footer__heading-${i}`}>
+            <h4 className="footer__heading">{heading}</h4>
             {links.map((link, y) => (
               <a
-                className="footer-link"
-                key={`footer-link-${y}`}
+                className="footer__link"
+                key={`footer__link-${y}`}
                 href={link.link}
               >
                 {link.text}
