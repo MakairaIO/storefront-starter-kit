@@ -63,7 +63,7 @@ const spots = [
   },
 ]
 
-const image = '/assets/images/discoveryImage/example_image.jpg'
+const image = 'assets/images/discoveryImage/example_image.jpg'
 
 export default [
   {

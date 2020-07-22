@@ -21,6 +21,11 @@ import TeaserSingle, {
 import TeaserProducts, {
   teaserProductsVariants,
 } from '../patterns/core/TeaserProducts'
+import VideoTeaser, { videoTeaserVariants } from '../patterns/core/VideoTeaser'
+import DuoTeaser, { duoTeaserVariants } from '../patterns/core/DuoTeaser'
+import DiscoveryImage, {
+  discoveryImageVariants,
+} from '../patterns/core/DiscoveryImage'
 import MultiColumnText, {
   multiColumnTextVariants,
 } from '../patterns/core/MultiColumnText'
@@ -30,11 +35,6 @@ import Listing from './examplePages/Listing'
 import Detail from './examplePages/Detail'
 
 /* Add project specific imports here */
-import VideoTeaser, { videoTeaserVariants } from '../patterns/core/VideoTeaser'
-import DuoTeaser, { duoTeaserVariants } from '../patterns/core/DuoTeaser'
-import DiscoveryImage, {
-  discoveryImageVariants,
-} from '../patterns/core/DiscoveryImage'
 /* CLI MARKER - PATTER IMPORT - DO NOT REMOVE */
 
 export default [
@@ -67,6 +67,12 @@ export default [
     name: 'Header',
     component: Header,
     variants: headerVariants,
+  },
+  {
+    type: 'static',
+    name: 'Footer',
+    component: Footer,
+    variants: footerVariants,
   },
   {
     type: 'static',
@@ -133,12 +139,6 @@ export default [
     name: 'Duo Teaser',
     component: DuoTeaser,
     variants: duoTeaserVariants,
-  },
-  {
-    type: 'static',
-    name: 'Footer',
-    component: Footer,
-    variants: footerVariants,
   },
   {
     type: 'placeable',
