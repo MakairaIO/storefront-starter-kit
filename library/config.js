@@ -14,15 +14,15 @@ import ProductPlacement, {
 } from '../patterns/core/ProductPlacement'
 import Promotion, { promotionVariants } from '../patterns/core/Promotion'
 import TeaserHero, { teaserHeroVariants } from '../patterns/core/TeaserHero'
+import TeaserVideo, { teaserVideoVariants } from '../patterns/core/TeaserVideo'
 import TeaserGrid, { teaserGridVariants } from '../patterns/core/TeaserGrid'
+import TeaserDuo, { teaserDuoVariants } from '../patterns/core/TeaserDuo'
 import TeaserSingle, {
   teaserSingleVariants,
 } from '../patterns/core/TeaserSingle'
 import TeaserProducts, {
   teaserProductsVariants,
 } from '../patterns/core/TeaserProducts'
-import VideoTeaser, { videoTeaserVariants } from '../patterns/core/VideoTeaser'
-import DuoTeaser, { duoTeaserVariants } from '../patterns/core/DuoTeaser'
 import DiscoveryImage, {
   discoveryImageVariants,
 } from '../patterns/core/DiscoveryImage'
@@ -94,6 +94,12 @@ export default [
   },
   {
     type: 'placeable',
+    name: 'Discovery Image',
+    component: DiscoveryImage,
+    variants: discoveryImageVariants,
+  },
+  {
+    type: 'placeable',
     name: 'Promotion',
     component: Promotion,
     variants: promotionVariants,
@@ -106,9 +112,21 @@ export default [
   },
   {
     type: 'placeable',
+    name: 'Teaser (Video)',
+    component: TeaserVideo,
+    variants: teaserVideoVariants,
+  },
+  {
+    type: 'placeable',
     name: 'Teaser (Grid)',
     component: TeaserGrid,
     variants: teaserGridVariants,
+  },
+  {
+    type: 'placeable',
+    name: 'Teaser (Duo)',
+    component: TeaserDuo,
+    variants: teaserDuoVariants,
   },
   {
     type: 'placeable',
@@ -127,24 +145,6 @@ export default [
     name: 'Text (mehrspaltig)',
     component: MultiColumnText,
     variants: multiColumnTextVariants,
-  },
-  {
-    type: 'placeable',
-    name: 'Video Teaser',
-    component: VideoTeaser,
-    variants: videoTeaserVariants,
-  },
-  {
-    type: 'placeable',
-    name: 'Duo Teaser',
-    component: DuoTeaser,
-    variants: duoTeaserVariants,
-  },
-  {
-    type: 'placeable',
-    name: 'Discovery Image',
-    component: DiscoveryImage,
-    variants: discoveryImageVariants,
   },
   /* CLI MARKER - PATTERN CONFIG - DO NOT REMOVE */
   {

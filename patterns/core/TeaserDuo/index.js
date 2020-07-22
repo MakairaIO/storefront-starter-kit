@@ -3,7 +3,7 @@ import { ConditionalLink } from '../..'
 import Image from './image'
 import Title from './title'
 import Overlay from './overlay'
-class DuoTeaser extends Component {
+class TeaserDuo extends Component {
   render() {
     const { leftTile = {}, rightTile = {} } = this.props
 
@@ -39,5 +39,5 @@ class DuoTeaser extends Component {
   }
 }
 
-export default DuoTeaser
-export { default as duoTeaserVariants } from './variants.js'
+export default TeaserDuo
+export { default as teaserDuoVariants } from './variants.js'

@@ -6,8 +6,8 @@ import {
   TeaserSingle,
   TeaserProducts,
   MultiColumnText,
-  DuoTeaser,
-  VideoTeaser,
+  TeaserDuo,
+  TeaserVideo,
   DiscoveryImage,
 } from '../..'
 
@@ -25,8 +25,8 @@ export default function ContentElements(props) {
     'teaser-single': TeaserSingle,
     'teaser-products': TeaserProducts,
     'multi-column-text': MultiColumnText,
-    'duo-teaser': DuoTeaser,
-    'video-teaser': VideoTeaser,
+    'duo-teaser': TeaserDuo,
+    'video-teaser': TeaserVideo,
     'discovery-image': DiscoveryImage,
   }
 

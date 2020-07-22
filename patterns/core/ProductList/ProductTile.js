@@ -15,7 +15,6 @@ export default function ProductTile(props) {
     url = '',
     mak_paid_placement = false,
     isLazyLoad = true,
-    children,
   } = props
 
   const classes = classNames('product-item', {
@@ -24,7 +23,6 @@ export default function ProductTile(props) {
 
   return (
     <article className={classes}>
-      {children}
       <Link href={url}>
         <picture className="product-item__image">
           {isLazyLoad ? (

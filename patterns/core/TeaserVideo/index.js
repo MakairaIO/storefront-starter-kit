@@ -3,7 +3,7 @@ import { Heading, Copytext, ConditionalLink, Text, Button } from '../..'
 import BackgroundVideo from './BackgroundVideo'
 import { useTranslation } from '../../../utils'
 
-class VideoTeaser extends Component {
+class TeaserVideo extends Component {
   render() {
     const {
       heading = '',
@@ -51,5 +51,5 @@ function ButtonText() {
   return <>{t('PRODUCT_TILE_TO_PRODUCT')}</>
 }
 
-export default VideoTeaser
-export { default as videoTeaserVariants } from './variants.js'
+export default TeaserVideo
+export { default as teaserVideoVariants } from './variants.js'
