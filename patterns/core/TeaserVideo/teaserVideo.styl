@@ -1,3 +1,4 @@
+$breakpoint-small = 550px
 $breakpoint-medium = 600px
 $breakpoint-large = 1024px
 $breakpoint-huge = 1400px
@@ -6,6 +7,10 @@ $breakpoint-huge = 1400px
   display block
   position relative
   color var(--neutral-00)
+  margin 1.2rem 0
+
+  @media (min-width $breakpoint-huge)
+    padding 0 2rem
 
 .video-teaser__video
   display block
