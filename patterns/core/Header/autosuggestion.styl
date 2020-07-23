@@ -8,7 +8,7 @@ $breakpoint-medium = 800px
   picture
     height 100%
     width 5rem
-    text-align right
+    text-align center
 
     img
       height 100%
@@ -32,7 +32,7 @@ $breakpoint-medium = 800px
 .autosuggest-box__wrapper
   display flex
   flex-direction column
-
+  background var(--neutral-00)
 
   @media (min-width $breakpoint-medium)
     flex-direction row
@@ -46,15 +46,17 @@ $breakpoint-medium = 800px
 
 .autosuggest-box__links
     flex 1
+
+.autosuggest-box__products
+.autosuggest-box__link-box
+  margin-bottom 1.5rem
+
 .autosuggest-box__products
   flex 1
 
   .heading
     @media (min-width $breakpoint-medium)
       padding-left 2rem
-
-.autosuggest-box__link-box
-  margin-bottom 2.5rem
 
 .autosuggest__product-item
   padding 1rem
@@ -63,13 +65,14 @@ $breakpoint-medium = 800px
   margin-bottom 0.5rem
 
 .autosuggest-box__total-result
-  font-weight var(--font-weight-bold)
   cursor pointer
-  display: flex;
-  align-items: center;
+  display flex
+  align-items center
+  padding-top 2rem
+  border-top 1px solid var(--neutral-40)
 
   .icon--chevron-right
-    width: 1rem;
-    display: inline-block;
-    height: 2rem;
-    margin-left: 1rem;
+    width 1rem
+    display inline-block
+    height 1.2rem
+    margin-left 0.6rem

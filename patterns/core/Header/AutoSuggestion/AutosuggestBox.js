@@ -40,7 +40,6 @@ function AutosuggestBox(props) {
           </section>
         )}
       </div>
-      <hr />
       <div className="autosuggest-box__total-result" onClick={goToSearchPage}>
         {t('FILTER_LABEL_SEE_ALL_RESULTS')(totalResults)}
         <Icon symbol="chevron-right" />

@@ -24,7 +24,6 @@ function LinkComponent(props) {
           </li>
         ))}
       </ul>
-      <hr></hr>
     </section>
   )
 }
