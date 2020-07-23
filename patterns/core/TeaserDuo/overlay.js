@@ -1,11 +1,7 @@
 import { Button } from '../..'
 
 export default function Overlay(props) {
-  const {
-    heading = '',
-    text = '',
-    button = { text: 'Zum Produkt', isVisible: true },
-  } = props
+  const { heading = '', text = '', showButton = false } = props
 
   return (
     <p className="duo-teaser__overlay">
@@ -15,9 +11,9 @@ export default function Overlay(props) {
 
       {text && <span className="duo-teaser__overlay-text">{text}</span>}
 
-      {button.isVisible && (
+      {showButton && (
         <Button className="duo-teaser__button" icon="chevron-right">
-          {button.text}
+          Zum Produkt
         </Button>
       )}
     </p>

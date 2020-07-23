@@ -9,7 +9,7 @@ class TeaserDuo extends Component {
 
     return (
       <section className="duo-teaser-box">
-        <section className="duo-teaser">
+        <div className="duo-teaser">
           <ConditionalLink
             href={leftTile.link}
             className="duo-teaser__container"
@@ -18,11 +18,14 @@ class TeaserDuo extends Component {
               <Image {...leftTile.image} />
               <Title {...leftTile} />
             </div>
-            <Overlay {...leftTile.description} />
+            <Overlay
+              {...leftTile.description}
+              showButton={leftTile.link != ''}
+            />
           </ConditionalLink>
-        </section>
+        </div>
 
-        <section className="duo-teaser duo-teaser--right">
+        <div className="duo-teaser duo-teaser--right">
           <ConditionalLink
             href={rightTile.link}
             className="duo-teaser__container"
@@ -31,9 +34,12 @@ class TeaserDuo extends Component {
               <Image {...rightTile.image} />
               <Title {...rightTile} />
             </div>
-            <Overlay {...rightTile.description} />
+            <Overlay
+              {...rightTile.description}
+              showButton={rightTile.link != ''}
+            />
           </ConditionalLink>
-        </section>
+        </div>
       </section>
     )
   }
