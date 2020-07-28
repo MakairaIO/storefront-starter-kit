@@ -13,7 +13,7 @@
     "prebuild": "npm run clean",
     "build": "npm-run-all --parallel build:*",
     "build:next": "next build",
-    "build:svgs": "svgstore public/assets/svgs/*.svg -o public/assets/svgs/icons.svg",
+    "build:svgs": "svgstore --inline public/assets/svgs/*.svg -o public/assets/svgs/icons.svg",
     "build:styles": "stylus --include-css --compress patterns/index.styl --out public/assets/styles/main.css",
     "build:config": "node library/configParser/index.js",
     "library:dev": "stylus --watch library/internal/library.styl --out public/assets/library/library.css",
