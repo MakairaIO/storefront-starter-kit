@@ -33,6 +33,7 @@ import MultiColumnText, {
 import Home from './examplePages/Home'
 import Listing from './examplePages/Listing'
 import Detail from './examplePages/Detail'
+import ErrorPage from '../patterns/core/ErrorPage'
 
 /* Add project specific imports here */
 /* CLI MARKER - PATTER IMPORT - DO NOT REMOVE */
@@ -164,5 +165,11 @@ export default [
     name: 'Detail Page',
     component: Detail,
     variants: [{ name: 'Detail Page Example' }],
+  },
+  {
+    type: 'page',
+    name: 'Error Page',
+    component: ErrorPage,
+    variants: [{ name: 'Error Page Example' }],
   },
 ]
