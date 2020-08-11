@@ -4,9 +4,8 @@ import { FormattedPrice } from '../..'
 export default function ProductPriceHint() {
   return (
     <div className="product-item__price-hint">
-      <span>inkl. MwSt.</span>
       <span>
-        <FormattedPrice price="37.50" /> / Liter
+        <FormattedPrice />
       </span>
     </div>
   )
