@@ -7,7 +7,6 @@ export default function ProductPrices(props) {
   const { price = 0.0 } = props
 
   const hasReducedPrice = true
-  const reducedPrice = 399.99
 
   const classes = classNames('product-detail-information__price', {
     ['product-detail-information__price--current']: hasReducedPrice,
@@ -15,10 +14,7 @@ export default function ProductPrices(props) {
 
   return (
     <div className="product-detail-information__prices">
-      <FormattedPrice
-        price={reducedPrice}
-        className="product-detail-information__price product-detail-information__price--reduced"
-      />
+      <FormattedPrice className="product-detail-information__price product-detail-information__price--reduced" />
 
       <FormattedPrice price={price} className={classes} />
     </div>

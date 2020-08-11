@@ -50,12 +50,7 @@ export default function Buybox(props) {
       </div>
 
       <div className="product-detail-information__buybox-wrapper">
-        <figure className="product-detail-information__manufacturer">
-          <img
-            src="/assets/images/productDetailInformation/example-manufacturer.png"
-            alt="Sony"
-          />
-        </figure>
+        <figure className="product-detail-information__manufacturer"></figure>
 
         <div className="product-detail-information__buxbox-info">
           <ProductPrices {...props} />
