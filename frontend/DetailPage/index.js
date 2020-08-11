@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
-import { useGlobalData } from '../../utils'
-import fetchRecommendationData from '../../utils/core/fetchRecommendationData'
-import ProductDetailInformation from './ProductDetailInformationWithProps'
-import ProductPlacement from '../../patterns/core/ProductPlacement'
+import { useGlobalData, fetchRecommendationData } from '../../utils'
+import { ProductDetailInformation, ProductPlacement } from '../../patterns'
 
 function DetailPage() {
   const { pageData } = useGlobalData()
@@ -29,7 +27,7 @@ function DetailPage() {
 
   return (
     <main>
-      <ProductDetailInformation />
+      <ProductDetailInformation {...productDetailProps} />
       <ProductPlacement {...productPlacementProps} />
     </main>
   )
