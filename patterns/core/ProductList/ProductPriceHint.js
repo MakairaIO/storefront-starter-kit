@@ -1,12 +1,3 @@
-import { FormattedPrice } from '../..'
-
-// TODO: Remove hard-coded implementation
 export default function ProductPriceHint() {
-  return (
-    <div className="product-item__price-hint">
-      <span>
-        <FormattedPrice />
-      </span>
-    </div>
-  )
+  return <div className="product-item__price-hint"></div>
 }

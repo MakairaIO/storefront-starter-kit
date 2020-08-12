@@ -1,4 +1,3 @@
-import classNames from 'classnames'
 import { FormattedPrice } from '../..'
 
 // TODO: real check for reduced prices
@@ -6,17 +5,12 @@ import { FormattedPrice } from '../..'
 export default function ProductPrices(props) {
   const { price = 0.0 } = props
 
-  const hasReducedPrice = true
-
-  const classes = classNames('product-placement-item__price', {
-    ['product-placement-item__price--current']: hasReducedPrice,
-  })
-
   return (
     <div className="product-placement-item__prices">
-      <FormattedPrice className="product-placement-item__price product-placement-item__price--reduced" />
-
-      <FormattedPrice price={price} className={classes} />
+      <FormattedPrice
+        price={price}
+        className={'product-placement-item__price'}
+      />
     </div>
   )
 }
