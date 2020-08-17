@@ -61,24 +61,6 @@ $breakpoint-huge = 1200px
   font-weight var(--font-weight-semi-bold)
   line-height 3rem
 
-  &--reduced
-    font-size 1.4rem
-    line-height 1.8rem
-    text-decoration line-through
-    letter-spacing 0.02rem
-
-    .product-detail-information__buxbox-info &
-      padding-bottom 0.3rem
-      margin-right 1rem
-
-    .product-detail-information__top-header &
-      @media (min-width $breakpoint-small)
-        padding-bottom 0.3rem
-        margin-right 1rem
-
-  &--current
-    color var(--reduced-price)
-
 .product-detail-information__image
   margin 0 -1.5rem 1.2rem // negative margin to accomodate for the 1.5rem padding of the container on the left/right
   position relative
@@ -178,17 +160,6 @@ $breakpoint-huge = 1200px
 
   @media (min-width $breakpoint-small)
     text-align left
-
-.product-detail-information__price-hint
-  display flex
-  flex-direction column
-  color var(--neutral-60)
-
-  a
-    text-decoration underline
-
-    &:hover
-      text-decoration none
 
 .product-detail-information__availability
   display inline-flex
