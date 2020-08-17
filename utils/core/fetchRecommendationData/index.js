@@ -7,7 +7,7 @@ export default async function fetchRecommendationData({ productId }) {
 
   const body = {
     constraints,
-    count: 10,
+    count: 5,
     recommendationId: 'similar-products',
     productId,
   }
