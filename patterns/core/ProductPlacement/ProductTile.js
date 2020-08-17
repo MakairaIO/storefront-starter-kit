@@ -1,6 +1,5 @@
 import { Heading, Text, Link } from '../..'
 import ProductPrices from './ProductPrices'
-import ProductPriceHint from './ProductPriceHint'
 import ProductActions from './ProductActions'
 
 export default function ProductTile(props) {
@@ -36,8 +35,6 @@ export default function ProductTile(props) {
         </Text>
 
         <ProductPrices {...props} />
-
-        <ProductPriceHint {...props} />
 
         <ProductActions {...props} />
       </Link>

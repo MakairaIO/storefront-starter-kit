@@ -1,7 +1,6 @@
 import { Heading, Copytext, Text, Link } from '../..'
 import ProductVariants from './ProductVariants'
 import ProductPrices from './ProductPrices'
-import ProductPriceHint from './ProductPriceHint'
 import ProductActions from './ProductActions'
 import Ribbon from './Ribbon'
 import classNames from 'classnames'
@@ -49,8 +48,6 @@ export default function ProductTile(props) {
         <Copytext className="product-item__shortdesc">{shortdesc}</Copytext>
 
         <ProductPrices {...props} />
-
-        <ProductPriceHint {...props} />
 
         <ProductActions {...props} />
       </Link>

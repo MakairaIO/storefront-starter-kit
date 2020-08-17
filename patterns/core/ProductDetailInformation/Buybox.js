@@ -1,6 +1,5 @@
 import { Dropdown } from '../..'
 import ProductPrices from './ProductPrices'
-import ProductPriceHint from './ProductPriceHint'
 import ProductAvailability from './ProductAvailability'
 import ProductActions from './ProductActions'
 
@@ -54,8 +53,6 @@ export default function Buybox(props) {
 
         <div className="product-detail-information__buxbox-info">
           <ProductPrices {...props} />
-
-          <ProductPriceHint {...props} />
 
           <ProductAvailability {...props} />
         </div>
