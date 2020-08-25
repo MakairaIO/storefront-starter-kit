@@ -1,4 +1,4 @@
-export default function preparePaginationForQuerySring(
+export default function preparePaginationForQueryString(
   formData,
   count,
   resetPagination
