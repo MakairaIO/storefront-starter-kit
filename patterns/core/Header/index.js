@@ -101,10 +101,11 @@ class Header extends Component {
   handleSearchResult = () => {
     const result = this.state.autosuggestResult
     let total =
-      get(result, 'category.total') +
-      get(result, 'links.total') +
-      get(result, 'manufacturer.total') +
-      get(result, 'product.total')
+      get(result, 'category.total') ||
+      0 + get(result, 'links.total') ||
+      0 + get(result, 'manufacturer.total') ||
+      0 + get(result, 'product.total') ||
+      0
     if (this.state.searchPhrase && total > 0) {
       this.showAutosuggestBox()
     } else {
