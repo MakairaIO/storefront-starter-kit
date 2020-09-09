@@ -1,10 +1,10 @@
 import { useRef } from 'react'
 import ProductTile from './ProductTile'
-import { Heading, Copytext } from '../..'
+import { Heading } from '../..'
 import { useLazyLoading } from '../../../utils'
 
 function ProductPlacement(props) {
-  const { products = [], heading = '', text = '' } = props
+  const { products = [], heading = '' } = props
   const listRef = useRef(null)
 
   useLazyLoading({ ref: listRef, dependency: products })
@@ -15,7 +15,6 @@ function ProductPlacement(props) {
     <section className="product-placement">
       <div className="product-placement__text">
         {heading && <Heading>{heading}</Heading>}
-        {text && <Copytext dangerouslySetInnerHTML={{ __html: text }} />}
       </div>
 
       <div ref={listRef} className="product-placement__list">
