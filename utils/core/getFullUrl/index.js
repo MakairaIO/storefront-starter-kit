@@ -5,18 +5,14 @@ export default function getFullUrl(url = '') {
   let normalizedInput
   if (url.startsWith('http')) {
     normalizedInput = url
-  }
-
-  if (url.startsWith('www')) {
+  } else if (url.startsWith('www')) {
     normalizedInput = 'https://' + url
-  }
-
-  if (url.startsWith('/')) {
+  } else if (url.startsWith('/')) {
     normalizedInput = normalizedDomain + url
-  }
-
-  if (url == '') {
+  } else if (url == '') {
     normalizedInput = normalizedDomain + '/'
+  } else {
+    normalizedInput = normalizedDomain + '/' + url
   }
 
   let fullUrl, isExternalLink
