@@ -1,4 +1,5 @@
 import App from 'next/app'
+import Head from 'next/head'
 import { SVGSprite } from '../patterns'
 
 // The next line is excluded from linting since the file gets generated at runtime.
@@ -18,6 +19,13 @@ class MyApp extends App {
 
     return (
       <>
+        <Head>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+          />
+        </Head>
+
         <SVGSprite />
 
         <Component {...pageProps} />
