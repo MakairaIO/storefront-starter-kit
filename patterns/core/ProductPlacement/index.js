@@ -5,7 +5,7 @@ import { Heading } from '../..'
 import { useLazyLoading } from '../../../utils'
 
 function ProductPlacement(props) {
-  const { products = [], heading = '' } = props
+  const { products = [], heading = '', text = '' } = props
   const listRef = useRef(null)
 
   useLazyLoading({ ref: listRef, dependency: products })
@@ -16,7 +16,7 @@ function ProductPlacement(props) {
     <section className="product-placement">
       <div className="product-placement__text">
         {heading && <Heading>{heading}</Heading>}
-        <Copytext />
+        {text && <Copytext dangerouslySetInnerHTML={{ __html: text }} />}
       </div>
 
       <div ref={listRef} className="product-placement__list">
