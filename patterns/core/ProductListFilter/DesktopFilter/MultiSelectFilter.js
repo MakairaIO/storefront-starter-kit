@@ -12,7 +12,7 @@ export default function MultiSelectFilter(props) {
   } = props
 
   const FILTER_MENU_HEIGHT = 192
-  const NUMBER_ITEMS = 6
+  const FILTER_MENU_SHOWED_ITEMS = 6
   const innerRef = useRef(null)
   const wrapperRef = useRef(null)
   const listItems = Object.values(filterValues)
@@ -25,7 +25,7 @@ export default function MultiSelectFilter(props) {
     'desktop-filter__multi-select__wrapper',
     {
       ['desktop-filter__multi-select__wrapper--overflow']:
-        listItems.length > NUMBER_ITEMS && !open,
+        listItems.length > FILTER_MENU_SHOWED_ITEMS && !open,
     }
   )
   const buttonClasses = classNames(
@@ -33,7 +33,7 @@ export default function MultiSelectFilter(props) {
     'desktop-filter__multi-select-button',
     {
       ['desktop-filter__multi-select-button--visible']:
-        listItems.length > NUMBER_ITEMS,
+        listItems.length > FILTER_MENU_SHOWED_ITEMS,
     }
   )
 

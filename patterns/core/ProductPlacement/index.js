@@ -1,7 +1,6 @@
 import { useRef } from 'react'
 import ProductTile from './ProductTile'
-import Copytext from '../Copytext'
-import { Heading } from '../..'
+import { Heading, Copytext } from '../..'
 import { useLazyLoading } from '../../../utils'
 
 function ProductPlacement(props) {
