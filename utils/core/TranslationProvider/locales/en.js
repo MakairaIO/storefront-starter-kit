@@ -52,6 +52,4 @@ export default {
   FILTER_LABEL_MANUFACTURERS: 'Manufacturers',
   FILTER_LABEL_SEE_ALL_RESULTS: (total) => `See all ${total} results`,
   RECOMMENDATION_HEADING: 'Similar Products',
-  RECOMMENDATION_TEXT:
-    'Copytext Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
 }

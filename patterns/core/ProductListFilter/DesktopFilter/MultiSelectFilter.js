@@ -11,11 +11,13 @@ export default function MultiSelectFilter(props) {
     className,
   } = props
 
+  const FILTER_MENU_HEIGHT = 192
+  const NUMBER_ITEMS = 6
   const innerRef = useRef(null)
   const wrapperRef = useRef(null)
   const listItems = Object.values(filterValues)
   const [open, setOpen] = useState(false)
-  const [height, setHeight] = useState(203)
+  const [height, setHeight] = useState(FILTER_MENU_HEIGHT)
 
   const toggleText = open ? 'Weniger anzeigen' : 'Mehr anzeigen'
   const wrapperClasses = classNames(
@@ -23,22 +25,22 @@ export default function MultiSelectFilter(props) {
     'desktop-filter__multi-select__wrapper',
     {
       ['desktop-filter__multi-select__wrapper--overflow']:
-        listItems.length > 6 && !open,
+        listItems.length > NUMBER_ITEMS && !open,
     }
   )
   const buttonClasses = classNames(
     className,
     'desktop-filter__multi-select-button',
     {
-      ['desktop-filter__multi-select-button--visible']: listItems.length > 6,
+      ['desktop-filter__multi-select-button--visible']:
+        listItems.length > NUMBER_ITEMS,
     }
   )
 
   function toggleOpen() {
-    const inner = innerRef.current.getBoundingClientRect()
-    setHeight(!open ? inner.height : 203)
-
-    open ? setOpen(false) : setOpen(true)
+    const inner = innerRef && innerRef.current.getBoundingClientRect()
+    setHeight(!open ? inner.height : FILTER_MENU_HEIGHT)
+    setOpen(!open)
   }
 
   return (
@@ -88,7 +90,7 @@ export default function MultiSelectFilter(props) {
           })}
         </ul>
       </div>
-      <Button className={buttonClasses} onClick={toggleOpen}>
+      <Button variant="tertiary" className={buttonClasses} onClick={toggleOpen}>
         {toggleText}
       </Button>
     </>

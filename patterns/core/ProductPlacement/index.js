@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import ProductTile from './ProductTile'
+import Copytext from '../Copytext'
 import { Heading } from '../..'
 import { useLazyLoading } from '../../../utils'
 
@@ -15,6 +16,7 @@ function ProductPlacement(props) {
     <section className="product-placement">
       <div className="product-placement__text">
         {heading && <Heading>{heading}</Heading>}
+        <Copytext />
       </div>
 
       <div ref={listRef} className="product-placement__list">
