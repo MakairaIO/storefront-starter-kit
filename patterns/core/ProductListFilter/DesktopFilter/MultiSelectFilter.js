@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import { Icon, Button } from '../../..'
 import { useState, useRef } from 'react'
+import { useTranslation } from '../../../../utils'
 
 export default function MultiSelectFilter(props) {
   const {
@@ -11,6 +12,7 @@ export default function MultiSelectFilter(props) {
     className,
   } = props
 
+  const { t } = useTranslation()
   const FILTER_MENU_HEIGHT = 192
   const FILTER_MENU_SHOWED_ITEMS = 6
   const innerRef = useRef(null)
@@ -19,7 +21,9 @@ export default function MultiSelectFilter(props) {
   const [open, setOpen] = useState(false)
   const [height, setHeight] = useState(FILTER_MENU_HEIGHT)
 
-  const toggleText = open ? 'Weniger anzeigen' : 'Mehr anzeigen'
+  const toggleText = open
+    ? t('FILTER_LABEL_SHOW_LESS')
+    : t('FILTER_LABEL_SHOW_MORE')
   const wrapperClasses = classNames(
     className,
     'desktop-filter__multi-select__wrapper',
