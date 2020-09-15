@@ -51,7 +51,7 @@ export default {
   FILTER_LABEL_MANUFACTURER: 'Manufacturer',
   FILTER_LABEL_MANUFACTURERS: 'Manufacturers',
   FILTER_LABEL_SEE_ALL_RESULTS: (total) => `See all ${total} results`,
+  FILTER_LABEL_SHOW_LESS: 'Show less',
+  FILTER_LABEL_SHOW_MORE: 'Show more',
   RECOMMENDATION_HEADING: 'Similar Products',
-  RECOMMENDATION_TEXT:
-    'Copytext Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
 }

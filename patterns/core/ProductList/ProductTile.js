@@ -1,5 +1,4 @@
 import { Heading, Copytext, Text, Link } from '../..'
-import ProductVariants from './ProductVariants'
 import ProductPrices from './ProductPrices'
 import ProductActions from './ProductActions'
 import Ribbon from './Ribbon'
@@ -30,8 +29,6 @@ export default function ProductTile(props) {
             <img src={picture_url_main} alt={title} />
           )}
         </picture>
-
-        <ProductVariants {...props} />
 
         <Heading size="bacchus" weight="600" className="product-item__title">
           {title}
