@@ -1,6 +1,9 @@
 import { RequestBuilder, fetchFromMakaira } from '../..'
 
-export default async function fetchRecommendationData({ productId }) {
+export default async function fetchRecommendationData({
+  productId,
+  recommendationId = 'similar-products',
+}) {
   const language = 'de'
   const builder = new RequestBuilder()
   const constraints = builder.getConstraints({ language })
@@ -8,7 +11,7 @@ export default async function fetchRecommendationData({ productId }) {
   const body = {
     constraints,
     count: 5,
-    recommendationId: 'similar-products',
+    recommendationId,
     productId,
   }
 
