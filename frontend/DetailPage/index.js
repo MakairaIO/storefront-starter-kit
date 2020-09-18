@@ -15,7 +15,10 @@ function DetailPage() {
 
   useEffect(() => {
     async function getProducts() {
-      const response = await fetchRecommendationData({ productId })
+      const response = await fetchRecommendationData({
+        productId,
+        recommendationId: 'similar-products',
+      })
       const recommendationProducts = response.items
       const formattedProduct = recommendationProducts.map(
         (product) => product.fields
