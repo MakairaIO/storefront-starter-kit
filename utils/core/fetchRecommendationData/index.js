@@ -1,8 +1,8 @@
 import { RequestBuilder, fetchFromMakaira } from '../..'
 
 export default async function fetchRecommendationData({
-  productId,
-  recommendationId = 'similar-products',
+  productId = '',
+  recommendationId = '',
 }) {
   const language = 'de'
   const builder = new RequestBuilder()
