@@ -10,3 +10,14 @@ deploy-whitelabel:
     - git-push ssh://dokku@production.makaira.cloud:22/whitelabel
   tags:
     - marmalade-docker
+
+deploy-stage:
+  image: makaira/gitlab-ci-git-push
+  stage: deploy
+  only:
+    - master
+  script:
+    - git-push ssh://dokku@preview.makaira.cloud:22/stage
+  tags:
+    - marmalade-docker
+    
