@@ -11,7 +11,6 @@ import {
   dispatchOverlayClickedEvent,
 } from '../../../utils'
 import AutosuggestBox from './AutoSuggestion/AutosuggestBox'
-import get from 'lodash/get'
 
 const DESKTOP_MENU_BREAKPOINT = 800
 
@@ -25,6 +24,7 @@ class Header extends Component {
       isAutosuggestBoxVisible: false,
       searchPhrase: '',
       autosuggestResult: {},
+      totalResultCount: 0,
     }
 
     this.handleResize = throttle(this.handleResize, 200)
@@ -99,14 +99,15 @@ class Header extends Component {
   }
 
   handleSearchResult = () => {
-    const result = this.state.autosuggestResult
-    let total =
-      (get(result, 'category.total') || 0) +
-      (get(result, 'links.total') || 0) +
-      (get(result, 'manufacturer.total') || 0) +
-      (get(result, 'product.total') || 0)
-    if (this.state.searchPhrase && total > 0) {
-      this.showAutosuggestBox()
+    const searchResult = this.state.autosuggestResult
+
+    const totalResultCount = Object.values(searchResult).reduce(
+      (total, resultType) => total + resultType.total,
+      0
+    )
+
+    if (this.state.searchPhrase && totalResultCount > 0) {
+      this.setState({ totalResultCount }, this.showAutosuggestBox)
     } else {
       this.hideAutosuggestBox()
     }
@@ -115,7 +116,12 @@ class Header extends Component {
   fetchAutosuggestResult = async () => {
     const { searchPhrase } = this.state
 
-    const result = await this.props.fetchAutosuggestResult(searchPhrase)
+    let result = await this.props.fetchAutosuggestResult(searchPhrase)
+
+    delete result.suggestion // we don't want to display suggestions
+    delete result.banners // we don't want to display banners
+    delete result.snippets // we don't want to display snippets
+
     this.setState({ autosuggestResult: result }, this.handleSearchResult)
   }
 
@@ -175,7 +181,8 @@ class Header extends Component {
 
         {this.state.isAutosuggestBoxVisible && (
           <AutosuggestBox
-            {...this.state.autosuggestResult}
+            searchResult={this.state.autosuggestResult}
+            totalResultCount={this.state.totalResultCount}
             closeSearchPopup={this.hideAutosuggestBox}
             goToSearchPage={this.handleSearchFormSubmit}
           />
