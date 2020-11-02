@@ -12,7 +12,7 @@ export default function Metadata() {
 
   return (
     <Head>
-      <title>{title}</title>
+      {title && <title>{title}</title>}
 
       <meta key="ROBOTS" name="ROBOTS" content={robotsContent} />
     </Head>
