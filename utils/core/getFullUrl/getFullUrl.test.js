@@ -63,6 +63,15 @@ describe('getFullUrl()', () => {
       expect(fullUrl).toEqual(expectedUrl)
       expect(isExternalLink).toEqual(false)
     })
+
+    it('should return relative URLs without leading slash with added slash, scheme and domain', () => {
+      const relativeUrl = 'my-fancy-page.html'
+      const { fullUrl, isExternalLink } = getFullUrl(relativeUrl)
+      const expectedUrl = SHOP_DOMAIN_MOCK + '/my-fancy-page.html'
+
+      expect(fullUrl).toEqual(expectedUrl)
+      expect(isExternalLink).toEqual(false)
+    })
   })
 
   describe('external URLs', () => {

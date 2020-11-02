@@ -47,6 +47,20 @@ $breakpoint-huge = 1250px
   input
     display none
 
+.desktop-filter__multi-select__wrapper
+  overflow hidden
+  transition max-height 0.2s
+
+  &--overflow
+    border-bottom 1px solid var(--neutral-20)
+    box-shadow inset 0 -8px 5px -8px rgba(0, 0, 0, 0.2)
+    max-height 20.3rem
+
+.desktop-filter__multi-select-button
+  display none
+  &--visible
+    display block
+  
 .desktop-filter__multi-select--grid
   display grid
   grid-template-columns repeat(3, 1fr)

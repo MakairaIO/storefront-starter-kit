@@ -9,13 +9,14 @@ export default function ErrorPage(props) {
 
   useEffect(
     function collectDataAndLogError() {
-      const { origin, pathname } = window.location
+      const { origin, pathname, search } = window.location
       const { platform, userAgent } = window.navigator
 
       let data = {
         Status: statusCode,
         Host: origin,
         Path: pathname,
+        queryString: search,
         Platform: platform,
         'User-Agent': userAgent,
       }

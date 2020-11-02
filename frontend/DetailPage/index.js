@@ -27,7 +27,6 @@ function DetailPage() {
 
   const productPlacementProps = {
     heading: t('RECOMMENDATION_HEADING'),
-    text: t('RECOMMENDATION_TEXT'),
     products,
   }
 
