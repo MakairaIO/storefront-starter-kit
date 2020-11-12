@@ -2,7 +2,9 @@ import { useEffect } from 'react'
 
 function callback(entries, observer) {
   entries.forEach((entry) => {
-    if (!entry.isIntersecting) {
+    const isBelowViewport = entry.boundingClientRect.top > 0
+
+    if (!entry.isIntersecting && isBelowViewport) {
       return
     }
 
