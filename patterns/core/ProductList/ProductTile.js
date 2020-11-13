@@ -24,7 +24,7 @@ export default function ProductTile(props) {
       <Link href={url}>
         <picture className="product-item__image">
           {isLazyLoad ? (
-            <img data-src={picture_url_main} alt={title} />
+            <img data-src={picture_url_main} alt={title} height="228" />
           ) : (
             <img src={picture_url_main} alt={title} />
           )}
