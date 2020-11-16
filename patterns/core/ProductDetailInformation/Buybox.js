@@ -2,31 +2,55 @@ import { Dropdown } from '../..'
 import ProductPrices from './ProductPrices'
 import ProductAvailability from './ProductAvailability'
 import ProductActions from './ProductActions'
+import { useState } from 'react'
 
 function prepareVariants({ attributes = [], attributeId = '' }) {
-  return attributes
-    .filter((a) => a.id == attributeId)
-    .map((a) => {
-      return {
-        label: a.value,
-        value: a.value,
-      }
-    })
+  const attributeArray = attributeId
+    ? attributes.filter((a) => a.title == attributeId)
+    : attributes
+
+  return attributeArray.map((a) => {
+    return {
+      label: a.value,
+      value: a.value,
+    }
+  })
 }
 
 // TODO: Remove hard-coded implementation
 export default function Buybox(props) {
-  const { attributeStr } = props
+  let variants = []
+  const makairaProduct = props['makaira-product']
+  const [productInformation, setProductInformation] = useState(props)
 
-  const sizeVariants = prepareVariants({
-    attributes: attributeStr,
-    attributeId: 'attribute-size',
+  if (makairaProduct) {
+    variants = Array.isArray(makairaProduct) ? makairaProduct : [makairaProduct]
+  }
+
+  const attributes = variants.map((variant) => {
+    const { attributeStr } = variant
+    return attributeStr
   })
 
-  const colorVariants = prepareVariants({
+  // Merge all attributeStr of variants
+  const attributeStr = attributes.reduce((array, attr) => {
+    return array.concat(attr)
+  }, [])
+
+  const attributeStrVariants = prepareVariants({
     attributes: attributeStr,
-    attributeId: 'attribute-color',
+    attributeId: '  (VarSelect)',
   })
+
+  const handleOnchange = (attribute) => {
+    const { value } = attribute
+    const variant = variants.find((variant) => {
+      const { attributeStr } = variant
+      return attributeStr.find((a) => a.value === value)
+    })
+
+    setProductInformation(variant)
+  }
 
   return (
     <div className="product-detail-information__buybox">
@@ -34,16 +58,8 @@ export default function Buybox(props) {
         <Dropdown
           id="sizeVariant"
           label="Size"
-          options={sizeVariants}
-          onChange={() => console.log('todo')}
-          className="product-detail-information__variant-select"
-        />
-
-        <Dropdown
-          id="colorVariant"
-          label="Color"
-          options={colorVariants}
-          onChange={() => console.log('todo')}
+          options={attributeStrVariants}
+          onChange={(attribute) => handleOnchange(attribute)}
           className="product-detail-information__variant-select"
         />
       </div>
@@ -52,7 +68,7 @@ export default function Buybox(props) {
         <figure className="product-detail-information__manufacturer"></figure>
 
         <div className="product-detail-information__buxbox-info">
-          <ProductPrices {...props} />
+          <ProductPrices {...productInformation} />
 
           <ProductAvailability {...props} />
         </div>
