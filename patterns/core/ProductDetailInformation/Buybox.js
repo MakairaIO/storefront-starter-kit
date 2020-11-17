@@ -39,7 +39,7 @@ export default function Buybox(props) {
 
   const attributeStrVariants = prepareVariants({
     attributes: attributeStr,
-    attributeId: '  (VarSelect)',
+    attributeId: '',
   })
 
   const handleOnchange = (attribute) => {
