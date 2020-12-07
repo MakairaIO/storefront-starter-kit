@@ -1,13 +1,24 @@
 import { default as NextLink } from 'next/link'
-import { getFullUrl } from '../../../utils'
+import allLanguages from '../../../config/allLanguages'
+import { getFullUrl, useTranslation } from '../../../utils'
+
+function stripQuery(str) {
+  return str.replace(/^\?/, '')
+}
+
+function stripSlashes(str) {
+  return str.replace(/\//g, '')
+}
 
 /**
- * We have 3 different use-cases for handling links:
+ * We have 4 different use-cases for handling links:
  * 1) A link to another internal route. These are mostly project-specific (like rendering the user's cart)
  * 2) Links to external pages
- * 3) The most common: Links to other pages that get served by the main catch-all route
+ * 3) Links to a search page
+ * 4) The most common: Links to other pages that get served by the main catch-all route
  */
 export default function Link(props) {
+  const { language } = useTranslation()
   const { href, children, isInternalRoute, ...rest } = props
 
   /**
@@ -38,15 +49,36 @@ export default function Link(props) {
   }
 
   /**
-   * Pages served by catch-all route
+   * Determine search vs. catch-all
    */
   const urlInstance = new URL(fullUrl)
   const pathname = urlInstance.pathname
-  const search = urlInstance.search.replace(/^\?/, '')
+  const search = stripQuery(urlInstance.search)
   const hash = urlInstance.hash
 
-  const internalHref = `/frontend/entry?seoUrl=${pathname}&${search}`
   const externalHref = pathname + (search !== '' ? `?${search}` : '') + hash
+
+  const languageConfig = allLanguages.find((lang) => lang.value === language)
+  const isSearchLink =
+    stripSlashes(pathname) == stripSlashes(languageConfig.searchRoute) // compare normalized values
+
+  /**
+   * Pages served by search route
+   */
+  if (isSearchLink) {
+    const internalHref = `/frontend/search?${search}`
+
+    return (
+      <NextLink href={internalHref} as={externalHref}>
+        <a {...rest}>{children}</a>
+      </NextLink>
+    )
+  }
+
+  /**
+   * Pages served by catch-all route
+   */
+  const internalHref = `/frontend/entry?seoUrl=${pathname}&${search}`
 
   return (
     <NextLink href={internalHref} as={externalHref}>
