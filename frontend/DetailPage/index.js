@@ -32,7 +32,10 @@ function DetailPage() {
 
   return (
     <main>
-      <ProductDetailInformation {...productDetailProps} />
+      <ProductDetailInformation
+        key={productDetailProps.id}
+        {...productDetailProps}
+      />
       <ProductPlacement {...productPlacementProps} />
     </main>
   )

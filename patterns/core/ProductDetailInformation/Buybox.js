@@ -6,6 +6,7 @@ import ProductActions from './ProductActions'
 // TODO: Remove hard-coded implementation
 export default function Buybox(props) {
   const { chooseVariant = () => {}, variantsAttributeStr = [] } = props
+
   return (
     <div className="product-detail-information__buybox">
       <div className="product-detail-information__variants">
