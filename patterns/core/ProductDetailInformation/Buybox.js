@@ -3,30 +3,9 @@ import ProductPrices from './ProductPrices'
 import ProductAvailability from './ProductAvailability'
 import ProductActions from './ProductActions'
 
-function prepareVariants({ attributes = [], attributeId = '' }) {
-  return attributes
-    .filter((a) => a.id == attributeId)
-    .map((a) => {
-      return {
-        label: a.value,
-        value: a.value,
-      }
-    })
-}
-
 // TODO: Remove hard-coded implementation
 export default function Buybox(props) {
-  const { attributeStr } = props
-
-  const sizeVariants = prepareVariants({
-    attributes: attributeStr,
-    attributeId: 'attribute-size',
-  })
-
-  const colorVariants = prepareVariants({
-    attributes: attributeStr,
-    attributeId: 'attribute-color',
-  })
+  const { chooseVariant = () => {}, variantsAttributeStr = [] } = props
 
   return (
     <div className="product-detail-information__buybox">
@@ -34,16 +13,8 @@ export default function Buybox(props) {
         <Dropdown
           id="sizeVariant"
           label="Size"
-          options={sizeVariants}
-          onChange={() => console.log('todo')}
-          className="product-detail-information__variant-select"
-        />
-
-        <Dropdown
-          id="colorVariant"
-          label="Color"
-          options={colorVariants}
-          onChange={() => console.log('todo')}
+          options={variantsAttributeStr}
+          onChange={(attribute) => chooseVariant(attribute)}
           className="product-detail-information__variant-select"
         />
       </div>
