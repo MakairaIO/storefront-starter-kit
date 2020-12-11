@@ -4,17 +4,18 @@ import Buybox from './Buybox'
 import Description from './Description'
 import { useState } from 'react'
 
-function prepareVariants({ attributes = [], attributeId = '' }) {
-  const attributeArray = attributeId
-    ? attributes.filter((a) => a.title == attributeId)
-    : attributes
+// TODO: Adjust the attribute title as needed on a per-project basis
+const VARIANT_ATTRIBUTE_TITLE = '(VarSelect)'
 
-  return attributeArray.map((a) => {
-    return {
-      label: a.value,
-      value: a.value,
-    }
-  })
+function prepareVariants({ attributes = [] }) {
+  return attributes
+    .filter((attr) => attr.title.trim() == VARIANT_ATTRIBUTE_TITLE)
+    .map((attr) => {
+      return {
+        label: attr.value,
+        value: attr.value,
+      }
+    })
 }
 
 function ProductDetailInformation(props) {
@@ -35,10 +36,7 @@ function ProductDetailInformation(props) {
     return array.concat(attr)
   }, [])
 
-  const variantsAttributeStr = prepareVariants({
-    attributes: attributeStr,
-    attributeId: '',
-  })
+  const variantsAttributeStr = prepareVariants({ attributes: attributeStr })
 
   const chooseVariant = (attribute) => {
     const { value } = attribute
