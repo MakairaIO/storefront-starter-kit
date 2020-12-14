@@ -10,14 +10,10 @@ const REQUEST = {
     'x-forwarded-for': IP_ADDRESS,
   },
 }
-const RESPONSE = { cookie: jest.fn() }
+const RESPONSE = {}
 const QUERY = { language: LANGUAGE }
 
 describe('RequestBuilder', () => {
-  afterEach(() => {
-    RESPONSE.cookie.mockClear()
-  })
-
   describe('getConstraints()', () => {
     const ctx = { req: REQUEST, res: RESPONSE }
     const builder = new RequestBuilder(ctx)
@@ -26,6 +22,29 @@ describe('RequestBuilder', () => {
 
     it('should return use_stock of true', () => {
       expect(constraints['query.use_stock']).toBe(true)
+    })
+  })
+
+  describe('getUserAgent()', () => {
+    it('should return the user-agent', () => {
+      const ctx = { req: REQUEST, res: RESPONSE }
+      const builder = new RequestBuilder(ctx)
+
+      const userAgent = builder.getUserAgent()
+
+      expect(userAgent).toEqual(USER_AGENT)
+    })
+  })
+
+  describe('getIpAddress()', () => {
+    it('should return the anonymized ip-address', () => {
+      const ctx = { req: REQUEST, res: RESPONSE }
+      const builder = new RequestBuilder(ctx)
+
+      const ip = builder.getIpAddress()
+      const anonymized = builder.anonymize(IP_ADDRESS.split(',')[0])
+
+      expect(ip).toEqual(anonymized)
     })
   })
 

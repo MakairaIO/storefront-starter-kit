@@ -33,6 +33,7 @@
     "iframe-resizer": "^4.2.11",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^9.5.3",
+    "nookies": "^2.5.0",
     "qs": "^6.9.4",
     "rc-slider": "^9.3.1",
     "react": "^16.13.1",
