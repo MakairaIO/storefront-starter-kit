@@ -20,6 +20,7 @@ class RequestBuilder {
       'oi.user.agent': this.getUserAgent(),
       'oi.user.ip': this.getIpAddress(),
       'oi.user.timezone': this.getTimeZone(),
+      'ab.experiments': this.getExperiments(),
     }
 
     const { language } = additionalConstraints
@@ -86,6 +87,18 @@ class RequestBuilder {
     setCookie(this.ctx, 'timezone', tz)
 
     return tz
+  }
+
+  getExperiments() {
+    // We need to send null if no experiments are available in the cookie or
+    // we do not get back new experiments in the API response.
+    let experiments = null
+
+    const { mak_experiments = '' } = parseCookies(this.ctx)
+
+    if (!mak_experiments) return experiments
+
+    return JSON.parse(mak_experiments)
   }
 
   anonymize(ip) {
