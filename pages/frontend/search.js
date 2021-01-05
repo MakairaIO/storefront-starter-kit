@@ -30,6 +30,15 @@ export default class Index extends Component {
         fetchMenuData(),
       ])
 
+      const { product = {} } = searchResult
+
+      if (product.count == 1) {
+        const item = product.items[0]
+        const { url } = item.fields
+
+        redirect({ ctx, target: url, code: 302 })
+      }
+
       return { menuData, searchResult, params }
     } catch (error) {
       if (res) {
