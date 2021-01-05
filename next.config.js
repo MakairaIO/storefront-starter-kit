@@ -10,6 +10,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 module.exports = withBundleAnalyzer(
   withCss({
+    trailingSlash: true,
+
     webpack: (config) => {
       config.plugins = config.plugins || []
 
