@@ -35,7 +35,11 @@ async function fetchMenuFromApi() {
     error.cause = errorBody.message
     error.stack = 'fetchMenuData()'
 
-    throw error
+    console.error(error)
+
+    return {
+      menu: [],
+    }
   }
 
   return response.json()
