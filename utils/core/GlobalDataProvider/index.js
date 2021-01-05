@@ -1,4 +1,4 @@
-import { Component, useContext } from 'react'
+import React, { Component, useContext } from 'react'
 import isEqual from 'lodash/isEqual'
 
 /* First we will make a new context */

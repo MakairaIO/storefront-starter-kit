@@ -1,4 +1,4 @@
-import { Component, useContext } from 'react'
+import React, { Component, useContext } from 'react'
 
 const ConfigurationContext = React.createContext()
 
