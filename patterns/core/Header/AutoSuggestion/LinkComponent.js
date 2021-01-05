@@ -10,7 +10,7 @@ function LinkComponent(props) {
   }
 
   const translationKey = 'FILTER_LABEL_' + type.toUpperCase()
-  const heading = t(translationKey)
+  const heading = t(translationKey, type.toUpperCase())
 
   return (
     <section className="autosuggest-box__link-box">
