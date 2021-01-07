@@ -7,7 +7,11 @@ import { Heading, Button } from '../../..'
 const filterComponents = {
   list_multiselect: MultiSelectFilter,
   list_multiselect_custom_1: MultiSelectFilter,
+  list_multiselect_custom_2: MultiSelectFilter,
   range_slider: RangeFilter,
+  range_slider_custom_1: RangeFilter,
+  range_slider_custom_2: RangeFilter,
+  range_slider_price: RangeFilter,
 }
 
 export default function MobileFilterList(props) {
