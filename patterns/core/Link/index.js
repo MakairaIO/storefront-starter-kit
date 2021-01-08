@@ -1,14 +1,11 @@
 import { default as NextLink } from 'next/link'
 import allLanguages from '../../../config/allLanguages'
-import { getFullUrl, useTranslation } from '../../../utils'
-
-function stripQuery(str) {
-  return str.replace(/^\?/, '')
-}
-
-function stripSlashes(str) {
-  return str.replace(/\//g, '')
-}
+import {
+  getFullUrl,
+  stripQuery,
+  stripSlashes,
+  useTranslation,
+} from '../../../utils'
 
 /**
  * We have 4 different use-cases for handling links:
