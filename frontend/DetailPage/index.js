@@ -4,7 +4,11 @@ import {
   fetchRecommendationData,
   useTranslation,
 } from '../../utils'
-import { ProductDetailInformation, ProductPlacement } from '../../patterns'
+import {
+  ContentElements,
+  ProductDetailInformation,
+  ProductPlacement,
+} from '../../patterns'
 
 function DetailPage() {
   const { t } = useTranslation()
@@ -32,11 +36,17 @@ function DetailPage() {
 
   return (
     <main>
+      <ContentElements
+        elements={pageData.data.self.promotions?.top?.elements}
+      />
       <ProductDetailInformation
         key={productDetailProps.id}
         {...productDetailProps}
       />
       <ProductPlacement {...productPlacementProps} />
+      <ContentElements
+        elements={pageData.data.self.promotions?.bottom?.elements}
+      />
     </main>
   )
 }
