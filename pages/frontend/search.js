@@ -14,6 +14,7 @@ import {
   fetchSearchResult,
   fetchMenuData,
   redirect,
+  getNumberOfActiveFilters,
 } from '../../utils'
 import ErrorPage from '../_error'
 
@@ -31,8 +32,12 @@ export default class Index extends Component {
       ])
 
       const { product = {} } = searchResult
+      const { aggregations = {} } = product
 
-      if (product.count == 1) {
+      const hasActiveAggregations =
+        getNumberOfActiveFilters({ aggregations }) > 0
+
+      if (product.count == 1 && !hasActiveAggregations) {
         const item = product.items[0]
         const { url } = item.fields
 
