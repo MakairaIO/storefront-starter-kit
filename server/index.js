@@ -50,7 +50,7 @@ app
     })
 
     /**
-     * Generate search routes for each languages
+     * Generate search routes for each language
      */
     allLanguages.forEach((lang) => {
       server.get(lang.searchRoute, (req, res) => {
