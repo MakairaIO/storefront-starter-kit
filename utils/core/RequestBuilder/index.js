@@ -35,11 +35,11 @@ class RequestBuilder {
     if (process.browser) {
       const { userAgent = '' } = parseCookies()
 
-      return decodeURIComponent(userAgent)
+      return userAgent
     } else {
       const userAgent = this.req.headers['user-agent']
 
-      setCookie(this.ctx, 'userAgent', encodeURIComponent(userAgent), {})
+      setCookie(this.ctx, 'userAgent', userAgent, {})
 
       return userAgent
     }
