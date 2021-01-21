@@ -39,7 +39,7 @@ class RequestBuilder {
     } else {
       const userAgent = this.req.headers['user-agent']
 
-      setCookie(this.ctx, 'userAgent', userAgent, {})
+      setCookie(this.ctx, 'userAgent', userAgent)
 
       return userAgent
     }
@@ -60,7 +60,7 @@ class RequestBuilder {
       ip = ip.split(',')[0]
       ip = this.anonymize(ip)
 
-      setCookie(this.ctx, 'ip', ip, {})
+      setCookie(this.ctx, 'ip', ip)
 
       return ip
     }
@@ -83,7 +83,7 @@ class RequestBuilder {
       ('00' + hours).slice(-2) +
       ('00' + minutes).slice(-2)
 
-    setCookie(this.ctx, 'timezone', tz, {})
+    setCookie(this.ctx, 'timezone', tz)
 
     return tz
   }
