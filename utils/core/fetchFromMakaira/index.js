@@ -37,6 +37,7 @@ export default async function fetchFromMakaira({
     error.code = status
     error.message = statusText
     error.cause = errorBody.message
+    error.id = errorBody.errorId
     error.stack = 'fetchFromMakaira()'
 
     throw error

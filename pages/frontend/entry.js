@@ -47,6 +47,8 @@ export default class Index extends Component {
 
       return { menuData, pageData, params }
     } catch (error) {
+      console.error(error)
+
       /**
        * Catching an error inside getInitialProps means that - in most cases - the
        * current URL was not found in any ElasticSearch document.
