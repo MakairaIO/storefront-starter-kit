@@ -33,8 +33,11 @@ class GlobalDataProvider extends Component {
   }
 
   componentDidMount() {
+    this.initAbTesting()
     this.updateLocalStorage()
+  }
 
+  initAbTesting = () => {
     const experiments =
       this.state.pageData?.experiments ?? this.state.searchResult?.experiments
 
