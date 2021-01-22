@@ -25,6 +25,9 @@ export default {
   enterAbTest({ experiments = [] }) {
     if (experiments.length == 0) return
 
+    // Matomo has not been initialized
+    if (!window._paq) return
+
     experiments.forEach((entry) => {
       const { experiment, variation } = entry
 
