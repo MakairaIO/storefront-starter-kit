@@ -2,7 +2,7 @@
  * Here you should implement your custom functionality
  * for monitoring and reporting errors.
  */
-const LOGGING_ENDPOINT = 'https://graylog3api.makaira.io/gelf'
+const LOGGING_ENDPOINT = 'https://graylog-api.makaira.io/gelf'
 const TARGET_STREAM = 'storefront errors'
 
 export default async function logError(data) {
