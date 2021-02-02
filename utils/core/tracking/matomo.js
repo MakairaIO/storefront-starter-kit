@@ -30,8 +30,8 @@ export default {
 
     experiments.forEach((entry) => {
       const { experiment, variation } = entry
-
-      window._paq.push(['AbTesting::enter', { experiment, variation }])
+      var _paq = (window._paq = window._paq || [])
+      _paq.push(['trackEvent', 'abtesting', experiment, variation])
     })
   },
 }
