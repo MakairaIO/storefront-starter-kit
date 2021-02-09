@@ -49,5 +49,6 @@ export { default as prepareFilterForQueryString } from './core/prepareFilterForQ
 export { default as prepareSortingForQueryString } from './core/prepareSortingForQueryString'
 export { default as preparePaginationForQueryString } from './core/preparePaginationForQueryString'
 export { default as mergeProductsAndBanners } from './core/mergeProductsAndBanners'
+export { default as translations } from './core/translations'
 
 /* Add project specific utils here */

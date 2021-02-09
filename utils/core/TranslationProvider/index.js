@@ -1,15 +1,5 @@
 import React, { Component, useContext } from 'react'
-import german from './locales/de'
-import english from './locales/en'
-
-const translations = {
-  de: {
-    ...german,
-  },
-  en: {
-    ...english,
-  },
-}
+import { translations } from '../../index'
 
 const TranslationContext = React.createContext()
 
