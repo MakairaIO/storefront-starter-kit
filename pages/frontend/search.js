@@ -32,6 +32,7 @@ export default class Index extends Component {
       ])
 
       const { product = {} } = searchResult
+      const searchRedirect = searchResult.redirect
       const { aggregations = {} } = product
 
       const hasActiveAggregations =
@@ -42,6 +43,12 @@ export default class Index extends Component {
         const { url } = item.fields
 
         redirect({ ctx, target: url, code: 302 })
+      }
+
+      if (searchRedirect.count > 0) {
+        const item = searchRedirect.items[0]
+        const targetUrl = item.fields.targeturl
+        redirect({ ctx, target: targetUrl, code: 302 })
       }
 
       return { menuData, searchResult, params }
