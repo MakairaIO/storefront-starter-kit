@@ -121,7 +121,7 @@ class Header extends Component {
     delete result.suggestion // we don't want to display suggestions
     delete result.banners // we don't want to display banners
     delete result.snippets // we don't want to display snippets
-    delete result.redirect // we don't want to display the redirects in the Auto suggestion box
+    delete result.searchredirect // we don't want to display the redirects in the Auto suggestion box
 
     this.setState({ autosuggestResult: result }, this.handleSearchResult)
   }

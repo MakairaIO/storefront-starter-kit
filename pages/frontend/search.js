@@ -32,7 +32,7 @@ export default class Index extends Component {
       ])
 
       const { product = {} } = searchResult
-      const searchRedirect = searchResult.redirect
+      const searchRedirect = searchResult.searchredirect
       const { aggregations = {} } = product
 
       const hasActiveAggregations =
