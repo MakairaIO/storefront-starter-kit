@@ -3,8 +3,8 @@ import { RequestBuilder, fetchFromMakaira } from '../..'
 export default async function fetchRecommendationData({
   productId = '',
   recommendationId = '',
+  language = '',
 }) {
-  const language = 'de'
   const builder = new RequestBuilder()
   const constraints = builder.getConstraints({ language })
 

@@ -11,7 +11,7 @@ import {
 } from '../../patterns'
 
 function DetailPage() {
-  const { t } = useTranslation()
+  const { t, language } = useTranslation()
   const { pageData } = useGlobalData()
   const productDetailProps = { ...pageData.data.self }
   const [products, setProducts] = useState([])
@@ -22,7 +22,9 @@ function DetailPage() {
       const response = await fetchRecommendationData({
         productId,
         recommendationId: 'similar-products',
+        language,
       })
+
       const recommendationProducts = response.items
       const formattedProduct = recommendationProducts.map(
         (product) => product.fields
@@ -30,7 +32,7 @@ function DetailPage() {
       setProducts(formattedProduct)
     }
     getProducts()
-  }, [productId])
+  }, [productId, language])
 
   const productPlacementProps = {
     heading: t('RECOMMENDATION_HEADING'),
