@@ -9,6 +9,7 @@ import {
   debounce,
   dispatchShowOverlayEvent,
   dispatchOverlayClickedEvent,
+  filterInternalMakairaFields,
 } from '../../../utils'
 import AutosuggestBox from './AutoSuggestion/AutosuggestBox'
 
@@ -116,14 +117,13 @@ class Header extends Component {
   fetchAutosuggestResult = async () => {
     const { searchPhrase } = this.state
 
-    let result = await this.props.fetchAutosuggestResult(searchPhrase)
+    const result = await this.props.fetchAutosuggestResult(searchPhrase)
+    const filteredResult = filterInternalMakairaFields(result)
 
-    delete result.suggestion // we don't want to display suggestions
-    delete result.banners // we don't want to display banners
-    delete result.snippets // we don't want to display snippets
-    delete result.searchredirect // we don't want to display the redirects in the Auto suggestion box
-
-    this.setState({ autosuggestResult: result }, this.handleSearchResult)
+    this.setState(
+      { autosuggestResult: filteredResult },
+      this.handleSearchResult
+    )
   }
 
   handleSearchFormSubmit = (event) => {
