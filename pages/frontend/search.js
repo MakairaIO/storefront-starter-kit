@@ -14,7 +14,8 @@ import {
   fetchSearchResult,
   fetchMenuData,
   redirect,
-  getNumberOfActiveFilters,
+  redirectToDetailPageOnSingleHit,
+  redirectOnSearchRedirectHit,
 } from '../../utils'
 import ErrorPage from '../_error'
 
@@ -31,25 +32,8 @@ export default class Index extends Component {
         fetchMenuData(),
       ])
 
-      const { product = {} } = searchResult
-      const searchRedirect = searchResult.searchredirect
-      const { aggregations = {} } = product
-
-      const hasActiveAggregations =
-        getNumberOfActiveFilters({ aggregations }) > 0
-
-      if (product.count == 1 && !hasActiveAggregations) {
-        const item = product.items[0]
-        const { url } = item.fields
-
-        redirect({ ctx, target: url, code: 302 })
-      }
-
-      if (searchRedirect.count > 0) {
-        const item = searchRedirect.items[0]
-        const targetUrl = item.fields.targeturl
-        redirect({ ctx, target: targetUrl, code: 302 })
-      }
+      redirectToDetailPageOnSingleHit({ ctx, searchResult })
+      redirectOnSearchRedirectHit({ ctx, searchResult })
 
       return { menuData, searchResult, params }
     } catch (error) {
