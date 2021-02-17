@@ -17,6 +17,6 @@ export default async function resetAllProductListFilters({ isSearch = false }) {
 
   await Router.push(
     `${internalRoute}?seoUrl=${seoUrl}&${queryString}`,
-    `${seoUrl}?${queryString}`
+    `${seoUrl}${queryString ? '?' + queryString : ''}`
   )
 }

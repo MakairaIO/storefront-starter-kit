@@ -20,6 +20,7 @@ export default function redirect({ ctx = {}, target = '/', code = 301 }) {
       const urlInstance = new URL(fullUrl)
       const pathname = urlInstance.pathname
       const search = stripQuery(urlInstance.search)
+      const hash = urlInstance.hash
 
       /**
        * Since we do not necessarily know what language we are in, we have to
@@ -35,7 +36,10 @@ export default function redirect({ ctx = {}, target = '/', code = 301 }) {
         internalRoute = '/frontend/search'
       }
 
-      Router.push(`${internalRoute}?seoUrl=${pathname}&${search}`, target)
+      Router.push(
+        `${internalRoute}?seoUrl=${pathname}&${search}`,
+        `${pathname}${search ? '?' + search : ''}${hash}`
+      )
     }
   }
 }

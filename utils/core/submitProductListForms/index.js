@@ -30,7 +30,10 @@ export default async function submitProductListForms({
     resetPagination
   )
 
-  const seoUrl = Router.asPath.replace(/\?.*$/, '') // remove queryString
+  const seoUrl = Router.asPath
+    .replace(/#.*$/, '') // remove hash/anchor
+    .replace(/\?.*$/, '') // remove queryString
+
   let parameters = {
     filter,
     sortBy,
