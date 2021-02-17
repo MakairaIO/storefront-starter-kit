@@ -7,13 +7,12 @@ import { getFullUrl, stripQuery, stripSlashes } from '../..'
  */
 export default function redirect({ ctx = {}, target = '/', code = 301 }) {
   const { res } = ctx
+  const { fullUrl, isExternalLink } = getFullUrl(target)
 
   if (res) {
-    res.writeHead(code, { Location: target })
+    res.writeHead(code, { Location: fullUrl })
     res.end()
   } else {
-    const { fullUrl, isExternalLink } = getFullUrl(target)
-
     if (isExternalLink) {
       window.location.href = fullUrl
     } else {
