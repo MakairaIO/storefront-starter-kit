@@ -9,12 +9,13 @@ export default {
 
     setCookie({}, 'mak_experiments', JSON.stringify(experiments), {
       expires: in180days,
+      path: '/',
     })
   },
 
   // Utility for frontend experiments
   isInExperiment({ id, variation }) {
-    const { mak_experiments = '' } = parseCookies(this.ctx)
+    const { mak_experiments = '' } = parseCookies()
 
     if (!mak_experiments) return false
 
