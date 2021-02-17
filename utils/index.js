@@ -32,6 +32,8 @@ export { default as getFullUrl } from './core/getFullUrl'
 export { default as stripQuery } from './core/stripQuery'
 export { default as stripSlashes } from './core/stripSlashes'
 export { default as redirect } from './core/redirect'
+export { default as redirectToDetailPageOnSingleHit } from './core/redirectToDetailPageOnSingleHit'
+export { default as redirectOnSearchRedirectHit } from './core/redirectOnSearchRedirectHit'
 export { default as flattenSnippetData } from './core/flattenSnippetData'
 export { default as dispatchShowOverlayEvent } from './core/dispatchShowOverlayEvent'
 export { default as dispatchHideOverlayEvent } from './core/dispatchHideOverlayEvent'
@@ -48,6 +50,7 @@ export { default as collectPaginationFormData } from './core/collectPaginationFo
 export { default as prepareFilterForQueryString } from './core/prepareFilterForQueryString'
 export { default as prepareSortingForQueryString } from './core/prepareSortingForQueryString'
 export { default as preparePaginationForQueryString } from './core/preparePaginationForQueryString'
+export { default as filterInternalMakairaFields } from './core/filterInternalMakairaFields'
 export { default as mergeProductsAndBanners } from './core/mergeProductsAndBanners'
 
 /* Add project specific utils here */
