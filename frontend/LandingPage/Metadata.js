@@ -3,7 +3,12 @@ import { useGlobalData } from '../../utils'
 
 export default function Metadata() {
   const { pageData } = useGlobalData()
-  const { title, ...rest } = pageData.data.metadata
+  const {
+    title,
+    robotIndex = 'index',
+    robotFollow = 'follow',
+    ...rest
+  } = pageData.data.metadata
 
   return (
     <Head>
@@ -12,6 +17,8 @@ export default function Metadata() {
       {Object.entries(rest).map(([key, value]) => (
         <meta key={key} name={key} content={value} />
       ))}
+
+      <meta name="robots" content={`${robotIndex}, ${robotFollow}`} />
     </Head>
   )
 }
