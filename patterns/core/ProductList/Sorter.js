@@ -14,9 +14,14 @@ export default function Sorter(props) {
     }
   })
 
-  const currentSorting = dropdownOptions.find(
+  let currentSorting = dropdownOptions.find(
     (option) => option.sortBy === sortBy && option.order === order
   )
+
+  // Fallback for invalid URLs (legacy bot URLs etc.)
+  if (!currentSorting) {
+    currentSorting = dropdownOptions[0]
+  }
 
   return (
     <form className="product-list__sorter">
