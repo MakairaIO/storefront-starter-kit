@@ -1,10 +1,10 @@
 import { redirect } from '../..'
 
 export default function redirectOnSearchRedirectHit({ ctx, searchResult }) {
-  const searchRedirect = searchResult.searchredirect
+  const { searchredirect = {} } = searchResult
 
-  if (searchRedirect.count > 0) {
-    const item = searchRedirect.items[0]
+  if (searchredirect.count > 0) {
+    const item = searchredirect.items[0]
     const targetUrl = item.fields.targeturl
 
     redirect({ ctx, target: targetUrl, code: 302 })

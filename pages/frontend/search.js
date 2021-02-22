@@ -37,6 +37,8 @@ export default class Index extends Component {
 
       return { menuData, searchResult, params }
     } catch (error) {
+      console.error(error)
+
       if (res) {
         res.statusCode = 500
       }
