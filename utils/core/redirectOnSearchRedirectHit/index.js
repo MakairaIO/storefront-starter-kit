@@ -4,9 +4,10 @@ export default function redirectOnSearchRedirectHit({ ctx, searchResult }) {
   const { searchredirect = {} } = searchResult
 
   if (searchredirect.count > 0) {
-    const item = searchredirect.items[0]
-    const targetUrl = item.fields.targeturl
+    const { targetUrl = '' } = searchredirect.items[0]
 
-    redirect({ ctx, target: targetUrl, code: 302 })
+    if (targetUrl) {
+      redirect({ ctx, target: targetUrl, code: 302 })
+    }
   }
 }
