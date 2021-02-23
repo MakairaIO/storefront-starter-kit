@@ -1,6 +1,5 @@
 import React, { Component, useContext } from 'react'
 import isEqual from 'lodash/isEqual'
-import { Matomo, Makaira } from '../..'
 
 /* First we will make a new context */
 const GlobalDataContext = React.createContext()
@@ -33,17 +32,7 @@ class GlobalDataProvider extends Component {
   }
 
   componentDidMount() {
-    this.initAbTesting()
     this.updateLocalStorage()
-  }
-
-  initAbTesting = () => {
-    const experiments =
-      this.state.pageData?.experiments ?? this.state.searchResult?.experiments
-
-    Matomo.init()
-    Matomo.enterAbTest({ experiments })
-    Makaira.setAbTestCookie({ experiments })
   }
 
   updateLocalStorage = () => {
