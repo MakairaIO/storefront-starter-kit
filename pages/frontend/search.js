@@ -11,6 +11,7 @@ import {
   GlobalDataProvider,
   ConfigurationProvider,
   TranslationProvider,
+  AbTestingProvider,
   fetchSearchResult,
   fetchMenuData,
   redirect,
@@ -63,13 +64,15 @@ export default class Index extends Component {
       <GlobalDataProvider {...this.props}>
         <ConfigurationProvider assetUrl={process.env.MAKAIRA_ASSET_URL}>
           <TranslationProvider language={language}>
-            <BaseLayout>
-              <HeaderWithProps />
+            <AbTestingProvider>
+              <BaseLayout>
+                <HeaderWithProps />
 
-              <SearchResultPage />
+                <SearchResultPage />
 
-              <FooterWithProps />
-            </BaseLayout>
+                <FooterWithProps />
+              </BaseLayout>
+            </AbTestingProvider>
           </TranslationProvider>
         </ConfigurationProvider>
       </GlobalDataProvider>

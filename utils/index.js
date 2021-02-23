@@ -13,6 +13,11 @@ export {
   TranslationProvider,
   useTranslation,
 } from './core/TranslationProvider'
+export {
+  default as AbTestingContext,
+  AbTestingProvider,
+  useAbTesting,
+} from './core/AbTestingProvider'
 export { default as useLazyLoading } from './core/useLazyLoading'
 export { default as logError } from './core/logError'
 export { default as throttle } from './core/throttle'
@@ -20,7 +25,6 @@ export { default as debounce } from './core/debounce'
 export { default as wait } from './core/wait'
 export { default as scrollTo } from './core/scrollTo'
 export { default as Matomo } from './core/tracking/matomo'
-export { default as Makaira } from './core/tracking/makaira'
 export { default as RequestBuilder } from './core/RequestBuilder'
 export { default as fetchMenuData } from './core/fetchMenuData'
 export { default as fetchPageData } from './core/fetchPageData'
