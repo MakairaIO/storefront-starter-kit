@@ -1,6 +1,7 @@
 import { default as NextLink } from 'next/link'
 import allLanguages from '../../../config/allLanguages'
 import {
+  isMailToLink,
   getFullUrl,
   stripQuery,
   stripSlashes,
@@ -28,6 +29,14 @@ export default function Link(props) {
       <NextLink href={href} as={as}>
         <a {...htmlAttributes}>{children}</a>
       </NextLink>
+    )
+  }
+
+  if (isMailToLink(href)) {
+    return (
+      <a href={href} {...rest}>
+        {children}
+      </a>
     )
   }
 
