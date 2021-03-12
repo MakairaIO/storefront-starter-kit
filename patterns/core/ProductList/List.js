@@ -25,7 +25,7 @@ export default function List(props) {
     <div ref={listRef} className={classes}>
       {products.map((entry) => {
         if (entry.isBanner) {
-          return <Banner key={entry.title} {...entry} />
+          return <Banner key={`banner.${entry.id}`} {...entry} />
         } else {
           return <ProductTile key={entry.id} {...entry.fields} />
         }
