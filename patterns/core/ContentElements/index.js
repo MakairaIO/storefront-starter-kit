@@ -1,4 +1,5 @@
 import {
+  ErrorBoundary,
   ProductPlacement,
   Promotion,
   TeaserHero,
@@ -37,7 +38,11 @@ export default function ContentElements(props) {
 
         if (!Component) return null
 
-        return <Component key={index} {...entry.properties.content} />
+        return (
+          <ErrorBoundary key={index}>
+            <Component {...entry.properties.content} />
+          </ErrorBoundary>
+        )
       })}
     </>
   )

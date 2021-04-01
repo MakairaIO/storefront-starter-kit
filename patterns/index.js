@@ -1,5 +1,6 @@
 /* Core imports */
 export { default as SVGSprite } from './core/SVGSprite'
+export { default as ErrorBoundary } from './core/ErrorBoundary'
 export { default as ContentElements } from './core/ContentElements'
 export { default as Link } from './core/Link'
 export { default as ConditionalLink } from './core/ConditionalLink'
