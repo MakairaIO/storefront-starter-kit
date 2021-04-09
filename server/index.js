@@ -1,3 +1,4 @@
+const fs = require('fs')
 const express = require('express')
 const next = require('next')
 const cors = require('cors')
@@ -71,6 +72,19 @@ app
     server.get('*', (req, res) => {
       return handle(req, res)
     })
+
+    // DO NOT MODIFY THIS PART!
+    if (process.env.RUNS_ON_HEROKU === 'true') {
+      server.listen('/tmp/nginx.socket', (err) => {
+        if (err) throw err
+
+        console.log('> Ready on /tmp/nginx.socket')
+        // Tell heroku, that the application is ready
+        fs.openSync('/tmp/app-initialized', 'w')
+      })
+      return
+    }
+    // END
 
     server.listen(port, (err) => {
       if (err) throw err

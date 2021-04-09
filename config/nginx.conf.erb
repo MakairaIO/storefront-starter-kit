@@ -1,0 +1,90 @@
+daemon off;
+# Heroku dynos have at least 4 cores.
+worker_processes <%= ENV['NGINX_WORKERS'] || 4 %>;
+
+events {
+	use epoll;
+	accept_mutex on;
+	worker_connections <%= ENV['NGINX_WORKER_CONNECTIONS'] || 1024 %>;
+}
+
+http {
+	gzip on;
+	gzip_comp_level 2;
+	gzip_min_length 512;
+
+	server_tokens off;
+
+	log_format l2met 'measure#nginx.service=$request_time request_id=$http_x_request_id';
+	access_log <%= ENV['NGINX_ACCESS_LOG_PATH'] || 'logs/nginx/access.log' %> l2met;
+	error_log <%= ENV['NGINX_ERROR_LOG_PATH'] || 'logs/nginx/error.log' %>;
+
+	include mime.types;
+	default_type application/octet-stream;
+	sendfile on;
+
+	# Must read the body in 5 seconds.
+	client_body_timeout 5;
+
+	upstream app_server {
+		server unix:/tmp/nginx.socket fail_timeout=0;
+	}
+
+	server {
+		listen <%= ENV["PORT"] %>;
+		server_name _;
+		keepalive_timeout 5;
+
+		# # Enable this part if you want to use error page failover
+		# proxy_busy_buffers_size   512k;
+		# proxy_buffers   					4 512k;
+		# proxy_buffer_size   			256k;
+		# proxy_intercept_errors 		on;
+		# recursive_error_pages 		on;
+
+		location / {
+			# Redirect all traffic to HTTPS
+			if ($http_x_forwarded_proto != "https") {
+			  return 301 https://$host$request_uri;
+			}
+
+			# Enable password protection
+			auth_basic           "Access Restricted";
+			auth_basic_user_file /app/config/.htpasswd;
+
+			# # Enable error_page if you want to use error page failover
+			# error_page 404 500 501 502 503 504 505 506 507 508 510 511 = @failover_target;
+
+			proxy_set_header      Host $http_host;
+			proxy_set_header      X-Real-IP $http_x_real_ip;
+			proxy_set_header      X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header      X-Forwarded-Proto $http_x_forwarded_proto;
+			proxy_set_header      HTTPS $http_https;
+			proxy_set_header      Accept-Encoding "gzip,deflate";
+			proxy_set_header      Connection "";
+			proxy_set_header      Proxy "";
+			proxy_set_header      X-Country-Code $http_x_country_code;
+
+			proxy_redirect 				off;
+			proxy_pass 						http://app_server;
+		}
+
+		# # Failover target
+		# location @failover_target {
+		# 	proxy_pass            http://example.com; # Please put the url of your shop system here
+		# 	proxy_read_timeout    120s;
+		# 	proxy_connect_timeout 15s;
+		# 	proxy_send_timeout    90s;
+		# 	proxy_set_header      Host "SHOP.makria.io"; # Please put the address of this storefront here
+		# 	proxy_set_header      X-Real-IP $http_x_real_ip;
+		# 	proxy_set_header      X-Forwarded-For $proxy_add_x_forwarded_for;
+		# 	proxy_set_header      X-Forwarded-Proto $http_x_forwarded_proto;
+		# 	proxy_set_header      HTTPS $http_https;
+		# }
+
+		# # Custom location with direct failover
+		# location ~* ^(/api/) {
+		# 	try_files /dev/null @failover_target;
+		# }
+	}
+}
