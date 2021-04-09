@@ -44,48 +44,8 @@ You can also create multiple patterns at once, e.g.:
 
 ### Building
 
+Just push to the GitHub Repository in the master branch - we will cover everthing else.
 
-### Initial Deployment
-
-#### With Dokku
-
-For all steps, replace `<SERVER>`,`<APP_NAME>` and other placeholders (`< ... > `) with your credentials.
-
-1. Create a new app:
-
-`ssh dokku@<SERVER>.makaira.cloud apps:create <APP_NAME> && git push dokku@<SERVER>.makaira.cloud:<APP_NAME> <LOCAL_BRANCH>:master && ssh dokku@<SERVER>.makaira.cloud proxy:ports-clear <APP_NAME> && ssh dokku@<SERVER>.makaira.cloud proxy:ports-add <APP_NAME> http:80:5000 && ssh dokku@<SERVER>.makaira.cloud letsencrypt <APP_NAME> && ssh dokku@<SERVER>.makaira.cloud secure:set <APP_NAME> makaira <APP_NAME> && ssh dokku@<SERVER>.makaira.cloud secure:enable <APP_NAME>`
-
-2. Set your environment configuration:
-
-`ssh dokku@<SERVER>.makaira.cloud config:set <APP_NAME> MAKAIRA_API_URL=https://<APP_NAME>.makaira.io MAKAIRA_API_INSTANCE=<INSTANCE> MAKAIRA_ASSET_URL=https://<APP_NAME>.s3.eu-central-1.amazonaws.com SHOP_ID=1 PRODUCTS_PER_PAGE=50 SHOP_DOMAIN=https://<APP_NAME>.<SERVER>.makaira.cloud`
-
-3. Generate a new build:
-
-`ssh dokku@<SERVER>.makaira.cloud ps:rebuild <APP_NAME>`
-
-4. Create GitLab CI process
-
-- Create the variable `SSH_PRIVATE_KEY` with the same value as the other storefron projects.
-You can do this in Settings -> CI / CD Variables
-
-- Enable shared runners in the section above
-
-- Your `.gitlab-ci.yml` should look like this:
-``` yaml
-stages:
-  - deploy
-
-deploy-<APP_NAME>:
-  image: makaira/gitlab-ci-git-push
-  stage: deploy
-  only:
-    - master
-  script:
-    - git-push ssh://dokku@<SERVER>.makaira.cloud:22/<APP_NAME>
-  tags:
-    - marmalade-docker
-```
-- you can push your changes afterwards and see if it works
 
 ## FAQ
 
