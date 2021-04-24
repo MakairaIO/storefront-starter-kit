@@ -19,6 +19,8 @@ class ConfigurationProvider extends Component {
   getImageLink = (options = {}) => {
     const { source } = options
 
+    if (!source) return null
+
     if (typeof source == 'string') {
       return this.getS3Link(options)
     } else {
