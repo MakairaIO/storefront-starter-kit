@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useTranslation, logError } from '../../../utils'
+import { useTranslation, getClientInformation, logError } from '../../../utils'
 import { Copytext, Link } from '../..'
 
 export default function ErrorPage(props) {
@@ -9,16 +9,11 @@ export default function ErrorPage(props) {
 
   useEffect(
     function collectDataAndLogError() {
-      const { origin, pathname, search } = window.location
-      const { platform, userAgent } = window.navigator
+      let data = getClientInformation()
 
-      let data = {
+      data = {
+        ...data,
         Status: statusCode,
-        Host: origin,
-        Path: pathname,
-        queryString: search,
-        Platform: platform,
-        'User-Agent': userAgent,
       }
 
       if (error != null) {
