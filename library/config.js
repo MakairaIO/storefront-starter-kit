@@ -13,6 +13,9 @@ import ProductPlacement, {
   productPlacementVariants,
 } from '../patterns/core/ProductPlacement'
 import Promotion, { promotionVariants } from '../patterns/core/Promotion'
+import StreamPlacement, {
+  streamPlacementVariants,
+} from '../patterns/core/StreamPlacement'
 import TeaserHero, { teaserHeroVariants } from '../patterns/core/TeaserHero'
 import TeaserVideo, { teaserVideoVariants } from '../patterns/core/TeaserVideo'
 import TeaserGrid, { teaserGridVariants } from '../patterns/core/TeaserGrid'
@@ -104,6 +107,12 @@ export default [
     name: 'Promotion',
     component: Promotion,
     variants: promotionVariants,
+  },
+  {
+    type: 'placeable',
+    name: 'Stream Placement',
+    component: StreamPlacement,
+    variants: streamPlacementVariants,
   },
   {
     type: 'placeable',
