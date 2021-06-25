@@ -1,6 +1,7 @@
 import {
   ErrorBoundary,
   ProductPlacement,
+  StreamPlacement,
   Promotion,
   TeaserHero,
   TeaserGrid,
@@ -20,6 +21,7 @@ export default function ContentElements(props) {
   // Declare your additional content patterns here
   const components = {
     'product-placement': ProductPlacement,
+    'steam-placement': StreamPlacement,
     promotion: Promotion,
     'teaser-hero': TeaserHero,
     'teaser-grid': TeaserGrid,
