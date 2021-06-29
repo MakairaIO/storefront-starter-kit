@@ -2,7 +2,7 @@ export default [
   {
     name: 'Default',
     props: {
-      recipient: 'dat.lieu@nfq.asia',
+      recipient: 'test@gmail.com',
     },
   },
   {
