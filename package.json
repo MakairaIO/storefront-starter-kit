@@ -4,7 +4,7 @@
   "description": "Makaira Storefront",
   "author": "René Mäkeler <rm@marmalade.group>",
   "scripts": {
-    "clean": "",
+    "clean": "rm -f public/assets/svgs/icons.svg && rm -f public/assets/styles/main.css",
     "predev": "npm run clean",
     "dev": "npm-run-all --parallel build:config build:svgs dev:*",
     "dev:server": "nodemon server/index.js",
