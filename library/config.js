@@ -29,6 +29,7 @@ import DiscoveryImage, {
 import MultiColumnText, {
   multiColumnTextVariants,
 } from '../patterns/core/MultiColumnText'
+import ContactForm, { contactFormVariants } from '../patterns/core/ContactForm'
 
 import Home from './examplePages/Home'
 import Listing from './examplePages/Listing'
@@ -146,6 +147,12 @@ export default [
     name: 'Text (mehrspaltig)',
     component: MultiColumnText,
     variants: multiColumnTextVariants,
+  },
+  {
+    type: 'placeable',
+    name: 'Contact Form',
+    component: ContactForm,
+    variants: contactFormVariants,
   },
   /* CLI MARKER - PATTERN CONFIG - DO NOT REMOVE */
   {

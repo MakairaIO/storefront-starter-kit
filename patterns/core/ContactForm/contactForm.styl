@@ -1,0 +1,70 @@
+.contact-form
+  display block
+  padding 2rem
+
+  .form-contact__status
+    font-weight var(--font-weight-light)
+    font-size 1.5rem
+    width 100%
+    margin-top 2rem
+    padding 1rem
+    white-space normal
+    min-height 4rem
+    border-radius 4px
+    display none
+
+    &.status--failure
+      display block
+      background-color var(--error)
+      border 1px solid var(--error)
+
+    &.status--success
+      display block
+      background-color var(--positive)
+      border 1px solid var(--positive)
+
+  .contact-form__form-field
+    display block
+    margin-top 1.5rem
+
+    &.required
+      .form-field__label
+        color var(--error)
+        font-weight var(--font-weight-normal)
+
+    .form-field__label
+      flex 0 0 100%
+      max-width 100%
+      display block
+      font-weight var(--font-weight-light)
+      font-size 1.5rem
+
+    .form-field__component
+      width 100%
+      font-size var(--font-size-base)
+      font-weight var(--font-weight-medium)
+      font-family var(--font-family-regular)
+      margin-top 0.5rem
+      padding 1rem
+      border-radius 4px
+      border 1px solid var(--neutral-40)
+
+      &.field-select 
+        min-height 4rem
+
+      &.field-input 
+        min-height 4rem
+
+      &.field-input[type="text"]:focus,  
+      &.field-input[type="email"]:focus
+        border-color var(--neutral-60)
+        box-shadow unset
+        outline none
+
+      &.field-textarea
+        min-height 10rem
+
+      &.field-textarea:focus 
+        border-color var(--neutral-60)
+        box-shadow unset
+        outline none

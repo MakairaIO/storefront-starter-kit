@@ -33,5 +33,6 @@ export { default as TeaserDuo } from './core/TeaserDuo'
 export { default as DiscoveryImage } from './core/DiscoveryImage'
 export { default as MultiColumnText } from './core/MultiColumnText'
 export { default as BrowserHintPage } from './core/BrowserHintPage'
+export { default as ContactForm } from './core/ContactForm'
 
 /* Add project specific patterns here */

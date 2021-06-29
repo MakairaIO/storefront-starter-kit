@@ -65,4 +65,15 @@ export default {
   FILTER_LABEL_SHOW_LESS: 'Weniger anzeigen',
   FILTER_LABEL_SHOW_MORE: 'Mehr anzeigen',
   RECOMMENDATION_HEADING: 'Ähnliche Produkte',
+  CONTACT_FORM_TITLE: 'Kontaktformular',
+  CONTACT_FORM_SALUTATION: 'Anrede',
+  CONTACT_FORM_FIRST_NAME: 'Vorname',
+  CONTACT_FORM_SURNAME: 'Nachname',
+  CONTACT_FORM_EMAIL: 'Email',
+  CONTACT_FORM_SUBJECT: 'Gegenstand',
+  CONTACT_FORM_MESSAGE: 'Botschaft',
+  CONTACT_FORM_SEND_BUTTON: 'Senden',
+  CONTACT_FORM_STATUS_SUCCESS: 'Ihre Nachricht wurde gesendet.',
+  CONTACT_FORM_STATUS_FAILURE:
+    'Etwas ist schief gelaufen, bitte versuche es erneut!',
 }

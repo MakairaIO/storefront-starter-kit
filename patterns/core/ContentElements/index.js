@@ -10,6 +10,7 @@ import {
   TeaserDuo,
   TeaserVideo,
   DiscoveryImage,
+  ContactForm,
 } from '../..'
 
 export default function ContentElements(props) {
@@ -29,6 +30,7 @@ export default function ContentElements(props) {
     'duo-teaser': TeaserDuo,
     'video-teaser': TeaserVideo,
     'discovery-image': DiscoveryImage,
+    'contact-form': ContactForm,
   }
 
   return (
