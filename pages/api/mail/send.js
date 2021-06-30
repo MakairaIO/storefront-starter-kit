@@ -23,7 +23,7 @@ function generateSendGridBody(mailContent) {
   }
 }
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   const body = req.body
   if (!body.email) {
     res
@@ -40,17 +40,16 @@ export default function handler(req, res) {
     body: JSON.stringify(content),
   }
 
-  fetch(SENDGRID_API, options)
-    .then(async (response) => {
-      if (response.status === 202) {
-        res.status(200).json({})
-      } else {
-        const body = await response.json()
-        res.status(500).json(body)
-      }
-    })
-    .catch((error) => {
-      console.error(error)
-      res.status(500).json({})
-    })
+  try {
+    const response = await fetch(SENDGRID_API, options)
+    if (response.status === 202) {
+      res.status(200).json({})
+    } else {
+      const body = await response.json()
+      res.status(500).json(body)
+    }
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({})
+  }
 }
