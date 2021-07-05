@@ -12,6 +12,9 @@ import ProductDetailInformation, {
 import ProductPlacement, {
   productPlacementVariants,
 } from '../patterns/core/ProductPlacement'
+import StreamPlacement, {
+  streamPlacementVariants,
+} from '../patterns/core/StreamPlacement'
 import Promotion, { promotionVariants } from '../patterns/core/Promotion'
 import TeaserHero, { teaserHeroVariants } from '../patterns/core/TeaserHero'
 import TeaserVideo, { teaserVideoVariants } from '../patterns/core/TeaserVideo'
@@ -92,6 +95,12 @@ export default [
     name: 'Product Placement',
     component: ProductPlacement,
     variants: productPlacementVariants,
+  },
+  {
+    type: 'placeable',
+    name: 'Stream Placement',
+    component: StreamPlacement,
+    variants: streamPlacementVariants,
   },
   {
     type: 'placeable',
