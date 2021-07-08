@@ -58,5 +58,6 @@ export { default as prepareSortingForQueryString } from './core/prepareSortingFo
 export { default as preparePaginationForQueryString } from './core/preparePaginationForQueryString'
 export { default as filterInternalMakairaFields } from './core/filterInternalMakairaFields'
 export { default as mergeProductsAndBanners } from './core/mergeProductsAndBanners'
+export { default as sendSendGridEmail } from './core/sendSendGridEmail'
 
 /* Add project specific utils here */

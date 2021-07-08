@@ -67,6 +67,8 @@ export default {
   RECOMMENDATION_HEADING: 'Ähnliche Produkte',
   CONTACT_FORM_TITLE: 'Kontaktformular',
   CONTACT_FORM_SALUTATION: 'Anrede',
+  CONTACT_FORM_SALUTATION_MALE: 'Herr',
+  CONTACT_FORM_SALUTATION_FEMALE: 'Frau',
   CONTACT_FORM_FIRST_NAME: 'Vorname',
   CONTACT_FORM_SURNAME: 'Nachname',
   CONTACT_FORM_EMAIL: 'Email',

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import fetch from 'isomorphic-unfetch'
 
 import { Heading, Button } from '../..'
 import FormField from './FormField'
@@ -8,7 +7,7 @@ import FormInput from './FormInput'
 import FormTextArea from './FormTextArea'
 import FormStatus from './FormStatus'
 
-import { useTranslation } from '../../../utils'
+import { useTranslation, sendSendGridEmail } from '../../../utils'
 
 function ContactForm(props) {
   const { recipient } = props
@@ -16,8 +15,14 @@ function ContactForm(props) {
   const [sentStatus, setSentStatus] = useState(null)
 
   const genderOptions = [
-    { value: 'Mr', label: 'Mr' },
-    { value: 'Mrs', label: 'Mrs' },
+    {
+      value: t('CONTACT_FORM_SALUTATION_MALE'),
+      label: t('CONTACT_FORM_SALUTATION_MALE'),
+    },
+    {
+      value: t('CONTACT_FORM_SALUTATION_FEMALE'),
+      label: t('CONTACT_FORM_SALUTATION_FEMALE'),
+    },
   ]
   const onSubmit = (event) => {
     const formData = new FormData(event.target)
@@ -25,17 +30,10 @@ function ContactForm(props) {
       recipient,
     }
     formData.forEach((value, key) => (body[key] = value))
-    var json = JSON.stringify(body)
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: json,
-    }
-    fetch('/api/mail/send', options)
+
+    sendSendGridEmail(body)
       .then((response) => {
-        if (response.status === 200) {
+        if (response.success) {
           setSentStatus('success')
         } else {
           setSentStatus('error')

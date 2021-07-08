@@ -4,7 +4,6 @@ const next = require('next')
 const cors = require('cors')
 const allLanguages = require('../config/allLanguages')
 const parser = require('ua-parser-js')
-const { json, urlencoded } = require('body-parser')
 
 const dev = process.env.NODE_ENV !== 'production'
 const port = process.env.PORT || process.env.PORT || 5000
@@ -15,18 +14,12 @@ app
   .prepare()
   .then(() => {
     const server = express()
-    server.use(urlencoded({ extended: false }))
-    server.use(json())
     server.use(cors({ origin: true, credentials: true }))
 
     /**
      * Route handler for all static assets, e.g. images, ...
      */
     server.get('/assets/*', (req, res) => {
-      return handle(req, res)
-    })
-
-    server.post('/api/*', (req, res) => {
       return handle(req, res)
     })
 
