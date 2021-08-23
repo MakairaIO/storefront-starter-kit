@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import fetch from 'isomorphic-unfetch'
 
 import { Heading, Button } from '../..'
 import FormField from './FormField'
@@ -7,7 +8,7 @@ import FormInput from './FormInput'
 import FormTextArea from './FormTextArea'
 import FormStatus from './FormStatus'
 
-import { useTranslation, sendSendGridEmail } from '../../../utils'
+import { useTranslation } from '../../../utils'
 
 function ContactForm(props) {
   const { recipient } = props
@@ -31,17 +32,20 @@ function ContactForm(props) {
     }
     formData.forEach((value, key) => (body[key] = value))
 
-    sendSendGridEmail(body)
-      .then((response) => {
-        if (response.success) {
+    fetch('/api/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    })
+      .then((res) => {
+        if (res.status === 200) {
           setSentStatus('success')
         } else {
           setSentStatus('error')
         }
       })
-      .catch(() => {
-        setSentStatus('error')
-      })
+      .catch(() => setSentStatus('error'))
+
     event.preventDefault()
     return false
   }

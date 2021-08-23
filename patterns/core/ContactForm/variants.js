@@ -2,7 +2,7 @@ export default [
   {
     name: 'Default',
     props: {
-      recipient: 'test@gmail.com',
+      recipient: 'support@makaira.io',
     },
   },
   {

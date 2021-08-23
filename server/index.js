@@ -4,6 +4,8 @@ const next = require('next')
 const cors = require('cors')
 const allLanguages = require('../config/allLanguages')
 const parser = require('ua-parser-js')
+const bodyParser = require('body-parser')
+const sendSendGridEmail = require('../utils/core/sendSendGridEmail')
 
 const dev = process.env.NODE_ENV !== 'production'
 const port = process.env.PORT || process.env.PORT || 5000
@@ -15,7 +17,7 @@ app
   .then(() => {
     const server = express()
     server.use(cors({ origin: true, credentials: true }))
-
+    server.use(bodyParser.json())
     /**
      * Route handler for all static assets, e.g. images, ...
      */
@@ -61,6 +63,28 @@ app
     /**
      * Route handler page requests
      */
+
+    //API call sendgrid send contact email
+
+    server.post('/api/send-email', async (req, res) => {
+      try {
+        const sendGridRaw = await sendSendGridEmail(req.body)
+        const { status, statusText } = sendGridRaw
+        if (statusText !== 'Accepted') {
+          let error = new Error()
+          const sendGridRes = await sendGridRaw.json()
+
+          error.code = status
+          error = { ...error, ...sendGridRes }
+
+          throw error
+        }
+        return res.status(200).end()
+      } catch (e) {
+        return res.status(e.code).json(e)
+      }
+    })
+
     server.get(/^(.*)$/, (req, res) => {
       app.render(req, res, '/frontend/entry', {
         seoUrl: req.params[0],
