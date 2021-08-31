@@ -4,6 +4,7 @@ import {
   mergeProductsAndBanners,
   submitProductListForms,
   resetAllProductListFilters,
+  redirectToBundle,
 } from '../../utils'
 
 export default function ProductListWithProps() {
@@ -30,6 +31,10 @@ export default function ProductListWithProps() {
     resetAllFilters: resetAllProductListFilters,
     queryParams: restParams,
     totalProductCount,
+    addToBundle: (productId) => {
+      const product = products.find((item) => item.id === productId) || {}
+      redirectToBundle({ product: product.fields, params })
+    },
   }
 
   return (

@@ -23,9 +23,11 @@ export default {
   MOBILE_FILTER_RESET_ALL: 'alle Filter zurücksetzen',
   DESKTOP_FILTER_RESET_ALL: 'Alle Filter zurücksetzen',
   PRODUCT_TILE_ADD_TO_CART: 'In den Warenkorb',
+  PRODUCT_TILE_ADD_TO_BUNDLE: 'Zum Bundle Hinzufügen',
   PRODUCT_TILE_TO_PRODUCT: 'Zum Produkt',
   PRODUCT_DETAIL_DESCRIPTION_TITLE: 'Produktbeschreibung',
   PRODUCT_DETAIL_ADD_TO_CART: 'In den Warenkorb',
+  PRODUCT_DETAIL_ADD_TO_BUNDLE: 'Zum Bundle Hinzufügen',
   ERROR_PAGE_TITLE: 'Willkommen auf der peinlichsten Seite des Internets',
   ERROR_PAGE_TEXT_LEFT_1:
     'Wirklich schade, dass das jetzt passieren musste, denn es ist wirklich eine absolute Seltenheit. Ja, klar, das kennt man. Das Thema Limited Edition und so. Beim Gin z.B. ja immer gerne gesehen. Da macht ein Hersteller den totalen Affen und bring ein paar Tausend Flaschen auf den Markt. EIn paar Tausend. Tja und dann ist das schon limitiert.',
@@ -65,4 +67,7 @@ export default {
   FILTER_LABEL_SHOW_LESS: 'Weniger anzeigen',
   FILTER_LABEL_SHOW_MORE: 'Mehr anzeigen',
   RECOMMENDATION_HEADING: 'Ähnliche Produkte',
+  DELETE_SLOT: 'Slot löschen',
+  INCOMPATIBLE_PRODUCT: (product) =>
+    `Produkt ${product} ist für dieses set nicht gültig`,
 }

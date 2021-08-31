@@ -1,6 +1,7 @@
 export { default as HeaderWithProps } from './HeaderWithProps'
 export { default as FooterWithProps } from './FooterWithProps'
 export { default as LandingPage } from './LandingPage'
+export { default as BundlePage } from './BundlePage'
 export { default as ListingPage } from './ListingPage'
 export { default as SearchResultPage } from './SearchResultPage'
 export { default as DetailPage } from './DetailPage'

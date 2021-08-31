@@ -6,6 +6,7 @@ import {
   LandingPage,
   ListingPage,
   DetailPage,
+  BundlePage,
 } from '../../frontend'
 import { BaseLayout } from '../../patterns'
 import {
@@ -22,6 +23,7 @@ import ErrorPage from '../_error'
 
 const pageComponents = {
   page: LandingPage,
+  bundle: BundlePage,
   category: ListingPage,
   manufacturer: ListingPage,
   'makaira-productgroup': DetailPage,
