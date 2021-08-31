@@ -27,7 +27,7 @@ export default function List(props) {
         if (entry.isBanner) {
           return <Banner key={`banner.${entry.id}`} {...entry} />
         } else {
-          return <ProductTile key={entry.id} {...entry.fields} />
+          return <ProductTile key={entry.id} {...props} {...entry.fields} />
         }
       })}
 

@@ -2,7 +2,7 @@ import { Button, Dropdown } from '../..'
 import { useTranslation } from '../../../utils'
 
 // TODO: Add functionality (add-to-wishlist, add-to-cart etc.)
-export default function ProductActions() {
+export default function ProductActions({ bundles, addToBundle }) {
   const { t } = useTranslation()
 
   const quantities = [
@@ -30,6 +30,16 @@ export default function ProductActions() {
       <Button variant="primary-alt" icon="cart" iconPosition="left">
         {t('PRODUCT_DETAIL_ADD_TO_CART')}
       </Button>
+
+      {bundles && bundles.length && (
+        <Button
+          variant="primary"
+          className="product-detail-information__add-bundle"
+          onClick={addToBundle}
+        >
+          {t('PRODUCT_DETAIL_ADD_TO_BUNDLE')}
+        </Button>
+      )}
     </div>
   )
 }
