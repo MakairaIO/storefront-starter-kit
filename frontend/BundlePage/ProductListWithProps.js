@@ -5,7 +5,6 @@ import {
   submitProductListForms,
   resetAllProductListFilters,
   submitBundleForm,
-  fetchSnippetData,
 } from '../../utils'
 import { useEffect, useState } from 'react'
 
@@ -36,23 +35,10 @@ function BundleForm() {
 export default function ProductListWithProps() {
   const { pageData, params = {} } = useGlobalData()
   const [bundleForm, setBundleForm] = useState()
-  const [bundleSnippet, setBundleSnippet] = useState()
 
   useEffect(() => {
     setBundleForm(document.querySelector('.bundle-form'))
   }, [])
-
-  useEffect(() => {
-    async function getBundleSnippet() {
-      const resp = await fetchSnippetData({
-        ids: ['bundle-package'],
-        language: pageData.language,
-      })
-      const snippet = resp[0]?.data?.config?.main?.elements
-      setBundleSnippet(snippet)
-    }
-    getBundleSnippet()
-  }, [pageData.language])
 
   // restParams = sorting, pagination, ...
   const { filter, ...restParams } = params
@@ -86,7 +72,6 @@ export default function ProductListWithProps() {
 
   const bundleProps = {
     params,
-    bundleSnippet,
     config: pageData.data.self.config,
     bundleId: pageData.data.self.id,
     currentSlot: pageData.data.self.config.currentSlot,
