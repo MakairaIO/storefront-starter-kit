@@ -13,8 +13,8 @@
 
 * Clone this repository using the `--origin <name>` flag to set an remote name other than `origin` (for example `upstream`)
 * Configure your own origin remote using `git remote add origin <your repository url>`
-* Initial push of master branch to your own remote: `git push origin master`
-* Configure default remote to be your own remote: `git branch --set-upstream-to origin/master`
+* Initial push of stable branch to your own remote: `git push origin stable`
+* Configure default remote to be your own remote: `git branch --set-upstream-to origin/stable`
 * Install dependencies: `npm ci`
 * Configure your individual `.env` file in the root directory (see `.env.example`)
 
@@ -44,7 +44,7 @@ You can also create multiple patterns at once, e.g.:
 
 ### Building
 
-Just push to the GitHub Repository in the master branch - we will cover everthing else.
+Just push to the GitHub Repository in the stable branch - we will cover everthing else.
 
 
 ## FAQ

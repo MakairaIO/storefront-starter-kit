@@ -3,6 +3,7 @@ import {
   useGlobalData,
   fetchRecommendationData,
   useTranslation,
+  redirectToBundle,
 } from '../../utils'
 import {
   ContentElements,
@@ -12,10 +13,9 @@ import {
 
 function DetailPage() {
   const { t, language } = useTranslation()
-  const { pageData } = useGlobalData()
-  const productDetailProps = { ...pageData.data.self }
+  const { pageData, params } = useGlobalData()
   const [products, setProducts] = useState([])
-  const productId = productDetailProps.id
+  const productId = pageData.data.self.id
 
   useEffect(() => {
     async function getProducts() {
@@ -37,6 +37,15 @@ function DetailPage() {
   const productPlacementProps = {
     heading: t('RECOMMENDATION_HEADING'),
     products,
+  }
+
+  const productDetailProps = {
+    ...pageData.data.self,
+    productId,
+    addToBundle: () => {
+      const product = pageData.data.self
+      redirectToBundle({ product, params })
+    },
   }
 
   return (

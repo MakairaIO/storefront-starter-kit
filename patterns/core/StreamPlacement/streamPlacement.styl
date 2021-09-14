@@ -1,0 +1,66 @@
+$breakpoint-small = 400px
+$breakpoint-medium = 560px
+$breakpoint-large = 1000px
+
+.stream-placement
+  padding 1.2rem 1.5rem
+
+  @media (min-width $breakpoint-large = 1000px)
+    padding 1.2rem 2rem
+
+.stream-placement__list
+  display grid
+  grid-template-columns repeat(1, minmax(0, 1fr))
+  grid-gap 1.3rem 0
+  width 100%
+
+  @media (min-width $breakpoint-small)
+    grid-template-columns repeat(2, minmax(0, 1fr))
+
+  @media (min-width $breakpoint-medium)
+    grid-template-columns repeat(3, minmax(0, 1fr))
+
+  @media (min-width $breakpoint-large)
+    grid-template-columns repeat(auto-fit, minmax(185px, 27rem))
+
+.stream-placement-item
+  padding 2.3rem 1rem 0
+
+.stream-placement__text
+  margin-bottom 1.3rem
+
+.stream-placement-item__image
+  display flex
+  justify-content center
+
+  img
+    max-width 100%
+    max-height 16.2rem
+
+.stream-placement-item__title
+  text-align center
+
+.stream-placement-item__manufacturer
+  display block
+  line-height 1.2rem
+  letter-spacing 0.3rem
+  color var(--neutral-50)
+  text-transform uppercase
+  text-align center
+  padding 0.2rem 0 0.4rem
+  margin 0.6rem 0
+
+.stream-placement-item__prices
+  text-align center
+  padding 0.1rem 0 0.5rem
+  margin-top 0.6rem
+
+.stream-placement-item__price
+  font-size 1.3rem
+  font-weight var(--font-weight-semi-bold)
+  line-height 2.4rem
+  letter-spacing 0.019rem
+
+.stream-placement-item__actions
+  // margin-top 0.7rem
+  text-align center

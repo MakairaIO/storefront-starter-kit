@@ -10,6 +10,7 @@ export default async function fetchPageData({ ctx }) {
   const aggregations = builder.getAggregations()
   const sorting = builder.getSorting()
   const [count, offset] = builder.getPagination()
+  const { bundles, currentSlot } = builder.getBundles()
 
   const body = {
     searchPhrase: '',
@@ -20,7 +21,12 @@ export default async function fetchPageData({ ctx }) {
     sorting,
     count,
     offset,
+    bundles,
     constraints,
+  }
+
+  if (currentSlot) {
+    body.slot = currentSlot
   }
 
   const page = await fetchFromMakaira({ body })

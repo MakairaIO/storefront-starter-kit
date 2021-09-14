@@ -1,0 +1,72 @@
+.bundle-list__wrapper
+  padding 0 2rem
+  margin-top 2.4rem
+  display flex
+  align-items center
+
+.bundle-list__error
+  padding 0 2rem
+  margin-top 1.2rem
+  color var(--brand-2)
+
+.bundle-list__actions
+  flex 1
+  display flex
+  justify-content center
+
+.bundle-item
+  border 1px solid var(--neutral-40)
+  border-radius 4px
+  padding 1.2rem
+  margin-right 1.2rem
+  display flex
+  width 30rem
+
+  &__active
+    box-shadow inset 0 0 0 1px var(--neutral-50)
+    border-color var(--neutral-50)
+
+  &__error
+    box-shadow inset 0 0 0 1px var(--brand-2)
+    border-color var(--brand-2)
+
+  &__image
+    width 7.5rem
+    height 7.5rem
+    flex-shrink 0
+
+    img
+      width 100%
+      height 100%
+      object-fit contain
+
+  &__info
+    margin-left 1.2rem
+    display flex
+    flex-direction column
+    justify-content space-between
+
+  &__name
+    text-transform uppercase
+    margin-top 0.5rem
+    display -webkit-box
+    -webkit-line-clamp 2
+    -webkit-box-orient vertical
+    overflow hidden
+    max-height 2.6rem
+
+  &__button
+    width 100%
+    display flex
+    align-items center
+    margin-top .5rem
+    cursor pointer
+    line-height 1.1rem
+    white-space nowrap
+    overflow hidden
+    text-overflow ellipsis
+
+    .icon
+      width 1rem
+      height 1rem
+      margin-right 0.5rem

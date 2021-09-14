@@ -23,9 +23,11 @@ export default {
   MOBILE_FILTER_RESET_ALL: 'reset all filters',
   DESKTOP_FILTER_RESET_ALL: 'Reset all filters',
   PRODUCT_TILE_ADD_TO_CART: 'Add to Cart',
+  PRODUCT_TILE_ADD_TO_BUNDLE: 'Add to Bundle',
   PRODUCT_TILE_TO_PRODUCT: 'See product',
   PRODUCT_DETAIL_DESCRIPTION_TITLE: 'Description',
   PRODUCT_DETAIL_ADD_TO_CART: 'Add to Cart',
+  PRODUCT_DETAIL_ADD_TO_BUNDLE: 'Add to Bundle',
   ERROR_PAGE_TITLE: 'todo',
   ERROR_PAGE_TEXT_LEFT_1: 'todo',
   ERROR_PAGE_TEXT_LEFT_2: 'todo',
@@ -66,4 +68,7 @@ export default {
   CONTACT_FORM_SEND_BUTTON: 'Send',
   CONTACT_FORM_STATUS_SUCCESS: 'Your message has been sent.',
   CONTACT_FORM_STATUS_FAILURE: 'Something went wrong, please try again!',
+  DELETE_SLOT: 'Delete Slot',
+  INCOMPATIBLE_PRODUCT: (product) =>
+    `Product ${product} is not valid for this bundle`,
 }

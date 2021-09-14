@@ -7,6 +7,8 @@ import {
   prepareFilterForQueryString,
   prepareSortingForQueryString,
   preparePaginationForQueryString,
+  collectBundleFormData,
+  prepareSlotsForQueryString,
 } from '../..'
 
 export default async function submitProductListForms({
@@ -30,6 +32,9 @@ export default async function submitProductListForms({
     resetPagination
   )
 
+  const bundleFormData = collectBundleFormData()
+  const bundles = prepareSlotsForQueryString(bundleFormData)
+
   const seoUrl = Router.asPath
     .replace(/#.*$/, '') // remove hash/anchor
     .replace(/\?.*$/, '') // remove queryString
@@ -40,6 +45,7 @@ export default async function submitProductListForms({
     order,
     count,
     offset,
+    ...bundles,
   }
 
   let internalRoute = '/frontend/entry'

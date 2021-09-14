@@ -4,6 +4,7 @@ import { Heading, Copytext } from '../..'
 function MultiColumnText(props) {
   const {
     heading = '',
+    headingAlign = 'left',
     columnLeft = '',
     columnMiddle = '',
     columnRight = '',
@@ -25,10 +26,12 @@ function MultiColumnText(props) {
     ['multi-column-text--3-column']: columnMiddle != '' && columnRight != '',
   })
 
+  const headingClass = `heading-${headingAlign}`
+
   return (
     <section className={sectionClasses}>
       <div className={wrapperClasses}>
-        {heading && <Heading>{heading}</Heading>}
+        {heading && <Heading className={headingClass}>{heading}</Heading>}
 
         <Copytext
           dangerouslySetInnerHTML={{ __html: columnLeft }}

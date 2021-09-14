@@ -3,8 +3,10 @@ import ProductPrices from './ProductPrices'
 import ProductActions from './ProductActions'
 import Ribbon from './Ribbon'
 import classNames from 'classnames'
+import { getProductDetailUrl, useGlobalData } from '../../../utils'
 
 export default function ProductTile(props) {
+  const { pageData } = useGlobalData()
   const {
     title = '',
     picture_url_main = '',
@@ -13,15 +15,29 @@ export default function ProductTile(props) {
     url = '',
     mak_paid_placement = false,
     isLazyLoad = true,
+    isBundle,
   } = props
 
   const classes = classNames('product-item', {
     ['product-item--highlight']: mak_paid_placement,
   })
 
+  const onClickProduct = (event) => {
+    const classes = [...event.target.classList]
+    const isButtonClick = classes.some((className) =>
+      ['button__text', 'button--primary'].includes(className)
+    )
+
+    if (isBundle && isButtonClick) {
+      event.preventDefault()
+    }
+  }
+
+  const productUrl = getProductDetailUrl({ url, pageData })
+
   return (
     <article className={classes}>
-      <Link href={url}>
+      <Link href={productUrl} onClick={onClickProduct}>
         <picture className="product-item__image">
           {isLazyLoad ? (
             <img data-src={picture_url_main} alt={title} height="228" />
