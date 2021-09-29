@@ -2,7 +2,7 @@ export {
   default as GlobalDataContext,
   GlobalDataProvider,
   useGlobalData,
-} from './core/GlobalDataProvider'
+} from './GlobalDataProvider'
 export {
   default as ConfigurationContext,
   ConfigurationProvider,
@@ -67,3 +67,5 @@ export { default as sendSendGridEmail } from './core/sendSendGridEmail'
 export { default as getProductDetailUrl } from './core/getProductDetailUrl'
 
 /* Add project specific utils here */
+export { default as addToCart } from './addToCart'
+export { default as dispatchUpdateCartEvent } from './dispatchUpdateCartEvent'

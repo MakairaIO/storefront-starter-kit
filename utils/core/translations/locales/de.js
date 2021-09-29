@@ -83,4 +83,8 @@ export default {
   DELETE_SLOT: 'Slot löschen',
   INCOMPATIBLE_PRODUCT: (product) =>
     `Produkt ${product} ist für dieses set nicht gültig`,
+  CART_MODAL: 'Der Artikel wurde zum Warenkorb hinzugefügt.',
+  CART_MODAL_BUTTON: 'Zum Warenkorb',
+  CART_MODAL_CONTINUE_BUTTON: 'Weiter einkaufen',
+  CART_ERROR: 'Der Artikel konnte nicht dem Warenkorb hinzugefügt werden.',
 }

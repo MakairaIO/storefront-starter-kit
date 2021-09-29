@@ -6,6 +6,7 @@ const allLanguages = require('../config/allLanguages')
 const parser = require('ua-parser-js')
 const bodyParser = require('body-parser')
 const sendSendGridEmail = require('../utils/core/sendSendGridEmail')
+const { createProxyMiddleware } = require('http-proxy-middleware')
 
 const logError = require('./utils/logError')
 
@@ -19,6 +20,17 @@ app
   .then(() => {
     const server = express()
     server.use(cors({ origin: true, credentials: true }))
+
+    if (dev) {
+      server.use(
+        '/api',
+        createProxyMiddleware({
+          target: process.env.FAILOVER_URL,
+          changeOrigin: true,
+        })
+      )
+    }
+
     server.use(bodyParser.json())
     /**
      * Route handler for all static assets, e.g. images, ...

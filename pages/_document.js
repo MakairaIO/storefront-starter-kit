@@ -49,7 +49,7 @@ function Favicon() {
       <link
         rel="apple-touch-icon"
         sizes="180x180"
-        href="/assets/favicon/apple-touch-icon.png"
+        href="/assets/favicon/favicon-32x32.png"
       />
       <link
         rel="icon"

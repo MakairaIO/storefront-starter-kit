@@ -1,0 +1,123 @@
+$breakpoint-small = 400px
+$breakpoint-medium = 768px
+
+.browser-hint-page
+  display flex
+  flex-direction column
+  align-items center
+  font-family var(--font-family-regular)
+  padding 0 1.5rem
+  margin 0 auto
+  max-width 77.6rem
+  width 100%
+  @media (min-width $breakpoint-medium)
+    width 66.666666%
+
+.browser-hint-page__logo
+  margin 1.5rem 0 5.5rem
+
+  @media (min-width $breakpoint-medium)
+    margin 4rem 0 11.1rem
+
+.browser-hint-page__content
+  width 100%
+  margin-bottom 4rem
+
+  h1
+    margin-bottom 3.3rem
+    @media (min-width $breakpoint-medium)
+      fortuna()
+      margin-bottom 3.8rem
+
+  h2
+    margin-bottom 3rem
+    @media (min-width $breakpoint-medium)
+      diana()
+      margin-bottom 2.3rem
+
+.browser-hint-page__column-wrapper
+  display flex
+  flex-wrap wrap
+  justify-content space-between
+
+.browser-hint-page__column
+  width 100%
+  @media (min-width $breakpoint-medium)
+    width calc(50% - 1.2rem)
+
+  &:first-child
+    margin-bottom 2.4rem
+    @media (min-width $breakpoint-medium)
+      margin-bottom 0
+
+.browser-hint-page__browsers
+  display flex
+  flex-direction column
+  width 100%
+
+  h1
+    margin-bottom 2.2rem
+
+.browser-hint-page__browsers-list
+  display flex
+  flex-direction column
+  width 100%
+  @media (min-width $breakpoint-small)
+    flex-direction row
+
+  .browser
+    display flex
+    flex-direction column
+    align-items center
+
+    &--firefox
+      img
+        width 4.8rem
+        height 5rem
+        margin-bottom 1.8rem
+        @media (min-width $breakpoint-medium)
+          width 7.8rem
+          height 8rem
+
+    &--chrome
+      img
+        width 4.8rem
+        height 4.8rem
+        margin-bottom 2rem
+        @media (min-width $breakpoint-medium)
+          width 7.8rem
+          height 7.8rem
+
+    &--edge
+      @media (min-width $breakpoint-small)
+        margin-left 2rem
+      img
+        width 4.5rem
+        height 4.8rem
+        margin-bottom 2rem
+        @media (min-width $breakpoint-medium)
+          width 7.3rem
+          height 7.8rem
+
+    &--firefox, &--chrome
+      width 50%
+
+.browser-hint-page__browsers-wrapper
+  display flex
+  flex-direction column
+  align-items center
+  margin-bottom 4.2rem
+
+.browser-hint-page__browsers-wrapper-content
+  display flex
+
+.browser-hint-page__browsers-divider
+  margin 1.2rem 0
+  @media (min-width $breakpoint-medium)
+    margin 1.2rem 0 2.2rem
+
+.browser-hint-page__browsers-wrapper-content, .browser-hint-page__browsers-divider
+  width 21.7rem
+  @media (min-width $breakpoint-small)
+    width 25.7rem
+

@@ -7,10 +7,11 @@ import {
 } from '../../utils'
 
 export default function HeaderWithProps() {
-  const { menuData } = useGlobalData()
+  const { menuData, cart } = useGlobalData()
   const { language } = useTranslation()
 
   const headerProps = {
+    cart,
     menu: menuData,
     fetchAutosuggestResult: (searchPhrase) =>
       fetchAutosuggestResult({ searchPhrase, language }),

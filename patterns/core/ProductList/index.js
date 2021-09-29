@@ -106,6 +106,7 @@ class ProductList extends Component {
             addToBundle={addToBundle}
             isLoading={this.state.isLoading}
             pageData={pageData}
+            addToCart={this.handleAddToCart}
           />
         </div>
       </section>

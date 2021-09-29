@@ -1,0 +1,78 @@
+$breakpoint-medium = 800px
+
+.autosuggest__image
+  display flex
+  flex-direction row
+  height 5rem
+
+  picture
+    height 100%
+    width 5rem
+    text-align center
+
+    img
+      height 100%
+  .text
+    flex 1
+    align-self center
+    padding-left 2rem
+
+.autosuggest-box
+  position absolute
+  right 0
+  max-width 80rem
+  margin-left auto
+  box-shadow: inset 0 -1px 0 0 #dcdee0, 0 2px 16px -10px rgba(0,0,0,.5);
+  padding 3rem 1.5rem
+  z-index var(--z-index-highest)
+  background-color var(--neutral-00)
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+
+.autosuggest-box__wrapper
+  display flex
+  flex-direction column
+  background var(--neutral-00)
+
+  @media (min-width $breakpoint-medium)
+    flex-direction row
+    padding 3rem 2rem
+
+  .autosuggest-box__close
+    flex none
+    position absolute
+    top 0
+    right 2rem
+
+.autosuggest-box__links
+    flex 1
+
+.autosuggest-box__products
+.autosuggest-box__link-box
+  margin-bottom 1.5rem
+
+.autosuggest-box__products
+  flex 1
+
+  .heading
+    @media (min-width $breakpoint-medium)
+      padding-left 2rem
+
+.autosuggest__product-item
+  padding 1rem
+
+.autosuggest__link-item
+  margin-bottom 0.5rem
+
+.autosuggest-box__total-result
+  cursor pointer
+  display flex
+  align-items center
+  padding-top 2rem
+  border-top 1px solid var(--neutral-40)
+
+  .icon--chevron-right
+    width 1rem
+    display inline-block
+    height 1.2rem
+    margin-left 0.6rem

@@ -13,6 +13,7 @@ export default function List(props) {
     submitForms,
     isLoading = false,
     pageData,
+    addToCart,
   } = props
   const listRef = useRef(null)
 
@@ -34,6 +35,7 @@ export default function List(props) {
               key={entry.id}
               {...props}
               {...entry.fields}
+              addToCart={addToCart}
             />
           )
         }

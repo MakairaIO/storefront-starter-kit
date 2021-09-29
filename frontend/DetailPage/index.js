@@ -4,6 +4,7 @@ import {
   fetchRecommendationData,
   useTranslation,
   redirectToBundle,
+  addToCart,
 } from '../../utils'
 import {
   ContentElements,
@@ -41,6 +42,7 @@ function DetailPage() {
 
   const productDetailProps = {
     ...pageData.data.self,
+    addToCart,
     productId,
     addToBundle: () => {
       const product = pageData.data.self

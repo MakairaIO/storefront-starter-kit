@@ -1,0 +1,240 @@
+$breakpoint-tiny = 350px
+$breakpoint-small = 500px
+$breakpoint-medium = 700px
+$breakpoint-large = 1000px
+$breakpoint-huge = 1200px
+
+.product-detail-information
+  padding 1.2rem 1.5rem 0
+
+  @media (min-width $breakpoint-medium)
+    padding 2.4rem 2rem 0
+
+.product-detail-information__top-header
+  display flex
+  align-items flex-end
+  margin-bottom 1.2rem
+  justify-content space-between
+
+  @media (min-width $breakpoint-medium)
+   margin-bottom 2.4rem
+
+.product-detail-information__wrapper
+  @media (min-width $breakpoint-medium)
+    display flex
+    flex-wrap wrap
+    align-items flex-start
+
+  @media (min-width $breakpoint-huge)
+    display grid
+    grid-template-areas \
+      "img buy" \
+      "img desc" \
+      "img desc"
+    grid-template-columns 1fr 1fr
+
+.product-detail-information__prices
+  display flex
+  text-align right
+  padding 0 0 0.4rem
+
+  .product-detail-information__top-header &
+    flex-direction column
+    margin-left 0.6rem
+
+    @media (min-width $breakpoint-small)
+      flex-direction row
+      align-items flex-end
+
+    @media (min-width $breakpoint-medium)
+      display none
+
+  .product-detail-information__buxbox-info &
+    justify-content flex-end
+    align-items flex-end
+
+    @media (min-width $breakpoint-medium)
+      justify-content flex-start
+
+.product-detail-information__price
+  font-size 2.1rem
+  font-weight var(--font-weight-semi-bold)
+  line-height 3rem
+
+.product-detail-information__image
+  margin 0 -1.5rem 1.2rem // negative margin to accomodate for the 1.5rem padding of the container on the left/right
+  position relative
+
+  @media (min-width $breakpoint-small)
+    // max-width 47rem
+    margin 0 auto 1.2rem
+
+  @media (min-width $breakpoint-medium)
+    flex 1 0 50%
+
+  @media (min-width $breakpoint-large)
+    // max-width 78rem
+
+  @media (min-width $breakpoint-huge)
+    grid-area img
+
+  picture
+    display flex
+    justify-content center
+
+  img
+    // max-width calc(100% + 3rem) // +3rem for the 1.5rem negative margin on the left/right
+
+    @media (min-width $breakpoint-small)
+      // max-width 100%
+
+.product-detail-information__image-button
+  position absolute
+  bottom 1.2rem
+  right 1.2rem
+  background var(--product-detail-information-zoom-button-background)
+  color var(--neutral-00)
+
+.product-detail-information__buybox
+  @media (min-width $breakpoint-small)
+    display flex
+    flex-wrap wrap
+
+  @media (min-width $breakpoint-medium)
+    flex 1 0 50%
+    flex-wrap nowrap
+    flex-direction column
+    padding-left 2rem
+
+  @media (min-width $breakpoint-large)
+    flex-direction row
+    flex-wrap wrap
+
+  @media (min-width $breakpoint-huge)
+    grid-area buy
+    padding-left 4rem
+
+.product-detail-information__buybox-wrapper
+  display flex
+
+  @media (min-width $breakpoint-small)
+    order -1
+    flex-direction column
+
+  @media (min-width $breakpoint-large)
+    flex 1
+
+.product-detail-information__manufacturer
+  max-width 9rem
+
+  @media (min-width $breakpoint-medium)
+    margin-bottom 1rem
+
+  img
+    max-width 100%
+
+.product-detail-information__variants
+  margin-bottom 0.6rem
+
+  @media (min-width $breakpoint-small)
+    flex 0 0 50%
+    margin-left auto
+
+  @media (min-width $breakpoint-medium)
+    flex 0
+    margin 0
+
+  @media (min-width $breakpoint-large)
+    flex 1
+    display flex
+    flex-direction column
+    justify-content flex-end
+    margin-bottom 0.6rem
+
+.product-detail-information__variant-select
+  width 100%
+
+.product-detail-information__buxbox-info
+  flex 1
+  text-align right
+
+  @media (min-width $breakpoint-small)
+    text-align left
+
+.product-detail-information__availability
+  display inline-flex
+  align-items center
+  font-size 1.4rem
+  font-weight var(--font-weight-medium)
+  line-height 2rem
+  letter-spacing 0.02rem
+  margin-top 0.6rem
+
+  @media (min-width $breakpoint-medium)
+    margin 0.6rem 0 1.8rem
+
+  @media (min-width $breakpoint-large)
+    margin-bottom 0
+
+.product-detail-information__availability-icon
+    display block
+    height 1.1rem
+    width 1.1rem
+    border 1px solid var(--primary)
+    border-radius 50%
+    margin-right 0.8rem
+
+    .product-detail-information__availability--on-stock &
+      background var(--positive)
+
+.product-detail-information__actions
+  flex 1 0 100%
+  display flex
+  justify-content space-between
+  margin-top 1.2rem
+
+  @media (min-width $breakpoint-tiny)
+    justify-content normal
+
+  @media (min-width $breakpoint-medium)
+    flex 0 0 auto
+
+  @media (min-width $breakpoint-large)
+    flex 1 0 100%
+    margin-top 0
+
+.product-detail-information__quantity-select
+  margin 0 0.5rem
+
+  @media (min-width $breakpoint-tiny)
+    margin 0 0.5rem 0 auto
+
+  @media (min-width $breakpoint-small)
+    margin 0 1rem
+
+  .button__text
+    margin-right 0
+
+.product-detail-information__wishlist
+  @media (min-width $breakpoint-small)
+    margin-left auto
+
+.product-detail-information__description
+  margin-top 3.5rem
+
+  @media (min-width $breakpoint-huge)
+    grid-area desc
+
+    @supports (display grid)
+      padding-left 4rem
+      margin-top 0
+
+  .copytext
+    column-count 3
+    column-width 30rem
+
+    @media (min-width $breakpoint-medium)
+      column-gap 2rem
+
+.product-detail-information__add-bundle
+  margin-left 1rem

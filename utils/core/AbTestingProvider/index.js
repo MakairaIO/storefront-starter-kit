@@ -1,6 +1,6 @@
 import React, { Component, useContext } from 'react'
 import { setCookie } from 'nookies'
-import { GlobalDataContext, Matomo } from '../..'
+import { GlobalDataContext, Matomo } from '../../'
 
 /* First we will make a new context */
 const AbTestingContext = React.createContext()
