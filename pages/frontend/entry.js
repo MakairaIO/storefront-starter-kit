@@ -29,6 +29,9 @@ const pageComponents = {
   'makaira-productgroup': DetailPage,
 }
 
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 export default class Index extends Component {
   static async getInitialProps(ctx) {
     const { query, res } = ctx
@@ -108,6 +111,7 @@ export default class Index extends Component {
                 <HeaderWithProps />
 
                 <PageComponent />
+                <ToastContainer position="top-center" />
 
                 <FooterWithProps />
               </BaseLayout>

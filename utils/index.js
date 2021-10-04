@@ -66,3 +66,4 @@ export { default as sendSendGridEmail } from './core/sendSendGridEmail'
 export { default as getProductDetailUrl } from './core/getProductDetailUrl'
 
 /* Add project specific utils here */
+export { default as addToCart } from './addToCart'

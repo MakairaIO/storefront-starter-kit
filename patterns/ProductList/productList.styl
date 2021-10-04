@@ -1,0 +1,194 @@
+$breakpoint-small = 400px
+$breakpoint-medium = 650px
+$breakpoint-large = 1000px
+$breakpoint-huge = 1150px
+
+.product-list
+  padding 0 1.5rem
+  margin-top 2.4rem
+
+  @media (min-width $breakpoint-large)
+    padding 0 2rem
+
+.product-list__actions
+  display flex
+  margin-bottom 1.8rem
+
+.product-list__wrapper
+  display flex
+  align-items flex-start
+
+.product-list__list
+  display grid
+  grid-template-columns 1fr
+  grid-gap 2.4rem 0
+  width 100%
+  transition opacity 100ms ease-in
+
+  &--loading
+    opacity 0.2
+
+  @media (min-width $breakpoint-small)
+    // see https://stackoverflow.com/a/52861514
+    grid-template-columns repeat(2, minmax(0,1fr))
+
+  @media (min-width $breakpoint-medium)
+    grid-template-columns repeat(3, minmax(0,1fr))
+
+  @media (min-width $breakpoint-huge)
+    grid-template-columns repeat(4, minmax(0,1fr))
+
+.product-item
+  border-top 1px solid var(--neutral-40)
+  padding 2.3rem 1rem 0 // top = 2.4rem - 1px border
+  &--highlight
+    position relative
+
+.product-item__image
+  display flex
+  justify-content center
+
+  img
+    max-width 100%
+    max-height 22.8rem
+
+.product-item__title
+  text-align center
+
+.product-item__manufacturer
+  display block
+  line-height 1.2rem
+  letter-spacing 0.3rem
+  color var(--neutral-50)
+  text-transform uppercase
+  text-align center
+  margin 0.6rem 0
+
+.product-item__shortdesc
+  max-height 6rem // 3 lines = 3 * 1.8rem (line-height) + 0.6rem (padding-top)
+  overflow hidden
+  text-align center
+  // Be careful not to override padding-top/bottom from <Copytext>
+  padding-left 1.5rem
+  padding-right 1.5rem
+
+.product-item__prices
+  text-align center
+  padding 0.1rem 0 0.5rem
+  margin-top 0.6rem
+
+.product-item__price
+  font-size 1.7rem
+  font-weight var(--font-weight-semi-bold)
+  line-height 2.4rem
+  letter-spacing 0.025rem
+
+.product-item__actions
+  margin-top 1.2rem
+  text-align center
+
+.product-list__filter-button
+  @media (min-width $breakpoint-large)
+    display none
+
+  &--active
+    .button__text
+      margin-right 0.4rem
+
+.product-list__filter-reset-button
+  display none
+
+  @media (min-width $breakpoint-large)
+    display inline-flex
+
+  .icon
+    flex-basis 2rem
+
+.product-list__active-filter-hint
+  background var(--secondary)
+  color var(--neutral-00)
+  border-radius 12px
+  font-size 1.1rem
+  font-weight var(--font-weight-semi-bold)
+  line-height 1.5rem
+  letter-spacing 0.024rem
+  padding 0.35rem 0.7rem
+  position relative
+  top -1px
+  left 4px
+
+.product-list__sorter
+  margin-left auto
+
+  .dropdown__listbox
+    min-width 20rem
+
+.product-list__pagination
+  grid-column 1 / -1 // always span all available columns
+  display flex
+  align-items center
+  width 100%
+  margin-top 2.4rem
+
+  .button + .button
+    margin-left 0.6rem
+
+.product-list__pagination-text
+  margin 0 auto
+
+.product-list__banner
+  picture
+    display flex
+    height 100%
+
+  img
+    width 100%
+    height 100% // Safari-Fix
+    object-fit cover
+
+.ribbon
+    position absolute
+    right -0.5rem
+    top -0.5rem
+    z-index 1
+    overflow hidden
+    width 7.5rem
+    height 7.5rem
+    text-align right
+    span
+        font-size 1rem
+        color #fff
+        text-transform uppercase
+        text-align center
+        font-weight bold
+        line-height 2rem
+        transform rotate(45deg)
+        -webkit-transform rotate(45deg)
+        width 10rem
+        display block
+        background #79A70A
+        background linear-gradient(#9BC90D 0%, #79A70A 100%)
+        box-shadow 0 0.3rem 1rem -0.5rem rgba(0, 0, 0, 1)
+        position absolute
+        top 1.9rem
+        right -2.1rem
+        &::before
+            content ''
+            position absolute
+            left 0
+            top 100%
+            z-index -1
+            border-left 0.3rem solid #79A70A
+            border-right 0.3rem solid transparent
+            border-bottom 0.3rem solid transparent
+            border-top 0.3rem solid #79A70A
+        &::after
+            content ''
+            position absolute
+            right 0%
+            top 100%
+            z-index -1
+            border-right 0.3rem solid #79A70A
+            border-left 0.3rem solid transparent
+            border-bottom 0.3rem solid transparent
+            border-top 0.3rem solid #79A70A

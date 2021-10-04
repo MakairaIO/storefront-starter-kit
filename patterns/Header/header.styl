@@ -1,0 +1,132 @@
+@import './autosuggestion.styl'
+$breakpoint-small = 475px
+$breakpoint-medium = 560px
+$breakpoint-large = 800px
+
+.header
+  display flex
+  align-items center
+  width calc(100% - 3rem) // 1.5rem "padding" on each side
+  margin 0 auto
+  padding 0.6rem 0 0.8rem
+  border-bottom 1px solid var(--neutral-40)
+
+  @media (min-width $breakpoint-medium)
+    padding-bottom 0.6rem
+
+  @media (min-width $breakpoint-large)
+    padding 0.6rem 0 0.6rem 1.5rem
+
+
+.header__menu-button
+  margin-right 1.2rem
+
+  @media (min-width $breakpoint-large)
+    display none
+
+.header__logo
+  max-height 4rem
+
+  @media (min-width $breakpoint-medium)
+    max-height 6rem
+
+.header__actions
+
+  &--mobile
+    @media (min-width $breakpoint-large)
+      display none
+
+  &--desktop
+    display none
+
+    @media (min-width $breakpoint-large)
+      display block
+
+.header__action
+
+  & + &
+    margin-left 0.6rem
+
+  &--search
+    margin-right 0.6rem
+
+    @media (min-width $breakpoint-small)
+      display none
+
+.header__basket-bubble
+  background var(--brand-2)
+  border-radius 7.5px
+  color var(--neutral-00)
+  padding 0 0.8rem
+  position relative
+  left -0.6rem // half of the 1.2rem margin
+
+.header__search
+  display none
+
+  @media (min-width $breakpoint-small)
+    display block
+    flex 1
+    max-width 23.5rem
+    margin 0 auto
+    position relative
+
+  @media (min-width $breakpoint-medium)
+    margin 0 2rem 0 auto
+
+  @media (min-width $breakpoint-large)
+    max-width 29rem
+    margin 0 4rem 0 auto
+
+  .icon
+    height 1.8rem
+    width 3.6rem
+    color var(--neutral-50)
+    position absolute
+    left 0
+    top 50%
+    transform translateY(-50%)
+
+
+.header__search-input
+  width 100%
+  padding-left 3.6rem
+
+  // TODO: Refactor styles into generic <Input> component
+  height 3.6rem
+  font-size 1.3rem
+  line-height 1.8rem
+  color var(--neutral-90)
+  background var(--neutral-00)
+  border 1px solid var(--primary)
+  border-radius 4px
+  margin 0.6rem 0 0.4rem
+
+.header__outer-container
+  margin-left auto
+
+  @media (min-width $breakpoint-small)
+    flex 1
+
+.header__inner-container
+  display flex
+  align-items center
+
+.header__info-links
+  display none
+
+  @media (min-width $breakpoint-large)
+    display flex
+    justify-content flex-end
+    padding 0.1rem 0 0.5rem
+
+.header__info-link
+  aphrodite()
+  color var(--neutral-50)
+  text-decoration none
+
+  &:hover
+    text-decoration underline
+
+  & + &
+    margin-left 1rem
