@@ -62,6 +62,7 @@ class ProductList extends Component {
       totalProductCount = 0,
       isBundle = false,
       addToBundle,
+      pageData,
     } = this.props
 
     const numberOfActiveFilters = getNumberOfActiveFilters({ aggregations })
@@ -104,6 +105,7 @@ class ProductList extends Component {
             isBundle={isBundle}
             addToBundle={addToBundle}
             isLoading={this.state.isLoading}
+            pageData={pageData}
           />
         </div>
       </section>

@@ -3,10 +3,9 @@ import ProductPrices from './ProductPrices'
 import ProductActions from './ProductActions'
 import Ribbon from './Ribbon'
 import classNames from 'classnames'
-import { getProductDetailUrl, useGlobalData } from '../../../utils'
+import { getProductDetailUrl } from '../../../utils'
 
 export default function ProductTile(props) {
-  const { pageData } = useGlobalData()
   const {
     title = '',
     picture_url_main = '',
@@ -16,6 +15,7 @@ export default function ProductTile(props) {
     mak_paid_placement = false,
     isLazyLoad = true,
     isBundle,
+    pageData = {},
   } = props
 
   const classes = classNames('product-item', {
