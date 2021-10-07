@@ -179,15 +179,15 @@ export default [
   },
   {
     type: 'page',
-    name: 'Detail Page',
-    component: Detail,
-    variants: [{ name: 'Detail Page Example' }],
+    name: 'Smart Bundle Page',
+    component: SmartBundle,
+    variants: [{ name: 'Smart Bundle Example' }],
   },
   {
     type: 'page',
-    name: 'Smart Bundle Page',
-    component: SmartBundle,
-    variants: [{ name: 'Smart Bundle Page Example' }],
+    name: 'Detail Page',
+    component: Detail,
+    variants: [{ name: 'Detail Page Example' }],
   },
   {
     type: 'page',
