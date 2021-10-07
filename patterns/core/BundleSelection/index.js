@@ -12,9 +12,9 @@ function getErrorMessage({ errors, slots, t }) {
   return t(error.code)(slot.product.title)
 }
 
-export default function BundleSelection(props) {
+function BundleSelection(props) {
   const { t } = useTranslation()
-  const { config, errors = {} } = props
+  const { config = {}, errors = {} } = props
   const { slots = [], isComplete } = config
   const error = getErrorMessage({ errors, slots, t })
 
@@ -36,3 +36,6 @@ export default function BundleSelection(props) {
     </>
   )
 }
+
+export default BundleSelection
+export { default as bundleSelectionVariants } from './variants'

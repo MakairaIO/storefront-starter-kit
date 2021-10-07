@@ -37,6 +37,7 @@ import ContactForm, { contactFormVariants } from '../patterns/core/ContactForm'
 import Home from './examplePages/Home'
 import Listing from './examplePages/Listing'
 import Detail from './examplePages/Detail'
+import SmartBundle from './examplePages/SmartBundle'
 import ErrorPage from '../patterns/core/ErrorPage'
 
 /* Add project specific imports here */
@@ -181,6 +182,12 @@ export default [
     name: 'Detail Page',
     component: Detail,
     variants: [{ name: 'Detail Page Example' }],
+  },
+  {
+    type: 'page',
+    name: 'Smart Bundle Page',
+    component: SmartBundle,
+    variants: [{ name: 'Smart Bundle Page Example' }],
   },
   {
     type: 'page',
