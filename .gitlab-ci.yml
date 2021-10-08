@@ -15,7 +15,7 @@ deploy-stage:
   image: makaira/gitlab-ci-git-push
   stage: deploy
   only:
-    - stable
+    - stage
   script:
     - git-push ssh://dokku@preview.makaira.cloud:22/stage
   tags:
