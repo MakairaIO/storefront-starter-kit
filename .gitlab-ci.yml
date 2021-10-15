@@ -5,7 +5,7 @@ deploy-whitelabel:
   image: makaira/gitlab-ci-git-push
   stage: deploy
   only:
-    - master
+    - stable
   script:
     - git-push ssh://dokku@production.makaira.cloud:22/whitelabel
   tags:
@@ -15,7 +15,7 @@ deploy-stage:
   image: makaira/gitlab-ci-git-push
   stage: deploy
   only:
-    - master
+    - stage
   script:
     - git-push ssh://dokku@preview.makaira.cloud:22/stage
   tags:
