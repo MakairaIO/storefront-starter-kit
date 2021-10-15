@@ -38,6 +38,8 @@ export { default as BrowserHintPage } from './core/BrowserHintPage'
 export { default as ContactForm } from './core/ContactForm'
 
 /* Add project specific patterns here */
-export { default as Header } from './/Header'
+export { default as Header } from './Header'
 export { default as ProductDetailInformation } from './ProductDetailInformation'
 export { default as ProductList } from './ProductList'
+export { default as CartModal } from './CartModal'
+export { default as ErrorModal } from './ErrorModal'

@@ -7,7 +7,7 @@ export default function ProductActions(props) {
 
   return (
     <div className="product-item__actions">
-      <Button variant="primary" onClick={() => addToCart(id)}>
+      <Button variant="primary" onClick={() => addToCart({ id })}>
         {t('PRODUCT_TILE_ADD_TO_CART')}
       </Button>
     </div>

@@ -1,8 +1,8 @@
-export {
-  default as GlobalDataContext,
-  GlobalDataProvider,
-  useGlobalData,
-} from './core/GlobalDataProvider'
+// export {
+//   default as GlobalDataContext,
+//   GlobalDataProvider,
+//   useGlobalData,
+// } from './core/GlobalDataProvider'
 export {
   default as ConfigurationContext,
   ConfigurationProvider,
@@ -13,11 +13,11 @@ export {
   TranslationProvider,
   useTranslation,
 } from './core/TranslationProvider'
-export {
-  default as AbTestingContext,
-  AbTestingProvider,
-  useAbTesting,
-} from './core/AbTestingProvider'
+// export {
+//   default as AbTestingContext,
+//   AbTestingProvider,
+//   useAbTesting,
+// } from './core/AbTestingProvider'
 export { default as useLazyLoading } from './core/useLazyLoading'
 export { default as getClientInformation } from './core/getClientInformation'
 export { default as logError } from './core/logError'
@@ -67,3 +67,14 @@ export { default as getProductDetailUrl } from './core/getProductDetailUrl'
 
 /* Add project specific utils here */
 export { default as addToCart } from './addToCart'
+export { default as dispatchUpdateCartEvent } from './dispatchUpdateCartEvent'
+export {
+  default as GlobalDataContext,
+  GlobalDataProvider,
+  useGlobalData,
+} from './GlobalDataProvider'
+export {
+  default as AbTestingContext,
+  AbTestingProvider,
+  useAbTesting,
+} from './core/AbTestingProvider'

@@ -73,9 +73,9 @@ export default {
   CONTACT_FORM_SALUTATION_FEMALE: 'Frau',
   CONTACT_FORM_FIRST_NAME: 'Vorname',
   CONTACT_FORM_SURNAME: 'Nachname',
-  CONTACT_FORM_EMAIL: 'Email',
-  CONTACT_FORM_SUBJECT: 'Gegenstand',
-  CONTACT_FORM_MESSAGE: 'Botschaft',
+  CONTACT_FORM_EMAIL: 'E-Mail-Adresse',
+  CONTACT_FORM_SUBJECT: 'Betreff',
+  CONTACT_FORM_MESSAGE: 'Nachricht',
   CONTACT_FORM_SEND_BUTTON: 'Senden',
   CONTACT_FORM_STATUS_SUCCESS: 'Ihre Nachricht wurde gesendet.',
   CONTACT_FORM_STATUS_FAILURE:
@@ -83,4 +83,8 @@ export default {
   DELETE_SLOT: 'Slot löschen',
   INCOMPATIBLE_PRODUCT: (product) =>
     `Produkt ${product} ist für dieses set nicht gültig`,
+  CART_MODAL: 'Der Artikel wurde zum Warenkorb hinzugefügt.',
+  CART_MODAL_BUTTON: 'Zum Warenkorb',
+  CART_MODAL_CONTINUE_BUTTON: 'Weiter einkaufen',
+  CART_ERROR: 'Der Artikel konnte nicht dem Warenkorb hinzugefügt werden.',
 }

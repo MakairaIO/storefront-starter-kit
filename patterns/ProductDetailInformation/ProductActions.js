@@ -1,11 +1,11 @@
-import { Button, Dropdown } from '..'
-import { useTranslation, addToCart } from '../../utils'
 import { useState } from 'react'
+import { Button, Dropdown } from '..'
+import { useTranslation } from '../../utils'
 
-// TODO: Add functionality (add-to-wishlist, add-to-cart etc.)
+// TODO: Add functionality (add-to-wishlist etc.)
 export default function ProductActions(props) {
-  const { id } = props['makaira-product']
   const { t } = useTranslation()
+  const { bundles, addToBundle, addToCart, id } = props
   const [quantity, setQuantity] = useState(1)
 
   const quantities = [
@@ -26,19 +26,29 @@ export default function ProductActions(props) {
       <Dropdown
         id="sizeVariant"
         options={quantities}
+        value={quantity}
         onChange={({ value }) => setQuantity(value)}
         className="product-detail-information__quantity-select"
-        value={quantity}
       />
 
       <Button
         variant="primary-alt"
         icon="cart"
         iconPosition="left"
-        onClick={() => addToCart(id, quantity)}
+        onClick={() => addToCart({ id, quantity })}
       >
         {t('PRODUCT_DETAIL_ADD_TO_CART')}
       </Button>
+
+      {bundles && bundles.length && (
+        <Button
+          variant="primary"
+          className="product-detail-information__add-bundle"
+          onClick={addToBundle}
+        >
+          {t('PRODUCT_DETAIL_ADD_TO_BUNDLE')}
+        </Button>
+      )}
     </div>
   )
 }

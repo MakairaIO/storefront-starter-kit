@@ -1,18 +1,10 @@
 import { Button, FormattedPrice } from '..'
 import { useTranslation } from '../../utils'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 // TODO: Remove hard-coded implementation
-export default function Actions() {
+export default function Actions({ cart }) {
   const { t } = useTranslation()
-  const [cart, setCart] = useState({})
-
-  useEffect(() => {
-    setCart(JSON.parse(localStorage.getItem('cart')))
-    window.addEventListener('storage', () => {
-      setCart(JSON.parse(localStorage.getItem('cart')))
-    })
-  }, [])
 
   return (
     <>
@@ -49,10 +41,10 @@ export default function Actions() {
           isInternalRoute={true}
         >
           <span className="header__basket-bubble">
-            {cart?.items?.length | 0}
+            {cart?.items?.length || 0}
           </span>
 
-          <FormattedPrice price={cart?.totalIncVat | 0} />
+          <FormattedPrice price={cart?.totalIncVat || 0} />
         </Button>
       </div>
     </>
