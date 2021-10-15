@@ -23,7 +23,9 @@ const CartModal = (props) => {
           >
             {t('CART_MODAL_CONTINUE_BUTTON')}
           </Button>
-          <Button href="/basket">{t('CART_MODAL_BUTTON')}</Button>
+          <Button href={`${process.env.FAILOVER_URL}/shop/cart`}>
+            {t('CART_MODAL_BUTTON')}
+          </Button>
         </div>
       </div>
     </Modal>

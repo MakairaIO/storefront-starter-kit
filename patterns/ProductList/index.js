@@ -3,7 +3,7 @@ import FilterButton from './FilterButton'
 import FilterResetButton from './FilterResetButton'
 import Sorter from './Sorter'
 import List from './List'
-import { ProductListFilter } from '..'
+import { CartModal, ErrorModal, ProductListFilter } from '..'
 import {
   getNumberOfActiveFilters,
   dispatchShowOverlayEvent,
@@ -15,7 +15,12 @@ class ProductList extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { isMobileFilterVisible: false, isLoading: false }
+    this.state = {
+      isMobileFilterVisible: false,
+      isLoading: false,
+      showErrorModal: false,
+      showSuccessModal: false,
+    }
   }
 
   componentDidMount() {
@@ -53,6 +58,22 @@ class ProductList extends Component {
     this.handleFormSubmit()
   }
 
+  handleAddToCart = async (id) => {
+    this.setState({ loadingProduct: id })
+
+    const success = await this.props.addToCart({ id })
+
+    this.setState({
+      showErrorModal: !success,
+      showSuccessModal: success,
+      loadingProduct: null,
+    })
+  }
+
+  handleModalClose = () => {
+    this.setState({ showErrorModal: false, showSuccessModal: false })
+  }
+
   render() {
     const {
       products = [],
@@ -62,7 +83,6 @@ class ProductList extends Component {
       totalProductCount = 0,
       isBundle = false,
       addToBundle,
-      pageData,
     } = this.props
 
     const numberOfActiveFilters = getNumberOfActiveFilters({ aggregations })
@@ -105,9 +125,19 @@ class ProductList extends Component {
             isBundle={isBundle}
             addToBundle={addToBundle}
             isLoading={this.state.isLoading}
-            pageData={pageData}
+            addToCart={this.handleAddToCart}
+            loadingProduct={this.state.loadingProduct}
           />
         </div>
+
+        <CartModal
+          isVisible={this.state.showSuccessModal}
+          closeModal={this.handleModalClose}
+        />
+        <ErrorModal
+          isVisible={this.state.showErrorModal}
+          closeModal={this.handleModalClose}
+        />
       </section>
     )
   }

@@ -5,7 +5,7 @@ import { useTranslation } from '../../utils'
 // TODO: Add functionality (add-to-wishlist etc.)
 export default function ProductActions(props) {
   const { t } = useTranslation()
-  const { bundles, addToBundle, addToCart, id } = props
+  const { bundles, addToBundle, addToCart } = props
   const [quantity, setQuantity] = useState(1)
 
   const quantities = [
@@ -35,7 +35,9 @@ export default function ProductActions(props) {
         variant="primary-alt"
         icon="cart"
         iconPosition="left"
-        onClick={() => addToCart({ id, quantity })}
+        onClick={() =>
+          addToCart({ id: props['makaira-product']?.id, quantity })
+        }
       >
         {t('PRODUCT_DETAIL_ADD_TO_CART')}
       </Button>

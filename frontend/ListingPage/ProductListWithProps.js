@@ -5,6 +5,7 @@ import {
   submitProductListForms,
   resetAllProductListFilters,
   redirectToBundle,
+  addToCart,
 } from '../../utils'
 
 export default function ProductListWithProps() {
@@ -31,6 +32,7 @@ export default function ProductListWithProps() {
     resetAllFilters: resetAllProductListFilters,
     queryParams: restParams,
     totalProductCount,
+    addToCart,
     addToBundle: (productId) => {
       const product = products.find((item) => item.id === productId) || {}
       redirectToBundle({ product: product.fields, params })
