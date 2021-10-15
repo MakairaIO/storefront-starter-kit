@@ -13,6 +13,7 @@ export default function List(props) {
     submitForms,
     isLoading = false,
     pageData,
+    loadingProduct,
   } = props
   const listRef = useRef(null)
 
@@ -34,6 +35,9 @@ export default function List(props) {
               key={entry.id}
               {...props}
               {...entry.fields}
+              isLoading={
+                loadingProduct === entry?.fields['makaira-product']?.id
+              }
             />
           )
         }

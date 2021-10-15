@@ -38,7 +38,7 @@ export default function Actions({ cart }) {
           href={`${process.env.FAILOVER_URL}/shop/cart`}
           className="header__action"
           iconPosition="left"
-          isInternalRoute={true}
+          isInternalRoute
         >
           <span className="header__basket-bubble">
             {cart?.items?.length || 0}
