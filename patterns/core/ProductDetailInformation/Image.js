@@ -8,6 +8,7 @@ import {
 
 import { Button } from '../..'
 import { useConfiguration } from '../../../utils'
+import Head from 'next/head'
 
 export default function Image(props) {
   const {
@@ -26,51 +27,56 @@ export default function Image(props) {
   })
 
   return (
-    <div className="product-detail-information__image">
-      {magnifier_type === 'tap' && (
-        <Magnifier
-          imageSrc={productImage}
-          imageAlt={title}
-          largeImageSrc={productImage}
-          mouseActivation={MOUSE_ACTIVATION.CLICK} // Optional
-          touchActivation={TOUCH_ACTIVATION.TAP} // Optional
-        />
-      )}
+    <>
+      <Head>
+        <link rel="preload" href={productImage} as="image" />
+      </Head>
+      <div className="product-detail-information__image">
+        {magnifier_type === 'tap' && (
+          <Magnifier
+            imageSrc={productImage}
+            imageAlt={title}
+            largeImageSrc={productImage}
+            mouseActivation={MOUSE_ACTIVATION.CLICK} // Optional
+            touchActivation={TOUCH_ACTIVATION.TAP} // Optional
+          />
+        )}
 
-      {magnifier_type === 'glass' && (
-        <GlassMagnifier
-          magnifierSize={'40%'}
-          square={true}
-          imageSrc={productImage}
-          imageAlt={title}
-          largeImageSrc={productImage}
-        />
-      )}
+        {magnifier_type === 'glass' && (
+          <GlassMagnifier
+            magnifierSize={'40%'}
+            square={true}
+            imageSrc={productImage}
+            imageAlt={title}
+            largeImageSrc={productImage}
+          />
+        )}
 
-      {magnifier_type === 'side_by_side' && (
-        <SideBySideMagnifier
-          imageSrc={productImage}
-          imageAlt={title}
-          largeImageSrc={productImage}
-          alwaysInPlace={false}
-          overlayOpacity={0.6}
-          switchSides={false}
-          zoomPosition="left"
-          zoomContainerBorder="1px solid #ccc"
-          fillAvailableSpace={false}
-          fillAlignTop={false}
-          fillGapLeft={0}
-          fillGapRight={10}
-          fillGapTop={10}
-          fillGapBottom={1}
-        />
-      )}
+        {magnifier_type === 'side_by_side' && (
+          <SideBySideMagnifier
+            imageSrc={productImage}
+            imageAlt={title}
+            largeImageSrc={productImage}
+            alwaysInPlace={false}
+            overlayOpacity={0.6}
+            switchSides={false}
+            zoomPosition="left"
+            zoomContainerBorder="1px solid #ccc"
+            fillAvailableSpace={false}
+            fillAlignTop={false}
+            fillGapLeft={0}
+            fillGapRight={10}
+            fillGapTop={10}
+            fillGapBottom={1}
+          />
+        )}
 
-      <Button
-        icon="search"
-        variant="icon-only"
-        className="product-detail-information__image-button"
-      />
-    </div>
+        <Button
+          icon="search"
+          variant="icon-only"
+          className="product-detail-information__image-button"
+        />
+      </div>
+    </>
   )
 }
