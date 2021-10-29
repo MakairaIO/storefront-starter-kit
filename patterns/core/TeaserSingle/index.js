@@ -5,7 +5,13 @@ import { Heading, Copytext, Button, ConditionalLink } from '../..'
 function TeaserSingle(props) {
   const pictureRef = useRef(null)
   const { getImageLink } = useConfiguration()
-  const { image = {}, content = {}, button = {}, link = '' } = props
+  const {
+    image = {},
+    content = {},
+    button = {},
+    link = '',
+    isLazyLoad = true,
+  } = props
   const { heading = '', text = '' } = content
 
   const imageLink = getImageLink({ source: image.src })
@@ -16,7 +22,11 @@ function TeaserSingle(props) {
     <section className="single-teaser">
       <ConditionalLink href={link} className="single-teaser__image">
         <picture ref={pictureRef}>
-          <img data-src={imageLink} alt={image.alt} />
+          {isLazyLoad ? (
+            <img data-src={imageLink} alt={image.alt} />
+          ) : (
+            <img src={imageLink} alt={image.alt} />
+          )}
         </picture>
       </ConditionalLink>
 

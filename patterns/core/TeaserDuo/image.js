@@ -4,7 +4,7 @@ import { useConfiguration, useLazyLoading } from '../../../utils'
 export default function Image(props) {
   const { getImageLink } = useConfiguration()
   const pictureRef = useRef(null)
-  const { src = '', alt = '' } = props
+  const { src = '', alt = '', isLazyLoad = true } = props
 
   const imageLink = getImageLink({ source: src })
 
@@ -12,7 +12,11 @@ export default function Image(props) {
 
   return (
     <picture ref={pictureRef} className="duo-teaser__image">
-      <img data-src={imageLink} alt={alt} />
+      {isLazyLoad ? (
+        <img data-src={imageLink} alt={alt} />
+      ) : (
+        <img src={imageLink} alt={alt} />
+      )}
     </picture>
   )
 }
