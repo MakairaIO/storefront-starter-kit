@@ -7,17 +7,31 @@ import {
 } from 'react-image-magnifiers'
 
 import { Button } from '../..'
+import { useConfiguration } from '../../../utils'
 
 export default function Image(props) {
-  const { title = '', picture_url_main = '', magnifier_type = 'tap' } = props
+  const {
+    title = '',
+    picture_url_main = '',
+    magnifier_type = 'glass',
+    images = [],
+  } = props
+
+  const { getImageLink } = useConfiguration()
+
+  const productImage = getImageLink({
+    source: images.length > 0 ? images[0] : picture_url_main,
+    format: 'auto',
+    height: 600,
+  })
 
   return (
     <div className="product-detail-information__image">
       {magnifier_type === 'tap' && (
         <Magnifier
-          imageSrc={picture_url_main}
+          imageSrc={productImage}
           imageAlt={title}
-          largeImageSrc={picture_url_main}
+          largeImageSrc={productImage}
           mouseActivation={MOUSE_ACTIVATION.CLICK} // Optional
           touchActivation={TOUCH_ACTIVATION.TAP} // Optional
         />
@@ -27,17 +41,17 @@ export default function Image(props) {
         <GlassMagnifier
           magnifierSize={'40%'}
           square={true}
-          imageSrc={picture_url_main}
+          imageSrc={productImage}
           imageAlt={title}
-          largeImageSrc={picture_url_main}
+          largeImageSrc={productImage}
         />
       )}
 
       {magnifier_type === 'side_by_side' && (
         <SideBySideMagnifier
-          imageSrc={picture_url_main}
+          imageSrc={productImage}
           imageAlt={title}
-          largeImageSrc={picture_url_main}
+          largeImageSrc={productImage}
           alwaysInPlace={false}
           overlayOpacity={0.6}
           switchSides={false}

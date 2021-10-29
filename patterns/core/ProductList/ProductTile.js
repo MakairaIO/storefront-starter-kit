@@ -3,7 +3,7 @@ import ProductPrices from './ProductPrices'
 import ProductActions from './ProductActions'
 import Ribbon from './Ribbon'
 import classNames from 'classnames'
-import { getProductDetailUrl } from '../../../utils'
+import { getProductDetailUrl, useConfiguration } from '../../../utils'
 
 export default function ProductTile(props) {
   const {
@@ -16,7 +16,10 @@ export default function ProductTile(props) {
     isLazyLoad = true,
     isBundle,
     pageData = {},
+    images = [],
   } = props
+
+  const { getImageLink } = useConfiguration()
 
   const classes = classNames('product-item', {
     ['product-item--highlight']: mak_paid_placement,
@@ -33,6 +36,12 @@ export default function ProductTile(props) {
     }
   }
 
+  const productImage = getImageLink({
+    source: images.length > 0 ? images[0] : picture_url_main,
+    format: 'auto',
+    height: 228,
+  })
+
   const productUrl = getProductDetailUrl({ url, pageData })
 
   return (
@@ -40,9 +49,9 @@ export default function ProductTile(props) {
       <Link href={productUrl} onClick={onClickProduct}>
         <picture className="product-item__image">
           {isLazyLoad ? (
-            <img data-src={picture_url_main} alt={title} height="228" />
+            <img data-src={productImage} alt={title} height="228" />
           ) : (
-            <img src={picture_url_main} alt={title} />
+            <img src={productImage} alt={title} height="228" />
           )}
         </picture>
 
