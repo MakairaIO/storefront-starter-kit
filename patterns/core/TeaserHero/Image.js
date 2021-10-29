@@ -6,7 +6,7 @@ export default function Image(props) {
   const pictureRef = useRef(null)
   const { src = '', alt = '', isLazyLoad = true } = props
 
-  const imageLink = getImageLink({ source: src })
+  const imageLink = getImageLink({ source: src, format: 'auto' })
 
   useLazyLoading({ ref: pictureRef, dependency: src })
 
