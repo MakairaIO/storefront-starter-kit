@@ -88,6 +88,19 @@ $breakpoint-huge = 1200px
     @media (min-width $breakpoint-small)
       // max-width 100%
 
+  > div
+    height 100%
+
+    > div
+      height 100%
+      display flex
+
+    > div > img
+      max-height 100%
+      max-width 100%
+      margin auto
+      width auto !important
+
 .product-detail-information__image-button
   position absolute
   bottom 1.2rem

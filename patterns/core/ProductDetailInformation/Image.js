@@ -14,7 +14,7 @@ export default function Image(props) {
   const {
     title = '',
     picture_url_main = '',
-    magnifier_type = 'glass',
+    magnifier_type = 'tap',
     images = [],
   } = props
 
@@ -24,6 +24,11 @@ export default function Image(props) {
     source: images.length > 0 ? images[0] : picture_url_main,
     format: 'auto',
     height: 600,
+  })
+
+  const imageLinkLarge = getImageLink({
+    source: images[0],
+    format: 'auto',
   })
 
   return (
@@ -36,7 +41,7 @@ export default function Image(props) {
           <Magnifier
             imageSrc={productImage}
             imageAlt={title}
-            largeImageSrc={productImage}
+            largeImageSrc={imageLinkLarge}
             mouseActivation={MOUSE_ACTIVATION.CLICK} // Optional
             touchActivation={TOUCH_ACTIVATION.TAP} // Optional
           />
@@ -48,7 +53,7 @@ export default function Image(props) {
             square={true}
             imageSrc={productImage}
             imageAlt={title}
-            largeImageSrc={productImage}
+            largeImageSrc={imageLinkLarge}
           />
         )}
 
@@ -56,7 +61,7 @@ export default function Image(props) {
           <SideBySideMagnifier
             imageSrc={productImage}
             imageAlt={title}
-            largeImageSrc={productImage}
+            largeImageSrc={imageLinkLarge}
             alwaysInPlace={false}
             overlayOpacity={0.6}
             switchSides={false}
