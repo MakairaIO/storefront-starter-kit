@@ -9,12 +9,11 @@ export default function Banner(props) {
 
   let imageLinkMobile
   if (imageMobile) {
-    imageLinkMobile = getImageLink({ source: imageMobile, format: 'auto' })
+    imageLinkMobile = getImageLink({ source: imageMobile })
   }
 
   const imageLinkDesktop = getImageLink({
     source: imageDesktop,
-    format: 'auto',
   })
 
   return (

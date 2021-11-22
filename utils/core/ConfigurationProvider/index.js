@@ -40,6 +40,11 @@ class ConfigurationProvider extends Component {
 
     const { cloudName, resourceType, fileName } = source
 
+    // Use cloudinary format "auto" unless otherwise stated
+    if (rest.format === undefined) {
+      rest.format = 'auto'
+    }
+
     const transformations = this.getCloudinaryTransformations(rest)
 
     // Example: https://res.cloudinary.com/makairafm/image/upload/<transformations>v1592420992/<fileName>

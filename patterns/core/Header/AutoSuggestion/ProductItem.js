@@ -16,7 +16,6 @@ function ProductItem(props) {
 
   const productImage = getImageLink({
     source: images.length > 0 ? images[0] : src,
-    format: 'auto',
     height: 50,
   })
 

@@ -14,7 +14,7 @@ function TeaserSingle(props) {
   } = props
   const { heading = '', text = '' } = content
 
-  const imageLink = getImageLink({ source: image.src, format: 'auto' })
+  const imageLink = getImageLink({ source: image.src })
 
   useLazyLoading({ ref: pictureRef, dependency: image.src })
 

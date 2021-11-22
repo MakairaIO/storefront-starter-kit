@@ -40,7 +40,6 @@ function Teaser(props) {
 
   const productImage = getImageLink({
     source: images.length > 0 ? images[0] : picture_url_main,
-    format: 'auto',
     height: 289,
   })
 

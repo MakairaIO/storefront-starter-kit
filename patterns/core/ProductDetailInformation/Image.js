@@ -22,13 +22,11 @@ export default function Image(props) {
 
   const productImage = getImageLink({
     source: images.length > 0 ? images[0] : picture_url_main,
-    format: 'auto',
     height: 600,
   })
 
   const imageLinkLarge = getImageLink({
     source: images[0],
-    format: 'auto',
   })
 
   return (

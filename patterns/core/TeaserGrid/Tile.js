@@ -33,7 +33,7 @@ export default function Tile(props) {
   } = props
   const { src = '', alt = '' } = image
 
-  const imageLink = getImageLink({ source: src, format: 'auto' })
+  const imageLink = getImageLink({ source: src })
 
   const classes = classNames('teaser-grid__tile', className)
 

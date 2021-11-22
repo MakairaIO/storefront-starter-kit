@@ -10,7 +10,7 @@ function Image(props) {
   const imgUrl = picture_url_main
     ? picture_url_main
     : contentImage
-    ? getImageLink({ source: contentImage, format: 'auto' })
+    ? getImageLink({ source: contentImage })
     : '/assets/images/bundleImage/placeholder.png'
 
   return (

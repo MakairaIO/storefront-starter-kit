@@ -7,7 +7,7 @@ import ProductTile from '../ProductList/ProductTile'
 
 const ProductImage = ({ image }) => {
   const { getImageLink } = useConfiguration()
-  const imageLink = getImageLink({ source: image, format: 'auto' })
+  const imageLink = getImageLink({ source: image })
 
   return (
     <img className="product-image" src={imageLink} alt={'Discovery Image'} />
