@@ -35,7 +35,7 @@ export default function Actions({ cart }) {
         </Button>
         <Button
           icon="cart"
-          href={`${process.env.FAILOVER_URL}/shop/cart`}
+          href="/shop/cart"
           className="header__action"
           iconPosition="left"
           isInternalRoute
