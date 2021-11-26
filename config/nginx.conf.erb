@@ -43,6 +43,9 @@ http {
 		# recursive_error_pages 		on;
 
 		location / {
+			# error_page to failover to flour
+            error_page 404 500 501 502 503 504 505 506 507 508 510 511 = @failover_flour;
+
 			# Redirect all traffic to HTTPS
 			if ($http_x_forwarded_proto != "https") {
 			  return 301 https://$host$request_uri;
@@ -51,9 +54,6 @@ http {
 			# Enable password protection
 			auth_basic           "Access Restricted";
 			auth_basic_user_file /app/config/.htpasswd;
-
-			# # Enable error_page if you want to use error page failover
-			# error_page 404 500 501 502 503 504 505 506 507 508 510 511 = @failover_target;
 
 			proxy_set_header      Host $http_host;
 			proxy_set_header      X-Real-IP $http_x_real_ip;
@@ -69,18 +69,18 @@ http {
 			proxy_pass 						http://app_server;
 		}
 
-		# # Failover target
-		# location @failover_target {
-		# 	proxy_pass            http://example.com; # Please put the url of your shop system here
-		# 	proxy_read_timeout    120s;
-		# 	proxy_connect_timeout 15s;
-		# 	proxy_send_timeout    90s;
-		# 	proxy_set_header      Host "SHOP.makria.io"; # Please put the address of this storefront here
-		# 	proxy_set_header      X-Real-IP $http_x_real_ip;
-		# 	proxy_set_header      X-Forwarded-For $proxy_add_x_forwarded_for;
-		# 	proxy_set_header      X-Forwarded-Proto $http_x_forwarded_proto;
-		# 	proxy_set_header      HTTPS $http_https;
-		# }
+		# Failover target
+		location @failover_flour {
+			proxy_pass            <%= ENV["FAILOVER_URL"] %>;
+			proxy_read_timeout    120s;
+			proxy_connect_timeout 15s;
+			proxy_send_timeout    90s;
+			proxy_set_header      Host "<%= ENV["SHOP_HOST"] %>"; # Please put the address of this storefront here
+			proxy_set_header      X-Real-IP $http_x_real_ip;
+			proxy_set_header      X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header      X-Forwarded-Proto $http_x_forwarded_proto;
+			proxy_set_header      HTTPS $http_https;
+		}
 
 		# # Custom location with direct failover
 		# location ~* ^(/api/) {
