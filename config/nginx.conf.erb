@@ -36,21 +36,19 @@ http {
 		keepalive_timeout 5;
 
 		# # Enable this part if you want to use error page failover
-		# proxy_busy_buffers_size   512k;
-		# proxy_buffers   					4 512k;
-		# proxy_buffer_size   			256k;
-		# proxy_intercept_errors 		on;
-		# recursive_error_pages 		on;
+		proxy_busy_buffers_size   512k;
+		proxy_buffers   					4 512k;
+		proxy_buffer_size   			256k;
+		proxy_intercept_errors 		on;
+		recursive_error_pages 		on;
 
 		location / {
-			# error_page to failover to flour
-            error_page 404 500 501 502 503 504 505 506 507 508 510 511 = @failover_flour;
-
-			# Redirect all traffic to HTTPS
-			if ($http_x_forwarded_proto != "https") {
-			  return 301 https://$host$request_uri;
-			}
-
+			error_page 404 500 501 502 503 504 505 506 507 508 510 511 = @failover_to_flour;
+			if ($http_x_forwarded_proto != https) { return 301 https://$host$request_uri;}
+			proxy_pass            http://app_server;
+			proxy_read_timeout    120s;
+			proxy_connect_timeout 2s;
+			proxy_send_timeout    90s;
 			proxy_set_header      Host $http_host;
 			proxy_set_header      X-Real-IP $http_x_real_ip;
 			proxy_set_header      X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -60,27 +58,22 @@ http {
 			proxy_set_header      Connection "";
 			proxy_set_header      Proxy "";
 			proxy_set_header      X-Country-Code $http_x_country_code;
-
-			proxy_redirect 				off;
-			proxy_pass 						http://app_server;
 		}
 
-		# Failover target
-		location @failover_flour {
+		location @failover_to_flour {
 			proxy_pass            <%= ENV["FAILOVER_URL"] %>;
 			proxy_read_timeout    120s;
 			proxy_connect_timeout 15s;
 			proxy_send_timeout    90s;
-			proxy_set_header      Host "<%= ENV["SHOP_HOST"] %>"; # Please put the address of this storefront here
+			proxy_set_header      Host $host;
 			proxy_set_header      X-Real-IP $http_x_real_ip;
 			proxy_set_header      X-Forwarded-For $proxy_add_x_forwarded_for;
 			proxy_set_header      X-Forwarded-Proto $http_x_forwarded_proto;
 			proxy_set_header      HTTPS $http_https;
 		}
 
-		# # Custom location with direct failover
-		# location ~* ^(/api/) {
-		# 	try_files /dev/null @failover_target;
-		# }
+		location ~* ^(/shop/) {
+            try_files /dev/null @failover_to_flour;
+        }
 	}
 }
