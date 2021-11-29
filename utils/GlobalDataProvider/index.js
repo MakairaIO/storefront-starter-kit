@@ -47,17 +47,14 @@ class GlobalDataProvider extends Component {
   }
 
   fetchCart = async () => {
-    const response = await fetch(
-      `${process.env.FAILOVER_URL}/public/flourshop/posbasket`,
-      {
-        credentials: 'include',
-        method: 'GET',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-      }
-    )
+    const response = await fetch('/public/flourshop/posbasket', {
+      credentials: 'include',
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
     const cart = await response.json()
 
     this.updateCart(cart)
