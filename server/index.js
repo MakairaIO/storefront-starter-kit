@@ -7,6 +7,8 @@ const parser = require('ua-parser-js')
 const bodyParser = require('body-parser')
 const sendSendGridEmail = require('../utils/core/sendSendGridEmail')
 
+const logError = require('./utils/logError')
+
 const dev = process.env.NODE_ENV !== 'production'
 const port = process.env.PORT || process.env.NODE_PORT || 5000
 const app = next({ dev })
@@ -58,6 +60,11 @@ app
       server.get(lang.searchRoute, (req, res) => {
         app.render(req, res, '/frontend/search', req.query)
       })
+    })
+
+    server.post('/log-error', (req, res) => {
+      logError(req.body)
+      res.json()
     })
 
     /**
