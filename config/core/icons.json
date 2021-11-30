@@ -55,5 +55,8 @@
   },
   "Envelope": {
     "value": "envelope"
+  },
+  "Spinner": {
+    "value": "spinner"
   }
 }

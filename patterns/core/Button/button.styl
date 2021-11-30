@@ -118,6 +118,7 @@
       .button__text
         margin-left 00
 
+  &--loading,
   &--icon
     display inline-flex
     align-items center
@@ -174,6 +175,7 @@
 .button__text
   width 100%
 
+.button--loading,
 .button--icon
   .icon
     // styles for icon-only buttons
@@ -198,3 +200,14 @@
 
 a.button
   text-decoration none
+
+.button--loading
+  .icon
+    svg
+      animation rotate-center 1.3s infinite ease-in-out
+
+@keyframes rotate-center
+  0%
+    transform rotate(0)
+  100%
+    transform rotate(360deg)

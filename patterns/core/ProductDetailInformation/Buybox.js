@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Dropdown } from '../..'
 import ProductPrices from './ProductPrices'
 import ProductAvailability from './ProductAvailability'
@@ -6,6 +7,14 @@ import ProductActions from './ProductActions'
 // TODO: Remove hard-coded implementation
 export default function Buybox(props) {
   const { chooseVariant = () => {}, variantsAttributeStr = [] } = props
+  const [loading, setLoading] = useState(false)
+
+  const handleAddToCart = () => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 3000)
+  }
 
   return (
     <div className="product-detail-information__buybox">
@@ -29,7 +38,11 @@ export default function Buybox(props) {
         </div>
       </div>
 
-      <ProductActions {...props} />
+      <ProductActions
+        {...props}
+        loading={loading}
+        addToCart={handleAddToCart}
+      />
     </div>
   )
 }

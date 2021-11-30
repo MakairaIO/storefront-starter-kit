@@ -130,4 +130,28 @@ export default [
       disabled: true,
     },
   },
+  {
+    name: 'Secondary loading',
+    props: {
+      children: 'Discover this',
+      variant: 'secondary',
+      loading: true,
+    },
+  },
+  {
+    name: 'Primary loading',
+    props: {
+      children: 'Discover this',
+      variant: 'primary',
+      loading: true,
+    },
+  },
+  {
+    name: 'Icon only loading',
+    props: {
+      variant: 'icon-only',
+      icon: 'bars',
+      loading: true,
+    },
+  },
 ]
