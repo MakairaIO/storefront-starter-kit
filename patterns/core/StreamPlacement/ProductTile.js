@@ -1,6 +1,7 @@
 import { Heading, Text, Link } from '../..'
 import ProductPrices from './ProductPrices'
 import ProductActions from './ProductActions'
+import { useConfiguration } from '../../../utils'
 
 export default function ProductTile(props) {
   const {
@@ -8,13 +9,21 @@ export default function ProductTile(props) {
     picture_url_main = '',
     manufacturer_title = '',
     url = '',
+    images = [],
   } = props
+
+  const { getImageLink } = useConfiguration()
+
+  const productImage = getImageLink({
+    source: images.length > 0 ? images[0] : picture_url_main,
+    height: 162,
+  })
 
   return (
     <article className="stream-placement-item">
       <Link href={url}>
         <picture className="stream-placement-item__image">
-          <img data-src={picture_url_main} alt={title} />
+          <img data-src={productImage} alt={title} />
         </picture>
 
         <Heading

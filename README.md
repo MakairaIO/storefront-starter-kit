@@ -4,7 +4,7 @@
 
 ### Prerequisites
 
-* [Node.js](https://nodejs.org/) v13.9.0
+* [Node.js](https://nodejs.org/) v16.13.0
 
 
 ### Installation

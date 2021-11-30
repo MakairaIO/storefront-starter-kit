@@ -35,11 +35,12 @@ export default function ProductActions(props) {
         loading={loading}
         disabled={loading}
         onClick={addToCart}
+        className="product-detail-information__add-cart"
       >
         {t('PRODUCT_DETAIL_ADD_TO_CART')}
       </Button>
 
-      {bundles && bundles.length && (
+      {bundles && bundles.length ? (
         <Button
           variant="primary"
           className="product-detail-information__add-bundle"
@@ -47,7 +48,7 @@ export default function ProductActions(props) {
         >
           {t('PRODUCT_DETAIL_ADD_TO_BUNDLE')}
         </Button>
-      )}
+      ) : null}
     </div>
   )
 }
