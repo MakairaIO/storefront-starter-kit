@@ -18,6 +18,7 @@ export {
   AbTestingProvider,
   useAbTesting,
 } from './core/AbTestingProvider'
+export { default as translations } from './core/translations'
 export { default as useLazyLoading } from './core/useLazyLoading'
 export { default as getClientInformation } from './core/getClientInformation'
 export { default as logError } from './core/logError'
