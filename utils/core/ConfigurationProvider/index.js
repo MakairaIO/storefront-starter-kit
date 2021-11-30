@@ -31,6 +31,10 @@ class ConfigurationProvider extends Component {
     }
   }
 
+  getVideoLink = (options = {}) => {
+    return this.getCloudinaryLink(options)
+  }
+
   getS3Link = (options) => {
     const { source = '' } = options
 
@@ -93,7 +97,10 @@ class ConfigurationProvider extends Component {
   render() {
     return (
       <ConfigurationContext.Provider
-        value={{ getImageLink: this.getImageLink }}
+        value={{
+          getImageLink: this.getImageLink,
+          getVideoLink: this.getVideoLink,
+        }}
       >
         {this.props.children}
       </ConfigurationContext.Provider>
