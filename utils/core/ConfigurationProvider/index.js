@@ -20,7 +20,7 @@ class ConfigurationProvider extends Component {
     const { source } = options
 
     if (typeof source == 'string') {
-      return this.getS3Link(options)
+      return source.startsWith('https://') ? source : this.getS3Link(options)
     } else {
       // objects = cloudinary
       return this.getCloudinaryLink(options)
@@ -39,6 +39,11 @@ class ConfigurationProvider extends Component {
     const { source = {}, transformationString = '', ...rest } = options
 
     const { cloudName, resourceType, fileName } = source
+
+    // Use cloudinary format "auto" unless otherwise stated
+    if (rest.format === undefined) {
+      rest.format = 'auto'
+    }
 
     const transformations = this.getCloudinaryTransformations(rest)
 

@@ -27,11 +27,16 @@ export default function ProductActions({ bundles, addToBundle }) {
         className="product-detail-information__quantity-select"
       />
 
-      <Button variant="primary-alt" icon="cart" iconPosition="left">
+      <Button
+        variant="primary-alt"
+        icon="cart"
+        iconPosition="left"
+        className="product-detail-information__add-cart"
+      >
         {t('PRODUCT_DETAIL_ADD_TO_CART')}
       </Button>
 
-      {bundles && bundles.length && (
+      {bundles && bundles.length ? (
         <Button
           variant="primary"
           className="product-detail-information__add-bundle"
@@ -39,7 +44,7 @@ export default function ProductActions({ bundles, addToBundle }) {
         >
           {t('PRODUCT_DETAIL_ADD_TO_BUNDLE')}
         </Button>
-      )}
+      ) : null}
     </div>
   )
 }
