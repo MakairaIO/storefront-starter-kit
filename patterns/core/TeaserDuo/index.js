@@ -5,7 +5,7 @@ import Title from './title'
 import Overlay from './overlay'
 class TeaserDuo extends Component {
   render() {
-    const { leftTile = {}, rightTile = {} } = this.props
+    const { leftTile = {}, rightTile = {}, isLazyLoad = true } = this.props
 
     return (
       <section className="duo-teaser-box">
@@ -15,7 +15,7 @@ class TeaserDuo extends Component {
             className="duo-teaser__container"
           >
             <div className="duo-teaser__image-wrapper">
-              <Image {...leftTile.image} />
+              <Image {...leftTile.image} isLazyLoad={isLazyLoad} />
               <Title {...leftTile} />
             </div>
             <Overlay
@@ -31,7 +31,7 @@ class TeaserDuo extends Component {
             className="duo-teaser__container"
           >
             <div className="duo-teaser__image-wrapper">
-              <Image {...rightTile.image} />
+              <Image {...rightTile.image} isLazyLoad={isLazyLoad} />
               <Title {...rightTile} />
             </div>
             <Overlay

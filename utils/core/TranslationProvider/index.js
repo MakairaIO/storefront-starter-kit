@@ -1,5 +1,5 @@
 import React, { Component, useContext } from 'react'
-import { translations } from '../../index'
+import { translations } from '../..'
 
 const TranslationContext = React.createContext()
 

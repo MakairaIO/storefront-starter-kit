@@ -52,5 +52,11 @@
   },
   "Play Circle": {
     "value": "play-circle"
+  },
+  "Envelope": {
+    "value": "envelope"
+  },
+  "Spinner": {
+    "value": "spinner"
   }
 }

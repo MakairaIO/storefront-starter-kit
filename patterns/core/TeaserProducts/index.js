@@ -1,6 +1,10 @@
 import { useRef } from 'react'
 import classNames from 'classnames'
-import { useTranslation, useLazyLoading } from '../../../utils'
+import {
+  useTranslation,
+  useLazyLoading,
+  useConfiguration,
+} from '../../../utils'
 import { Heading, Copytext, Button } from '../..'
 
 function TeaserProducts(props) {
@@ -24,17 +28,25 @@ function TeaserProducts(props) {
 
 function Teaser(props) {
   const { t } = useTranslation()
+  const { getImageLink } = useConfiguration()
+
   const {
     title = '',
     manufacturer_title = '',
     picture_url_main = '',
     url = '',
+    images = [],
   } = props
+
+  const productImage = getImageLink({
+    source: images.length > 0 ? images[0] : picture_url_main,
+    height: 289,
+  })
 
   return (
     <div className="product-teaser__teaser">
       <picture className="product-teaser__teaser-image">
-        <img data-src={picture_url_main} alt={title} />
+        <img data-src={productImage} alt={title} />
       </picture>
 
       <p className="product-teaser__content">

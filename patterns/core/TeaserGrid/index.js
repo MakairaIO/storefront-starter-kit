@@ -4,7 +4,7 @@ import { useLazyLoading } from '../../../utils'
 import Tile from './Tile'
 
 function TeaserGrid(props) {
-  const { tiles = {}, variant = 'default' } = props
+  const { tiles = {}, variant = 'default', isLazyLoad = true } = props
   const { topRight, left, middle, bottomRight } = tiles
   const sectionRef = useRef(null)
 
@@ -14,13 +14,29 @@ function TeaserGrid(props) {
 
   return (
     <section ref={sectionRef} className={classes}>
-      <Tile {...topRight} className="teaser-grid__tile--top-right" />
+      <Tile
+        {...topRight}
+        isLazyLoad={isLazyLoad}
+        className="teaser-grid__tile--top-right"
+      />
 
-      <Tile {...left} className="teaser-grid__tile--left" />
+      <Tile
+        {...left}
+        isLazyLoad={isLazyLoad}
+        className="teaser-grid__tile--left"
+      />
 
-      <Tile {...bottomRight} className="teaser-grid__tile--bottom-right" />
+      <Tile
+        {...bottomRight}
+        isLazyLoad={isLazyLoad}
+        className="teaser-grid__tile--bottom-right"
+      />
 
-      <Tile {...middle} className="teaser-grid__tile--middle" />
+      <Tile
+        {...middle}
+        isLazyLoad={isLazyLoad}
+        className="teaser-grid__tile--middle"
+      />
     </section>
   )
 }

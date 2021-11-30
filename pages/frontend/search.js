@@ -11,10 +11,12 @@ import {
   GlobalDataProvider,
   ConfigurationProvider,
   TranslationProvider,
+  AbTestingProvider,
   fetchSearchResult,
   fetchMenuData,
   redirect,
-  getNumberOfActiveFilters,
+  redirectToDetailPageOnSingleHit,
+  redirectOnSearchRedirectHit,
 } from '../../utils'
 import ErrorPage from '../_error'
 
@@ -31,21 +33,13 @@ export default class Index extends Component {
         fetchMenuData(),
       ])
 
-      const { product = {} } = searchResult
-      const { aggregations = {} } = product
-
-      const hasActiveAggregations =
-        getNumberOfActiveFilters({ aggregations }) > 0
-
-      if (product.count == 1 && !hasActiveAggregations) {
-        const item = product.items[0]
-        const { url } = item.fields
-
-        redirect({ ctx, target: url, code: 302 })
-      }
+      redirectToDetailPageOnSingleHit({ ctx, searchResult })
+      redirectOnSearchRedirectHit({ ctx, searchResult })
 
       return { menuData, searchResult, params }
     } catch (error) {
+      console.error(error)
+
       if (res) {
         res.statusCode = 500
       }
@@ -70,13 +64,15 @@ export default class Index extends Component {
       <GlobalDataProvider {...this.props}>
         <ConfigurationProvider assetUrl={process.env.MAKAIRA_ASSET_URL}>
           <TranslationProvider language={language}>
-            <BaseLayout>
-              <HeaderWithProps />
+            <AbTestingProvider>
+              <BaseLayout>
+                <HeaderWithProps />
 
-              <SearchResultPage />
+                <SearchResultPage />
 
-              <FooterWithProps />
-            </BaseLayout>
+                <FooterWithProps />
+              </BaseLayout>
+            </AbTestingProvider>
           </TranslationProvider>
         </ConfigurationProvider>
       </GlobalDataProvider>

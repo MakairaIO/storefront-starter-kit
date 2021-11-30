@@ -3,6 +3,7 @@ import {
   useGlobalData,
   fetchRecommendationData,
   useTranslation,
+  redirectToBundle,
 } from '../../utils'
 import {
   ContentElements,
@@ -11,18 +12,19 @@ import {
 } from '../../patterns'
 
 function DetailPage() {
-  const { t } = useTranslation()
-  const { pageData } = useGlobalData()
-  const productDetailProps = { ...pageData.data.self }
+  const { t, language } = useTranslation()
+  const { pageData, params } = useGlobalData()
   const [products, setProducts] = useState([])
-  const productId = productDetailProps.id
+  const productId = pageData.data.self.id
 
   useEffect(() => {
     async function getProducts() {
       const response = await fetchRecommendationData({
         productId,
         recommendationId: 'similar-products',
+        language,
       })
+
       const recommendationProducts = response.items
       const formattedProduct = recommendationProducts.map(
         (product) => product.fields
@@ -30,11 +32,20 @@ function DetailPage() {
       setProducts(formattedProduct)
     }
     getProducts()
-  }, [productId])
+  }, [productId, language])
 
   const productPlacementProps = {
     heading: t('RECOMMENDATION_HEADING'),
     products,
+  }
+
+  const productDetailProps = {
+    ...pageData.data.self,
+    productId,
+    addToBundle: () => {
+      const product = pageData.data.self
+      redirectToBundle({ product, params })
+    },
   }
 
   return (

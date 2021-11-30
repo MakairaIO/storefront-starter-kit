@@ -62,7 +62,7 @@ $breakpoint-huge = 1200px
   line-height 3rem
 
 .product-detail-information__image
-  margin 0 -1.5rem 1.2rem // negative margin to accomodate for the 1.5rem padding of the container on the left/right
+  width 100%
   position relative
 
   @media (min-width $breakpoint-small)
@@ -87,6 +87,19 @@ $breakpoint-huge = 1200px
 
     @media (min-width $breakpoint-small)
       // max-width 100%
+
+  > div
+    height 100%
+
+    > div
+      height 100%
+      display flex
+
+    > div > img
+      max-height 100%
+      max-width 100%
+      margin auto
+      width auto !important
 
 .product-detail-information__image-button
   position absolute
@@ -192,9 +205,13 @@ $breakpoint-huge = 1200px
   display flex
   justify-content space-between
   margin-top 1.2rem
+  flex-wrap wrap
 
   @media (min-width $breakpoint-tiny)
     justify-content normal
+
+  @media (min-width $breakpoint-small)
+    flex-wrap unset
 
   @media (min-width $breakpoint-medium)
     flex 0 0 auto
@@ -236,3 +253,15 @@ $breakpoint-huge = 1200px
     @media (min-width $breakpoint-medium)
       column-gap 2rem
 
+.product-detail-information__add-bundle
+  flex-grow 2
+
+  @media (min-width $breakpoint-small)
+    flex-grow unset
+    margin-left 1rem
+
+.product-detail-information__add-cart
+  flex-grow 2
+
+  @media (min-width $breakpoint-tiny)
+    flex-grow unset

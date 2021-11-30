@@ -12,6 +12,9 @@ import ProductDetailInformation, {
 import ProductPlacement, {
   productPlacementVariants,
 } from '../patterns/core/ProductPlacement'
+import StreamPlacement, {
+  streamPlacementVariants,
+} from '../patterns/core/StreamPlacement'
 import Promotion, { promotionVariants } from '../patterns/core/Promotion'
 import TeaserHero, { teaserHeroVariants } from '../patterns/core/TeaserHero'
 import TeaserVideo, { teaserVideoVariants } from '../patterns/core/TeaserVideo'
@@ -29,10 +32,12 @@ import DiscoveryImage, {
 import MultiColumnText, {
   multiColumnTextVariants,
 } from '../patterns/core/MultiColumnText'
+import ContactForm, { contactFormVariants } from '../patterns/core/ContactForm'
 
 import Home from './examplePages/Home'
 import Listing from './examplePages/Listing'
 import Detail from './examplePages/Detail'
+import SmartBundle from './examplePages/SmartBundle'
 import ErrorPage from '../patterns/core/ErrorPage'
 
 /* Add project specific imports here */
@@ -95,6 +100,12 @@ export default [
   },
   {
     type: 'placeable',
+    name: 'Stream Placement',
+    component: StreamPlacement,
+    variants: streamPlacementVariants,
+  },
+  {
+    type: 'placeable',
     name: 'Discovery Image',
     component: DiscoveryImage,
     variants: discoveryImageVariants,
@@ -147,6 +158,12 @@ export default [
     component: MultiColumnText,
     variants: multiColumnTextVariants,
   },
+  {
+    type: 'placeable',
+    name: 'Contact Form',
+    component: ContactForm,
+    variants: contactFormVariants,
+  },
   /* CLI MARKER - PATTERN CONFIG - DO NOT REMOVE */
   {
     type: 'page',
@@ -159,6 +176,12 @@ export default [
     name: 'Listing Page',
     component: Listing,
     variants: [{ name: 'Listing Page Example' }],
+  },
+  {
+    type: 'page',
+    name: 'Smart Bundle Page',
+    component: SmartBundle,
+    variants: [{ name: 'Smart Bundle Example' }],
   },
   {
     type: 'page',

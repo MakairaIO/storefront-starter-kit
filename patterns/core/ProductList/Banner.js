@@ -12,7 +12,9 @@ export default function Banner(props) {
     imageLinkMobile = getImageLink({ source: imageMobile })
   }
 
-  const imageLinkDesktop = getImageLink({ source: imageDesktop })
+  const imageLinkDesktop = getImageLink({
+    source: imageDesktop,
+  })
 
   return (
     <ConditionalLink href={link} className="product-list__banner">

@@ -1,5 +1,7 @@
 import {
+  ErrorBoundary,
   ProductPlacement,
+  StreamPlacement,
   Promotion,
   TeaserHero,
   TeaserGrid,
@@ -9,6 +11,7 @@ import {
   TeaserDuo,
   TeaserVideo,
   DiscoveryImage,
+  ContactForm,
 } from '../..'
 
 export default function ContentElements(props) {
@@ -19,6 +22,7 @@ export default function ContentElements(props) {
   // Declare your additional content patterns here
   const components = {
     'product-placement': ProductPlacement,
+    'stream-placement': StreamPlacement,
     promotion: Promotion,
     'teaser-hero': TeaserHero,
     'teaser-grid': TeaserGrid,
@@ -28,6 +32,7 @@ export default function ContentElements(props) {
     'duo-teaser': TeaserDuo,
     'video-teaser': TeaserVideo,
     'discovery-image': DiscoveryImage,
+    'contact-form': ContactForm,
   }
 
   return (
@@ -37,7 +42,11 @@ export default function ContentElements(props) {
 
         if (!Component) return null
 
-        return <Component key={index} {...entry.properties.content} />
+        return (
+          <ErrorBoundary key={index}>
+            <Component {...entry.properties.content} />
+          </ErrorBoundary>
+        )
       })}
     </>
   )

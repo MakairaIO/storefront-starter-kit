@@ -24,7 +24,13 @@ function Content(props) {
 
 export default function Tile(props) {
   const { getImageLink } = useConfiguration()
-  const { image = {}, content = {}, link = '', className = '' } = props
+  const {
+    image = {},
+    content = {},
+    link = '',
+    className = '',
+    isLazyLoad = true,
+  } = props
   const { src = '', alt = '' } = image
 
   const imageLink = getImageLink({ source: src })
@@ -34,7 +40,11 @@ export default function Tile(props) {
   return (
     <ConditionalLink href={link} fallbackElement="div" className={classes}>
       <picture>
-        <img data-src={imageLink} alt={alt} />
+        {isLazyLoad ? (
+          <img data-src={imageLink} alt={alt} />
+        ) : (
+          <img src={imageLink} alt={alt} />
+        )}
       </picture>
 
       <Content {...content} link={link} />

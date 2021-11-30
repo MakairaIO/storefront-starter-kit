@@ -6,12 +6,14 @@ import {
   LandingPage,
   ListingPage,
   DetailPage,
+  BundlePage,
 } from '../../frontend'
 import { BaseLayout } from '../../patterns'
 import {
   GlobalDataProvider,
   ConfigurationProvider,
   TranslationProvider,
+  AbTestingProvider,
   fetchPageData,
   fetchMenuData,
   redirect,
@@ -21,6 +23,7 @@ import ErrorPage from '../_error'
 
 const pageComponents = {
   page: LandingPage,
+  bundle: BundlePage,
   category: ListingPage,
   manufacturer: ListingPage,
   'makaira-productgroup': DetailPage,
@@ -100,13 +103,15 @@ export default class Index extends Component {
       <GlobalDataProvider {...this.props}>
         <ConfigurationProvider assetUrl={process.env.MAKAIRA_ASSET_URL}>
           <TranslationProvider language={language}>
-            <BaseLayout>
-              <HeaderWithProps />
+            <AbTestingProvider>
+              <BaseLayout>
+                <HeaderWithProps />
 
-              <PageComponent />
+                <PageComponent />
 
-              <FooterWithProps />
-            </BaseLayout>
+                <FooterWithProps />
+              </BaseLayout>
+            </AbTestingProvider>
           </TranslationProvider>
         </ConfigurationProvider>
       </GlobalDataProvider>

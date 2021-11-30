@@ -12,6 +12,7 @@ export default function List(props) {
     totalProductCount = 0,
     submitForms,
     isLoading = false,
+    pageData,
   } = props
   const listRef = useRef(null)
 
@@ -25,9 +26,16 @@ export default function List(props) {
     <div ref={listRef} className={classes}>
       {products.map((entry) => {
         if (entry.isBanner) {
-          return <Banner key={entry.title} {...entry} />
+          return <Banner key={`banner.${entry.id}`} {...entry} />
         } else {
-          return <ProductTile key={entry.id} {...entry.fields} />
+          return (
+            <ProductTile
+              pageData={pageData}
+              key={entry.id}
+              {...props}
+              {...entry.fields}
+            />
+          )
         }
       })}
 

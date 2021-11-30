@@ -1,5 +1,6 @@
 import qs from 'qs'
 import isEmpty from 'lodash/isEmpty'
+import reduce from 'lodash/reduce'
 import { parseCookies, setCookie } from 'nookies'
 
 class RequestBuilder {
@@ -40,7 +41,7 @@ class RequestBuilder {
     } else {
       const userAgent = this.req.headers['user-agent']
 
-      setCookie(this.ctx, 'userAgent', userAgent)
+      setCookie(this.ctx, 'userAgent', userAgent, { path: '/' })
 
       return userAgent
     }
@@ -61,7 +62,7 @@ class RequestBuilder {
       ip = ip.split(',')[0]
       ip = this.anonymize(ip)
 
-      setCookie(this.ctx, 'ip', ip)
+      setCookie(this.ctx, 'ip', ip, { path: '/' })
 
       return ip
     }
@@ -84,7 +85,7 @@ class RequestBuilder {
       ('00' + hours).slice(-2) +
       ('00' + minutes).slice(-2)
 
-    setCookie(this.ctx, 'timezone', tz)
+    setCookie(this.ctx, 'timezone', tz, { path: '/' })
 
     return tz
   }
@@ -99,6 +100,26 @@ class RequestBuilder {
     if (!mak_experiments) return experiments
 
     return JSON.parse(mak_experiments)
+  }
+
+  getBundles() {
+    const { bundleId, slots, currentSlot } = this.prepareBundleParams()
+
+    if (!bundleId) return {}
+
+    let bundles = {}
+
+    bundles[bundleId] = reduce(
+      slots,
+      (bundleObject, currentSlot, key) => {
+        bundleObject[key] = currentSlot
+
+        return bundleObject
+      },
+      {}
+    )
+
+    return { bundles, currentSlot }
   }
 
   anonymize(ip) {
@@ -127,6 +148,42 @@ class RequestBuilder {
     const { count = process.env.PRODUCTS_PER_PAGE, offset = '0' } = this.params
 
     return [count, offset]
+  }
+
+  getCookiesByValue(key) {
+    try {
+      const cookies = parseCookies(this.ctx)
+
+      if (cookies[key]) {
+        return JSON.parse(cookies[key])
+      }
+
+      return {}
+    } catch (e) {
+      throw new Error(e.message)
+    }
+  }
+
+  prepareBundleParams() {
+    const bundleCookies = this.getCookiesByValue('bundle')
+    const { bundleId } = this.params
+    const seoUrl = this.ctx.query.seoUrl.replace(/\//g, '') // remove slashes
+
+    if (bundleId) {
+      this.setBundleCookie(this.params, seoUrl)
+      return this.params
+    } else if (bundleCookies[seoUrl]) {
+      return bundleCookies[seoUrl]
+    }
+
+    return {}
+  }
+
+  setBundleCookie(data, seoUrl) {
+    let cookieValue = this.getCookiesByValue('bundle')
+    cookieValue[seoUrl] = data
+    cookieValue = JSON.stringify(cookieValue)
+    setCookie(this.ctx, 'bundle', cookieValue, { path: '/' })
   }
 }
 
