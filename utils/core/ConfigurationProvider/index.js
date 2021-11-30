@@ -11,6 +11,8 @@ const transformationMapping = {
   quality: 'q',
   pixelRatio: 'dpr',
   format: 'f',
+  crop: 'c',
+  gravity: 'g',
 }
 
 class ConfigurationProvider extends Component {
