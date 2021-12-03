@@ -7,8 +7,6 @@ const AbTestingContext = React.createContext()
 
 /* Then create a provider Component */
 class AbTestingProvider extends Component {
-  static contextType = GlobalDataContext
-
   componentDidMount() {
     this.initAbTesting()
   }
@@ -71,6 +69,8 @@ class AbTestingProvider extends Component {
 function useAbTesting() {
   return useContext(AbTestingContext)
 }
+
+AbTestingProvider.contextType = GlobalDataContext
 
 export default AbTestingContext
 export { AbTestingProvider, useAbTesting }
