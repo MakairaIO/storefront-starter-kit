@@ -49,8 +49,8 @@ http {
 			}
 
 			# Enable password protection
-			# auth_basic           "Access Restricted";
-			# auth_basic_user_file /app/config/.htpasswd;
+			auth_basic           "Access Restricted";
+			auth_basic_user_file /app/config/.htpasswd;
 
 			# # Enable error_page if you want to use error page failover
 			# error_page 404 500 501 502 503 504 505 506 507 508 510 511 = @failover_target;
