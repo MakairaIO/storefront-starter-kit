@@ -43,7 +43,7 @@ http {
 
 		location / {
 			error_page 404 500 501 502 503 504 505 506 507 508 510 511 = @failover_to_flour;
-			if ($http_x_forwarded_proto != https) { return 301 https://$host$request_uri;}
+			if ($http_x_forwarded_proto != https) { return 301 https://$host$request_uri; }
 			proxy_pass            http://app_server;
 			proxy_read_timeout    120s;
 			proxy_connect_timeout 2s;
@@ -72,7 +72,7 @@ http {
 		}
 
 		location ~* ^(/shop/) {
-            try_files /dev/null @failover_to_flour;
-        }
+			try_files /dev/null @failover_to_flour;
+		}
 	}
 }
