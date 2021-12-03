@@ -71,7 +71,7 @@ http {
 			proxy_set_header      HTTPS $http_https;
 		}
 
-		location ~* ^(/shop/) {
+		location ~* ^(/shop/|/public/flourshop/) {
 			try_files /dev/null @failover_to_flour;
 		}
 	}
