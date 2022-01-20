@@ -16,7 +16,7 @@ class RequestBuilder {
 
   getConstraints(additionalConstraints = {}) {
     let constraints = {
-      'query.shop_id': process.env.SHOP_ID,
+      'query.shop_id': process.env.SHOP_ID ?? 1,
       'query.use_stock': true,
       'oi.user.agent': this.getUserAgent(),
       'oi.user.ip': this.getIpAddress(),
