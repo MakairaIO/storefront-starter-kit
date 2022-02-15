@@ -28,7 +28,7 @@
 ### <a id="prerequisites"></a>1.1 Prerequisites
 
 * [Node.js](https://nodejs.org/) v16.13.0
-* recommended OS: Linux or Mac (if you are using Windows see [4.3 Windows troubleshooting](#windows-troubleshooting)
+* recommended OS: Linux or Mac (if you are using Windows see [4.3 Windows troubleshooting](#windows-troubleshooting))
 
 ### <a id="installation"></a>1.2 Installation
 
@@ -194,4 +194,3 @@ module.exports = {
 ```
 
 ### <a id="windows-troubleshooting"></a>4.3 Windows troubleshooting
-
