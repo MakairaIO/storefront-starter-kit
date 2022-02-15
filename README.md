@@ -13,9 +13,13 @@
     4. [Data driven approach](#data-driven)
 3. [Working with the Storefront](#working-with)
     1. [Create new patterns](#create-patterns)
-    2. [Running tests](#running-tests)
-    3. [Building](#building)
+    2. [Add project specific colors/fonts/icons](#add-colors-fonts-icons)
+    3. [Running tests](#running-tests)
+    4. [Building](#building)
 4. [FAQ](#faq)
+   1. [Adding external CSS libraries](#external-css-libraries)
+   2. [IE11 Compatability](#ie11-compatibility)
+   3. [Windows troubleshooting](#windows-troubleshooting)
 
 ## <a id="getting-started"></a>1. Getting Started
 
@@ -24,7 +28,7 @@
 ### <a id="prerequisites"></a>1.1 Prerequisites
 
 * [Node.js](https://nodejs.org/) v16.13.0
-* recommended OS: Linux or Mac (if you are using Windows see [4.4 Windows troubleshooting](#windows-troubleshooting)
+* recommended OS: Linux or Mac (if you are using Windows see [4.3 Windows troubleshooting](#windows-troubleshooting)
 
 ### <a id="installation"></a>1.2 Installation
 
@@ -59,33 +63,35 @@ you have a basic knowledge about how Makaira works and how the data structure of
 For the start just imagine we have a product-document in Makaira with the URL _/test-product.html_ and the `pageType` with the value `makaira-productgroup`.
 
 The Storefront, respectively NextJS, provides a Node.js server. So now, if we want to render that product by calling our Storefront domain with _/test-product.html_ the following happens:
-1. Within `server/index.js` the Storefront takes the request url (server-side), checks if it matches some specific URLs that we want to handle in a specific way.
-2. Take a look at the lines 95-100 within `server/index.js`. The page `frontend/entry`, located within the `pages` folder, will be rendered.
-3. In that file, before it is rendered, a request is send to Makaira to fetch all neccesary data for that document (`fetchPageData()`) with the url _/test-product.html_.   
+1. Within `server/index.js` the Storefront takes the request url and decides what to do with it.
+2. Out URL matches at lines 95-100 within `server/index.js`. The page `frontend/entry`, located within the `pages` folder, will be rendered.
+3. In that file, before it is rendered, a request is sent to Makaira to fetch all necessary data for that document (`fetchPageData()`) with the url _/test-product.html_.   
 4. Makaira looks into its own data if it finds a document with the corresponding URL. It does!   
 5. Makaira answers with a response code of 200. In the response body we have a JSON object containing a lot of data, like the `pageType`.
 6. The Storefront takes the response body data and renders the page depending on the value of `pageType` (this happens within `pages/frontend/entry.js` line 100).
 
 ### <a id="pattern-library"></a>2.2 Pattern Library
 
-One core feature of the Storefront is the Pattern Library (pali). You can access the pali by calling `/pali`.
+One core feature of the Storefront is the Pattern Library (Pali). You can access the Pali by calling `/pali`.
 
-The pali contains a summary of all components/patterns we use in our project, and a lot of important UX/design information like colors, icons, typography and buttons.
+The Pali contains a summary of all components/patterns we use in our project, and a lot of important UX/design information like colors, icons, typography and buttons.
 
-We use the pali as "source of truth" while working on new patterns: A button must have a specific color? Check if this color is configured in the pali. If so: Use it! If not: Ask the designer if he is sure about the color 
-and whether you should add that to the color configuration. The text in your new pattern has to have three different font-sizes according to the screen size? Check the typography in the pali if each configuration is available or not. 
+We use the Pali as "source of truth" while working on new patterns: A button must have a specific color? Check if this color is configured in the Pali. If so: Use it! If not: Ask the designer if he is sure about the color 
+and whether you should add that to the color configuration. The text in your new pattern has to have three different font-sizes according to the screen size? Check the typography in the Pali if each configuration is available or not. 
 If not contact the designer that you found and inconsistency!
 
-Our goal with this is to ensure consistency throughout the project following the convention: No colors, typographies, buttons etc. that aren't defined in the pali.
+Our goal with this is to ensure consistency throughout the project following the convention: No colors, typographies, buttons etc. that aren't defined in the Pali.
+
+We'll cover the part on how to work with the Pali later (see [3. Working with the Storefront](#working-with)).
 
 ### <a id="content-elements"></a>2.3 Content elements
 
 A powerful feature is to render content that is configured in the Makaira Page Editor. Imagine you create a Landing Page called _Home Page_ with the URL `/`. Now you add content that page, like a _Text (mehrspaltig)_ element.
-You add some content to that content element, save the configuration, load the page in the Storefront, and you see: The content you just configured in the Makaira landing page is rendered in the storefront!
+You add some content to that element, save the configuration, load the page in the Storefront, and you see: The content you just configured in the Makaira landing page is rendered in the storefront!
 
 How does this work out? How does the Storefront know where it should render what?
 
-Remember the first part of this documentation: [Fetching data from Makaira](#fetching-data)
+Remember the first part of this guide: [2.1 Fetching data from Makaira](#fetching-data)
 
 We hit the `/` URL, the Storefront fetches the data from a Makaira document with the URL `/`.  The `pageType` of this document is `page`, so the `LandingPage` react component is rendered.
 
@@ -97,6 +103,18 @@ entry we check, if it's `component` (which is the `Identifier` from the _Compone
 that component and pass all data from that element as properties to the react component.
 
 ### <a id="data-driven"></a>Data driven approach
+
+Most of our components/patterns don't fetch any data. They receive their properties according to the document in Makaira.
+
+It is important to consider that while working with the Storefront and the Pattern Library. All components that you see in the Pali work with dummy data (check out the `variants.js` file within a pattern folder).
+
+When a component is rendered for the client remember the part [2.3 Content elements](#content-elements). Within the `ContentElements` component the specific component is rendered in this way `<Component {...entry.properties.content} />`. 
+As you can see, we just destructure the `content` of the `entry` and pass all this data as properties.
+
+To render a component within the Pali it works a bit different. Because here we don't fetch any data from Makaira we work with dummy data. Take a look into the `variants.js` file from the `MultiColumnText` component. 
+It exports an array of objects. Each object represents a _variant_ of that component. The `name` is just to give that variant a short explanation. More interesting is the `props` object. Everything that is written here will be passed
+to the component as properties. So a _variant_ basically means that there are other values for some properties.
+
 
 ## <a id="working-with"></a>3. Working with the Storefront
 
@@ -112,22 +130,7 @@ To create a new pattern, run the following command:
 You can also create multiple patterns at once, e.g.:
 `npx storefront create:pattern Pattern1 Pattern2 Patten3`
 
-
-### <a id="running-tests"></a>3.2 Running Tests
-
-* Run tests in watch-mode: `npm run test`
-
-
-### <a id="building"></a>3.3 Building
-
-Just push to the GitHub Repository in the stable branch - we will cover everthing else.
-
-
-## <a id="faq"></a>4. FAQ
-
----
-
-### 4.1 Adding project specific colors/fonts/icon
+### <a id="add-colors-fonts-icons"></a>3.2 Add project specific colors/fonts/icons
 
 This applications comes with a default palette of colors, icons and typography. The related configuration files can be cound in the `config/core` directory.
 
@@ -141,7 +144,20 @@ Of course, it is possible to override the default configuration your own, projec
 These configuration files are empty by default, therefore the application uses the default configuration. As soon as you start adding your own colors, icons or fonts to the empty configuration files, these will be used instead of the default files.
 
 
-### 4.2 Adding external CSS libraries
+### <a id="running-tests"></a>3.3 Running Tests
+
+* Run tests in watch-mode: `npm run test`
+
+
+### <a id="building"></a>3.4 Building
+
+Just push to the GitHub Repository in the stable branch - we will cover everthing else.
+
+## <a id="faq"></a>4. FAQ
+
+---
+
+### <a id="external-css-libraries"></a>4.1 Adding external CSS libraries
 
 If you want to use external CSS libraries you can install them using NPM and include the necessary files.
 
@@ -154,7 +170,7 @@ If you want to use external CSS libraries you can install them using NPM and inc
     `import 'bootstrap/dist/css/bootstrap.css'`
 
 
-### 4.3 IE11 Compatability
+### <a id="ie11-compatibility"></a>4.2 IE11 Compatability
 
 By default, this application is not supporting IE11. Therefore, we have a middleware in `server/index.js` that detects if a user is coming with IE and if so, we render a page which suggests downloading a modern browser.
 
@@ -177,5 +193,5 @@ module.exports = {
 }
 ```
 
-### <a id="windows-troubleshooting"></a>4.4 Windows troubleshooting
+### <a id="windows-troubleshooting"></a>4.3 Windows troubleshooting
 
