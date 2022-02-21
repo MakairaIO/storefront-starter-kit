@@ -19,8 +19,11 @@
 4. [FAQ](#faq)
    1. [Adding external CSS libraries](#external-css-libraries)
    2. [IE11 Compatability](#ie11-compatibility)
-   3. [Windows troubleshooting](#windows-troubleshooting)
-
+5. [Troubleshooting](#troubleshooting)
+   1. [Setting up on Windows](#windows-troubleshooting)
+   2. [Error: listen EADDRINUSE: address already in use :::5000](#port-in-use)
+   3. [macOS Monterey](#mac-os)
+   
 ## <a id="getting-started"></a>1. Getting Started
 
 ---
@@ -193,4 +196,29 @@ module.exports = {
 }
 ```
 
-### <a id="windows-troubleshooting"></a>4.3 Windows troubleshooting
+## <a id="faq"></a>5. FAQ
+
+---
+
+### <a id="windows-troubleshooting"></a>5.1 Windows troubleshooting
+### <a id="port-in-use"></a>5.1 Error: listen EADDRINUSE: address already in use :::5000
+
+Sometimes it might happen that you get this error in your console while trying to start the Storefront. This can have multiple reasons. The most common is that you already have a Storefront running on that port and forgot to
+stop the process properly. In that case: Just stop the Storefront that already runs on that port. If the terminal of that process isn't open anymore or stopping the process doesn't work you can try this:
+
+On Mac/Linux:
+```
+lsof -i tcp:3000
+kill -9 PID
+```
+
+On Windows:
+```
+netstat -ano | findstr :3000
+tskill typeyourPIDhere 
+```
+
+
+### <a id="mac-os"></a>5.1 macOS Monterey
+
+If, after updating to macOS Monterey, you're facing this error message while trying to start the Storefront: `Error: listen EADDRINUSE: address already in use :::5000` check out this page: https://developer.apple.com/forums/thread/682332
