@@ -81,7 +81,7 @@ The Pali contains a summary of all components/patterns we use in our project, an
 We use the Pali as "source of truth" while working on new patterns: A button must have a specific color? Check if this color is configured in the Pali. If so: Use it! If not: Ask the designer if he is sure about the color and whether you should add that to the color configuration. The text in your new pattern has to have three different font-sizes according to the screen size? Check the typography in the Pali if each configuration is available or not. 
 If not contact the designer that you found and inconsistency!
 
-Our goal with this is to ensure consistency throughout the project following the convention: No colors, typographies, buttons etc. should be used that aren't defined in the Pali.
+Our goal with this is to ensure consistency throughout the project following the convention: No colors, typographies, buttons etc. should be used that aren't defined in the Pali. Further we strongly recommend to make use of the [atomic design](https://bradfrost.com/blog/post/atomic-web-design/) 📖 apporach like that you storefront stays maintainable.
 
 We'll cover the part on how to work with the Pali later in this document (see [3. Working with the Storefront](#working-with)).
 
