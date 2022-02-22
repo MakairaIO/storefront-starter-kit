@@ -53,7 +53,7 @@
 ## <a id="core-concepts"></a>2. Core concepts
 
 The Storefront is based on the [NextJS Framework](https://nextjs.org/). Due to this we write our client-side code in [React](https://reactjs.org/).
-It is recommended to have a profound knowledge of Javascript and basic understanding of both of NextJS and React.
+It is recommended to have a profound knowledge of Javascript and basic understanding of both of NextJS and React. The common [React beginners guide](https://egghead.io/courses/the-beginner-s-guide-to-react) 🎥 will help you to gain knowledge and understand the concepts.
 
 Also, because the Storefront interacts with [Makaira](https://www.makaira.io/) a lot, it is highly recommended having a basic knowledge about Makaira as well. But no worries, we will introduce some key concepts in the following document.
 
