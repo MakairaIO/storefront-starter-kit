@@ -14,6 +14,9 @@
 3. [Working with the Storefront](#working-with)
     1. [Create new patterns](#create-patterns)
     2. [Add project specific colors/fonts/icons](#add-colors-fonts-icons)
+       1. [Colors](#add-colors)
+       2. [Fonts](#add-fonts)
+       3. [Icons](#add-icons)
     3. [Running tests](#running-tests)
     4. [Building](#building)
 4. [FAQ](#faq)
@@ -130,9 +133,9 @@ You can also create multiple patterns at once, e.g.:
 
 ### <a id="add-colors-fonts-icons"></a>3.2 Add project specific colors/fonts/icons
 
-This applications comes with a default palette of colors, icons and typography. The related configuration files can be found in the `config/core` directory.
+This application comes with a default palette of colors, icons and typography. The related configuration files can be found in the `config/core` directory.
 
-We use these config files to generate CSS custom properties (found in `patterns/core/BaseLayout/variables.styl`) and render basic overviews in the pattern library (e.g., see `library/internal/ColorView.js`).
+We use these config files to generate CSS custom properties (e.g, in `patterns/core/BaseLayout/colors.styl`) and render basic overviews in the pattern library (e.g., see `library/internal/ColorView.js`).
 
 Of course, it is possible to override the default configuration with your own, project-specific colors, fonts and icons. In the `config` directory you can find three empty files:
 - `colors.json`
@@ -141,7 +144,55 @@ Of course, it is possible to override the default configuration with your own, p
 
 These configuration files are empty by default, therefore the application uses the default configuration. As soon as you start adding your own colors, icons or fonts to the empty configuration files, these will be used instead of the default files.
 
-For fonts we expect you own files to be placed within `public/assets/fonts` and for SVGs it must be `public/assets/svgs`.
+#### <a id="add-colors"></a>3.2.1 Colors
+
+To add your own colors, configure the `config/colors.json`. Each color has the following pattern:
+```
+  "Primary": {
+    "value": "#4F5967",
+    "variableName": "--primary",
+    "group": "core"
+  },
+```
+
+`value` must contain a valid CSS color. This can be a HEX color like in the example `#4F5967` but it can also be a rgba or even a gradient.
+
+`variableName` is the name of the CSS variable we will provide. The above example could be used as `var(--primary)`.
+
+`group` is only important for the Pali. If you navigate to the "Colors" area within the Pali you can see, that the colors are grouped. You can choose whatever name you want for a group.
+
+#### <a id="add-fonts"></a>3.2.2 Fonts
+
+For your own fonts, we expect your files to be placed within `public/assets/fonts`.
+
+To add custom fonts, configure the `config/fonts.json`. Each font has the following pattern:
+
+```
+"FiraSans Light": {
+"family": "FiraSans",
+"fileName": "FiraSans-Light",
+"weight": 300,
+"isItalic": false,
+"fileTypes": ["woff2", "woff", "ttf"]
+},
+```
+
+Based on this configuration our build process generates a `fonts.styl` file within `patterns/core/BaseLayout`. This file contains all CSS `font-face` we use in the project. Also, this file is not tracked with Git because it is generated on the fly while starting the Storefront.
+
+Within this file, the above configuration will result in this:
+```
+@font-face
+  font-display fallback
+  font-family FiraSans
+  font-weight 300
+  src url('/assets/fonts/core/FiraSans-Light.woff2') format('woff2'), url('/assets/fonts/core/FiraSans-Light.woff') format('woff'), url('/assets/fonts/core/FiraSans-Light.ttf') format('truetype')
+  ```
+
+**Important note:** When you add you own font family you'll have to change or override the `--font-family-regular` CSS variable within `patterns/core/BaseLayout/variables.styl`.
+
+#### <a id="add-icons"></a>3.2.3 Icons
+
+SVGs it must be `public/assets/svgs`.
 
 
 ### <a id="running-tests"></a>3.3 Running Tests
