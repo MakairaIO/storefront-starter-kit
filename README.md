@@ -20,9 +20,8 @@
    1. [Adding external CSS libraries](#external-css-libraries)
    2. [IE11 Compatability](#ie11-compatibility)
 5. [Troubleshooting](#troubleshooting)
-   1. [Setting up on Windows](#windows-troubleshooting)
-   2. [Error: listen EADDRINUSE: address already in use :::5000](#port-in-use)
-   3. [macOS Monterey](#mac-os)
+   1. [Error: listen EADDRINUSE: address already in use :::5000](#port-in-use)
+   2. [macOS Monterey](#mac-os)
    
 ## <a id="getting-started"></a>1. Getting Started
 
@@ -31,7 +30,7 @@
 ### <a id="prerequisites"></a>1.1 Prerequisites
 
 * [Node.js](https://nodejs.org/) v16.13.0
-* recommended OS: Linux or Mac (if you are using Windows see [5.1 Setting up on Windows](#windows-troubleshooting))
+* recommended OS: Linux or Mac
 
 ### <a id="installation"></a>1.2 Installation
 
@@ -197,8 +196,6 @@ module.exports = {
 ## <a id="faq"></a>5. FAQ
 
 ---
-
-### <a id="windows-troubleshooting"></a>5.1 Setting up on Windows
 ### <a id="port-in-use"></a>5.1 Error: listen EADDRINUSE: address already in use :::5000
 
 Sometimes it might happen that you get this error in your console while trying to start the Storefront. This can have multiple reasons. The most common is that you already have a Storefront running on that port and forgot to
