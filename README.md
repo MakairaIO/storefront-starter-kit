@@ -146,7 +146,7 @@ These configuration files are empty by default, therefore the application uses t
 
 #### <a id="add-colors"></a>3.2.1 Colors
 
-To add your own colors, configure the `config/colors.json`. Each color has the following pattern:
+To add your own colors, configure `config/colors.json`. Each color has the following pattern:
 ```
   "Primary": {
     "value": "#4F5967",
@@ -165,7 +165,7 @@ To add your own colors, configure the `config/colors.json`. Each color has the f
 
 For your own fonts, we expect your files to be placed within `public/assets/fonts`.
 
-To add custom fonts, configure the `config/fonts.json`. Each font has the following pattern:
+To add custom fonts, configure `config/fonts.json`. Each font has the following pattern:
 
 ```
 "FiraSans Light": {
@@ -177,7 +177,7 @@ To add custom fonts, configure the `config/fonts.json`. Each font has the follow
 },
 ```
 
-Based on this configuration our build process generates a `fonts.styl` file within `patterns/core/BaseLayout`. This file contains all CSS `font-face` we use in the project. Also, this file is not tracked with Git because it is generated on the fly while starting the Storefront.
+Based on this configuration our build process generates a `fonts.styl` file within `patterns/core/BaseLayout`. This file contains all CSS `font-face` we use in the project.
 
 Within this file, the above configuration will result in this:
 ```
@@ -188,12 +188,21 @@ Within this file, the above configuration will result in this:
   src url('/assets/fonts/core/FiraSans-Light.woff2') format('woff2'), url('/assets/fonts/core/FiraSans-Light.woff') format('woff'), url('/assets/fonts/core/FiraSans-Light.ttf') format('truetype')
   ```
 
-**Important note:** When you add you own font family you'll have to change or override the `--font-family-regular` CSS variable within `patterns/core/BaseLayout/variables.styl`.
+**Important note:** When you add you own font family you'll have to change or override the `--font-family-regular` CSS variable from `patterns/core/BaseLayout/variables.styl`.
 
 #### <a id="add-icons"></a>3.2.3 Icons
 
-SVGs it must be `public/assets/svgs`.
+Icon files must be placed as SVG within `public/assets/svgs`.
 
+To add custom icons, configure `config/icons.json`. Each icon has the following pattern:
+
+```
+  "Shopping Cart": {
+    "value": "cart"
+  },
+```
+
+`value` is both the name of the file (`cart.svg`) and the value of the `symbol` property of the `Icon` component (e.g `<Icon symbol="cart"/>`)
 
 ### <a id="running-tests"></a>3.3 Running Tests
 
