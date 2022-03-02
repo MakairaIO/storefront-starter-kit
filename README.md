@@ -31,7 +31,7 @@
 ### <a id="prerequisites"></a>1.1 Prerequisites
 
 * [Node.js](https://nodejs.org/) v16.13.0
-* recommended OS: Linux or Mac (if you are using Windows see [4.3 Windows troubleshooting](#windows-troubleshooting))
+* recommended OS: Linux or Mac (if you are using Windows see [5.1 Setting up on Windows](#windows-troubleshooting))
 
 ### <a id="installation"></a>1.2 Installation
 
@@ -142,6 +142,8 @@ Of course, it is possible to override the default configuration your own, projec
 
 These configuration files are empty by default, therefore the application uses the default configuration. As soon as you start adding your own colors, icons or fonts to the empty configuration files, these will be used instead of the default files.
 
+For fonts we expect you own files to be placed within `public/assets/fonts` and for SVGs it must be `public/assets/svgs`.
+
 
 ### <a id="running-tests"></a>3.3 Running Tests
 
@@ -196,7 +198,7 @@ module.exports = {
 
 ---
 
-### <a id="windows-troubleshooting"></a>5.1 Windows troubleshooting
+### <a id="windows-troubleshooting"></a>5.1 Setting up on Windows
 ### <a id="port-in-use"></a>5.1 Error: listen EADDRINUSE: address already in use :::5000
 
 Sometimes it might happen that you get this error in your console while trying to start the Storefront. This can have multiple reasons. The most common is that you already have a Storefront running on that port and forgot to
@@ -204,13 +206,13 @@ stop the process properly. In that case: Just stop the Storefront that already r
 
 On Mac/Linux:
 ```
-lsof -i tcp:3000
+lsof -i tcp:5000
 kill -9 PID
 ```
 
 On Windows:
 ```
-netstat -ano | findstr :3000
+netstat -ano | findstr :5000
 tskill typeyourPIDhere 
 ```
 
