@@ -130,11 +130,11 @@ You can also create multiple patterns at once, e.g.:
 
 ### <a id="add-colors-fonts-icons"></a>3.2 Add project specific colors/fonts/icons
 
-This applications comes with a default palette of colors, icons and typography. The related configuration files can be cound in the `config/core` directory.
+This applications comes with a default palette of colors, icons and typography. The related configuration files can be found in the `config/core` directory.
 
 We use these config files to generate CSS custom properties (found in `patterns/core/BaseLayout/variables.styl`) and render basic overviews in the pattern library (e.g., see `library/internal/ColorView.js`).
 
-Of course, it is possible to override the default configuration your own, project-specific colors, fonts and icons. In the `config` directory you can find three empty files:
+Of course, it is possible to override the default configuration with your own, project-specific colors, fonts and icons. In the `config` directory you can find three empty files:
 - `colors.json`
 - `icons.json`
 - `fonts.json`
