@@ -17,8 +17,11 @@
        1. [Colors](#add-colors)
        2. [Fonts](#add-fonts)
        3. [Icons](#add-icons)
-    3. [Running tests](#running-tests)
-    4. [Building](#building)
+    3. [Make use a base components](#use-base-components)
+    4. [Make use of base utility functions](#use-base-utils)
+        1. [Get Image Links](#get-image-links)
+    5. [Running tests](#running-tests)
+    6. [Building](#building)
 4. [FAQ](#faq)
    1. [Adding external CSS libraries](#external-css-libraries)
    2. [IE11 Compatability](#ie11-compatibility)
@@ -83,7 +86,7 @@ The Pali contains a summary of all components/patterns we use in our project, an
 We use the Pali as "source of truth" while working on new patterns: A button must have a specific color? Check if this color is configured in the Pali. If so: Use it! If not: Ask the designer if he is sure about the color and whether you should add that to the color configuration. The text in your new pattern has to have three different font-sizes according to the screen size? Check the typography in the Pali if each configuration is available or not. 
 If not contact the designer that you found and inconsistency!
 
-Our goal with this is to ensure consistency throughout the project following the convention: No colors, typographies, buttons etc. should be used that aren't defined in the Pali. Further we strongly recommend to make use of the [atomic design](https://bradfrost.com/blog/post/atomic-web-design/) 📖 apporach like that you storefront stays maintainable.
+Our goal with this is to ensure consistency throughout the project following the convention: No colors, typographies, buttons etc. should be used that aren't defined in the Pali. Further we strongly recommend to make use of the [atomic design](https://bradfrost.com/blog/post/atomic-web-design/) 📖 approach like that so your Storefront stays maintainable.
 
 We'll cover the part on how to work with the Pali later in this document (see [3. Working with the Storefront](#working-with)).
 
@@ -204,14 +207,39 @@ To add custom icons, configure `config/icons.json`. Each icon has the following 
 
 `value` is both the name of the file (`cart.svg`) and the value of the `symbol` property of the `Icon` component (e.g `<Icon symbol="cart"/>`)
 
-### <a id="running-tests"></a>3.3 Running Tests
+
+### <a id="use-base-components"></a>3.3 Make use a base components
+
+In order to reduce code duplications and to prevent us from writing components for common use cases over and over again we have some "Base components" which we use almost everywhere.
+
+For example for headlines, buttons and text content: We don't want to define markup and CSS for these things in every pattern again and again if we know that they always look the same.
+
+So take a look into these components:
+
+- `<Heading />` for headlines
+- `<CopyText />` for text content
+- `<ConditionalLink />` if you might have an anchor, but it's also possible that you don't
+- `<Button />` for any kind of button
+- `<Icon />` for icons that you defined in the icon configuration (see [2.3 Icons](#add-icons))
+
+They cover some common cases.
+
+### <a id="use-base-utils"></a>3.4 Make use of base utility functions
+
+#### <a id="get-image-links"></a>3.4.1 Get image links
+
+By default, we store images that are added via Makaira components either in an Amazon S3 Bucket or in Cloudinary. Usually images of products are stored there during the import into Makaira as well.
+
+In order to get tie image links we have a utility function `getImageLink` which is defined within our `<ConfigurationProvider />`
+
+### <a id="running-tests"></a>3.5 Running Tests
 
 * Run tests in watch-mode: `npm run test`
 
 
 ### <a id="building"></a>3.4 Building
 
-Just push to the GitHub Repository in the stable branch - we will cover everthing else.
+Just push to the GitHub Repository in the stable branch - we will cover everything else.
 
 ## <a id="faq"></a>4. FAQ
 
