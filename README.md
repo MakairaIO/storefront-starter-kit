@@ -14,8 +14,14 @@
 3. [Working with the Storefront](#working-with)
     1. [Create new patterns](#create-patterns)
     2. [Add project specific colors/fonts/icons](#add-colors-fonts-icons)
-    3. [Running tests](#running-tests)
-    4. [Building](#building)
+       1. [Colors](#add-colors)
+       2. [Fonts](#add-fonts)
+       3. [Icons](#add-icons)
+    3. [Make use a base components](#use-base-components)
+    4. [Make use of base utility functions](#use-base-utils)
+        1. [Get Image Links](#get-image-links)
+    5. [Running tests](#running-tests)
+    6. [Building](#building)
 4. [FAQ](#faq)
    1. [Adding external CSS libraries](#external-css-libraries)
    2. [IE11 Compatability](#ie11-compatibility)
@@ -80,7 +86,7 @@ The Pali contains a summary of all components/patterns we use in our project, an
 We use the Pali as "source of truth" while working on new patterns: A button must have a specific color? Check if this color is configured in the Pali. If so: Use it! If not: Ask the designer if he is sure about the color and whether you should add that to the color configuration. The text in your new pattern has to have three different font-sizes according to the screen size? Check the typography in the Pali if each configuration is available or not. 
 If not contact the designer that you found and inconsistency!
 
-Our goal with this is to ensure consistency throughout the project following the convention: No colors, typographies, buttons etc. should be used that aren't defined in the Pali. Further we strongly recommend to make use of the [atomic design](https://bradfrost.com/blog/post/atomic-web-design/) 📖 apporach like that you storefront stays maintainable.
+Our goal with this is to ensure consistency throughout the project following the convention: No colors, typographies, buttons etc. should be used that aren't defined in the Pali. Further we strongly recommend to make use of the [atomic design](https://bradfrost.com/blog/post/atomic-web-design/) 📖 approach like that so your Storefront stays maintainable.
 
 We'll cover the part on how to work with the Pali later in this document (see [3. Working with the Storefront](#working-with)).
 
@@ -130,28 +136,110 @@ You can also create multiple patterns at once, e.g.:
 
 ### <a id="add-colors-fonts-icons"></a>3.2 Add project specific colors/fonts/icons
 
-This applications comes with a default palette of colors, icons and typography. The related configuration files can be cound in the `config/core` directory.
+This application comes with a default palette of colors, icons and typography. The related configuration files can be found in the `config/core` directory.
 
-We use these config files to generate CSS custom properties (found in `patterns/core/BaseLayout/variables.styl`) and render basic overviews in the pattern library (e.g., see `library/internal/ColorView.js`).
+We use these config files to generate CSS custom properties (e.g, in `patterns/core/BaseLayout/colors.styl`) and render basic overviews in the pattern library (e.g., see `library/internal/ColorView.js`).
 
-Of course, it is possible to override the default configuration your own, project-specific colors, fonts and icons. In the `config` directory you can find three empty files:
+Of course, it is possible to override the default configuration with your own, project-specific colors, fonts and icons. In the `config` directory you can find three empty files:
 - `colors.json`
 - `icons.json`
 - `fonts.json`
 
 These configuration files are empty by default, therefore the application uses the default configuration. As soon as you start adding your own colors, icons or fonts to the empty configuration files, these will be used instead of the default files.
 
-For fonts we expect you own files to be placed within `public/assets/fonts` and for SVGs it must be `public/assets/svgs`.
+#### <a id="add-colors"></a>3.2.1 Colors
+
+To add your own colors, configure `config/colors.json`. Each color has the following pattern:
+```
+  "Primary": {
+    "value": "#4F5967",
+    "variableName": "--primary",
+    "group": "core"
+  },
+```
+
+`value` must contain a valid CSS color. This can be a HEX color like in the example `#4F5967` but it can also be a rgba or even a gradient.
+
+`variableName` is the name of the CSS variable we will provide. The above example could be used as `var(--primary)`.
+
+`group` is only important for the Pali. If you navigate to the "Colors" area within the Pali you can see, that the colors are grouped. You can choose whatever name you want for a group.
+
+#### <a id="add-fonts"></a>3.2.2 Fonts
+
+For your own fonts, we expect your files to be placed within `public/assets/fonts`.
+
+To add custom fonts, configure `config/fonts.json`. Each font has the following pattern:
+
+```
+"FiraSans Light": {
+"family": "FiraSans",
+"fileName": "FiraSans-Light",
+"weight": 300,
+"isItalic": false,
+"fileTypes": ["woff2", "woff", "ttf"]
+},
+```
+
+Based on this configuration our build process generates a `fonts.styl` file within `patterns/core/BaseLayout`. This file contains all CSS `font-face` we use in the project.
+
+Within this file, the above configuration will result in this:
+```
+@font-face
+  font-display fallback
+  font-family FiraSans
+  font-weight 300
+  src url('/assets/fonts/core/FiraSans-Light.woff2') format('woff2'), url('/assets/fonts/core/FiraSans-Light.woff') format('woff'), url('/assets/fonts/core/FiraSans-Light.ttf') format('truetype')
+  ```
+
+**Important note:** When you add you own font family you'll have to change or override the `--font-family-regular` CSS variable from `patterns/core/BaseLayout/variables.styl`.
+
+#### <a id="add-icons"></a>3.2.3 Icons
+
+Icon files must be placed as SVG within `public/assets/svgs`.
+
+To add custom icons, configure `config/icons.json`. Each icon has the following pattern:
+
+```
+  "Shopping Cart": {
+    "value": "cart"
+  },
+```
+
+`value` is both the name of the file (`cart.svg`) and the value of the `symbol` property of the `Icon` component (e.g `<Icon symbol="cart"/>`)
 
 
-### <a id="running-tests"></a>3.3 Running Tests
+### <a id="use-base-components"></a>3.3 Make use a base components
+
+In order to reduce code duplications and to prevent us from writing components for common use cases over and over again we have some "Base components" which we use almost everywhere.
+
+For example for headlines, buttons and text content: We don't want to define markup and CSS for these things in every pattern again and again if we know that they always look the same.
+
+So take a look into these components:
+
+- `<Heading />` for headlines
+- `<CopyText />` for text content
+- `<ConditionalLink />` if you might have an anchor, but it's also possible that you don't
+- `<Button />` for any kind of button
+- `<Icon />` for icons that you defined in the icon configuration (see [2.3 Icons](#add-icons))
+
+They cover some common cases.
+
+### <a id="use-base-utils"></a>3.4 Make use of base utility functions
+
+#### <a id="get-image-links"></a>3.4.1 Get image links
+
+By default, we store images that are added via Makaira components either in an Amazon S3 Bucket or in Cloudinary. Usually images of products are stored there during the import into Makaira as well.
+
+In order to get tie image links we have a utility function `getImageLink` which is defined within our `<ConfigurationProvider />`
+
+### <a id="running-tests"></a>3.5 Running Tests
 
 * Run tests in watch-mode: `npm run test`
 
 
 ### <a id="building"></a>3.4 Building
 
-Just push to the GitHub Repository in the stable branch - we will cover everthing else.
+Just push to the GitHub Repository in the stable branch - we will cover everything else.
 
 ## <a id="faq"></a>4. FAQ
 
