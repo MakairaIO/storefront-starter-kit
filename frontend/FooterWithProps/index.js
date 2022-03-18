@@ -7,19 +7,19 @@ export default function FooterWithProps() {
       heading: 'Products',
       links: [
         {
-          text: 'Gin',
+          text: 'Kiteboarding',
           link: '#todo',
         },
         {
-          text: 'Vodka',
+          text: 'Wakeboarding',
           link: '#todo',
         },
         {
-          text: 'Wine',
+          text: 'Bekleidung',
           link: '#todo',
         },
         {
-          text: 'Non-Alcoholics',
+          text: 'Angebot',
           link: '#todo',
         },
         {
