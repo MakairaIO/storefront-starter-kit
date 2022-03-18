@@ -23,7 +23,7 @@ export default function FooterWithProps() {
           link: '#todo',
         },
         {
-          text: 'Party Drinks',
+          text: 'Set',
           link: '#todo',
         },
       ],
