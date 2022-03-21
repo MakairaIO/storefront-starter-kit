@@ -36,5 +36,6 @@ export { default as DiscoveryImage } from './core/DiscoveryImage'
 export { default as MultiColumnText } from './core/MultiColumnText'
 export { default as BrowserHintPage } from './core/BrowserHintPage'
 export { default as ContactForm } from './core/ContactForm'
+export { default as NoComponent } from './core/NoComponent'
 
 /* Add project specific patterns here */

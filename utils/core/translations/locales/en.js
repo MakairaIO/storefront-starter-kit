@@ -71,4 +71,5 @@ export default {
   DELETE_SLOT: 'Delete Slot',
   INCOMPATIBLE_PRODUCT: (product) =>
     `Product ${product} is not valid for this bundle`,
+  NO_COMPONENT_AVAILABLE: 'Frontend component not implemented yet',
 }

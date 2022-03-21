@@ -15,6 +15,8 @@ class GlobalDataProvider extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
+    if (state.isPreview) return props
+
     // Update State when needed (e.g. filtering, paginating, etc)
     if (
       !isEqual(props.pageData, state.pageData) ||
