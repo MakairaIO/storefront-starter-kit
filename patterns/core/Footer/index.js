@@ -1,7 +1,7 @@
 function Footer(props) {
   const { footerData = [] } = props
   return (
-    <section className="footer">
+    <footer className="footer">
       {footerData.map((column, i) => {
         const { heading = '', links = [] } = column
         return (
@@ -20,7 +20,7 @@ function Footer(props) {
         )
       })}
       <a href="https://www.vecteezy.com/free-vector/jump">Jump Vectors by Vecteezy</a>
-    </section>
+    </footer>
   )
 }
 

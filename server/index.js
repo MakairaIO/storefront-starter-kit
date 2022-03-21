@@ -41,6 +41,15 @@ app
     })
 
     /**
+     * Route handler for preview endpoint.
+     */
+    server.get('/preview', (req, res) => {
+      app.render(req, res, '/frontend/preview', {
+        ...req.params,
+      })
+    })
+
+    /**
      * Route handler for pattern library
      */
     server.get('/pali/variants/:id', (req, res) => {

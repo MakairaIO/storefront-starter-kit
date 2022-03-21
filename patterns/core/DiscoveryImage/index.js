@@ -93,7 +93,7 @@ class DiscoveryImage extends React.Component {
             </Slider>
           ) : (
             <div className="slick-active">
-              <ProductTile {...spots[0].product[0]} isLazyLoad={false}>
+              <ProductTile {...spots[0]?.product[0]} isLazyLoad={false}>
                 <span className="spot product-spot-index">1</span>
               </ProductTile>
             </div>

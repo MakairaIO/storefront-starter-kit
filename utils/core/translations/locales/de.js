@@ -83,4 +83,5 @@ export default {
   DELETE_SLOT: 'Slot löschen',
   INCOMPATIBLE_PRODUCT: (product) =>
     `Produkt ${product} ist für dieses set nicht gültig`,
+  NO_COMPONENT_AVAILABLE: 'Frontend-Komponente noch nicht implementiert',
 }
