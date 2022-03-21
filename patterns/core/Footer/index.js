@@ -19,6 +19,7 @@ function Footer(props) {
           </div>
         )
       })}
+      <a href="https://www.vecteezy.com/free-vector/jump">Jump Vectors by Vecteezy</a>
     </section>
   )
 }
