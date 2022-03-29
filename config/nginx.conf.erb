@@ -49,7 +49,13 @@ http {
 			}
 
 			# Enable password protection
-			auth_basic           "Access Restricted";
+			if (-f "/app/config/.htpasswd") {
+				set $auth_basic "Access Restricted";
+			}
+			if (!-f "/app/config/.htpasswd") {
+				set $auth_basic off;
+			}
+			auth_basic           $auth_basic;
 			auth_basic_user_file /app/config/.htpasswd;
 
 			# # Enable error_page if you want to use error page failover
