@@ -14,9 +14,7 @@ export default function ProductActions(props) {
   function addToCart(event) {
     event.preventDefault()
 
-    const { ean } = props
-
-    props.addToCart(ean)
+    props.addToCart(props['makaira-product'].id)
   }
 
   function onClickAddToBundle(event) {

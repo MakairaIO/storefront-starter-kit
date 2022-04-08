@@ -23,7 +23,7 @@ app
 
     if (dev) {
       server.use(
-        '/api',
+        '/rest',
         createProxyMiddleware({
           target: process.env.FAILOVER_URL,
           changeOrigin: true,

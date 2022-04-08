@@ -47,7 +47,7 @@ class GlobalDataProvider extends Component {
   }
 
   fetchCart = async () => {
-    const response = await fetch('/api/cart')
+    const response = await fetch('/rest/api/cart')
     const cart = await response.json()
 
     this.updateCart(cart)
