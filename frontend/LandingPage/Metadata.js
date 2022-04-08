@@ -4,8 +4,8 @@ import { useGlobalData } from '../../utils'
 export default function Metadata() {
   const { pageData } = useGlobalData()
   const {
-    title,
-    seoTitle,
+    title = '',
+    seoTitle = '',
     robotIndex = 'index',
     robotFollow = 'follow',
     ...rest

@@ -1,7 +1,7 @@
 function Footer(props) {
   const { footerData = [] } = props
   return (
-    <section className="footer">
+    <footer className="footer">
       {footerData.map((column, i) => {
         const { heading = '', links = [] } = column
         return (
@@ -19,7 +19,7 @@ function Footer(props) {
           </div>
         )
       })}
-    </section>
+    </footer>
   )
 }
 

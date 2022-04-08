@@ -87,4 +87,5 @@ export default {
   CART_MODAL_BUTTON: 'Zum Warenkorb',
   CART_MODAL_CONTINUE_BUTTON: 'Weiter einkaufen',
   CART_ERROR: 'Der Artikel konnte nicht dem Warenkorb hinzugefügt werden.',
+  NO_COMPONENT_AVAILABLE: 'Frontend-Komponente noch nicht implementiert',
 }

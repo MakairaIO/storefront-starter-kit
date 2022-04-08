@@ -53,7 +53,7 @@ function DetailPage() {
   return (
     <main>
       <ContentElements
-        elements={pageData.data.self.promotions?.top?.elements}
+        elements={pageData.data.self.contentElements?.top?.elements}
       />
       <ProductDetailInformation
         key={productDetailProps.id}
@@ -61,7 +61,7 @@ function DetailPage() {
       />
       <ProductPlacement {...productPlacementProps} />
       <ContentElements
-        elements={pageData.data.self.promotions?.bottom?.elements}
+        elements={pageData.data.self.contentElements?.bottom?.elements}
       />
     </main>
   )

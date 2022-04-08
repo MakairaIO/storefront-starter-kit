@@ -75,4 +75,5 @@ export default {
   CART_MODAL_BUTTON: 'Open cart',
   CART_MODAL_CONTINUE_BUTTON: 'Back to shop',
   CART_ERROR: 'The product could not be added to the cart.',
+  NO_COMPONENT_AVAILABLE: 'Frontend component not implemented yet',
 }

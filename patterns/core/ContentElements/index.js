@@ -12,12 +12,13 @@ import {
   TeaserVideo,
   DiscoveryImage,
   ContactForm,
+  NoComponent,
 } from '../..'
 
 export default function ContentElements(props) {
   const { elements = [] } = props
 
-  if (elements.length == 0) return null
+  if (elements.length === 0) return null
 
   // Declare your additional content patterns here
   const components = {
@@ -34,17 +35,16 @@ export default function ContentElements(props) {
     'discovery-image': DiscoveryImage,
     'contact-form': ContactForm,
   }
-
   return (
     <>
       {elements.map((entry, index) => {
-        const Component = components[entry.component]
+        const Component = components[entry.component] ?? NoComponent
 
         if (!Component) return null
 
         return (
           <ErrorBoundary key={index}>
-            <Component {...entry.properties.content} />
+            <Component {...entry.properties.content} name={entry.component} />
           </ErrorBoundary>
         )
       })}

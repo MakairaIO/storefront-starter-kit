@@ -58,5 +58,8 @@
   },
   "Spinner": {
     "value": "spinner"
+  },
+  "Construction": {
+    "value": "construction"
   }
 }
