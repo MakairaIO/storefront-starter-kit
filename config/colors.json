@@ -1,1 +1,107 @@
-{}
+{
+  "Primary Black": {
+    "value": "#000000",
+    "variableName": "--primary-black",
+    "group": "primary"
+  },
+  "Primary Gray Dark": {
+    "value": "#575756",
+    "variableName": "--primary-gray-dark",
+    "group": "primary"
+  },
+  "Primary Gray Light": {
+    "value": "#b0b1b1",
+    "variableName": "--primary-gray-light",
+    "group": "primary"
+  },
+  "Primary White": {
+    "value": "#ffffff",
+    "variableName": "--primary-white",
+    "group": "primary"
+  },
+  "Primary Red": {
+    "value": "#c02124",
+    "variableName": "--primary-red",
+    "group": "primary"
+  },
+  "Secondary Green Dark": {
+    "value": "#219d1b",
+    "variableName": "--secondary-green-dark",
+    "group": "secondary"
+  },
+  "Secondary Green Light": {
+    "value": "#9ec113",
+    "variableName": "--secondary-green-light",
+    "group": "secondary"
+  },
+  "Secondary Petrol": {
+    "value": "#147673",
+    "variableName": "--secondary-petrol",
+    "group": "secondary"
+  },
+  "Secondary Purpur": {
+    "value": "#9a1a65",
+    "variableName": "--secondary-purpur",
+    "group": "secondary"
+  },
+  "Secondary Magenta": {
+    "value": "#e20079",
+    "variableName": "--secondary-Magenta",
+    "group": "secondary"
+  },
+  "Neutral 00": {
+    "value": "#fff",
+    "variableName": "--neutral-00",
+    "group": "neutral"
+  },
+  "Neutral 10": {
+    "value": "#F5F7FA",
+    "variableName": "--neutral-10",
+    "group": "neutral"
+  },
+  "Neutral 20": {
+    "value": "#E9ECF1",
+    "variableName": "--neutral-20",
+    "group": "neutral"
+  },
+  "Neutral 30": {
+    "value": "#DDE0E6",
+    "variableName": "--neutral-30",
+    "group": "neutral"
+  },
+  "Neutral 40": {
+    "value": "#C1C9D4",
+    "variableName": "--neutral-40",
+    "group": "neutral"
+  },
+  "Neutral 50": {
+    "value": "#98A1AD",
+    "variableName": "--neutral-50",
+    "group": "neutral"
+  },
+  "Neutral 60": {
+    "value": "#767F8A",
+    "variableName": "--neutral-60",
+    "group": "neutral"
+  },
+  "Neutral 70": {
+    "value": "#4C5969",
+    "variableName": "--neutral-70",
+    "group": "neutral"
+  },
+  "Neutral 80": {
+    "value": "#303B47",
+    "variableName": "--neutral-80",
+    "group": "neutral"
+  },
+  "Neutral 90": {
+    "value": "#101C2D",
+    "variableName": "--neutral-90",
+    "group": "neutral"
+  },
+  "Neutral 100": {
+    "value": "#000",
+    "variableName": "--neutral-100",
+    "group": "neutral"
+  }
+}
