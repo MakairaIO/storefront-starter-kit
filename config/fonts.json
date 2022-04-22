@@ -1,1 +1,30 @@
-{}
+{
+  "DIN Next Bold": {
+    "family": "DINNext",
+    "fileName": "Linotype-DINNextLTPro-Bold",
+    "weight": 700,
+    "isItalic": false,
+    "fileTypes": ["woff2", "woff", "ttf"]
+  },
+  "DIN Next Bold Italic": {
+    "family": "DINNext",
+    "fileName": "Linotype-DINNextLTPro-BoldItalic",
+    "weight": 700,
+    "isItalic": true,
+    "fileTypes": ["woff2", "woff", "ttf"]
+  },
+  "DIN Next Regular": {
+    "family": "DINNext",
+    "fileName": "Linotype-DINNextLTPro-Regular",
+    "weight": 400,
+    "isItalic": false,
+    "fileTypes": ["woff2", "woff", "ttf"]
+  },
+  "DIN Next Regular Italic": {
+    "family": "DINNext",
+    "fileName": "Linotype-DINNextLTPro-RegularItalic",
+    "weight": 400,
+    "isItalic": true,
+    "fileTypes": ["woff2", "woff", "ttf"]
+  }
+}

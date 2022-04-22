@@ -5,7 +5,7 @@ export { default as ContentElements } from './core/ContentElements'
 export { default as Link } from './core/Link'
 export { default as ConditionalLink } from './core/ConditionalLink'
 export { default as FormattedPrice } from './core/FormattedPrice'
-export { default as BaseLayout } from './core/BaseLayout'
+// export { default as BaseLayout } from './core/BaseLayout'
 export { default as BundleSelection } from './core/BundleSelection'
 export { default as ErrorPage } from './core/ErrorPage'
 export { default as Overlay } from './core/Overlay'
@@ -39,3 +39,4 @@ export { default as ContactForm } from './core/ContactForm'
 export { default as NoComponent } from './core/NoComponent'
 
 /* Add project specific patterns here */
+export { default as BaseLayout } from './BaseLayout'
