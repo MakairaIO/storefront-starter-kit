@@ -1,0 +1,97 @@
+.button
+  display inline-block
+  color var(--neutral-90)
+  font-size 1.4rem
+  line-height 1.8rem
+  letter-spacing 0.03rem
+  background var(--neutral-00)
+  border 1px solid var(--primary-black)
+  padding 1rem 1.2rem 0.8rem
+  margin 0.6rem 0 0.4rem
+  text-align center
+  text-transform uppercase
+  font-weight var(--font-weight-bold)
+
+  &:hover
+    cursor pointer
+
+  &:disabled
+    cursor auto
+
+  &--primary
+    background var(--primary-black)
+    border-color var(--primary-black)
+    color var(--neutral-00)
+
+  &--primary-alt
+    background var(--primary-red)
+    border-color var(--primary-red)
+    color var(--neutral-00)
+
+  &--secondary
+    background var(--primary-white)
+    border-color var(--primary-white)
+    color var(--primary-black)
+
+  &--loading,
+  &--icon
+    display inline-flex
+    align-items center
+
+  &--icon-only
+    padding 0.8rem 0
+    background var(--primary-red)
+    color var(--primary-white)
+    border none
+    border-radius 50%
+
+  &--icon-right
+    .button__text
+      margin-right 1.1rem
+
+  &--icon-left
+    .button__text
+      margin-left 1.1rem
+
+    .icon
+      order -1
+
+.button__text
+  width 100%
+
+.button--loading,
+.button--icon
+  .icon
+    // styles for icon-only buttons
+    height 1.8rem
+    width 3.4rem // FIXME: Why is flexbox breaking all buttons if we remove the explicit width here?!
+    flex 0 0 3.4rem // 36px - 2px border
+
+  // Overrides for specific icons
+  &:not(.button--icon-only)
+    .icon--chevron-right
+    .icon--chevron-left
+      flex 0 0 0.7rem
+
+    .icon--chevron-down
+      flex 0 0 1.6rem
+
+    .icon--check
+      flex 0 0 1.3rem
+
+    .icon--cart
+      flex 0 0 2rem
+
+a.button
+  text-decoration none
+
+.button--loading
+  .icon
+    svg
+      animation rotate-center 1.3s infinite ease-in-out
+
+@keyframes rotate-center
+  0%
+    transform rotate(0)
+  100%
+    transform rotate(360deg)

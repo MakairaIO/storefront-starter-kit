@@ -10,7 +10,7 @@ export { default as BundleSelection } from './core/BundleSelection'
 export { default as ErrorPage } from './core/ErrorPage'
 export { default as Overlay } from './core/Overlay'
 export { default as Icon } from './core/Icon'
-export { default as Button } from './core/Button'
+// export { default as Button } from './core/Button'
 export { default as Text } from './core/Text'
 export { default as Heading } from './core/Heading'
 export { default as Copytext } from './core/Copytext'
@@ -40,3 +40,4 @@ export { default as NoComponent } from './core/NoComponent'
 
 /* Add project specific patterns here */
 export { default as BaseLayout } from './BaseLayout'
+export { default as Button } from './Button'

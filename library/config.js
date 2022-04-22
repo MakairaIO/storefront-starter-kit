@@ -1,7 +1,7 @@
 /* Core imports */
 import Heading, { headingVariants } from '../patterns/core/Heading'
 import Copytext, { copytextVariants } from '../patterns/core/Copytext'
-import Button, { buttonVariants } from '../patterns/core/Button'
+// import Button, { buttonVariants } from '../patterns/core/Button'
 import Dropdown, { dropdownVariants } from '../patterns/core/Dropdown'
 import Header, { headerVariants } from '../patterns/core/Header'
 import Footer, { footerVariants } from '../patterns/core/Footer'
@@ -42,6 +42,7 @@ import ErrorPage from '../patterns/core/ErrorPage'
 
 /* Add project specific imports here */
 /* CLI MARKER - PATTER IMPORT - DO NOT REMOVE */
+import Button, { buttonVariants } from '../patterns/Button'
 
 export default [
   {
