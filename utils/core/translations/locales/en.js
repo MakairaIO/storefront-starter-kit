@@ -72,4 +72,6 @@ export default {
   INCOMPATIBLE_PRODUCT: (product) =>
     `Product ${product} is not valid for this bundle`,
   NO_COMPONENT_AVAILABLE: 'Frontend component not implemented yet',
+  RATINGS_HEADING: 'Ratings',
+  NO_RATINGS: 'No ratings for this product.',
 }

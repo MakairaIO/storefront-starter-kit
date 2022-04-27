@@ -1,0 +1,34 @@
+import StarInput from './StarInput'
+import { Copytext, Heading, Text } from '../../index'
+import { useTranslation } from '../../../utils'
+
+const Rating = ({ name, text, stars }) => {
+  return (
+    <div className="ratings__rating">
+      <div className="ratings__rating-header">
+        <StarInput disabled stars={stars} />
+        <Text size="bacchus">from {name}</Text>
+      </div>
+      <Copytext>{text}</Copytext>
+    </div>
+  )
+}
+
+const Ratings = ({ ratings = [] }) => {
+  const { t } = useTranslation()
+
+  return (
+    <section className="ratings">
+      <Heading>{t('RATINGS_HEADING')}</Heading>
+
+      {ratings.map((rating) => (
+        <Rating {...rating} key={rating.text} />
+      ))}
+
+      {!ratings.length && <Copytext>{t('NO_RATINGS')}</Copytext>}
+    </section>
+  )
+}
+
+export default Ratings
+export { default as ratingVariants } from './variants'

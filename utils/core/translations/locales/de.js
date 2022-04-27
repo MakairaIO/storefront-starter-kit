@@ -84,4 +84,6 @@ export default {
   INCOMPATIBLE_PRODUCT: (product) =>
     `Produkt ${product} ist für dieses set nicht gültig`,
   NO_COMPONENT_AVAILABLE: 'Frontend-Komponente noch nicht implementiert',
+  RATINGS_HEADING: 'Bewertungen',
+  NO_RATINGS: 'Keine Bewertungen für dieses Produkt vorhanden.',
 }

@@ -9,6 +9,7 @@ import {
   ContentElements,
   ProductDetailInformation,
   ProductPlacement,
+  Ratings,
 } from '../../patterns'
 
 function DetailPage() {
@@ -58,6 +59,7 @@ function DetailPage() {
         {...productDetailProps}
       />
       <ProductPlacement {...productPlacementProps} />
+      <Ratings />
       <ContentElements
         elements={pageData.data.self.contentElements?.bottom?.elements}
       />
