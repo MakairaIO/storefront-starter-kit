@@ -47,7 +47,7 @@ export default class ErrorBoundary extends Component {
     if (this.state.hasError && !isProdMode) {
       return (
         <p style={{ textAlign: 'center' }}>
-          Component failed to render. Please checkt error logs.
+          Component failed to render. Please check error logs.
         </p>
       )
     }
