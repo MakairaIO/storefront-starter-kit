@@ -91,4 +91,8 @@ export default {
   RATINGS_LABEL_TEXT: 'Text',
   RATINGS_LABEL_SUBMIT: 'Absenden',
   RATINGS_FROM: 'von',
+  FORM_NOT_EMPTY: 'Dieses Feld darf nicht leer sein.',
+  RATINGS_STATUS_SUCCESS: 'Ihre Bewertung wurde abgeschickt.',
+  RATINGS_STATUS_FAILURE:
+    'Etwas ist schief gelaufen, bitte versuche es erneut!',
 }

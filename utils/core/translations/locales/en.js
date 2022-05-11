@@ -79,4 +79,7 @@ export default {
   RATINGS_LABEL_TEXT: 'Text',
   RATINGS_LABEL_SUBMIT: 'Submit',
   RATINGS_FROM: 'by',
+  FORM_NOT_EMPTY: 'This field may not be empty.',
+  RATINGS_STATUS_SUCCESS: 'Your rating has been submitted.',
+  RATINGS_STATUS_FAILURE: 'Something went wrong, please try again!',
 }

@@ -1,15 +1,8 @@
 import StarInput from './StarInput'
-import {
-  Button,
-  Copytext,
-  FormField,
-  FormInput,
-  FormTextArea,
-  Heading,
-  Text,
-} from '../../index'
+import RatingForm from './RatingForm'
+import { Copytext, Heading, Text } from '../../index'
+
 import { useTranslation } from '../../../utils'
-import { useState } from 'react'
 
 const Rating = ({ name, text, stars }) => {
   const { t } = useTranslation()
@@ -23,60 +16,6 @@ const Rating = ({ name, text, stars }) => {
         </Text>
       </div>
       <Copytext>{text}</Copytext>
-    </div>
-  )
-}
-
-const RatingForm = () => {
-  const { t } = useTranslation()
-
-  const [formValues, setFormValues] = useState({ name: '', stars: 0, text: '' })
-
-  const handleNameChange = (event) => {
-    setFormValues({ ...formValues, name: event.target.value })
-  }
-
-  const handleTextChange = (event) => {
-    setFormValues({ ...formValues, text: event.target.value })
-  }
-
-  const handleStarsChange = (amount) => {
-    setFormValues({ ...formValues, stars: amount })
-  }
-
-  const handleSubmit = () => {
-    console.log(formValues)
-  }
-
-  return (
-    <div className="ratings__form">
-      <FormField
-        name="name"
-        label={t('RATINGS_LABEL_NAME')}
-        onChange={handleNameChange}
-        values={formValues}
-      >
-        <FormInput type="text" />
-      </FormField>
-      <FormField
-        name="stars"
-        label={t('RATINGS_LABEL_STARS')}
-        onChange={handleStarsChange}
-        values={formValues}
-      >
-        <StarInput />
-      </FormField>
-      <FormField
-        name="text"
-        label={t('RATINGS_LABEL_TEXT')}
-        onChange={handleTextChange}
-        values={formValues}
-      >
-        <FormTextArea type="text" />
-      </FormField>
-      <Button variant="primary" onClick={handleSubmit}>
-        {t('RATINGS_LABEL_SUBMIT')}
-      </Button>
     </div>
   )
 }

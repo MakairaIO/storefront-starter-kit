@@ -1,5 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
+import Text from '../Text'
 
 export function FormField(props) {
   const {
@@ -9,6 +10,7 @@ export function FormField(props) {
     field = 'value',
     label,
     children,
+    errors = {},
     ...rest
   } = props
   const childrenWithProps = React.Children.map(children, (child) => {
@@ -22,10 +24,16 @@ export function FormField(props) {
     }
     return child
   })
+
   const formFieldClassName = classnames({
     'form-field': true,
     'form-field--required': rest.required,
   })
+
+  const error = errors[name]
+
+  console.log(error)
+
   return (
     <div className={formFieldClassName}>
       {label && (
@@ -34,6 +42,11 @@ export function FormField(props) {
         </label>
       )}
       {childrenWithProps}
+      {error && (
+        <Text element="p" className="form-field__error">
+          {error}
+        </Text>
+      )}
     </div>
   )
 }
