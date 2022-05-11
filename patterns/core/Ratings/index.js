@@ -10,7 +10,7 @@ const Rating = ({ name, text, stars }) => {
   return (
     <div className="ratings__rating">
       <div className="ratings__rating-header">
-        <StarInput disabled stars={stars} />
+        <StarInput disabled value={stars} />
         <Text size="bacchus">
           {t('RATINGS_FROM')} {name}
         </Text>
