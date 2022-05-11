@@ -4,7 +4,7 @@ function FormTextArea(props) {
   const { onChange = () => {}, label, name, ...rest } = props
   return (
     <textarea
-      className="form-field__component field-textarea"
+      className="form-field__component form-field__textarea"
       {...rest}
       id={name}
       name={name}

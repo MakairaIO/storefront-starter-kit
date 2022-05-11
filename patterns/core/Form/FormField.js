@@ -23,8 +23,8 @@ export function FormField(props) {
     return child
   })
   const formFieldClassName = classnames({
-    'contact-form__form-field': true,
-    required: rest.required,
+    'form-field': true,
+    'form-field--required': rest.required,
   })
   return (
     <div className={formFieldClassName}>

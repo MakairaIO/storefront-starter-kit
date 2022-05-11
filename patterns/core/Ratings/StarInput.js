@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import { Icon } from '../../index'
 
 const StarInput = ({
-  stars = 1,
+  value = 1,
   maxStars = 5,
   disabled = false,
   onChange = () => {},
@@ -37,7 +37,7 @@ const StarInput = ({
 
   const isStarActive = (index) => {
     if (disabled || !inputHovered) {
-      return index <= stars
+      return index <= value
     }
 
     return index <= hoveredStar

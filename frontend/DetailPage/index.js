@@ -11,6 +11,7 @@ import {
   ProductPlacement,
   Ratings,
 } from '../../patterns'
+import { ratingVariants } from '../../patterns/core/Ratings'
 
 function DetailPage() {
   const { t, language } = useTranslation()
@@ -59,7 +60,7 @@ function DetailPage() {
         {...productDetailProps}
       />
       <ProductPlacement {...productPlacementProps} />
-      <Ratings />
+      <Ratings ratings={ratingVariants[0].props.ratings} />
       <ContentElements
         elements={pageData.data.self.contentElements?.bottom?.elements}
       />

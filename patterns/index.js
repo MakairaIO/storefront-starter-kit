@@ -38,5 +38,12 @@ export { default as BrowserHintPage } from './core/BrowserHintPage'
 export { default as ContactForm } from './core/ContactForm'
 export { default as NoComponent } from './core/NoComponent'
 export { default as Ratings } from './core/Ratings'
+export {
+  FormField,
+  FormInput,
+  FormTextArea,
+  FormStatus,
+  FormSelect,
+} from './core/Form'
 
 /* Add project specific patterns here */

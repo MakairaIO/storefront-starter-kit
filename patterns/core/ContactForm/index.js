@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import fetch from 'isomorphic-unfetch'
 
-import { Heading, Button } from '../..'
-import FormField from './FormField'
-import FormSelect from './FormSelect'
-import FormInput from './FormInput'
-import FormTextArea from './FormTextArea'
-import FormStatus from './FormStatus'
+import {
+  Heading,
+  Button,
+  FormField,
+  FormInput,
+  FormTextArea,
+  FormSelect,
+  FormStatus,
+} from '../..'
 
 import { useTranslation } from '../../../utils'
 
@@ -52,7 +55,11 @@ function ContactForm(props) {
 
   return (
     <section className="contact-form">
-      <FormStatus status={sentStatus} />
+      <FormStatus
+        status={sentStatus}
+        successMessage={t('CONTACT_FORM_STATUS_SUCCESS')}
+        errorMessage={t('CONTACT_FORM_STATUS_FAILURE')}
+      />
       <form id="contact-form" onSubmit={onSubmit}>
         <Heading size="Eos" element="h1">
           {t('CONTACT_FORM_TITLE')}
@@ -63,22 +70,22 @@ function ContactForm(props) {
             value="Mr"
             label={t('CONTACT_FORM_SALUTATION')}
           >
-            <FormSelect options={genderOptions}></FormSelect>
+            <FormSelect options={genderOptions} />
           </FormField>
           <FormField name="firstName" label={t('CONTACT_FORM_FIRST_NAME')}>
-            <FormInput type="text"></FormInput>
+            <FormInput type="text" />
           </FormField>
           <FormField name="surname" label={t('CONTACT_FORM_SURNAME')}>
-            <FormInput type="text"></FormInput>
+            <FormInput type="text" />
           </FormField>
           <FormField name="email" label={t('CONTACT_FORM_EMAIL')} required>
-            <FormInput type="email"></FormInput>
+            <FormInput type="email" />
           </FormField>
           <FormField name="subject" label={t('CONTACT_FORM_SUBJECT')}>
-            <FormInput type="text"></FormInput>
+            <FormInput type="text" />
           </FormField>
           <FormField name="message" label={t('CONTACT_FORM_MESSAGE')} required>
-            <FormTextArea></FormTextArea>
+            <FormTextArea />
           </FormField>
           <Button
             type="submit"
