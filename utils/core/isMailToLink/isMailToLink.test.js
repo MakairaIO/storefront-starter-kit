@@ -1,4 +1,4 @@
-import { isMailToLink } from '../..'
+import isMailToLink from './index'
 
 describe('isMailToLink()', () => {
   it('should return true for hrefs with "mailto"', () => {

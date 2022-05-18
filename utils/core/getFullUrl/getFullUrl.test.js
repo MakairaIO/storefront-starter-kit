@@ -1,4 +1,4 @@
-import { getFullUrl } from '../..'
+import getFullUrl from './index'
 
 describe('getFullUrl()', () => {
   // Setup for consistent tests no matter where performed

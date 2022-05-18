@@ -1,4 +1,4 @@
-import { stripSlashes } from '../..'
+import stripSlashes from './index'
 
 describe('stripSlashes()', () => {
   it('should remove leading slashes', () => {

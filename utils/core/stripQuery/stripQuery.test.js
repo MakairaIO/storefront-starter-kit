@@ -1,4 +1,4 @@
-import { stripQuery } from '../..'
+import stripQuery from './index'
 
 describe('stripQuery()', () => {
   it('should remove the question mark character from query string', () => {
