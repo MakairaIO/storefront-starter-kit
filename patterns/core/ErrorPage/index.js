@@ -44,7 +44,7 @@ export default function ErrorPage(props) {
       <Text element="h2" size="eos" weight="bold">
         {t('ERROR_PAGE_FOR_COSTUMER')}
       </Text>
-      <ul>
+      <ul className="error-page-costumer-solutions">
         <li>
           <Link href="/">
             <Text size="cupid">{t('ERROR_PAGE_FOR_COSTUMER_SOLUTION1')}</Text>
