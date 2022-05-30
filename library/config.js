@@ -5,6 +5,9 @@ import Button, { buttonVariants } from '../patterns/core/Button'
 import Dropdown, { dropdownVariants } from '../patterns/core/Dropdown'
 import Header, { headerVariants } from '../patterns/core/Header'
 import Footer, { footerVariants } from '../patterns/core/Footer'
+import EmptySearchResult, {
+  emptySearchResultVariants,
+} from '../patterns/core/EmptySearchResult'
 import ProductList, { productListVariants } from '../patterns/core/ProductList'
 import ProductDetailInformation, {
   productDetailInformationVariants,
@@ -85,6 +88,12 @@ export default [
     name: 'Product List',
     component: ProductList,
     variants: productListVariants,
+  },
+  {
+    type: 'static',
+    name: 'Empty Search Result',
+    component: EmptySearchResult,
+    variants: emptySearchResultVariants,
   },
   {
     type: 'static',

@@ -72,4 +72,5 @@ export default {
   INCOMPATIBLE_PRODUCT: (product) =>
     `Product ${product} is not valid for this bundle`,
   NO_COMPONENT_AVAILABLE: 'Frontend component not implemented yet',
+  SEARCH_NO_RESULT: 'No search results found.',
 }

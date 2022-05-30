@@ -1,4 +1,4 @@
-import { ProductList } from '../../patterns'
+import { ProductList, EmptySearchResult } from '../../patterns'
 import {
   useGlobalData,
   mergeProductsAndBanners,
@@ -41,6 +41,8 @@ export default function ProductListWithProps() {
       redirectToBundle({ product: product.fields, params })
     },
   }
+
+  if (products.length === 0) return <EmptySearchResult />
 
   return (
     <>
