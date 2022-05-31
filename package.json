@@ -48,7 +48,7 @@
     "react-iframe-resizer-super": "^0.2.2",
     "react-image-magnifiers": "^1.4.0",
     "react-slick": "^0.28.1",
-    "stylus": "^0.56.0",
+    "stylus": "0.58.1",
     "ua-parser-js": "^1.0.2"
   },
   "devDependencies": {
