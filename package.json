@@ -61,7 +61,7 @@
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-react": "^7.29.2",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "jest": "^27.5.1",
+    "jest": "28.1.1",
     "lint-staged": "^12.3.4",
     "makaira-storefront-cli": "^1.6.0",
     "nodemon": "^2.0.15",
