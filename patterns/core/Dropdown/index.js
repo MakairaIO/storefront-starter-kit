@@ -116,7 +116,7 @@ Dropdown.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
-      value: PropTypes.value,
+      value: PropTypes.string,
     })
   ),
   anchor: PropTypes.oneOf(['left', 'right']),

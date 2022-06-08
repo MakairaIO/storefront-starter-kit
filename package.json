@@ -1,8 +1,14 @@
 {
-  "name": "makaira-storefront",
+  "name": "storefront-starter-kit",
   "version": "1.0.0",
   "description": "Makaira Storefront",
   "author": "René Mäkeler <rm@marmalade.group>",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:MakairaIO/storefront-starter-kit.git"
+  },
+  "homepage": "https://github.com/MakairaIO/storefront-starter-kit",
   "scripts": {
     "clean": "rimraf public/assets/svgs/icons.svg && rimraf public/assets/styles/main.css",
     "predev": "npm run clean",
@@ -21,7 +27,8 @@
     "start": "NODE_ENV=production node server/index.js",
     "test": "jest --watch",
     "analyze": "ANALYZE=true npm run build",
-    "pre-commit": "jest --all && lint-staged"
+    "pre-commit": "lint-staged",
+    "release": "semantic-release"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^12.1.0",
@@ -47,6 +54,8 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.17.0",
     "@babel/preset-react": "^7.16.7",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^8.0.4",
     "chokidar-cli": "^3.0.0",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
@@ -60,6 +69,7 @@
     "pre-commit": "^1.2.2",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
+    "semantic-release": "^19.0.2",
     "svgstore-cli": "^2.0.1"
   },
   "sideEffects": [

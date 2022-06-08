@@ -1,4 +1,4 @@
-import { mergeProductsAndBanners } from '../..'
+import mergeProductsAndBanners from '.'
 import mockProducts from './products'
 import mockBanners from './banners'
 
