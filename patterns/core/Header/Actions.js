@@ -1,8 +1,11 @@
 import { Button, FormattedPrice } from '../..'
 import { useTranslation } from '../../../utils'
+import LoginBox from './User/LoginBox'
 
 // TODO: Remove hard-coded implementation
-export default function Actions() {
+export default function Actions(props) {
+  const { toggleLoginBox, isLoginBoxVisible } = props
+
   const { t } = useTranslation()
 
   return (
@@ -11,8 +14,8 @@ export default function Actions() {
         <Button
           variant="icon-only"
           icon="user"
-          href="#todo"
           className="header__action"
+          onClick={toggleLoginBox}
         />
 
         <Button
@@ -26,9 +29,9 @@ export default function Actions() {
       <div className="header__actions header__actions--desktop">
         <Button
           icon="user"
-          href="#todo"
           className="header__action"
           iconPosition="left"
+          onClick={toggleLoginBox}
         >
           {t('HEADER_ACCOUNT_AREA')}
         </Button>
@@ -44,6 +47,8 @@ export default function Actions() {
           <FormattedPrice price="259.89" />
         </Button>
       </div>
+
+      {isLoginBoxVisible && <LoginBox />}
     </>
   )
 }

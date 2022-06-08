@@ -65,6 +65,23 @@ class Header extends Component {
     }
   }
 
+  toggleLoginBox = () => {
+    const { isLoginBoxVisible } = this.state
+
+    isLoginBoxVisible ? this.hideLoginBox() : this.showLoginBox()
+  }
+
+  showLoginBox = () => {
+    this.setState({
+      isAutosuggestBoxVisible: false,
+      isLoginBoxVisible: true,
+    })
+  }
+
+  hideLoginBox = () => {
+    this.setState({ isLoginBoxVisible: false })
+  }
+
   showMobileNavigation = () => {
     dispatchShowOverlayEvent()
     this.setState({ isMobileNavigationVisible: true })
@@ -75,7 +92,7 @@ class Header extends Component {
   }
 
   showAutosuggestBox = () => {
-    this.setState({ isAutosuggestBoxVisible: true })
+    this.setState({ isAutosuggestBoxVisible: true, isLoginBoxVisible: false })
   }
 
   hideAutosuggestBox = () => {
@@ -175,7 +192,10 @@ class Header extends Component {
                 activateMobileSearch={this.activateMobileSearch}
               />
 
-              <Actions />
+              <Actions
+                isLoginBoxVisible={this.state.isLoginBoxVisible}
+                toggleLoginBox={this.toggleLoginBox}
+              />
             </div>
           </div>
         </header>

@@ -95,4 +95,17 @@ export default {
   RATINGS_STATUS_SUCCESS: 'Ihre Bewertung wurde abgeschickt.',
   RATINGS_STATUS_FAILURE:
     'Etwas ist schief gelaufen, bitte versuche es erneut!',
+  LOGIN_TITLE: 'Anmelden',
+  LOGIN_BUTTON: 'Anmelden',
+  LOGIN_ERROR: 'Die Anmeldedaten sind ungültig.',
+  LOGIN_FORGOT_PASSWORD: 'Passwort vergessen?',
+  LOGIN_FORGOT_PASSWORD_TITLE: 'Passwort zurücksetzen',
+  LOGIN_FORGOT_PASSWORD_BUTTON: 'Passwort zurücksetzen',
+  LOGIN_FORGOT_PASSWORD_ERROR: 'Die E-Mail konnte nicht gesendet werden.',
+  LOGIN_FORGOT_PASSWORD_SUCCESS: 'E-Mail versendet.',
+  LOGIN_EMAIL_LABEL: 'E-Mail-Adresse',
+  LOGIN_BACK_TO_LOGIN: 'Zurück zum Login',
+  LOGOUT: 'Abmelden',
+  USER_WELCOME: (username) => `Hallo, ${username}!`,
+  USER_ACCOUNT: 'Mein Konto',
 }
