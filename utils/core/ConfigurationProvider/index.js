@@ -3,7 +3,6 @@ import React, { Component, useContext } from 'react'
 const ConfigurationContext = React.createContext()
 
 const CLOUDINARY_BASE = 'https://res.cloudinary.com'
-const CLOUDINARY_VERSION = 'v1592420992'
 
 const transformationMapping = {
   width: 'w',
@@ -46,7 +45,7 @@ class ConfigurationProvider extends Component {
   getCloudinaryLink = (options) => {
     const { source = {}, transformationString = '', ...rest } = options
 
-    const { cloudName, resourceType, fileName } = source
+    const { cloudName, resourceType, fileName, version } = source
 
     // Use cloudinary format "auto" unless otherwise stated
     if (rest.format === undefined) {
@@ -55,24 +54,25 @@ class ConfigurationProvider extends Component {
 
     const transformations = this.getCloudinaryTransformations(rest)
 
+    const versionStr = version
+      ? version.toString().startsWith('v')
+        ? version
+        : `v${version}`
+      : null
+
     // Example: https://res.cloudinary.com/makairafm/image/upload/<transformations>v1592420992/<fileName>
-    return (
-      CLOUDINARY_BASE +
-      '/' +
-      cloudName +
-      '/' +
-      resourceType +
-      '/' +
-      'upload' +
-      '/' +
-      transformations +
-      '/' +
-      transformationString +
-      '/' +
-      CLOUDINARY_VERSION +
-      '/' +
-      fileName
-    )
+    const parts = [
+      CLOUDINARY_BASE,
+      cloudName,
+      resourceType,
+      'upload',
+      transformations,
+      transformationString,
+      versionStr,
+      fileName,
+    ].filter(Boolean) // with .filter(Boolean) we remove all empty items from the array
+
+    return parts.join('/')
   }
 
   getCloudinaryTransformations = (settings) => {
