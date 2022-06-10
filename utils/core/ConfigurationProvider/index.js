@@ -30,6 +30,36 @@ class ConfigurationProvider extends Component {
     }
   }
 
+  /**
+   * If you want to get multiple image links at once (i.e. to define different image sources in a picture tag).
+   *
+   * Example Usage:
+   *  const options = {
+   *     mobile: {
+   *       source: image,
+   *       height: 500,
+   *     },
+   *     desktop: {
+   *       source: image,
+   *       width: 1400,
+   *     },
+   *   }
+   *
+   *   const imageLinks = getImageLinks(options)
+   */
+  getImageLinks = (options = {}) => {
+    let imageLinks = {}
+
+    for (const [key, value] of Object.entries(options)) {
+      imageLinks[`${key}`] = {
+        origin: this.getImageLink({ ...value }),
+        retina: this.getImageLink({ ...value, pixelRatio: 2 }),
+      }
+    }
+
+    return imageLinks
+  }
+
   getVideoLink = (options = {}) => {
     return this.getCloudinaryLink(options)
   }
@@ -99,6 +129,7 @@ class ConfigurationProvider extends Component {
       <ConfigurationContext.Provider
         value={{
           getImageLink: this.getImageLink,
+          getImageLinks: this.getImageLinks,
           getVideoLink: this.getVideoLink,
         }}
       >
