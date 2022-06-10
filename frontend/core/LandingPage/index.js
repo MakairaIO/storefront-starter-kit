@@ -1,6 +1,6 @@
-import { useGlobalData } from '../../utils'
+import { useGlobalData } from '../../../utils'
 import Metadata from '../Metadata'
-import { ContentElements } from '../../patterns'
+import { ContentElements } from '../../../patterns'
 import ProductList from './ProductListWithProps'
 
 function Landingpage() {
@@ -9,7 +9,7 @@ function Landingpage() {
 
   const {
     title = '',
-    seoTitle = '',
+    seoTitle,
     robotIndex = 'index',
     robotFollow = 'follow',
     ...additionalMetadata

@@ -1,5 +1,5 @@
-import { getNumberOfActiveFilters, useGlobalData } from '../../utils'
-import { ContentElements } from '../../patterns'
+import { getNumberOfActiveFilters, useGlobalData } from '../../../utils'
+import { ContentElements } from '../../../patterns'
 import Metadata from '../Metadata'
 import ProductList from './ProductListWithProps'
 

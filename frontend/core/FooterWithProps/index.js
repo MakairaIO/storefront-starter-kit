@@ -1,4 +1,4 @@
-import { Footer } from '../../patterns'
+import { Footer } from '../../../patterns'
 
 export default function FooterWithProps() {
   // use mock data for now

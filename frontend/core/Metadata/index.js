@@ -18,7 +18,9 @@ function Metadata({
   return (
     <Head>
       {title && <title>{title}</title>}
+
       {keywords && <meta key="keywords" name="keywords" content={keywords} />}
+
       {description && (
         <meta key="description" name="description" content={description} />
       )}

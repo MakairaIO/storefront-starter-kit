@@ -1,5 +1,5 @@
-import { ProductDetailInformation } from '../../patterns'
-import { useGlobalData } from '../../utils'
+import { ProductDetailInformation } from '../../../patterns'
+import { useGlobalData } from '../../../utils'
 
 export default function ProductDetailInformationWithProps() {
   const { pageData } = useGlobalData()

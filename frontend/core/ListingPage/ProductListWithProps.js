@@ -1,24 +1,24 @@
-import { ProductList, EmptySearchResult } from '../../patterns'
+import { ProductList } from '../../../patterns'
 import {
   useGlobalData,
   mergeProductsAndBanners,
   submitProductListForms,
   resetAllProductListFilters,
   redirectToBundle,
-} from '../../utils'
+} from '../../../utils'
 
 export default function ProductListWithProps() {
-  const { searchResult, params = {} } = useGlobalData()
+  const { pageData, params = {} } = useGlobalData()
 
   // restParams = sorting, pagination, ...
-  const { seoUrl, filter, searchPhrase, ...restParams } = params
+  const { filter, ...restParams } = params
 
-  const products = searchResult.product.items
-  const banners = searchResult.banners
+  const products = pageData.data.product.items
+  const banners = pageData.data.banners
   const merged = mergeProductsAndBanners({ products, banners })
 
-  const aggregations = searchResult.product.aggregations
-  const totalProductCount = searchResult.product.total
+  const aggregations = pageData.data.product.aggregations
+  const totalProductCount = pageData.data.product.total
 
   const productListProps = {
     products: merged,
@@ -26,14 +26,9 @@ export default function ProductListWithProps() {
     submitForms: async (options = {}) => {
       const { resetPagination = false } = options
 
-      await submitProductListForms({
-        aggregations,
-        isSearch: true,
-        searchPhrase,
-        resetPagination,
-      })
+      await submitProductListForms({ aggregations, resetPagination })
     },
-    resetAllFilters: () => resetAllProductListFilters({ isSearch: true }),
+    resetAllFilters: resetAllProductListFilters,
     queryParams: restParams,
     totalProductCount,
     addToBundle: (productId) => {
@@ -41,8 +36,6 @@ export default function ProductListWithProps() {
       redirectToBundle({ product: product.fields, params })
     },
   }
-
-  if (products.length === 0) return <EmptySearchResult />
 
   return (
     <>

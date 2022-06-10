@@ -1,10 +1,10 @@
-import { Header } from '../../patterns'
+import { Header } from '../../../patterns'
 import {
   useGlobalData,
   useTranslation,
   submitSearchForm,
   fetchAutosuggestResult,
-} from '../../utils'
+} from '../../../utils'
 
 export default function HeaderWithProps() {
   const { menuData } = useGlobalData()

@@ -1,17 +1,19 @@
-import { ProductList } from '../../patterns'
+import { ProductList } from '../../../patterns'
 import {
   useGlobalData,
   mergeProductsAndBanners,
   submitProductListForms,
   resetAllProductListFilters,
   redirectToBundle,
-} from '../../utils'
+} from '../../../utils'
 
 export default function ProductListWithProps() {
   const { pageData, params = {} } = useGlobalData()
 
   // restParams = sorting, pagination, ...
   const { filter, ...restParams } = params
+
+  if (!pageData.data?.product) return null
 
   const products = pageData.data.product.items
   const banners = pageData.data.banners

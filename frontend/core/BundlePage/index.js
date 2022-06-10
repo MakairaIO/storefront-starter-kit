@@ -1,6 +1,6 @@
 import ProductList from './ProductListWithProps'
-import { ContentElements } from '../../patterns'
-import { useGlobalData } from '../../utils'
+import { ContentElements } from '../../../patterns'
+import { useGlobalData } from '../../../utils'
 import Metadata from '../Metadata'
 
 export default function BundlePage() {

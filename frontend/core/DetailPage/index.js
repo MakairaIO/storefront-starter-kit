@@ -4,12 +4,12 @@ import {
   fetchRecommendationData,
   useTranslation,
   redirectToBundle,
-} from '../../utils'
+} from '../../../utils'
 import {
   ContentElements,
   ProductDetailInformation,
   ProductPlacement,
-} from '../../patterns'
+} from '../../../patterns'
 import Metadata from '../Metadata'
 
 function DetailPage() {
