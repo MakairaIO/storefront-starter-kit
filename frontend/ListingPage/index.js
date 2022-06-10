@@ -52,7 +52,6 @@ function getPageTitle({ type, page }) {
 }
 
 function getRobotsContent({ aggregations = {}, queryParams = {} }) {
-  // const { count = 50, offset = 0, makairaFilter: activeFilters } = params
   const count = queryParams.count ?? process.env.PRODUCTS_PER_PAGE
   const offset = queryParams.offset ?? 0
 
