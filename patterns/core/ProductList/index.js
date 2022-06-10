@@ -60,9 +60,6 @@ class ProductList extends Component {
       resetAllFilters,
       queryParams = {},
       totalProductCount = 0,
-      isBundle = false,
-      addToBundle,
-      pageData,
     } = this.props
 
     const numberOfActiveFilters = getNumberOfActiveFilters({ aggregations })
@@ -102,10 +99,7 @@ class ProductList extends Component {
             queryParams={queryParams}
             totalProductCount={totalProductCount}
             submitForms={this.handlePagination}
-            isBundle={isBundle}
-            addToBundle={addToBundle}
             isLoading={this.state.isLoading}
-            pageData={pageData}
           />
         </div>
       </section>

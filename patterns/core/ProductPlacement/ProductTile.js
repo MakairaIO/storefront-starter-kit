@@ -4,26 +4,21 @@ import ProductActions from './ProductActions'
 import { useConfiguration } from '../../../utils'
 
 export default function ProductTile(props) {
-  const {
-    title = '',
-    picture_url_main = '',
-    manufacturer_title = '',
-    url = '',
-    images = [],
-  } = props
+  const { title = '', images = [], manufacturer_title = '', url = '' } = props
 
   const { getImageLink } = useConfiguration()
 
-  const productImage = getImageLink({
-    source: images.length > 0 ? images[0] : picture_url_main,
-    height: 162,
+  const imageLink = getImageLink({
+    source: images[0],
+    width: 250,
+    format: 'auto',
   })
 
   return (
     <article className="product-placement-item">
       <Link href={url}>
         <picture className="product-placement-item__image">
-          <img data-src={productImage} alt={title} />
+          <img data-src={imageLink} alt={title} />
         </picture>
 
         <Heading

@@ -12,7 +12,6 @@ export default function List(props) {
     totalProductCount = 0,
     submitForms,
     isLoading = false,
-    pageData,
   } = props
   const listRef = useRef(null)
 
@@ -28,14 +27,7 @@ export default function List(props) {
         if (entry.isBanner) {
           return <Banner key={`banner.${entry.id}`} {...entry} />
         } else {
-          return (
-            <ProductTile
-              pageData={pageData}
-              key={entry.id}
-              {...props}
-              {...entry.fields}
-            />
-          )
+          return <ProductTile key={entry.id} {...entry.fields} />
         }
       })}
 
