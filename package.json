@@ -37,7 +37,7 @@
     "cors": "^2.8.5",
     "dotenv-webpack": "^7.1.0",
     "express": "^4.17.3",
-    "iframe-resizer": "^3.6.6",
+    "iframe-resizer": "4.3.2",
     "next": "^12.1.0",
     "nookies": "^2.5.2",
     "qs": "^6.10.3",
