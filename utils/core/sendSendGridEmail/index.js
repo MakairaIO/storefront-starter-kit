@@ -1,5 +1,3 @@
-const fetch = require('isomorphic-unfetch')
-
 const SENDGRID_API = 'https://api.sendgrid.com/v3/mail/send'
 const SENDER_EMAIL = 'storefront@makaira.io'
 

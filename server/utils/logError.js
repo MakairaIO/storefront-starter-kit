@@ -1,5 +1,3 @@
-const fetch = require('node-fetch')
-
 const LOGGING_ENDPOINT = 'https://graylog-api.makaira.io/gelf'
 
 module.exports = async function logError(body) {

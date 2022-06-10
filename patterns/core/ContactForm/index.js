@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import fetch from 'isomorphic-unfetch'
 
 import { Heading, Button } from '../..'
 import FormField from './FormField'
