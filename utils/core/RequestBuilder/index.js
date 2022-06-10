@@ -18,6 +18,7 @@ class RequestBuilder {
     let constraints = {
       'query.shop_id': process.env.SHOP_ID ?? 1,
       'query.use_stock': true,
+      'query.original_keys': true,
       'oi.user.agent': this.getUserAgent(),
       'oi.user.ip': this.getIpAddress(),
       'oi.user.timezone': this.getTimeZone(),
