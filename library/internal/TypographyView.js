@@ -1,9 +1,9 @@
-import ReactIframeResizer from 'react-iframe-resizer-super'
 import { Text } from '../../patterns'
 import coreFonts from '../../config/core/fonts'
 import projectFonts from '../../config/fonts'
 import coreTypography from '../../config/core/typography'
 import projectTypography from '../../config/typography'
+import { IframeResizerWrapper } from '../../utils'
 
 const fonts = Object.keys(projectFonts).length ? projectFonts : coreFonts
 // Filter italic fonts to get unique font weights, then sort by weight and restore original JSON structure for processing during render() below
@@ -31,7 +31,7 @@ const typography = Object.keys(projectTypography).length
 
 export default function TypographyView() {
   return (
-    <ReactIframeResizer iframeResizerOptions={{ checkOrigin: false }}>
+    <IframeResizerWrapper iframeResizerOptions={{ checkOrigin: false }}>
       <link
         href="/assets/library/library.css"
         rel="stylesheet"
@@ -73,6 +73,6 @@ export default function TypographyView() {
           </div>
         )
       })}
-    </ReactIframeResizer>
+    </IframeResizerWrapper>
   )
 }
