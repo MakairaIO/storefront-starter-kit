@@ -4,14 +4,15 @@ import {
   fetchRecommendationData,
   useTranslation,
   redirectToBundle,
-} from '../../utils'
+} from '../../../utils'
 import {
   ContentElements,
   ProductDetailInformation,
   ProductPlacement,
   Ratings,
-} from '../../patterns'
-import { ratingVariants } from '../../patterns/core/Ratings'
+} from '../../../patterns'
+import { ratingVariants } from '../../../patterns/core/Ratings'
+import Metadata from '../Metadata'
 
 function DetailPage() {
   const { t, language } = useTranslation()
@@ -52,6 +53,11 @@ function DetailPage() {
 
   return (
     <main>
+      <Metadata
+        title={pageData.data.self.title}
+        keywords={pageData.data.self.meta_keywords}
+        description={pageData.data.self.meta_description}
+      />
       <ContentElements
         elements={pageData.data.self.contentElements?.top?.elements}
       />

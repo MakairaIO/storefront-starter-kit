@@ -32,8 +32,6 @@ export function FormField(props) {
 
   const error = errors[name]
 
-  console.log(error)
-
   return (
     <div className={formFieldClassName}>
       {label && (

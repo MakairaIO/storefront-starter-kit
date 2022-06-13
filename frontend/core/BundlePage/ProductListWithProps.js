@@ -1,11 +1,11 @@
-import { BundleSelection, ProductList } from '../../patterns'
+import { BundleSelection, ProductList } from '../../../patterns'
 import {
   useGlobalData,
   mergeProductsAndBanners,
   submitProductListForms,
   resetAllProductListFilters,
   submitBundleForm,
-} from '../../utils'
+} from '../../../utils'
 import { useEffect, useState } from 'react'
 
 function BundleForm() {

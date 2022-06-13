@@ -1,11 +1,11 @@
-import { ProductList } from '../../patterns'
+import { ProductList } from '../../../patterns'
 import {
   useGlobalData,
   mergeProductsAndBanners,
   submitProductListForms,
   resetAllProductListFilters,
   redirectToBundle,
-} from '../../utils'
+} from '../../../utils'
 
 export default function ProductListWithProps() {
   const { pageData, params = {} } = useGlobalData()

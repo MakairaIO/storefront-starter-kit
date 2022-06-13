@@ -20,13 +20,8 @@ function LinkComponent(props) {
 
       <ul className="autosuggest__links">
         {items.map((item) => {
-          const {
-            id,
-            url,
-            title,
-            category_title,
-            manufacturer_title,
-          } = item.fields
+          const { id, url, title, category_title, manufacturer_title } =
+            item.fields
           const displayValue = title ?? category_title ?? manufacturer_title
 
           return (

@@ -62,8 +62,14 @@ $breakpoint-huge = 1200px
   line-height 3rem
 
 .product-detail-information__image
-  width 100%
+  margin 0 -1.5rem 1.2rem
   position relative
+  max-height 60rem
+  height 50vh
+  display flex
+  justify-content center
+  align-items center
+  object-fit cover
 
   @media (min-width $breakpoint-small)
     // max-width 47rem
@@ -79,27 +85,30 @@ $breakpoint-huge = 1200px
     grid-area img
 
   picture
+    height 100%
     display flex
     justify-content center
 
   img
+    width 100%
     // max-width calc(100% + 3rem) // +3rem for the 1.5rem negative margin on the left/right
 
     @media (min-width $breakpoint-small)
       // max-width 100%
 
+.product-detail-information__magnifier--tap
+  height 100%
+
   > div
     height 100%
+    display flex
 
-    > div
-      height 100%
-      display flex
+  > div > img
+    max-height 100%
+    max-width 100%
+    margin auto
+    width auto !important
 
-    > div > img
-      max-height 100%
-      max-width 100%
-      margin auto
-      width auto !important
 
 .product-detail-information__image-button
   position absolute

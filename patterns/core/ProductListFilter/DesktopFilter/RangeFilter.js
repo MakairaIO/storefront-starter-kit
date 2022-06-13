@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { Range } from 'rc-slider'
+import Slider from 'rc-slider'
 import isEqual from 'lodash/isEqual'
 
 const handleStyle = {
@@ -78,7 +78,8 @@ export default class RangeFilter extends Component {
           {selectedMin} € - {selectedMax} €
         </span>
 
-        <Range
+        <Slider
+          range
           min={Math.trunc(min)}
           max={Math.trunc(max)}
           value={[selectedMin, selectedMax]}

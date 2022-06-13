@@ -1,57 +1,48 @@
 import { Heading, Copytext, Text, Link } from '../..'
+import { useConfiguration } from '../../../utils'
 import ProductPrices from './ProductPrices'
 import ProductActions from './ProductActions'
 import Ribbon from './Ribbon'
 import classNames from 'classnames'
-import { getProductDetailUrl, useConfiguration } from '../../../utils'
 
 export default function ProductTile(props) {
+  const { getImageLink } = useConfiguration()
   const {
     title = '',
-    picture_url_main = '',
+    images = [],
     manufacturer_title = '',
     shortdesc = '',
     url = '',
     mak_paid_placement = false,
-    isLazyLoad = true,
-    isBundle,
-    pageData = {},
-    images = [],
   } = props
-
-  const { getImageLink } = useConfiguration()
 
   const classes = classNames('product-item', {
     ['product-item--highlight']: mak_paid_placement,
   })
 
-  const onClickProduct = (event) => {
-    const classes = [...event.target.classList]
-    const isButtonClick = classes.some((className) =>
-      ['button__text', 'button--primary'].includes(className)
-    )
-
-    if (isBundle && isButtonClick) {
-      event.preventDefault()
-    }
-  }
-
-  const productImage = getImageLink({
-    source: images.length > 0 ? images[0] : picture_url_main,
+  const imageLink = getImageLink({
+    source: images[0],
     height: 228,
+    format: 'auto',
   })
 
-  const productUrl = getProductDetailUrl({ url, pageData })
+  const imageLinkRetina = getImageLink({
+    source: images[0],
+    height: 228,
+    pixelRatio: 2,
+    format: 'auto',
+  })
 
   return (
     <article className={classes}>
-      <Link href={productUrl} onClick={onClickProduct}>
+      <Link href={url}>
         <picture className="product-item__image">
-          {isLazyLoad ? (
-            <img data-src={productImage} alt={title} height="228" />
-          ) : (
-            <img src={productImage} alt={title} height="228" />
-          )}
+          <img
+            //src={imageLink}
+            data-srcset={`${imageLink} 1x, ${imageLinkRetina} 2x`}
+            alt={title}
+            height="228"
+          />
         </picture>
 
         <Heading size="bacchus" weight="600" className="product-item__title">

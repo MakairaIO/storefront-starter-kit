@@ -1,21 +1,36 @@
-import Head from 'next/head'
-import { useGlobalData, getNumberOfActiveFilters } from '../../utils'
+import { getNumberOfActiveFilters, useGlobalData } from '../../../utils'
+import { ContentElements } from '../../../patterns'
+import Metadata from '../Metadata'
+import ProductList from './ProductListWithProps'
 
-export default function Metadata() {
+export default function ListingPage() {
   const { pageData, params = {} } = useGlobalData()
+
   const { type } = pageData
 
   const aggregations = pageData.data.product.aggregations
 
   const title = getPageTitle({ type, page: pageData.data.self })
-  const robotsContent = getRobotsContent({ aggregations, queryParams: params })
+  const { robotFollow, robotIndex } = getRobotsContent({
+    aggregations,
+    queryParams: params,
+  })
 
   return (
-    <Head>
-      {title && <title>{title}</title>}
-
-      <meta key="ROBOTS" name="ROBOTS" content={robotsContent} />
-    </Head>
+    <main>
+      <Metadata
+        title={title}
+        robotFollow={robotFollow}
+        robotIndex={robotIndex}
+      />
+      <ContentElements
+        elements={pageData.data.self.contentElements?.top?.elements}
+      />
+      <ProductList />
+      <ContentElements
+        elements={pageData.data.self.contentElements?.bottom?.elements}
+      />
+    </main>
   )
 }
 
@@ -37,7 +52,6 @@ function getPageTitle({ type, page }) {
 }
 
 function getRobotsContent({ aggregations = {}, queryParams = {} }) {
-  // const { count = 50, offset = 0, makairaFilter: activeFilters } = params
   const count = queryParams.count ?? process.env.PRODUCTS_PER_PAGE
   const offset = queryParams.offset ?? 0
 
@@ -51,12 +65,8 @@ function getRobotsContent({ aggregations = {}, queryParams = {} }) {
   // do not index when filter, pagintion or sorting is active
   const isIndexable = isFirstPage && activeFilters == 0 && !hasActiveSorting
 
-  let robotsContent = ['FOLLOW']
-  if (isIndexable) {
-    robotsContent.push('INDEX')
-  } else {
-    robotsContent.push('NOINDEX')
+  return {
+    robotFollow: 'follow',
+    robotIndex: isIndexable ? 'index' : 'noindex',
   }
-
-  return robotsContent.join(', ')
 }
