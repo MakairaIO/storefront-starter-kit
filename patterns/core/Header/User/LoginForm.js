@@ -30,21 +30,22 @@ const LoginForm = ({ onPasswordForgetSwitch }) => {
       formId="login-box__form"
       onSubmit={onSubmit}
       loading={isFormLoading}
+      belowFormContent={
+        <div className="login-box__forgot-password">
+          <Button onClick={onPasswordForgetSwitch} variant="link">
+            {t('LOGIN_FORGOT_PASSWORD')}
+          </Button>
+        </div>
+      }
     >
       <FormStatus errorMessage={t('LOGIN_ERROR')} status={formStatus} />
 
       <FormField name="email" label="E-Mail-Adresse" required>
-        <FormInput type="email" />
+        <FormInput type="email" autoComplete="username" />
       </FormField>
       <FormField name="password" label="Passwort" required>
-        <FormInput type="password" />
+        <FormInput type="password" autoComplete="current-password" />
       </FormField>
-
-      <div className="login-box__forgot-password">
-        <Button onClick={onPasswordForgetSwitch} variant="link">
-          {t('LOGIN_FORGOT_PASSWORD')}
-        </Button>
-      </div>
     </Form>
   )
 }

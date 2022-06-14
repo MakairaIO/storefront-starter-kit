@@ -64,5 +64,8 @@
   },
   "Logout": {
     "value": "logout"
+  },
+  "Star": {
+    "value": "star"
   }
 }

@@ -3,9 +3,8 @@
   margin-top 1.5rem
 
   &.form-field--required
-    .form-field__label
-      color var(--error)
-      font-weight var(--font-weight-normal)
+    .form-field__label:after
+      content: " *"
 
   .form-field__label
     flex 0 0 100%
@@ -31,18 +30,14 @@
       min-height 4rem
 
     &.form-field__input[type="text"]:focus,
-    &.form-field__input[type="email"]:focus
+    &.form-field__input[type="email"]:focus,
+    &.form-field__textarea:focus
       border-color var(--neutral-60)
       box-shadow unset
       outline none
 
     &.form-field__textarea
       min-height 10rem
-
-    &.form-field__textarea:focus
-      border-color var(--neutral-60)
-      box-shadow unset
-      outline none
 
   &__status
     font-weight var(--font-weight-light)
