@@ -25,11 +25,21 @@ const PasswordForgotForm = ({ onBackToLogin }) => {
   return (
     <Form
       title={t('LOGIN_FORGOT_PASSWORD_TITLE')}
-      buttonVariant="primary-alt"
       buttonText={t('LOGIN_FORGOT_PASSWORD_BUTTON')}
       formId="login-box__pw-reset-form"
       onSubmit={onSubmit}
       loading={loading}
+      belowFormContent={
+        <Button
+          variant="secondary"
+          icon="chevron-double-left"
+          iconPosition="left"
+          className="login-box__button"
+          onClick={onBackToLogin}
+        >
+          {t('LOGIN_BACK_TO_LOGIN')}
+        </Button>
+      }
     >
       <FormStatus
         status={status}
@@ -38,18 +48,8 @@ const PasswordForgotForm = ({ onBackToLogin }) => {
       />
 
       <FormField name="email" label={t('LOGIN_EMAIL_LABEL')} required>
-        <FormInput type="email" />
+        <FormInput type="email" autoComplete="username" />
       </FormField>
-
-      <Button
-        variant="secondary"
-        icon="chevron-double-left"
-        iconPosition="left"
-        className="login-box__button"
-        onClick={onBackToLogin}
-      >
-        {t('LOGIN_BACK_TO_LOGIN')}
-      </Button>
     </Form>
   )
 }

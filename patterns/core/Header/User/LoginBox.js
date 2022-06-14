@@ -16,6 +16,7 @@ const Form = ({
   formId,
   onSubmit = () => {},
   loading = false,
+  belowFormContent,
 }) => {
   const handleSubmit = (event) => {
     const formData = new FormData(event.target)
@@ -47,6 +48,7 @@ const Form = ({
         >
           {buttonText}
         </Button>
+        {belowFormContent}
       </form>
     </div>
   )
