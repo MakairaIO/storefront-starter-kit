@@ -65,5 +65,6 @@ export { default as filterInternalMakairaFields } from './core/filterInternalMak
 export { default as mergeProductsAndBanners } from './core/mergeProductsAndBanners'
 export { default as sendSendGridEmail } from './core/sendSendGridEmail'
 export { default as getProductDetailUrl } from './core/getProductDetailUrl'
+export { default as IframeResizerWrapper } from './core/IframeResizerWrapper'
 
 /* Add project specific utils here */
