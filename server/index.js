@@ -22,23 +22,13 @@ app
     server.use(bodyParser.json())
 
     /**
-     * Route handler for sitemap.xml
-     */
-    server.get('/sitemap.xml', (req, res) => {
-      console.log('here')
-      res.redirect(
-        `${process.env.MAKAIRA_API_URL}/de/sitemap.xml?instance=${process.env.MAKAIRA_API_INSTANCE}`
-      )
-    })
-
-    /**
      * Route handler for robots.txt
      */
     server.get('/robots.txt', (req, res) => {
       res
         .status(200)
         .send(
-          `Sitemap: ${process.env.MAKAIRA_API_URL}/de/sitemap.xml?instance=${process.env.MAKAIRA_API_INSTANCE}`
+          `Sitemap: ${process.env.SHOP_DOMAIN}/de/sitemap.xml?instance=${process.env.MAKAIRA_API_INSTANCE}`
         )
     })
 
