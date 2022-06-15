@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Head from 'next/head'
 import { useTranslation, getClientInformation, logError } from '../../../utils'
 import { Copytext, Text, Link } from '../..'
 
@@ -31,6 +32,13 @@ export default function ErrorPage(props) {
 
   return (
     <main className="error-page">
+      <Head>
+        <title>
+          {statusCode === 404
+            ? t('ERROR_PAGE_404_TITLE')
+            : t('ERROR_PAGE_500_TITLE')}
+        </title>
+      </Head>
       <Text element="h1" size="isis" weight="bold">
         {statusCode === 404
           ? t('ERROR_PAGE_404_TITLE')

@@ -71,4 +71,6 @@ export default {
     `Product ${product} is not valid for this bundle`,
   NO_COMPONENT_AVAILABLE: 'Frontend component not implemented yet',
   SEARCH_NO_RESULT: 'No search results found.',
+  SEARCH_RESULT_META_TITLE: (searchPhrase) =>
+    `Search results for ${searchPhrase}`,
 }

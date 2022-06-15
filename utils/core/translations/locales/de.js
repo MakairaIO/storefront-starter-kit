@@ -77,4 +77,6 @@ export default {
     `Produkt ${product} ist für dieses set nicht gültig`,
   NO_COMPONENT_AVAILABLE: 'Frontend-Komponente noch nicht implementiert',
   SEARCH_NO_RESULT: 'Keine Suchergebnisse gefunden.',
+  SEARCH_RESULT_META_TITLE: (searchPhrase) =>
+    `Suchergebnisse für ${searchPhrase}`,
 }
