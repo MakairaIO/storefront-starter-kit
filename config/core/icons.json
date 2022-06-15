@@ -61,5 +61,8 @@
   },
   "Construction": {
     "value": "construction"
+  },
+  "Arrow Up": {
+    "value": "arrow-up"
   }
 }

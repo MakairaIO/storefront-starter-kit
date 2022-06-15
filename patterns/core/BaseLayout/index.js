@@ -1,4 +1,4 @@
-import { Overlay, ModalRoot } from '../..'
+import { Overlay, ModalRoot, BackToTop } from '../..'
 
 export default function BaseLayout({ children }) {
   return (
@@ -7,6 +7,7 @@ export default function BaseLayout({ children }) {
         {children}
 
         <ModalRoot />
+        <BackToTop />
       </div>
 
       <Overlay />
