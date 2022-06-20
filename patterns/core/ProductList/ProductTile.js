@@ -1,5 +1,5 @@
 import { Heading, Copytext, Text, Link } from '../..'
-import { useConfiguration } from '../../../utils'
+import { getProductDetailUrl, useConfiguration } from '../../../utils'
 import ProductPrices from './ProductPrices'
 import ProductActions from './ProductActions'
 import Ribbon from './Ribbon'
@@ -20,6 +20,8 @@ export default function ProductTile(props) {
     ['product-item--highlight']: mak_paid_placement,
   })
 
+  const productDetailUrl = getProductDetailUrl({ url })
+
   const imageLink = getImageLink({
     source: images[0],
     height: 228,
@@ -35,7 +37,7 @@ export default function ProductTile(props) {
 
   return (
     <article className={classes}>
-      <Link href={url}>
+      <Link href={productDetailUrl}>
         <picture className="product-item__image">
           <img
             //src={imageLink}
