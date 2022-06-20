@@ -39,5 +39,6 @@ export { default as BrowserHintPage } from './core/BrowserHintPage'
 export { default as ContactForm } from './core/ContactForm'
 export { default as NoComponent } from './core/NoComponent'
 export { default as BackToTop } from './core/BackToTop'
+export { default as Breadcrumb } from './core/Breadcrumb'
 
 /* Add project specific patterns here */

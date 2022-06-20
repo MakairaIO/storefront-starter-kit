@@ -64,5 +64,8 @@
   },
   "Arrow Up": {
     "value": "arrow-up"
+  },
+  "Home": {
+    "value": "home"
   }
 }

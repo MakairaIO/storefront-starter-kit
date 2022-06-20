@@ -42,6 +42,8 @@ import Listing from './examplePages/Listing'
 import Detail from './examplePages/Detail'
 import SmartBundle from './examplePages/SmartBundle'
 import ErrorPage from '../patterns/core/ErrorPage'
+import { Breadcrumb } from '../patterns'
+import { breadcrumbVariants } from '../patterns/core/Breadcrumb'
 
 /* Add project specific imports here */
 /* CLI MARKER - PATTER IMPORT - DO NOT REMOVE */
@@ -100,6 +102,12 @@ export default [
     name: 'Product Information',
     component: ProductDetailInformation,
     variants: productDetailInformationVariants,
+  },
+  {
+    type: 'static',
+    name: 'Breadcrumb',
+    component: Breadcrumb,
+    variants: breadcrumbVariants,
   },
   {
     type: 'placeable',

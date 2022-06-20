@@ -1,6 +1,6 @@
 import { useGlobalData } from '../../../utils'
 import Metadata from '../Metadata'
-import { ContentElements } from '../../../patterns'
+import { Breadcrumb, ContentElements } from '../../../patterns'
 import ProductList from './ProductListWithProps'
 
 function Landingpage() {
@@ -26,6 +26,7 @@ function Landingpage() {
         additionalMetadata={additionalMetadata}
       />
 
+      <Breadcrumb breadcrumb={pageData.data.self.navigation?.breadcrumb} />
       <ContentElements elements={config.top?.elements} />
       <ProductList />
       <ContentElements elements={config.bottom?.elements} />
