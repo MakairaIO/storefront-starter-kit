@@ -1,24 +1,41 @@
-import { Dropdown } from '../..'
+import { useState, useEffect } from 'react'
+import { useTranslation } from '../../../utils'
 import ProductPrices from './ProductPrices'
 import ProductAvailability from './ProductAvailability'
 import ProductActions from './ProductActions'
+import VariantSelection from './VariantSelection'
 
-// TODO: Remove hard-coded implementation
 export default function Buybox(props) {
-  const { chooseVariant = () => {}, variantsAttributeStr = [] } = props
+  const { t } = useTranslation()
+  const {
+    attributeStr = [],
+    setActiveVariant,
+    'makaira-product': variants = [],
+  } = props
+
+  // Grab all available sizes and colors off the parent
+  const sizeValues = attributeStr.find((attr) => attr.id === 'size')?.['value']
+  const colorValues = attributeStr.find((attr) => attr.id === 'color')?.[
+    'value'
+  ]
+
+  const [selectedSize, setSelectedSize] = useState(sizeValues?.[0])
+  const [selectedColor, setSelectedColor] = useState(colorValues?.[0])
+
+  useEffect(() => {
+    const colorVariant = variants.find((variant) => {
+      const color = variant.attributeStr.find((attr) => attr.id === 'color')[
+        'value'
+      ]
+
+      return color === selectedColor
+    })
+
+    setActiveVariant(colorVariant)
+  }, [selectedColor, setActiveVariant, variants])
 
   return (
     <div className="product-detail-information__buybox">
-      <div className="product-detail-information__variants">
-        <Dropdown
-          id="sizeVariant"
-          label="Size"
-          options={variantsAttributeStr}
-          onChange={(attribute) => chooseVariant(attribute)}
-          className="product-detail-information__variant-select"
-        />
-      </div>
-
       <div className="product-detail-information__buybox-wrapper">
         <figure className="product-detail-information__manufacturer"></figure>
 
@@ -27,6 +44,21 @@ export default function Buybox(props) {
 
           <ProductAvailability {...props} />
         </div>
+      </div>
+
+      <div className="product-detail-information__variants">
+        <VariantSelection
+          title={t('PRODUCT_DETAIL_VARIANT_SELECTION_SIZE')}
+          values={sizeValues}
+          selected={selectedSize}
+          setSelected={setSelectedSize}
+        />
+        <VariantSelection
+          title={t('PRODUCT_DETAIL_VARIANT_SELECTION_COLOR')}
+          values={colorValues}
+          selected={selectedColor}
+          setSelected={setSelectedColor}
+        />
       </div>
 
       <ProductActions {...props} />

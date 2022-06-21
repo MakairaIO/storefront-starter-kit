@@ -1,7 +1,6 @@
 import { Button, Dropdown } from '../..'
 import { useTranslation } from '../../../utils'
 
-// TODO: Add functionality (add-to-wishlist, add-to-cart etc.)
 export default function ProductActions({ bundles, addToBundle }) {
   const { t } = useTranslation()
 
