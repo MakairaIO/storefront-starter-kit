@@ -94,4 +94,5 @@ export default {
   USER_WELCOME: (username) => `Hello, ${username}!`,
   USER_ACCOUNT: 'My Account',
   SEARCH_NO_RESULT: 'No search results found.',
+  LOGIN_SUCCESS: 'You have been signed in successfully.',
 }
