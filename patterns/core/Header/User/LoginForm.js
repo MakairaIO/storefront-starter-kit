@@ -38,7 +38,11 @@ const LoginForm = ({ onPasswordForgetSwitch }) => {
         </div>
       }
     >
-      <FormStatus errorMessage={t('LOGIN_ERROR')} status={formStatus} />
+      <FormStatus
+        successMessage={t('LOGIN_SUCCESS')}
+        errorMessage={t('LOGIN_ERROR')}
+        status={formStatus}
+      />
 
       <FormField name="email" label="E-Mail-Adresse" required>
         <FormInput type="email" autoComplete="username" />
