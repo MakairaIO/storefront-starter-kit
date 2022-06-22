@@ -27,13 +27,13 @@ const Ratings = ({ ratings = [] }) => {
     <section className="ratings">
       <Heading>{t('RATINGS_HEADING')}</Heading>
 
-      <RatingForm />
-
       {ratings.map((rating) => (
         <Rating {...rating} key={rating.text} />
       ))}
 
       {!ratings.length && <Copytext>{t('NO_RATINGS')}</Copytext>}
+
+      <RatingForm />
     </section>
   )
 }
