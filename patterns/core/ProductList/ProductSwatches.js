@@ -4,7 +4,7 @@ function Swatch(props) {
   const { variant = {}, activeVariant = {}, setActiveVariant } = props
 
   const { attributeStr = [] } = variant
-  const color = attributeStr.find((attr) => attr.id === 'color')['value']
+  const color = attributeStr.find((attr) => attr.id === 'color')?.['value']
 
   if (!color) return null
 
