@@ -1,0 +1,46 @@
+$breakpoint-small = 500px
+$breakpoint-medium = 800px
+
+.login-box
+  position absolute
+  right 0
+  left 0
+  top 6rem
+  margin-left auto
+  box-shadow: inset 0 -1px 0 0 #dcdee0, 0 2px 16px -10px rgba(0,0,0,.5)
+  border 1px solid var(--neutral-40)
+  padding 2rem 1.5rem
+  z-index var(--z-index-overlay)
+  background-color var(--neutral-00)
+  overflow-y auto
+  width 100%
+
+
+  @media (min-width $breakpoint-small)
+    width 30rem
+    right 1.5rem
+    top 6.5rem
+    left unset
+
+  @media (min-width $breakpoint-medium)
+    width 30rem
+    right 6rem
+    top 8.6rem
+    left unset
+
+  .login-box__forgot-password
+    height 3.1rem
+
+    .button--link:hover
+      border: none
+
+  .login-box__title
+    width 100%
+    text-align center
+    border-bottom 1px solid var(--neutral-40)
+    padding-bottom 1rem
+
+  .login-box__button
+    width 100%
+    text-align center
+    margin-top 1rem

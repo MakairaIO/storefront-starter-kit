@@ -61,5 +61,11 @@
   },
   "Construction": {
     "value": "construction"
+  },
+  "Logout": {
+    "value": "logout"
+  },
+  "Star": {
+    "value": "star"
   }
 }

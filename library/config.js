@@ -36,6 +36,7 @@ import MultiColumnText, {
   multiColumnTextVariants,
 } from '../patterns/core/MultiColumnText'
 import ContactForm, { contactFormVariants } from '../patterns/core/ContactForm'
+import Ratings, { ratingVariants } from '../patterns/core/Ratings'
 
 import Home from './examplePages/Home'
 import Listing from './examplePages/Listing'
@@ -100,6 +101,12 @@ export default [
     name: 'Product Information',
     component: ProductDetailInformation,
     variants: productDetailInformationVariants,
+  },
+  {
+    type: 'static',
+    name: 'Ratings',
+    component: Ratings,
+    variants: ratingVariants,
   },
   {
     type: 'placeable',
