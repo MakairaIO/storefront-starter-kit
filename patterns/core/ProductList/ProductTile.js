@@ -1,20 +1,22 @@
 import { Heading, Copytext, Text, Link } from '../..'
-import { getProductDetailUrl, useConfiguration } from '../../../utils'
+import { getProductDetailUrl } from '../../../utils'
 import ProductPrices from './ProductPrices'
-import ProductActions from './ProductActions'
 import Ribbon from './Ribbon'
+import { useState } from 'react'
 import classNames from 'classnames'
+import ProductImage from './ProductImage'
+import ProductSwatches from './ProductSwatches'
 
 export default function ProductTile(props) {
-  const { getImageLink } = useConfiguration()
   const {
     title = '',
-    images = [],
     manufacturer_title = '',
     shortdesc = '',
     url = '',
     mak_paid_placement = false,
   } = props
+
+  const [activeVariant, setActiveVariant] = useState()
 
   const classes = classNames('product-item', {
     ['product-item--highlight']: mak_paid_placement,
@@ -22,30 +24,10 @@ export default function ProductTile(props) {
 
   const productDetailUrl = getProductDetailUrl({ url })
 
-  const imageLink = getImageLink({
-    source: images[0],
-    height: 228,
-    format: 'auto',
-  })
-
-  const imageLinkRetina = getImageLink({
-    source: images[0],
-    height: 228,
-    pixelRatio: 2,
-    format: 'auto',
-  })
-
   return (
     <article className={classes}>
       <Link href={productDetailUrl}>
-        <picture className="product-item__image">
-          <img
-            //src={imageLink}
-            data-srcset={`${imageLink} 1x, ${imageLinkRetina} 2x`}
-            alt={title}
-            height="228"
-          />
-        </picture>
+        <ProductImage {...props} activeVariant={activeVariant} />
 
         <Heading size="bacchus" weight="600" className="product-item__title">
           {title}
@@ -62,9 +44,13 @@ export default function ProductTile(props) {
         <Copytext className="product-item__shortdesc">{shortdesc}</Copytext>
 
         <ProductPrices {...props} />
-
-        <ProductActions {...props} />
       </Link>
+
+      <ProductSwatches
+        {...props}
+        activeVariant={activeVariant}
+        setActiveVariant={setActiveVariant}
+      />
 
       <Ribbon isVisible={mak_paid_placement} />
     </article>
