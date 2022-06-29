@@ -4,7 +4,7 @@ function FormSelect(props) {
   const { onChange = () => {}, name, options = [], ...rest } = props
   return (
     <select
-      className="form-field__component field-select"
+      className="form-field__component form-field__select"
       {...rest}
       id={name}
       name={name}

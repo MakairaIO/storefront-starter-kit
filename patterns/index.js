@@ -40,5 +40,13 @@ export { default as ContactForm } from './core/ContactForm'
 export { default as NoComponent } from './core/NoComponent'
 export { default as BackToTop } from './core/BackToTop'
 export { default as Breadcrumb } from './core/Breadcrumb'
+export { default as Ratings } from './core/Ratings'
+export {
+  FormField,
+  FormInput,
+  FormTextArea,
+  FormStatus,
+  FormSelect,
+} from './core/Form'
 
 /* Add project specific patterns here */

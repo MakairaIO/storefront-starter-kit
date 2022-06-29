@@ -67,5 +67,11 @@
   },
   "Home": {
     "value": "home"
+  },
+  "Logout": {
+    "value": "logout"
+  },
+  "Star": {
+    "value": "star"
   }
 }
