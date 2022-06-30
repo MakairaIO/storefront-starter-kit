@@ -4,6 +4,7 @@ import {
   useTranslation,
   useLazyLoading,
   useConfiguration,
+  getProductDetailUrl,
 } from '../../../utils'
 import { Heading, Copytext, Button } from '../..'
 
@@ -30,6 +31,8 @@ function Teaser(props) {
   const { t } = useTranslation()
   const { getImageLink } = useConfiguration()
   const { title = '', manufacturer_title = '', url = '', images = [] } = props
+
+  const productDetailUrl = getProductDetailUrl({ url })
 
   const imageLink = getImageLink({
     source: images[0],
@@ -73,7 +76,7 @@ function Teaser(props) {
         </Heading>
 
         <Button
-          href={url}
+          href={productDetailUrl}
           icon="chevron-right"
           className="product-teaser__button"
         >

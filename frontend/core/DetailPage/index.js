@@ -6,6 +6,7 @@ import {
   redirectToBundle,
 } from '../../../utils'
 import {
+  Breadcrumb,
   ContentElements,
   ProductDetailInformation,
   ProductPlacement,
@@ -58,6 +59,7 @@ function DetailPage() {
         keywords={pageData.data.self.meta_keywords}
         description={pageData.data.self.meta_description}
       />
+      <Breadcrumb product={pageData.data.self} />
       <ContentElements
         elements={pageData.data.self.contentElements?.top?.elements}
       />

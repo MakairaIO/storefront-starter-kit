@@ -1,12 +1,14 @@
 import { Heading, Text, Link } from '../..'
 import ProductPrices from './ProductPrices'
 import ProductActions from './ProductActions'
-import { useConfiguration } from '../../../utils'
+import { getProductDetailUrl, useConfiguration } from '../../../utils'
 
 export default function ProductTile(props) {
   const { title = '', images = [], manufacturer_title = '', url = '' } = props
 
   const { getImageLink } = useConfiguration()
+
+  const productDetailUrl = getProductDetailUrl({ url })
 
   const imageLink = getImageLink({
     source: images[0],
@@ -16,7 +18,7 @@ export default function ProductTile(props) {
 
   return (
     <article className="product-placement-item">
-      <Link href={url}>
+      <Link href={productDetailUrl}>
         <picture className="product-placement-item__image">
           <img data-src={imageLink} alt={title} />
         </picture>

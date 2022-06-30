@@ -96,5 +96,7 @@ export default {
   USER_WELCOME: (username) => `Hello, ${username}!`,
   USER_ACCOUNT: 'My Account',
   SEARCH_NO_RESULT: 'No search results found.',
+  SEARCH_RESULT_META_TITLE: (searchPhrase) =>
+    `Search results for ${searchPhrase}`,
   LOGIN_SUCCESS: 'You have been signed in successfully.',
 }

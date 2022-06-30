@@ -1,9 +1,10 @@
+import { Heading, Copytext, Text, Link } from '../..'
+import { getProductDetailUrl } from '../../../utils'
+import ProductPrices from './ProductPrices'
+import Ribbon from './Ribbon'
 import { useState } from 'react'
 import classNames from 'classnames'
-import { Heading, Copytext, Text, Link } from '../..'
 import ProductImage from './ProductImage'
-import Ribbon from './Ribbon'
-import ProductPrices from './ProductPrices'
 import ProductSwatches from './ProductSwatches'
 
 export default function ProductTile(props) {
@@ -21,9 +22,11 @@ export default function ProductTile(props) {
     ['product-item--highlight']: mak_paid_placement,
   })
 
+  const productDetailUrl = getProductDetailUrl({ url })
+
   return (
     <article className={classes}>
-      <Link href={url}>
+      <Link href={productDetailUrl}>
         <ProductImage {...props} activeVariant={activeVariant} />
 
         <Heading size="bacchus" weight="600" className="product-item__title">

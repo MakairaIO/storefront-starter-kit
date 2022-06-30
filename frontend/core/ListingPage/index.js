@@ -1,5 +1,5 @@
 import { getNumberOfActiveFilters, useGlobalData } from '../../../utils'
-import { ContentElements } from '../../../patterns'
+import { Breadcrumb, ContentElements } from '../../../patterns'
 import Metadata from '../Metadata'
 import ProductList from './ProductListWithProps'
 
@@ -23,6 +23,8 @@ export default function ListingPage() {
         robotFollow={robotFollow}
         robotIndex={robotIndex}
       />
+
+      <Breadcrumb breadcrumb={pageData.data.self.navigation?.breadcrumb} />
       <ContentElements
         elements={pageData.data.self.contentElements?.top?.elements}
       />
