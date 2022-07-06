@@ -36,6 +36,7 @@ import MultiColumnText, {
   multiColumnTextVariants,
 } from '../patterns/core/MultiColumnText'
 import ContactForm, { contactFormVariants } from '../patterns/core/ContactForm'
+import Breadcrumb, { breadcrumbVariants } from '../patterns/core/Breadcrumb'
 import Ratings, { ratingVariants } from '../patterns/core/Ratings'
 
 import Home from './examplePages/Home'
@@ -43,8 +44,6 @@ import Listing from './examplePages/Listing'
 import Detail from './examplePages/Detail'
 import SmartBundle from './examplePages/SmartBundle'
 import ErrorPage from '../patterns/core/ErrorPage'
-import { Breadcrumb } from '../patterns'
-import { breadcrumbVariants } from '../patterns/core/Breadcrumb'
 
 /* Add project specific imports here */
 /* CLI MARKER - PATTER IMPORT - DO NOT REMOVE */
