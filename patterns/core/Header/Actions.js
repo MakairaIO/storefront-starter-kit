@@ -1,3 +1,4 @@
+import { useShopCart } from '@makaira/storefront-react'
 import { Button, FormattedPrice } from '../..'
 import { useTranslation } from '../../../utils'
 import LoginBox from './User/LoginBox'
@@ -6,6 +7,7 @@ import LoginBox from './User/LoginBox'
 export default function Actions(props) {
   const { toggleLoginBox, isLoginBoxVisible } = props
 
+  const { quantityInCart, totalPriceInCart } = useShopCart()
   const { t } = useTranslation()
 
   return (
@@ -42,9 +44,11 @@ export default function Actions(props) {
           className="header__action"
           iconPosition="left"
         >
-          <span className="header__basket-bubble">2</span>
+          {quantityInCart > 0 && (
+            <span className="header__basket-bubble">{quantityInCart}</span>
+          )}
 
-          <FormattedPrice price="259.89" />
+          <FormattedPrice price={totalPriceInCart} />
         </Button>
       </div>
 

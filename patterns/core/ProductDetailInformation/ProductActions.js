@@ -1,8 +1,21 @@
+import { useShopClient } from '@makaira/storefront-react'
+import { useState } from 'react'
 import { Button, Dropdown } from '../..'
 import { useTranslation } from '../../../utils'
 
 // TODO: Add functionality (add-to-wishlist, add-to-cart etc.)
-export default function ProductActions({ bundles, addToBundle }) {
+export default function ProductActions({
+  bundles,
+  addToBundle,
+  productId,
+  images,
+  price,
+  title,
+  url,
+}) {
+  const [quantity, setQuantity] = useState(1)
+
+  const { client } = useShopClient()
   const { t } = useTranslation()
 
   const quantities = [
@@ -11,6 +24,19 @@ export default function ProductActions({ bundles, addToBundle }) {
     { label: '3', value: 3 },
     { label: '4', value: 4 },
   ]
+
+  function addToCart() {
+    client.cart.addItem({
+      input: {
+        quantity,
+        product: { id: productId },
+        images,
+        price,
+        title,
+        url,
+      },
+    })
+  }
 
   return (
     <div className="product-detail-information__actions">
@@ -23,7 +49,8 @@ export default function ProductActions({ bundles, addToBundle }) {
       <Dropdown
         id="sizeVariant"
         options={quantities}
-        onChange={() => console.log('todo')}
+        value={quantity}
+        onChange={({ value }) => setQuantity(value)}
         className="product-detail-information__quantity-select"
       />
 
@@ -31,6 +58,7 @@ export default function ProductActions({ bundles, addToBundle }) {
         variant="primary-alt"
         icon="cart"
         iconPosition="left"
+        onClick={addToCart}
         className="product-detail-information__add-cart"
       >
         {t('PRODUCT_DETAIL_ADD_TO_CART')}
