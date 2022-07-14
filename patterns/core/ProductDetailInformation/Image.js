@@ -1,85 +1,39 @@
-import {
-  Magnifier,
-  GlassMagnifier,
-  SideBySideMagnifier,
-  MOUSE_ACTIVATION,
-  TOUCH_ACTIVATION,
-} from 'react-image-magnifiers'
-
-import { Button } from '../..'
 import { useConfiguration } from '../../../utils'
 import Head from 'next/head'
 
 export default function Image(props) {
-  const {
-    title = '',
-    picture_url_main = '',
-    magnifier_type = 'tap',
-    images = [],
-  } = props
-
   const { getImageLink } = useConfiguration()
+  const { title = '', images = [], activeVariant } = props
 
-  const productImage = getImageLink({
-    source: images.length > 0 ? images[0] : picture_url_main,
+  const imageSource = activeVariant ? activeVariant.images[0] : images[0]
+
+  const imageLink = getImageLink({
+    source: images[0],
+    format: 'auto',
     height: 600,
   })
 
-  const imageLinkLarge = getImageLink({
-    source: images[0],
+  const imageLinkRetina = getImageLink({
+    source: imageSource,
+    height: 600,
+    pixelRatio: 2,
+    format: 'auto',
   })
 
   return (
-    <>
+    <div className="product-detail-information__image">
       <Head>
-        <link rel="preload" href={productImage} as="image" />
-      </Head>
-      <div className="product-detail-information__image">
-        {magnifier_type === 'tap' && (
-          <Magnifier
-            imageSrc={productImage}
-            imageAlt={title}
-            largeImageSrc={imageLinkLarge}
-            mouseActivation={MOUSE_ACTIVATION.CLICK} // Optional
-            touchActivation={TOUCH_ACTIVATION.TAP} // Optional
-          />
-        )}
-
-        {magnifier_type === 'glass' && (
-          <GlassMagnifier
-            magnifierSize={'40%'}
-            square={true}
-            imageSrc={productImage}
-            imageAlt={title}
-            largeImageSrc={imageLinkLarge}
-          />
-        )}
-
-        {magnifier_type === 'side_by_side' && (
-          <SideBySideMagnifier
-            imageSrc={productImage}
-            imageAlt={title}
-            largeImageSrc={imageLinkLarge}
-            alwaysInPlace={false}
-            overlayOpacity={0.6}
-            switchSides={false}
-            zoomPosition="left"
-            zoomContainerBorder="1px solid #ccc"
-            fillAvailableSpace={false}
-            fillAlignTop={false}
-            fillGapLeft={0}
-            fillGapRight={10}
-            fillGapTop={10}
-            fillGapBottom={1}
-          />
-        )}
-
-        <Button
-          icon="search"
-          variant="icon-only"
-          className="product-detail-information__image-button"
+        <link
+          rel="preload"
+          href={imageLink}
+          as="image"
+          imagesrcset={`${imageLink} 1x, ${imageLinkRetina} 2x`}
         />
-      </div>
-    </>
+      </Head>
+
+      <picture>
+        <img srcSet={`${imageLink} 1x, ${imageLinkRetina} 2x`} alt={title} />
+      </picture>
+    </div>
   )
 }

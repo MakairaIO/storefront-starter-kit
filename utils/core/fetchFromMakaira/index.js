@@ -1,5 +1,3 @@
-import fetch from 'isomorphic-unfetch'
-
 function getEndpoint({ isSearch, isSnippet, isRecommendation }) {
   let url = process.env.MAKAIRA_API_URL
 

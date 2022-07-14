@@ -10,6 +10,7 @@ import {
   dispatchOverlayClickedEvent,
   scrollTo,
 } from '../../../utils'
+import EmptySearchResult from '../EmptySearchResult'
 
 class ProductList extends Component {
   constructor(props) {
@@ -60,20 +61,21 @@ class ProductList extends Component {
       resetAllFilters,
       queryParams = {},
       totalProductCount = 0,
-      isBundle = false,
-      addToBundle,
-      pageData,
+      showEmptyResultFeedback = false,
     } = this.props
 
     const numberOfActiveFilters = getNumberOfActiveFilters({ aggregations })
+    const numberOfFilters = Object.keys(aggregations).length
 
     return (
       <section className="product-list">
         <div className="product-list__actions">
-          <FilterButton
-            numberOfActiveFilters={numberOfActiveFilters}
-            showMobileFilter={this.showMobileFilter}
-          />
+          {numberOfFilters > 0 && (
+            <FilterButton
+              numberOfActiveFilters={numberOfActiveFilters}
+              showMobileFilter={this.showMobileFilter}
+            />
+          )}
 
           <FilterResetButton
             numberOfActiveFilters={numberOfActiveFilters}
@@ -86,28 +88,31 @@ class ProductList extends Component {
           />
         </div>
 
-        <div className="product-list__wrapper">
-          <ProductListFilter
-            aggregations={aggregations}
-            numberOfActiveFilters={numberOfActiveFilters}
-            totalProductCount={totalProductCount}
-            isMobileFilterVisible={this.state.isMobileFilterVisible}
-            hideMobileFilter={dispatchOverlayClickedEvent} // for simplicity, we just simulate a click on the overlay and let the lifecycle of this component take care of everything
-            submitForms={this.handleFormSubmitWithPaginationReset}
-            resetAllFilters={resetAllFilters}
-          />
+        {showEmptyResultFeedback && products.length === 0 && (
+          <EmptySearchResult />
+        )}
 
-          <List
-            products={products}
-            queryParams={queryParams}
-            totalProductCount={totalProductCount}
-            submitForms={this.handlePagination}
-            isBundle={isBundle}
-            addToBundle={addToBundle}
-            isLoading={this.state.isLoading}
-            pageData={pageData}
-          />
-        </div>
+        {(showEmptyResultFeedback === false || products.length > 0) && (
+          <div className="product-list__wrapper">
+            <ProductListFilter
+              aggregations={aggregations}
+              numberOfActiveFilters={numberOfActiveFilters}
+              totalProductCount={totalProductCount}
+              isMobileFilterVisible={this.state.isMobileFilterVisible}
+              hideMobileFilter={dispatchOverlayClickedEvent} // for simplicity, we just simulate a click on the overlay and let the lifecycle of this component take care of everything
+              submitForms={this.handleFormSubmitWithPaginationReset}
+              resetAllFilters={resetAllFilters}
+            />
+
+            <List
+              products={products}
+              queryParams={queryParams}
+              totalProductCount={totalProductCount}
+              submitForms={this.handlePagination}
+              isLoading={this.state.isLoading}
+            />
+          </div>
+        )}
       </section>
     )
   }

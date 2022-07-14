@@ -1,12 +1,8 @@
 import { Button, Icon } from '../..'
 
 export default function Search(props) {
-  const {
-    searchPhrase,
-    changeSearchPhrase,
-    submitForm,
-    activateMobileSearch,
-  } = props
+  const { searchPhrase, changeSearchPhrase, submitForm, activateMobileSearch } =
+    props
 
   return (
     <>

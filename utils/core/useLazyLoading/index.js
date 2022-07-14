@@ -30,6 +30,7 @@ export default function useLazyLoading({
   ref = {},
   dependency = null,
   customOptions = {},
+  active = true,
 }) {
   const defaultOptions = {
     root: null,
@@ -44,6 +45,8 @@ export default function useLazyLoading({
 
   useEffect(
     function initLazyLoading() {
+      if (!active) return
+
       const { current: containingElement } = ref
 
       if (!containingElement) return

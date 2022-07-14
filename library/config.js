@@ -5,6 +5,9 @@ import Button, { buttonVariants } from '../patterns/core/Button'
 import Dropdown, { dropdownVariants } from '../patterns/core/Dropdown'
 import Header, { headerVariants } from '../patterns/core/Header'
 import Footer, { footerVariants } from '../patterns/core/Footer'
+import EmptySearchResult, {
+  emptySearchResultVariants,
+} from '../patterns/core/EmptySearchResult'
 import ProductList, { productListVariants } from '../patterns/core/ProductList'
 import ProductDetailInformation, {
   productDetailInformationVariants,
@@ -33,6 +36,8 @@ import MultiColumnText, {
   multiColumnTextVariants,
 } from '../patterns/core/MultiColumnText'
 import ContactForm, { contactFormVariants } from '../patterns/core/ContactForm'
+import Breadcrumb, { breadcrumbVariants } from '../patterns/core/Breadcrumb'
+import Ratings, { ratingVariants } from '../patterns/core/Ratings'
 
 import Home from './examplePages/Home'
 import Listing from './examplePages/Listing'
@@ -88,9 +93,27 @@ export default [
   },
   {
     type: 'static',
+    name: 'Empty Search Result',
+    component: EmptySearchResult,
+    variants: emptySearchResultVariants,
+  },
+  {
+    type: 'static',
     name: 'Product Information',
     component: ProductDetailInformation,
     variants: productDetailInformationVariants,
+  },
+  {
+    type: 'static',
+    name: 'Breadcrumb',
+    component: Breadcrumb,
+    variants: breadcrumbVariants,
+  },
+  {
+    type: 'static',
+    name: 'Ratings',
+    component: Ratings,
+    variants: ratingVariants,
   },
   {
     type: 'placeable',

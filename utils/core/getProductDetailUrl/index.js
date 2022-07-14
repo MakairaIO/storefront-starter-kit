@@ -5,7 +5,11 @@ export default function getProductDetailUrl({ url, pageData }) {
     const queryString = qs.stringify({
       redirectBundleId: pageData.data?.self?.id,
     })
-    return `${url}?${queryString}`
+    return `${Array.isArray(url) ? url[0] : url}?${queryString}`
+  }
+
+  if (Array.isArray(url)) {
+    return url[0]
   }
 
   return url

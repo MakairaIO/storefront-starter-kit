@@ -20,6 +20,18 @@ app
     const server = express()
     server.use(cors({ origin: true, credentials: true }))
     server.use(bodyParser.json())
+
+    /**
+     * Route handler for robots.txt
+     */
+    server.get('/robots.txt', (req, res) => {
+      res
+        .status(200)
+        .send(
+          `Sitemap: ${process.env.SHOP_DOMAIN}/${allLanguages[0].value}/sitemap.xml?instance=${process.env.MAKAIRA_API_INSTANCE}`
+        )
+    })
+
     /**
      * Route handler for all static assets, e.g. images, ...
      */

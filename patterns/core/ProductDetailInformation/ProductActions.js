@@ -1,10 +1,9 @@
 import { Button, Dropdown } from '../..'
 import { useTranslation } from '../../../utils'
 
-// TODO: Add functionality (add-to-wishlist, add-to-cart etc.)
 export default function ProductActions(props) {
-  const { bundles, addToBundle, addToCart, loading } = props
   const { t } = useTranslation()
+  const { bundles, addToBundle, addToCart, isLoading = false } = props
 
   const quantities = [
     { label: '1', value: 1 },
@@ -32,10 +31,10 @@ export default function ProductActions(props) {
         variant="primary-alt"
         icon="cart"
         iconPosition="left"
-        loading={loading}
-        disabled={loading}
-        onClick={addToCart}
         className="product-detail-information__add-cart"
+        loading={isLoading}
+        disabled={isLoading}
+        onClick={addToCart}
       >
         {t('PRODUCT_DETAIL_ADD_TO_CART')}
       </Button>
