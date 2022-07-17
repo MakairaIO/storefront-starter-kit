@@ -5,8 +5,8 @@ import LoginForm from './LoginForm'
 import PasswordForgotForm from './PasswordForgotForm'
 import { Button, Text } from '../../..'
 
-import { useGlobalData } from '../../../../utils'
 import FlyoutBox from '../FlyoutBox'
+import { useShopUser } from '@makaira/storefront-react'
 
 const Form = ({
   title,
@@ -56,7 +56,7 @@ const Form = ({
 }
 
 const LoginBox = () => {
-  const { user } = useGlobalData()
+  const { user } = useShopUser()
 
   const [showPasswordForgot, setShowPasswordForgot] = useState(false)
 
@@ -68,8 +68,8 @@ const LoginBox = () => {
     setShowPasswordForgot(false)
   }
 
-  if (user) {
-    return <UserForm user={user} />
+  if (user?.user) {
+    return <UserForm user={user.user} />
   }
 
   if (showPasswordForgot) {
