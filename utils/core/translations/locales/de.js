@@ -102,4 +102,10 @@ export default {
   USER_ACCOUNT: 'Mein Konto',
   SEARCH_NO_RESULT: 'Keine Suchergebnisse gefunden.',
   LOGIN_SUCCESS: 'Du wurdest erfolgreich angemeldet.',
+  CART: 'Warenkorb',
+  CART_EMPTY: 'Keine Produkte im Warenkorb.',
+  CART_TO_FULL_OVERVIEW: 'Zum Warenkorb',
+  WISHLIST: 'Merkliste',
+  WISHLIST_EMPTY: 'Keine Produkte auf der Merkliste.',
+  WISHLIST_TO_FULL_OVERVIEW: 'Zur Merkliste',
 }

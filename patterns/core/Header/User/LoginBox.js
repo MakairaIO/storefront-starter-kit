@@ -6,6 +6,7 @@ import PasswordForgotForm from './PasswordForgotForm'
 import { Button, Text } from '../../..'
 
 import { useGlobalData } from '../../../../utils'
+import FlyoutBox from '../FlyoutBox'
 
 const Form = ({
   title,
@@ -30,7 +31,7 @@ const Form = ({
   }
 
   return (
-    <div className="login-box">
+    <FlyoutBox>
       <Text className="login-box__title" element="p" size="cupid">
         {title}
       </Text>
@@ -50,7 +51,7 @@ const Form = ({
         </Button>
         {belowFormContent}
       </form>
-    </div>
+    </FlyoutBox>
   )
 }
 

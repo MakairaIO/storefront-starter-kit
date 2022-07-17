@@ -95,4 +95,10 @@ export default {
   USER_ACCOUNT: 'My Account',
   SEARCH_NO_RESULT: 'No search results found.',
   LOGIN_SUCCESS: 'You have been signed in successfully.',
+  CART: 'Cart',
+  CART_EMPTY: 'No products in the shopping cart.',
+  CART_TO_FULL_OVERVIEW: 'View shopping cart',
+  WISHLIST: 'Wishlist',
+  WISHLIST_EMPTY: 'No products on the wishlist.',
+  WISHLIST_TO_FULL_OVERVIEW: 'View wishlist',
 }

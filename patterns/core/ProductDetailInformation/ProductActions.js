@@ -1,5 +1,5 @@
-import { useShopClient } from '@makaira/storefront-react'
-import { useState } from 'react'
+import { useShopClient, useShopWishlist } from '@makaira/storefront-react'
+import { useCallback, useState } from 'react'
 import { Button, Dropdown } from '../..'
 import { useTranslation } from '../../../utils'
 
@@ -14,8 +14,11 @@ export default function ProductActions({
   url,
 }) {
   const [quantity, setQuantity] = useState(1)
+  const [addToWishlistLoading, setAddToWishlistLoading] = useState(false)
 
   const { client } = useShopClient()
+  const { isProductInWishlist } = useShopWishlist()
+
   const { t } = useTranslation()
 
   const quantities = [
@@ -24,6 +27,34 @@ export default function ProductActions({
     { label: '3', value: 3 },
     { label: '4', value: 4 },
   ]
+
+  const isCurrentProductInWishlist = isProductInWishlist(productId)
+
+  const onAddToWishlist = useCallback(async () => {
+    if (addToWishlistLoading) {
+      return
+    }
+
+    setAddToWishlistLoading(true)
+
+    if (isCurrentProductInWishlist) {
+      await client.wishlist.removeItem({
+        input: { product: { id: productId } },
+      })
+    } else {
+      await client.wishlist.addItem({
+        input: { product: { id: productId } },
+      })
+    }
+
+    setAddToWishlistLoading(false)
+  }, [
+    isCurrentProductInWishlist,
+    addToWishlistLoading,
+    setAddToWishlistLoading,
+    client.wishlist,
+    productId,
+  ])
 
   function addToCart() {
     client.cart.addItem({
@@ -42,8 +73,11 @@ export default function ProductActions({
     <div className="product-detail-information__actions">
       <Button
         icon="heart"
+        iconPosition="left"
+        variant={isCurrentProductInWishlist ? 'primary-alt' : 'secondary'}
         className="product-detail-information__wishlist"
-        variant="icon-only"
+        onClick={onAddToWishlist}
+        loading={addToWishlistLoading}
       />
 
       <Dropdown

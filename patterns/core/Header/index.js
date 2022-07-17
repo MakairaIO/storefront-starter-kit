@@ -75,6 +75,8 @@ class Header extends Component {
     this.setState({
       isAutosuggestBoxVisible: false,
       isLoginBoxVisible: true,
+      isWishlistBoxVisible: false,
+      isCartBoxVisible: false,
     })
   }
 
@@ -92,11 +94,42 @@ class Header extends Component {
   }
 
   showAutosuggestBox = () => {
-    this.setState({ isAutosuggestBoxVisible: true, isLoginBoxVisible: false })
+    this.setState({
+      isAutosuggestBoxVisible: true,
+      isLoginBoxVisible: false,
+      isCartBoxVisible: false,
+      isWishlistBoxVisible: false,
+    })
   }
 
   hideAutosuggestBox = () => {
     this.setState({ isAutosuggestBoxVisible: false })
+  }
+
+  showWishlistBox = () => {
+    this.setState({
+      isAutosuggestBoxVisible: false,
+      isLoginBoxVisible: false,
+      isWishlistBoxVisible: true,
+      isCartBoxVisible: false,
+    })
+  }
+
+  hideWishlistBox = () => {
+    this.setState({ isWishlistBoxVisible: false })
+  }
+
+  showCartBox = () => {
+    this.setState({
+      isAutosuggestBoxVisible: false,
+      isLoginBoxVisible: false,
+      isWishlistBoxVisible: false,
+      isCartBoxVisible: true,
+    })
+  }
+
+  hideCartBox = () => {
+    this.setState({ isCartBoxVisible: false })
   }
 
   hideMobileNavigationOnPageChange = () => {
@@ -160,6 +193,18 @@ class Header extends Component {
     this.hideAutosuggestBox()
   }
 
+  toggleWishlistBox = () => {
+    const { isWishlistBoxVisible } = this.state
+
+    isWishlistBoxVisible ? this.hideWishlistBox() : this.showWishlistBox()
+  }
+
+  toggleCartBox = () => {
+    const { isCartBoxVisible } = this.state
+
+    isCartBoxVisible ? this.hideCartBox() : this.showCartBox()
+  }
+
   render() {
     const { menu = [] } = this.props
 
@@ -194,7 +239,11 @@ class Header extends Component {
 
               <Actions
                 isLoginBoxVisible={this.state.isLoginBoxVisible}
+                isWishlistBoxVisible={this.state.isWishlistBoxVisible}
+                isCartBoxVisible={this.state.isCartBoxVisible}
                 toggleLoginBox={this.toggleLoginBox}
+                toggleWishlistBox={this.toggleWishlistBox}
+                toggleCartBox={this.toggleCartBox}
               />
             </div>
           </div>
