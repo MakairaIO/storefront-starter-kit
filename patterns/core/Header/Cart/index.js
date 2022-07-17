@@ -13,6 +13,7 @@ const Cart = () => {
     fields: {
       url: product.url,
       picture_url_main: product.images[0],
+      images: product.images,
       title: product.title,
       id: product.id,
     },

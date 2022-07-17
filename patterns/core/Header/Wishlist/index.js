@@ -8,18 +8,19 @@ const Wishlist = () => {
   const { wishlist } = useShopWishlist()
   const { client } = useShopClient()
 
-  const products = wishlist.items.map((product) => ({
+  const products = wishlist.items.map(({ product }) => ({
     id: product.id,
     fields: {
-      url: `${product.texts.urlPath}/a-${product.item.id}`,
-      picture_url_main: product.images.all['0'].url,
-      title: product.texts.name1,
+      url: product.url,
+      picture_url_main: product.images[0],
+      images: product.images,
+      title: product.title,
       id: product.id,
     },
   }))
 
   const handleRemoveClick = (id) => {
-    client.wishlist.removeItem(id)
+    client.wishlist.removeItem({ input: { product: { id } } })
   }
 
   return (
