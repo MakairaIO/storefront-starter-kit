@@ -28,7 +28,7 @@ export default function ProductActions({
     { label: '4', value: 4 },
   ]
 
-  const isCurrentProductInWishlist = isProductInWishlist(productId)
+  const { data: isCurrentProductInWishlist } = isProductInWishlist(productId)
 
   const onAddToWishlist = useCallback(async () => {
     if (addToWishlistLoading) {
@@ -43,7 +43,7 @@ export default function ProductActions({
       })
     } else {
       await client.wishlist.addItem({
-        input: { product: { id: productId } },
+        input: { product: { id: productId }, images, price, title, url },
       })
     }
 
@@ -54,6 +54,10 @@ export default function ProductActions({
     setAddToWishlistLoading,
     client.wishlist,
     productId,
+    images,
+    price,
+    title,
+    url,
   ])
 
   function addToCart() {
