@@ -17,6 +17,7 @@ import {
   redirect,
   redirectToDetailPageOnSingleHit,
   redirectOnSearchRedirectHit,
+  GTM,
 } from '../../utils'
 import ErrorPage from '../_error'
 
@@ -50,6 +51,44 @@ export default class Index extends Component {
        */
       return {}
     }
+  }
+
+  componentDidMount() {
+    const language = this.props.searchResult?.language
+
+    if (language) {
+      GTM.trackEvent({
+        event: 'init',
+        country: language,
+        language: language,
+      })
+
+      this.trackSearchEvent()
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    // Check for Error Page
+    if (Object.entries(this.props).length === 0) return
+
+    // We only want to track a page view if the search phrase was actually changed
+    const shouldTrackSearch =
+      prevProps.params?.searchPhrase !== this.props.params?.searchPhrase
+
+    if (shouldTrackSearch) {
+      this.trackSearchEvent()
+    }
+  }
+
+  trackSearchEvent = () => {
+    const search_term = this.props.params?.searchPhrase ?? ''
+    const search_result_count = this.props.searchResult?.product?.count ?? 0
+
+    GTM.trackEvent({
+      event: 'search',
+      search_term,
+      search_result_count,
+    })
   }
 
   render() {
