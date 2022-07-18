@@ -6,12 +6,12 @@ import {
   redirectToBundle,
 } from '../../../utils'
 import {
+  Breadcrumb,
   ContentElements,
   ProductDetailInformation,
   ProductPlacement,
   Ratings,
 } from '../../../patterns'
-import { ratingVariants } from '../../../patterns/core/Ratings'
 import Metadata from '../Metadata'
 
 function DetailPage() {
@@ -58,6 +58,7 @@ function DetailPage() {
         keywords={pageData.data.self.meta_keywords}
         description={pageData.data.self.meta_description}
       />
+      <Breadcrumb product={pageData.data.self} />
       <ContentElements
         elements={pageData.data.self.contentElements?.top?.elements}
       />
@@ -66,7 +67,7 @@ function DetailPage() {
         {...productDetailProps}
       />
       <ProductPlacement {...productPlacementProps} />
-      <Ratings ratings={ratingVariants[0].props.ratings} />
+      <Ratings {...productDetailProps} />
       <ContentElements
         elements={pageData.data.self.contentElements?.bottom?.elements}
       />

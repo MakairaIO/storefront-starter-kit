@@ -10,6 +10,10 @@ export default function redirectToDetailPageOnSingleHit({ ctx, searchResult }) {
     const item = product.items[0]
     const { url } = item.fields
 
-    redirect({ ctx, target: url, code: 302 })
+    if (Array.isArray(url)) {
+      redirect({ ctx, target: url[0], code: 302 })
+    } else {
+      redirect({ ctx, target: url, code: 302 })
+    }
   }
 }

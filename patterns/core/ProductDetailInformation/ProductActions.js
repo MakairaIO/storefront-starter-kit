@@ -1,8 +1,24 @@
+import { useShopClient, useShopWishlist } from '@makaira/storefront-react'
+import { useCallback, useState } from 'react'
 import { Button, Dropdown } from '../..'
 import { useTranslation } from '../../../utils'
 
-// TODO: Add functionality (add-to-wishlist, add-to-cart etc.)
-export default function ProductActions({ bundles, addToBundle }) {
+export default function ProductActions({
+  bundles,
+  addToBundle,
+  productId,
+  images,
+  price,
+  title,
+  url,
+}) {
+  const [isLoading, setIsLoading] = useState(false)
+  const [quantity, setQuantity] = useState(1)
+  const [addToWishlistLoading, setAddToWishlistLoading] = useState(false)
+
+  const { client } = useShopClient()
+  const { isProductInWishlist } = useShopWishlist()
+
   const { t } = useTranslation()
 
   const quantities = [
@@ -12,18 +28,71 @@ export default function ProductActions({ bundles, addToBundle }) {
     { label: '4', value: 4 },
   ]
 
+  const { data: isCurrentProductInWishlist } = isProductInWishlist(productId)
+
+  const onAddToWishlist = useCallback(async () => {
+    if (addToWishlistLoading) {
+      return
+    }
+
+    setAddToWishlistLoading(true)
+
+    if (isCurrentProductInWishlist) {
+      await client.wishlist.removeItem({
+        input: { product: { id: productId } },
+      })
+    } else {
+      await client.wishlist.addItem({
+        input: { product: { id: productId }, images, price, title, url },
+      })
+    }
+
+    setAddToWishlistLoading(false)
+  }, [
+    isCurrentProductInWishlist,
+    addToWishlistLoading,
+    setAddToWishlistLoading,
+    client.wishlist,
+    productId,
+    images,
+    price,
+    title,
+    url,
+  ])
+
+  async function addToCart() {
+    setIsLoading(true)
+
+    client.cart
+      .addItem({
+        input: {
+          quantity,
+          product: { id: productId },
+          images,
+          price,
+          title,
+          url,
+        },
+      })
+      .finally(() => setIsLoading(false))
+  }
+
   return (
     <div className="product-detail-information__actions">
       <Button
         icon="heart"
+        iconPosition="left"
+        variant={isCurrentProductInWishlist ? 'primary-alt' : 'secondary'}
         className="product-detail-information__wishlist"
-        variant="icon-only"
+        onClick={onAddToWishlist}
+        loading={addToWishlistLoading}
       />
 
       <Dropdown
         id="sizeVariant"
         options={quantities}
-        onChange={() => console.log('todo')}
+        value={quantity}
+        onChange={({ value }) => setQuantity(value)}
         className="product-detail-information__quantity-select"
       />
 
@@ -32,6 +101,9 @@ export default function ProductActions({ bundles, addToBundle }) {
         icon="cart"
         iconPosition="left"
         className="product-detail-information__add-cart"
+        loading={isLoading}
+        disabled={isLoading}
+        onClick={addToCart}
       >
         {t('PRODUCT_DETAIL_ADD_TO_CART')}
       </Button>

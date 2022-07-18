@@ -1,4 +1,4 @@
-import { ProductList, EmptySearchResult } from '../../../patterns'
+import { ProductList } from '../../../patterns'
 import {
   useGlobalData,
   mergeProductsAndBanners,
@@ -21,6 +21,7 @@ export default function ProductListWithProps() {
   const totalProductCount = searchResult.product.total
 
   const productListProps = {
+    showEmptyResultFeedback: true,
     products: merged,
     aggregations,
     submitForms: async (options = {}) => {
@@ -41,8 +42,6 @@ export default function ProductListWithProps() {
       redirectToBundle({ product: product.fields, params })
     },
   }
-
-  if (products.length === 0) return <EmptySearchResult />
 
   return (
     <>

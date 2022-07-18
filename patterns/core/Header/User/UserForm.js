@@ -2,25 +2,23 @@ import { Button } from '../../..'
 import { Form } from './LoginBox'
 import { useState } from 'react'
 import { useTranslation } from '../../../../utils'
-
-const dummyLogoutUser = async (data) => {
-  return new Promise((res) => setTimeout(() => res(data), 1000))
-}
+import { useShopClient } from '@makaira/storefront-react'
 
 const UserForm = ({ user }) => {
+  const { client } = useShopClient()
   const { t } = useTranslation()
 
   const [loading, setLoading] = useState(false)
 
   const handleLogout = async () => {
     setLoading(true)
-    await dummyLogoutUser()
+    await client.user.logout({ input: {} })
     setLoading(false)
   }
 
   return (
     <Form
-      title={t('USER_WELCOME')(user.fullName)}
+      title={t('USER_WELCOME')(`${user.firstname} ${user.lastname}`)}
       buttonVariant="primary-alt"
       buttonText={t('LOGOUT')}
       buttonIcon="logout"

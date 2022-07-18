@@ -1,5 +1,5 @@
 import ProductList from './ProductListWithProps'
-import { ContentElements } from '../../../patterns'
+import { Breadcrumb, ContentElements } from '../../../patterns'
 import { useGlobalData } from '../../../utils'
 import Metadata from '../Metadata'
 
@@ -13,6 +13,8 @@ export default function BundlePage() {
         keywords={pageData.data.self.meta_keywords}
         description={pageData.data.self.meta_description}
       />
+
+      <Breadcrumb product={pageData.data.self} />
       <ContentElements
         elements={pageData.data.self.contentElements?.top?.elements}
       />

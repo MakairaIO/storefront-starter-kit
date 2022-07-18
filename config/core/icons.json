@@ -62,6 +62,12 @@
   "Construction": {
     "value": "construction"
   },
+  "Arrow Up": {
+    "value": "arrow-up"
+  },
+  "Home": {
+    "value": "home"
+  },
   "Logout": {
     "value": "logout"
   },
