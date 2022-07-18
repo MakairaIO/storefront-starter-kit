@@ -11,7 +11,6 @@ import {
   ProductPlacement,
   Ratings,
 } from '../../../patterns'
-import { ratingVariants } from '../../../patterns/core/Ratings'
 import Metadata from '../Metadata'
 
 function DetailPage() {
@@ -66,7 +65,7 @@ function DetailPage() {
         {...productDetailProps}
       />
       <ProductPlacement {...productPlacementProps} />
-      <Ratings ratings={ratingVariants[0].props.ratings} />
+      <Ratings {...productDetailProps} />
       <ContentElements
         elements={pageData.data.self.contentElements?.bottom?.elements}
       />

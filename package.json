@@ -31,8 +31,8 @@
     "release": "semantic-release"
   },
   "dependencies": {
-    "@makaira/storefront-react": "^1.4.0",
-    "@makaira/storefront-shop-adapter-local": "^1.4.1",
+    "@makaira/storefront-react": "^1.5.1",
+    "@makaira/storefront-shop-adapter-local": "^1.5.0",
     "@next/bundle-analyzer": "^12.1.0",
     "body-parser": "^1.19.2",
     "classnames": "^2.2.6",

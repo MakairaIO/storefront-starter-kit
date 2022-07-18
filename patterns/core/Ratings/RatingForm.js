@@ -1,35 +1,37 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import StarInput from './StarInput'
-import { Button, FormField, FormInput, FormStatus, FormTextArea } from '../..'
+import { Button, FormField, FormStatus, FormTextArea } from '../..'
 
 import { useTranslation } from '../../../utils'
+import { useShopClient } from '@makaira/storefront-react'
+import { useRouter } from 'next/router'
 
-const RatingForm = () => {
+const RatingForm = (product) => {
   const { t } = useTranslation()
-  const INITIAL_VALUES = { name: '', stars: 0, text: '' }
+  const { client } = useShopClient()
+  const { asPath } = useRouter()
+  const INITIAL_VALUES = { rating: 0, text: '' }
 
   const [formValues, setFormValues] = useState(INITIAL_VALUES)
   const [errors, setErrors] = useState({})
   const [submitStatus, setSubmitStatus] = useState('')
 
-  const handleNameChange = (event) => {
-    setFormValues({ ...formValues, name: event.target.value })
-  }
+  useEffect(() => {
+    setSubmitStatus('')
+    setFormValues(INITIAL_VALUES)
+  }, [asPath])
 
   const handleTextChange = (event) => {
     setFormValues({ ...formValues, text: event.target.value })
   }
 
-  const handleStarsChange = (amount) => {
-    setFormValues({ ...formValues, stars: amount })
+  const handleStarsChange = (rating) => {
+    setFormValues({ ...formValues, rating })
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const submitErrors = {}
-    if (formValues.name === '') {
-      submitErrors.name = t('FORM_NOT_EMPTY')
-    }
     if (formValues.text === '') {
       submitErrors.text = t('FORM_NOT_EMPTY')
     }
@@ -37,8 +39,21 @@ const RatingForm = () => {
     setErrors(submitErrors)
 
     if (Object.keys(submitErrors).length === 0) {
-      setSubmitStatus('success')
-      setFormValues(INITIAL_VALUES)
+      const { error } = await client.review.createReview({
+        input: {
+          review: {
+            product: { id: product.productId },
+            rating: formValues.rating,
+            text: formValues.text,
+          },
+        },
+      })
+
+      setSubmitStatus(error ? 'error' : 'success')
+
+      if (!error) {
+        setFormValues(INITIAL_VALUES)
+      }
     }
   }
 
@@ -50,17 +65,7 @@ const RatingForm = () => {
         errorMessage={t('RATINGS_STATUS_FAILURE')}
       />
       <FormField
-        name="name"
-        label={t('RATINGS_LABEL_NAME')}
-        onChange={handleNameChange}
-        values={formValues}
-        required
-        errors={errors}
-      >
-        <FormInput type="text" />
-      </FormField>
-      <FormField
-        name="stars"
+        name="rating"
         label={t('RATINGS_LABEL_STARS')}
         onChange={handleStarsChange}
         values={formValues}

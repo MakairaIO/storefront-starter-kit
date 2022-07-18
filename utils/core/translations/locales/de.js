@@ -78,6 +78,7 @@ export default {
   NO_COMPONENT_AVAILABLE: 'Frontend-Komponente noch nicht implementiert',
   RATINGS_HEADING: 'Bewertungen',
   NO_RATINGS: 'Keine Bewertungen für dieses Produkt vorhanden.',
+  RATINGS_LOADING: 'Bewertungen werden geladen...',
   RATINGS_LABEL_NAME: 'Name',
   RATINGS_LABEL_STARS: 'Sterne',
   RATINGS_LABEL_TEXT: 'Text',
