@@ -1,5 +1,5 @@
 import { Button, Link, Text } from '../../..'
-import { useConfiguration } from '../../../../utils'
+import { getProductDetailUrl, useConfiguration } from '../../../../utils'
 
 function ProductItem(props) {
   const { getImageLink } = useConfiguration()
@@ -10,6 +10,8 @@ function ProductItem(props) {
     showRemoveButton,
     onRemoveClick,
   } = props
+
+  const productDetailUrl = getProductDetailUrl({ url })
 
   const imageLink = getImageLink({
     source: images[0],
@@ -24,7 +26,7 @@ function ProductItem(props) {
 
   return (
     <li className="autosuggest__product-item">
-      <Link href={url} className="autosuggest__image">
+      <Link href={productDetailUrl} className="autosuggest__image">
         <picture>
           <img
             src={imageLink}

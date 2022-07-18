@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import Link from 'next/link'
-import ReactIframeResizer from 'react-iframe-resizer-super'
-import { ConfigurationProvider, TranslationProvider } from '../../utils'
+import {
+  ConfigurationProvider,
+  IframeResizerWrapper,
+  TranslationProvider,
+} from '../../utils'
 import allLanguages from '../../config/allLanguages'
 import { BaseLayout, SVGSprite } from '../../patterns'
 import { ExternalLinkIcon } from './'
@@ -55,7 +58,11 @@ export default function VariantPreview({
       </h2>
 
       <div className="pali__component-wrapper">
-        <ReactIframeResizer iframeResizerOptions={{ checkOrigin: false }}>
+        <IframeResizerWrapper
+          iframeResizerOptions={{
+            checkOrigin: false,
+          }}
+        >
           <ConfigurationProvider>
             <TranslationProvider language={currentLanguage}>
               <BaseLayout>
@@ -69,7 +76,7 @@ export default function VariantPreview({
                     }
                   `,
                   }}
-                ></style>
+                />
 
                 <link
                   href="/assets/styles/main.css"
@@ -82,7 +89,7 @@ export default function VariantPreview({
               </BaseLayout>
             </TranslationProvider>
           </ConfigurationProvider>
-        </ReactIframeResizer>
+        </IframeResizerWrapper>
       </div>
     </section>
   )

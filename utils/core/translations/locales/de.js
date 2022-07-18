@@ -26,6 +26,8 @@ export default {
   PRODUCT_TILE_ADD_TO_BUNDLE: 'Zum Bundle Hinzufügen',
   PRODUCT_TILE_TO_PRODUCT: 'Zum Produkt',
   PRODUCT_DETAIL_DESCRIPTION_TITLE: 'Produktbeschreibung',
+  PRODUCT_DETAIL_VARIANT_SELECTION_SIZE: 'Größe',
+  PRODUCT_DETAIL_VARIANT_SELECTION_COLOR: 'Farbe',
   PRODUCT_DETAIL_ADD_TO_CART: 'In den Warenkorb',
   PRODUCT_DETAIL_ADD_TO_BUNDLE: 'Zum Bundle Hinzufügen',
   ERROR_PAGE_404_TITLE: '404 - Nicht gefunden',
@@ -102,6 +104,8 @@ export default {
   USER_WELCOME: (username) => `Hallo, ${username}!`,
   USER_ACCOUNT: 'Mein Konto',
   SEARCH_NO_RESULT: 'Keine Suchergebnisse gefunden.',
+  SEARCH_RESULT_META_TITLE: (searchPhrase) =>
+    `Suchergebnisse für ${searchPhrase}`,
   LOGIN_SUCCESS: 'Du wurdest erfolgreich angemeldet.',
   CART: 'Warenkorb',
   CART_EMPTY: 'Keine Produkte im Warenkorb.',

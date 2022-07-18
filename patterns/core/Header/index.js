@@ -167,6 +167,8 @@ class Header extends Component {
   fetchAutosuggestResult = async () => {
     const { searchPhrase } = this.state
 
+    if (searchPhrase.length == 0) return
+
     const result = await this.props.fetchAutosuggestResult(searchPhrase)
     const filteredResult = filterInternalMakairaFields(result)
 

@@ -95,6 +95,119 @@ $breakpoint-huge = 1150px
     .button__text
       margin-right 0.4rem
 
+.product-item__swatches
+  margin-top 1.2rem
+  display flex
+  justify-content center
+
+.product-item__swatch
+  height 2.5rem
+  width 2.5rem
+  border-radius 50%
+  position relative
+
+  &:hover
+    cursor pointer
+
+  & + &
+    margin-left 0.8rem
+
+  span
+    visibility hidden
+
+  &:before
+    display block
+    content ''
+    position absolute
+    top 50%
+    left 50%
+    transform translate(-50%, -50%)
+    border-radius 50%
+    height 100%
+    width 100%
+    transition all 200ms ease-in-out
+
+  &--active:before
+    border 1px solid var(--neutral-80)
+    height calc(100% + 6px)
+    width calc(100% + 6px)
+
+  &--black
+    background #0E0D0E
+
+  &--blue
+    background #1A5AB6
+
+  &--green
+    background #4E9A26
+
+  &--red
+    background #AC1212
+
+  &--grey
+    background #7A797B
+
+  &--white
+    background #FEFEFE
+    border 1px solid var(--neutral-80)
+
+  &--purple
+    background #722B92
+
+  &--orange
+    background #F2BE80
+
+  &--brown
+    background #623C20
+
+  &--olive
+    background #C0BFA4
+
+  &--silver
+    background #A6A7A9
+
+  &--yellow
+    background #EBC621
+
+  &--pink
+    background #F699CD
+
+  &--navy-blue
+    background #18295D
+
+  &--maroon
+    background #5E1F20
+
+  &--charcoal
+    background #7A7978
+
+  &--gold
+    background #A98545
+
+  &--beige
+    background #DAC8AA
+
+  &--fluorescent-green
+    background #63D044
+
+  &--peach
+    background #E1AF90
+
+  &--teal
+    background #329A97
+
+  &--lavender
+    background #A08FA6
+
+  &--sea-green
+    background #48B697
+
+  &--turquoise-blu
+    background #32B1C8
+
+  &--rust
+    background #98654B
+
 .product-list__filter-reset-button
   display none
 

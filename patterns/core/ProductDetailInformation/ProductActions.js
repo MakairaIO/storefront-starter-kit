@@ -3,7 +3,6 @@ import { useCallback, useState } from 'react'
 import { Button, Dropdown } from '../..'
 import { useTranslation } from '../../../utils'
 
-// TODO: Add functionality (add-to-wishlist, add-to-cart etc.)
 export default function ProductActions({
   bundles,
   addToBundle,
@@ -13,6 +12,7 @@ export default function ProductActions({
   title,
   url,
 }) {
+  const [isLoading, setIsLoading] = useState(false)
   const [quantity, setQuantity] = useState(1)
   const [addToWishlistLoading, setAddToWishlistLoading] = useState(false)
 
@@ -60,17 +60,21 @@ export default function ProductActions({
     url,
   ])
 
-  function addToCart() {
-    client.cart.addItem({
-      input: {
-        quantity,
-        product: { id: productId },
-        images,
-        price,
-        title,
-        url,
-      },
-    })
+  async function addToCart() {
+    setIsLoading(true)
+
+    client.cart
+      .addItem({
+        input: {
+          quantity,
+          product: { id: productId },
+          images,
+          price,
+          title,
+          url,
+        },
+      })
+      .finally(() => setIsLoading(false))
   }
 
   return (
@@ -96,8 +100,10 @@ export default function ProductActions({
         variant="primary-alt"
         icon="cart"
         iconPosition="left"
-        onClick={addToCart}
         className="product-detail-information__add-cart"
+        loading={isLoading}
+        disabled={isLoading}
+        onClick={addToCart}
       >
         {t('PRODUCT_DETAIL_ADD_TO_CART')}
       </Button>
