@@ -1,8 +1,8 @@
 import '@makaira/storefront-react'
-import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
+import { StorefrontShopAdapterOxid } from '@makaira/storefront-shop-adapter-oxid'
 
 declare module '@makaira/storefront-react' {
   interface StorefrontReactCustomClient {
-    client: StorefrontShopAdapterLocal
+    client: StorefrontShopAdapterOxid
   }
 }

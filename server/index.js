@@ -5,6 +5,7 @@ const cors = require('cors')
 const allLanguages = require('../config/allLanguages')
 const parser = require('ua-parser-js')
 const bodyParser = require('body-parser')
+const { createProxyMiddleware } = require('http-proxy-middleware')
 const sendSendGridEmail = require('../utils/core/sendSendGridEmail')
 
 const logError = require('./utils/logError')
@@ -20,6 +21,23 @@ app
     const server = express()
     server.use(cors({ origin: true, credentials: true }))
     server.use(bodyParser.json())
+
+    if (dev) {
+      const localApiPath = '/rest/oxid'
+      const backendApiPath = process.env.OXID_DEV_PROXY_API_BASE_URL
+
+      server.use(
+        '/rest/oxid',
+        createProxyMiddleware({
+          target: backendApiPath,
+          changeOrigin: true,
+          cookieDomainRewrite: '',
+          pathRewrite: function (path) {
+            return path.replace(localApiPath, '')
+          },
+        })
+      )
+    }
 
     /**
      * Route handler for robots.txt

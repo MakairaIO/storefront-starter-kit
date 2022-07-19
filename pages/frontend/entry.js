@@ -21,7 +21,7 @@ import {
 } from '../../utils'
 import ErrorPage from '../_error'
 import { ShopProvider } from '@makaira/storefront-react'
-import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
+import { StorefrontShopAdapterOxid } from '@makaira/storefront-shop-adapter-oxid'
 
 const pageComponents = {
   page: LandingPage,
@@ -31,7 +31,9 @@ const pageComponents = {
   'makaira-productgroup': DetailPage,
 }
 
-const shopClient = new StorefrontShopAdapterLocal()
+const shopClient = new StorefrontShopAdapterOxid({
+  url: process.env.OXID_API_BASE_URL,
+})
 
 export default class Index extends Component {
   static async getInitialProps(ctx) {
