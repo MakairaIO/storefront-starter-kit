@@ -1,4 +1,4 @@
-function getEndpoint({ isSearch, isSnippet, isRecommendation }) {
+function getEndpoint({ isSearch, isSnippet, isRecommendation, isDocument }) {
   let url = process.env.MAKAIRA_API_URL
 
   if (isSearch) return url + '/search/public'
@@ -6,6 +6,8 @@ function getEndpoint({ isSearch, isSnippet, isRecommendation }) {
   if (isSnippet) return url + '/enterprise/snippets'
 
   if (isRecommendation) return url + '/recommendation/public'
+
+  if (isDocument) return url + '/documents/public'
 
   return url + '/enterprise/page'
 }
@@ -15,8 +17,9 @@ export default async function fetchFromMakaira({
   isSearch = false,
   isSnippet = false,
   isRecommendation = false,
+  isDocument = false,
 }) {
-  const url = getEndpoint({ isSnippet, isSearch, isRecommendation })
+  const url = getEndpoint({ isSnippet, isSearch, isRecommendation, isDocument })
 
   const response = await fetch(url, {
     method: 'POST',
