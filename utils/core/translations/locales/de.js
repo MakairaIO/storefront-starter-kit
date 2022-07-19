@@ -80,6 +80,8 @@ export default {
   NO_COMPONENT_AVAILABLE: 'Frontend-Komponente noch nicht implementiert',
   RATINGS_HEADING: 'Bewertungen',
   NO_RATINGS: 'Keine Bewertungen für dieses Produkt vorhanden.',
+  RATING_SIGN_IN_REQUIRED:
+    'Bitte melde dich an, um eine Bewertung verfassen zu können.',
   RATINGS_LOADING: 'Bewertungen werden geladen...',
   RATINGS_LABEL_NAME: 'Name',
   RATINGS_LABEL_STARS: 'Sterne',

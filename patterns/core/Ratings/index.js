@@ -1,4 +1,4 @@
-import { useShopReviews } from '@makaira/storefront-react'
+import { useShopReviews, useShopUser } from '@makaira/storefront-react'
 
 import StarInput from './StarInput'
 import RatingForm from './RatingForm'
@@ -23,6 +23,7 @@ const Rating = ({ text, rating }) => {
 }
 
 const Ratings = (product) => {
+  const { user } = useShopUser()
   const { loading, data } = useShopReviews({
     product: { id: product.productId },
     refetchOnReviewCreated: true,
@@ -45,7 +46,11 @@ const Ratings = (product) => {
 
       {!reviews.length && !loading && <Copytext>{t('NO_RATINGS')}</Copytext>}
 
-      <RatingForm {...product} />
+      {user?.user ? (
+        <RatingForm {...product} />
+      ) : (
+        <Copytext>{t('RATING_SIGN_IN_REQUIRED')}</Copytext>
+      )}
     </section>
   )
 }

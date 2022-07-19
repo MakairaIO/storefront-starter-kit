@@ -74,6 +74,7 @@ export default {
   NO_COMPONENT_AVAILABLE: 'Frontend component not implemented yet',
   RATINGS_HEADING: 'Ratings',
   NO_RATINGS: 'No ratings for this product.',
+  RATING_SIGN_IN_REQUIRED: 'Please sign in to write a review.',
   RATINGS_LOADING: 'Ratings loading...',
   RATINGS_LABEL_NAME: 'Name',
   RATINGS_LABEL_STARS: 'Stars',
