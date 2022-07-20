@@ -99,4 +99,6 @@ export default {
   SEARCH_RESULT_META_TITLE: (searchPhrase) =>
     `Search results for ${searchPhrase}`,
   LOGIN_SUCCESS: 'You have been signed in successfully.',
+  de: 'Deutsch',
+  en: 'English',
 }
