@@ -106,4 +106,6 @@ export default {
   WISHLIST: 'Wishlist',
   WISHLIST_EMPTY: 'No products on the wishlist.',
   WISHLIST_TO_FULL_OVERVIEW: 'View wishlist',
+  de: 'Deutsch',
+  en: 'English',
 }

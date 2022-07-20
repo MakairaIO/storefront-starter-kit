@@ -113,4 +113,6 @@ export default {
   WISHLIST: 'Merkliste',
   WISHLIST_EMPTY: 'Keine Produkte auf der Merkliste.',
   WISHLIST_TO_FULL_OVERVIEW: 'Zur Merkliste',
+  de: 'Deutsch',
+  en: 'English',
 }
