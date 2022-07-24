@@ -7,7 +7,6 @@ import VariantSelection from './VariantSelection'
 
 export default function Buybox(props) {
   const { t } = useTranslation()
-  const [isLoading, setLoading] = useState(false)
   const { attributeStr = [], setActiveVariant } = props
 
   /**
@@ -42,14 +41,6 @@ export default function Buybox(props) {
     setActiveVariant(colorVariant)
   }, [selectedColor, setActiveVariant, variants])
 
-  function handleAddToCart() {
-    setLoading(true)
-
-    setTimeout(() => {
-      setLoading(false)
-    }, 3000)
-  }
-
   return (
     <div className="product-detail-information__buybox">
       <div className="product-detail-information__buybox-wrapper">
@@ -77,11 +68,7 @@ export default function Buybox(props) {
         />
       </div>
 
-      <ProductActions
-        {...props}
-        isLoading={isLoading}
-        addToCart={handleAddToCart}
-      />
+      <ProductActions {...props} />
     </div>
   )
 }

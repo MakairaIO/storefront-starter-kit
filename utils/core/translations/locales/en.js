@@ -99,4 +99,7 @@ export default {
   SEARCH_RESULT_META_TITLE: (searchPhrase) =>
     `Search results for ${searchPhrase}`,
   LOGIN_SUCCESS: 'You have been signed in successfully.',
+  ADD_TO_CART_MESSAGE_SUCCESS: 'The items have been added to the shopping cart',
+  ADD_TO_CART_BUTTON_GO_TO_CART: 'Go to the shopping cart',
+  CONTINUE_SHOPPING: 'Continue Shopping',
 }

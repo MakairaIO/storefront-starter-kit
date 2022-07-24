@@ -48,5 +48,7 @@ export {
   FormStatus,
   FormSelect,
 } from './core/Form'
+export { default as AddCartSuccessModal } from './core/AddCartSuccessModal'
+export { NextArrow, PrevArrow } from './core/SliderArrows'
 
 /* Add project specific patterns here */
