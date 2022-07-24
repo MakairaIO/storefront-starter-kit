@@ -1,9 +1,13 @@
+import { useState } from 'react'
 import { Button, Dropdown } from '../..'
-import { useTranslation } from '../../../utils'
+import { useAddToCart, useTranslation } from '../../../utils'
 
 export default function ProductActions(props) {
   const { t } = useTranslation()
-  const { bundles, addToBundle, addToCart, isLoading = false } = props
+  const { addToCart, loading } = useAddToCart()
+
+  const [quantitiy, setQuantity] = useState(1)
+  const { bundles, addToBundle, productId } = props
 
   const quantities = [
     { label: '1', value: 1 },
@@ -11,6 +15,12 @@ export default function ProductActions(props) {
     { label: '3', value: 3 },
     { label: '4', value: 4 },
   ]
+
+  function onAddToCart(e) {
+    e.stopPropagation()
+    e.preventDefault()
+    addToCart({ productId, quantitiy })
+  }
 
   return (
     <div className="product-detail-information__actions">
@@ -22,8 +32,9 @@ export default function ProductActions(props) {
 
       <Dropdown
         id="sizeVariant"
+        value={quantitiy}
         options={quantities}
-        onChange={() => console.log('todo')}
+        onChange={({ value }) => setQuantity(value)}
         className="product-detail-information__quantity-select"
       />
 
@@ -32,9 +43,9 @@ export default function ProductActions(props) {
         icon="cart"
         iconPosition="left"
         className="product-detail-information__add-cart"
-        loading={isLoading}
-        disabled={isLoading}
-        onClick={addToCart}
+        loading={loading}
+        disabled={loading}
+        onClick={onAddToCart}
       >
         {t('PRODUCT_DETAIL_ADD_TO_CART')}
       </Button>

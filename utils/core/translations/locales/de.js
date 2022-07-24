@@ -106,4 +106,7 @@ export default {
   SEARCH_RESULT_META_TITLE: (searchPhrase) =>
     `Suchergebnisse für ${searchPhrase}`,
   LOGIN_SUCCESS: 'Du wurdest erfolgreich angemeldet.',
+  ADD_TO_CART_MESSAGE_SUCCESS: 'Die Artikel wurden zum Warenkorb hinzugefügt',
+  ADD_TO_CART_BUTTON_GO_TO_CART: 'Zum Warenkorb',
+  CONTINUE_SHOPPING: 'Weiter einkaufen',
 }
