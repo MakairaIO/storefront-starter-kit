@@ -28,6 +28,8 @@
     "test": "jest --watch",
     "analyze": "ANALYZE=true npm run build",
     "pre-commit": "lint-staged",
+    "cypress": "cypress run --browser chrome",
+    "cypress:interactive": "cypress run --browser chrome",
     "release": "semantic-release"
   },
   "dependencies": {
@@ -55,7 +57,9 @@
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^8.0.4",
     "chokidar-cli": "^3.0.0",
+    "cypress": "^10.3.1",
     "eslint": "^8.10.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-react": "^7.29.2",
     "eslint-plugin-react-hooks": "^4.3.0",
