@@ -8,7 +8,7 @@ import Preload from './Preload'
  *
  * IMPORTANT: The order of the options matters!
  *
- * <ImageV2
+ * <Image
  *   alt='Alt Text'
  *   options={{
  *     desktop: {
