@@ -1,18 +1,11 @@
 import { useShopClient, useShopWishlist } from '@makaira/storefront-react'
 import { useCallback, useState } from 'react'
 import { Button, Dropdown } from '../..'
-import { useTranslation } from '../../../utils'
+import { useAddToCart, useTranslation } from '../../../utils'
 
-export default function ProductActions({
-  bundles,
-  addToBundle,
-  productId,
-  images,
-  price,
-  title,
-  url,
-}) {
-  const [isLoading, setIsLoading] = useState(false)
+export default function ProductActions(props) {
+  const { bundles, addToBundle, productId, images, price, title, url } = props
+
   const [quantity, setQuantity] = useState(1)
   const [addToWishlistLoading, setAddToWishlistLoading] = useState(false)
 
@@ -20,6 +13,7 @@ export default function ProductActions({
   const { isProductInWishlist } = useShopWishlist()
 
   const { t } = useTranslation()
+  const { addToCart, loading } = useAddToCart()
 
   const quantities = [
     { label: '1', value: 1 },
@@ -60,21 +54,10 @@ export default function ProductActions({
     url,
   ])
 
-  async function addToCart() {
-    setIsLoading(true)
-
-    client.cart
-      .addItem({
-        input: {
-          quantity,
-          product: { id: productId },
-          images,
-          price,
-          title,
-          url,
-        },
-      })
-      .finally(() => setIsLoading(false))
+  function onAddToCart(e) {
+    e.stopPropagation()
+    e.preventDefault()
+    addToCart({ ...props, quantity })
   }
 
   return (
@@ -90,8 +73,8 @@ export default function ProductActions({
 
       <Dropdown
         id="sizeVariant"
-        options={quantities}
         value={quantity}
+        options={quantities}
         onChange={({ value }) => setQuantity(value)}
         className="product-detail-information__quantity-select"
       />
@@ -101,9 +84,9 @@ export default function ProductActions({
         icon="cart"
         iconPosition="left"
         className="product-detail-information__add-cart"
-        loading={isLoading}
-        disabled={isLoading}
-        onClick={addToCart}
+        loading={loading}
+        disabled={loading}
+        onClick={onAddToCart}
       >
         {t('PRODUCT_DETAIL_ADD_TO_CART')}
       </Button>
