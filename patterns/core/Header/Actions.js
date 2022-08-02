@@ -21,31 +21,6 @@ export default function Actions(props) {
   const { wishlist } = useShopWishlist()
   const { t } = useTranslation()
 
-  useEffect(() => {
-    if (isLoginBoxVisible) {
-      window.addEventListener('click', hideLoginBox)
-
-      return () => window.removeEventListener('click', hideLoginBox)
-    }
-    if (isWishlistBoxVisible) {
-      window.addEventListener('click', hideWishlistBox)
-
-      return () => window.removeEventListener('click', hideWishlistBox)
-    }
-    if (isCartBoxVisible) {
-      window.addEventListener('click', hideCartBox)
-
-      return () => window.removeEventListener('click', hideCartBox)
-    }
-  }, [
-    isLoginBoxVisible,
-    isWishlistBoxVisible,
-    isCartBoxVisible,
-    hideLoginBox,
-    hideWishlistBox,
-    hideCartBox,
-  ])
-
   const hideLoginBox = useCallback(
     (event) => {
       if (isLoginBoxVisible && !event.target.closest(`.flyout-box`)) {
@@ -72,6 +47,31 @@ export default function Actions(props) {
     },
     [isCartBoxVisible, toggleCartBox]
   )
+
+  useEffect(() => {
+    if (isLoginBoxVisible) {
+      window.addEventListener('click', hideLoginBox)
+
+      return () => window.removeEventListener('click', hideLoginBox)
+    }
+    if (isWishlistBoxVisible) {
+      window.addEventListener('click', hideWishlistBox)
+
+      return () => window.removeEventListener('click', hideWishlistBox)
+    }
+    if (isCartBoxVisible) {
+      window.addEventListener('click', hideCartBox)
+
+      return () => window.removeEventListener('click', hideCartBox)
+    }
+  }, [
+    isLoginBoxVisible,
+    isWishlistBoxVisible,
+    isCartBoxVisible,
+    hideLoginBox,
+    hideWishlistBox,
+    hideCartBox,
+  ])
 
   return (
     <div className="header__actions">
