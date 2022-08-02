@@ -113,4 +113,7 @@ export default {
   WISHLIST: 'Merkliste',
   WISHLIST_EMPTY: 'Keine Produkte auf der Merkliste.',
   WISHLIST_TO_FULL_OVERVIEW: 'Zur Merkliste',
+  ADD_TO_CART_MESSAGE_SUCCESS: 'Die Artikel wurden zum Warenkorb hinzugefügt',
+  ADD_TO_CART_BUTTON_GO_TO_CART: 'Zum Warenkorb',
+  CONTINUE_SHOPPING: 'Weiter einkaufen',
 }

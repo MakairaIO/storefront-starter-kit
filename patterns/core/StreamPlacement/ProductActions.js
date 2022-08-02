@@ -1,34 +1,24 @@
-import { useShopClient } from '@makaira/storefront-react'
 import { Button } from '../..'
-import { useTranslation } from '../../../utils'
+import { useAddToCart, useTranslation } from '../../../utils'
 
-export default function ProductActions({
-  productId,
-  images,
-  price,
-  title,
-  url,
-}) {
-  const { client } = useShopClient()
+export default function ProductActions({ productId }) {
   const { t } = useTranslation()
+  const { addToCart, loading } = useAddToCart()
 
-  function addToCart(e) {
+  function onAddToCart(e) {
+    e.stopPropagation()
     e.preventDefault()
-    client.cart.addItem({
-      input: {
-        quantity: 1,
-        product: { id: productId },
-        images,
-        price,
-        title,
-        url,
-      },
-    })
+    addToCart({ productId, quantitiy: 1 })
   }
 
   return (
     <div className="stream-placement-item__actions">
-      <Button variant="primary" onClick={addToCart}>
+      <Button
+        variant="primary"
+        loading={loading}
+        disabled={loading}
+        onClick={onAddToCart}
+      >
         {t('PRODUCT_TILE_ADD_TO_CART')}
       </Button>
     </div>
