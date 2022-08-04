@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
-import { useTranslation } from '../../../utils'
+import { useTranslation, GTM, prepareTrackingItem } from '../../../utils'
 import ProductPrices from './ProductPrices'
 import ProductAvailability from './ProductAvailability'
 import ProductActions from './ProductActions'
@@ -45,9 +45,27 @@ export default function Buybox(props) {
   function handleAddToCart() {
     setLoading(true)
 
+    GTM.trackEvent({
+      event: 'add_to_cart',
+      ecommerce: {
+        items: variants.map(prepareTrackingItem),
+      },
+      _clear: true,
+    })
+
     setTimeout(() => {
       setLoading(false)
     }, 3000)
+  }
+
+  function handleAddToWishlist() {
+    GTM.trackEvent({
+      event: 'add_to_wishlist',
+      ecommerce: {
+        items: variants.map(prepareTrackingItem),
+      },
+      _clear: true,
+    })
   }
 
   return (
@@ -81,6 +99,7 @@ export default function Buybox(props) {
         {...props}
         isLoading={isLoading}
         addToCart={handleAddToCart}
+        addToWishlist={handleAddToWishlist}
       />
     </div>
   )
