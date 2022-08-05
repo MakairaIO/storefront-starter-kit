@@ -3,7 +3,15 @@ import { useTranslation } from '../../../utils'
 
 export default function ProductActions(props) {
   const { t } = useTranslation()
-  const { bundles, addToBundle, addToCart, isLoading = false } = props
+  const {
+    bundles,
+    addToBundle,
+    addToCart,
+    addToWishlist,
+    isLoading = false,
+    quantity,
+    setQuantity,
+  } = props
 
   const quantities = [
     { label: '1', value: 1 },
@@ -18,12 +26,14 @@ export default function ProductActions(props) {
         icon="heart"
         className="product-detail-information__wishlist"
         variant="icon-only"
+        onClick={addToWishlist}
       />
 
       <Dropdown
         id="sizeVariant"
         options={quantities}
-        onChange={() => console.log('todo')}
+        value={quantity}
+        onChange={({ value }) => setQuantity(value)}
         className="product-detail-information__quantity-select"
       />
 

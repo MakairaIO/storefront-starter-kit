@@ -1,5 +1,5 @@
 export default {
-  // See: https://docs.makaira.io/books/tracking/page/google-tag-manager
+  // See: https://docs.makaira.io/docs/tracking
   init() {
     const trackingId = process.env.MAKAIRA_TRACKING_ID
 

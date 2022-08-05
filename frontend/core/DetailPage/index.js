@@ -4,6 +4,8 @@ import {
   fetchRecommendationData,
   useTranslation,
   redirectToBundle,
+  GTM,
+  prepareTrackingItem,
 } from '../../../utils'
 import {
   Breadcrumb,
@@ -35,8 +37,23 @@ function DetailPage() {
       )
       setProducts(formattedProduct)
     }
+
+    function trackViewEvent() {
+      if (pageData.data?.self) {
+        GTM.trackEvent({
+          event: 'view_item',
+          ecommerce: {
+            items: [prepareTrackingItem(pageData.data.self)],
+          },
+          _clear: true,
+        })
+      }
+    }
+
     getProducts()
-  }, [productId, language])
+
+    trackViewEvent()
+  }, [productId, language, pageData])
 
   const productPlacementProps = {
     heading: t('RECOMMENDATION_HEADING'),

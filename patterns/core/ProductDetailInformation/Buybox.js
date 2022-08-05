@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
-import { useTranslation } from '../../../utils'
+import { useTranslation, GTM, prepareTrackingItem } from '../../../utils'
 import ProductPrices from './ProductPrices'
 import ProductAvailability from './ProductAvailability'
 import ProductActions from './ProductActions'
@@ -8,7 +8,8 @@ import VariantSelection from './VariantSelection'
 export default function Buybox(props) {
   const { t } = useTranslation()
   const [isLoading, setLoading] = useState(false)
-  const { attributeStr = [], setActiveVariant } = props
+  const [quantity, setQuantity] = useState(1)
+  const { attributeStr = [], activeVariant, setActiveVariant } = props
 
   /**
    * Due to backwards compatibility, we have to take into account that `makaira-product`
@@ -45,9 +46,27 @@ export default function Buybox(props) {
   function handleAddToCart() {
     setLoading(true)
 
+    GTM.trackEvent({
+      event: 'add_to_cart',
+      ecommerce: {
+        items: [prepareTrackingItem(activeVariant, quantity)],
+      },
+      _clear: true,
+    })
+
     setTimeout(() => {
       setLoading(false)
     }, 3000)
+  }
+
+  function handleAddToWishlist() {
+    GTM.trackEvent({
+      event: 'add_to_wishlist',
+      ecommerce: {
+        items: [prepareTrackingItem(activeVariant)],
+      },
+      _clear: true,
+    })
   }
 
   return (
@@ -81,6 +100,9 @@ export default function Buybox(props) {
         {...props}
         isLoading={isLoading}
         addToCart={handleAddToCart}
+        addToWishlist={handleAddToWishlist}
+        quantity={quantity}
+        setQuantity={setQuantity}
       />
     </div>
   )
