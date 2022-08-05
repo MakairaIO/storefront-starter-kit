@@ -8,7 +8,8 @@ import VariantSelection from './VariantSelection'
 export default function Buybox(props) {
   const { t } = useTranslation()
   const [isLoading, setLoading] = useState(false)
-  const { attributeStr = [], setActiveVariant } = props
+  const [quantity, setQuantity] = useState(1)
+  const { attributeStr = [], activeVariant, setActiveVariant } = props
 
   /**
    * Due to backwards compatibility, we have to take into account that `makaira-product`
@@ -48,7 +49,7 @@ export default function Buybox(props) {
     GTM.trackEvent({
       event: 'add_to_cart',
       ecommerce: {
-        items: variants.map(prepareTrackingItem),
+        items: [prepareTrackingItem(activeVariant, quantity)],
       },
       _clear: true,
     })
@@ -62,7 +63,7 @@ export default function Buybox(props) {
     GTM.trackEvent({
       event: 'add_to_wishlist',
       ecommerce: {
-        items: variants.map(prepareTrackingItem),
+        items: [prepareTrackingItem(activeVariant)],
       },
       _clear: true,
     })
@@ -100,6 +101,8 @@ export default function Buybox(props) {
         isLoading={isLoading}
         addToCart={handleAddToCart}
         addToWishlist={handleAddToWishlist}
+        quantity={quantity}
+        setQuantity={setQuantity}
       />
     </div>
   )

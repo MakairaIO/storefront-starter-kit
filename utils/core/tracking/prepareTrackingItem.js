@@ -4,6 +4,7 @@ export default function prepareTrackingItem(product, quantity) {
     item_name: product.title,
     affiliation: 'makaira',
     currency: 'EUR',
+    item_brand: product.manufacturer_title,
     price: parseInt(product.price, 10) || product.price,
     quantity: quantity || product.quantity || 1,
   }

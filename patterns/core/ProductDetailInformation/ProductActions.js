@@ -9,6 +9,8 @@ export default function ProductActions(props) {
     addToCart,
     addToWishlist,
     isLoading = false,
+    quantity,
+    setQuantity,
   } = props
 
   const quantities = [
@@ -30,7 +32,8 @@ export default function ProductActions(props) {
       <Dropdown
         id="sizeVariant"
         options={quantities}
-        onChange={() => console.log('todo')}
+        value={quantity}
+        onChange={({ value }) => setQuantity(value)}
         className="product-detail-information__quantity-select"
       />
 

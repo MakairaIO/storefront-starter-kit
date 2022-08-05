@@ -41,7 +41,9 @@ export default function List(props) {
         } else {
           return (
             <ProductTile
-              handleTrackingEvent={() => handleTrackingEvent(entry.id, index)}
+              handleTrackingEvent={() =>
+                handleTrackingEvent(entry.id, index + 1)
+              }
               key={entry.id}
               {...entry.fields}
             />
