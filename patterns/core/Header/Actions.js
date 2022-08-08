@@ -1,4 +1,5 @@
 import { useShopCart, useShopWishlist } from '@makaira/storefront-react'
+import { useCallback, useEffect } from 'react'
 import { Button, FormattedPrice } from '../..'
 import { useTranslation } from '../../../utils'
 import Cart from './Cart'
@@ -19,6 +20,58 @@ export default function Actions(props) {
   const { quantityInCart, totalPriceInCart } = useShopCart()
   const { wishlist } = useShopWishlist()
   const { t } = useTranslation()
+
+  const hideLoginBox = useCallback(
+    (event) => {
+      if (isLoginBoxVisible && !event.target.closest(`.flyout-box`)) {
+        toggleLoginBox()
+      }
+    },
+    [isLoginBoxVisible, toggleLoginBox]
+  )
+
+  const hideWishlistBox = useCallback(
+    (event) => {
+      if (isWishlistBoxVisible && !event.target.closest(`.flyout-box`)) {
+        toggleWishlistBox()
+      }
+    },
+    [isWishlistBoxVisible, toggleWishlistBox]
+  )
+
+  const hideCartBox = useCallback(
+    (event) => {
+      if (isCartBoxVisible && !event.target.closest(`.flyout-box`)) {
+        toggleCartBox()
+      }
+    },
+    [isCartBoxVisible, toggleCartBox]
+  )
+
+  useEffect(() => {
+    if (isLoginBoxVisible) {
+      window.addEventListener('click', hideLoginBox)
+
+      return () => window.removeEventListener('click', hideLoginBox)
+    }
+    if (isWishlistBoxVisible) {
+      window.addEventListener('click', hideWishlistBox)
+
+      return () => window.removeEventListener('click', hideWishlistBox)
+    }
+    if (isCartBoxVisible) {
+      window.addEventListener('click', hideCartBox)
+
+      return () => window.removeEventListener('click', hideCartBox)
+    }
+  }, [
+    isLoginBoxVisible,
+    isWishlistBoxVisible,
+    isCartBoxVisible,
+    hideLoginBox,
+    hideWishlistBox,
+    hideCartBox,
+  ])
 
   return (
     <div className="header__actions">
