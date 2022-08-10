@@ -4,7 +4,13 @@ export default async function fetchMenuData() {
   if (process.browser && localStorage.getItem('menuData')) {
     const menuString = localStorage.getItem('menuData')
 
-    data = JSON.parse(menuString)
+    if (['undefined', 'null', '[]'].includes(menuString)) {
+      const response = await fetchMenuFromApi()
+
+      data = response.menu
+    } else {
+      data = JSON.parse(menuString)
+    }
   } else {
     const response = await fetchMenuFromApi()
 
