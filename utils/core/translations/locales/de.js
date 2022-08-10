@@ -106,4 +106,6 @@ export default {
   SEARCH_RESULT_META_TITLE: (searchPhrase) =>
     `Suchergebnisse für ${searchPhrase}`,
   LOGIN_SUCCESS: 'Du wurdest erfolgreich angemeldet.',
+  de: 'Deutsch',
+  en: 'English',
 }
