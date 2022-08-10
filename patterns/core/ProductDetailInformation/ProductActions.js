@@ -6,8 +6,8 @@ export default function ProductActions(props) {
   const { t } = useTranslation()
   const { addToCart, loading } = useAddToCart()
 
-  const [quantitiy, setQuantity] = useState(1)
-  const { bundles, addToBundle, productId } = props
+  const [quantity, setQuantity] = useState(1)
+  const { bundles, addToBundle, ['makaira-product']: makairaProduct } = props
 
   const quantities = [
     { label: '1', value: 1 },
@@ -19,14 +19,19 @@ export default function ProductActions(props) {
   function onAddToCart(e) {
     e.stopPropagation()
     e.preventDefault()
-    addToCart({ productId, quantitiy })
+    addToCart({
+      productId: Array.isArray(makairaProduct)
+        ? makairaProduct[0]?.id
+        : makairaProduct?.id,
+      quantity,
+    })
   }
 
   return (
     <div className="product-detail-information__actions">
       <Dropdown
         id="sizeVariant"
-        value={quantitiy}
+        value={quantity}
         options={quantities}
         onChange={({ value }) => setQuantity(value)}
         className="product-detail-information__quantity-select"

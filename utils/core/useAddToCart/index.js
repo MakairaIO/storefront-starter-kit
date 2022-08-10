@@ -1,3 +1,4 @@
+import { useShopClient } from '@makaira/storefront-react'
 import { useCallback, useState } from 'react'
 import fetchRecommendationData from '../fetchRecommendationData'
 import { useTranslation } from '../TranslationProvider'
@@ -5,12 +6,13 @@ import { useTranslation } from '../TranslationProvider'
 export const ADD_TO_CART_DISPATCH_EVENT_NAME = 'addToCart:success'
 
 export default function useAddToCart() {
+  const { client } = useShopClient()
   const { language } = useTranslation()
   const [loading, setLoading] = useState(false)
 
   const addToCart = useCallback(
     async (
-      { productId },
+      { productId, quantity },
       { skipRecommendations, skipPopup } = {
         skipRecommendations: false,
         skipPopup: false,
@@ -19,7 +21,11 @@ export default function useAddToCart() {
       setLoading(true)
 
       try {
-        const promises = [new Promise((resolve) => setTimeout(resolve, 500))]
+        const promises = [
+          client.cart.addItem({
+            input: { product: { id: productId }, quantity },
+          }),
+        ]
 
         if (skipRecommendations !== true) {
           promises.push(

@@ -21,7 +21,8 @@ import {
 } from '../../utils'
 import ErrorPage from '../_error'
 import { ShopProvider } from '@makaira/storefront-react'
-import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
+// eslint-disable-next-line import/no-unresolved
+import { StorefrontShopAdapterShopify } from '@makaira/storefront-shop-adapter-shopify'
 
 const pageComponents = {
   page: LandingPage,
@@ -30,8 +31,10 @@ const pageComponents = {
   manufacturer: ListingPage,
   'makaira-productgroup': DetailPage,
 }
-
-const shopClient = new StorefrontShopAdapterLocal()
+const shopClient = new StorefrontShopAdapterShopify({
+  url: process.env.STOREFRONT_DOMAIN,
+  accessToken: process.env.STOREFRONT_API_KEY,
+})
 
 export default class Index extends Component {
   static async getInitialProps(ctx) {
