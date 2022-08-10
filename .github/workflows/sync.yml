@@ -44,7 +44,7 @@ jobs:
         run: git checkout ${{ matrix.syncBranch }}
 
       - name: Try rebase into sync branch
-        run: git rebase stable
+        run: git rebase origin/stable
         continue-on-error: true
         env:
           GIT_AUTHOR_NAME: ${{ secrets.GIT_USERNAME }}
