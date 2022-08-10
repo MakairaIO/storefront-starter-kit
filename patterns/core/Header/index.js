@@ -193,6 +193,9 @@ class Header extends Component {
   handleRouteChange = () => {
     this.hideMobileNavigationOnPageChange()
     this.hideAutosuggestBox()
+    this.hideLoginBox()
+    this.hideWishlistBox()
+    this.hideCartBox()
   }
 
   toggleWishlistBox = () => {
