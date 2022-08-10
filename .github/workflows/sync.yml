@@ -67,7 +67,7 @@ jobs:
         
       - name: Create PR on sync rebase fail
         if: ${{  failure() }}
-        uses: repo.sync/pull-request@v2
+        uses: repo-sync/pull-request@v2
         with:
           source_branch: "stable"
           destination_branch: ${{ matrix.syncBranch }}
