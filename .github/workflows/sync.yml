@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        syncBranch: [refs/heads/oxid]
+        syncBranch: [refs/heads/oxid, refs/heads/shopify]
       fail-fast: false
     steps:
       - uses: actions/checkout@v3
