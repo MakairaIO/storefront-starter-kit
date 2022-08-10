@@ -14,6 +14,7 @@ export default function ProductTile(props) {
     shortdesc = '',
     url = '',
     mak_paid_placement = false,
+    handleTrackingEvent,
   } = props
 
   const [activeVariant, setActiveVariant] = useState()
@@ -26,7 +27,7 @@ export default function ProductTile(props) {
 
   return (
     <article className={classes}>
-      <Link href={productDetailUrl}>
+      <Link onClick={handleTrackingEvent} href={productDetailUrl}>
         <ProductImage {...props} activeVariant={activeVariant} />
 
         <Heading size="bacchus" weight="600" className="product-item__title">

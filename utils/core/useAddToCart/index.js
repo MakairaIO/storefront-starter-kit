@@ -1,5 +1,6 @@
 import { useShopClient } from '@makaira/storefront-react'
 import { useCallback, useState } from 'react'
+import { GTM, prepareTrackingItem } from '../..'
 import fetchRecommendationData from '../fetchRecommendationData'
 import { useTranslation } from '../TranslationProvider'
 
@@ -12,7 +13,8 @@ export default function useAddToCart() {
 
   const addToCart = useCallback(
     async (
-      { productId, quantity },
+      product,
+      quantity,
       { skipRecommendations, skipPopup } = {
         skipRecommendations: false,
         skipPopup: false,
@@ -20,17 +22,33 @@ export default function useAddToCart() {
     ) => {
       setLoading(true)
 
+      GTM.trackEvent({
+        event: 'add_to_cart',
+        ecommerce: {
+          items: [prepareTrackingItem(product, quantity)],
+        },
+        _clear: true,
+      })
+
       try {
         const promises = [
           client.cart.addItem({
-            input: { product: { id: productId }, quantity },
+            input: {
+              product: {
+                id: Array.isArray(product['makaira-product'])
+                  ? product['makaira-product'][0]?.id
+                  : product['makaira-product']?.id,
+                ...product,
+              },
+              quantity,
+            },
           }),
         ]
 
         if (skipRecommendations !== true) {
           promises.push(
             fetchRecommendationData({
-              productId,
+              productId: product.productId,
               language,
               recommendationId: 'similar-products',
             })

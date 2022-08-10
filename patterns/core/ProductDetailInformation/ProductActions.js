@@ -7,7 +7,7 @@ export default function ProductActions(props) {
   const { addToCart, loading } = useAddToCart()
 
   const [quantity, setQuantity] = useState(1)
-  const { bundles, addToBundle, ['makaira-product']: makairaProduct } = props
+  const { bundles, addToBundle } = props
 
   const quantities = [
     { label: '1', value: 1 },
@@ -19,12 +19,7 @@ export default function ProductActions(props) {
   function onAddToCart(e) {
     e.stopPropagation()
     e.preventDefault()
-    addToCart({
-      productId: Array.isArray(makairaProduct)
-        ? makairaProduct[0]?.id
-        : makairaProduct?.id,
-      quantity,
-    })
+    addToCart(props, quantity)
   }
 
   return (

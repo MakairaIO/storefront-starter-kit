@@ -1,21 +1,14 @@
 import { Button } from '../..'
 import { useAddToCart, useTranslation } from '../../../utils'
 
-export default function ProductActions({
-  ['makaira-product']: makairaProduct,
-}) {
+export default function ProductActions(props) {
   const { t } = useTranslation()
   const { addToCart, loading } = useAddToCart()
 
   function onAddToCart(e) {
     e.stopPropagation()
     e.preventDefault()
-    addToCart({
-      productId: Array.isArray(makairaProduct)
-        ? makairaProduct[0]?.id
-        : makairaProduct?.id,
-      quantity: 1,
-    })
+    addToCart(props, 1)
   }
 
   return (
