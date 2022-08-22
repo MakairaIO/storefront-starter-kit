@@ -78,11 +78,7 @@ export default function ProductActions({
   function onAddToCart(e) {
     e.stopPropagation()
     e.preventDefault()
-    addToCart({
-      product: { id: productId, images, price, title, url },
-      quantity,
-      activeVariant,
-    })
+    addToCart({ productId, title, images, price, url, quantity, activeVariant })
   }
 
   return (

@@ -13,7 +13,7 @@ export default function useAddToCart() {
 
   const addToCart = useCallback(
     async (
-      { product, activeVariant, quantity },
+      { productId, images, price, title, url, activeVariant, quantity },
       { skipRecommendations, skipPopup } = {
         skipRecommendations: false,
         skipPopup: false,
@@ -26,11 +26,11 @@ export default function useAddToCart() {
           await client.cart.addItem({
             input: {
               quantity,
-              product,
-              images: product.images,
-              price: product.price,
-              title: product.title,
-              url: product.url,
+              product: { id: productId },
+              images,
+              price,
+              title,
+              url,
             },
           }),
         ]
@@ -38,7 +38,7 @@ export default function useAddToCart() {
         if (skipRecommendations !== true) {
           promises.push(
             fetchRecommendationData({
-              productId: product.id,
+              productId,
               language,
               recommendationId: 'similar-products',
             })

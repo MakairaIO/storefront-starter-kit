@@ -15,7 +15,11 @@ export default function ProductActions({
     e.stopPropagation()
     e.preventDefault()
     addToCart({
-      product: { id: productId, images, price, title, url },
+      productId,
+      images,
+      price,
+      title,
+      url,
       quantity: 1,
     })
   }
