@@ -1,14 +1,21 @@
 import { Button } from '../..'
 import { useAddToCart, useTranslation } from '../../../utils'
 
-export default function ProductActions(props) {
+export default function ProductActions({ id, images, price, title, url }) {
   const { t } = useTranslation()
   const { addToCart, loading } = useAddToCart()
 
   function onAddToCart(e) {
     e.stopPropagation()
     e.preventDefault()
-    addToCart({ ...props, quantitiy: 1 })
+    addToCart({
+      productId: id,
+      images,
+      price,
+      title,
+      url,
+      quantity: 1,
+    })
   }
 
   return (

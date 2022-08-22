@@ -1,19 +1,31 @@
 import { useShopClient, useShopWishlist } from '@makaira/storefront-react'
 import { useCallback, useState } from 'react'
 import { Button, Dropdown } from '../..'
-import { useAddToCart, useTranslation } from '../../../utils'
+import {
+  GTM,
+  prepareTrackingItem,
+  useAddToCart,
+  useTranslation,
+} from '../../../utils'
 
-export default function ProductActions(props) {
-  const { bundles, addToBundle, productId, images, price, title, url } = props
-
+export default function ProductActions({
+  bundles,
+  addToBundle,
+  productId,
+  images,
+  price,
+  title,
+  url,
+  activeVariant,
+}) {
   const [quantity, setQuantity] = useState(1)
   const [addToWishlistLoading, setAddToWishlistLoading] = useState(false)
 
   const { client } = useShopClient()
+  const { addToCart, loading } = useAddToCart()
   const { isProductInWishlist } = useShopWishlist()
 
   const { t } = useTranslation()
-  const { addToCart, loading } = useAddToCart()
 
   const quantities = [
     { label: '1', value: 1 },
@@ -39,6 +51,14 @@ export default function ProductActions(props) {
       await client.wishlist.addItem({
         input: { product: { id: productId }, images, price, title, url },
       })
+
+      GTM.trackEvent({
+        event: 'add_to_wishlist',
+        ecommerce: {
+          items: [prepareTrackingItem(activeVariant)],
+        },
+        _clear: true,
+      })
     }
 
     setAddToWishlistLoading(false)
@@ -47,6 +67,7 @@ export default function ProductActions(props) {
     addToWishlistLoading,
     setAddToWishlistLoading,
     client.wishlist,
+    activeVariant,
     productId,
     images,
     price,
@@ -57,7 +78,7 @@ export default function ProductActions(props) {
   function onAddToCart(e) {
     e.stopPropagation()
     e.preventDefault()
-    addToCart({ ...props, quantity })
+    addToCart({ productId, title, images, price, url, quantity, activeVariant })
   }
 
   return (

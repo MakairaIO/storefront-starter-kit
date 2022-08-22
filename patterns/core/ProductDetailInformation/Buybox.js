@@ -7,7 +7,7 @@ import VariantSelection from './VariantSelection'
 
 export default function Buybox(props) {
   const { t } = useTranslation()
-  const { attributeStr = [], setActiveVariant } = props
+  const { attributeStr = [], activeVariant, setActiveVariant } = props
 
   /**
    * Due to backwards compatibility, we have to take into account that `makaira-product`
@@ -68,7 +68,7 @@ export default function Buybox(props) {
         />
       </div>
 
-      <ProductActions {...props} />
+      <ProductActions {...props} activeVariant={activeVariant} />
     </div>
   )
 }

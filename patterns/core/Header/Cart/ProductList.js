@@ -47,7 +47,7 @@ function ProductItem(props) {
           </div>
         </div>
       </Link>
-      <Button onClick={handleRemoveItem} icon="times" variant="link" />
+      <Button onClick={handleRemoveItem} icon="times" variant="icon-only" />
     </li>
   )
 }
