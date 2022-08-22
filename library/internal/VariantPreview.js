@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import {
   ConfigurationProvider,
+  GlobalDataProvider,
   IframeResizerWrapper,
   TranslationProvider,
 } from '../../utils'
@@ -63,32 +64,34 @@ export default function VariantPreview({
             checkOrigin: false,
           }}
         >
-          <ConfigurationProvider>
-            <TranslationProvider language={currentLanguage}>
-              <BaseLayout>
-                <style
-                  dangerouslySetInnerHTML={{
-                    __html: `
+          <GlobalDataProvider>
+            <ConfigurationProvider>
+              <TranslationProvider language={currentLanguage}>
+                <BaseLayout>
+                  <style
+                    dangerouslySetInnerHTML={{
+                      __html: `
                     #iframe-root {
                       padding: 10px 0;
                       background: #fff;
                       border-radius: 8px;
                     }
                   `,
-                  }}
-                />
+                    }}
+                  />
 
-                <link
-                  href="/assets/styles/main.css"
-                  rel="stylesheet"
-                  type="text/css"
-                />
-                <SVGSprite />
+                  <link
+                    href="/assets/styles/main.css"
+                    rel="stylesheet"
+                    type="text/css"
+                  />
+                  <SVGSprite />
 
-                <Component {...variant.props} />
-              </BaseLayout>
-            </TranslationProvider>
-          </ConfigurationProvider>
+                  <Component {...variant.props} />
+                </BaseLayout>
+              </TranslationProvider>
+            </ConfigurationProvider>
+          </GlobalDataProvider>
         </IframeResizerWrapper>
       </div>
     </section>
