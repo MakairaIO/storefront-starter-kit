@@ -1,7 +1,7 @@
 import { useShopClient, useShopWishlist } from '@makaira/storefront-react'
 import { useCallback, useState } from 'react'
 import { Button, Dropdown } from '../..'
-import { useTranslation } from '../../../utils'
+import { GTM, prepareTrackingItem, useTranslation } from '../../../utils'
 
 export default function ProductActions({
   bundles,
@@ -11,6 +11,7 @@ export default function ProductActions({
   price,
   title,
   url,
+  activeVariant,
 }) {
   const [isLoading, setIsLoading] = useState(false)
   const [quantity, setQuantity] = useState(1)
@@ -45,6 +46,14 @@ export default function ProductActions({
       await client.wishlist.addItem({
         input: { product: { id: productId }, images, price, title, url },
       })
+
+      GTM.trackEvent({
+        event: 'add_to_wishlist',
+        ecommerce: {
+          items: [prepareTrackingItem(activeVariant)],
+        },
+        _clear: true,
+      })
     }
 
     setAddToWishlistLoading(false)
@@ -53,6 +62,7 @@ export default function ProductActions({
     addToWishlistLoading,
     setAddToWishlistLoading,
     client.wishlist,
+    activeVariant,
     productId,
     images,
     price,
@@ -74,7 +84,17 @@ export default function ProductActions({
           url,
         },
       })
-      .finally(() => setIsLoading(false))
+      .finally(() => {
+        setIsLoading(false)
+
+        GTM.trackEvent({
+          event: 'add_to_cart',
+          ecommerce: {
+            items: [prepareTrackingItem(activeVariant, quantity)],
+          },
+          _clear: true,
+        })
+      })
   }
 
   return (

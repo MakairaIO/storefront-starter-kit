@@ -18,6 +18,7 @@ import {
   fetchMenuData,
   redirect,
   wait,
+  GTM,
 } from '../../utils'
 import ErrorPage from '../_error'
 import { ShopProvider } from '@makaira/storefront-react'
@@ -92,6 +93,46 @@ export default class Index extends Component {
         await wait(30000)
       }
     }
+  }
+
+  componentDidMount() {
+    const language = this.props.pageData?.language
+
+    if (language) {
+      GTM.trackEvent({
+        event: 'init',
+        country: language,
+        language: language,
+      })
+
+      this.trackPageViewEvent()
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    // Check for Error Page
+    if (Object.entries(this.props).length === 0) return
+
+    // We only want to track a page view if the page was actually changed
+    const shouldTrackView =
+      prevProps.pageData?.data?.id !== this.props.pageData?.data?.id
+
+    if (shouldTrackView) {
+      this.trackPageViewEvent()
+    }
+  }
+
+  trackPageViewEvent = () => {
+    const page_location = document.location.origin + document.location.pathname
+    const page_title = document.title
+    const page_type = this.props.pageData?.type
+
+    GTM.trackEvent({
+      event: 'page_view',
+      page_location,
+      page_title,
+      page_type,
+    })
   }
 
   render() {
