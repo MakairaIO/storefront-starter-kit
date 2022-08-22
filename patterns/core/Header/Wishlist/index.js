@@ -1,23 +1,15 @@
 import { Text, Button } from '../../../index'
-import ProductList from '../AutoSuggestion/ProductList'
+import ProductList from './ProductList'
 import { useShopClient, useShopWishlist } from '@makaira/storefront-react'
 import FlyoutBox from '../FlyoutBox'
 import { useTranslation } from '../../../../utils'
+
 const Wishlist = () => {
   const { t } = useTranslation()
-  const { wishlist } = useShopWishlist()
+  const {
+    wishlist: { items: products },
+  } = useShopWishlist()
   const { client } = useShopClient()
-
-  const products = wishlist.items.map(({ product }) => ({
-    id: product.id,
-    fields: {
-      url: product.url,
-      picture_url_main: product.images[0],
-      images: product.images,
-      title: product.title,
-      id: product.id,
-    },
-  }))
 
   const handleRemoveClick = (id) => {
     client.wishlist.removeItem({ input: { product: { id } } })
