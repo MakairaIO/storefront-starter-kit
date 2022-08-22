@@ -1,7 +1,12 @@
 import { useShopClient, useShopWishlist } from '@makaira/storefront-react'
 import { useCallback, useState } from 'react'
 import { Button, Dropdown } from '../..'
-import { GTM, prepareTrackingItem, useTranslation } from '../../../utils'
+import {
+  GTM,
+  prepareTrackingItem,
+  useAddToCart,
+  useTranslation,
+} from '../../../utils'
 
 export default function ProductActions({
   bundles,
@@ -13,11 +18,11 @@ export default function ProductActions({
   url,
   activeVariant,
 }) {
-  const [isLoading, setIsLoading] = useState(false)
   const [quantity, setQuantity] = useState(1)
   const [addToWishlistLoading, setAddToWishlistLoading] = useState(false)
 
   const { client } = useShopClient()
+  const { addToCart, loading } = useAddToCart()
   const { isProductInWishlist } = useShopWishlist()
 
   const { t } = useTranslation()
@@ -70,31 +75,14 @@ export default function ProductActions({
     url,
   ])
 
-  async function addToCart() {
-    setIsLoading(true)
-
-    client.cart
-      .addItem({
-        input: {
-          quantity,
-          product: { id: productId },
-          images,
-          price,
-          title,
-          url,
-        },
-      })
-      .finally(() => {
-        setIsLoading(false)
-
-        GTM.trackEvent({
-          event: 'add_to_cart',
-          ecommerce: {
-            items: [prepareTrackingItem(activeVariant, quantity)],
-          },
-          _clear: true,
-        })
-      })
+  function onAddToCart(e) {
+    e.stopPropagation()
+    e.preventDefault()
+    addToCart({
+      product: { id: productId, images, price, title, url },
+      quantity,
+      activeVariant,
+    })
   }
 
   return (
@@ -110,8 +98,8 @@ export default function ProductActions({
 
       <Dropdown
         id="sizeVariant"
-        options={quantities}
         value={quantity}
+        options={quantities}
         onChange={({ value }) => setQuantity(value)}
         className="product-detail-information__quantity-select"
       />
@@ -121,9 +109,9 @@ export default function ProductActions({
         icon="cart"
         iconPosition="left"
         className="product-detail-information__add-cart"
-        loading={isLoading}
-        disabled={isLoading}
-        onClick={addToCart}
+        loading={loading}
+        disabled={loading}
+        onClick={onAddToCart}
       >
         {t('PRODUCT_DETAIL_ADD_TO_CART')}
       </Button>

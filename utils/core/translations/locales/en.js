@@ -108,4 +108,7 @@ export default {
   WISHLIST_TO_FULL_OVERVIEW: 'View wishlist',
   de: 'Deutsch',
   en: 'English',
+  ADD_TO_CART_MESSAGE_SUCCESS: 'Item added to cart',
+  ADD_TO_CART_BUTTON_GO_TO_CART: 'Go to the shopping cart',
+  CONTINUE_SHOPPING: 'Continue Shopping',
 }

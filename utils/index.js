@@ -69,5 +69,8 @@ export { default as mergeProductsAndBanners } from './core/mergeProductsAndBanne
 export { default as sendSendGridEmail } from './core/sendSendGridEmail'
 export { default as getProductDetailUrl } from './core/getProductDetailUrl'
 export { default as IframeResizerWrapper } from './core/IframeResizerWrapper'
-
+export {
+  default as useAddToCart,
+  ADD_TO_CART_DISPATCH_EVENT_NAME,
+} from './core/useAddToCart'
 /* Add project specific utils here */
