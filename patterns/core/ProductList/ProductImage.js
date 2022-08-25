@@ -14,7 +14,6 @@ export default function ProductImage(product) {
   if (!imageSource) {
     imageSource = picture_url_main
   }
-
   {
     /* TODO: Refactor once we use native lazy loading */
   }

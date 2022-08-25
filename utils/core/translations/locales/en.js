@@ -74,6 +74,7 @@ export default {
   NO_COMPONENT_AVAILABLE: 'Frontend component not implemented yet',
   RATINGS_HEADING: 'Ratings',
   NO_RATINGS: 'No ratings for this product.',
+  RATINGS_LOADING: 'Ratings loading...',
   RATINGS_LABEL_NAME: 'Name',
   RATINGS_LABEL_STARS: 'Stars',
   RATINGS_LABEL_TEXT: 'Text',
@@ -99,6 +100,15 @@ export default {
   SEARCH_RESULT_META_TITLE: (searchPhrase) =>
     `Search results for ${searchPhrase}`,
   LOGIN_SUCCESS: 'You have been signed in successfully.',
+  CART: 'Cart',
+  CART_EMPTY: 'No products in the shopping cart.',
+  CART_TO_FULL_OVERVIEW: 'View shopping cart',
+  WISHLIST: 'Wishlist',
+  WISHLIST_EMPTY: 'No products on the wishlist.',
+  WISHLIST_TO_FULL_OVERVIEW: 'View wishlist',
   de: 'Deutsch',
   en: 'English',
+  ADD_TO_CART_MESSAGE_SUCCESS: 'Item added to cart',
+  ADD_TO_CART_BUTTON_GO_TO_CART: 'Go to the shopping cart',
+  CONTINUE_SHOPPING: 'Continue Shopping',
 }

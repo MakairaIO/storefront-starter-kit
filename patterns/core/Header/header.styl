@@ -1,5 +1,9 @@
 @import './autosuggestion.styl'
+@import './FlyoutBox/flyoutBox.styl'
 @import './User/loginBox.styl'
+@import './Wishlist/wishlistBox.styl'
+@import './Cart/cartBox.styl'
+
 $breakpoint-small = 475px
 $breakpoint-medium = 560px
 $breakpoint-large = 800px
@@ -32,6 +36,7 @@ $breakpoint-large = 800px
     max-height 6rem
 
 .header__actions
+  position relative
 
   &--mobile
     @media (min-width $breakpoint-large)
@@ -45,7 +50,7 @@ $breakpoint-large = 800px
 
 .header__action
 
-  & + &
+  &
     margin-left 0.6rem
 
   &--search

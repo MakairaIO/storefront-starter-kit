@@ -1,9 +1,15 @@
-import { Link, Text } from '../../..'
+import { Button, Link, Text } from '../../..'
 import { getProductDetailUrl, useConfiguration } from '../../../../utils'
 
 function ProductItem(props) {
   const { getImageLink } = useConfiguration()
-  const { title = '', images = [], url = '' } = props
+  const {
+    title = '',
+    images = [],
+    url = '',
+    showRemoveButton,
+    onRemoveClick,
+  } = props
 
   const productDetailUrl = getProductDetailUrl({ url })
 
@@ -34,6 +40,13 @@ function ProductItem(props) {
           {title}
         </Text>
       </Link>
+      {showRemoveButton && (
+        <Button
+          onClick={() => onRemoveClick(props.id)}
+          icon="times"
+          variant="link"
+        />
+      )}
     </li>
   )
 }

@@ -19,7 +19,7 @@ export default function Preload(props) {
             rel="preload"
             as="image"
             href={retinaSrc}
-            imagesrcset={`${src} 1x, ${retinaSrc} 2x`}
+            imageSrcSet={`${src} 1x, ${retinaSrc} 2x`}
             media={config.media}
           />
         )

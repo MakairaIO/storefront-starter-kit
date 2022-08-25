@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
-import { useTranslation, GTM, prepareTrackingItem } from '../../../utils'
+import { useTranslation } from '../../../utils'
 import ProductPrices from './ProductPrices'
 import ProductAvailability from './ProductAvailability'
 import ProductActions from './ProductActions'
@@ -7,8 +7,6 @@ import VariantSelection from './VariantSelection'
 
 export default function Buybox(props) {
   const { t } = useTranslation()
-  const [isLoading, setLoading] = useState(false)
-  const [quantity, setQuantity] = useState(1)
   const { attributeStr = [], activeVariant, setActiveVariant } = props
 
   /**
@@ -43,32 +41,6 @@ export default function Buybox(props) {
     setActiveVariant(colorVariant)
   }, [selectedColor, setActiveVariant, variants])
 
-  function handleAddToCart() {
-    setLoading(true)
-
-    GTM.trackEvent({
-      event: 'add_to_cart',
-      ecommerce: {
-        items: [prepareTrackingItem(activeVariant, quantity)],
-      },
-      _clear: true,
-    })
-
-    setTimeout(() => {
-      setLoading(false)
-    }, 3000)
-  }
-
-  function handleAddToWishlist() {
-    GTM.trackEvent({
-      event: 'add_to_wishlist',
-      ecommerce: {
-        items: [prepareTrackingItem(activeVariant)],
-      },
-      _clear: true,
-    })
-  }
-
   return (
     <div className="product-detail-information__buybox">
       <div className="product-detail-information__buybox-wrapper">
@@ -96,14 +68,7 @@ export default function Buybox(props) {
         />
       </div>
 
-      <ProductActions
-        {...props}
-        isLoading={isLoading}
-        addToCart={handleAddToCart}
-        addToWishlist={handleAddToWishlist}
-        quantity={quantity}
-        setQuantity={setQuantity}
-      />
+      <ProductActions {...props} activeVariant={activeVariant} />
     </div>
   )
 }

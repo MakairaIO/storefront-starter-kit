@@ -16,6 +16,8 @@ export default function ProductTile(props) {
     format: 'auto',
   })
 
+  console.log(props)
+
   return (
     <article className="product-placement-item">
       <Link href={productDetailUrl}>
