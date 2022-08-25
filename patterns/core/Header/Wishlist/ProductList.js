@@ -51,7 +51,6 @@ export default function ProductList({ products, onRemoveClick }) {
       {products.map((product) => (
         <ProductItem
           onRemove={() => {
-            console.log(product)
             onRemoveClick(product.product.id)
           }}
           key={product.product.id}
