@@ -27,12 +27,15 @@ export { default as debounce } from './core/debounce'
 export { default as wait } from './core/wait'
 export { default as scrollTo } from './core/scrollTo'
 export { default as Matomo } from './core/tracking/matomo'
+export { default as GTM } from './core/tracking/gtm'
+export { default as prepareTrackingItem } from './core/tracking/prepareTrackingItem.js'
 export { default as RequestBuilder } from './core/RequestBuilder'
 export { default as fetchMenuData } from './core/fetchMenuData'
 export { default as fetchPageData } from './core/fetchPageData'
 export { default as fetchSearchResult } from './core/fetchSearchResult'
 export { default as fetchSnippetData } from './core/fetchSnippetData'
 export { default as fetchRecommendationData } from './core/fetchRecommendationData'
+export { default as fetchDocumentData } from './core/fetchDocumentData'
 export { default as fetchFromMakaira } from './core/fetchFromMakaira'
 export { default as getFullUrl } from './core/getFullUrl'
 export { default as isMailToLink } from './core/isMailToLink'
@@ -65,5 +68,9 @@ export { default as filterInternalMakairaFields } from './core/filterInternalMak
 export { default as mergeProductsAndBanners } from './core/mergeProductsAndBanners'
 export { default as sendSendGridEmail } from './core/sendSendGridEmail'
 export { default as getProductDetailUrl } from './core/getProductDetailUrl'
-
+export { default as IframeResizerWrapper } from './core/IframeResizerWrapper'
+export {
+  default as useAddToCart,
+  ADD_TO_CART_DISPATCH_EVENT_NAME,
+} from './core/useAddToCart'
 /* Add project specific utils here */

@@ -18,8 +18,11 @@ import {
   fetchMenuData,
   redirect,
   wait,
+  GTM,
 } from '../../utils'
 import ErrorPage from '../_error'
+import { ShopProvider } from '@makaira/storefront-react'
+import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
 
 const pageComponents = {
   page: LandingPage,
@@ -28,6 +31,8 @@ const pageComponents = {
   manufacturer: ListingPage,
   'makaira-productgroup': DetailPage,
 }
+
+const shopClient = new StorefrontShopAdapterLocal()
 
 export default class Index extends Component {
   static async getInitialProps(ctx) {
@@ -90,6 +95,46 @@ export default class Index extends Component {
     }
   }
 
+  componentDidMount() {
+    const language = this.props.pageData?.language
+
+    if (language) {
+      GTM.trackEvent({
+        event: 'init',
+        country: language,
+        language: language,
+      })
+
+      this.trackPageViewEvent()
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    // Check for Error Page
+    if (Object.entries(this.props).length === 0) return
+
+    // We only want to track a page view if the page was actually changed
+    const shouldTrackView =
+      prevProps.pageData?.data?.id !== this.props.pageData?.data?.id
+
+    if (shouldTrackView) {
+      this.trackPageViewEvent()
+    }
+  }
+
+  trackPageViewEvent = () => {
+    const page_location = document.location.origin + document.location.pathname
+    const page_title = document.title
+    const page_type = this.props.pageData?.type
+
+    GTM.trackEvent({
+      event: 'page_view',
+      page_location,
+      page_title,
+      page_type,
+    })
+  }
+
   render() {
     if (Object.entries(this.props).length === 0) {
       return <ErrorPage statusCode={404} />
@@ -100,21 +145,23 @@ export default class Index extends Component {
     const PageComponent = pageComponents[type]
 
     return (
-      <GlobalDataProvider {...this.props}>
-        <ConfigurationProvider assetUrl={process.env.MAKAIRA_ASSET_URL}>
-          <TranslationProvider language={language}>
-            <AbTestingProvider>
-              <BaseLayout>
-                <HeaderWithProps />
+      <ShopProvider client={shopClient}>
+        <GlobalDataProvider {...this.props}>
+          <ConfigurationProvider assetUrl={process.env.MAKAIRA_ASSET_URL}>
+            <TranslationProvider language={language}>
+              <AbTestingProvider>
+                <BaseLayout>
+                  <HeaderWithProps />
 
-                <PageComponent />
+                  <PageComponent />
 
-                <FooterWithProps />
-              </BaseLayout>
-            </AbTestingProvider>
-          </TranslationProvider>
-        </ConfigurationProvider>
-      </GlobalDataProvider>
+                  <FooterWithProps />
+                </BaseLayout>
+              </AbTestingProvider>
+            </TranslationProvider>
+          </ConfigurationProvider>
+        </GlobalDataProvider>
+      </ShopProvider>
     )
   }
 }

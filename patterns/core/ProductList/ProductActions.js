@@ -1,27 +1,39 @@
 import { Button } from '../..'
-import { useTranslation } from '../../../utils'
+import { useAddToCart, useTranslation } from '../../../utils'
 
-export default function ProductActions(props) {
-  const { id, isBundle = false, addToBundle = () => {}, bundles = [] } = props
+export default function ProductActions({
+  productId,
+  images,
+  price,
+  title,
+  url,
+}) {
   const { t } = useTranslation()
+  const { addToCart, loading } = useAddToCart()
 
-  function onClickAddToBundle(event) {
-    event.preventDefault()
-
-    addToBundle(id)
+  function onAddToCart(e) {
+    e.stopPropagation()
+    e.preventDefault()
+    addToCart({
+      productId,
+      images,
+      price,
+      title,
+      url,
+      quantity: 1,
+    })
   }
 
   return (
     <div className="product-item__actions">
-      {!isBundle && (
-        <Button variant="primary">{t('PRODUCT_TILE_ADD_TO_CART')}</Button>
-      )}
-
-      {(isBundle || bundles.length > 0) && (
-        <Button variant="primary" onClick={onClickAddToBundle}>
-          {t('PRODUCT_TILE_ADD_TO_BUNDLE')}
-        </Button>
-      )}
+      <Button
+        variant="primary"
+        loading={loading}
+        disabled={loading}
+        onClick={onAddToCart}
+      >
+        {t('PRODUCT_TILE_ADD_TO_CART')}
+      </Button>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import classNames from 'classnames'
-import { useLazyLoading } from '../../../utils'
+import { GTM, useGlobalData, useLazyLoading } from '../../../utils'
 import Banner from './Banner'
 import ProductTile from './ProductTile'
 import Pagination from './Pagination'
@@ -12,11 +12,22 @@ export default function List(props) {
     totalProductCount = 0,
     submitForms,
     isLoading = false,
-    pageData,
   } = props
   const listRef = useRef(null)
-
   useLazyLoading({ ref: listRef, dependency: products })
+
+  const { params = {}, searchResult } = useGlobalData()
+  const { searchPhrase } = params
+
+  function handleTrackingEvent(productId, position) {
+    if (!searchResult) return
+    GTM.trackEvent({
+      event: 'search_click',
+      search_term: searchPhrase,
+      search_result_position: position,
+      search_result_item_id: productId,
+    })
+  }
 
   const classes = classNames('product-list__list', {
     ['product-list__list--loading']: isLoading,
@@ -24,15 +35,16 @@ export default function List(props) {
 
   return (
     <div ref={listRef} className={classes}>
-      {products.map((entry) => {
+      {products.map((entry, index) => {
         if (entry.isBanner) {
           return <Banner key={`banner.${entry.id}`} {...entry} />
         } else {
           return (
             <ProductTile
-              pageData={pageData}
+              handleTrackingEvent={() =>
+                handleTrackingEvent(entry.id, index + 1)
+              }
               key={entry.id}
-              {...props}
               {...entry.fields}
             />
           )

@@ -49,8 +49,14 @@ http {
 			}
 
 			# Enable password protection
-			# auth_basic           "Access Restricted";
-			# auth_basic_user_file /app/config/.htpasswd;
+			if (-f "/app/config/.htpasswd") {
+				set $auth_basic "Access Restricted";
+			}
+			if (!-f "/app/config/.htpasswd") {
+				set $auth_basic off;
+			}
+			auth_basic           $auth_basic;
+			auth_basic_user_file /app/config/.htpasswd;
 
 			# # Enable error_page if you want to use error page failover
 			# error_page 404 500 501 502 503 504 505 506 507 508 510 511 = @failover_target;
@@ -68,6 +74,19 @@ http {
 			proxy_redirect 				off;
 			proxy_pass 						http://app_server;
 		}
+
+		location ~ '/sitemap\.xml$' {
+			proxy_set_header      	Host <%= ENV["MAKAIRA_API_URL"].dup.sub!(/^https\:\/\//, "") %>;
+			proxy_set_header      	X-Real-IP $http_x_real_ip;
+			proxy_set_header      	X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header      	X-Forwarded-Proto $http_x_forwarded_proto;
+			proxy_set_header      	HTTPS $http_https;
+			proxy_set_header      	Connection "";
+			proxy_set_header      	Proxy "";
+
+			proxy_redirect			off;
+			proxy_pass				<%= ENV["MAKAIRA_API_URL"] %>;
+        }
 
 		# # Failover target
 		# location @failover_target {

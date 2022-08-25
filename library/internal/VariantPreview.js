@@ -1,7 +1,11 @@
 import { useState } from 'react'
 import Link from 'next/link'
-import ReactIframeResizer from 'react-iframe-resizer-super'
-import { ConfigurationProvider, TranslationProvider } from '../../utils'
+import {
+  ConfigurationProvider,
+  GlobalDataProvider,
+  IframeResizerWrapper,
+  TranslationProvider,
+} from '../../utils'
 import allLanguages from '../../config/allLanguages'
 import { BaseLayout, SVGSprite } from '../../patterns'
 import { ExternalLinkIcon } from './'
@@ -55,34 +59,40 @@ export default function VariantPreview({
       </h2>
 
       <div className="pali__component-wrapper">
-        <ReactIframeResizer iframeResizerOptions={{ checkOrigin: false }}>
-          <ConfigurationProvider>
-            <TranslationProvider language={currentLanguage}>
-              <BaseLayout>
-                <style
-                  dangerouslySetInnerHTML={{
-                    __html: `
+        <IframeResizerWrapper
+          iframeResizerOptions={{
+            checkOrigin: false,
+          }}
+        >
+          <GlobalDataProvider>
+            <ConfigurationProvider>
+              <TranslationProvider language={currentLanguage}>
+                <BaseLayout>
+                  <style
+                    dangerouslySetInnerHTML={{
+                      __html: `
                     #iframe-root {
                       padding: 10px 0;
                       background: #fff;
                       border-radius: 8px;
                     }
                   `,
-                  }}
-                ></style>
+                    }}
+                  />
 
-                <link
-                  href="/assets/styles/main.css"
-                  rel="stylesheet"
-                  type="text/css"
-                />
-                <SVGSprite />
+                  <link
+                    href="/assets/styles/main.css"
+                    rel="stylesheet"
+                    type="text/css"
+                  />
+                  <SVGSprite />
 
-                <Component {...variant.props} />
-              </BaseLayout>
-            </TranslationProvider>
-          </ConfigurationProvider>
-        </ReactIframeResizer>
+                  <Component {...variant.props} />
+                </BaseLayout>
+              </TranslationProvider>
+            </ConfigurationProvider>
+          </GlobalDataProvider>
+        </IframeResizerWrapper>
       </div>
     </section>
   )

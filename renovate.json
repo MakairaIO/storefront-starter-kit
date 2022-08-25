@@ -1,0 +1,26 @@
+{
+  "extends": [
+    "config:base",
+    ":disableRateLimiting",
+    ":preserveSemverRanges"
+  ],
+  "prHourlyLimit": 0,
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": false
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "labels": ["dep/major"]
+    },
+    {
+      "matchUpdateTypes": ["minor"],
+      "labels": ["dep/minor"]
+    },
+    {
+      "matchUpdateTypes": ["patch"],
+      "labels": ["dep/patch"]
+    }
+  ]
+}

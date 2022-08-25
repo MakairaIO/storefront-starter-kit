@@ -1,58 +1,34 @@
 import { Heading, Copytext, Text, Link } from '../..'
+import { getProductDetailUrl } from '../../../utils'
 import ProductPrices from './ProductPrices'
-import ProductActions from './ProductActions'
 import Ribbon from './Ribbon'
+import { useState } from 'react'
 import classNames from 'classnames'
-import { getProductDetailUrl, useConfiguration } from '../../../utils'
+import ProductImage from './ProductImage'
+import ProductSwatches from './ProductSwatches'
 
 export default function ProductTile(props) {
   const {
     title = '',
-    picture_url_main = '',
     manufacturer_title = '',
     shortdesc = '',
     url = '',
     mak_paid_placement = false,
-    isLazyLoad = true,
-    isBundle,
-    pageData = {},
-    images = [],
+    handleTrackingEvent,
   } = props
 
-  const { getImageLink } = useConfiguration()
+  const [activeVariant, setActiveVariant] = useState()
 
   const classes = classNames('product-item', {
     ['product-item--highlight']: mak_paid_placement,
   })
 
-  const onClickProduct = (event) => {
-    const classes = [...event.target.classList]
-    const isButtonClick = classes.some((className) =>
-      ['button__text', 'button--primary'].includes(className)
-    )
-
-    if (isBundle && isButtonClick) {
-      event.preventDefault()
-    }
-  }
-
-  const productImage = getImageLink({
-    source: images.length > 0 ? images[0] : picture_url_main,
-    height: 228,
-  })
-
-  const productUrl = getProductDetailUrl({ url, pageData })
+  const productDetailUrl = getProductDetailUrl({ url })
 
   return (
     <article className={classes}>
-      <Link href={productUrl} onClick={onClickProduct}>
-        <picture className="product-item__image">
-          {isLazyLoad ? (
-            <img data-src={productImage} alt={title} height="228" />
-          ) : (
-            <img src={productImage} alt={title} height="228" />
-          )}
-        </picture>
+      <Link onClick={handleTrackingEvent} href={productDetailUrl}>
+        <ProductImage {...props} activeVariant={activeVariant} />
 
         <Heading size="bacchus" weight="600" className="product-item__title">
           {title}
@@ -69,9 +45,13 @@ export default function ProductTile(props) {
         <Copytext className="product-item__shortdesc">{shortdesc}</Copytext>
 
         <ProductPrices {...props} />
-
-        <ProductActions {...props} />
       </Link>
+
+      <ProductSwatches
+        {...props}
+        activeVariant={activeVariant}
+        setActiveVariant={setActiveVariant}
+      />
 
       <Ribbon isVisible={mak_paid_placement} />
     </article>

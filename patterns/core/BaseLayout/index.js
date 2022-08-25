@@ -1,4 +1,4 @@
-import { Overlay, ModalRoot } from '../..'
+import { Overlay, ModalRoot, BackToTop, AddCartSuccessModal } from '../..'
 
 export default function BaseLayout({ children }) {
   return (
@@ -7,6 +7,8 @@ export default function BaseLayout({ children }) {
         {children}
 
         <ModalRoot />
+        <AddCartSuccessModal />
+        <BackToTop />
       </div>
 
       <Overlay />
