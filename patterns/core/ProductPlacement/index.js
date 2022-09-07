@@ -20,7 +20,7 @@ function ProductPlacement(props) {
 
       <div ref={listRef} className="product-placement__list">
         {products.map((product) => (
-          <ProductTile key={product.ean} {...product} />
+          <ProductTile key={product.id ?? product.ean} {...product} />
         ))}
       </div>
     </section>

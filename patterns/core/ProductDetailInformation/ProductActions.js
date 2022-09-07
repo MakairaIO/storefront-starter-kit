@@ -1,12 +1,21 @@
-import { useState } from 'react'
+import { useShopClient, useShopWishlist } from '@makaira/storefront-react'
+import { useCallback, useState } from 'react'
 import { Button, Dropdown } from '../..'
-import { useAddToCart, useTranslation } from '../../../utils'
+import {
+  GTM,
+  prepareTrackingItem,
+  useAddToCart,
+  useTranslation,
+} from '../../../utils'
 
 export default function ProductActions(props) {
-  const { t } = useTranslation()
-  const { addToCart, loading } = useAddToCart()
-
   const [quantity, setQuantity] = useState(1)
+  const [addToWishlistLoading, setAddToWishlistLoading] = useState(false)
+
+  const { client } = useShopClient()
+  const { addToCart, loading } = useAddToCart()
+  const { isProductInWishlist } = useShopWishlist()
+  const { t } = useTranslation()
   const { bundles, addToBundle } = props
 
   const quantities = [
@@ -16,6 +25,44 @@ export default function ProductActions(props) {
     { label: '4', value: 4 },
   ]
 
+  const { data: isCurrentProductInWishlist } = isProductInWishlist(
+    props.productId
+  )
+
+  const onAddToWishlist = useCallback(async () => {
+    if (addToWishlistLoading) {
+      return
+    }
+
+    setAddToWishlistLoading(true)
+
+    if (isCurrentProductInWishlist) {
+      await client.wishlist.removeItem({
+        input: { product: props },
+      })
+    } else {
+      await client.wishlist.addItem({
+        input: { product: props },
+      })
+
+      GTM.trackEvent({
+        event: 'add_to_wishlist',
+        ecommerce: {
+          items: [prepareTrackingItem(props.activeVariant)],
+        },
+        _clear: true,
+      })
+    }
+
+    setAddToWishlistLoading(false)
+  }, [
+    isCurrentProductInWishlist,
+    addToWishlistLoading,
+    setAddToWishlistLoading,
+    client.wishlist,
+    props,
+  ])
+
   function onAddToCart(e) {
     e.stopPropagation()
     e.preventDefault()
@@ -24,6 +71,15 @@ export default function ProductActions(props) {
 
   return (
     <div className="product-detail-information__actions">
+      <Button
+        icon="heart"
+        iconPosition="left"
+        variant={isCurrentProductInWishlist ? 'primary-alt' : 'secondary'}
+        className="product-detail-information__wishlist"
+        onClick={onAddToWishlist}
+        loading={addToWishlistLoading}
+      />
+
       <Dropdown
         id="sizeVariant"
         value={quantity}

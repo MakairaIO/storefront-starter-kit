@@ -1,8 +1,8 @@
 import { useShopClient } from '@makaira/storefront-react'
-import { useCallback, useState } from 'react'
-import { GTM, prepareTrackingItem } from '../..'
-import fetchRecommendationData from '../fetchRecommendationData'
 import { useTranslation } from '../TranslationProvider'
+import { useCallback, useState } from 'react'
+import fetchRecommendationData from '../fetchRecommendationData'
+import { GTM, prepareTrackingItem } from '../../index'
 
 export const ADD_TO_CART_DISPATCH_EVENT_NAME = 'addToCart:success'
 
@@ -21,14 +21,6 @@ export default function useAddToCart() {
       }
     ) => {
       setLoading(true)
-
-      GTM.trackEvent({
-        event: 'add_to_cart',
-        ecommerce: {
-          items: [prepareTrackingItem(product, quantity)],
-        },
-        _clear: true,
-      })
 
       try {
         const promises = [
@@ -61,6 +53,14 @@ export default function useAddToCart() {
         setLoading(false)
 
         if (addToCartResponse.status === 'fulfilled') {
+          GTM.trackEvent({
+            event: 'add_to_cart',
+            ecommerce: {
+              items: [prepareTrackingItem(product.activeVariant, quantity)],
+            },
+            _clear: true,
+          })
+
           if (skipPopup !== true) {
             window.dispatchEvent(
               new MessageEvent(ADD_TO_CART_DISPATCH_EVENT_NAME, {
@@ -86,7 +86,7 @@ export default function useAddToCart() {
         return { error: true, recommendations: undefined, addToCart: undefined }
       }
     },
-    [language, setLoading]
+    [client.cart, language, setLoading]
   )
 
   return { loading, addToCart }

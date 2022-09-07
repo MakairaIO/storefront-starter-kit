@@ -75,6 +75,7 @@ class Header extends Component {
     this.setState({
       isAutosuggestBoxVisible: false,
       isLoginBoxVisible: true,
+      isWishlistBoxVisible: false,
       isCartBoxVisible: false,
     })
   }
@@ -97,6 +98,7 @@ class Header extends Component {
       isAutosuggestBoxVisible: true,
       isLoginBoxVisible: false,
       isCartBoxVisible: false,
+      isWishlistBoxVisible: false,
     })
   }
 
@@ -104,10 +106,24 @@ class Header extends Component {
     this.setState({ isAutosuggestBoxVisible: false })
   }
 
+  showWishlistBox = () => {
+    this.setState({
+      isAutosuggestBoxVisible: false,
+      isLoginBoxVisible: false,
+      isWishlistBoxVisible: true,
+      isCartBoxVisible: false,
+    })
+  }
+
+  hideWishlistBox = () => {
+    this.setState({ isWishlistBoxVisible: false })
+  }
+
   showCartBox = () => {
     this.setState({
       isAutosuggestBoxVisible: false,
       isLoginBoxVisible: false,
+      isWishlistBoxVisible: false,
       isCartBoxVisible: true,
     })
   }
@@ -177,6 +193,15 @@ class Header extends Component {
   handleRouteChange = () => {
     this.hideMobileNavigationOnPageChange()
     this.hideAutosuggestBox()
+    this.hideLoginBox()
+    this.hideWishlistBox()
+    this.hideCartBox()
+  }
+
+  toggleWishlistBox = () => {
+    const { isWishlistBoxVisible } = this.state
+
+    isWishlistBoxVisible ? this.hideWishlistBox() : this.showWishlistBox()
   }
 
   toggleCartBox = () => {
@@ -221,6 +246,8 @@ class Header extends Component {
                 isLoginBoxVisible={this.state.isLoginBoxVisible}
                 isCartBoxVisible={this.state.isCartBoxVisible}
                 toggleLoginBox={this.toggleLoginBox}
+                isWishlistBoxVisible={this.state.isWishlistBoxVisible}
+                toggleWishlistBox={this.toggleWishlistBox}
                 toggleCartBox={this.toggleCartBox}
               />
             </div>
