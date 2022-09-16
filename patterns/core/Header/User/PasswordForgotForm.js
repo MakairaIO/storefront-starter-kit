@@ -2,13 +2,11 @@ import { Form } from './LoginBox'
 import { Button, FormInput, FormField, FormStatus } from '../../..'
 import { useState } from 'react'
 import { useTranslation } from '../../../../utils'
-
-const dummyResetPassword = async (data) => {
-  return new Promise((res) => setTimeout(() => res(data), 1000))
-}
+import { useShopClient } from '@makaira/storefront-react'
 
 const PasswordForgotForm = ({ onBackToLogin }) => {
   const { t } = useTranslation()
+  const { client } = useShopClient()
 
   const [status, setStatus] = useState('')
   const [loading, setLoading] = useState(false)
@@ -16,9 +14,11 @@ const PasswordForgotForm = ({ onBackToLogin }) => {
   const onSubmit = async (data) => {
     setLoading(true)
 
-    const success = await dummyResetPassword(data)
+    const { error } = await client.user.forgotPassword({
+      input: { username: data.email },
+    })
 
-    setStatus(success ? 'success' : 'error')
+    setStatus(error ? 'error' : 'success')
     setLoading(false)
   }
 

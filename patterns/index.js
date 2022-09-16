@@ -15,6 +15,7 @@ export { default as Text } from './core/Text'
 export { default as Heading } from './core/Heading'
 export { default as Copytext } from './core/Copytext'
 export { default as Dropdown } from './core/Dropdown'
+export { default as Image } from './core/Image'
 export { default as Modal } from './core/Modal'
 export { ModalRoot } from './core/Modal'
 export { default as Header } from './core/Header'
@@ -48,5 +49,7 @@ export {
   FormStatus,
   FormSelect,
 } from './core/Form'
+export { default as AddCartSuccessModal } from './core/AddCartSuccessModal'
+export { NextArrow, PrevArrow } from './core/SliderArrows'
 
 /* Add project specific patterns here */

@@ -80,6 +80,7 @@ export default {
   NO_COMPONENT_AVAILABLE: 'Frontend-Komponente noch nicht implementiert',
   RATINGS_HEADING: 'Bewertungen',
   NO_RATINGS: 'Keine Bewertungen für dieses Produkt vorhanden.',
+  RATINGS_LOADING: 'Bewertungen werden geladen...',
   RATINGS_LABEL_NAME: 'Name',
   RATINGS_LABEL_STARS: 'Sterne',
   RATINGS_LABEL_TEXT: 'Text',
@@ -106,4 +107,15 @@ export default {
   SEARCH_RESULT_META_TITLE: (searchPhrase) =>
     `Suchergebnisse für ${searchPhrase}`,
   LOGIN_SUCCESS: 'Du wurdest erfolgreich angemeldet.',
+  CART: 'Warenkorb',
+  CART_EMPTY: 'Keine Produkte im Warenkorb.',
+  CART_TO_FULL_OVERVIEW: 'Zum Warenkorb',
+  WISHLIST: 'Merkliste',
+  WISHLIST_EMPTY: 'Keine Produkte auf der Merkliste.',
+  WISHLIST_TO_FULL_OVERVIEW: 'Zur Merkliste',
+  de: 'Deutsch',
+  en: 'English',
+  ADD_TO_CART_MESSAGE_SUCCESS: 'Artikel zum Warenkorb hinzugefügt',
+  ADD_TO_CART_BUTTON_GO_TO_CART: 'Zum Warenkorb',
+  CONTINUE_SHOPPING: 'Weiter einkaufen',
 }

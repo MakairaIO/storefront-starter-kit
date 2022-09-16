@@ -112,11 +112,11 @@ class Dropdown extends Component {
 Dropdown.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
-      value: PropTypes.string,
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     })
   ),
   anchor: PropTypes.oneOf(['left', 'right']),

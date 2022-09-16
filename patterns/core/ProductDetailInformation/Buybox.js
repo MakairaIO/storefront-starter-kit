@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useTranslation } from '../../../utils'
 import ProductPrices from './ProductPrices'
 import ProductAvailability from './ProductAvailability'
@@ -7,12 +7,17 @@ import VariantSelection from './VariantSelection'
 
 export default function Buybox(props) {
   const { t } = useTranslation()
-  const [isLoading, setLoading] = useState(false)
-  const {
-    attributeStr = [],
-    setActiveVariant,
-    'makaira-product': variants = [],
-  } = props
+  const { attributeStr = [], activeVariant, setActiveVariant } = props
+
+  /**
+   * Due to backwards compatibility, we have to take into account that `makaira-product`
+   * could be a single object instead of an array of objects
+   */
+  const variants = useMemo(() => {
+    const makairaProduct = props['makaira-product'] ?? []
+
+    return Array.isArray(makairaProduct) ? makairaProduct : [makairaProduct]
+  }, [props])
 
   // Grab all available sizes and colors off the parent
   const sizeValues = attributeStr.find((attr) => attr.id === 'size')?.['value']
@@ -25,7 +30,8 @@ export default function Buybox(props) {
 
   useEffect(() => {
     const colorVariant = variants.find((variant) => {
-      const color = variant.attributeStr.find((attr) => attr.id === 'color')[
+      const variantAttributes = variant.attributeStr ?? []
+      const color = variantAttributes.find((attr) => attr.id === 'color')?.[
         'value'
       ]
 
@@ -34,14 +40,6 @@ export default function Buybox(props) {
 
     setActiveVariant(colorVariant)
   }, [selectedColor, setActiveVariant, variants])
-
-  function handleAddToCart() {
-    setLoading(true)
-
-    setTimeout(() => {
-      setLoading(false)
-    }, 3000)
-  }
 
   return (
     <div className="product-detail-information__buybox">
@@ -70,11 +68,7 @@ export default function Buybox(props) {
         />
       </div>
 
-      <ProductActions
-        {...props}
-        isLoading={isLoading}
-        addToCart={handleAddToCart}
-      />
+      <ProductActions {...props} activeVariant={activeVariant} />
     </div>
   )
 }

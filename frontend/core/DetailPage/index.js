@@ -4,6 +4,8 @@ import {
   fetchRecommendationData,
   useTranslation,
   redirectToBundle,
+  GTM,
+  prepareTrackingItem,
 } from '../../../utils'
 import {
   Breadcrumb,
@@ -12,7 +14,6 @@ import {
   ProductPlacement,
   Ratings,
 } from '../../../patterns'
-import { ratingVariants } from '../../../patterns/core/Ratings'
 import Metadata from '../Metadata'
 
 function DetailPage() {
@@ -35,8 +36,23 @@ function DetailPage() {
       )
       setProducts(formattedProduct)
     }
+
+    function trackViewEvent() {
+      if (pageData.data?.self) {
+        GTM.trackEvent({
+          event: 'view_item',
+          ecommerce: {
+            items: [prepareTrackingItem(pageData.data.self)],
+          },
+          _clear: true,
+        })
+      }
+    }
+
     getProducts()
-  }, [productId, language])
+
+    trackViewEvent()
+  }, [productId, language, pageData])
 
   const productPlacementProps = {
     heading: t('RECOMMENDATION_HEADING'),
@@ -68,7 +84,7 @@ function DetailPage() {
         {...productDetailProps}
       />
       <ProductPlacement {...productPlacementProps} />
-      <Ratings ratings={ratingVariants[0].props.ratings} />
+      <Ratings {...productDetailProps} />
       <ContentElements
         elements={pageData.data.self.contentElements?.bottom?.elements}
       />

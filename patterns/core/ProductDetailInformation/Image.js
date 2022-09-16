@@ -1,39 +1,26 @@
-import { useConfiguration } from '../../../utils'
-import Head from 'next/head'
+import { Image } from '../..'
 
-export default function Image(props) {
-  const { getImageLink } = useConfiguration()
-  const { title = '', images = [], activeVariant } = props
+export default function ProductImage(props) {
+  const { title = '', images = [], activeVariant, picture_url_main } = props
 
-  const imageSource = activeVariant ? activeVariant.images[0] : images[0]
+  let imageSource = activeVariant ? activeVariant.images[0] : images[0]
 
-  const imageLink = getImageLink({
-    source: images[0],
-    format: 'auto',
-    height: 600,
-  })
-
-  const imageLinkRetina = getImageLink({
-    source: imageSource,
-    height: 600,
-    pixelRatio: 2,
-    format: 'auto',
-  })
+  // images array may not always be filled, so fallback to picture_url_main if this is the case
+  if (!imageSource) {
+    imageSource = picture_url_main
+  }
 
   return (
-    <div className="product-detail-information__image">
-      <Head>
-        <link
-          rel="preload"
-          href={imageLink}
-          as="image"
-          imagesrcset={`${imageLink} 1x, ${imageLinkRetina} 2x`}
-        />
-      </Head>
-
-      <picture>
-        <img srcSet={`${imageLink} 1x, ${imageLinkRetina} 2x`} alt={title} />
-      </picture>
-    </div>
+    <Image
+      alt={title}
+      lazyload={false}
+      preload={true}
+      options={{
+        desktop: {
+          source: imageSource,
+          height: 600,
+        },
+      }}
+    />
   )
 }
