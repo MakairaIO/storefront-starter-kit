@@ -3,9 +3,14 @@ import Image from './Image'
 import Buybox from './Buybox'
 import Description from './Description'
 import { useState } from 'react'
+import getStructureData from '../../../utils/core/getStructureData'
+import { useTranslation } from '../../../utils'
+import Head from 'next/head'
+import allLanguages from '../../../config/allLanguages'
 
 function ProductDetailInformation(props) {
   const { 'makaira-product': variants = [] } = props
+  const { language } = useTranslation()
 
   /**
    * We have to perform an additional check on the variant structure for backwards compatability.
@@ -18,22 +23,38 @@ function ProductDetailInformation(props) {
     return initialVariant
   })
 
+  const {
+    prices: { currency },
+  } = allLanguages.find(
+    (lang) => lang.value.toLowerCase() === language.toLowerCase()
+  )
+
+  const structureData = getStructureData(props, activeVariant.images, currency)
+
   return (
-    <section className="product-detail-information">
-      <TopHeader {...props} />
-
-      <div className="product-detail-information__wrapper">
-        <Image {...props} activeVariant={activeVariant} />
-
-        <Buybox
-          {...props}
-          activeVariant={activeVariant}
-          setActiveVariant={setActiveVariant}
+    <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: structureData }}
         />
+      </Head>
+      <section className="product-detail-information">
+        <TopHeader {...props} />
 
-        <Description {...props} />
-      </div>
-    </section>
+        <div className="product-detail-information__wrapper">
+          <Image {...props} activeVariant={activeVariant} />
+
+          <Buybox
+            {...props}
+            activeVariant={activeVariant}
+            setActiveVariant={setActiveVariant}
+          />
+
+          <Description {...props} />
+        </div>
+      </section>
+    </>
   )
 }
 
