@@ -7,9 +7,9 @@ import { GTM, prepareTrackingItem } from '../../index'
 export const ADD_TO_CART_DISPATCH_EVENT_NAME = 'addToCart:success'
 
 export default function useAddToCart() {
-  const { client } = useShopClient()
   const { language } = useTranslation()
   const [loading, setLoading] = useState(false)
+  const { client } = useShopClient()
 
   const addToCart = useCallback(
     async (
