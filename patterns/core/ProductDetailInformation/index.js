@@ -29,7 +29,7 @@ function ProductDetailInformation(props) {
     (lang) => lang.value.toLowerCase() === language.toLowerCase()
   )
 
-  const structureData = getStructureData(props, activeVariant.images, currency)
+  const structureData = getStructureData(props, activeVariant?.images, currency)
 
   return (
     <>
