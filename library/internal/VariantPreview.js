@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
+import { ShopProvider } from '@makaira/storefront-react'
+import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
 import {
   ConfigurationProvider,
   GlobalDataProvider,
@@ -9,6 +11,8 @@ import {
 import allLanguages from '../../config/allLanguages'
 import { BaseLayout, SVGSprite } from '../../patterns'
 import { ExternalLinkIcon } from './'
+
+const shopClient = new StorefrontShopAdapterLocal()
 
 export default function VariantPreview({
   component: Component,
@@ -64,34 +68,36 @@ export default function VariantPreview({
             checkOrigin: false,
           }}
         >
-          <GlobalDataProvider>
-            <ConfigurationProvider>
-              <TranslationProvider language={currentLanguage}>
-                <BaseLayout>
-                  <style
-                    dangerouslySetInnerHTML={{
-                      __html: `
-                    #iframe-root {
-                      padding: 10px 0;
-                      background: #fff;
-                      border-radius: 8px;
-                    }
-                  `,
-                    }}
-                  />
+          <ShopProvider client={shopClient}>
+            <GlobalDataProvider pageData={{}}>
+              <ConfigurationProvider>
+                <TranslationProvider language={currentLanguage}>
+                  <BaseLayout>
+                    <style
+                      dangerouslySetInnerHTML={{
+                        __html: `
+                          #iframe-root {
+                            padding: 10px 0;
+                            background: #fff;
+                            border-radius: 8px;
+                          }
+                      `,
+                      }}
+                    />
 
-                  <link
-                    href="/assets/styles/main.css"
-                    rel="stylesheet"
-                    type="text/css"
-                  />
-                  <SVGSprite />
+                    <link
+                      href="/assets/styles/main.css"
+                      rel="stylesheet"
+                      type="text/css"
+                    />
+                    <SVGSprite />
 
-                  <Component {...variant.props} />
-                </BaseLayout>
-              </TranslationProvider>
-            </ConfigurationProvider>
-          </GlobalDataProvider>
+                    <Component {...variant.props} />
+                  </BaseLayout>
+                </TranslationProvider>
+              </ConfigurationProvider>
+            </GlobalDataProvider>
+          </ShopProvider>
         </IframeResizerWrapper>
       </div>
     </section>

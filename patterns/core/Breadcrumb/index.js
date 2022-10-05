@@ -33,23 +33,46 @@ const Breadcrumb = ({ breadcrumb = [], product }) => {
 
   return (
     <nav className="breadcrumb">
-      <ol role="list" className="list">
+      <ol
+        vocab="https://schema.org"
+        typeof="BreadcrumbList"
+        role="list"
+        className="list"
+      >
         <li className="item">
           <Link href="/" title="Home" isInternalRoute>
             <Icon symbol="home" className="home" />
           </Link>
         </li>
 
-        {elements.map(({ title, url, id }) => (
-          <li className="item" key={id}>
-            <Link href={url} title={title} isInternalRoute>
-              {title}
+        {elements.map(({ title, url, id }, index) => (
+          <li
+            property="itemListElement"
+            typeof="ListItem"
+            className="item"
+            key={id}
+          >
+            <Link
+              property="item"
+              typeof="WebPage"
+              href={url}
+              title={title}
+              isInternalRoute
+            >
+              <span property="name">{title}</span>
             </Link>
+            <meta property="position" content={index + 1} />
           </li>
         ))}
 
-        <li className="item" key={lastElement.id}>
-          {lastElement.title}
+        <li
+          property="itemListElement"
+          typeof="ListItem"
+          className="item"
+          key={lastElement.id}
+        >
+          <span property="name">{lastElement.title}</span>
+          <meta property="position" content={elements.length + 1} />
         </li>
 
         {parentCategory && (
