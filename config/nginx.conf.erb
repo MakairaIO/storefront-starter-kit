@@ -29,6 +29,12 @@ http {
 		server unix:/tmp/nginx.socket fail_timeout=0;
 	}
 
+        server {
+		listen <%= ENV["PORT"] %>;
+		server_name rofu.de;
+		return 301 https://www.rofu.de$request_uri;
+        }
+
 	server {
 		listen <%= ENV["PORT"] %>;
 		server_name _;
