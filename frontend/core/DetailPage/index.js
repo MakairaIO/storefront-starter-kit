@@ -24,17 +24,21 @@ function DetailPage() {
 
   useEffect(() => {
     async function getProducts() {
-      const response = await fetchRecommendationData({
-        productId,
-        recommendationId: 'similar-products',
-        language,
-      })
+      try {
+        const response = await fetchRecommendationData({
+          productId,
+          recommendationId: 'similar-products',
+          language,
+        })
 
-      const recommendationProducts = response.items
-      const formattedProduct = recommendationProducts.map(
-        (product) => product.fields
-      )
-      setProducts(formattedProduct)
+        const recommendationProducts = response.items
+        const formattedProduct = recommendationProducts.map(
+          (product) => product.fields
+        )
+        setProducts(formattedProduct)
+      } catch (exception) {
+        setProducts([])
+      }
     }
 
     function trackViewEvent() {
