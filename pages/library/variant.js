@@ -1,8 +1,17 @@
 import { useRouter } from 'next/router'
+import { ShopProvider } from '@makaira/storefront-react'
+import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
+
 import componentConfig from '../../library/config'
-import { ConfigurationProvider, TranslationProvider } from '../../utils'
+import {
+  ConfigurationProvider,
+  GlobalDataProvider,
+  TranslationProvider,
+} from '../../utils'
 import allLanguages from '../../config/allLanguages'
 import { BaseLayout } from '../../patterns'
+
+const shopClient = new StorefrontShopAdapterLocal()
 
 export default function Variant() {
   const router = useRouter()
@@ -25,12 +34,16 @@ export default function Variant() {
     allLanguages[0]?.value
 
   return (
-    <ConfigurationProvider>
-      <TranslationProvider language={language}>
-        <BaseLayout>
-          <Component {...props} />
-        </BaseLayout>
-      </TranslationProvider>
-    </ConfigurationProvider>
+    <ShopProvider client={shopClient}>
+      <GlobalDataProvider pageData={{}}>
+        <ConfigurationProvider>
+          <TranslationProvider language={language}>
+            <BaseLayout>
+              <Component {...props} />
+            </BaseLayout>
+          </TranslationProvider>
+        </ConfigurationProvider>
+      </GlobalDataProvider>
+    </ShopProvider>
   )
 }

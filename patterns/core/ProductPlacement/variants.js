@@ -5,8 +5,9 @@ const products = [
     datatype: 'makaira-productgroup',
     price: 25.95,
     manufacturerid: '268ba2335e73cdc94f51ce3b8b38a02d',
-    picture_url_main:
+    images: [
       'https://www.ludwig-von-kapff.de/media/catalog/product/1/4/141404-mombasa-club-gin.png',
+    ],
     title: 'Mombasa Club Gin London Dry Gin - 41,5% vol',
     attributeStr: [
       {
@@ -25,8 +26,9 @@ const products = [
     datatype: 'makaira-productgroup',
     price: 39.95,
     manufacturerid: '1758b7e2997684eb1f30651267a8d2b8',
-    picture_url_main:
+    images: [
       'https://www.ludwig-von-kapff.de/media/catalog/product/6/6/660401-gin-mare.png',
+    ],
     title: 'Gin Mare 42,7% vol',
     attributeStr: [
       {
@@ -45,8 +47,9 @@ const products = [
     datatype: 'makaira-productgroup',
     price: 34.95,
     manufacturerid: '609259e4ae39549818acbc025fe13e10',
-    picture_url_main:
+    images: [
       'https://www.ludwig-von-kapff.de/media/catalog/product/1/7/178012-soil-u-soul-trenz-gin.png',
+    ],
     title: 'Soil & Soul Gin Handcrafted Riesling Gin - 44% vol - 0,5 L',
     attributeStr: [
       {
@@ -65,8 +68,9 @@ const products = [
     datatype: 'makaira-productgroup',
     price: 29.5,
     manufacturerid: '0fa1aeb62695767ac223e6b5a7fbdcb0',
-    picture_url_main:
+    images: [
       'https://www.ludwig-von-kapff.de/media/catalog/product/l/v/lvk-170x340-ps-141411.png',
+    ],
     title: 'Mombasa Club Premium Gin In der attraktiven Geschenkverpackung',
     attributeStr: [
       {
@@ -85,8 +89,9 @@ const products = [
     datatype: 'makaira-productgroup',
     price: 37.5,
     manufacturerid: 'a6a094ccc13881edce3d81b206965dab',
-    picture_url_main:
+    images: [
       'https://www.ludwig-von-kapff.de/media/catalog/product/5/5/557001-xellent-gin.png',
+    ],
     title: 'XELLENT Gin Swiss Edelweiss - 40% vol',
     attributeStr: [
       {
@@ -106,8 +111,7 @@ export default [
     name: 'Default',
     props: {
       heading: 'Heading Default',
-      text:
-        'Copytext Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
+      text: 'Copytext Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
       products: products,
     },
   },
@@ -115,8 +119,7 @@ export default [
     name: '4 products',
     props: {
       heading: 'Heading Default',
-      text:
-        'Copytext Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
+      text: 'Copytext Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
       products: products.slice(0, 4),
     },
   },
@@ -124,8 +127,7 @@ export default [
     name: 'Without heading',
     props: {
       heading: '',
-      text:
-        'Copytext Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
+      text: 'Copytext Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
       products: products,
     },
   },
