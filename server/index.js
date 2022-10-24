@@ -22,11 +22,11 @@ app
     server.use(cors({ origin: true, credentials: true }))
 
     if (dev) {
-      const localApiPath = '/rest/oxid'
+      const localApiPath = '/rest'
       const backendApiPath = process.env.FAILOVER_URL
 
       server.use(
-        '/rest/oxid',
+        '/rest',
         createProxyMiddleware({
           target: backendApiPath,
           changeOrigin: true,

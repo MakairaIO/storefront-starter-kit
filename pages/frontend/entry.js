@@ -22,7 +22,7 @@ import {
 } from '../../utils'
 import ErrorPage from '../_error'
 import { ShopProvider } from '@makaira/storefront-react'
-import { StorefrontShopAdapterOxid } from '@makaira/storefront-shop-adapter-oxid'
+import { StorefrontShopAdapterPlentymarkets } from '@makaira/storefront-shop-adapter-plentymarkets'
 
 const pageComponents = {
   page: LandingPage,
@@ -32,8 +32,8 @@ const pageComponents = {
   'makaira-productgroup': DetailPage,
 }
 
-const shopClient = new StorefrontShopAdapterOxid({
-  url: '/rest/oxid',
+const shopClient = new StorefrontShopAdapterPlentymarkets({
+  url: '',
 })
 
 export default class Index extends Component {

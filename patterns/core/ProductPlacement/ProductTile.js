@@ -4,14 +4,20 @@ import ProductActions from './ProductActions'
 import { getProductDetailUrl, useConfiguration } from '../../../utils'
 
 export default function ProductTile(props) {
-  const { title = '', images = [], manufacturer_title = '', url = '' } = props
+  const {
+    title = '',
+    images = [],
+    manufacturer_title = '',
+    url = '',
+    picture_url_main,
+  } = props
 
   const { getImageLink } = useConfiguration()
 
   const productDetailUrl = getProductDetailUrl({ url })
 
   const imageLink = getImageLink({
-    source: images[0],
+    source: images[0] ?? picture_url_main,
     width: 250,
     format: 'auto',
   })
