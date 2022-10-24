@@ -16,7 +16,11 @@ const LoginForm = ({ onPasswordForgetSwitch }) => {
     setFormLoading(true)
 
     const { error } = await client.user.login({
-      input: { username: data.email, password: data.password },
+      input: {
+        username: data.email,
+        password: data.password,
+        rememberLogin: false,
+      },
     })
 
     setFormStatus(error ? 'error' : 'success')

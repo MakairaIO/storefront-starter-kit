@@ -7,6 +7,7 @@ export default function ProductActions({
   price,
   title,
   url,
+  ean,
 }) {
   const { t } = useTranslation()
   const { addToCart, loading } = useAddToCart()
@@ -21,6 +22,7 @@ export default function ProductActions({
       title,
       url,
       quantity: 1,
+      ean,
     })
   }
 

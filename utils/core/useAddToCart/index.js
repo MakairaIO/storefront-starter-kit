@@ -13,7 +13,7 @@ export default function useAddToCart() {
 
   const addToCart = useCallback(
     async (
-      { productId, images, price, title, url, activeVariant, quantity },
+      { productId, images, price, title, url, activeVariant, quantity, ean },
       { skipRecommendations, skipPopup } = {
         skipRecommendations: false,
         skipPopup: false,
@@ -26,7 +26,7 @@ export default function useAddToCart() {
           await client.cart.addItem({
             input: {
               quantity,
-              product: { id: productId },
+              product: { id: ean },
               images,
               price,
               title,

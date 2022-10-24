@@ -6,6 +6,7 @@ const allLanguages = require('../config/allLanguages')
 const parser = require('ua-parser-js')
 const bodyParser = require('body-parser')
 const sendSendGridEmail = require('../utils/core/sendSendGridEmail')
+const { createProxyMiddleware } = require('http-proxy-middleware')
 
 const logError = require('./utils/logError')
 
@@ -19,6 +20,24 @@ app
   .then(() => {
     const server = express()
     server.use(cors({ origin: true, credentials: true }))
+
+    if (dev) {
+      const localApiPath = '/rest/shopware'
+      const backendApiPath = process.env.FAILOVER_URL
+
+      server.use(
+        '/rest/shopware',
+        createProxyMiddleware({
+          target: backendApiPath,
+          changeOrigin: true,
+          cookieDomainRewrite: '',
+          pathRewrite: function (path) {
+            return path.replace(localApiPath, '')
+          },
+        })
+      )
+    }
+
     server.use(bodyParser.json())
 
     /**

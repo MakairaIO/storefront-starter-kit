@@ -17,6 +17,7 @@ export default function ProductActions({
   title,
   url,
   activeVariant,
+  ean,
 }) {
   const [quantity, setQuantity] = useState(1)
   const [addToWishlistLoading, setAddToWishlistLoading] = useState(false)
@@ -78,7 +79,16 @@ export default function ProductActions({
   function onAddToCart(e) {
     e.stopPropagation()
     e.preventDefault()
-    addToCart({ productId, title, images, price, url, quantity, activeVariant })
+    addToCart({
+      productId,
+      title,
+      images,
+      price,
+      url,
+      quantity,
+      activeVariant,
+      ean,
+    })
   }
 
   return (

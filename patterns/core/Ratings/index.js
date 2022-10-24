@@ -35,8 +35,8 @@ const Ratings = (product) => {
     <section className="ratings">
       <Heading>{t('RATINGS_HEADING')}</Heading>
 
-      {reviews.map(({ review }) => (
-        <Rating {...review} key={review.id} />
+      {reviews.map(({ review }, index) => (
+        <Rating {...review} key={review.id ?? index} />
       ))}
 
       {!reviews.length && loading && (

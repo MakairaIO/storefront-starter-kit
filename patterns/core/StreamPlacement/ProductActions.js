@@ -1,7 +1,7 @@
 import { Button } from '../..'
 import { useAddToCart, useTranslation } from '../../../utils'
 
-export default function ProductActions({ id, images, price, title, url }) {
+export default function ProductActions({ id, images, price, title, url, ean }) {
   const { t } = useTranslation()
   const { addToCart, loading } = useAddToCart()
 
@@ -15,6 +15,7 @@ export default function ProductActions({ id, images, price, title, url }) {
       title,
       url,
       quantity: 1,
+      ean,
     })
   }
 
