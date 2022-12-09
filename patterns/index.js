@@ -51,5 +51,6 @@ export {
 } from './core/Form'
 export { default as AddCartSuccessModal } from './core/AddCartSuccessModal'
 export { NextArrow, PrevArrow } from './core/SliderArrows'
+export { default as componentsMapping } from './core/ComponentsMapping'
 
 /* Add project specific patterns here */
