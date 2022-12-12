@@ -101,7 +101,9 @@ export default class Index extends Component {
 
     return (
       <GlobalDataProvider {...this.props}>
-        <ConfigurationProvider assetUrl={process.env.MAKAIRA_ASSET_URL}>
+        <ConfigurationProvider
+          assetUrl={process.env.NEXT_PUBLIC_MAKAIRA_ASSET_URL}
+        >
           <TranslationProvider language={language}>
             <AbTestingProvider>
               <BaseLayout>

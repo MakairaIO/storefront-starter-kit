@@ -17,7 +17,7 @@ export default async function submitProductListForms({
   searchPhrase = '',
   resetPagination = false,
 }) {
-  const count = process.env.PRODUCTS_PER_PAGE
+  const count = process.env.NEXT_PUBLIC_PRODUCTS_PER_PAGE
 
   const filterFormData = collectFilterFormData()
   const filter = prepareFilterForQueryString(filterFormData, aggregations)

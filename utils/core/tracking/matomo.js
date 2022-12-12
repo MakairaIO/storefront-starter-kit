@@ -1,7 +1,7 @@
 export default {
   // See: https://docs.makaira.io/docs/tracking
   init() {
-    const trackingId = process.env.MAKAIRA_TRACKING_ID
+    const trackingId = process.env.NEXT_PUBLIC_MAKAIRA_TRACKING_ID
 
     if (!trackingId) return null
 
@@ -10,7 +10,7 @@ export default {
 
     _paq.push(['enableLinkTracking'])
     _paq.push(['setTrackerUrl', u + 'piwik.php'])
-    _paq.push(['setSiteId', process.env.MAKAIRA_TRACKING_ID])
+    _paq.push(['setSiteId', process.env.NEXT_PUBLIC_MAKAIRA_TRACKING_ID])
 
     var d = document,
       g = d.createElement('script'),
