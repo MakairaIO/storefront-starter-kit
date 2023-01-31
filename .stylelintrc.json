@@ -9,6 +9,7 @@
     }
   ],
   "rules": {
-    "stylus/semicolon": "never"
+    "stylus/semicolon": "never",
+    "stylus/declaration-colon": "never"
   }
 }

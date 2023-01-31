@@ -9,28 +9,19 @@ $breakpoint-huge = 1400px
   @media (min-width $breakpoint-small)
     display grid
     grid-gap 1.8rem 1.2rem
-    grid-template-areas \
-      "top-right top-right" \
-      "left bottom-right" \
-      "left bottom-right" \
-      "middle middle"
+    grid-template-areas "top-right top-right" "left bottom-right" "left bottom-right" "middle middle"
     grid-template-columns repeat(2, 1fr)
 
   @media (min-width $breakpoint-medium)
     grid-gap 1.8rem 2rem
-    grid-template-areas \
-      "top-right top-right top-right" \
-      "left bottom-right bottom-right" \
-      "left middle middle"
+    grid-template-areas "top-right top-right top-right" "left bottom-right bottom-right" "left middle middle"
     grid-template-columns repeat(3, 1fr)
     grid-template-rows repeat(3, 36rem)
 
   @media (min-width $breakpoint-large)
     grid-template-columns repeat(4, 1fr)
     grid-template-rows repeat(2, 36rem)
-    grid-template-areas \
-      "left top-right top-right top-right" \
-      "left middle middle bottom-right" \
+    grid-template-areas "left top-right top-right top-right" "left middle middle bottom-right"
 
   @media (min-width $breakpoint-huge)
     padding 1.2rem 2rem
