@@ -94,9 +94,6 @@
     "*.js": [
       "eslint --fix",
       "prettier --write"
-    ],
-    "*.styl": [
-      "stylelint --fix"
     ]
   },
   "engines": {
