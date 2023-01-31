@@ -11,6 +11,7 @@
   "rules": {
     "stylus/semicolon": "never",
     "stylus/declaration-colon": "never",
-    "stylus/pythonic": "always"
+    "stylus/pythonic": "always",
+    "stylus/block-closing-brace-space-after": "always"
   }
 }
