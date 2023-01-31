@@ -1,5 +1,14 @@
 {
-  "extends": [
-    "stylelint-stylus/standard"
-  ]
+  "plugins": [
+    "stylelint-stylus"
+  ],
+  "overrides": [
+    {
+      "files": ["*.stylus", "*.styl", "**/*.stylus", "**/*.styl"],
+      "customSyntax": "postcss-styl"
+    }
+  ],
+  "rules": {
+    "stylus/semicolon": "never"
+  }
 }

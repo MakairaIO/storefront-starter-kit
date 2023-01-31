@@ -30,7 +30,8 @@
     "pre-commit": "lint-staged",
     "cypress": "cypress run --browser chrome",
     "cypress:interactive": "cypress run --browser chrome",
-    "release": "semantic-release"
+    "release": "semantic-release",
+    "lint:styles": "stylelint patterns/**/*.styl"
   },
   "dependencies": {
     "@makaira/storefront-react": "^1.5.1",
