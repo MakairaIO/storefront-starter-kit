@@ -91,6 +91,10 @@
     "pre-commit"
   ],
   "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ],
     "*.styl": [
       "stylelint --fix"
     ]
