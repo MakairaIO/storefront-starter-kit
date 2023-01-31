@@ -10,6 +10,7 @@
   ],
   "rules": {
     "stylus/semicolon": "never",
-    "stylus/declaration-colon": "never"
+    "stylus/declaration-colon": "never",
+    "stylus/pythonic": "always"
   }
 }
