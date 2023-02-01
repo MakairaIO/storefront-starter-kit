@@ -95,9 +95,7 @@
       "eslint --fix",
       "prettier --write"
     ],
-    "*.styl": [
-      "stylelint --fix"
-    ]
+    "*.styl": "stylelint --fix"
   },
   "engines": {
     "node": "18.3.0"
