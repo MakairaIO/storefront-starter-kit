@@ -1,33 +1,33 @@
 $breakpoint-medium = 800px
 
 .breadcrumb
-  width: calc(100% - 3rem)
+  width calc(100% - 3rem)
   margin 0 auto
-  padding: 1.5rem 0rem
+  padding 1.5rem 0
 
   .list
-    display: flex
-    flex-wrap: wrap
-    align-items: center
-    list-style: none
-    width: 100%
+    display flex
+    flex-wrap wrap
+    align-items center
+    list-style none
+    width 100%
 
     .item
-      display: inline-flex
-      padding-left: 0.5rem
+      display inline-flex
+      padding-left 0.5rem
       display none
 
       @media (min-width $breakpoint-medium)
         display block
 
       .home
-        height: 14px
-        width: 14px
+        height 14px
+        width 14px
 
     .item:not(:first-child):not(.item--mobile-visible)
       &::before
-        padding-right: 0.5rem;
-        content: "/"
+        padding-right 0.5rem
+        content "/"
 
     .item--mobile-visible
       display block
