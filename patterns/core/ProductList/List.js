@@ -4,6 +4,7 @@ import { GTM, useGlobalData, useLazyLoading } from '../../../utils'
 import Banner from './Banner'
 import ProductTile from './ProductTile'
 import Pagination from './Pagination'
+import matomo from '../../../utils/core/tracking/matomo'
 
 export default function List(props) {
   const {
@@ -19,7 +20,7 @@ export default function List(props) {
   const { params = {}, searchResult } = useGlobalData()
   const { searchPhrase } = params
 
-  function handleTrackingEvent(productId, position) {
+  function handleTrackingEvent(productId, position, clickTrackingId) {
     if (!searchResult) return
     GTM.trackEvent({
       event: 'search_click',
@@ -27,6 +28,14 @@ export default function List(props) {
       search_result_position: position,
       search_result_item_id: productId,
     })
+
+    handleTrackGoal(clickTrackingId)
+  }
+
+  function handleTrackGoal(id) {
+    if (!id) return
+
+    matomo.trackGoal(id)
   }
 
   const classes = classNames('product-list__list', {
@@ -42,8 +51,14 @@ export default function List(props) {
           return (
             <ProductTile
               handleTrackingEvent={() =>
-                handleTrackingEvent(entry.id, index + 1)
+                handleTrackingEvent(
+                  entry.id,
+                  index + 1,
+                  entry.fields.mak_paid_placement &&
+                    entry.fields.mak_placement_click_tracking_id
+                )
               }
+              handleTrackGoal={handleTrackGoal}
               key={entry.id}
               {...entry.fields}
             />
