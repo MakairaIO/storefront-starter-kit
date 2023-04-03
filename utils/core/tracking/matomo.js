@@ -34,4 +34,11 @@ export default {
       window._paq.push(['trackEvent', 'abtesting', experiment, variation])
     })
   },
+
+  trackGoal(id) {
+    // Matomo has not been initialized
+    if (!window._paq) return
+
+    window._paq.push(['trackGoal', id])
+  },
 }
