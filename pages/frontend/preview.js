@@ -88,7 +88,7 @@ export default class Index extends Component {
     const { source, payload, action } = event.data
 
     // Check if we get the data from makaira backend or from localhost
-    if (event.origin !== process.env.MAKAIRA_API_URL) return
+    if (event.origin !== process.env.NEXT_PUBLIC_MAKAIRA_API_URL) return
 
     // Check if it is also send by the makaira backend
     if (source !== 'makaira-bridge') return
@@ -129,7 +129,9 @@ export default class Index extends Component {
           params={{}}
           menuData={this.props.menuData}
         >
-          <ConfigurationProvider assetUrl={process.env.MAKAIRA_ASSET_URL}>
+          <ConfigurationProvider
+            assetUrl={process.env.NEXT_PUBLIC_MAKAIRA_ASSET_URL}
+          >
             <TranslationProvider language={language}>
               <AbTestingProvider>
                 <BaseLayout>

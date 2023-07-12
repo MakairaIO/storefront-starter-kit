@@ -1,5 +1,5 @@
 export default function getFullUrl(url = '') {
-  const domain = process.env.SHOP_DOMAIN
+  const domain = process.env.NEXT_PUBLIC_SHOP_DOMAIN
   const normalizedDomain = domain.replace(/\/$/, '') // replace trailing slash
 
   let normalizedInput
@@ -30,7 +30,7 @@ export default function getFullUrl(url = '') {
 }
 
 function processInternalUrl(url) {
-  const domain = process.env.SHOP_DOMAIN
+  const domain = process.env.NEXT_PUBLIC_SHOP_DOMAIN
   const normalizedDomain = domain.replace(/\/$/, '') // replace trailing slash
 
   const path = url.replace(normalizedDomain, '')

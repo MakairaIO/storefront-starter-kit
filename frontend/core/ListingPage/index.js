@@ -54,7 +54,7 @@ function getPageTitle({ type, page }) {
 }
 
 function getRobotsContent({ aggregations = {}, queryParams = {} }) {
-  const count = queryParams.count ?? process.env.PRODUCTS_PER_PAGE
+  const count = queryParams.count ?? process.env.NEXT_PUBLIC_PRODUCTS_PER_PAGE
   const offset = queryParams.offset ?? 0
 
   const currentPageNr = offset / count + 1

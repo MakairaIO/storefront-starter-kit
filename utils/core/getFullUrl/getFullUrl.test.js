@@ -3,7 +3,7 @@ import getFullUrl from '.'
 describe('getFullUrl()', () => {
   // Setup for consistent tests no matter where performed
   const OLD_ENV = process.env
-  const SHOP_DOMAIN_MOCK = 'https://www.my-test-domain.com'
+  const NEXT_PUBLIC_SHOP_DOMAIN_MOCK = 'https://www.my-test-domain.com'
   const EXTERNAL_DOMAIN_MOCK = 'https://www.external-domain.com'
 
   beforeEach(() => {
@@ -11,7 +11,7 @@ describe('getFullUrl()', () => {
 
     process.env = {
       ...OLD_ENV,
-      SHOP_DOMAIN: SHOP_DOMAIN_MOCK,
+      NEXT_PUBLIC_SHOP_DOMAIN: NEXT_PUBLIC_SHOP_DOMAIN_MOCK,
     }
   })
 
@@ -21,7 +21,7 @@ describe('getFullUrl()', () => {
 
   describe('internal URLs', () => {
     it('should return absolute input URLs with "http(s)" without modification', () => {
-      const withHttps = SHOP_DOMAIN_MOCK + '/test'
+      const withHttps = NEXT_PUBLIC_SHOP_DOMAIN_MOCK + '/test'
       let { fullUrl, isExternalLink } = getFullUrl(withHttps)
 
       expect(fullUrl).toEqual(withHttps)
@@ -29,9 +29,12 @@ describe('getFullUrl()', () => {
     })
 
     it('should return absolute input URLs with "www" with added HTTPS scheme', () => {
-      const withWWW = (SHOP_DOMAIN_MOCK + '/test').replace('https://', '')
+      const withWWW = (NEXT_PUBLIC_SHOP_DOMAIN_MOCK + '/test').replace(
+        'https://',
+        ''
+      )
       let { fullUrl, isExternalLink } = getFullUrl(withWWW)
-      const expected = SHOP_DOMAIN_MOCK + '/test'
+      const expected = NEXT_PUBLIC_SHOP_DOMAIN_MOCK + '/test'
 
       expect(fullUrl).toEqual(expected)
       expect(isExternalLink).toEqual(false)
@@ -40,7 +43,7 @@ describe('getFullUrl()', () => {
     it('should return relative input URLs with added scheme and domain', () => {
       const relativeUrl = '/my-fancy-page'
       const { fullUrl, isExternalLink } = getFullUrl(relativeUrl)
-      const expectedUrl = SHOP_DOMAIN_MOCK + relativeUrl
+      const expectedUrl = NEXT_PUBLIC_SHOP_DOMAIN_MOCK + relativeUrl
 
       expect(fullUrl).toEqual(expectedUrl)
       expect(isExternalLink).toEqual(false)
@@ -49,7 +52,8 @@ describe('getFullUrl()', () => {
     it('should return normalize input URLs containing double slashes', () => {
       const relativeUrl = '/my-fancy-page//deep//link'
       const { fullUrl, isExternalLink } = getFullUrl(relativeUrl)
-      const expectedUrl = SHOP_DOMAIN_MOCK + '/my-fancy-page/deep/link'
+      const expectedUrl =
+        NEXT_PUBLIC_SHOP_DOMAIN_MOCK + '/my-fancy-page/deep/link'
 
       expect(fullUrl).toEqual(expectedUrl)
       expect(isExternalLink).toEqual(false)
@@ -58,7 +62,7 @@ describe('getFullUrl()', () => {
     it('should return homepage when no url is provided', () => {
       const emptyUrl = ''
       const { fullUrl, isExternalLink } = getFullUrl(emptyUrl)
-      const expectedUrl = SHOP_DOMAIN_MOCK + '/'
+      const expectedUrl = NEXT_PUBLIC_SHOP_DOMAIN_MOCK + '/'
 
       expect(fullUrl).toEqual(expectedUrl)
       expect(isExternalLink).toEqual(false)
@@ -67,7 +71,7 @@ describe('getFullUrl()', () => {
     it('should return relative URLs without leading slash with added slash, scheme and domain', () => {
       const relativeUrl = 'my-fancy-page.html'
       const { fullUrl, isExternalLink } = getFullUrl(relativeUrl)
-      const expectedUrl = SHOP_DOMAIN_MOCK + '/my-fancy-page.html'
+      const expectedUrl = NEXT_PUBLIC_SHOP_DOMAIN_MOCK + '/my-fancy-page.html'
 
       expect(fullUrl).toEqual(expectedUrl)
       expect(isExternalLink).toEqual(false)

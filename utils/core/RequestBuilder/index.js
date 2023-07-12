@@ -16,7 +16,7 @@ class RequestBuilder {
 
   getConstraints(additionalConstraints = {}) {
     let constraints = {
-      'query.shop_id': process.env.SHOP_ID ?? 1,
+      'query.shop_id': process.env.NEXT_PUBLIC_SHOP_ID ?? 1,
       'query.use_stock': true,
       'query.original_keys': true,
       'oi.user.agent': this.getUserAgent(),
@@ -146,7 +146,8 @@ class RequestBuilder {
   }
 
   getPagination() {
-    const { count = process.env.PRODUCTS_PER_PAGE, offset = '0' } = this.params
+    const { count = process.env.NEXT_PUBLIC_PRODUCTS_PER_PAGE, offset = '0' } =
+      this.params
 
     return [count, offset]
   }

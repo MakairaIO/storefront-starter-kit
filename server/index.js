@@ -28,7 +28,7 @@ app
       res
         .status(200)
         .send(
-          `Sitemap: ${process.env.SHOP_DOMAIN}/${allLanguages[0].value}/sitemap.xml?instance=${process.env.MAKAIRA_API_INSTANCE}`
+          `Sitemap: ${process.env.NEXT_PUBLIC_SHOP_DOMAIN}/${allLanguages[0].value}/sitemap.xml?instance=${process.env.NEXT_PUBLIC_MAKAIRA_API_INSTANCE}`
         )
     })
 

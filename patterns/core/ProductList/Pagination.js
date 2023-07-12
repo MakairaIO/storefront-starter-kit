@@ -7,7 +7,7 @@ export default class Pagination extends Component {
     super(props)
 
     const { queryParams = {} } = props
-    const count = queryParams.count ?? process.env.PRODUCTS_PER_PAGE
+    const count = queryParams.count ?? process.env.NEXT_PUBLIC_PRODUCTS_PER_PAGE
     const offset = queryParams.offset ?? 0
     const currentPageNr = offset / count + 1
 
@@ -16,7 +16,7 @@ export default class Pagination extends Component {
 
   calculateTotalNumberOfPages = () => {
     const { queryParams = {}, totalProductCount = 0 } = this.props
-    const count = queryParams.count ?? process.env.PRODUCTS_PER_PAGE
+    const count = queryParams.count ?? process.env.NEXT_PUBLIC_PRODUCTS_PER_PAGE
 
     return Math.ceil(totalProductCount / count)
   }

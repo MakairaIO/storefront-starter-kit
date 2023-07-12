@@ -22,11 +22,11 @@ export default async function fetchMenuData() {
 
 async function fetchMenuFromApi() {
   const response = await fetch(
-    `${process.env.MAKAIRA_API_URL}/enterprise/menu`,
+    `${process.env.NEXT_PUBLIC_MAKAIRA_API_URL}/enterprise/menu`,
     {
       method: 'GET',
       headers: {
-        'X-Makaira-Instance': process.env.MAKAIRA_API_INSTANCE,
+        'X-Makaira-Instance': process.env.NEXT_PUBLIC_MAKAIRA_API_INSTANCE,
       },
     }
   )
