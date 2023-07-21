@@ -34,8 +34,10 @@
     "lint:styles": "stylelint patterns/**/*.styl --fix"
   },
   "dependencies": {
-    "@makaira/storefront-react": "^1.5.1",
+    "@makaira/storefront-react": "^1.6.4",
     "@makaira/storefront-shop-adapter-local": "^1.5.0",
+    "@makaira/storefront-shop-adapter-shopify": "^1.2.5",
+    "@makaira/storefront-types": "^1.8.0",
     "@next/bundle-analyzer": "^12.1.0",
     "body-parser": "^1.19.2",
     "classnames": "^2.2.6",

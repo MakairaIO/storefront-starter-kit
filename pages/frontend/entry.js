@@ -16,7 +16,8 @@ import {
 } from '../../utils'
 import ErrorPage from '../_error'
 import { ShopProvider } from '@makaira/storefront-react'
-import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
+//import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
+import { StorefrontShopAdapterShopify } from '@makaira/storefront-shop-adapter-shopify'
 
 const pageComponents = {
   page: dynamic(() => import('../../frontend/core/LandingPage')),
@@ -28,7 +29,11 @@ const pageComponents = {
   ),
 }
 
-const shopClient = new StorefrontShopAdapterLocal()
+//const shopClient = new StorefrontShopAdapterLocal()
+const shopClient = new StorefrontShopAdapterShopify({
+  url: '',
+  accessToken: '',
+})
 
 export default class Index extends Component {
   static async getInitialProps(ctx) {
