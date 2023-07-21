@@ -1,4 +1,4 @@
-import { BundleSelection } from '../../../patterns'
+import { BundleSelection, ProductList } from '../../../patterns'
 import {
   useGlobalData,
   mergeProductsAndBanners,
@@ -7,9 +7,6 @@ import {
   submitBundleForm,
 } from '../../../utils'
 import { useEffect, useState } from 'react'
-import dynamic from 'next/dynamic'
-
-const ProductList = dynamic(() => import('../../../patterns/core/ProductList'))
 
 function BundleForm() {
   const { pageData, params } = useGlobalData()
