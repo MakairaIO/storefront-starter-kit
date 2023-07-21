@@ -1,13 +1,7 @@
 import { Component } from 'react'
 import qs from 'qs'
-import {
-  HeaderWithProps,
-  FooterWithProps,
-  LandingPage,
-  ListingPage,
-  DetailPage,
-  BundlePage,
-} from '../../frontend'
+import dynamic from 'next/dynamic'
+import { HeaderWithProps, FooterWithProps } from '../../frontend'
 import { BaseLayout } from '../../patterns'
 import {
   GlobalDataProvider,
@@ -25,11 +19,13 @@ import { ShopProvider } from '@makaira/storefront-react'
 import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
 
 const pageComponents = {
-  page: LandingPage,
-  bundle: BundlePage,
-  category: ListingPage,
-  manufacturer: ListingPage,
-  'makaira-productgroup': DetailPage,
+  page: dynamic(() => import('../../frontend/core/LandingPage')),
+  bundle: dynamic(() => import('../../frontend/core/BundlePage')),
+  category: dynamic(() => import('../../frontend/core/ListingPage')),
+  manufacturer: dynamic(() => import('../../frontend/core/ListingPage')),
+  'makaira-productgroup': dynamic(() =>
+    import('../../frontend/core/DetailPage')
+  ),
 }
 
 const shopClient = new StorefrontShopAdapterLocal()

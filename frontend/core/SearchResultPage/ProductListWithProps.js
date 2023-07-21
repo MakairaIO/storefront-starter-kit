@@ -1,4 +1,3 @@
-import { ProductList } from '../../../patterns'
 import {
   useGlobalData,
   mergeProductsAndBanners,
@@ -6,7 +5,9 @@ import {
   resetAllProductListFilters,
   redirectToBundle,
 } from '../../../utils'
+import dynamic from 'next/dynamic'
 
+const ProductList = dynamic(() => import('../../../patterns/core/ProductList'))
 export default function ProductListWithProps() {
   const { searchResult, params = {} } = useGlobalData()
 
