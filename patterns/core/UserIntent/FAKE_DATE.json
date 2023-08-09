@@ -1,0 +1,166 @@
+[
+  {
+    "id": "1",
+    "settings": [
+      {
+        "name": "page_scroll",
+        "value": 40,
+        "active": true
+      },
+      {
+        "name": "page_exit",
+        "value": true,
+        "active": true
+      },
+      {
+        "name": "page_elapsed",
+        "value": 10,
+        "active": true
+      },
+      {
+        "name": "page_inactivity",
+        "value": 20,
+        "active": true
+      }
+    ],
+    "urlRule": {
+      "or": [
+        {
+          "key": "url",
+          "operator": "matches",
+          "value": "/*"
+        }
+      ],
+      "exclude": []
+    },
+    "title": "Show Popup All Page when scroll 40, exit intent, elapse 10s, in activitiy 20s",
+    "active": true,
+    "ctaType": "popup"
+  },
+  {
+    "id": "2",
+    "settings": [
+      {
+        "name": "page_scroll",
+        "value": 40,
+        "active": true
+      },
+      {
+        "name": "page_exit",
+        "value": true,
+        "active": true
+      },
+      {
+        "name": "page_elapsed",
+        "value": 10,
+        "active": true
+      },
+      {
+        "name": "page_inactivity",
+        "value": 20,
+        "active": true
+      }
+    ],
+    "urlRule": {
+      "or": [
+        {
+          "key": "url",
+          "operator": "matches",
+          "value": "/*"
+        }
+      ],
+      "exclude": []
+    },
+    "title": "Show SlideIn All Page when scroll 40, exit intent, elapse 10s, in activitiy 20s",
+    "active": true,
+    "ctaType": "slideIn"
+  },
+  {
+    "id": "3",
+    "settings": [
+      {
+        "name": "page_exit",
+        "value": true,
+        "active": true
+      },
+      {
+        "name": "page_scroll",
+        "value": 80,
+        "active": true
+      },
+      {
+        "name": "page_elapsed",
+        "value": 20,
+        "active": true
+      },
+      {
+        "name": "page_inactivity",
+        "value": 40,
+        "active": true
+      }
+    ],
+    "urlRule": {
+      "or": [
+        {
+          "key": "url",
+          "operator": "matches",
+          "value": "/Kiteboarding/*"
+        }
+      ],
+      "exclude": [
+        {
+          "key": "url",
+          "operator": "matches",
+          "value": "/Kiteboarding/Kiteboards/*"
+        }
+      ]
+    },
+    "title": "Show SlideIn All Kiteboarding Page when scroll 80, exit intent, elapse 20s, in activitiy 40s",
+    "active": true,
+    "ctaType": "slideIn"
+  },
+  {
+    "id": "4",
+    "settings": [
+      {
+        "name": "page_elapsed",
+        "value": 20,
+        "active": true
+      },
+      {
+        "name": "page_inactivity",
+        "value": 40,
+        "active": true
+      },
+      {
+        "name": "page_scroll",
+        "value": 100,
+        "active": true
+      },
+      {
+        "name": "page_exit",
+        "value": true,
+        "active": false
+      }
+    ],
+    "urlRule": {
+      "or": [
+        {
+          "key": "url",
+          "operator": "matches",
+          "value": "/Kiteboarding/*"
+        }
+      ],
+      "exclude": [
+        {
+          "key": "url",
+          "operator": "matches",
+          "value": "/Kiteboarding/Kiteboards/*"
+        }
+      ]
+    },
+    "title": "Show SlideIn All Kiteboarding Page when scroll 100, elapse 20s, in activitiy 40s",
+    "active": true,
+    "ctaType": "popup"
+  }
+]
