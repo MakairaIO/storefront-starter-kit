@@ -7,7 +7,7 @@ import {
 } from '../../../utils'
 import { ContentElements, Drawer, Modal } from '../..'
 
-import FAKE_DATA from './FAKE_DATE.json'
+import FAKE_DATA from './FAKE_DATA.json'
 
 const LOCALSTORAGE_KEY = 'USER_INTENT'
 
