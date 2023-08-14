@@ -11,7 +11,7 @@ function operatorComparision(operator, sourceValue, compareValue = '') {
       case 'begins':
         if (sourceValue.startsWith(compareValue)) return true
         break
-      case 'matches':
+      case 'wildcard':
         {
           const regex = new RegExp(`^${compareValue.replace('*', '.*')}`, 'g')
           if (sourceValue.match(regex)) return true
