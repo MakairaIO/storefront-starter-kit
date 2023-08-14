@@ -57,6 +57,7 @@ export default function UserIntent() {
       const documents = fetchDocumentData({
         language,
         datatype: 'user-intent',
+        includeContent: true,
       })
       setScenarios(FAKE_DATA)
       const filteredSettings = getUserIntentSettings(FAKE_DATA)
