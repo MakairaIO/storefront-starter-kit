@@ -61,10 +61,8 @@ export default function UserIntent() {
       })
       setScenarios(FAKE_DATA)
       const filteredSettings = getUserIntentSettings(FAKE_DATA)
-      console.log('FILTERED DATA: ', filteredSettings)
       setSettings(filteredSettings)
     } catch (error) {
-      console.log('ERROR', error)
       setScenarios([])
     }
   }
@@ -104,12 +102,10 @@ export default function UserIntent() {
   }
 
   const showContent = (showingDocuments, type) => {
-    console.log('Showing Content for documentId: ', showingDocuments, type)
     for (let lightDocument of showingDocuments) {
       const fullDocument = scenarios.find(
         (item) => item.id === lightDocument.id
       )
-      console.log('shouldShowContent', shouldShowContent(fullDocument, type))
       if (shouldShowContent(fullDocument, type)) {
         if (lightDocument.ctaType === 'popup' && !ctaPopup.show) {
           setCTAPopup({
@@ -165,7 +161,6 @@ export default function UserIntent() {
     const array = settings.pageInactivity || []
     for (let item of array) {
       const ref = setTimeout(() => {
-        console.log(`User inactive for ${item.value} seconds`)
         // Do something when the user is inactive for the specified duration
         showContent(item.documents, 'pageInactivity')
       }, item.value * 1000)
@@ -181,7 +176,6 @@ export default function UserIntent() {
 
   useEffect(() => {
     if (Object.keys(settings).length > 0) {
-      console.log('Start tracking user intent')
       // Trigger after seconds when page loaded
       onPageLoaded()
 

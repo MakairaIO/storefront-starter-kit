@@ -11,7 +11,7 @@
       "or": [
         {
           "key": "url",
-          "operator": "matches",
+          "operator": "wildcard",
           "value": "/*"
         }
       ],
@@ -79,7 +79,7 @@
       "or": [
         {
           "key": "url",
-          "operator": "matches",
+          "operator": "wildcard",
           "value": "/*"
         }
       ],
@@ -144,7 +144,7 @@
       "or": [
         {
           "key": "url",
-          "operator": "matches",
+          "operator": "wildcard",
           "value": "/*"
         }
       ],
@@ -212,14 +212,14 @@
       "or": [
         {
           "key": "url",
-          "operator": "matches",
+          "operator": "wildcard",
           "value": "/Kiteboarding/*"
         }
       ],
       "exclude": [
         {
           "key": "url",
-          "operator": "matches",
+          "operator": "wildcard",
           "value": "/Kiteboarding/Kiteboards/*"
         }
       ]
@@ -286,14 +286,14 @@
       "or": [
         {
           "key": "url",
-          "operator": "matches",
+          "operator": "wildcard",
           "value": "/Kiteboarding/*"
         }
       ],
       "exclude": [
         {
           "key": "url",
-          "operator": "matches",
+          "operator": "wildcard",
           "value": "/Kiteboarding/Kiteboards/*"
         }
       ]

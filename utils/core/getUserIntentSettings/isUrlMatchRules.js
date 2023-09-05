@@ -1,5 +1,4 @@
 function operatorComparision(operator, sourceValue, compareValue = '') {
-  // console.log('operatorComparision', operator, sourceValue, compareValue);
   try {
     switch (operator) {
       case 'is':
@@ -30,7 +29,6 @@ export function isUrlMatchRules(rules) {
   const url = window.location.pathname
   const searchStr = window.location.search.replace('?', '')
   const query = Object.fromEntries(new URLSearchParams(searchStr).entries())
-  // console.log("isUrlMatchRules query", query);
   for (let rule of rules) {
     let isMatched = false
     if (rule.key === 'url') {
