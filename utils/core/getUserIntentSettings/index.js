@@ -19,7 +19,6 @@ function filterLatestUpdateDocument(scenarioDocuments = [], documents = []) {
       const document = scenarioDocuments.find((item) => item.id === id)
       if (document) {
         const [ctaType] = document.ctaType.split('_')
-        // console.log("filterLatestUpdateDocument", document.ctaType, ctaType)
         return {
           id,
           updatedAt: document.updatedAt,
@@ -58,10 +57,9 @@ export default function getUserIntentSettings(documents = []) {
     if (!active) continue
 
     const isMatchedExcludeRule = isUrlMatchRules(exclude)
+
     if (!isMatchedExcludeRule) {
-      // console.log("MATCHING URL RULE", document, or)
       if (isUrlMatchRules(or)) {
-        // console.log("MATCHED URL RULE", document, or)
         for (let settingKey in settings) {
           const updating = initData[settingKey]
           switch (settingKey) {
@@ -92,7 +90,6 @@ export default function getUserIntentSettings(documents = []) {
       }
     }
   }
-  // console.log("BEFORE FILTER", JSON.parse(JSON.stringify(initData)))
 
   for (let key of Object.keys(initData)) {
     switch (key) {
