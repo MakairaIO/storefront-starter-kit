@@ -50,7 +50,7 @@ export default function getUserIntentSettings(documents = []) {
   }
 
   for (let document of documents) {
-    const { settings = {}, id, active } = document
+    const { setting = {}, id, active } = document
     const exclude = document?.urlRule?.exclude || []
     const or = document?.urlRule?.or || []
 
@@ -60,24 +60,24 @@ export default function getUserIntentSettings(documents = []) {
 
     if (!isMatchedExcludeRule) {
       if (isUrlMatchRules(or)) {
-        for (let settingKey in settings) {
+        for (let settingKey in setting) {
           const updating = initData[settingKey]
           switch (settingKey) {
             case 'pageExit':
-              if (settings[settingKey]) updating.push(id)
+              if (setting[settingKey]) updating.push(id)
               break
             case 'pageScroll':
             case 'pageElapsed':
             case 'pageInactivity':
               {
                 const index = updating.findIndex(
-                  (item) => item.value === settings[settingKey]
+                  (item) => item.value === setting[settingKey]
                 )
                 if (index > -1) {
                   updating[index].documents.push(id)
                 } else {
                   updating.push({
-                    value: settings[settingKey],
+                    value: setting[settingKey],
                     documents: [id],
                   })
                 }

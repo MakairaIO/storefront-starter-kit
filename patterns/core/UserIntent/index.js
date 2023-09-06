@@ -7,8 +7,6 @@ import {
 } from '../../../utils'
 import { ContentElements, Drawer, Modal } from '../..'
 
-import FAKE_DATA from './FAKE_DATA.json'
-
 const LOCALSTORAGE_KEY = 'USER_INTENT'
 
 const REPEAT_TIME = Object.freeze({
@@ -51,16 +49,61 @@ export default function UserIntent() {
     document: null,
   })
 
-  function fetchUserIntent() {
+  const FAKE_CONFIG = {
+    bottom: {
+      elements: [],
+    },
+    top: {
+      elements: [
+        {
+          id: '52b569a3-a827-4ef5-acd3-614ffecbd60d',
+          component: 'contact-form',
+          name: 'Contact Form',
+          properties: {
+            de: {
+              active: true,
+              userGroups: {
+                'Alle Benutzer': {
+                  active: true,
+                  isTimed: false,
+                  activeFrom: '2023-08-11T06:35:26.284Z',
+                  activeTo: '2023-08-11T06:35:26.284Z',
+                },
+              },
+              content: {
+                recipient: 'mail@example.com',
+              },
+            },
+            en: {
+              active: false,
+              userGroups: {
+                'Alle Benutzer': {
+                  active: true,
+                  isTimed: false,
+                  activeFrom: '2023-08-11T06:35:26.284Z',
+                  activeTo: '2023-08-11T06:35:26.284Z',
+                },
+              },
+              content: {
+                recipient: 'mail@example.com',
+              },
+            },
+          },
+        },
+      ],
+    },
+  }
+
+  const fetchUserIntent = async () => {
     try {
-      /* eslint-disable-next-line no-unused-vars */
-      const documents = fetchDocumentData({
+      const documents = await fetchDocumentData({
         language,
-        datatype: 'user-intent',
+        datatype: 'userIntent',
         includeContent: true,
       })
-      setScenarios(FAKE_DATA)
-      const filteredSettings = getUserIntentSettings(FAKE_DATA)
+      const dummyConfig = documents.map((d) => ({ ...d, config: FAKE_CONFIG }))
+      setScenarios(dummyConfig)
+      const filteredSettings = getUserIntentSettings(dummyConfig)
       setSettings(filteredSettings)
     } catch (error) {
       setScenarios([])
