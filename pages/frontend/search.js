@@ -20,6 +20,10 @@ import {
   GTM,
 } from '../../utils'
 import ErrorPage from '../_error'
+import { ShopProvider } from '@makaira/storefront-react'
+import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
+
+const shopClient = new StorefrontShopAdapterLocal()
 
 export default class Index extends Component {
   static async getInitialProps(ctx) {
@@ -100,21 +104,23 @@ export default class Index extends Component {
     const { language } = searchResult
 
     return (
-      <GlobalDataProvider {...this.props}>
-        <ConfigurationProvider assetUrl={process.env.MAKAIRA_ASSET_URL}>
-          <TranslationProvider language={language}>
-            <AbTestingProvider>
-              <BaseLayout>
-                <HeaderWithProps />
+      <ShopProvider client={shopClient}>
+        <GlobalDataProvider {...this.props}>
+          <ConfigurationProvider assetUrl={process.env.MAKAIRA_ASSET_URL}>
+            <TranslationProvider language={language}>
+              <AbTestingProvider>
+                <BaseLayout>
+                  <HeaderWithProps />
 
-                <SearchResultPage />
+                  <SearchResultPage />
 
-                <FooterWithProps />
-              </BaseLayout>
-            </AbTestingProvider>
-          </TranslationProvider>
-        </ConfigurationProvider>
-      </GlobalDataProvider>
+                  <FooterWithProps />
+                </BaseLayout>
+              </AbTestingProvider>
+            </TranslationProvider>
+          </ConfigurationProvider>
+        </GlobalDataProvider>
+      </ShopProvider>
     )
   }
 }
