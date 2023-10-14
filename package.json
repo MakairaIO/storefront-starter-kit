@@ -69,7 +69,7 @@
     "eslint-plugin-react": "^7.29.2",
     "eslint-plugin-react-hooks": "^4.3.0",
     "jest": "^28.1.1",
-    "lint-staged": "^13.1.0",
+    "lint-staged": "^15.0.0",
     "makaira-storefront-cli": "^1.6.0",
     "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
