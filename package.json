@@ -98,6 +98,6 @@
     "*.styl": "stylelint --fix"
   },
   "engines": {
-    "node": "18.18.2"
+    "node": "20.10.0"
   }
 }
