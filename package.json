@@ -77,7 +77,7 @@
     "prettier": "^2.7.0",
     "rimraf": "^3.0.2",
     "semantic-release": "^19.0.2",
-    "semantic-release-slack-bot": "^3.5.2",
+    "semantic-release-slack-bot": "^4.0.0",
     "slackify-markdown": "^4.4.0",
     "stylelint": "^14.16.0",
     "stylelint-stylus": "^0.18.0",
