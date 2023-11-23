@@ -49,51 +49,6 @@ export default function UserIntent() {
     document: null,
   })
 
-  const FAKE_CONFIG = {
-    bottom: {
-      elements: [],
-    },
-    top: {
-      elements: [
-        {
-          id: '52b569a3-a827-4ef5-acd3-614ffecbd60d',
-          component: 'contact-form',
-          name: 'Contact Form',
-          properties: {
-            de: {
-              active: true,
-              userGroups: {
-                'Alle Benutzer': {
-                  active: true,
-                  isTimed: false,
-                  activeFrom: '2023-08-11T06:35:26.284Z',
-                  activeTo: '2023-08-11T06:35:26.284Z',
-                },
-              },
-              content: {
-                recipient: 'mail@example.com',
-              },
-            },
-            en: {
-              active: false,
-              userGroups: {
-                'Alle Benutzer': {
-                  active: true,
-                  isTimed: false,
-                  activeFrom: '2023-08-11T06:35:26.284Z',
-                  activeTo: '2023-08-11T06:35:26.284Z',
-                },
-              },
-              content: {
-                recipient: 'mail@example.com',
-              },
-            },
-          },
-        },
-      ],
-    },
-  }
-
   const fetchUserIntent = async () => {
     try {
       const documents = await fetchDocumentData({
@@ -101,9 +56,8 @@ export default function UserIntent() {
         datatype: 'userIntent',
         includeContent: true,
       })
-      const dummyConfig = documents.map((d) => ({ ...d, config: FAKE_CONFIG }))
-      setScenarios(dummyConfig)
-      const filteredSettings = getUserIntentSettings(dummyConfig)
+      setScenarios(documents)
+      const filteredSettings = getUserIntentSettings(documents)
       setSettings(filteredSettings)
     } catch (error) {
       setScenarios([])
@@ -151,19 +105,29 @@ export default function UserIntent() {
       )
       if (shouldShowContent(fullDocument, type)) {
         if (lightDocument.ctaType === 'popup' && !ctaPopup.show) {
-          setCTAPopup({
-            show: true,
-            document: fullDocument,
-          })
+          if (
+            fullDocument.contentElements?.top?.length &&
+            fullDocument.contentElements?.top?.length !== 0
+          ) {
+            setCTAPopup({
+              show: true,
+              document: fullDocument,
+            })
+          }
           storeHistory(fullDocument, type)
         } else if (lightDocument.ctaType === 'slidein' && !ctaSlideIn.show) {
           /* eslint-disable-next-line no-unused-vars */
           const [_, position] = fullDocument.ctaType.split('_')
-          setCTASlideIn({
-            show: true,
-            position,
-            document: fullDocument,
-          })
+          if (
+            fullDocument.contentElements?.top?.length &&
+            fullDocument.contentElements?.top?.length !== 0
+          ) {
+            setCTASlideIn({
+              show: true,
+              position,
+              document: fullDocument,
+            })
+          }
           storeHistory(fullDocument, type)
         }
       }
@@ -248,7 +212,7 @@ export default function UserIntent() {
       {ctaPopup.show && (
         <Modal className="cta-popup" closeModal={onClosePopup}>
           <ContentElements
-            elements={ctaPopup.document?.config?.top.elements || []}
+            elements={ctaPopup.document?.contentElements?.top.elements || []}
           />
         </Modal>
       )}
