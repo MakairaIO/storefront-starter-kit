@@ -5,8 +5,9 @@ export default async function fetchDocumentData({
   datatype = '',
   fields = [],
   ids = [],
+  ctx = {},
 }) {
-  const builder = new RequestBuilder()
+  const builder = new RequestBuilder(ctx)
   const constraints = builder.getConstraints({ language })
 
   const body = {

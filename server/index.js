@@ -83,6 +83,15 @@ app
       })
     })
 
+    /**
+     * Generate blog routes for each language
+     */
+    allLanguages.forEach((lang) => {
+      server.get(lang.blogRoute, (req, res) => {
+        app.render(req, res, '/frontend/blog', req.query)
+      })
+    })
+
     server.post('/log-error', (req, res) => {
       logError(req.body)
       res.json()
