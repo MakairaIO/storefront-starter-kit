@@ -53,7 +53,8 @@
     "react-dom": "^18.2.0",
     "react-slick": "^0.29.0",
     "stylus": "^0.62.0",
-    "ua-parser-js": "^1.0.2"
+    "ua-parser-js": "^1.0.2",
+    "date-fns": "^2.30.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.23.3",

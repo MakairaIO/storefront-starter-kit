@@ -65,6 +65,7 @@ class ConfigurationProvider extends Component {
   }
 
   getS3Link = (options) => {
+    console.log(options)
     const { source = '' } = options
 
     const { assetUrl } = this.props
