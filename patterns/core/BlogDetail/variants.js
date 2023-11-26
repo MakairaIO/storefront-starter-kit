@@ -7,7 +7,7 @@ export default [
         Skitouren abseits präparierter Pisten sind für viele die schönste Art, Schnee und Natur zu genießen. 
         Damit verbunden steht das Thema Lawinenkunde an erster Stelle. Lawinen sind ein komplexes Naturphänomen, das von vielen Faktoren beeinflusst wird.`,
       publishDate: '1992-11-29T08:06:57+00:00',
-      promotionalImage: 'assets/images/videoTeaser/example.jpg',
+      promotionalImage: 'assets/images/blog/example.jpg',
     },
   },
 ]

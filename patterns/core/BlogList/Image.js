@@ -8,9 +8,9 @@ export default function BlogImage(props) {
       <picture>
         <img
           height={450}
-          src="/assets/images/videoTeaser/example.jpg"
+          src="/assets/images/blog/example.jpg"
           alt={title}
-          className="blog-detail__image"
+          className="blog-list__image"
         />
       </picture>
     )
@@ -24,7 +24,7 @@ export default function BlogImage(props) {
       options={{
         desktop: {
           source: promotionalImage,
-          height: 450,
+          height: 220,
         },
       }}
     />

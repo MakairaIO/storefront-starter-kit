@@ -7,8 +7,7 @@ export default function BlogImage(props) {
     return (
       <picture>
         <img
-          height={450}
-          src="/assets/images/videoTeaser/example.jpg"
+          src="/assets/images/blog/example.jpg"
           alt={title}
           className="blog-detail__image"
         />
