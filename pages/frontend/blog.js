@@ -27,8 +27,6 @@ export default class Index extends Component {
       .replace(/\?.*/, '') // remove query string
       .replace(/\/$/, '') // replace trailing slash to match definition in allLanguages
 
-    console.log(path)
-
     const languageObject = allLanguages.find((lang) => lang.blogRoute == path)
     const language = languageObject?.value || 'de'
 

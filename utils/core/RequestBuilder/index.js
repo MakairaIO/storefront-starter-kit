@@ -60,7 +60,7 @@ class RequestBuilder {
       // 'x-forwarded-for' header may return multiple IP addresses in
       // the format: "client IP, proxy 1 IP, proxy 2 IP" so take the
       // the first one
-      ip = ip.split(',')[0]
+      ip = ip?.split(',')[0]
       ip = this.anonymize(ip)
 
       setCookie(this.ctx, 'ip', ip, { path: '/' })
@@ -124,7 +124,7 @@ class RequestBuilder {
   }
 
   anonymize(ip) {
-    return ip.replace(/^(\d+\.\d+).*/, '$1.0.0')
+    return ip?.replace(/^(\d+\.\d+).*/, '$1.0.0')
   }
 
   getAggregations() {

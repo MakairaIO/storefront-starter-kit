@@ -14,7 +14,7 @@ function BlogList({ blogData }) {
   return (
     <section className="blog-list">
       {blogData.length &&
-        blogData.map((blog) => {
+        blogData.slice(0, 10).map((blog) => {
           const {
             id,
             url,

@@ -216,15 +216,15 @@ export default [
   },
   {
     type: 'page',
-    name: 'Blog Detail Page',
-    component: BlogDetail,
-    variants: [{ name: 'Blog Detail Page Example' }],
-  },
-  {
-    type: 'page',
     name: 'Blog Listing Page',
     component: BlogList,
     variants: [{ name: 'Blog Listing Page Example' }],
+  },
+  {
+    type: 'page',
+    name: 'Blog Detail Page',
+    component: BlogDetail,
+    variants: [{ name: 'Blog Detail Page Example' }],
   },
   {
     type: 'page',
