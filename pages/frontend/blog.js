@@ -40,7 +40,7 @@ export default class Index extends Component {
         fetchMenuData(),
       ])
 
-      return { menuData, blogData }
+      return { menuData, blogData, language }
     } catch (error) {
       console.error(error)
 
@@ -57,17 +57,13 @@ export default class Index extends Component {
   }
 
   render() {
-    // if (Object.entries(this.props).length === 0) {
-    //   return <ErrorPage statusCode={500} />
-    // }
-
-    const { blogData = [] } = this.props
+    const { blogData = [], language = 'de' } = this.props
 
     return (
       <ShopProvider client={shopClient}>
         <GlobalDataProvider {...this.props}>
           <ConfigurationProvider assetUrl={process.env.MAKAIRA_ASSET_URL}>
-            <TranslationProvider language={'de'}>
+            <TranslationProvider language={language}>
               <AbTestingProvider>
                 <BaseLayout>
                   <HeaderWithProps />
