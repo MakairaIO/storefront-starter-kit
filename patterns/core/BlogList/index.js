@@ -4,24 +4,16 @@ import ConditionalLink from '../ConditionalLink'
 import Text from '../Text'
 import { format } from 'date-fns'
 
-const dummyDesc = `Der Winter steht vor der Tür und lässt die Herzen der Skitourenfreunde höher schlagen. 
-Skitouren abseits präparierter Pisten sind für viele die schönste Art, Schnee und Natur zu genießen. 
-Damit verbunden steht das Thema Lawinenkunde an erster Stelle. Lawinen sind ein komplexes Naturphänomen, das von vielen Faktoren beeinflusst wird.`
+import variants from './variants'
 
-const dummyDate = '2023-11-24T08:06:57+00:00'
+const dummyDesc = variants[0]?.props?.blogData[0]?.description
 
 function BlogList({ blogData }) {
   return (
     <section className="blog-list">
       {blogData.length &&
         blogData.slice(0, 10).map((blog) => {
-          const {
-            id,
-            url,
-            title,
-            publishDate = dummyDate,
-            description = dummyDesc,
-          } = blog
+          const { id, url, title, publishDate, description = dummyDesc } = blog
           return (
             <ConditionalLink key={id} href={url} className="blog-list__tile">
               <Image {...blog} />

@@ -17,6 +17,7 @@ export default function BlogImage(props) {
 
   return (
     <Image
+      className="blog-detail__image"
       alt={title}
       lazyload={false}
       preload={true}
