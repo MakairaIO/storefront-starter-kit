@@ -73,6 +73,7 @@ export default function Index() {
   const placeables = componentConfig.filter(
     (entry) => entry.type === 'placeable'
   )
+
   const statics = componentConfig.filter((entry) => entry.type === 'static')
   const atomsAndMolecules = componentConfig.filter(
     (entry) =>
@@ -80,6 +81,24 @@ export default function Index() {
       entry.type === 'molecule' ||
       entry.type === 'component' // catch 'component' type here for backwards compatibility
   )
+
+  if (process.env.PALI_SORT_APLHABETICALLY === 'true') {
+    pages.sort((a, b) => {
+      return a.name.localeCompare(b.name)
+    })
+
+    placeables.sort((a, b) => {
+      return a.name.localeCompare(b.name)
+    })
+
+    statics.sort((a, b) => {
+      return a.name.localeCompare(b.name)
+    })
+
+    atomsAndMolecules.sort((a, b) => {
+      return a.name.localeCompare(b.name)
+    })
+  }
 
   return (
     <>

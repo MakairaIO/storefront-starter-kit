@@ -1,6 +1,5 @@
-import { useRef } from 'react'
 import classNames from 'classnames'
-import { GTM, useGlobalData, useLazyLoading } from '../../../utils'
+import { GTM, useGlobalData } from '../../../utils'
 import Banner from './Banner'
 import ProductTile from './ProductTile'
 import Pagination from './Pagination'
@@ -14,8 +13,6 @@ export default function List(props) {
     submitForms,
     isLoading = false,
   } = props
-  const listRef = useRef(null)
-  useLazyLoading({ ref: listRef, dependency: products })
 
   const { params = {}, searchResult } = useGlobalData()
   const { searchPhrase } = params
@@ -43,7 +40,7 @@ export default function List(props) {
   })
 
   return (
-    <div ref={listRef} className={classes}>
+    <div className={classes}>
       {products.map((entry, index) => {
         if (entry.isBanner) {
           return <Banner key={`banner.${entry.id}`} {...entry} />
