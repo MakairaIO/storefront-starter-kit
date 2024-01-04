@@ -36,6 +36,9 @@ export default class Index extends Component {
           language,
           datatype: 'post',
           ctx,
+          sorting: {
+            publishDate: 'desc',
+          },
         }),
         fetchMenuData(),
       ])

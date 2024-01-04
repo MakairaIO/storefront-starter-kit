@@ -1,7 +1,7 @@
+import { formatDate } from '../../../utils'
 import Image from './Image'
 import Heading from '../Heading'
 import Text from '../Text'
-import { format } from 'date-fns'
 
 import variants from './variants'
 
@@ -14,6 +14,7 @@ function BlogDetail(props) {
     <>
       <section className="blog-detail">
         <Image {...props} />
+
         <div className="blog-detail__heading">
           <Heading
             element="h1"
@@ -23,9 +24,11 @@ function BlogDetail(props) {
           >
             {title}
           </Heading>
+
           <Text size="bacchus" className="blog-detail__date">
-            {format(new Date(publishDate), 'MMMM dd, yyyy')}
+            {formatDate(publishDate)}
           </Text>
+
           <Text size="bacchus" element="p" className="blog-detail__description">
             {description}
           </Text>

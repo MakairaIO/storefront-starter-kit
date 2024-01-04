@@ -24,7 +24,7 @@ export default function BlogImage(props) {
       preload={true}
       options={{
         desktop: {
-          source: promotionalImage,
+          source: promotionalImage.key, // This needs to be changed when using Cloudinary instead
           height: 220,
         },
       }}

@@ -12,11 +12,10 @@ function BlogListingPage(props) {
         robotFollow={false}
         robotIndex={false}
       />
+
       <Breadcrumb breadcrumb={[{ text: 'Blog', link: '/blog/' + language }]} />
+
       <BlogList {...props} />
-      {/* <ContentElements
-        elements={pageData.data.self.contentElements?.bottom?.elements}
-      /> */}
     </main>
   )
 }
