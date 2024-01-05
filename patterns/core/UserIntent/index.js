@@ -106,8 +106,8 @@ export default function UserIntent() {
       if (shouldShowContent(fullDocument, type)) {
         if (lightDocument.ctaType === 'popup' && !ctaPopup.show) {
           if (
-            fullDocument.contentElements?.top?.length &&
-            fullDocument.contentElements?.top?.length !== 0
+            fullDocument.contentElements?.top?.elements.length &&
+            fullDocument.contentElements?.top?.elements.length !== 0
           ) {
             setCTAPopup({
               show: true,
@@ -119,8 +119,8 @@ export default function UserIntent() {
           /* eslint-disable-next-line no-unused-vars */
           const [_, position] = fullDocument.ctaType.split('_')
           if (
-            fullDocument.contentElements?.top?.length &&
-            fullDocument.contentElements?.top?.length !== 0
+            fullDocument.contentElements?.top.elements?.length &&
+            fullDocument.contentElements?.top.elements?.length !== 0
           ) {
             setCTASlideIn({
               show: true,
