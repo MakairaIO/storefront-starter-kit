@@ -32,6 +32,10 @@ export default function useLazyLoading({
   customOptions = {},
   active = true,
 }) {
+  deprecationWarning(
+    'useLazyLoading is deprecated. Please use the native browser based lazy loading instead.'
+  )
+
   const defaultOptions = {
     root: null,
     rootMargin: '0px',
@@ -87,6 +91,9 @@ export default function useLazyLoading({
           })
       }
     },
-    [ref, dependency, options]
+    [ref, dependency, options, active]
   )
 }
+
+const deprecationWarning =
+  process.env.NODE_ENV !== 'production' ? console.warn : () => {}

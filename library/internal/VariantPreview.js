@@ -48,7 +48,7 @@ export default function VariantPreview({
       <h2>
         {variant.name}
 
-        <Link href="/pali/variants/[id]" as={variantLinkTarget}>
+        <Link href="/pali/variants/[id]" as={variantLinkTarget} legacyBehavior>
           <a
             href={variantLinkTarget}
             className="pali__external-link"

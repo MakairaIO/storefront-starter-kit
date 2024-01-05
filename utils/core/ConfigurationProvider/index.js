@@ -4,7 +4,7 @@ const ConfigurationContext = React.createContext()
 
 const CLOUDINARY_BASE = 'https://res.cloudinary.com'
 
-const transformationMapping = {
+const cloudinaryTransformationMapping = {
   width: 'w',
   height: 'h',
   quality: 'q',
@@ -14,16 +14,53 @@ const transformationMapping = {
   gravity: 'g',
 }
 
+const makairaMediaTransformationMapping = {
+  pixelRatio: 'dpr',
+}
+
+const allowedMakairaMediaTransformations = [
+  'anim',
+  'background',
+  'blur',
+  'border',
+  'brightness',
+  'compression',
+  'contrast',
+  'dpr',
+  'fit',
+  // "format", -> https://developers.cloudflare.com/images/image-resizing/resize-with-workers/#format
+  'gamma',
+  'gravity',
+  'height',
+  'metadata',
+  'onerror',
+  'quality',
+  'rotate',
+  'sharpen',
+  'trim',
+  'width',
+]
+
 class ConfigurationProvider extends Component {
   static defaultProps = { assetUrl: '' }
 
   getImageLink = (options = {}) => {
     const { source } = options
+    const { assetUrl } = this.props
 
     if (!source) return null
 
     if (typeof source == 'string') {
-      return source.startsWith('https://') ? source : this.getS3Link(options)
+      // check for shop images
+      if (source.startsWith('https://')) {
+        return source
+      }
+
+      if (assetUrl && new URL(assetUrl).hostname.endsWith('makaira.media')) {
+        return this.getMakairaMediaLink(options)
+      } else {
+        return this.getS3Link(options)
+      }
     } else {
       // objects = cloudinary
       return this.getCloudinaryLink(options)
@@ -72,6 +109,48 @@ class ConfigurationProvider extends Component {
     return assetUrl + '/' + source
   }
 
+  getMakairaMediaLink = (options) => {
+    const { source = '', ...rest } = options
+    const { assetUrl } = this.props
+
+    // format=auto is not supported via worker at the moment, only via url
+    // this is you the reminder to add it in the future
+    // if (rest.format === undefined) {
+    //   rest.format = 'auto'
+    // }
+
+    let transformations = this.getMakairaMediaTransformations(rest)
+
+    // currently avif are not supported by cloudflare (https://developers.cloudflare.com/images/image-resizing/format-limitations/)
+    // in the future this will be fixed in the worker
+    if (
+      !['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(get_url_extension(source))
+    ) {
+      transformations = null
+    }
+
+    const parts = [assetUrl, transformations, source].filter(Boolean)
+    return parts.join('/')
+  }
+
+  getMakairaMediaTransformations = (settings) => {
+    const transformations = Object.entries(settings).reduce(
+      (transformations, currentSetting) => {
+        const [name, value] = currentSetting
+        const transformationKey =
+          makairaMediaTransformationMapping[name] || name
+
+        if (allowedMakairaMediaTransformations.includes(transformationKey)) {
+          transformations.push(`${transformationKey}=${value}`)
+        }
+        return transformations
+      },
+      []
+    )
+
+    return transformations.join(',')
+  }
+
   getCloudinaryLink = (options) => {
     const { source = {}, transformationString = '', ...rest } = options
 
@@ -110,7 +189,7 @@ class ConfigurationProvider extends Component {
       (transformations, currentSetting) => {
         const [name, value] = currentSetting
 
-        const transformationKey = transformationMapping[name]
+        const transformationKey = cloudinaryTransformationMapping[name]
 
         // Make sure to add only known transformations
         if (transformationKey) {
@@ -137,6 +216,10 @@ class ConfigurationProvider extends Component {
       </ConfigurationContext.Provider>
     )
   }
+}
+
+function get_url_extension(url) {
+  return url.split(/[#?]/)[0].split('.').pop().trim()
 }
 
 function useConfiguration() {
