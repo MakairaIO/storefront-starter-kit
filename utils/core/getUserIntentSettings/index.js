@@ -40,7 +40,23 @@ function filterLatestUpdateDocument(scenarioDocuments = [], documents = []) {
   if (popup) result.push(popup)
   return result
 }
-
+/**
+ * Return {
+    pageScroll: [
+      { value: 40, documents: [] },
+      { value: 60, documents: [''] }
+    ],
+    pageExit: [ '', '' ],
+    pageInactivity: [
+      { value: 5, documents: [''] },
+      { value: 5, documents: [''] }
+    ],
+    pageElapsed: [
+      { value: 5, documents: [''] },
+      { value: 10, documents: [''] }
+    ]
+  }
+  */
 export default function getUserIntentSettings(documents = []) {
   const initData = {
     pageScroll: [],

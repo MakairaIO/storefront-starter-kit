@@ -6,6 +6,7 @@ import {
   useTranslation,
 } from '../../../utils'
 import { ContentElements, Drawer, Modal } from '../..'
+import { useRouter } from 'next/router'
 
 const LOCALSTORAGE_KEY = 'USER_INTENT'
 
@@ -24,30 +25,13 @@ export default function UserIntent() {
   const [scenarios, setScenarios] = useState([])
 
   const inactivityTimeout = useRef([])
-  /**
-   * {
-      pageScroll: [
-        { value: 40, documents: [] },
-        { value: 60, documents: [''] }
-      ],
-      pageExit: [ '', '' ],
-      pageInactivity: [
-        { value: 5, documents: [''] },
-        { value: 5, documents: [''] }
-      ],
-      pageElapsed: [
-        { value: 5, documents: [''] },
-        { value: 10, documents: [''] }
-      ]
-    }
-   */
-  const [settings, setSettings] = useState({})
   const [ctaPopup, setCTAPopup] = useState({ show: false, document: null })
   const [ctaSlideIn, setCTASlideIn] = useState({
     show: false,
     position: null,
     document: null,
   })
+  const { asPath } = useRouter()
 
   const fetchUserIntent = async () => {
     try {
@@ -57,8 +41,6 @@ export default function UserIntent() {
         includeContent: true,
       })
       setScenarios(documents)
-      const filteredSettings = getUserIntentSettings(documents)
-      setSettings(filteredSettings)
     } catch (error) {
       setScenarios([])
     }
@@ -134,8 +116,8 @@ export default function UserIntent() {
     }
   }
 
-  const onPageLoaded = () => {
-    const array = settings.pageElapsed || []
+  const onPageLoaded = (pageElapsed) => {
+    const array = pageElapsed || []
     for (let item of array) {
       setTimeout(() => {
         showContent(item.documents, 'pageElapsed')
@@ -143,29 +125,29 @@ export default function UserIntent() {
     }
   }
 
-  const onUserScroll = () => {
+  const onUserScroll = (pageScroll) => {
     const totalHeight = document.body.scrollHeight - window.innerHeight
     const scrolledPercentage = (window.scrollY / totalHeight) * 100
-    const array = settings.pageScroll || []
+    const array = pageScroll || []
     for (let item of array) {
       if (scrolledPercentage >= item.value) {
         showContent(item.documents, 'pageScroll')
       }
     }
   }
-  const onuserScrollDebounce = debounce(onUserScroll, 100)
+  const onUserScrollDebounce = debounce(onUserScroll, 100)
 
-  const onExitIntent = () => {
-    const array = settings.pageExit || []
+  const onExitIntent = (pageExit) => {
+    const array = pageExit || []
     showContent(array, 'pageExit')
   }
 
-  const onMouseMove = () => {
+  const onMouseMove = (pageInactivity) => {
     for (let ref of inactivityTimeout.current) {
       clearTimeout(ref)
     }
     let refs = []
-    const array = settings.pageInactivity || []
+    const array = pageInactivity || []
     for (let item of array) {
       const ref = setTimeout(() => {
         // Do something when the user is inactive for the specified duration
@@ -177,31 +159,39 @@ export default function UserIntent() {
     inactivityTimeout.current = refs
   }
 
+  const onMouseMoveDebounce = debounce(onMouseMove, 100)
+
   useEffect(() => {
     fetchUserIntent()
   }, [])
 
   useEffect(() => {
+    const settings = getUserIntentSettings(scenarios) || {}
+    const _onUserScroll = () => onUserScrollDebounce(settings.pageScroll)
+    const _onExitIntent = () => onExitIntent(settings.pageExit)
+    const _onMouseMove = () => onMouseMoveDebounce(settings.pageInactivity)
+
     if (Object.keys(settings).length > 0) {
       // Trigger after seconds when page loaded
-      onPageLoaded()
+      onPageLoaded(settings.pageElapsed)
 
       // Trigger on page scroll
-      window.addEventListener('scroll', onuserScrollDebounce)
+      window.addEventListener('scroll', _onUserScroll)
 
       //Trigger on exit intent (user hover on href bar)
-      document.body.addEventListener('mouseleave', onExitIntent)
+      document.body.addEventListener('mouseleave', _onExitIntent)
 
       // Trigger on user inactive
-      document.addEventListener('mousemove', onMouseMove)
+      _onMouseMove() // Also triggered incase page load without any touch on
+      document.addEventListener('mousemove', _onMouseMove)
     }
 
     return () => {
-      window.removeEventListener('scroll', onuserScrollDebounce)
-      document.body.removeEventListener('mouseleave', onExitIntent)
-      document.removeEventListener('mousemove', onMouseMove)
+      window.removeEventListener('scroll', _onUserScroll)
+      document.body.removeEventListener('mouseleave', _onExitIntent)
+      document.removeEventListener('mousemove', _onMouseMove)
     }
-  }, [settings])
+  }, [scenarios, asPath])
 
   const onClosePopup = () => setCTAPopup({ document: null, show: false })
 
@@ -218,6 +208,7 @@ export default function UserIntent() {
       )}
       <Drawer
         open={ctaSlideIn.show}
+        overlay={true}
         onClose={onCloseSlideIn}
         className="cta-slidein"
         placement={ctaSlideIn.position || 'left'}
