@@ -1,6 +1,5 @@
 import classnames from 'classnames'
-import { useRef } from 'react'
-import { useConfiguration, useLazyLoading } from '../../../utils'
+import { useConfiguration } from '../../../utils'
 import Preload from './Preload'
 
 /*
@@ -37,8 +36,6 @@ function Image(props) {
   } = props
 
   const { getImageLinks } = useConfiguration()
-  const wrapperRef = useRef(null)
-
   const imageLinks = getImageLinks(options)
 
   /**
@@ -51,28 +48,20 @@ function Image(props) {
 
   const wrapperClasses = classnames('image', className)
 
-  useLazyLoading({ ref: wrapperRef, dependency: options })
-
   let imgProps = {
     alt: alt,
     title: title,
+    ...(lazyload ? { loading: 'lazy' } : {}),
   }
 
   const fallbackSrc = imageLinks['desktop']
     ? imageLinks['desktop']
     : Object.values(imageLinks)[0]
 
-  if (lazyload) {
-    imgProps['data-src'] = fallbackSrc['origin']
-    imgProps[
-      'data-srcset'
-    ] = `${fallbackSrc['origin']} 1x, ${fallbackSrc['retina']} 2x`
-  } else {
-    imgProps['src'] = fallbackSrc['origin']
-    imgProps[
-      'srcSet'
-    ] = `${fallbackSrc['origin']} 1x, ${fallbackSrc['retina']} 2x`
-  }
+  imgProps['src'] = fallbackSrc['origin']
+  imgProps[
+    'srcSet'
+  ] = `${fallbackSrc['origin']} 1x, ${fallbackSrc['retina']} 2x`
 
   /**
    * Explicit check on the amount of generated <source> elements to avoid rendering
@@ -84,7 +73,7 @@ function Image(props) {
     <>
       <Preload preload={preload} options={options} imageLinks={imageLinks} />
 
-      <ElementWrapper ref={wrapperRef} className={wrapperClasses}>
+      <ElementWrapper className={wrapperClasses}>
         {shouldRenderSourceElements &&
           Object.entries(options).map((option) => {
             const [breakpoint, config] = option
@@ -92,17 +81,13 @@ function Image(props) {
             const src = imageLinks[breakpoint]['origin']
             const retinaSrc = imageLinks[breakpoint]['retina']
 
-            let sourceProps = {
-              media: config.media,
-            }
-
-            if (lazyload) {
-              sourceProps['data-srcset'] = `${src} 1x, ${retinaSrc} 2x`
-            } else {
-              sourceProps['srcSet'] = `${src} 1x, ${retinaSrc} 2x`
-            }
-
-            return <source key={breakpoint} {...sourceProps} />
+            return (
+              <source
+                key={breakpoint}
+                srcSet={`${src} 1x, ${retinaSrc} 2x`}
+                media={config.media}
+              />
+            )
           })}
 
         <img {...imgProps} />

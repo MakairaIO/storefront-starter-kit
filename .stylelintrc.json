@@ -1,0 +1,18 @@
+{
+  "plugins": [
+    "stylelint-stylus"
+  ],
+  "overrides": [
+    {
+      "files": ["*.stylus", "*.styl", "**/*.stylus", "**/*.styl"],
+      "customSyntax": "postcss-styl"
+    }
+  ],
+  "rules": {
+    "stylus/semicolon": "never",
+    "stylus/declaration-colon": "never",
+    "stylus/pythonic": "always",
+    "stylus/number-leading-zero": "always",
+    "length-zero-no-unit": true
+  }
+}

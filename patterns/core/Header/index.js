@@ -152,10 +152,11 @@ class Header extends Component {
   handleSearchResult = () => {
     const searchResult = this.state.autosuggestResult
 
-    const totalResultCount = Object.values(searchResult).reduce(
-      (total, resultType) => total + resultType.total,
-      0
-    )
+    console.log(Object.values(searchResult))
+
+    const totalResultCount = Object.values(searchResult)
+      .filter((type) => !isNaN(type.total))
+      .reduce((total, resultType) => total + resultType.total, 0)
 
     if (this.state.searchPhrase && totalResultCount > 0) {
       this.setState({ totalResultCount }, this.showAutosuggestBox)
