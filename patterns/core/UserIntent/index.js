@@ -104,6 +104,7 @@ export default function UserIntent() {
             fullDocument.contentElements?.top.elements?.length &&
             fullDocument.contentElements?.top.elements?.length !== 0
           ) {
+            console.log(66666, fullDocument)
             setCTASlideIn({
               show: true,
               position,
@@ -220,7 +221,7 @@ export default function UserIntent() {
         }
       >
         <ContentElements
-          elements={ctaSlideIn.document?.config?.top.elements || []}
+          elements={ctaSlideIn.document?.contentElements?.top.elements || []}
         />
       </Drawer>
     </>
