@@ -74,4 +74,6 @@ export {
   ADD_TO_CART_DISPATCH_EVENT_NAME,
 } from './core/useAddToCart'
 export { default as getStructureData } from './core/getStructureData'
+export { default as getUserIntentSettings } from './core/getUserIntentSettings'
+
 /* Add project specific utils here */
