@@ -53,7 +53,7 @@ export default function UserIntent() {
     try {
       const documents = await fetchDocumentData({
         language,
-        datatype: 'userIntent',
+        datatype: 'intent',
         includeContent: true,
       })
       setScenarios(documents)
