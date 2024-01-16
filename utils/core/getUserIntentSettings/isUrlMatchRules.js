@@ -25,14 +25,22 @@ function operatorComparision(operator, sourceValue, compareValue = '') {
   return false
 }
 
+function stripTrailingSlash(str) {
+  return str.replace(/\/$/, '')
+}
+
 export function isUrlMatchRules(rules) {
-  const url = window.location.pathname
+  const url = stripTrailingSlash(window.location.pathname)
   const searchStr = window.location.search.replace('?', '')
   const query = Object.fromEntries(new URLSearchParams(searchStr).entries())
   for (let rule of rules) {
     let isMatched = false
     if (rule.key === 'url') {
-      isMatched = operatorComparision(rule.operator, url, rule.value)
+      isMatched = operatorComparision(
+        rule.operator,
+        url,
+        stripTrailingSlash(rule.value)
+      )
     }
     if (rule.key === 'query') {
       const queryValue = rule.queryName && query[rule.queryName]
