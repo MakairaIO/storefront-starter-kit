@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
 const sendSendGridEmail = require('../utils/core/sendSendGridEmail')
 
 const logError = require('./utils/logError')
+const transformNexiItems = require('./utils/transformNexiItems')
 
 const dev = process.env.NODE_ENV !== 'production'
 const port = process.env.PORT || process.env.NODE_PORT || 5000
@@ -83,6 +84,10 @@ app
       })
     })
 
+    server.get('/checkout', (req, res) => {
+      app.render(req, res, '/frontend/checkout', req.query)
+    })
+
     server.post('/log-error', (req, res) => {
       logError(req.body)
       res.json()
@@ -110,6 +115,44 @@ app
         return res.status(200).end()
       } catch (e) {
         return res.status(e.code).json(e)
+      }
+    })
+
+    // API Call for nexi checkout creation
+    server.post('/api/create-payment', async (req, res) => {
+      const url = 'https://test.api.dibspayment.eu/v1/payments'
+
+      const { items, 'checkout-data': checkoutData } = req.body
+      const nexiItems = transformNexiItems(items)
+
+      const checkoutArray = JSON.parse(checkoutData)
+      const checkoutPayloadData = checkoutArray[0][0] // Data is returned from api inside a nested array
+
+      const checkoutPayload = Object.assign(checkoutPayloadData, {
+        order: {
+          items: nexiItems,
+          amount: nexiItems.reduce(
+            (acc, item) => acc + item.grossTotalAmount,
+            0
+          ),
+          currency: 'EUR',
+        },
+      })
+
+      try {
+        const result = await fetch(url, {
+          method: 'POST',
+          headers: {
+            Authorization: process.env.NEXI_SECRET_KEY,
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(checkoutPayload),
+        })
+
+        return res.status(201).json(await result.json())
+      } catch (e) {
+        return res.status(500).json(e)
       }
     })
 
