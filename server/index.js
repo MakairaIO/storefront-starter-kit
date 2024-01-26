@@ -84,10 +84,6 @@ app
       })
     })
 
-    server.get('/checkout', (req, res) => {
-      app.render(req, res, '/frontend/checkout', req.query)
-    })
-
     server.post('/log-error', (req, res) => {
       logError(req.body)
       res.json()
