@@ -124,6 +124,19 @@ app
       const checkoutArray = JSON.parse(checkoutData)
       const checkoutPayloadData = checkoutArray[0][0] // Data is returned from api inside a nested array
 
+      if (!checkoutPayloadData.checkout.merchantHandlesConsumerData) {
+        checkoutPayloadData.checkout.shippingCountries =
+          checkoutPayloadData.checkout.shippingCountries.map((countryCode) => ({
+            countryCode,
+          }))
+
+        checkoutPayloadData.checkout.shipping.countries =
+          checkoutPayloadData.checkout.shippingCountries
+      } else {
+        delete checkoutPayloadData.checkout.shipping
+        delete checkoutPayloadData.checkout.shippingCountries
+      }
+
       const checkoutPayload = Object.assign(checkoutPayloadData, {
         order: {
           items: nexiItems,
@@ -134,6 +147,11 @@ app
           currency: 'EUR',
         },
       })
+
+      console.log(
+        'checkoutPayloadData',
+        JSON.stringify(checkoutPayloadData, null, 2)
+      )
 
       try {
         const result = await fetch(url, {
