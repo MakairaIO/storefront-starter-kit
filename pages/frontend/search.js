@@ -12,16 +12,16 @@ import {
   ConfigurationProvider,
   TranslationProvider,
   AbTestingProvider,
-  fetchSearchResult,
-  fetchMenuData,
   redirect,
   redirectToDetailPageOnSingleHit,
   redirectOnSearchRedirectHit,
   GTM,
+  makairaClient,
 } from '../../utils'
 import ErrorPage from '../_error'
 import { ShopProvider } from '@makaira/storefront-react'
 import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
+import { fetchMultiple } from '@makaira/storefront-core'
 
 const shopClient = new StorefrontShopAdapterLocal()
 
@@ -33,10 +33,10 @@ export default class Index extends Component {
     if (isEmpty(query)) redirect({ ctx, target: '/' })
 
     try {
-      const [searchResult, menuData] = await Promise.all([
-        fetchSearchResult({ ctx }),
-        fetchMenuData(),
-      ])
+      const [searchResult, menuData] = await fetchMultiple(
+        makairaClient.request('search', ctx),
+        makairaClient.request('menu')
+      )
 
       redirectToDetailPageOnSingleHit({ ctx, searchResult })
       redirectOnSearchRedirectHit({ ctx, searchResult })

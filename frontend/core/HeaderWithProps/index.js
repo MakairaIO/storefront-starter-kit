@@ -3,7 +3,7 @@ import {
   useGlobalData,
   useTranslation,
   submitSearchForm,
-  fetchAutosuggestResult,
+  makairaClient,
 } from '../../../utils'
 
 export default function HeaderWithProps() {
@@ -13,7 +13,11 @@ export default function HeaderWithProps() {
   const headerProps = {
     menu: menuData,
     fetchAutosuggestResult: (searchPhrase) =>
-      fetchAutosuggestResult({ searchPhrase, language }),
+      makairaClient
+        .request('search')
+        .setSearchPhrase(searchPhrase)
+        .setCount(8)
+        .fetch(),
     submitSearchForm: (searchPhrase) =>
       submitSearchForm({ searchPhrase, language }),
   }
