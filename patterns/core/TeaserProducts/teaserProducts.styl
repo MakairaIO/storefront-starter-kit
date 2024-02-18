@@ -1,12 +1,8 @@
-$breakpoint-small = 400px
-$breakpoint-medium = 720px
-$breakpoint-large = 1200px
-
 teaserLeft()
   .product-teaser__teaser-image
     margin-left -1.8rem
 
-    @media (min-width $breakpoint-small)
+    @media (min-width var(--breakpoint-xs))
       margin-left 0
 
 teaserRight()
@@ -15,7 +11,7 @@ teaserRight()
     align-items flex-end
     text-align right
 
-    @media (min-width $breakpoint-medium)
+    @media (min-width var(--breakpoint-s))
       order 0
       align-items flex-start
       text-align left
@@ -23,19 +19,19 @@ teaserRight()
   .product-teaser__teaser-image
     margin-right -1.8rem
 
-    @media (min-width $breakpoint-small)
+    @media (min-width var(--breakpoint-xs))
       margin-right 0
 
 
 .product-teaser
   padding 1.2rem 1.5rem
 
-  @media (min-width $breakpoint-medium)
+  @media (min-width var(--breakpoint-s))
     display grid
     grid-template-columns 1fr 1fr
     grid-gap 3rem 2rem
 
-  @media (min-width $breakpoint-large)
+  @media (min-width var(--breakpoint-m))
     grid-template-columns 1fr 1fr 1fr
     padding 1.2rem 2rem
 
@@ -44,14 +40,14 @@ teaserRight()
   height 37.2rem
   overflow hidden
 
-  @media (min-width $breakpoint-small)
+  @media (min-width var(--breakpoint-xs))
     justify-content center
     padding 1rem
 
   & + &
     margin-top 3rem
 
-    @media (min-width $breakpoint-medium)
+    @media (min-width var(--breakpoint-s))
       margin-top 0
 
 .product-teaser__teaser-image
@@ -68,7 +64,7 @@ teaserRight()
   align-items flex-start
   padding 8.6rem 1rem 4.9rem
 
-  @media (min-width $breakpoint-small)
+  @media (min-width var(--breakpoint-xs))
     max-width 26rem
     padding-left 2rem
     padding-right 2rem
@@ -79,7 +75,7 @@ teaserRight()
   letter-spacing 0.1rem
 
 .product-teaser__title
-  @media (min-width $breakpoint-small)
+  @media (min-width var(--breakpoint-xs))
     diana()
 
 .product-teaser__button

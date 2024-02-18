@@ -1,13 +1,13 @@
-$breakpoint-small = 400px
-$breakpoint-medium = 650px
-$breakpoint-large = 1000px
-$breakpoint-huge = 1150px
+var(--breakpoint-xs) = 400px
+var(--breakpoint-s) = 650px
+var(--breakpoint-m) = 1000px
+var(--breakpoint-l) = 1150px
 
 .product-list
   padding 0 1.5rem
   margin-top 2.4rem
 
-  @media (min-width $breakpoint-large)
+  @media (min-width var(--breakpoint-m))
     padding 0 2rem
 
 .product-list__actions
@@ -28,14 +28,14 @@ $breakpoint-huge = 1150px
   &--loading
     opacity 0.2
 
-  @media (min-width $breakpoint-small)
+  @media (min-width var(--breakpoint-xs))
     // see https://stackoverflow.com/a/52861514
     grid-template-columns repeat(2, minmax(0,1fr))
 
-  @media (min-width $breakpoint-medium)
+  @media (min-width var(--breakpoint-s))
     grid-template-columns repeat(3, minmax(0,1fr))
 
-  @media (min-width $breakpoint-huge)
+  @media (min-width var(--breakpoint-l))
     grid-template-columns repeat(4, minmax(0,1fr))
 
 .product-item
@@ -88,7 +88,7 @@ $breakpoint-huge = 1150px
   text-align center
 
 .product-list__filter-button
-  @media (min-width $breakpoint-large)
+  @media (min-width var(--breakpoint-m))
     display none
 
   &--active
@@ -211,7 +211,7 @@ $breakpoint-huge = 1150px
 .product-list__filter-reset-button
   display none
 
-  @media (min-width $breakpoint-large)
+  @media (min-width var(--breakpoint-m))
     display inline-flex
 
   .icon
@@ -270,7 +270,7 @@ $breakpoint-huge = 1150px
     text-align right
     span
         font-size 1rem
-        color #fff
+        color var(--color-base-main)
         text-transform uppercase
         text-align center
         font-weight bold

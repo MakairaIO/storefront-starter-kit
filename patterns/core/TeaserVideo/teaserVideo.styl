@@ -1,21 +1,16 @@
-$breakpoint-small = 550px
-$breakpoint-medium = 600px
-$breakpoint-large = 1024px
-$breakpoint-huge = 1400px
-
 .video-teaser
   display block
   position relative
   color var(--neutral-00)
   margin 1.2rem 0
 
-  @media (min-width $breakpoint-huge)
+  @media (min-width var(--breakpoint-xl))
     padding 0 2rem
 
 .video-teaser__video
   display block
   width 100%
-  @media (min-width $breakpoint-large)
+  @media (min-width var(--breakpoint-m))
     width 100%
     height auto
   video
@@ -26,7 +21,7 @@ $breakpoint-huge = 1400px
   font-size 1rem
   line-height 1.3rem
   letter-spacing 0.3rem
-  @media (min-width $breakpoint-large)
+  @media (min-width var(--breakpoint-m))
     font-size 1.5rem
 
 .video-teaser__heading
@@ -39,7 +34,7 @@ $breakpoint-huge = 1400px
     letter-spacing 0.118rem
     max-width 21.2rem
     margin 2rem 0
-    @media (min-width $breakpoint-large)
+    @media (min-width var(--breakpoint-m))
       font-size 4rem
       line-height 5rem
       margin-top 2rem
@@ -49,26 +44,26 @@ $breakpoint-huge = 1400px
   background-color #152429
   padding 3rem 1.5rem
   position relative
-  @media (min-width $breakpoint-large)
+  @media (min-width var(--breakpoint-m))
     position absolute
     top 0
     right 2rem
     width 26.7rem
     height 100%
     opacity 0.85
-  @media (min-width $breakpoint-huge)
+  @media (min-width var(--breakpoint-xl))
     right 5.5rem
     padding 13.5rem 2rem 2rem 2.7rem
 
   .heading
-    @media (min-width $breakpoint-large)
+    @media (min-width var(--breakpoint-m))
       font-size 2.3rem
       line-height 2.5rem
 
   .copytext
     font-size 1.3rem
     line-height 2rem
-    @media (min-width $breakpoint-large)
+    @media (min-width var(--breakpoint-m))
       font-size 1.5rem
       line-height 2.5rem
 
@@ -79,7 +74,7 @@ $breakpoint-huge = 1400px
   margin 2rem 0
   width 100%
   text-transform uppercase
-  @media (min-width $breakpoint-medium)
+  @media (min-width var(--breakpoint-s))
     position relative
     top 0
     padding 0
@@ -92,9 +87,9 @@ $breakpoint-huge = 1400px
   position absolute
   bottom 2rem
   right 2rem
-  @media (min-width $breakpoint-large)
+  @media (min-width var(--breakpoint-m))
     right 30.7rem
-  @media (min-width $breakpoint-huge)
+  @media (min-width var(--breakpoint-xl))
     right 33rem
 
 .video-teaser__play-button
@@ -104,7 +99,7 @@ $breakpoint-huge = 1400px
   &:hover
     cursor pointer
     color #adb5bd
-  @media (min-width $breakpoint-large)
+  @media (min-width var(--breakpoint-m))
     width 3rem
     height 3rem
 

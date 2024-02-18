@@ -1,13 +1,11 @@
-$breakpoint-large = 800px
-
 .desktop-navigation__wrapper
   display none
 
-  @media (min-width $breakpoint-large)
+  @media (min-width var(--breakpoint-s))
     display block
     width calc(100% - 3rem) // 1.5rem "padding" on each side
     margin 0 auto
-    border-bottom 1px solid var(--neutral-40)
+    border-bottom 1px solid var(--color-primary-main)
 
 // FIXME: Implement behaviour for overflowing menu-entries
 .desktop-navigation
@@ -18,12 +16,12 @@ $breakpoint-large = 800px
 .desktop-navigation__item-link
   display block
   height 100%
-  font-size 1.7rem
-  font-weight var(--font-weight-semi-bold)
-  line-height 3.5rem
-  letter-spacing 0.025rem
-  color var(--neutral-90)
-  padding 0 1.5rem
+  font-size var(--font-regular)
+  font-weight 600
+  line-height var(--spacing-xl)
+  letter-spacing var(--spacing-xs)
+  color var(--color-base-content)
+  padding 0 var(--spacing-m)
   position relative
 
   &:hover
@@ -47,14 +45,13 @@ $breakpoint-large = 800px
   width 100%
   background var(--neutral-00)
   position absolute
-  top calc(100% + 0.5rem) // 1px for the border
+  top calc(100% + 0.5rem)
   left 0
   z-index var(--z-index-medium)
   padding 2.5rem 2rem
   border 1px solid var(--neutral-40)
   border-radius 4px
   box-shadow var(--elevation-l)
-
 
 .desktop-navigation__flyout-column-header
   display flex

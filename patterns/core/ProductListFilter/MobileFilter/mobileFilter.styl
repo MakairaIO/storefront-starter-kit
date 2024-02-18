@@ -1,8 +1,4 @@
-$breakpoint-tiny = 370px
-$breakpoint-small = 475px
-
-.mobile-filter
-.mobile-filter__list
+.mobile-filter, .mobile-filter__list
   height 100%
   width 100%
   background var(--neutral-00)
@@ -21,7 +17,7 @@ $breakpoint-small = 475px
   transform translateX(-110%) // 110% instead of 100% because of the box-shadow
   transition transform 400ms cubic-bezier(0, 1.02, 0.48, 0.92)
 
-  @media (min-width $breakpoint-small)
+  @media (min-width var(--breakpoint-xs))
     max-width 40rem
     box-shadow var(--elevation-m)
 
@@ -57,14 +53,11 @@ $breakpoint-small = 475px
   font-weight var(--font-weight-regular)
   color var(--neutral-50)
   margin-left auto
-  max-width 12rem
+  max-width clamp(120px, 100%, 150px)
   text-overflow ellipsis
   text-align right
   overflow hidden
   white-space nowrap
-
-  @media (min-width $breakpoint-tiny)
-    max-width 15rem
 
 .mobile-filter__button-chevron
   height 1.4rem
@@ -75,8 +68,7 @@ $breakpoint-small = 475px
   .mobile-filter__active-filters + &
     margin-left 0
 
-.mobile-filter__header
-.mobile-filter__list-header
+.mobile-filter__header, .mobile-filter__list-header
   display flex
   align-items center
   background var(--neutral-00)
@@ -90,14 +82,12 @@ $breakpoint-small = 475px
     margin-left auto
 
 .mobile-filter__list-header
-
   span
     margin-right 1rem
     padding-right 1rem
     border-right 1px solid var(--neutral-40)
 
-.mobile-filter__footer
-.mobile-filter__list-footer
+.mobile-filter__footer, .mobile-filter__list-footer
   display flex
   justify-content center
   align-items center

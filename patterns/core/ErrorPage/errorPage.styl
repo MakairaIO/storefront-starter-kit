@@ -1,6 +1,3 @@
-$breakpoint-small = 700px
-$breakpoint-medium = 1000px
-
 .error-page
   font-family var(--font-family-regular)
   margin 10vh auto
@@ -58,7 +55,7 @@ code.error-page__further-info
       display flex
       flex-direction column
 
-      @media (min-width $breakpoint-small)
+      @media (min-width var(--breakpoint-s))
         flex-direction row
 
     li + li
@@ -67,5 +64,5 @@ code.error-page__further-info
     span:first-of-type
       font-weight bold
 
-      @media (min-width $breakpoint-small)
+      @media (min-width var(--breakpoint-s))
         flex 0 0 9.5rem

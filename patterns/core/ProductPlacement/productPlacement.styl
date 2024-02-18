@@ -1,26 +1,23 @@
-$breakpoint-small = 400px
-$breakpoint-medium = 560px
-$breakpoint-large = 1000px
-
 .product-placement
   padding 1.2rem 1.5rem
 
-  @media (min-width $breakpoint-large = 1000px)
+  @media (min-width var(--breakpoint-m))
     padding 1.2rem 2rem
 
 .product-placement__list
+  --breakpoint-xxs 400px
   display grid
   grid-template-columns repeat(1, minmax(0, 1fr))
   grid-gap 1.3rem 0
   width 100%
 
-  @media (min-width $breakpoint-small)
+  @media (min-width var(--breakpoint-xxs))
     grid-template-columns repeat(2, minmax(0, 1fr))
 
-  @media (min-width $breakpoint-medium)
+  @media (min-width var(--breakpoint-xs))
     grid-template-columns repeat(3, minmax(0, 1fr))
 
-  @media (min-width $breakpoint-large)
+  @media (min-width var(--breakpoint--m))
     grid-template-columns repeat(auto-fit, minmax(185px, 27rem))
 
 .product-placement-item

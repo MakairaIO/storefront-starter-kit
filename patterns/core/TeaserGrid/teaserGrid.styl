@@ -1,29 +1,24 @@
-$breakpoint-small = 550px
-$breakpoint-medium = 950px
-$breakpoint-large = 1200px
-$breakpoint-huge = 1400px
-
 .teaser-grid
   padding 1.2rem 1.5rem
 
-  @media (min-width $breakpoint-small)
+  @media (min-width var(--breakpoint-xs))
     display grid
     grid-gap 1.8rem 1.2rem
     grid-template-areas "top-right top-right" "left bottom-right" "left bottom-right" "middle middle"
     grid-template-columns repeat(2, 1fr)
 
-  @media (min-width $breakpoint-medium)
+  @media (min-width var(--breakpoint-m))
     grid-gap 1.8rem 2rem
     grid-template-areas "top-right top-right top-right" "left bottom-right bottom-right" "left middle middle"
     grid-template-columns repeat(3, 1fr)
     grid-template-rows repeat(3, 36rem)
 
-  @media (min-width $breakpoint-large)
+  @media (min-width var(--breakpoint-l))
     grid-template-columns repeat(4, 1fr)
     grid-template-rows repeat(2, 36rem)
     grid-template-areas "left top-right top-right top-right" "left middle middle bottom-right"
 
-  @media (min-width $breakpoint-huge)
+  @media (min-width var(--breakpoint-xl))
     padding 1.2rem 2rem
 
 .teaser-grid__tile
@@ -33,7 +28,7 @@ $breakpoint-huge = 1400px
   & + &
     margin-top 1.8rem
 
-    @media (min-width $breakpoint-small)
+    @media (min-width var(--breakpoint-xs))
       // reset here since we switch to CSS-Grid with gaps now
       margin-top 0
 
@@ -50,7 +45,7 @@ $breakpoint-huge = 1400px
     display inline-block
     margin-bottom 0.6rem
 
-    @media (min-width $breakpoint-small)
+    @media (min-width var(--breakpoint-xs))
       margin-bottom 1.2rem
 
 .teaser-grid__content
@@ -61,11 +56,11 @@ $breakpoint-huge = 1400px
   padding 1.2rem 1.5rem 1.8rem
 
   .heading
-    @media (min-width $breakpoint-small)
+    @media (min-width var(--breakpoint-xs))
       diana()
 
   .copytext
-    @media (min-width $breakpoint-small)
+    @media (min-width var(--breakpoint-xs))
       bacchus()
 
   button
@@ -78,7 +73,7 @@ $breakpoint-huge = 1400px
   picture
     height 18rem
 
-  @media (min-width $breakpoint-small)
+  @media (min-width var(--breakpoint-xs))
     height 36rem
 
     picture
@@ -92,12 +87,12 @@ $breakpoint-huge = 1400px
       left 0
       max-width 25.8rem
 
-  @media (min-width $breakpoint-medium)
+  @media (min-width var(--breakpoint-m))
 
     .teaser-grid__content
       max-width 29rem
 
-  @media (min-width $breakpoint-huge)
+  @media (min-width var(--breakpoint-xl))
 
     .teaser-grid__content
       max-width 32.5rem
@@ -111,10 +106,10 @@ $breakpoint-huge = 1400px
     position absolute
     bottom 0
 
-  @media (min-width $breakpoint-small)
+  @media (min-width var(--breakpoint-xs))
     height 62.4rem
 
-  @media (min-width $breakpoint-medium)
+  @media (min-width var(--breakpoint-m))
     height 100%
 
     .teaser-grid__content
@@ -133,7 +128,7 @@ $breakpoint-huge = 1400px
     left 0
     right 0
 
-  @media (min-width $breakpoint-small)
+  @media (min-width var(--breakpoint-xs))
     height 62.4rem
     display flex
     flex-direction column
@@ -147,7 +142,7 @@ $breakpoint-huge = 1400px
     picture
       height 31.2rem
 
-  @media (min-width $breakpoint-medium)
+  @media (min-width var(--breakpoint-m))
     display block
     height 100%
 
@@ -168,7 +163,7 @@ $breakpoint-huge = 1400px
   picture
     height 18rem
 
-  @media (min-width $breakpoint-small)
+  @media (min-width var(--breakpoint-xs))
     height 36rem
 
     picture
@@ -182,12 +177,12 @@ $breakpoint-huge = 1400px
       right 0
       max-width 25.8rem
 
-  @media (min-width $breakpoint-medium)
+  @media (min-width var(--breakpoint-m))
 
     .teaser-grid__content
       max-width 29rem
 
-  @media (min-width $breakpoint-huge)
+  @media (min-width var(--breakpoint-xl))
 
     .teaser-grid__content
       max-width 32.5rem

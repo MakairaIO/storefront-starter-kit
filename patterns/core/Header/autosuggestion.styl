@@ -1,5 +1,3 @@
-$breakpoint-medium = 800px
-
 .autosuggest__image
   display flex
   flex-direction row
@@ -35,7 +33,7 @@ $breakpoint-medium = 800px
   flex-direction column
   background var(--neutral-00)
 
-  @media (min-width $breakpoint-medium)
+  @media (min-width var(--breakpoint-s))
     flex-direction row
     padding 3rem 2rem
 
@@ -56,7 +54,7 @@ $breakpoint-medium = 800px
   flex 1
 
   .heading
-    @media (min-width $breakpoint-medium)
+    @media (min-width var(--breakpoint-s))
       padding-left 2rem
 
 .autosuggest__product-item

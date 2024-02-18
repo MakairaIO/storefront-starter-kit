@@ -1,27 +1,22 @@
-$breakpoint-small = 560px
-$breakpoint-medium = 750px
-$breakpoint-large = 950px
-$breakpoint-huge = 1400px
-
 .single-teaser
   background var(--tertiary)
   margin 1.2rem 0
 
-  @media (min-width $breakpoint-small)
+  @media (min-width var(--breakpoint-xs))
     display flex
     margin 1.2rem 1.5rem
 
-  @media (min-width $breakpoint-large)
+  @media (min-width var(--breakpoint-m))
     margin 1.2rem 2rem
 
 .single-teaser__image
   display block
   height 29.4rem
 
-  @media (min-width $breakpoint-small)
+  @media (min-width var(--breakpoint-xs))
     height 26.4rem
 
-  @media (min-width $breakpoint-medium)
+  @media (min-width var(--breakpoint-s))
     height 31.2rem
     max-width 36.8rem
     flex 1 0 auto
@@ -37,10 +32,10 @@ $breakpoint-huge = 1400px
 .single-teaser__content
   padding 1.2rem 1.5rem
 
-  @media (min-width $breakpoint-small)
+  @media (min-width var(--breakpoint-xs))
     flex 1 0 50%
 
-  @media (min-width $breakpoint-medium)
+  @media (min-width var(--breakpoint-s))
     display flex
     flex-direction column
     align-items flex-start
@@ -48,6 +43,5 @@ $breakpoint-huge = 1400px
 .single-teaser__button
   margin-top 1.2rem
 
-  @media (min-width $breakpoint-medium)
+  @media (min-width var(--breakpoint-s))
     margin-top auto
-

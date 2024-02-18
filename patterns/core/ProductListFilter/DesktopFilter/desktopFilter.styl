@@ -1,15 +1,12 @@
-$breakpoint-large = 1000px
-$breakpoint-huge = 1250px
-
 .desktop-filter
   display none
 
-  @media (min-width $breakpoint-large)
+  @media (min-width var(--breakpoint-m))
     display block
     flex 0 0 24rem
     padding-right 2rem
 
-  @media (min-width $breakpoint-huge)
+  @media (min-width var(--breakpoint-l))
     flex-basis 30rem
 
 .desktop-filter__section

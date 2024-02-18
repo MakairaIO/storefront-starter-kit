@@ -1,5 +1,3 @@
-$breakpoint-medium = 768px
-
 .discovery-image
   display flex
   min-width 0
@@ -33,11 +31,11 @@ $breakpoint-medium = 768px
       .product-spot-index
         top 8px
         left 8px
-        background linear-gradient(180deg, #FFFFFF 0%, #ECEFF3 100%)
+        background linear-gradient(180deg, var(--color-base-main) 0%, #ECEFF3 100%)
 
     .slick-active
       .product-spot-index
-        color #FFFFFF
+        color var(--color-base-main)
         background linear-gradient(180deg, #4F5967 0%, #303B47 100%)
 
       .product-item__image
@@ -56,7 +54,7 @@ $breakpoint-medium = 768px
         
 
         &:after 
-          border-bottom-color #ffffff
+          border-bottom-color var(--color-base-main)
           border-width 10px
           margin-left -10px
         
@@ -93,8 +91,8 @@ $breakpoint-medium = 768px
   .spot
     position absolute
     box-sizing border-box
-    background-color #FFFFFF
-    border 2px solid #FFFFFF
+    background-color var(--color-base-main)
+    border 2px solid var(--color-base-main)
     box-shadow 0 0 2px 0 rgba(48,59,71,1)
     display block
     border-radius 50%
@@ -110,10 +108,10 @@ $breakpoint-medium = 768px
     left 0
 
     &__active
-      color #FFFFFF
+      color var(--color-base-main)
       background linear-gradient(180deg, #4F5967 0%, #303B47 100%)
 
-@media (max-width $breakpoint-medium)
+@media (max-width var(--breakpoint-s))
   .discovery-image
     max-width 500px
     flex-direction column
@@ -141,7 +139,7 @@ $breakpoint-medium = 768px
       
 
       &:after 
-        border-bottom-color #ffffff
+        border-bottom-color var(--color-base-main)
         border-width 10px
         margin-left -10px
       
