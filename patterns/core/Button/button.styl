@@ -1,14 +1,14 @@
 .button
   display inline-block
   color var(--neutral-90)
-  font-size 1.4rem
-  line-height 1.8rem
-  letter-spacing 0.03rem
+  font-size var(--font-small)
+  line-height 1.13rem
+  letter-spacing 0.02rem
   background var(--neutral-00)
-  border 1px solid var(--primary)
-  border-radius 4px
-  padding 1rem 1.2rem 0.8rem
-  margin 0.6rem 0 0.4rem
+  border 0.06rem solid var(--primary)
+  border-radius var(--border-radius-small)
+  padding var(--spacing-s) var(--spacing-s) var(--spacing-s)
+  margin var(--spacing-xs) 0 var(--spacing-xs)
   text-align center
 
   &:hover
@@ -93,15 +93,15 @@
   &--link
     color var(--neutral-70)
     border none
-    padding 0.4rem 0.7rem 0.3rem
-    margin 0.4rem 0 0.2rem
+    padding var(--spacing-xs) var(--spacing-s) var(--spacing-xs)
+    margin var(--spacing-xs) 0 var(--spacing-xs)
 
     &:hover
-      border 1px solid var(--neutral-40)
+      border 0.06rem solid var(--neutral-40)
 
     &:active
       background var(--neutral-40)
-      border 1px solid var(--neutral-40)
+      border 0.06rem solid var(--neutral-40)
       color var(--neutral-80)
 
     &:disabled
@@ -124,7 +124,7 @@
     align-items center
 
   &--icon-only
-    padding 0.8rem 0
+    padding var(--spacing-s) 0
 
     &:hover
       background var(--idle)
@@ -143,18 +143,18 @@
 
 
   &--link-icon
-    padding 0.8rem 0
+    padding var(--spacing-s) 0
     background var(--neutral-00)
     border none
     color var(--neutral-90)
 
     &:hover
       background var(--neutral-10)
-      border 1px solid var(--neutral-10)
+      border 0.06rem solid var(--neutral-10)
 
     &:active
       background var(--neutral-20)
-      border 1px solid var(--neutral-20)
+      border 0.06rem solid var(--neutral-20)
 
     &:disabled
       background var(--neutral-00)
@@ -163,11 +163,11 @@
 
   &--icon-right
     .button__text
-      margin-right 1.1rem
+      margin-right var(--spacing-s)
 
   &--icon-left
     .button__text
-      margin-left 1.1rem
+      margin-left var(--spacing-s)
 
     .icon
       order -1
@@ -179,24 +179,24 @@
 .button--icon
   .icon
     // styles for icon-only buttons
-    height 1.8rem
-    width 3.4rem // FIXME: Why is flexbox breaking all buttons if we remove the explicit width here?!
-    flex 0 0 3.4rem // 36px - 2px border
+    height 1.13rem
+    width 2.13rem // FIXME: Why is flexbox breaking all buttons if we remove the explicit width here?!
+    flex 0 0 2.13rem // 2.25rem - 0.13rem border
 
   // Overrides for specific icons
   &:not(.button--icon-only)
     .icon--chevron-right
     .icon--chevron-left
-      flex 0 0 0.7rem
+      flex 0 0 0.44rem
 
     .icon--chevron-down
-      flex 0 0 1.6rem
+      flex 0 0 1.00rem
 
     .icon--check
-      flex 0 0 1.3rem
+      flex 0 0 0.81rem
 
     .icon--cart
-      flex 0 0 2rem
+      flex 0 0 1.25rem
 
 a.button
   text-decoration none

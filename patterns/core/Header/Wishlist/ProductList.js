@@ -35,7 +35,7 @@ function ProductItem(props) {
         </picture>
 
         <div className="text">
-          <Text size="aphrodite" weight="600">
+          <Text size="m" weight="600">
             {title}
           </Text>
         </div>

@@ -17,12 +17,12 @@ const Wishlist = () => {
 
   return (
     <FlyoutBox>
-      <Text className="wishlist-box__title" element="p" size="cupid">
+      <Text className="wishlist-box__title" element="p" size="h6">
         {t('WISHLIST')}
       </Text>
 
       {products.length === 0 ? (
-        <Text className="wishlist-box__no-products" size="bacchus" element="p">
+        <Text className="wishlist-box__no-products" size="l" element="p">
           {t('WISHLIST_EMPTY')}
         </Text>
       ) : (

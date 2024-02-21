@@ -3,7 +3,7 @@ import { Text } from '../..'
 
 function Copytext(props) {
   const {
-    size = 'aphrodite',
+    size = 'm',
     weight = 'regular',
     className = '',
     element = 'p',

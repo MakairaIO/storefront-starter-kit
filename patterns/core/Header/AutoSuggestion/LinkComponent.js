@@ -14,7 +14,7 @@ function LinkComponent(props) {
 
   return (
     <section className="autosuggest-box__link-box">
-      <Heading size="bacchus" element="h2">
+      <Heading size="l" element="h2">
         {heading}
       </Heading>
 
@@ -27,7 +27,7 @@ function LinkComponent(props) {
           return (
             <li key={id} className="autosuggest__link-item">
               <Link href={url} className="autosuggest__link">
-                <Text size="aphrodite" weight="400" className="">
+                <Text size="m" weight="400" className="">
                   {displayValue}
                 </Text>
               </Link>

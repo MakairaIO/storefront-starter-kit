@@ -13,7 +13,7 @@ import {
   ConfigurationProvider,
   TranslationProvider,
   AbTestingProvider,
-  fetchMenuData,
+  makairaClient,
 } from '../../utils'
 import Head from 'next/head'
 import { ShopProvider } from '@makaira/storefront-react'
@@ -59,7 +59,7 @@ export default class Index extends Component {
 
   static async getInitialProps() {
     try {
-      const menuData = await fetchMenuData()
+      const menuData = await makairaClient.request('menu').fetch()
       return { menuData }
     } catch (error) {
       console.error(error)

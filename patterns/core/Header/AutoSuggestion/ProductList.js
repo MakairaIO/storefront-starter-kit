@@ -15,7 +15,7 @@ function ProductList(props) {
   return (
     <>
       {!hideHeading && (
-        <Heading size="bacchus" element="h2">
+        <Heading size="l" element="h2">
           {count > 1 ? t('FILTER_LABEL_PRODUCTS') : t('FILTER_LABEL_PRODUCT')}
         </Heading>
       )}

@@ -1,10 +1,8 @@
-$breakpoint-medium = 768px
-
 .discovery-image
   display flex
   min-width 0
-  width calc(100% - 3rem)
-  margin 2rem auto
+  width calc(100% - 1.88rem)
+  margin var(--spacing-m) auto
 
 
   .products
@@ -17,35 +15,35 @@ $breakpoint-medium = 768px
 
     .product-item
       position relative
-      width 180px
+      width 11.25rem
       margin 0 auto
       padding 0
       border-top 0
 
       .product-item__image
-        width 180px
-        height 180px
-        border 1px solid #E9ECF1
+        width 11.25rem
+        height 11.25rem
+        border 0.06rem solid var(--color-neutral-content)
 
         img
           height 100%
 
       .product-spot-index
-        top 8px
-        left 8px
-        background linear-gradient(180deg, #FFFFFF 0%, #ECEFF3 100%)
+        top 0.50rem
+        left 0.50rem
+        background linear-gradient(180deg, var(--color-base-main) 0%, var(--color-neutral-content) 100%)
 
     .slick-active
       .product-spot-index
-        color #FFFFFF
-        background linear-gradient(180deg, #4F5967 0%, #303B47 100%)
+        color var(--color-base-main)
+        background linear-gradient(180deg, var(--color-primary-main) 0%, var(--color-base-darkest) 100%)
 
       .product-item__image
         position relative
-        border 1px solid #4F5967
+        border 0.06rem solid var(--color-primary-main)
 
         &:after, &:before 
-          bottom -1px
+          bottom -0.06rem
           left 50%
           border solid transparent
           content " "
@@ -56,20 +54,20 @@ $breakpoint-medium = 768px
         
 
         &:after 
-          border-bottom-color #ffffff
-          border-width 10px
-          margin-left -10px
+          border-bottom-color var(--color-base-main)
+          border-width 0.63rem
+          margin-left -var(--spacing-s)
         
         &:before 
-          border-bottom-color #222
-          border-width 11px
-          margin-left -11px
+          border-bottom-color var(--color-primary-hover)
+          border-width 0.69rem
+          margin-left -var(--spacing-s)
         
 
     &:before, &:after
       content ''
       height 100%
-      width 48px
+      width 3.00rem
       position absolute
       z-index 10
       top 0
@@ -83,54 +81,54 @@ $breakpoint-medium = 768px
       background linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,1) 70%)
 
   .spots
-    width 500px
+    width 31.25rem
     position relative
     display block
 
     img.product-image
-      width 500px
+      width 31.25rem
 
   .spot
     position absolute
     box-sizing border-box
-    background-color #FFFFFF
-    border 2px solid #FFFFFF
-    box-shadow 0 0 2px 0 rgba(48,59,71,1)
+    background-color var(--color-base-main)
+    border 0.13rem solid var(--color-base-main)
+    box-shadow 0 0 0.13rem 0 rgba(48,59,71,1)
     display block
-    border-radius 50%
-    color #101C2D
+    border-radius var(--border-radius-full)
+    color var(--color-primary-hover)
     text-align center
-    line-height 20px
-    font-size 14px
+    line-height 1.25rem
+    font-size var(--font-small)
     font-weight 500
-    width 24px
-    height 24px
+    width 1.50rem
+    height 1.50rem
     cursor pointer
     top 0
     left 0
 
     &__active
-      color #FFFFFF
-      background linear-gradient(180deg, #4F5967 0%, #303B47 100%)
+      color var(--color-base-main)
+      background linear-gradient(180deg, var(--color-primary-main) 0%, var(--color-base-darkest) 100%)
 
-@media (max-width $breakpoint-medium)
+@media (max-width var(--breakpoint-s))
   .discovery-image
-    max-width 500px
+    max-width 31.25rem
     flex-direction column
 
     .products
-      margin-top 20px
+      margin-top var(--spacing-m)
 
     .spots
       width 100%
-      max-width 500px
+      max-width 31.25rem
 
       img.product-image
         width 100%
-        max-width 500px
+        max-width 31.25rem
 
       &:after, &:before 
-        bottom 2px
+        bottom 0.13rem
         left 50%
         border solid transparent
         content " "
@@ -141,12 +139,12 @@ $breakpoint-medium = 768px
       
 
       &:after 
-        border-bottom-color #ffffff
-        border-width 10px
-        margin-left -10px
+        border-bottom-color var(--color-base-main)
+        border-width 0.63rem
+        margin-left -var(--spacing-s)
       
       &:before 
-        border-bottom-color #222
-        border-width 11px
-        margin-left -11px
+        border-bottom-color var(--color-primary-hover)
+        border-width 0.69rem
+        margin-left -var(--spacing-s)
       

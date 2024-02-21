@@ -9,12 +9,12 @@ const Cart = () => {
 
   return (
     <FlyoutBox>
-      <Text className="cart-box__title" element="p" size="cupid">
+      <Text className="cart-box__title" element="p" size="h6">
         {t('CART')}
       </Text>
 
       {cart.items.length === 0 ? (
-        <Text className="cart-box__no-products" size="bacchus" element="p">
+        <Text className="cart-box__no-products" size="l" element="p">
           {t('CART_EMPTY')}
         </Text>
       ) : (

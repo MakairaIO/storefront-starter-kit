@@ -1,7 +1,7 @@
 export default async function fetchMenuData() {
   let data
 
-  if (process.browser && localStorage.getItem('menuData')) {
+  if (typeof window !== 'undefined' && localStorage.getItem('menuData')) {
     const menuString = localStorage.getItem('menuData')
 
     if (['undefined', 'null', '[]'].includes(menuString)) {

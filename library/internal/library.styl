@@ -1,12 +1,12 @@
 @font-face
   font-display fallback
   font-family 'Montserrat-Regular'
-  src url(/assets/library/Montserrat-Regular.ttf) format('truetype')
+  src url('/assets/library/Montserrat-Regular.ttf') format('truetype')
 
 @font-face
   font-display fallback
   font-family 'Montserrat-Medium'
-  src url(/assets/library/Montserrat-Medium.ttf) format('truetype')
+  src url('/assets/library/Montserrat-Medium.ttf') format('truetype')
 
 $tablet-breakpoint = 700px
 $desktop-breakpoint = 1024px
@@ -14,17 +14,11 @@ $desktop-breakpoint = 1024px
 :root
   --bar-color rgba(255, 0, 0, 0.2)
   // 1px bars, repeating every 6px
-  --background-baseline repeating-linear-gradient(
-    to bottom,
-    var(--bar-color),
-    var(--bar-color),
-    transparent 1px,
-    transparent 6px
-  )
+  --background-baseline repeating-linear-gradient(to bottom, var(--bar-color), var(--bar-color), transparent 1px, transparent 6px)
 
 .pali__wrapper
   line-height 2.5rem
-  background-color #F8FAFC
+  background-color var(--color-base-darker)
   min-height 100vh
 
   @media (min-width $tablet-breakpoint)
@@ -45,7 +39,7 @@ $desktop-breakpoint = 1024px
   align-items center
   height 5rem
   padding 0 2rem
-  box-shadow 0 2px 4px 0 rgba(0,0,0,0.10)
+  box-shadow 0 2px 4px 0 rgba(0, 0, 0, 0.1)
   margin-bottom 2rem
 
   @media (min-width $tablet-breakpoint)
@@ -63,10 +57,9 @@ $desktop-breakpoint = 1024px
     font-size 2rem
     margin-left 4rem
 
-
 .pali__nav
   background-color #fff
-  box-shadow 0 2px 4px 0 rgba(0,0,0,0.10)
+  box-shadow 0 2px 4px 0 rgba(0, 0, 0, 0.1)
   overflow auto
   position fixed
   top 5rem
@@ -80,7 +73,6 @@ $desktop-breakpoint = 1024px
     top 0
     width 28rem
     transform translateX(0)
-
 
   &--visible
     transform translateX(0)
@@ -121,13 +113,12 @@ $desktop-breakpoint = 1024px
 
 .pali__main
   font-family 'Montserrat-Regular'
-  padding 2rem;
+  padding 2rem
 
   @media (min-width $desktop-breakpoint)
-    padding 3rem 8rem;
+    padding 3rem 8rem
 
-  h1,
-  h2
+  h1, h2
     font-family 'Montserrat-Medium'
     font-size 2rem
 
@@ -144,7 +135,7 @@ $desktop-breakpoint = 1024px
   display inline-flex
   height 2rem
   width 2rem
-  color rgba(0,0,0,0.6)
+  color rgba(0, 0, 0, 0.6)
   margin-left 1rem
 
 .pali__section
@@ -230,7 +221,6 @@ $desktop-breakpoint = 1024px
   color #000
 
 .pali__typography-container
-
   & + &
     margin-top 3rem
 

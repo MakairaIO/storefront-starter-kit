@@ -1,6 +1,6 @@
 .form-field
   display block
-  margin-top 1.5rem
+  margin-top var(--spacing-m)
 
   &.form-field--required
     .form-field__label:after
@@ -11,23 +11,23 @@
     max-width 100%
     display block
     font-weight var(--font-weight-light)
-    font-size 1.5rem
+    font-size var(--font-regular)
 
   .form-field__component
     width 100%
     font-size var(--font-size-base)
     font-weight var(--font-weight-medium)
     font-family var(--font-family-regular)
-    margin-top 0.5rem
-    padding 1rem
-    border-radius 4px
-    border 1px solid var(--neutral-40)
+    margin-top var(--spacing-xs)
+    padding var(--spacing-s)
+    border-radius var(--border-radius-small)
+    border 0.06rem solid var(--neutral-40)
 
     &.form-field__select
-      min-height 4rem
+      min-height 2.50rem
 
     &.form-field__input
-      min-height 4rem
+      min-height 2.50rem
 
     &.form-field__input[type="text"]:focus,
     &.form-field__input[type="email"]:focus,
@@ -37,30 +37,30 @@
       outline none
 
     &.form-field__textarea
-      min-height 10rem
+      min-height 6.25rem
 
   &__status
     font-weight var(--font-weight-light)
-    font-size 1.5rem
+    font-size var(--font-regular)
     width 100%
-    margin-top 1.5rem
-    margin-bottom 1.5rem
-    padding 1rem
+    margin-top var(--spacing-m)
+    margin-bottom var(--spacing-m)
+    padding var(--spacing-s)
     white-space normal
-    min-height 4rem
-    border-radius 4px
+    min-height 2.50rem
+    border-radius var(--border-radius-small)
     display none
 
     &.form-field__status--failure
       display block
       background-color var(--error)
-      border 1px solid var(--error)
+      border 0.06rem solid var(--error)
 
     &.form-field__status--success
       display block
       background-color var(--positive)
-      border 1px solid var(--positive)
+      border 0.06rem solid var(--positive)
 
   .form-field__error
-    margin-top 0.5rem
+    margin-top var(--spacing-xs)
     color var(--error)

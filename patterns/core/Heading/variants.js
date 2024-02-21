@@ -3,7 +3,7 @@ export default [
     name: 'Default - Cupid / Medium',
     props: {
       children: 'Kategorie: Gin',
-      size: 'cupid',
+      size: 'h6',
       weight: '500',
     },
   },

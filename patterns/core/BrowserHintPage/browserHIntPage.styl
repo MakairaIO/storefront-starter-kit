@@ -1,39 +1,38 @@
-$breakpoint-small = 400px
-$breakpoint-medium = 768px
+
 
 .browser-hint-page
   display flex
   flex-direction column
   align-items center
   font-family var(--font-family-regular)
-  padding 0 1.5rem
+  padding 0 var(--spacing-m)
   margin 0 auto
-  max-width 77.6rem
+  max-width 48.50rem
   width 100%
-  @media (min-width $breakpoint-medium)
+  @media (min-width var(--breakpoint-s))
     width 66.666666%
 
 .browser-hint-page__logo
-  margin 1.5rem 0 5.5rem
+  margin var(--spacing-m) 0 var(--spacing-xl)
 
-  @media (min-width $breakpoint-medium)
-    margin 4rem 0 11.1rem
+  @media (min-width var(--breakpoint-s))
+    margin var(--spacing-xl) 0 var(--spacing-xl)
 
 .browser-hint-page__content
   width 100%
-  margin-bottom 4rem
+  margin-bottom var(--spacing-xl)
 
   h1
-    margin-bottom 3.3rem
-    @media (min-width $breakpoint-medium)
-      fortuna()
-      margin-bottom 3.8rem
+    margin-bottom var(--spacing-xl)
+    @media (min-width var(--breakpoint-s))
+      font-h3()
+      margin-bottom var(--spacing-xl)
 
   h2
-    margin-bottom 3rem
-    @media (min-width $breakpoint-medium)
-      diana()
-      margin-bottom 2.3rem
+    margin-bottom var(--spacing-xl)
+    @media (min-width var(--breakpoint-s))
+      font-h5()
+      margin-bottom var(--spacing-l)
 
 .browser-hint-page__column-wrapper
   display flex
@@ -42,12 +41,12 @@ $breakpoint-medium = 768px
 
 .browser-hint-page__column
   width 100%
-  @media (min-width $breakpoint-medium)
-    width calc(50% - 1.2rem)
+  @media (min-width var(--breakpoint-s))
+    width calc(50% - 0.75rem)
 
   &:first-child
-    margin-bottom 2.4rem
-    @media (min-width $breakpoint-medium)
+    margin-bottom var(--spacing-l)
+    @media (min-width var(--breakpoint-s))
       margin-bottom 0
 
 .browser-hint-page__browsers
@@ -56,13 +55,13 @@ $breakpoint-medium = 768px
   width 100%
 
   h1
-    margin-bottom 2.2rem
+    margin-bottom var(--spacing-l)
 
 .browser-hint-page__browsers-list
   display flex
   flex-direction column
   width 100%
-  @media (min-width $breakpoint-small)
+  @media (min-width var(--breakpoint-xs))
     flex-direction row
 
   .browser
@@ -72,32 +71,32 @@ $breakpoint-medium = 768px
 
     &--firefox
       img
-        width 4.8rem
-        height 5rem
-        margin-bottom 1.8rem
-        @media (min-width $breakpoint-medium)
-          width 7.8rem
-          height 8rem
+        width 3.00rem
+        height 3.13rem
+        margin-bottom var(--spacing-m)
+        @media (min-width var(--breakpoint-s))
+          width 4.88rem
+          height 5.00rem
 
     &--chrome
       img
-        width 4.8rem
-        height 4.8rem
-        margin-bottom 2rem
-        @media (min-width $breakpoint-medium)
-          width 7.8rem
-          height 7.8rem
+        width 3.00rem
+        height 3.00rem
+        margin-bottom var(--spacing-m)
+        @media (min-width var(--breakpoint-s))
+          width 4.88rem
+          height 4.88rem
 
     &--edge
-      @media (min-width $breakpoint-small)
-        margin-left 2rem
+      @media (min-width var(--breakpoint-xs))
+        margin-left var(--spacing-m)
       img
-        width 4.5rem
-        height 4.8rem
-        margin-bottom 2rem
-        @media (min-width $breakpoint-medium)
-          width 7.3rem
-          height 7.8rem
+        width 2.81rem
+        height 3.00rem
+        margin-bottom var(--spacing-m)
+        @media (min-width var(--breakpoint-s))
+          width 4.56rem
+          height 4.88rem
 
     &--firefox, &--chrome
       width 50%
@@ -106,18 +105,18 @@ $breakpoint-medium = 768px
   display flex
   flex-direction column
   align-items center
-  margin-bottom 4.2rem
+  margin-bottom var(--spacing-xl)
 
 .browser-hint-page__browsers-wrapper-content
   display flex
 
 .browser-hint-page__browsers-divider
-  margin 1.2rem 0
-  @media (min-width $breakpoint-medium)
-    margin 1.2rem 0 2.2rem
+  margin var(--spacing-s) 0
+  @media (min-width var(--breakpoint-s))
+    margin var(--spacing-s) 0 var(--spacing-l)
 
 .browser-hint-page__browsers-wrapper-content, .browser-hint-page__browsers-divider
-  width 21.7rem
-  @media (min-width $breakpoint-small)
-    width 25.7rem
+  width 13.56rem
+  @media (min-width var(--breakpoint-xs))
+    width 16.06rem
 

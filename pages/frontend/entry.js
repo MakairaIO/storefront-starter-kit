@@ -14,8 +14,7 @@ import {
   ConfigurationProvider,
   TranslationProvider,
   AbTestingProvider,
-  fetchPageData,
-  fetchMenuData,
+  makairaClient,
   redirect,
   wait,
   GTM,
@@ -23,6 +22,7 @@ import {
 import ErrorPage from '../_error'
 import { ShopProvider } from '@makaira/storefront-react'
 import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
+import { fetchMultiple } from '@makaira/storefront-core'
 
 const pageComponents = {
   page: LandingPage,
@@ -38,12 +38,11 @@ export default class Index extends Component {
   static async getInitialProps(ctx) {
     const { query, res } = ctx
     const { seoUrl, ...params } = qs.parse(query)
-
     try {
-      const [pageData, menuData] = await Promise.all([
-        fetchPageData({ ctx }),
-        fetchMenuData(),
-      ])
+      const [pageData, menuData] = await fetchMultiple(
+        makairaClient.request('page', ctx),
+        makairaClient.request('menu')
+      )
 
       if (pageData.type == 'redirect') {
         const {

@@ -1,16 +1,16 @@
 const fs = require('fs')
-const { normalize, addEmptyLine, rem } = require('./utils')
+const { normalize, addEmptyLine } = require('./utils')
 
 function createMixin(entry) {
   const { mixin, size, line, spacing, paddingTop, paddingBottom } = entry
 
   return `\
 ${mixin}()
-  font-size ${rem(size)}
-  line-height ${rem(line)}
-  ${spacing ? `letter-spacing ${rem(spacing)}` : ``}
-  ${paddingTop ? `padding-top ${rem(paddingTop)}` : ``}
-  ${paddingBottom ? `padding-bottom ${rem(paddingBottom)}` : ``}
+  font-size ${size}px
+  line-height ${line}px
+  ${spacing ? `letter-spacing ${spacing}px` : ``}
+  ${paddingTop ? `padding-top ${paddingTop}px` : ``}
+  ${paddingBottom ? `padding-bottom ${paddingBottom}px` : ``}
 `
 }
 
