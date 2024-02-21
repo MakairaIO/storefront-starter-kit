@@ -36,7 +36,7 @@ function ProductItem(props) {
           />
         </picture>
 
-        <Text size="aphrodite" weight="600" className="">
+        <Text size="m" weight="600" className="">
           {title}
         </Text>
       </Link>

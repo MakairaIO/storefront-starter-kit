@@ -1,24 +1,24 @@
 .ratings
-  padding 1.2rem 1.5rem
+  padding var(--spacing-s) var(--spacing-m)
 
   @media (min-width var(--breakpoint-m))
-    padding 1.2rem 2rem
+    padding var(--spacing-s) var(--spacing-m)
 
   &__form
-    padding-bottom 1.5rem
-    margin-bottom 2rem
-    max-width 500px
+    padding-bottom var(--spacing-m)
+    margin-bottom var(--spacing-m)
+    max-width 31.25rem
 
   .heading
-    margin-bottom 1.3rem
+    margin-bottom var(--spacing-m)
 
   .ratings__rating
-    padding-bottom 2rem
-    max-width 700px
+    padding-bottom var(--spacing-m)
+    max-width 43.75rem
 
   .ratings__rating-header
     display flex
-    gap 1rem
+    gap var(--spacing-s)
 
 .star-input
   display flex
@@ -28,8 +28,8 @@
     cursor auto
 
   .star-input__star
-    width 20px
-    height 20px
+    width 1.25rem
+    height 1.25rem
     color var(--neutral-60)
 
     &--active

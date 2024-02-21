@@ -24,7 +24,7 @@ export default function ProductTile(props) {
         </picture>
 
         <Heading
-          size="bacchus"
+          size="l"
           weight="600"
           className="product-placement-item__title"
           element="h3"
@@ -33,7 +33,7 @@ export default function ProductTile(props) {
         </Heading>
 
         <Text
-          size="aphrodite"
+          size="m"
           weight="600"
           className="product-placement-item__manufacturer"
         >

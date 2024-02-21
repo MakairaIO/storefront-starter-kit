@@ -3,29 +3,29 @@
 
   @media (min-width var(--breakpoint-m))
     display block
-    flex 0 0 24rem
-    padding-right 2rem
+    flex 0 0 15.00rem
+    padding-right var(--spacing-m)
 
   @media (min-width var(--breakpoint-l))
-    flex-basis 30rem
+    flex-basis 18.75rem
 
 .desktop-filter__section
 
   & + &
-    margin-top 2.5rem
+    margin-top var(--spacing-l)
 
   &:last-of-type
-    margin-bottom 3rem
+    margin-bottom var(--spacing-xl)
 
 .desktop-filter__multi-select-item--default
-  font-size 1.4rem
-  line-height 1.8rem
+  font-size var(--font-small)
+  line-height 1.13rem
 
   &--active
     font-weight var(--font-weight-medium)
 
   & + &
-    margin-top 1.2rem
+    margin-top var(--spacing-s)
 
   label
     display flex
@@ -36,9 +36,9 @@
 
   .icon
     flex-shrink 0
-    height 1.8rem
-    width 1.8rem
-    margin-right 0.6rem
+    height 1.13rem
+    width 1.13rem
+    margin-right var(--spacing-xs)
     color var(--neutral-70)
 
   input
@@ -49,9 +49,9 @@
   transition max-height 0.2s
 
   &--overflow
-    border-bottom 1px solid var(--neutral-20)
-    box-shadow inset 0 -8px 5px -8px rgba(0, 0, 0, 0.2)
-    max-height 20.3rem
+    border-bottom 0.06rem solid var(--neutral-20)
+    box-shadow inset 0 -0.50rem 0.31rem -0.50rem rgba(0, 0, 0, 0.2)
+    max-height 12.69rem
 
 .desktop-filter__multi-select-button
   display none
@@ -61,13 +61,13 @@
 .desktop-filter__multi-select--grid
   display grid
   grid-template-columns repeat(3, 1fr)
-  grid-gap 1rem
+  grid-gap var(--spacing-s)
   grid-auto-flow dense
 
 .desktop-filter__multi-select-item--grid
   background var(--neutral-00)
-  border 1px solid var(--neutral-20)
-  border-radius 5px
+  border 0.06rem solid var(--neutral-20)
+  border-radius var(--border-radius-small)
 
   &--active
     border-color var(--neutral-90)
@@ -85,11 +85,11 @@
     justify-content center
     align-items center
     text-align center
-    min-height 3rem
-    font-size 1.4rem
+    min-height 1.88rem
+    font-size var(--font-small)
     font-weight var(--font-weight-medium)
-    line-height 1.8rem
-    letter-spacing 0.02rem
+    line-height 1.13rem
+    letter-spacing 0.01rem
 
     &:hover
       cursor pointer
@@ -99,9 +99,9 @@
 
 .desktop-filter__range-filter
   background var(--neutral-00)
-  padding 0 1.4rem 0 1rem
+  padding 0 var(--spacing-m) 0 var(--spacing-s)
 
 .desktop-filter__range-filter-label
   display block
   text-align center
-  margin-bottom 1rem
+  margin-bottom var(--spacing-s)

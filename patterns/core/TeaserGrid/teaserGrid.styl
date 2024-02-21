@@ -1,32 +1,32 @@
 .teaser-grid
-  padding 1.2rem 1.5rem
+  padding var(--spacing-s) var(--spacing-m)
 
   @media (min-width var(--breakpoint-xs))
     display grid
-    grid-gap 1.8rem 1.2rem
+    grid-gap var(--spacing-m) var(--spacing-s)
     grid-template-areas "top-right top-right" "left bottom-right" "left bottom-right" "middle middle"
     grid-template-columns repeat(2, 1fr)
 
   @media (min-width var(--breakpoint-m))
-    grid-gap 1.8rem 2rem
+    grid-gap var(--spacing-m) var(--spacing-m)
     grid-template-areas "top-right top-right top-right" "left bottom-right bottom-right" "left middle middle"
     grid-template-columns repeat(3, 1fr)
-    grid-template-rows repeat(3, 36rem)
+    grid-template-rows repeat(3, 22.50rem)
 
   @media (min-width var(--breakpoint-l))
     grid-template-columns repeat(4, 1fr)
-    grid-template-rows repeat(2, 36rem)
+    grid-template-rows repeat(2, 22.50rem)
     grid-template-areas "left top-right top-right top-right" "left middle middle bottom-right"
 
   @media (min-width var(--breakpoint-xl))
-    padding 1.2rem 2rem
+    padding var(--spacing-s) var(--spacing-m)
 
 .teaser-grid__tile
   display block
   position relative
 
   & + &
-    margin-top 1.8rem
+    margin-top var(--spacing-m)
 
     @media (min-width var(--breakpoint-xs))
       // reset here since we switch to CSS-Grid with gaps now
@@ -43,25 +43,25 @@
 
   .heading
     display inline-block
-    margin-bottom 0.6rem
+    margin-bottom var(--spacing-xs)
 
     @media (min-width var(--breakpoint-xs))
-      margin-bottom 1.2rem
+      margin-bottom var(--spacing-s)
 
 .teaser-grid__content
   display flex
   flex-direction column
   align-items flex-start
   background var(--grid-teaser-overlay-background-opaque-default)
-  padding 1.2rem 1.5rem 1.8rem
+  padding var(--spacing-s) var(--spacing-m) var(--spacing-m)
 
   .heading
     @media (min-width var(--breakpoint-xs))
-      diana()
+      font-h5()
 
   .copytext
     @media (min-width var(--breakpoint-xs))
-      bacchus()
+      font-l()
 
   button
     align-self flex-end
@@ -71,10 +71,10 @@
   grid-area top-right
 
   picture
-    height 18rem
+    height 11.25rem
 
   @media (min-width var(--breakpoint-xs))
-    height 36rem
+    height 22.50rem
 
     picture
       height 100% // reset fixed height
@@ -85,40 +85,40 @@
       top 0
       bottom 0
       left 0
-      max-width 25.8rem
+      max-width 16.13rem
 
   @media (min-width var(--breakpoint-m))
 
     .teaser-grid__content
-      max-width 29rem
+      max-width 18.13rem
 
   @media (min-width var(--breakpoint-xl))
 
     .teaser-grid__content
-      max-width 32.5rem
+      max-width 20.31rem
 
 
 .teaser-grid__tile--left
   grid-area left
-  height 50.4rem
+  height 31.50rem
 
   .teaser-grid__content
     position absolute
     bottom 0
 
   @media (min-width var(--breakpoint-xs))
-    height 62.4rem
+    height 39.00rem
 
   @media (min-width var(--breakpoint-m))
     height 100%
 
     .teaser-grid__content
-      min-height 36rem
+      min-height 22.50rem
       justify-content flex-end
 
 .teaser-grid__tile--bottom-right
   grid-area bottom-right
-  height 30rem
+  height 18.75rem
 
   .teaser-grid__content
     justify-content flex-end
@@ -129,7 +129,7 @@
     right 0
 
   @media (min-width var(--breakpoint-xs))
-    height 62.4rem
+    height 39.00rem
     display flex
     flex-direction column
     justify-content flex-end
@@ -140,7 +140,7 @@
       order -1
 
     picture
-      height 31.2rem
+      height 19.50rem
 
   @media (min-width var(--breakpoint-m))
     display block
@@ -161,10 +161,10 @@
   grid-area middle
 
   picture
-    height 18rem
+    height 11.25rem
 
   @media (min-width var(--breakpoint-xs))
-    height 36rem
+    height 22.50rem
 
     picture
       height 100% // reset fixed height
@@ -175,17 +175,17 @@
       top 0
       bottom 0
       right 0
-      max-width 25.8rem
+      max-width 16.13rem
 
   @media (min-width var(--breakpoint-m))
 
     .teaser-grid__content
-      max-width 29rem
+      max-width 18.13rem
 
   @media (min-width var(--breakpoint-xl))
 
     .teaser-grid__content
-      max-width 32.5rem
+      max-width 20.31rem
 
 
 .teaser-grid--inverted

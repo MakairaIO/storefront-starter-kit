@@ -32,7 +32,7 @@ const Form = ({
 
   return (
     <FlyoutBox>
-      <Text className="login-box__title" element="p" size="cupid">
+      <Text className="login-box__title" element="p" size="h6">
         {title}
       </Text>
 

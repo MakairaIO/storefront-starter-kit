@@ -1,17 +1,17 @@
 .product-detail-information
-  padding 1.2rem 1.5rem 0
+  padding var(--spacing-s) var(--spacing-m) 0
 
   @media (min-width var(--breakpoint-s))
-    padding 2.4rem 2rem 0
+    padding var(--spacing-l) var(--spacing-m) 0
 
 .product-detail-information__top-header
   display flex
   align-items flex-end
-  margin-bottom 1.2rem
+  margin-bottom var(--spacing-s)
   justify-content space-between
 
   @media (min-width var(--breakpoint-s))
-    margin-bottom 2.4rem
+    margin-bottom var(--spacing-l)
 
 .product-detail-information__wrapper
   @media (min-width var(--breakpoint-s))
@@ -27,11 +27,11 @@
 .product-detail-information__prices
   display flex
   text-align right
-  padding 0 0 0.4rem
+  padding 0 0 var(--spacing-xs)
 
   .product-detail-information__top-header &
     flex-direction column
-    margin-left 0.6rem
+    margin-left var(--spacing-xs)
 
     @media (min-width var(--breakpoint-xs))
       flex-direction row
@@ -48,14 +48,14 @@
       justify-content flex-start
 
 .product-detail-information__price
-  font-size 2.1rem
+  font-size var(--font-h6)
   font-weight var(--font-weight-semi-bold)
-  line-height 3rem
+  line-height 1.88rem
 
 .product-detail-information__image
-  margin 0 -1.5rem 1.2rem
+  margin 0 -var(--spacing-m) var(--spacing-s)
   position relative
-  max-height 60rem
+  max-height 37.50rem
   height 50vh
   display flex
   justify-content center
@@ -63,7 +63,7 @@
   object-fit cover
 
   @media (min-width var(--breakpoint-xs))
-    margin 0 auto 1.2rem
+    margin 0 auto var(--spacing-s)
 
   @media (min-width var(--breakpoint-s))
     flex 1 0 50%
@@ -94,15 +94,15 @@
 
 .product-detail-information__image-button
   position absolute
-  bottom 1.2rem
-  right 1.2rem
+  bottom 0.75rem
+  right 0.75rem
   background var(--product-detail-information-zoom-button-background)
   color var(--neutral-00)
 
 .product-detail-information__buybox
   @media (min-width var(--breakpoint-l))
     grid-area buy
-    padding-left 4rem
+    padding-left var(--spacing-xl)
 
 .product-detail-information__buybox-wrapper
   display flex
@@ -115,28 +115,28 @@
     flex 1
 
 .product-detail-information__manufacturer
-  max-width 9rem
+  max-width 5.63rem
 
   @media (min-width var(--breakpoint-s))
-    margin-bottom 1rem
+    margin-bottom var(--spacing-s)
 
   img
     max-width 100%
 
 .product-detail-information__variants
-  margin-bottom 0.6rem
+  margin-bottom var(--spacing-xs)
 
 .product-detail-information__variant-select
   width 100%
 
 .product-detail-information__variants
-  margin-top 2.4rem
+  margin-top var(--spacing-l)
 
 .product-detail-information__pill
-  margin 0.7rem 0.5rem 0.2rem 0
-  padding 1rem 2rem
-  border-radius 40px
-  border 1px solid var(--neutral-80)
+  margin var(--spacing-s) var(--spacing-xs) var(--spacing-xs) 0
+  padding var(--spacing-s) var(--spacing-m)
+  border-radius var(--border-radius-full)
+  border 0.06rem solid var(--neutral-80)
 
   &--active
     background var(--neutral-100)
@@ -156,25 +156,25 @@
 .product-detail-information__availability
   display inline-flex
   align-items center
-  font-size 1.4rem
+  font-size var(--font-small)
   font-weight var(--font-weight-medium)
-  line-height 2rem
-  letter-spacing 0.02rem
-  margin-top 0.6rem
+  line-height 1.25rem
+  letter-spacing 0.01rem
+  margin-top var(--spacing-xs)
 
   @media (min-width var(--breakpoint-s))
-    margin 0.6rem 0 1.8rem
+    margin var(--spacing-xs) 0 var(--spacing-m)
 
   @media (min-width var(--breakpoint-m))
     margin-bottom 0
 
 .product-detail-information__availability-icon
   display block
-  height 1.1rem
-  width 1.1rem
-  border 1px solid var(--primary)
-  border-radius 50%
-  margin-right 0.8rem
+  height 0.69rem
+  width 0.69rem
+  border 0.06rem solid var(--primary)
+  border-radius var(--border-radius-full)
+  margin-right var(--spacing-s)
 
   .product-detail-information__availability--on-stock &
     background var(--positive)
@@ -183,7 +183,7 @@
   flex 1 0 100%
   display flex
   justify-content normal
-  margin-top 2.4rem
+  margin-top var(--spacing-l)
   flex-wrap wrap
 
   @media (min-width var(--breakpoint-xs))
@@ -196,10 +196,10 @@
     flex 1 0 100%
 
 .product-detail-information__quantity-select
-  margin 0 0.5rem 0 auto
+  margin 0 var(--spacing-xs) 0 auto
 
   @media (min-width var(--breakpoint-xs))
-    margin 0 1rem
+    margin 0 var(--spacing-s)
 
   .button__text
     margin-right 0
@@ -209,28 +209,28 @@
     margin-left auto
 
 .product-detail-information__description
-  margin-top 3.5rem
+  margin-top var(--spacing-xl)
 
   @media (min-width var(--breakpoint-l))
     grid-area desc
 
     @supports (display grid)
-      padding-left 4rem
+      padding-left var(--spacing-xl)
       margin-top 0
 
   .copytext
     column-count 3
-    column-width 30rem
+    column-width 18.75rem
 
     @media (min-width var(--breakpoint-s))
-      column-gap 2rem
+      column-gap 1.25rem
 
 .product-detail-information__add-bundle
   flex-grow 2
 
   @media (min-width var(--breakpoint-xs))
     flex-grow unset
-    margin-left 1rem
+    margin-left var(--spacing-s)
 
 .product-detail-information__add-cart
   flex-grow unset

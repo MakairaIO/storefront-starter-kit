@@ -1,24 +1,24 @@
 .single-teaser
   background var(--tertiary)
-  margin 1.2rem 0
+  margin var(--spacing-s) 0
 
   @media (min-width var(--breakpoint-xs))
     display flex
-    margin 1.2rem 1.5rem
+    margin var(--spacing-s) var(--spacing-m)
 
   @media (min-width var(--breakpoint-m))
-    margin 1.2rem 2rem
+    margin var(--spacing-s) var(--spacing-m)
 
 .single-teaser__image
   display block
-  height 29.4rem
+  height 18.37rem
 
   @media (min-width var(--breakpoint-xs))
-    height 26.4rem
+    height 16.50rem
 
   @media (min-width var(--breakpoint-s))
-    height 31.2rem
-    max-width 36.8rem
+    height 19.50rem
+    max-width 23.00rem
     flex 1 0 auto
 
   picture
@@ -30,7 +30,7 @@
     object-fit cover
 
 .single-teaser__content
-  padding 1.2rem 1.5rem
+  padding var(--spacing-s) var(--spacing-m)
 
   @media (min-width var(--breakpoint-xs))
     flex 1 0 50%
@@ -41,7 +41,7 @@
     align-items flex-start
 
 .single-teaser__button
-  margin-top 1.2rem
+  margin-top var(--spacing-s)
 
   @media (min-width var(--breakpoint-s))
     margin-top auto

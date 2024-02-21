@@ -1,7 +1,7 @@
 .breadcrumb
-  width calc(100% - 3rem)
+  width calc(100% - 1.88rem)
   margin 0 auto
-  padding 1.5rem 0
+  padding var(--spacing-m) 0
 
   .list
     display flex
@@ -12,19 +12,19 @@
 
     .item
       display inline-flex
-      padding-left 0.5rem
+      padding-left var(--spacing-xs)
       display none
 
       @media (min-width var(--breakpoint-s))
         display block
 
       .home
-        height 14px
-        width 14px
+        height 0.88rem
+        width 0.88rem
 
     .item:not(:first-child):not(.item--mobile-visible)
       &::before
-        padding-right 0.5rem
+        padding-right var(--spacing-xs)
         content '/'
 
     .item--mobile-visible

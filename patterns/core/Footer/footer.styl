@@ -1,39 +1,39 @@
 .footer
   display flex
   flex-wrap wrap
-  width calc(100% - 3rem) // 1.5rem "padding" on each side
-  margin 4.8rem auto 0
-  padding 1.2rem 2rem
-  border-top 1px solid var(--neutral-40)
+  width calc(100% - 1.88rem) // 0.94rem "padding" on each side
+  margin var(--spacing-xl) auto 0
+  padding var(--spacing-s) var(--spacing-m)
+  border-top 0.06rem solid var(--neutral-40)
 
   &__column
     padding 0
     margin 0
     flex-grow 1
-    margin-bottom 1rem
+    margin-bottom var(--spacing-s)
 
   &__heading
-    font-size 1.8rem
-    line-height 3.2rem
-    margin-bottom 1rem
+    font-size var(--font-h6)
+    line-height 2.00rem
+    margin-bottom var(--spacing-s)
     font-weight var(--font-weight-semi-bold)
 
   &__link
     display block
-    font-size 1.6rem
-    line-height 2rem
+    font-size var(--font-regular)
+    line-height 1.25rem
 
 @media (max-width var(--breakpoint-s))
   .footer
     &__column
       width 50%
       flex-grow 2
-      margin-bottom 1.5rem
+      margin-bottom var(--spacing-m)
       text-align center
 
     &__link
-      font-size 1.6rem
-      line-height 3rem
+      font-size var(--font-regular)
+      line-height 1.88rem
 
 @media (max-width var(--breakpoint-xs))
   .footer

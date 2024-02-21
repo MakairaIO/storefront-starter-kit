@@ -38,15 +38,11 @@ export default function ProductTile(props) {
       <Link onClick={handleTrackingEvent} href={productDetailUrl}>
         <ProductImage {...props} activeVariant={activeVariant} />
 
-        <Heading size="bacchus" weight="600" className="product-item__title">
+        <Heading size="l" weight="600" className="product-item__title">
           {title}
         </Heading>
 
-        <Text
-          size="aphrodite"
-          weight="600"
-          className="product-item__manufacturer"
-        >
+        <Text size="m" weight="600" className="product-item__manufacturer">
           {manufacturer_title}
         </Text>
 

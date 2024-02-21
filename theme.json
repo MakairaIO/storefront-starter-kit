@@ -2,6 +2,7 @@
   "borderRadius": {
     "none": 0,
     "small": 4,
+    "big": 8,
     "full": 9999
   },
   "breakpoints": {

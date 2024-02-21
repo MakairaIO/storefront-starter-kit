@@ -1,6 +1,6 @@
 teaserLeft()
   .product-teaser__teaser-image
-    margin-left -1.8rem
+    margin-left -var(--spacing-m)
 
     @media (min-width var(--breakpoint-xs))
       margin-left 0
@@ -17,41 +17,41 @@ teaserRight()
       text-align left
 
   .product-teaser__teaser-image
-    margin-right -1.8rem
+    margin-right -var(--spacing-m)
 
     @media (min-width var(--breakpoint-xs))
       margin-right 0
 
 
 .product-teaser
-  padding 1.2rem 1.5rem
+  padding var(--spacing-s) var(--spacing-m)
 
   @media (min-width var(--breakpoint-s))
     display grid
     grid-template-columns 1fr 1fr
-    grid-gap 3rem 2rem
+    grid-gap var(--spacing-xl) var(--spacing-m)
 
   @media (min-width var(--breakpoint-m))
     grid-template-columns 1fr 1fr 1fr
-    padding 1.2rem 2rem
+    padding var(--spacing-s) var(--spacing-m)
 
 .product-teaser__teaser
   display flex
-  height 37.2rem
+  height 23.25rem
   overflow hidden
 
   @media (min-width var(--breakpoint-xs))
     justify-content center
-    padding 1rem
+    padding var(--spacing-s)
 
   & + &
-    margin-top 3rem
+    margin-top var(--spacing-xl)
 
     @media (min-width var(--breakpoint-s))
       margin-top 0
 
 .product-teaser__teaser-image
-  height 28.9rem
+  height 18.06rem
   align-self center
 
   img
@@ -62,21 +62,21 @@ teaserRight()
   display flex
   flex-direction column
   align-items flex-start
-  padding 8.6rem 1rem 4.9rem
+  padding var(--spacing-xl) var(--spacing-s) var(--spacing-xl)
 
   @media (min-width var(--breakpoint-xs))
-    max-width 26rem
-    padding-left 2rem
-    padding-right 2rem
+    max-width 16.25rem
+    padding-left var(--spacing-m)
+    padding-right var(--spacing-m)
 
 .product-teaser__pre-title
   display block
-  margin-bottom 2.2rem
-  letter-spacing 0.1rem
+  margin-bottom var(--spacing-l)
+  letter-spacing 0.06rem
 
 .product-teaser__title
   @media (min-width var(--breakpoint-xs))
-    diana()
+    font-h5()
 
 .product-teaser__button
   margin-top auto
@@ -84,7 +84,7 @@ teaserRight()
 .product-teaser--white
 
   .product-teaser__teaser
-    border 1px solid var(--tertiary)
+    border 0.06rem solid var(--tertiary)
 
   .product-teaser__pre-title
     color var(--neutral-50)
@@ -92,33 +92,33 @@ teaserRight()
 .product-teaser--colorized
 
   .product-teaser__teaser
-    border-radius 5px
+    border-radius var(--border-radius-small)
 
     &:nth-child(6n+1)
       teaserLeft()
-      background-image linear-gradient(to bottom, #EB6E68 0%, #61304D 100%)
+      background-image linear-gradient(to bottom, var(--color-danger-main) 0%, var(--color-base-darkest) 100%)
 
 
     &:nth-child(6n+2)
       teaserRight()
-      background-image linear-gradient(to bottom, #FDD165 0%, #63B6C8 100%)
+      background-image linear-gradient(to bottom, var(--color-warning-main) 0%, var(--color-info-main) 100%)
 
 
     &:nth-child(6n+3)
       teaserLeft()
-      background-image linear-gradient(to bottom, #FDD165 0%, #63B6C8 100%)
+      background-image linear-gradient(to bottom, var(--color-warning-main) 0%, var(--color-info-main) 100%)
 
     &:nth-child(6n+4)
       teaserRight()
-      background #EB6E68
+      background var(--color-danger-main)
 
     &:nth-child(6n+5)
       teaserLeft()
-      background #FDD165
+      background var(--color-warning-main)
 
     &:nth-child(6n+6)
       teaserRight()
-      background #63B6C8
+      background var(--color-info-main)
 
   .product-teaser__pre-title
     color var(--tertiary)

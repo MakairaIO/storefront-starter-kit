@@ -17,7 +17,7 @@ build
 public/assets/svgs/icons.svg
 public/assets/styles/main.css
 patterns/core/BaseLayout/fonts.styl
-patterns/core/BaseLayout/typography.styl
+# patterns/core/BaseLayout/typography.styl
 
 # misc
 .idea

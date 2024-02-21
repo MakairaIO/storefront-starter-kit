@@ -35,7 +35,7 @@ export default function DesktopFilter(props) {
 
         return (
           <div key={id} className="desktop-filter__section">
-            <Heading size="bacchus" className="desktop-filter__filter-title">
+            <Heading size="l" className="desktop-filter__filter-title">
               {t(`FILTER_LABEL_${id.toUpperCase()}`, title)}
             </Heading>
 

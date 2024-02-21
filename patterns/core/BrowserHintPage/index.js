@@ -13,10 +13,10 @@ export default function BrowserHintPage() {
       />
 
       <div className="browser-hint-page__content">
-        <Heading size="diana" weight="bold">
+        <Heading size="h5" weight="bold">
           {t('BROWSER_HINT_PAGE_HEADING')}
         </Heading>
-        <Heading size="bacchus" element="h2">
+        <Heading size="l" element="h2">
           {t('BROWSER_HINT_PAGE_SUB_HEADING')}
         </Heading>
 
@@ -36,7 +36,7 @@ export default function BrowserHintPage() {
         </div>
       </div>
       <div className="browser-hint-page__browsers">
-        <Heading size="bacchus" weight="bold">
+        <Heading size="l" weight="bold">
           {t('BROWSER_HINT_PAGE_DOWNLOAD_HINT')}
         </Heading>
         <div className="browser-hint-page__browsers-list">
@@ -50,7 +50,7 @@ export default function BrowserHintPage() {
                   src="/assets/images/browserHintPage/firefox.svg"
                   alt="Firefox Logo"
                 />
-                <Copytext size="aphrodite" element="span">
+                <Copytext size="m" element="span">
                   Firefox
                 </Copytext>
               </Link>
@@ -62,7 +62,7 @@ export default function BrowserHintPage() {
                   src="/assets/images/browserHintPage/chrome.svg"
                   alt="Chrome Logo"
                 />
-                <Copytext size="aphrodite" element="span">
+                <Copytext size="m" element="span">
                   Google Chrome
                 </Copytext>
               </Link>
@@ -72,7 +72,7 @@ export default function BrowserHintPage() {
               src="/assets/images/browserHintPage/klammer.svg"
               alt="Logo"
             />
-            <Copytext size="bacchus" weight="medium" element="span">
+            <Copytext size="l" weight="medium" element="span">
               {t('BROWSER_HINT_PAGE_RECOMMENDATIONS')}
             </Copytext>
           </div>
@@ -84,7 +84,7 @@ export default function BrowserHintPage() {
               src="/assets/images/browserHintPage/edge.svg"
               alt="Microsoft Edge Logo"
             />
-            <Copytext size="aphrodite" element="span">
+            <Copytext size="m" element="span">
               Microsoft EDGE
             </Copytext>
           </Link>

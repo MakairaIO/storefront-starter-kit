@@ -1,18 +1,18 @@
-$breakpoint-2-column-small = 600px
-$breakpoint-2-column-medium = 900px
-$breakpoint-3-column-small = 840px
-$max-column-width = 55rem
-$column-spacing-small = 3rem
-$column-spacing-large = 6rem
-$side-padding-small = 1.5rem
-$side-padding-large = 2rem
+$breakpoint-2-column-small = 37.5rem
+$breakpoint-2-column-medium = 56.25rem
+$breakpoint-3-column-small = 52.5rem
+$max-column-width = 34.38rem
+$column-spacing-small = 1.88rem
+$column-spacing-large = 3.75rem
+$side-padding-small = 0.94rem
+$side-padding-large = 1.25rem
 
 .multi-column-text
-  padding 1.2rem $side-padding-small
+  padding var(--spacing-s) $side-padding-small
   margin 0 auto
 
   @media (min-width var(--breakpoint-l))
-    padding 1.2rem $side-padding-large
+    padding var(--spacing-s) $side-padding-large
 
   .heading
     flex 1 0 100%
@@ -28,47 +28,63 @@ $side-padding-large = 2rem
 
 /* Columnrs */
 .multi-column-text--1-column
+  /* stylelint-disable-next-line */
   max-width 'calc(%s + (2 * %s))' % ($max-column-width $side-padding-large)
 
 .multi-column-text--2-column
-  // max-width calc((2 * $max-column-width) + $column-spacing-small)
+  /* stylelint-disable-next-line */
   max-width 'calc((2 * %s) + %s + (2 * %s))' % ($max-column-width $column-spacing-large $side-padding-large)
 
+  /* stylelint-disable-next-line */
   @media (min-width $breakpoint-2-column-small)
     display flex
     flex-wrap wrap
 
   .multi-column-text__column
+    /* stylelint-disable-next-line */
     @media (min-width $breakpoint-2-column-small)
+      /* stylelint-disable-next-line */
       flex 1 0 'calc(50% - (%s / 2))' % $column-spacing-small
 
+/* stylelint-disable-next-line */
     @media (min-width $breakpoint-2-column-medium)
+      /* stylelint-disable-next-line */
       flex 1 0 'calc(50% - (%s / 2))' % $column-spacing-large
 
   .multi-column-text__column + .multi-column-text__column
+    /* stylelint-disable-next-line */
     @media (min-width $breakpoint-2-column-small)
+      /* stylelint-disable-next-line */
       margin-left $column-spacing-small
-
+/* stylelint-disable-next-line */
     @media (min-width $breakpoint-2-column-medium)
+      /* stylelint-disable-next-line */
       margin-left $column-spacing-large
 
 .multi-column-text--3-column
+  /* stylelint-disable-next-line */
   max-width 'calc(%s + (2 * %s))' % ($max-column-width $side-padding-large)
 
+/* stylelint-disable-next-line */
   @media (min-width $breakpoint-3-column-small)
     display flex
     flex-wrap wrap
     max-width none
 
   .multi-column-text__column
+    /* stylelint-disable-next-line */
     @media (min-width $breakpoint-3-column-small)
+      /* stylelint-disable-next-line */
       flex 1 0 'calc(30% - (%s / 3))' % $column-spacing-small
 
   .multi-column-text__column + .multi-column-text__column
+    /* stylelint-disable-next-line */
     @media (min-width $breakpoint-3-column-small)
+      /* stylelint-disable-next-line */
       margin-left $column-spacing-small
 
     @media (min-width var(--breakpoint-l))
+      /* stylelint-disable-next-line */
       margin-left $column-spacing-large
 
 // General column styles
@@ -77,11 +93,11 @@ $side-padding-large = 2rem
 
 /* Colors */
 .multi-column-text__section--with-background-brand-1, .multi-column-text__section--with-background-brand-2, .multi-column-text__section--with-background-brand-3, .multi-column-text__section--with-background-brand-4
-  max-width 136rem // max-width of site-wrapper minus 2rem "padding" left and right
-  margin 1.2rem auto
+  max-width 85rem // max-width of site-wrapper minus 1.25rem "padding" left and right
+  margin var(--spacing-s) auto
 
   @media (min-width var(--breakpoint-l))
-    margin 2.4rem auto
+    margin var(--spacing-l) auto
 
 .multi-column-text__section--with-background-brand-1
   background var(--brand-1)
@@ -97,12 +113,12 @@ $side-padding-large = 2rem
 
 .multi-column-text__section--text-color-light
   color var(--neutral-00)
-  padding-top 2.4rem
-  padding-bottom 2.4rem
+  padding-top var(--spacing-l)
+  padding-bottom var(--spacing-l)
 
   @media (min-width var(--breakpoint-l))
-    padding-top 2.4rem
-    padding-bottom 2.4rem
+    padding-top var(--spacing-l)
+    padding-bottom var(--spacing-l)
 
   a
     color var(--neutral-00)
@@ -110,5 +126,5 @@ $side-padding-large = 2rem
   ul li:before
     border-color var(--neutral-00)
     background var(--neutral-00)
-    height 0.6rem
-    width 0.6rem
+    height 0.37rem
+    width 0.37rem

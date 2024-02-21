@@ -1,18 +1,18 @@
-var(--breakpoint-xs) = 400px
-var(--breakpoint-s) = 650px
-var(--breakpoint-m) = 1000px
-var(--breakpoint-l) = 1150px
+var(--breakpoint-xs) = 25.00rem
+var(--breakpoint-s) = 40.63rem
+var(--breakpoint-m) = 62.50rem
+var(--breakpoint-l) = 71.88rem
 
 .product-list
-  padding 0 1.5rem
-  margin-top 2.4rem
+  padding 0 var(--spacing-m)
+  margin-top var(--spacing-l)
 
   @media (min-width var(--breakpoint-m))
-    padding 0 2rem
+    padding 0 var(--spacing-m)
 
 .product-list__actions
   display flex
-  margin-bottom 1.8rem
+  margin-bottom var(--spacing-m)
 
 .product-list__wrapper
   display flex
@@ -21,7 +21,7 @@ var(--breakpoint-l) = 1150px
 .product-list__list
   display grid
   grid-template-columns 1fr
-  grid-gap 2.4rem 0
+  grid-gap var(--spacing-l) 0
   width 100%
   transition opacity 100ms ease-in
 
@@ -39,8 +39,8 @@ var(--breakpoint-l) = 1150px
     grid-template-columns repeat(4, minmax(0,1fr))
 
 .product-item
-  border-top 1px solid var(--neutral-40)
-  padding 2.3rem 1rem 0 // top = 2.4rem - 1px border
+  border-top 0.06rem solid var(--neutral-40)
+  padding var(--spacing-l) var(--spacing-s) 0 // top = var(--spacing-l) - var(--spacing-xs) border
   &--highlight
     position relative
 
@@ -50,41 +50,41 @@ var(--breakpoint-l) = 1150px
 
   img
     max-width 100%
-    max-height 22.8rem
+    max-height 14.25rem
 
 .product-item__title
   text-align center
 
 .product-item__manufacturer
   display block
-  line-height 1.2rem
-  letter-spacing 0.3rem
+  line-height 0.75rem
+  letter-spacing 0.19rem
   color var(--neutral-50)
   text-transform uppercase
   text-align center
-  margin 0.6rem 0
+  margin var(--spacing-xs) 0
 
 .product-item__shortdesc
-  max-height 6rem // 3 lines = 3 * 1.8rem (line-height) + 0.6rem (padding-top)
+  max-height 3.75rem // 3 lines = 3 * 1.13rem (line-height) + 0.37rem (padding-top)
   overflow hidden
   text-align center
   // Be careful not to override padding-top/bottom from <Copytext>
-  padding-left 1.5rem
-  padding-right 1.5rem
+  padding-left var(--spacing-m)
+  padding-right var(--spacing-m)
 
 .product-item__prices
   text-align center
-  padding 0.1rem 0 0.5rem
-  margin-top 0.6rem
+  padding var(--spacing-xs) 0 var(--spacing-xs)
+  margin-top var(--spacing-xs)
 
 .product-item__price
-  font-size 1.7rem
+  font-size var(--font-regular)
   font-weight var(--font-weight-semi-bold)
-  line-height 2.4rem
-  letter-spacing 0.025rem
+  line-height 1.50rem
+  letter-spacing 0.02rem
 
 .product-item__actions
-  margin-top 1.2rem
+  margin-top var(--spacing-s)
   text-align center
 
 .product-list__filter-button
@@ -93,24 +93,24 @@ var(--breakpoint-l) = 1150px
 
   &--active
     .button__text
-      margin-right 0.4rem
+      margin-right var(--spacing-xs)
 
 .product-item__swatches
-  margin-top 1.2rem
+  margin-top var(--spacing-s)
   display flex
   justify-content center
 
 .product-item__swatch
-  height 2.5rem
-  width 2.5rem
-  border-radius 50%
+  height 1.56rem
+  width 1.56rem
+  border-radius var(--border-radius-full)
   position relative
 
   &:hover
     cursor pointer
 
   & + &
-    margin-left 0.8rem
+    margin-left var(--spacing-s)
 
   span
     visibility hidden
@@ -122,91 +122,91 @@ var(--breakpoint-l) = 1150px
     top 50%
     left 50%
     transform translate(-50%, -50%)
-    border-radius 50%
+    border-radius var(--border-radius-full)
     height 100%
     width 100%
     transition all 200ms ease-in-out
 
   &--active:before
-    border 1px solid var(--neutral-80)
-    height calc(100% + 6px)
-    width calc(100% + 6px)
+    border 0.06rem solid var(--neutral-80)
+    height calc(100% + 0.38rem)
+    width calc(100% + 0.38rem)
 
   &--black
-    background #0E0D0E
+    background var(--color-info-content)
 
   &--blue
-    background #1A5AB6
+    background var(--color-primary-main)
 
   &--green
-    background #4E9A26
+    background var(--color-primary-main)
 
   &--red
-    background #AC1212
+    background var(--color-danger-main)
 
   &--grey
-    background #7A797B
+    background var(--color-primary-main)
 
   &--white
-    background #FEFEFE
-    border 1px solid var(--neutral-80)
+    background var(--color-base-darker)
+    border 0.06rem solid var(--neutral-80)
 
   &--purple
-    background #722B92
+    background var(--color-primary-main)
 
   &--orange
-    background #F2BE80
+    background var(--color-danger-main)
 
   &--brown
-    background #623C20
+    background var(--color-base-darkest)
 
   &--olive
-    background #C0BFA4
+    background var(--color-neutral-content)
 
   &--silver
-    background #A6A7A9
+    background var(--color-neutral-content)
 
   &--yellow
-    background #EBC621
+    background var(--color-warning-main)
 
   &--pink
-    background #F699CD
+    background var(--color-neutral-content)
 
   &--navy-blue
-    background #18295D
+    background var(--color-base-darkest)
 
   &--maroon
-    background #5E1F20
+    background var(--color-base-darkest)
 
   &--charcoal
-    background #7A7978
+    background var(--color-primary-main)
 
   &--gold
-    background #A98545
+    background var(--color-danger-main)
 
   &--beige
-    background #DAC8AA
+    background var(--color-neutral-content)
 
   &--fluorescent-green
-    background #63D044
+    background var(--color-success-main)
 
   &--peach
-    background #E1AF90
+    background var(--color-danger-main)
 
   &--teal
-    background #329A97
+    background var(--color-success-main)
 
   &--lavender
-    background #A08FA6
+    background var(--color-primary-main)
 
   &--sea-green
-    background #48B697
+    background var(--color-success-main)
 
   &--turquoise-blu
-    background #32B1C8
+    background var(--color-info-main)
 
   &--rust
-    background #98654B
+    background var(--color-primary-main)
 
 .product-list__filter-reset-button
   display none
@@ -215,36 +215,36 @@ var(--breakpoint-l) = 1150px
     display inline-flex
 
   .icon
-    flex-basis 2rem
+    flex-basis 1.25rem
 
 .product-list__active-filter-hint
   background var(--secondary)
   color var(--neutral-00)
-  border-radius 12px
-  font-size 1.1rem
+  border-radius var(--border-radius-big)
+  font-size var(--font-extrasmall)
   font-weight var(--font-weight-semi-bold)
-  line-height 1.5rem
-  letter-spacing 0.024rem
-  padding 0.35rem 0.7rem
+  line-height 0.94rem
+  letter-spacing 0.01rem
+  padding var(--spacing-xs) var(--spacing-s)
   position relative
-  top -1px
-  left 4px
+  top -0.06rem
+  left 0.25rem
 
 .product-list__sorter
   margin-left auto
 
   .dropdown__listbox
-    min-width 20rem
+    min-width 12.50rem
 
 .product-list__pagination
   grid-column 1 / -1 // always span all available columns
   display flex
   align-items center
   width 100%
-  margin-top 2.4rem
+  margin-top var(--spacing-l)
 
   .button + .button
-    margin-left 0.6rem
+    margin-left var(--spacing-xs)
 
 .product-list__pagination-text
   margin 0 auto
@@ -261,47 +261,47 @@ var(--breakpoint-l) = 1150px
 
 .ribbon
     position absolute
-    right -0.5rem
-    top -0.5rem
+    right -0.31rem
+    top -0.31rem
     z-index 1
     overflow hidden
-    width 7.5rem
-    height 7.5rem
+    width 4.69rem
+    height 4.69rem
     text-align right
     span
-        font-size 1rem
+        font-size var(--font-extrasmall)
         color var(--color-base-main)
         text-transform uppercase
         text-align center
         font-weight bold
-        line-height 2rem
+        line-height 1.25rem
         transform rotate(45deg)
         -webkit-transform rotate(45deg)
-        width 10rem
+        width 6.25rem
         display block
-        background #79A70A
-        background linear-gradient(#9BC90D 0%, #79A70A 100%)
-        box-shadow 0 0.3rem 1rem -0.5rem rgba(0, 0, 0, 1)
+        background var(--color-primary-main)
+        background linear-gradient(var(--color-warning-main) 0%, var(--color-primary-main) 100%)
+        box-shadow 0 0.19rem 0.63rem -0.31rem rgba(0, 0, 0, 1)
         position absolute
-        top 1.9rem
-        right -2.1rem
+        top 1.19rem
+        right -1.31rem
         &::before
             content ''
             position absolute
             left 0
             top 100%
             z-index -1
-            border-left 0.3rem solid #79A70A
-            border-right 0.3rem solid transparent
-            border-bottom 0.3rem solid transparent
-            border-top 0.3rem solid #79A70A
+            border-left 0.19rem solid var(--color-primary-main)
+            border-right 0.19rem solid transparent
+            border-bottom 0.19rem solid transparent
+            border-top 0.19rem solid var(--color-primary-main)
         &::after
             content ''
             position absolute
             right 0%
             top 100%
             z-index -1
-            border-right 0.3rem solid #79A70A
-            border-left 0.3rem solid transparent
-            border-bottom 0.3rem solid transparent
-            border-top 0.3rem solid #79A70A
+            border-right 0.19rem solid var(--color-primary-main)
+            border-left 0.19rem solid transparent
+            border-bottom 0.19rem solid transparent
+            border-top 0.19rem solid var(--color-primary-main)
