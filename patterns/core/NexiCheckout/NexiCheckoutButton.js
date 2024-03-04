@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Text, Button } from '../..'
+import { useTranslation } from '../../../utils'
+import allLanguages from '../../../config/allLanguages'
 
 const CHECKOUT_STATES = Object.freeze({
   READY: 1,
@@ -9,11 +11,14 @@ const CHECKOUT_STATES = Object.freeze({
 
 export function NexiCheckoutButton(props) {
   const [checkoutState, setCheckoutState] = useState(CHECKOUT_STATES.READY)
+  const { language } = useTranslation()
   async function initNexiCheckout() {
     try {
       const response = await fetch('/api/create-payment', {
         method: 'POST',
-        body: JSON.stringify(props),
+        body: JSON.stringify({
+          ...props,
+        }),
         headers: {
           'Content-Type': 'application/json',
         },
@@ -25,10 +30,13 @@ export function NexiCheckoutButton(props) {
         throw new Error(JSON.stringify(data.errors, null, 2))
       }
 
+      const lang = allLanguages.find((lang) => lang.value === language)
+
       const checkoutOptions = {
         checkoutKey: process.env.NEXI_PUBLIC_KEY,
         paymentId: data.paymentId,
         containerId: 'checkout-container',
+        language: lang.locale,
       }
 
       setCheckoutState(CHECKOUT_STATES.IN_PROGRESS)

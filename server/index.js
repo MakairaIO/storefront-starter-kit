@@ -8,7 +8,11 @@ const bodyParser = require('body-parser')
 const sendSendGridEmail = require('../utils/core/sendSendGridEmail')
 
 const logError = require('./utils/logError')
-const transformNexiItems = require('./utils/transformNexiItems')
+const {
+  transformNexiItems,
+  fetchItems,
+  fetchNexiCheckout,
+} = require('./utils/nexi')
 
 const dev = process.env.NODE_ENV !== 'production'
 const port = process.env.PORT || process.env.NODE_PORT || 5000
@@ -118,11 +122,12 @@ app
     server.post('/api/create-payment', async (req, res) => {
       const url = 'https://test.api.dibspayment.eu/v1/payments'
 
-      const { items, 'checkout-data': checkoutData } = req.body
-      const nexiItems = transformNexiItems(items)
+      const { items: makairaItems } = req.body
 
-      const checkoutArray = JSON.parse(checkoutData)
-      const checkoutPayloadData = checkoutArray[0][0] // Data is returned from api inside a nested array
+      const items = await fetchItems(makairaItems)
+      const nexiItems = transformNexiItems(items)
+      const checkoutData = await fetchNexiCheckout()
+      const { currency, ...checkoutPayloadData } = checkoutData
 
       if (!checkoutPayloadData.checkout.merchantHandlesConsumerData) {
         checkoutPayloadData.checkout.shippingCountries =
@@ -144,14 +149,9 @@ app
             (acc, item) => acc + item.grossTotalAmount,
             0
           ),
-          currency: 'EUR',
+          currency,
         },
       })
-
-      console.log(
-        'checkoutPayloadData',
-        JSON.stringify(checkoutPayloadData, null, 2)
-      )
 
       try {
         const result = await fetch(url, {
