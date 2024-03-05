@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Text, Button } from '../..'
+import { Text, Button, Heading } from '../..'
 import { useTranslation } from '../../../utils'
 import allLanguages from '../../../config/allLanguages'
 
@@ -11,7 +11,7 @@ const CHECKOUT_STATES = Object.freeze({
 
 export function NexiCheckoutButton(props) {
   const [checkoutState, setCheckoutState] = useState(CHECKOUT_STATES.READY)
-  const { language } = useTranslation()
+  const { t, language } = useTranslation()
   async function initNexiCheckout() {
     try {
       const response = await fetch('/api/create-payment', {
@@ -57,13 +57,22 @@ export function NexiCheckoutButton(props) {
   return (
     <>
       {checkoutState === CHECKOUT_STATES.READY && (
-        <Button onClick={initNexiCheckout}>Direct Checkout</Button>
+        <div className="checkout-wrapper">
+          <Heading>{t('NEXI_DIRECT_CHECKOUT')}</Heading>
+          <Text>{t('NEXI_DIRECT_CHECKOUT_INFO')}</Text>
+          <Button onClick={initNexiCheckout}>
+            {t('NEXI_DIRECT_CHECKOUT_BUTTON')}
+          </Button>
+        </div>
       )}
       {checkoutState !== CHECKOUT_STATES.COMPLETED && (
         <div id="checkout-container"></div>
       )}
       {checkoutState === CHECKOUT_STATES.COMPLETED && (
-        <Text>Checkout completed!</Text>
+        <div className="checkout-wrapper">
+          <Heading>{t('NEXI_CHECKOUT_COMPLETED')}</Heading>
+          <Text>{t('NEXI_CHECKOUT_COMPLETED_TEXT')}</Text>
+        </div>
       )}
       <script src="https://test.checkout.dibspayment.eu/v1/checkout.js?v=1"></script>
     </>

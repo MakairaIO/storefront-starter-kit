@@ -127,22 +127,23 @@ app
       const items = await fetchItems(makairaItems)
       const nexiItems = transformNexiItems(items)
       const checkoutData = await fetchNexiCheckout()
-      const { currency, ...checkoutPayloadData } = checkoutData
+      const { currency } = checkoutData.checkout
+      delete checkoutData.checkout.currency
 
-      if (!checkoutPayloadData.checkout.merchantHandlesConsumerData) {
-        checkoutPayloadData.checkout.shippingCountries =
-          checkoutPayloadData.checkout.shippingCountries.map((countryCode) => ({
+      if (!checkoutData.checkout.merchantHandlesConsumerData) {
+        checkoutData.checkout.shippingCountries =
+          checkoutData.checkout.shippingCountries?.map((countryCode) => ({
             countryCode,
           }))
 
-        checkoutPayloadData.checkout.shipping.countries =
-          checkoutPayloadData.checkout.shippingCountries
+        checkoutData.checkout.shipping.countries =
+          checkoutData.checkout.shippingCountries
       } else {
-        delete checkoutPayloadData.checkout.shipping
-        delete checkoutPayloadData.checkout.shippingCountries
+        delete checkoutData.checkout.shipping
+        delete checkoutData.checkout.shippingCountries
       }
 
-      const checkoutPayload = Object.assign(checkoutPayloadData, {
+      const checkoutPayload = Object.assign(checkoutData, {
         order: {
           items: nexiItems,
           amount: nexiItems.reduce(
@@ -152,6 +153,8 @@ app
           currency,
         },
       })
+
+      console.log(checkoutPayload)
 
       try {
         const result = await fetch(url, {
