@@ -9,8 +9,7 @@ $height-value-separator = 16px
 
   &__title 
     text-align center
-  
-
+    
   &__question-container 
     display flex
     justify-content center
@@ -32,17 +31,14 @@ $height-value-separator = 16px
       &:has(input:checked) 
         border-color var(--secondary)
         color var(--secondary)
-      
-
+        
       &:hover, &:has(input:checked):hover 
         border-color var(--neutral-60)
         color var(--neutral-60)
-      
-
+        
       &.text-choice 
         padding 4px 16px
-      
-
+        
       &.img-choice 
         width 100%
         max-width 200px
@@ -65,20 +61,15 @@ $height-value-separator = 16px
             aspect-ratio 1
             object-fit cover
             transition transform 200ms ease
-          
-        
-
+            
         &:hover > .image > img 
           transform scale(1.05)
-        
-      
-
+          
       & > input[type='radio'], & > input[type='checkbox'] 
         display none
       
-    
-
-    &__stepper 
+    &__stepper
+      --rc-slider-height 16px
       display flex
       position relative
       min-height $container-min-height
@@ -87,48 +78,82 @@ $height-value-separator = 16px
       flex-direction column
       row-gap 8px
 
-      &__input 
-        --input-height 8px
-        width 100%
-        height var(--input-height)
-        background-color var(--neutral-20)
+      .rc-slider
+        height var(--rc-slider-height)
         padding 0
-        margin 0
-        -webkit-appearance none
-        -moz-appearance initial
-        appearance none
 
-        &::-webkit-slider-thumb 
-          --dot-size calc(var(--input-height) * 2)
-          -webkit-appearance none
-          -moz-appearance initial
-          appearance none
+        .rc-slider-rail, .rc-slider-track
+          height calc(var(--rc-slider-height) / 2)
+
+        .rc-slider-rail
+          background-color var(--neutral-10)
+
+        .rc-slider-track
           background-color var(--secondary)
-          width var(--dot-size)
-          height var(--dot-size)
-          border-radius 50%
-          cursor pointer
-          position relative
-          z-index 2
-        
 
-        &::-moz-range-thumb 
-          border none
-          background-color var(--secondary)
-        
+        .rc-slider-step
+          height var(--rc-slider-height)
 
-        &:before, &::before 
-          content ''
-          position absolute
-          z-index 1
-          top 0
-          left 0
-          background-color var(--secondary)
-          height var(--input-height)
-          width var(--thumb-position)
-        
-      
+          .rc-slider-dot
+            bottom inherit
+            width calc(var(--rc-slider-height) - 4px)
+            height calc(var(--rc-slider-height) - 4px)
+            transform translateY(-2px) !important
+            border-color var(--neutral-20)
 
+            &.rc-slider-dot-active
+              border-color var(--secondary)
+        
+        .rc-slider-handle
+          height var(--rc-slider-height)
+          width var(--rc-slider-height)
+          aspect-ratio 1
+          border-color var(--secondary)
+        
+        .rc-slider-handle-dragging
+          box-shadow 0 0 2px 4px rgba(0,0,0,0.1)
+
+      .rc-slider-mark
+        top 24px
+
+      // &__input 
+      //   --input-height 8px
+      //   width 100%
+      //   height var(--input-height)
+      //   background-color var(--neutral-20)
+      //   padding 0
+      //   margin 0
+      //   -webkit-appearance none
+      //   -moz-appearance initial
+      //   appearance none
+
+      //   &::-webkit-slider-thumb 
+      //     --dot-size calc(var(--input-height) * 2)
+      //     -webkit-appearance none
+      //     -moz-appearance initial
+      //     appearance none
+      //     background-color var(--secondary)
+      //     width var(--dot-size)
+      //     height var(--dot-size)
+      //     border-radius 50%
+      //     cursor pointer
+      //     position relative
+      //     z-index 2
+          
+      //   &::-moz-range-thumb 
+      //     border none
+      //     background-color var(--secondary)
+          
+      //   &:before, &::before 
+      //     content ''
+      //     position absolute
+      //     z-index 1
+      //     top 0
+      //     left 0
+      //     background-color var(--secondary)
+      //     height var(--input-height)
+      //     width var(--thumb-position)
+          
       &__tooltip 
         position absolute
         transform translateY(calc(-100% - 12px))
@@ -137,6 +162,10 @@ $height-value-separator = 16px
         left var(--tooltip-left)
         padding 4px 12px
         border-radius 4px
+        width 100%
+        max-width 64px
+        display flex
+        justify-content center
 
         &:after 
           content ''
@@ -148,51 +177,37 @@ $height-value-separator = 16px
           transform translateX(-50%)
           top 100%
         
-      
+        & > input
+          width 100%
+          background-color transparent
+          color currentColor
+          border none
+          text-align center
+          padding 0
+          margin 0
+          -moz-appearance textfield
 
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button
+            -webkit-appearance none
+            margin 0
+            
       &__values-container 
         display flex
         justify-content space-between
-
+       
         &__value 
           position relative
           padding-top $height-value-separator + 4px
           color var(--neutral-60)
-          width 48px
           text-align center
-
-          &:first-child 
-            transform translateX(calc(-50% - (2px / 2)))
-          
-
-          &:last-child 
-            transform translateX(calc(50% - (2px / 2)))
-          
-
-          &:after 
-            content ''
-            height $height-value-separator
-            width 2px
-            position absolute
-            top 0
-            left calc(50% - 2px / 2)
-            background-color currentColor
-          
-        
-      
-    
-  
-
+            
   &__skip-container 
     align-self center
-  
-
+    
   &__buttons 
     display flex
     justify-content space-between
 
     button:disabled 
       cursor not-allowed
-    
-  
-

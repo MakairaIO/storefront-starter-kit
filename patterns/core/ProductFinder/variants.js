@@ -78,14 +78,21 @@ export default [
           type: 'range',
           isOptional: true,
           min: 50,
-          max: 200,
+          max: 300,
           step: 10,
         },
         {
           title: 'Range with steps',
           type: 'range',
           isOptional: true,
-          steps: ['hello world', 'foo', 'bar', 'baz', 'foobar'],
+          steps: [
+            'hello world',
+            'foo',
+            'bar',
+            'baz',
+            'foobar',
+            // 'abc'
+          ],
           min: 'hello',
           max: 'baz',
         },
