@@ -46,6 +46,9 @@ import SmartBundle from './examplePages/SmartBundle'
 import ErrorPage from '../patterns/core/ErrorPage'
 
 /* Add project specific imports here */
+import ProductFinder, {
+  productFinderVariants,
+} from '../patterns/core/ProductFinder'
 /* CLI MARKER - PATTER IMPORT - DO NOT REMOVE */
 
 export default [
@@ -186,6 +189,12 @@ export default [
     name: 'Contact Form',
     component: ContactForm,
     variants: contactFormVariants,
+  },
+  {
+    type: 'placeable',
+    name: 'Product Finder',
+    component: ProductFinder,
+    variants: productFinderVariants,
   },
   /* CLI MARKER - PATTERN CONFIG - DO NOT REMOVE */
   {
