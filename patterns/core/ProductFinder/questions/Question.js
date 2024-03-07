@@ -13,7 +13,6 @@ export default function Question(props) {
     answers,
     setAnswers,
   } = props
-  // { questionTitle: '', value: '' }
 
   const handlePrevious = () => {
     setStepNumber(stepNumber - 1)

@@ -14,6 +14,7 @@ $height-value-separator = 16px
     display flex
     justify-content center
     align-items flex-start
+    align-content start
     flex-wrap wrap
     column-gap 16px
     row-gap 8px
@@ -82,6 +83,10 @@ $height-value-separator = 16px
         height var(--rc-slider-height)
         padding 0
 
+        @media (max-width: 600px)
+          height auto
+          width var(--rc-slider-height)
+
         .rc-slider-rail, .rc-slider-track
           height calc(var(--rc-slider-height) / 2)
 
@@ -115,93 +120,7 @@ $height-value-separator = 16px
 
       .rc-slider-mark
         top 24px
-
-      // &__input 
-      //   --input-height 8px
-      //   width 100%
-      //   height var(--input-height)
-      //   background-color var(--neutral-20)
-      //   padding 0
-      //   margin 0
-      //   -webkit-appearance none
-      //   -moz-appearance initial
-      //   appearance none
-
-      //   &::-webkit-slider-thumb 
-      //     --dot-size calc(var(--input-height) * 2)
-      //     -webkit-appearance none
-      //     -moz-appearance initial
-      //     appearance none
-      //     background-color var(--secondary)
-      //     width var(--dot-size)
-      //     height var(--dot-size)
-      //     border-radius 50%
-      //     cursor pointer
-      //     position relative
-      //     z-index 2
-          
-      //   &::-moz-range-thumb 
-      //     border none
-      //     background-color var(--secondary)
-          
-      //   &:before, &::before 
-      //     content ''
-      //     position absolute
-      //     z-index 1
-      //     top 0
-      //     left 0
-      //     background-color var(--secondary)
-      //     height var(--input-height)
-      //     width var(--thumb-position)
-          
-      &__tooltip 
-        position absolute
-        transform translateY(calc(-100% - 12px))
-        background-color var(--neutral-90)
-        color var(--neutral-00)
-        left var(--tooltip-left)
-        padding 4px 12px
-        border-radius 4px
-        width 100%
-        max-width 64px
-        display flex
-        justify-content center
-
-        &:after 
-          content ''
-          position absolute
-          border-style solid
-          border-width 4px
-          border-color var(--neutral-90) transparent transparent transparent
-          left 50%
-          transform translateX(-50%)
-          top 100%
         
-        & > input
-          width 100%
-          background-color transparent
-          color currentColor
-          border none
-          text-align center
-          padding 0
-          margin 0
-          -moz-appearance textfield
-
-          &::-webkit-outer-spin-button,
-          &::-webkit-inner-spin-button
-            -webkit-appearance none
-            margin 0
-            
-      &__values-container 
-        display flex
-        justify-content space-between
-       
-        &__value 
-          position relative
-          padding-top $height-value-separator + 4px
-          color var(--neutral-60)
-          text-align center
-            
   &__skip-container 
     align-self center
     

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Slider from 'rc-slider'
+import { useMaxWidth } from '../../../../utils'
 import SubmitButtons from './SubmitButtons'
 import { roundToNearestLegalValue } from './roundToNearestLegalValue'
 
@@ -18,6 +19,8 @@ export default function QuestionRange(props) {
     handlePrevious,
     handleNoMoreResults,
   } = props
+
+  const isMobile = useMaxWidth(600)
 
   const [value, setValue] = useState(
     steps
@@ -45,6 +48,7 @@ export default function QuestionRange(props) {
             step={1}
             defaultValue={steps.indexOf(value)}
             onChange={(e) => setValue(steps[e])}
+            vertical={isMobile} // TODO: fix mobile version
           />
         ) : (
           <Slider

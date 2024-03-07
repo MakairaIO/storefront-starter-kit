@@ -19,6 +19,16 @@ export default [
               label: 'Text single option 2',
               value: 'textSingle2',
             },
+            {
+              type: 'text',
+              label: 'Text single option 3',
+              value: 'textSingle3',
+            },
+            {
+              type: 'text',
+              label: 'Text single option 4',
+              value: 'textSingle4',
+            },
           ],
         },
         {
@@ -40,6 +50,20 @@ export default [
               label: 'Image single option 2',
               value: 'imgSingle2',
             },
+            {
+              type: 'image',
+              src: 'https://images.unsplash.com/photo-1708806016675-dac47ebc8459?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+              alt: 'Img',
+              label: 'Image single option 3',
+              value: 'imgSingle3',
+            },
+            {
+              type: 'image',
+              src: 'https://images.unsplash.com/photo-1682686580224-cd46ea1a6950?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+              alt: 'Img',
+              label: 'Image single option 4',
+              value: 'imgSingle4',
+            },
           ],
         },
         {
@@ -49,6 +73,8 @@ export default [
           options: [
             { type: 'text', label: 'Text multi option 1', value: 'textMulti1' },
             { type: 'text', label: 'Text multi option 2', value: 'textMulti2' },
+            { type: 'text', label: 'Text multi option 3', value: 'textMulti3' },
+            { type: 'text', label: 'Text multi option 4', value: 'textMulti4' },
           ],
         },
         {
@@ -69,6 +95,20 @@ export default [
               alt: 'Img',
               label: 'Image single option 2',
               value: 'imgSingle2',
+            },
+            {
+              type: 'image',
+              src: 'https://plus.unsplash.com/premium_photo-1676823570926-238f23020786?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+              alt: 'Img',
+              label: 'Image single option 3',
+              value: 'imgSingle3',
+            },
+            {
+              type: 'image',
+              src: 'https://images.unsplash.com/photo-1709548145082-04d0cde481d4?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyN3x8fGVufDB8fHx8fA%3D%3D',
+              alt: 'Img',
+              label: 'Image single option 4',
+              value: 'imgSingle4',
             },
           ],
         },

@@ -4,10 +4,8 @@ import Question from './questions/Question'
 function ProductFinder(props) {
   const { questions } = props
 
-  const [stepNumber, setStepNumber] = useState(0)
-  const [answers, setAnswers] = useState([])
-  // { questionTitle: '', value: '' }
-  console.log(answers)
+  const [stepNumber, setStepNumber] = useState(4)
+  const [answers, setAnswers] = useState([]) // { questionTitle: '', value: '' }
 
   return (
     <section className="product-finder">
