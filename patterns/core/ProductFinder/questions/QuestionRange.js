@@ -60,18 +60,6 @@ export default function QuestionRange(props) {
             onChange={(e) => setValue(e)}
           />
         )}
-
-        {/* 
-          What do you prefer here?
-          <Slider
-            min={steps ? 0 : min}
-            max={steps ? steps.length - 1 : max}
-            marks={steps ? Object.values(steps) : { [Number(min)]: min, [Number(max)]: max }}
-            step={steps ? 1 : step}
-            defaultValue={steps ? steps.indexOf(value) : value}
-            onChange={(e) => setValue(steps[e])}
-          />
-         */}
       </div>
 
       <SubmitButtons
