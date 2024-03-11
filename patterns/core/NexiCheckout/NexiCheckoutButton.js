@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Text, Button, Heading } from '../..'
 import { useTranslation } from '../../../utils'
 import allLanguages from '../../../config/allLanguages'
+import Script from 'next/script'
 
 const CHECKOUT_STATES = Object.freeze({
   READY: 1,
@@ -74,7 +75,7 @@ export function NexiCheckoutButton(props) {
           <Text>{t('NEXI_CHECKOUT_COMPLETED_TEXT')}</Text>
         </div>
       )}
-      <script src="https://test.checkout.dibspayment.eu/v1/checkout.js?v=1"></script>
+      <Script src="https://test.checkout.dibspayment.eu/v1/checkout.js?v=1" />
     </>
   )
 }
