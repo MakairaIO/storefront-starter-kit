@@ -13,6 +13,7 @@ import {
   DiscoveryImage,
   ContactForm,
   NoComponent,
+  NexiCheckoutButton,
 } from '../..'
 
 export default function ContentElements(props) {
@@ -34,6 +35,7 @@ export default function ContentElements(props) {
     'video-teaser': TeaserVideo,
     'discovery-image': DiscoveryImage,
     'contact-form': ContactForm,
+    'nexi-checkout': NexiCheckoutButton,
   }
   return (
     <>

@@ -8,6 +8,7 @@ module.exports = [
     label: 'DE',
     value: 'de',
     searchRoute: '/suche',
+    locale: 'de-DE',
     prices: {
       locale: 'de-DE',
       currency: 'EUR',
@@ -16,6 +17,7 @@ module.exports = [
   {
     label: 'EN',
     value: 'en',
+    locale: 'en-US',
     searchRoute: '/search',
     prices: {
       locale: 'de-DE',
