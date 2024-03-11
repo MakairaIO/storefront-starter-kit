@@ -39,7 +39,8 @@ export default function QuestionChoice(props) {
   }
 
   const handleSubmit = () => {
-    if (handleClick) handleClick()
+    // if (handleClick)
+    handleClick?.()
 
     if (stepNumber === maxQuestion) {
       handleNoMoreResults()

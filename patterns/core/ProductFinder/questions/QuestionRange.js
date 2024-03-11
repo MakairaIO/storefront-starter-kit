@@ -30,7 +30,8 @@ export default function QuestionRange(props) {
   )
 
   const handleSubmit = () => {
-    if (handleClick) handleClick()
+    // if (handleClick)
+    handleClick?.()
 
     if (stepNumber === maxQuestion) {
       handleNoMoreResults()
