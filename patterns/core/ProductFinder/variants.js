@@ -30,6 +30,7 @@ export default [
               value: 'textSingle4',
             },
           ],
+          handleClick: () => alert('Hello World'),
         },
         {
           title: 'Single choice question with image',

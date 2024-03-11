@@ -16,6 +16,7 @@ export default function QuestionChoice(props) {
     maxQuestion,
     handlePrevious,
     handleNoMoreResults,
+    handleClick,
   } = props
 
   const [value, setValue] = useState(
@@ -38,6 +39,8 @@ export default function QuestionChoice(props) {
   }
 
   const handleSubmit = () => {
+    if (handleClick) handleClick()
+
     if (stepNumber === maxQuestion) {
       handleNoMoreResults()
       return
@@ -87,7 +90,15 @@ export default function QuestionChoice(props) {
 
       {isOptional && stepNumber !== maxQuestion && (
         <div className="product-finder__skip-container">
-          <Button onClick={() => setStepNumber(stepNumber + 1)}>Skip</Button>
+          <Button
+            onClick={() => {
+              if (handleClick) handleClick()
+
+              setStepNumber(stepNumber + 1)
+            }}
+          >
+            Skip
+          </Button>
         </div>
       )}
 
