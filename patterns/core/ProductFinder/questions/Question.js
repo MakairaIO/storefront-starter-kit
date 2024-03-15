@@ -12,6 +12,7 @@ export default function Question(props) {
     setStepNumber,
     answers,
     setAnswers,
+    // products,
   } = props
 
   const handlePrevious = () => {
