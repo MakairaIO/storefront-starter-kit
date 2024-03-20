@@ -18,6 +18,7 @@ export default function QuestionRange(props) {
     maxQuestion,
     handlePrevious,
     handleNoMoreResults,
+    handleClick,
   } = props
 
   const isMobile = useMaxWidth(600)
@@ -29,6 +30,9 @@ export default function QuestionRange(props) {
   )
 
   const handleSubmit = () => {
+    // if (handleClick)
+    handleClick?.()
+
     if (stepNumber === maxQuestion) {
       handleNoMoreResults()
       return
