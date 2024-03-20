@@ -49,6 +49,7 @@ import ErrorPage from '../patterns/core/ErrorPage'
 import ProductFinder, {
   productFinderVariants,
 } from '../patterns/core/ProductFinder'
+import FiltersList, { filtersListVariants } from '../patterns/core/FiltersList'
 /* CLI MARKER - PATTER IMPORT - DO NOT REMOVE */
 
 export default [
@@ -195,6 +196,12 @@ export default [
     name: 'Product Finder',
     component: ProductFinder,
     variants: productFinderVariants,
+  },
+  {
+    type: 'placeable',
+    name: 'Filters List',
+    component: FiltersList,
+    variants: filtersListVariants,
   },
   /* CLI MARKER - PATTERN CONFIG - DO NOT REMOVE */
   {
