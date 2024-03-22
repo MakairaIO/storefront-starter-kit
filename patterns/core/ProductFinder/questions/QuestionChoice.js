@@ -2,11 +2,10 @@ import { useState } from 'react'
 import classNames from 'classnames'
 import { Text, Button, Image } from '../../..'
 import SubmitButtons from './SubmitButtons'
-
+// 'range' | 'rangeText' | 'text' | 'image'
 export default function QuestionChoice(props) {
   const {
-    options,
-    type: questionType,
+    textOptions,
     title,
     stepNumber,
     setStepNumber,
@@ -17,29 +16,26 @@ export default function QuestionChoice(props) {
     handlePrevious,
     handleNoMoreResults,
     handleClick,
+    multipleChoice,
+    type: questionType,
   } = props
 
-  const [value, setValue] = useState(
-    questionType === 'singleChoice' ? undefined : []
-  )
+  const [value, setValue] = useState(!multipleChoice ? undefined : [])
 
   const handleChange = (e, option) => {
     if (e.target.checked)
       setValue(
-        questionType === 'singleChoice'
-          ? option.value
-          : [...value, option.value]
+        !multipleChoice ? option.filter.value : [...value, option.filter.value]
       )
     else
       setValue(
-        questionType === 'singleChoice'
+        !multipleChoice
           ? undefined
-          : value.filter((v) => v !== option.value)
+          : value.filter((v) => v !== option.filter.value)
       )
   }
 
   const handleSubmit = () => {
-    // if (handleClick)
     handleClick?.()
 
     if (stepNumber === maxQuestion) {
@@ -54,36 +50,36 @@ export default function QuestionChoice(props) {
   return (
     <>
       <div className="product-finder__question-container">
-        {options.map((option) => (
+        {textOptions.map((option) => (
           <label
-            htmlFor={option.value}
+            htmlFor={option.uuid}
             className={classNames(
               'product-finder__question-container__choice',
               option.type === 'image' ? 'img-choice' : 'text-choice'
             )}
-            key={option.value}
+            key={option.uuid}
           >
             <input
-              type={questionType === 'singleChoice' ? 'radio' : 'checkbox'}
-              name={title}
-              id={option.value}
-              value={option.value}
+              type={multipleChoice ? 'radio' : 'checkbox'}
+              name={option.uuid}
+              id={option.uuid}
+              value={option.filter.value}
               onChange={(e) => handleChange(e, option)}
             />
 
-            {option.type === 'image' ? (
+            {questionType === 'image' ? (
               <>
                 <Image
                   alt={option.alt}
                   options={{
-                    desktop: { source: option.src, width: '100%' },
+                    desktop: { source: option.image, width: '100%' },
                     mobile: {},
                   }}
                 />
-                <Text>{option.label}</Text>
+                <Text>{option.title}</Text>
               </>
             ) : (
-              option.label
+              option.title
             )}
           </label>
         ))}

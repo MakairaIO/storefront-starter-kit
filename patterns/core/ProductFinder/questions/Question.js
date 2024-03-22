@@ -6,13 +6,13 @@ export default function Question(props) {
   const {
     title,
     isActive,
-    options,
+    textOptions: options,
     maxQuestion,
     stepNumber,
     setStepNumber,
     answers,
     setAnswers,
-    // products,
+    type,
   } = props
 
   const handlePrevious = () => {
@@ -32,7 +32,7 @@ export default function Question(props) {
         {title}
       </Text>
 
-      {options ? (
+      {!type.startsWith('range') ? (
         <QuestionChoice
           options={options}
           title={title}
