@@ -53,3 +53,5 @@ export { default as AddCartSuccessModal } from './core/AddCartSuccessModal'
 export { NextArrow, PrevArrow } from './core/SliderArrows'
 
 /* Add project specific patterns here */
+export { default as ProductFinder } from './core/ProductFinder'
+export { default as FiltersList } from './core/FiltersList'
