@@ -6,10 +6,6 @@ import { roundToNearestLegalValue } from './roundToNearestLegalValue'
 
 export default function QuestionRange(props) {
   const {
-    min,
-    max,
-    steps,
-    step,
     answers,
     setAnswers,
     title,
@@ -19,18 +15,22 @@ export default function QuestionRange(props) {
     handlePrevious,
     handleNoMoreResults,
     handleClick,
+    type: questionType,
+    rangeNumberOptions = {},
+    textOptions = [],
   } = props
+
+  const { min, max, step } = rangeNumberOptions
 
   const isMobile = useMaxWidth(600)
 
   const [value, setValue] = useState(
-    steps
-      ? steps[Math.round((steps.length - 1) / 2)]
+    questionType === 'rangeText'
+      ? textOptions[Math.round((textOptions.length - 1) / 2)]
       : roundToNearestLegalValue((min + max) / 2, step)
   )
 
   const handleSubmit = () => {
-    // if (handleClick)
     handleClick?.()
 
     if (stepNumber === maxQuestion) {
@@ -44,14 +44,16 @@ export default function QuestionRange(props) {
   return (
     <>
       <div className="product-finder__question-container__stepper">
-        {steps ? (
+        {questionType === 'rangeText' ? (
           <Slider
             min={0}
-            max={steps.length - 1}
-            marks={Object.values(steps)}
+            max={textOptions.length - 1}
+            marks={textOptions.map((option) => option.title)}
             step={1}
-            defaultValue={steps.indexOf(value)}
-            onChange={(e) => setValue(steps[e])}
+            value={textOptions.findIndex(
+              (option) => option.uuid === value.uuid
+            )}
+            onChange={(e) => setValue(textOptions[e])}
             vertical={isMobile} // TODO: fix mobile version
           />
         ) : (

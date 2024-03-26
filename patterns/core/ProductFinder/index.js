@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
-import { fetchRecommendationData, useGlobalData } from '../../../utils'
+import { fetchRecommendationData, useTranslation } from '../../../utils'
 import { ProductList } from '../../'
 import Question from './questions/Question'
 
 function ProductFinder(props) {
-  const { questions, productId, recommendationId, count } = props
-  const { pageData } = useGlobalData()
+  const { language } = useTranslation()
 
   const [stepNumber, setStepNumber] = useState(0)
+  // if the answer is optional, don't fetch recos based on it but sort the products based on the answer and display it as a field
   const [answers, setAnswers] = useState([]) // { questionTitle: '', value: '', type: '', field, operator, compareWith }
   const [products, setProducts] = useState([])
 
@@ -21,12 +21,13 @@ function ProductFinder(props) {
         uuid: '',
         value: `*${answer.value}*`,
       }))
+
+      if (filters.length === 0) return
+
       try {
         const res = await fetchRecommendationData({
-          productId,
-          recommendationId,
-          count,
-          language: pageData.language,
+          count: 100,
+          language: language,
           filters,
         })
         const recommentedProducts = res.items
@@ -40,19 +41,23 @@ function ProductFinder(props) {
       }
     }
     getProducts()
-  }, [productId, recommendationId, answers, count, pageData.language])
+  }, [props, answers, language])
+
+  if (props.questions.length === 0) {
+    return null
+  }
 
   return (
     <section className="product-finder">
-      {questions?.map((question, i) => (
+      {props.questions?.map((question, i) => (
         <Question
-          key={question.title}
+          key={question.uuid}
           isActive={stepNumber === i}
           stepNumber={stepNumber}
           setStepNumber={setStepNumber}
           answers={answers}
           setAnswers={setAnswers}
-          maxQuestion={questions?.length - 1}
+          maxQuestion={props.questions?.length - 1}
           products={products}
           {...question}
         />
