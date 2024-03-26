@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { fetchRecommendationData, useGlobalData } from '../../../utils'
+import { ProductList } from '../../'
 import Question from './questions/Question'
 
 function ProductFinder(props) {
@@ -20,7 +21,6 @@ function ProductFinder(props) {
         uuid: '',
         value: `*${answer.value}*`,
       }))
-
       try {
         const res = await fetchRecommendationData({
           productId,
@@ -29,7 +29,6 @@ function ProductFinder(props) {
           language: pageData.language,
           filters,
         })
-
         const recommentedProducts = res.items
         const formattedProduct = recommentedProducts.map(
           (product) => product.fields
@@ -40,7 +39,6 @@ function ProductFinder(props) {
         throw new Error('An error occured, check console')
       }
     }
-
     getProducts()
   }, [productId, recommendationId, answers, count, pageData.language])
 
@@ -59,6 +57,8 @@ function ProductFinder(props) {
           {...question}
         />
       ))}
+
+      {products.length ? <ProductList products={products} /> : null}
     </section>
   )
 }
