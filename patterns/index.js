@@ -55,3 +55,4 @@ export { NextArrow, PrevArrow } from './core/SliderArrows'
 /* Add project specific patterns here */
 export { default as ProductFinder } from './core/ProductFinder'
 export { default as FiltersList } from './core/FiltersList'
+export { default as DynamicLabel } from './core/DynamicLabel'

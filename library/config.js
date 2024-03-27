@@ -50,6 +50,9 @@ import ProductFinder, {
   productFinderVariants,
 } from '../patterns/core/ProductFinder'
 import FiltersList, { filtersListVariants } from '../patterns/core/FiltersList'
+import DynamicLabel, {
+  dynamicLabelVariants,
+} from '../patterns/core/DynamicLabel'
 /* CLI MARKER - PATTER IMPORT - DO NOT REMOVE */
 
 export default [
@@ -202,6 +205,12 @@ export default [
     name: 'Filters List',
     component: FiltersList,
     variants: filtersListVariants,
+  },
+  {
+    type: 'placeable',
+    name: 'Dynamic Label',
+    component: DynamicLabel,
+    variants: dynamicLabelVariants,
   },
   /* CLI MARKER - PATTERN CONFIG - DO NOT REMOVE */
   {
