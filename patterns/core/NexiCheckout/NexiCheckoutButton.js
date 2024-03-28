@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Text, Button, Heading } from '../..'
+import { Text, Button, Heading, Image } from '../..'
 import { useTranslation } from '../../../utils'
 import allLanguages from '../../../config/allLanguages'
 import Script from 'next/script'
@@ -13,6 +13,7 @@ const CHECKOUT_STATES = Object.freeze({
 export function NexiCheckoutButton(props) {
   const [checkoutState, setCheckoutState] = useState(CHECKOUT_STATES.READY)
   const { t, language } = useTranslation()
+
   async function initNexiCheckout() {
     try {
       const response = await fetch('/api/create-payment', {
@@ -55,15 +56,55 @@ export function NexiCheckoutButton(props) {
     }
   }
 
+  const product = props.items[0]
+
+  console.log({ product })
+
   return (
     <>
       {checkoutState === CHECKOUT_STATES.READY && (
-        <div className="checkout-wrapper">
-          <Heading>{t('NEXI_DIRECT_CHECKOUT')}</Heading>
-          <Text>{t('NEXI_DIRECT_CHECKOUT_INFO')}</Text>
-          <Button onClick={initNexiCheckout}>
-            {t('NEXI_DIRECT_CHECKOUT_BUTTON')}
-          </Button>
+        <div
+          className="checkout-wrapper"
+          style={{
+            ['--nexi-background']: `url('https://images.unsplash.com/photo-1616449973117-0e1d99c56ed3?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`, // TODO: add prop for image
+          }}
+        >
+          <div className="checkout-wrapper__content">
+            <div className="checkout-wrapper__content__img-container">
+              <Image
+                alt={product.title}
+                options={{
+                  desktop: {
+                    source: product.images[0],
+                    width: 768,
+                    media: '(min-width: 768px)',
+                  },
+                  mobile: {
+                    source: product.images[0],
+                    width: 480,
+                    media: null,
+                  },
+                }}
+              />
+            </div>
+
+            <div className="checkout-wrapper__content__text">
+              <Heading>{t('NEXI_DIRECT_CHECKOUT')}</Heading>
+
+              <Text element="p">{t('NEXI_DIRECT_CHECKOUT_INFO')}</Text>
+
+              <Text
+                element="p"
+                className="checkout-wrapper__content__text__longdesc"
+              >
+                Short description of the product
+              </Text>
+
+              <Button onClick={initNexiCheckout} variant="primary-alt">
+                {t('NEXI_DIRECT_CHECKOUT_BUTTON')}
+              </Button>
+            </div>
+          </div>
         </div>
       )}
       {checkoutState !== CHECKOUT_STATES.COMPLETED && (
