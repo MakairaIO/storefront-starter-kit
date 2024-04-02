@@ -49,3 +49,35 @@
       color var(--neutral-00)
       width 45%
       max-width 400px
+
+      &__heading-container
+        width 100%
+        display flex
+        flex-direction column
+        gap 8px
+
+        &__price-container
+          display flex
+          align-items center
+          gap 4px
+
+          &__badge
+            --badge-size 8px
+            width var(--badge-size)
+            height var(--badge-size)
+            background-color var(--positive)
+            display inline-block
+            border-radius 50%
+            border 1px solid var(--primary)
+
+          &__price
+            diana()
+            font-weight var(--font-weight-medium)
+
+      &__buttons-container
+        display flex
+        align-items center
+        gap 8px
+
+        &__quantity-select
+          color var(--primary)

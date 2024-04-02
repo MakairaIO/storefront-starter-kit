@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Text, Button, Heading, Image } from '../..'
+import { Text, Button, Heading, Image, FormattedPrice, Dropdown } from '../..'
 import { useTranslation } from '../../../utils'
 import allLanguages from '../../../config/allLanguages'
 import Script from 'next/script'
@@ -13,6 +13,15 @@ const CHECKOUT_STATES = Object.freeze({
 export function NexiCheckoutButton(props) {
   const [checkoutState, setCheckoutState] = useState(CHECKOUT_STATES.READY)
   const { t, language } = useTranslation()
+
+  const quantities = [
+    { label: '1', value: 1 },
+    { label: '2', value: 2 },
+    { label: '3', value: 3 },
+    { label: '4', value: 4 },
+  ]
+
+  const [quantity, setQuantity] = useState(1)
 
   async function initNexiCheckout() {
     try {
@@ -89,7 +98,21 @@ export function NexiCheckoutButton(props) {
             </div>
 
             <div className="checkout-wrapper__content__text">
-              <Heading>{t('NEXI_DIRECT_CHECKOUT')}</Heading>
+              <div className="checkout-wrapper__content__text__heading-container">
+                <Heading size="eos" weight="semi-bold">
+                  {t('NEXI_DIRECT_CHECKOUT')}
+                </Heading>
+
+                <div className="checkout-wrapper__content__text__heading-container__price-container">
+                  {product.active && (
+                    <span className="checkout-wrapper__content__text__heading-container__price-container__badge" />
+                  )}
+                  <FormattedPrice
+                    price={product.price}
+                    className="checkout-wrapper__content__text__heading-container__price-container__price"
+                  />
+                </div>
+              </div>
 
               <Text element="p">{t('NEXI_DIRECT_CHECKOUT_INFO')}</Text>
 
@@ -100,9 +123,19 @@ export function NexiCheckoutButton(props) {
                 Short description of the product
               </Text>
 
-              <Button onClick={initNexiCheckout} variant="primary-alt">
-                {t('NEXI_DIRECT_CHECKOUT_BUTTON')}
-              </Button>
+              <div className="checkout-wrapper__content__text__buttons-container">
+                <Dropdown
+                  id="sizeVariant"
+                  value={quantity}
+                  options={quantities}
+                  onChange={({ value }) => setQuantity(value)}
+                  className="checkout-wrapper__content__text__buttons-container__quantity-select"
+                />
+
+                <Button onClick={initNexiCheckout} variant="primary-alt">
+                  {t('NEXI_DIRECT_CHECKOUT_BUTTON')}
+                </Button>
+              </div>
             </div>
           </div>
         </div>
