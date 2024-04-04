@@ -1,1 +1,0 @@
-export { NexiCheckoutButton } from './NexiCheckoutButton'

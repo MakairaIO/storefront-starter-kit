@@ -51,6 +51,8 @@ export {
 } from './core/Form'
 export { default as AddCartSuccessModal } from './core/AddCartSuccessModal'
 export { NextArrow, PrevArrow } from './core/SliderArrows'
-export { NexiCheckoutButton } from './core/NexiCheckout'
+export { default as NexiCheckoutButtons } from './core/NexiCheckoutButtons'
+export { default as NexiCheckoutEnhanced } from './core/NexiCheckoutEnhanced'
+export { default as NexiSimple } from './core/NexiSimple'
 
 /* Add project specific patterns here */
