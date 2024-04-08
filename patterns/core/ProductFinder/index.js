@@ -1,18 +1,25 @@
 import { useState, useEffect } from 'react'
 import { fetchRecommendationData, useTranslation } from '../../../utils'
 import Question from './questions/Question'
+import { shouldSkipQuestion } from './shouldSkipQuestion'
 
 function ProductFinder(props) {
   const { language } = useTranslation()
 
   const [stepNumber, setStepNumber] = useState(0)
   // if the answer is optional, don't fetch recos based on it but sort the products based on the answer and display it as a field
-  const [answers, setAnswers] = useState([]) // { questionTitle: '', value: '', type: '', field, operator, compareWith }
+  const [answers, setAnswers] = useState([]) // { questionTitle: '', value: '', type: '', field, operator, compareWith, skipQuestion }
   const [products, setProducts] = useState([])
 
   useEffect(() => {
+    if (shouldSkipQuestion(products, props.questions, answers)) {
+      setAnswers([...answers, null])
+    }
+  }, [answers, props.questions])
+
+  useEffect(() => {
     async function getProducts() {
-      const filters = answers.map((answer) => ({
+      const filters = answers.filter(Boolean).map((answer) => ({
         field: answer.field,
         compareWith: answer.staticValue ?? 'staticValue',
         operator: answer.operator ?? 'like',
