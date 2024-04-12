@@ -1,12 +1,12 @@
 import { Text } from '../../..'
 import QuestionRange from './QuestionRange'
 import QuestionChoice from './QuestionChoice'
+import { useTranslation } from '../../../../utils'
 
 export default function Question(props) {
   const {
     title,
     isActive,
-    textOptions: options,
     maxQuestion,
     stepNumber,
     setStepNumber,
@@ -14,6 +14,8 @@ export default function Question(props) {
     setAnswers,
     type,
   } = props
+
+  const { language } = useTranslation()
 
   const handlePrevious = () => {
     setStepNumber(stepNumber - 1)
@@ -29,12 +31,11 @@ export default function Question(props) {
   return (
     <>
       <Text element="h4" size="cupid" className="product-finder__title">
-        {title}
+        {title[language]}
       </Text>
 
       {!type.startsWith('range') ? (
         <QuestionChoice
-          options={options}
           title={title}
           maxQuestion={maxQuestion}
           handlePrevious={handlePrevious}

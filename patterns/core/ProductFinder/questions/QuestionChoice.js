@@ -2,6 +2,7 @@ import { useState } from 'react'
 import classNames from 'classnames'
 import { Text, Button, Image } from '../../..'
 import SubmitButtons from './SubmitButtons'
+import { useTranslation } from '../../../../utils'
 // 'range' | 'rangeText' | 'text' | 'image'
 export default function QuestionChoice(props) {
   const {
@@ -19,6 +20,7 @@ export default function QuestionChoice(props) {
     multipleChoice,
     type: questionType,
   } = props
+  const { language } = useTranslation()
 
   const [value, setValue] = useState(!multipleChoice ? undefined : [])
 
@@ -44,13 +46,13 @@ export default function QuestionChoice(props) {
     }
 
     setStepNumber(stepNumber + 1)
-    setAnswers([...answers, { questionTitle: title, value }])
+    setAnswers([...answers, { questionTitle: title[language], value }])
   }
 
   return (
     <>
       <div className="product-finder__question-container">
-        {textOptions.map((option) => (
+        {textOptions[language].map((option) => (
           <label
             htmlFor={option.uuid}
             className={classNames(
@@ -76,10 +78,10 @@ export default function QuestionChoice(props) {
                     mobile: {},
                   }}
                 />
-                <Text>{option.title}</Text>
+                <Text>{option.title[language]}</Text>
               </>
             ) : (
-              option.title
+              option.title[language]
             )}
           </label>
         ))}

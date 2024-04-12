@@ -29,7 +29,12 @@ const mathFieldTypes = ['double', 'long', 'integer', 'byte', 'float']
  * @param {ProductFinderAnswer[]} answers
  * @returns {boolean}
  */
-export function shouldSkipQuestion(items = [], questions = [], answers = []) {
+export function shouldSkipQuestion(
+  items = [],
+  questions = [],
+  answers = [],
+  language = 'de'
+) {
   if (!answers || !Array.isArray(answers) || !answers.length) {
     return false
   }
@@ -55,14 +60,14 @@ export function shouldSkipQuestion(items = [], questions = [], answers = []) {
         return doMathRangeComparison(value, questionToCheck.rangeNumberOptions)
       }
 
-      return questionToCheck.textOptions.some((option) => {
+      return questionToCheck.textOptions[language].some((option) => {
         return doMathComparison(value, option.value, option.operator)
       })
     }
 
     if (fieldType === 'boolean') {
       // either !value or !!value
-      return questionToCheck.textOptions.some((option) => {
+      return questionToCheck.textOptions[language].some((option) => {
         return eval(`${booleanOperators[option.operator]}${value}`)
       })
     }
@@ -71,7 +76,7 @@ export function shouldSkipQuestion(items = [], questions = [], answers = []) {
     // I don't know how we can implement the likenesses, so I'm leaving them out
 
     if (Array.isArray(item[field])) {
-      return questionToCheck.textOptions.some((option) => {
+      return questionToCheck.textOptions[language].some((option) => {
         doStringInListComparison(
           item[field],
           value,
@@ -79,7 +84,7 @@ export function shouldSkipQuestion(items = [], questions = [], answers = []) {
         )
       })
     } else {
-      return questionToCheck.textOptions.some((option) => {
+      return questionToCheck.textOptions[language].some((option) => {
         return eval(
           `${option.value} ${stringOperators[option.operator]} ${value}`
         )

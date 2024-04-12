@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Slider from 'rc-slider'
-import { useMaxWidth } from '../../../../utils'
+import { useMaxWidth, useTranslation } from '../../../../utils'
 import SubmitButtons from './SubmitButtons'
 import { roundToNearestLegalValue } from './roundToNearestLegalValue'
 
@@ -17,16 +17,18 @@ export default function QuestionRange(props) {
     handleClick,
     type: questionType,
     rangeNumberOptions = {},
-    textOptions = [],
+    textOptions = {},
   } = props
-
+  const { language } = useTranslation()
   const { min, max, step } = rangeNumberOptions
 
   const isMobile = useMaxWidth(600)
 
   const [value, setValue] = useState(
     questionType === 'rangeText'
-      ? textOptions[Math.round((textOptions.length - 1) / 2)]
+      ? textOptions[language][
+          Math.round((textOptions[language].length - 1) / 2)
+        ]
       : roundToNearestLegalValue((min + max) / 2, step)
   )
 
@@ -37,7 +39,7 @@ export default function QuestionRange(props) {
       handleNoMoreResults()
       return
     }
-    setAnswers([...answers, { questionTitle: title, value }])
+    setAnswers([...answers, { questionTitle: title[language], value }])
     setStepNumber(stepNumber + 1)
   }
 
@@ -47,13 +49,13 @@ export default function QuestionRange(props) {
         {questionType === 'rangeText' ? (
           <Slider
             min={0}
-            max={textOptions.length - 1}
-            marks={textOptions.map((option) => option.title)}
+            max={textOptions[language].length - 1}
+            marks={textOptions[language].map((option) => option.title)}
             step={1}
-            value={textOptions.findIndex(
+            value={textOptions[language].findIndex(
               (option) => option.uuid === value.uuid
             )}
-            onChange={(e) => setValue(textOptions[e])}
+            onChange={(e) => setValue(textOptions[language][e])}
             vertical={isMobile} // TODO: fix mobile version
           />
         ) : (

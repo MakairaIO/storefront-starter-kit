@@ -13,7 +13,7 @@ function ProductFinder(props) {
   const [products, setProducts] = useState([])
 
   useEffect(() => {
-    if (shouldSkipQuestion(products, props.questions, answers)) {
+    if (shouldSkipQuestion(products, props.questions, answers, language)) {
       setAnswers([...answers, null])
     }
   }, [answers, props.questions])
