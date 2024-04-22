@@ -4,8 +4,22 @@ import classNames from 'classnames'
 
 import { useConfiguration } from '../../../utils'
 import ProductTile from '../ProductList/ProductTile'
+import { Product } from '../../../public/assets/type/Product'
 
-const ProductImage = ({ image }) => {
+type Spot = {
+  top: number
+  left: number
+  product: Product
+}
+
+type DiscoveryImageProps = {
+  discoveryImage: {
+    image?: string
+    spots?: Spot[]
+  }
+}
+
+const ProductImage: React.FC<{ image: string }> = ({ image }) => {
   const { getImageLink } = useConfiguration()
   const imageLink = getImageLink({ source: image })
 
@@ -14,11 +28,11 @@ const ProductImage = ({ image }) => {
   )
 }
 
-const DiscoveryImage = ({ discoveryImage }) => {
-  const [slideIndex, setSlideIndex] = useState(0)
-  const [centerPadding, setCenterPadding] = useState(80)
-  const diRef = useRef(null)
-  const sliderRef = useRef(null)
+const DiscoveryImage: React.FC<DiscoveryImageProps> = ({ discoveryImage }) => {
+  const [slideIndex, setSlideIndex] = useState<number>(0)
+  const [centerPadding, setCenterPadding] = useState<number>(80)
+  const diRef = useRef<HTMLDivElement>(null)
+  const sliderRef = useRef<Slider>(null)
 
   useEffect(() => {
     if (diRef.current) {
@@ -32,11 +46,11 @@ const DiscoveryImage = ({ discoveryImage }) => {
     }
   }, [])
 
-  const handleBeforeChange = (current, next) => {
+  const handleBeforeChange = (current: number, next: number) => {
     setSlideIndex(next)
   }
 
-  const handleSpotClick = (index) => {
+  const handleSpotClick = (index: number) => {
     if (sliderRef.current) {
       sliderRef.current.slickGoTo(index)
     }
