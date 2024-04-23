@@ -1,112 +1,96 @@
-import { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Button } from '../..'
 
-class Dropdown extends Component {
-  constructor(props) {
-    super(props)
+const Dropdown = (props) => {
+  const {
+    id = '',
+    name = '',
+    label = '',
+    value,
+    options = [],
+    anchor = 'left',
+    className,
+    onChange,
+  } = props
 
-    this.state = {
-      isExpanded: false,
-      selected: props.value ?? props.options[0]?.value,
-    }
-  }
+  const [isExpanded, setIsExpanded] = useState(false)
+  const [selected, setSelected] = useState(value ?? options[0]?.value)
 
-  componentDidMount() {
-    window.addEventListener('click', this.hideWhenClickOutside)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('click', this.hideWhenClickOutside)
-  }
-
-  toggleExpanded = () => {
-    this.setState((prevState) => {
-      return {
-        isExpanded: !prevState.isExpanded,
+  useEffect(() => {
+    const hideWhenClickOutside = (event) => {
+      if (!event.target.closest(`#${id}`)) {
+        setIsExpanded(false)
       }
-    })
-  }
-
-  hideWhenClickOutside = (event) => {
-    const { id } = this.props
-
-    if (!event.target.closest(`#${id}`)) {
-      this.setState({ isExpanded: false })
     }
+
+    window.addEventListener('click', hideWhenClickOutside)
+
+    return () => {
+      window.removeEventListener('click', hideWhenClickOutside)
+    }
+  }, [id])
+
+  const toggleExpanded = () => {
+    setIsExpanded((prevExpanded) => !prevExpanded)
   }
 
-  handleChange = ({ index, value }) => {
-    this.setState({ selected: value }, () =>
-      this.props.onChange({ index, value })
-    )
+  const handleChange = ({ index, value }) => {
+    setSelected(value)
+    onChange({ index, value })
   }
 
-  render() {
-    const {
-      id = '',
-      name = '',
-      label = '',
-      options = [],
-      anchor = 'left',
-      className,
-    } = this.props
+  if (options.length === 0) return null
 
-    if (options.length == 0) return null
+  const dropdownClasses = classNames(className, 'dropdown', {
+    ['dropdown--with-label']: label !== '',
+  })
 
-    const { isExpanded, selected } = this.state
+  const listboxClasses = classNames('dropdown__listbox', {
+    ['dropdown__listbox--visible']: isExpanded,
+    ['dropdown__listbox--with-label']: label !== '',
+    [`dropdown__listbox--anchor-${anchor}`]: isExpanded,
+  })
 
-    const dropdownClasses = classNames(className, 'dropdown', {
-      ['dropdown--with-label']: label != '',
-    })
+  const selectedOption = options.find((o) => o.value === selected) || ''
 
-    const listboxClasses = classNames('dropdown__listbox', {
-      ['dropdown__listbox--visible']: isExpanded,
-      ['dropdown__listbox--with-label']: label != '',
-      [`dropdown__listbox--anchor-${anchor}`]: isExpanded,
-    })
+  return (
+    <div className={dropdownClasses}>
+      <Button
+        id={id}
+        aria-haspopup="listbox"
+        aria-expanded={isExpanded}
+        icon="chevron-down"
+        onClick={toggleExpanded}
+      >
+        {label && <span>{label}</span>}
+        <span>{selectedOption.label}</span>
+      </Button>
 
-    const selectedOption = options.find((o) => o.value == selected) ?? ''
+      <ul role="listbox" aria-labelledby={id} className={listboxClasses}>
+        {options.map((option, index) => {
+          const { label, value } = option
 
-    return (
-      <div className={dropdownClasses}>
-        <Button
-          id={id}
-          aria-haspopup="listbox"
-          aria-expanded={isExpanded}
-          icon="chevron-down"
-          onClick={this.toggleExpanded}
-        >
-          {label && <span>{label}</span>}
+          const optionClasses = classNames('dropdown__option', {
+            ['dropdown__option--selected']: value === selected,
+          })
 
-          <span>{selectedOption.label}</span>
-        </Button>
+          return (
+            <li
+              key={value}
+              className={optionClasses}
+              onClick={() => handleChange({ index, value })}
+            >
+              {label}
+            </li>
+          )
+        })}
+      </ul>
 
-        <ul role="listbox" aria-labelledby={id} className={listboxClasses}>
-          {options.map((option, index) => {
-            const { label, value } = option
-
-            const optionClasses = classNames('dropdown__option', {
-              ['dropdown__option--selected']: value == selected,
-            })
-
-            return (
-              <li
-                key={option.value}
-                className={optionClasses}
-                onClick={() => this.handleChange({ index, value })}
-              >
-                {label}
-              </li>
-            )
-          })}
-        </ul>
-
-        {name && <input type="hidden" name={name} value={selected} />}
-      </div>
-    )
-  }
+      {name && <input type="hidden" name={name} value={selected} />}
+    </div>
+  )
 }
 
 Dropdown.propTypes = {
