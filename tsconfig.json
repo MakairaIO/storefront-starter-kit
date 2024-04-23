@@ -9,11 +9,11 @@
     "noEmit": true,
     "incremental": true,
     "esModuleInterop": true,
-    "module": "NodeNext",
+    "module": "esnext",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "moduleResolution": "NodeNext"
+    "moduleResolution": "node"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

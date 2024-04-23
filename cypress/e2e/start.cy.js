@@ -1,13 +1,5 @@
-describe(
-  'example spec',
-  {
-    env: {
-      foo: 'bar',
-    },
-  },
-  () => {
-    it('passes', () => {
-      cy.visit('/')
-    })
-  }
-)
+describe('First Access to the page', () => {
+  it('Visit the website', () => {
+    cy.visit('/')
+  })
+})

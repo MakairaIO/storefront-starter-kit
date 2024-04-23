@@ -1,0 +1,31 @@
+{
+  "total": 1,
+  "totalPassed": 1,
+  "totalFailed": 0,
+  "totalSuites": 1,
+  "suites": [
+    {
+      "name": "discoveryImage.cy.js",
+      "path": "cypress/e2e/visual/discoveryImage.cy.js",
+      "tests": [
+        {
+          "status": "pass",
+          "name": "discoveryImage.cy-discovery-image",
+          "percentage": 0,
+          "failureThreshold": 0.2,
+          "specPath": "cypress/e2e/visual/discoveryImage.cy.js",
+          "specFilename": "discoveryImage.cy.js",
+          "baselinePath": "cypress-image-diff-screenshots/baseline/discoveryImage.cy-discovery-image.png",
+          "diffPath": "",
+          "comparisonPath": "cypress-image-diff-screenshots/comparison/discoveryImage.cy-discovery-image.png"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2024-04-23T12:20:07.786Z",
+  "endedAt": "2024-04-23T12:20:13.613Z",
+  "duration": 4713,
+  "browserName": "electron",
+  "browserVersion": "106.0.5249.51",
+  "cypressVersion": "10.11.0"
+}
