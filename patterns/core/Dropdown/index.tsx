@@ -1,25 +1,41 @@
 import React, { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Button } from '../..'
 
-const Dropdown = (props) => {
-  const {
-    id = '',
-    name = '',
-    label = '',
-    value,
-    options = [],
-    anchor = 'left',
-    className,
-    onChange,
-  } = props
+type Option = {
+  label: string
+  value: string | number
+}
 
-  const [isExpanded, setIsExpanded] = useState(false)
-  const [selected, setSelected] = useState(value ?? options[0]?.value)
+type DropdownProps = {
+  id: string
+  name?: string
+  label?: string
+  value?: string | number
+  options: Option[]
+  anchor?: 'left' | 'right'
+  className?: string
+  onChange: (value: { index: number; value: string | number }) => void
+}
+
+const Dropdown: React.FC<DropdownProps> = ({
+  id = '',
+  name = '',
+  label = '',
+  value,
+  options = [],
+  anchor = 'left',
+  className,
+  onChange,
+}) => {
+  const [isExpanded, setIsExpanded] = useState<boolean>(false)
+  const [selected, setSelected] = useState<string | number>(
+    value ?? options[0]?.value
+  )
 
   useEffect(() => {
-    const hideWhenClickOutside = (event) => {
+    const hideWhenClickOutside = (event: MouseEvent) => {
+      if (!event.target || !(event.target instanceof Element)) return
       if (!event.target.closest(`#${id}`)) {
         setIsExpanded(false)
       }
@@ -36,7 +52,13 @@ const Dropdown = (props) => {
     setIsExpanded((prevExpanded) => !prevExpanded)
   }
 
-  const handleChange = ({ index, value }) => {
+  const handleChange = ({
+    index,
+    value,
+  }: {
+    index: number
+    value: string | number
+  }) => {
     setSelected(value)
     onChange({ index, value })
   }
@@ -53,7 +75,9 @@ const Dropdown = (props) => {
     [`dropdown__listbox--anchor-${anchor}`]: isExpanded,
   })
 
-  const selectedOption = options.find((o) => o.value === selected) || ''
+  const selectedOption = options.find((o) => o.value === selected) || {
+    label: '',
+  }
 
   return (
     <div className={dropdownClasses}>
@@ -91,20 +115,6 @@ const Dropdown = (props) => {
       {name && <input type="hidden" name={name} value={selected} />}
     </div>
   )
-}
-
-Dropdown.propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string,
-      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    })
-  ),
-  anchor: PropTypes.oneOf(['left', 'right']),
-  onChange: PropTypes.func.isRequired,
 }
 
 export default Dropdown
