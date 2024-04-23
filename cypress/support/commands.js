@@ -1,5 +1,5 @@
 require('cypress-real-events')
-const compareSnapshotCommand = require('cypress-image-diff-js/dist/command')
+const compareSnapshotCommand = require('cypress-image-diff-js/command')
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
