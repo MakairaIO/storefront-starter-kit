@@ -97,7 +97,7 @@
   bottom 0.75rem
   right 0.75rem
   background var(--product-detail-information-zoom-button-background)
-  color var(--neutral-00)
+  color var(--color-primary-content)
 
 .product-detail-information__buybox
   @media (min-width var(--breakpoint-l))
@@ -136,12 +136,12 @@
   margin var(--spacing-s) var(--spacing-xs) var(--spacing-xs) 0
   padding var(--spacing-s) var(--spacing-m)
   border-radius var(--border-radius-full)
-  border 0.06rem solid var(--neutral-80)
+  border 0.06rem solid var(--color-base-darkest)
 
   &--active
-    background var(--neutral-100)
-    border-colorv var(--neutral-100)
-    color var(--neutral-00)
+    background var(--color-info-content)
+    border-colorv var(--color-info-content)
+    color var(--color-primary-content)
 
   &:hover
     cursor pointer
@@ -172,12 +172,12 @@
   display block
   height 0.69rem
   width 0.69rem
-  border 0.06rem solid var(--primary)
+  border 0.06rem solid var(--color-primary-main)
   border-radius var(--border-radius-full)
   margin-right var(--spacing-s)
 
   .product-detail-information__availability--on-stock &
-    background var(--positive)
+    background var(--color-warning-main)
 
 .product-detail-information__actions
   flex 1 0 100%

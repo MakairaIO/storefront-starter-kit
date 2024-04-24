@@ -10,7 +10,7 @@
   width calc(100% - 1.88rem) // 0.94rem "padding" on each side
   margin 0 auto
   padding var(--spacing-xs) 0 var(--spacing-s)
-  border-bottom 0.06rem solid var(--neutral-40)
+  border-bottom 0.06rem solid var(--color-primary-content)
 
   @media (min-width var(--breakpoint-s))
     padding-bottom var(--spacing-xs)
@@ -56,9 +56,9 @@
       display none
 
 .header__basket-bubble
-  background var(--brand-2)
+  background var(--color-danger-main)
   border-radius var(--border-radius-big)
-  color var(--neutral-00)
+  color var(--color-primary-content)
   padding 0 var(--spacing-s)
   position relative
   left -0.37rem // half of the 0.75rem margin
@@ -83,7 +83,7 @@
   .icon
     height 1.13rem
     width 2.25rem
-    color var(--neutral-50)
+    color var(--color-primary-main)
     position absolute
     left 0
     top 50%
@@ -98,9 +98,9 @@
   height 2.25rem
   font-size var(--font-small)
   line-height 1.13rem
-  color var(--neutral-90)
-  background var(--neutral-00)
-  border 0.06rem solid var(--primary)
+  color var(--color-base-content)
+  background var(--color-primary-content)
+  border 0.06rem solid var(--color-primary-main)
   border-radius var(--border-radius-small)
   margin var(--spacing-xs) 0 var(--spacing-xs)
 
@@ -124,7 +124,7 @@
 
 .header__info-link, .header__info-links .language-switch button
   font-m()
-  color var(--neutral-50)
+  color var(--color-primary-main)
   text-decoration none
 
   & + &
