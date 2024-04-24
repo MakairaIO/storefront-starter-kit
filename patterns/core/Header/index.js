@@ -28,50 +28,52 @@ function Header(props) {
 
   useEffect(() => {
     const handleResize = throttle(() => {
-      const { renderMobileNavigation } = state
-      if (window.innerWidth < DESKTOP_MENU_BREAKPOINT) {
-        if (!renderMobileNavigation) {
-          setState({ ...state, renderMobileNavigation: true })
+      setState((prevState) => {
+        const { renderMobileNavigation } = prevState
+        if (
+          window.innerWidth < DESKTOP_MENU_BREAKPOINT &&
+          !renderMobileNavigation
+        ) {
+          return { ...prevState, renderMobileNavigation: true }
+        } else if (
+          window.innerWidth >= DESKTOP_MENU_BREAKPOINT &&
+          renderMobileNavigation
+        ) {
+          return { ...prevState, renderMobileNavigation: false }
+        } else {
+          return prevState
         }
-      } else {
-        if (renderMobileNavigation) {
-          setState({ ...state, renderMobileNavigation: false })
-        }
-      }
+      })
     }, 200)
 
-    const hideMobileNavigationOnPageChange = () => {
-      const { isMobileNavigationVisible } = state
-      // Perform an explicit check here to avoid accidentally closing the <MobileFilter> on page navigations
-      if (isMobileNavigationVisible) {
-        // for simplicity, we just simulate a click on the overlay and let the lifecycle of the components take care of everything
-        dispatchOverlayClickedEvent()
-      }
+    const handleOverlayClicked = () => {
+      setState((prevState) => ({
+        ...prevState,
+        isMobileNavigationVisible: false,
+        isAutosuggestBoxVisible: false,
+      }))
     }
 
     const handleRouteChange = () => {
-      hideMobileNavigationOnPageChange()
-      hideAutosuggestBox()
-      hideLoginBox()
-      hideWishlistBox()
-      hideCartBox()
+      setState((prevState) => ({
+        ...prevState,
+        isMobileNavigationVisible: false,
+        isAutosuggestBoxVisible: false,
+      }))
     }
+
+    window.addEventListener('resize', handleResize)
+    window.addEventListener('overlay:clicked', handleOverlayClicked)
+    Router.events.on('routeChangeComplete', handleRouteChange)
 
     handleResize()
 
     return () => {
       window.removeEventListener('resize', handleResize)
-      window.removeEventListener('overlay:clicked', hideMobileNavigation)
+      window.removeEventListener('overlay:clicked', handleOverlayClicked)
       Router.events.off('routeChangeComplete', handleRouteChange)
     }
-  }, [
-    state,
-    hideCartBox,
-    hideWishlistBox,
-    hideLoginBox,
-    hideAutosuggestBox,
-    hideMobileNavigation,
-  ])
+  }, [])
 
   const toggleLoginBox = () => {
     const { isLoginBoxVisible } = state
@@ -95,10 +97,6 @@ function Header(props) {
   const showMobileNavigation = () => {
     dispatchShowOverlayEvent()
     setState({ ...state, isMobileNavigationVisible: true })
-  }
-
-  const hideMobileNavigation = () => {
-    setState({ ...state, isMobileNavigationVisible: false })
   }
 
   const showAutosuggestBox = () => {
