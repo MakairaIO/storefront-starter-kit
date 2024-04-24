@@ -11,22 +11,10 @@ import {
   filterInternalMakairaFields,
 } from '../../../utils'
 import AutosuggestBox from './AutoSuggestion/AutosuggestBox'
+import { SearchResponse } from '../../../public/assets/type/SearchResponse'
+import { MenuItem } from '../../../public/assets/type/MenuItem'
 
 const DESKTOP_MENU_BREAKPOINT = 800
-
-type MenuItem = {
-  text: {
-    en?: string
-    de?: string
-  }
-  link: {
-    en?: string
-    de?: string
-  }
-  uuid: string
-  children?: MenuItem[]
-  expanded?: boolean
-}
 
 type HeaderProps = {
   fetchAutosuggestResult: (phrase: string) => Promise<unknown>
@@ -174,9 +162,10 @@ function Header(props: HeaderProps) {
   const handleSearchResult = () => {
     const { searchResult } = state
     const totalResultCount = Object.values(searchResult)
-      .filter((type: unknown) => !isNaN(type.total))
+      .filter((type: SearchResponse<unknown>) => !isNaN(type.total))
       .reduce(
-        (total: number, resultType: unknown) => total + resultType.total,
+        (total: number, resultType: SearchResponse<unknown>) =>
+          total + resultType.total,
         0
       )
 
