@@ -1,4 +1,4 @@
-import { createRef, useEffect, useState } from 'react'
+import React, { createRef, useEffect, useState } from 'react'
 import Router from 'next/router'
 import { Button, GlobalNavigation, Link } from '../..'
 import InfoLinks from './InfoLinks'
@@ -14,17 +14,40 @@ import AutosuggestBox from './AutoSuggestion/AutosuggestBox'
 
 const DESKTOP_MENU_BREAKPOINT = 800
 
-function Header(props) {
+type MenuItem = {
+  text: {
+    en?: string
+    de?: string
+  }
+  link: {
+    en?: string
+    de?: string
+  }
+  uuid: string
+  children?: MenuItem[]
+  expanded?: boolean
+}
+
+type HeaderProps = {
+  fetchAutosuggestResult: (phrase: string) => Promise<unknown>
+  submitSearchForm: (phrase: string) => void
+  menu?: MenuItem[]
+}
+
+function Header(props: HeaderProps) {
   const [state, setState] = useState({
     renderMobileNavigation: false,
     isMobileNavigationVisible: false,
     isAutosuggestBoxVisible: false,
     searchPhrase: '',
-    autosuggestResult: {},
+    autosuggestResult: {} as unknown,
     totalResultCount: 0,
+    isLoginBoxVisible: false,
+    isWishlistBoxVisible: false,
+    isCartBoxVisible: false,
   })
 
-  const mobileSearchInputRef = createRef()
+  const mobileSearchInputRef = createRef<HTMLInputElement>()
 
   useEffect(() => {
     const handleResize = throttle(() => {
@@ -141,7 +164,9 @@ function Header(props) {
     setState({ ...state, isCartBoxVisible: false })
   }
 
-  const handleSearchPhraseChange = (event) => {
+  const handleSearchPhraseChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setState({ ...state, searchPhrase: event.target.value })
     fetchAutosuggestResult()
   }
@@ -149,8 +174,11 @@ function Header(props) {
   const handleSearchResult = () => {
     const { searchResult } = state
     const totalResultCount = Object.values(searchResult)
-      .filter((type) => !isNaN(type.total))
-      .reduce((total, resultType) => total + resultType.total, 0)
+      .filter((type: unknown) => !isNaN(type.total))
+      .reduce(
+        (total: number, resultType: unknown) => total + resultType.total,
+        0
+      )
 
     if (state.searchPhrase && totalResultCount > 0) {
       setState({ ...state, totalResultCount })
@@ -172,7 +200,7 @@ function Header(props) {
     handleSearchResult()
   }
 
-  const handleSearchFormSubmit = (event) => {
+  const handleSearchFormSubmit = (event: React.FormEvent) => {
     event.preventDefault()
     const { searchPhrase } = state
     props.submitSearchForm(searchPhrase)
