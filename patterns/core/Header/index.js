@@ -65,6 +65,7 @@ function Header(props) {
       Router.events.off('routeChangeComplete', handleRouteChange)
     }
   }, [
+    state,
     hideCartBox,
     hideWishlistBox,
     hideLoginBox,
