@@ -1,4 +1,4 @@
-import { Component, createRef } from 'react'
+import { createRef, useEffect, useState } from 'react'
 import Router from 'next/router'
 import { Button, GlobalNavigation, Link } from '../..'
 import InfoLinks from './InfoLinks'
@@ -6,7 +6,6 @@ import Search from './Search'
 import Actions from './Actions'
 import {
   throttle,
-  debounce,
   dispatchShowOverlayEvent,
   dispatchOverlayClickedEvent,
   filterInternalMakairaFields,
@@ -15,64 +14,72 @@ import AutosuggestBox from './AutoSuggestion/AutosuggestBox'
 
 const DESKTOP_MENU_BREAKPOINT = 800
 
-class Header extends Component {
-  constructor(props) {
-    super(props)
+function Header(props) {
+  const [state, setState] = useState({
+    renderMobileNavigation: false,
+    isMobileNavigationVisible: false,
+    isAutosuggestBoxVisible: false,
+    searchPhrase: '',
+    autosuggestResult: {},
+    totalResultCount: 0,
+  })
 
-    this.state = {
-      renderMobileNavigation: false,
-      isMobileNavigationVisible: false,
-      isAutosuggestBoxVisible: false,
-      searchPhrase: '',
-      autosuggestResult: {},
-      totalResultCount: 0,
-    }
+  const mobileSearchInputRef = createRef()
 
-    this.handleResize = throttle(this.handleResize, 200)
-    this.fetchAutosuggestResult = debounce(this.fetchAutosuggestResult, 250)
-
-    this.mobileSearchInputRef = createRef()
-  }
-
-  componentDidMount() {
-    window.addEventListener('overlay:clicked', this.hideMobileNavigation)
-    window.addEventListener('resize', this.handleResize)
-
-    Router.events.on('routeChangeComplete', this.handleRouteChange)
-
-    // initial check for what navigation to render
-    this.handleResize()
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('overlay:clicked', this.hideMobileNavigation)
-    window.removeEventListener('resize', this.handleResize)
-
-    Router.events.off('routeChangeComplete', this.handleRouteChange)
-  }
-
-  handleResize = () => {
-    const { renderMobileNavigation } = this.state
-
-    if (window.innerWidth < DESKTOP_MENU_BREAKPOINT) {
-      if (renderMobileNavigation === false) {
-        this.setState({ renderMobileNavigation: true })
+  useEffect(() => {
+    const handleResize = throttle(() => {
+      const { renderMobileNavigation } = state
+      if (window.innerWidth < DESKTOP_MENU_BREAKPOINT) {
+        if (!renderMobileNavigation) {
+          setState({ ...state, renderMobileNavigation: true })
+        }
+      } else {
+        if (renderMobileNavigation) {
+          setState({ ...state, renderMobileNavigation: false })
+        }
       }
-    } else {
-      if (renderMobileNavigation === true) {
-        this.setState({ renderMobileNavigation: false })
+    }, 200)
+
+    const hideMobileNavigationOnPageChange = () => {
+      const { isMobileNavigationVisible } = state
+      // Perform an explicit check here to avoid accidentally closing the <MobileFilter> on page navigations
+      if (isMobileNavigationVisible) {
+        // for simplicity, we just simulate a click on the overlay and let the lifecycle of the components take care of everything
+        dispatchOverlayClickedEvent()
       }
     }
+
+    const handleRouteChange = () => {
+      hideMobileNavigationOnPageChange()
+      hideAutosuggestBox()
+      hideLoginBox()
+      hideWishlistBox()
+      hideCartBox()
+    }
+
+    handleResize()
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('overlay:clicked', hideMobileNavigation)
+      Router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [
+    hideCartBox,
+    hideWishlistBox,
+    hideLoginBox,
+    hideAutosuggestBox,
+    hideMobileNavigation,
+  ])
+
+  const toggleLoginBox = () => {
+    const { isLoginBoxVisible } = state
+    isLoginBoxVisible ? hideLoginBox() : showLoginBox()
   }
 
-  toggleLoginBox = () => {
-    const { isLoginBoxVisible } = this.state
-
-    isLoginBoxVisible ? this.hideLoginBox() : this.showLoginBox()
-  }
-
-  showLoginBox = () => {
-    this.setState({
+  const showLoginBox = () => {
+    setState({
+      ...state,
       isAutosuggestBoxVisible: false,
       isLoginBoxVisible: true,
       isWishlistBoxVisible: false,
@@ -80,21 +87,22 @@ class Header extends Component {
     })
   }
 
-  hideLoginBox = () => {
-    this.setState({ isLoginBoxVisible: false })
+  const hideLoginBox = () => {
+    setState({ ...state, isLoginBoxVisible: false })
   }
 
-  showMobileNavigation = () => {
+  const showMobileNavigation = () => {
     dispatchShowOverlayEvent()
-    this.setState({ isMobileNavigationVisible: true })
+    setState({ ...state, isMobileNavigationVisible: true })
   }
 
-  hideMobileNavigation = () => {
-    this.setState({ isMobileNavigationVisible: false })
+  const hideMobileNavigation = () => {
+    setState({ ...state, isMobileNavigationVisible: false })
   }
 
-  showAutosuggestBox = () => {
-    this.setState({
+  const showAutosuggestBox = () => {
+    setState({
+      ...state,
       isAutosuggestBoxVisible: true,
       isLoginBoxVisible: false,
       isCartBoxVisible: false,
@@ -102,12 +110,13 @@ class Header extends Component {
     })
   }
 
-  hideAutosuggestBox = () => {
-    this.setState({ isAutosuggestBoxVisible: false })
+  const hideAutosuggestBox = () => {
+    setState({ ...state, isAutosuggestBoxVisible: false })
   }
 
-  showWishlistBox = () => {
-    this.setState({
+  const showWishlistBox = () => {
+    setState({
+      ...state,
       isAutosuggestBoxVisible: false,
       isLoginBoxVisible: false,
       isWishlistBoxVisible: true,
@@ -115,12 +124,13 @@ class Header extends Component {
     })
   }
 
-  hideWishlistBox = () => {
-    this.setState({ isWishlistBoxVisible: false })
+  const hideWishlistBox = () => {
+    setState({ ...state, isWishlistBoxVisible: false })
   }
 
-  showCartBox = () => {
-    this.setState({
+  const showCartBox = () => {
+    setState({
+      ...state,
       isAutosuggestBoxVisible: false,
       isLoginBoxVisible: false,
       isWishlistBoxVisible: false,
@@ -128,155 +138,124 @@ class Header extends Component {
     })
   }
 
-  hideCartBox = () => {
-    this.setState({ isCartBoxVisible: false })
+  const hideCartBox = () => {
+    setState({ ...state, isCartBoxVisible: false })
   }
 
-  hideMobileNavigationOnPageChange = () => {
-    const { isMobileNavigationVisible } = this.state
-
-    // Perform an explicit check here to avoid accidentally closing the <MobileFilter> on page navigations
-    if (isMobileNavigationVisible) {
-      // for simplicity, we just simulate a click on the overlay and let the lifecycle of the components take care of everything
-      dispatchOverlayClickedEvent()
-    }
+  const handleSearchPhraseChange = (event) => {
+    setState({ ...state, searchPhrase: event.target.value })
+    fetchAutosuggestResult()
   }
 
-  handleSearchPhraseChange = (event) => {
-    this.setState(
-      { searchPhrase: event.target.value },
-      this.fetchAutosuggestResult
-    )
-  }
-
-  handleSearchResult = () => {
-    const searchResult = this.state.autosuggestResult
-
-    console.log(Object.values(searchResult))
-
+  const handleSearchResult = () => {
+    const { searchResult } = state
     const totalResultCount = Object.values(searchResult)
       .filter((type) => !isNaN(type.total))
       .reduce((total, resultType) => total + resultType.total, 0)
 
-    if (this.state.searchPhrase && totalResultCount > 0) {
-      this.setState({ totalResultCount }, this.showAutosuggestBox)
+    if (state.searchPhrase && totalResultCount > 0) {
+      setState({ ...state, totalResultCount })
+      showAutosuggestBox()
     } else {
-      this.hideAutosuggestBox()
+      hideAutosuggestBox()
     }
   }
 
-  fetchAutosuggestResult = async () => {
-    const { searchPhrase } = this.state
+  const fetchAutosuggestResult = async () => {
+    const { searchPhrase } = state
 
-    if (searchPhrase.length == 0) return
+    if (searchPhrase.length === 0) return
 
-    const result = await this.props.fetchAutosuggestResult(searchPhrase)
+    const result = await props.fetchAutosuggestResult(searchPhrase)
     const filteredResult = filterInternalMakairaFields(result)
 
-    this.setState(
-      { autosuggestResult: filteredResult },
-      this.handleSearchResult
-    )
+    setState({ ...state, autosuggestResult: filteredResult })
+    handleSearchResult()
   }
 
-  handleSearchFormSubmit = (event) => {
+  const handleSearchFormSubmit = (event) => {
     event.preventDefault()
-
-    const { searchPhrase } = this.state
-    this.props.submitSearchForm(searchPhrase)
+    const { searchPhrase } = state
+    props.submitSearchForm(searchPhrase)
   }
 
-  activateMobileSearch = () => {
-    this.showMobileNavigation()
-    this.mobileSearchInputRef.current.focus()
+  const activateMobileSearch = () => {
+    showMobileNavigation()
+    mobileSearchInputRef.current.focus()
   }
 
-  handleRouteChange = () => {
-    this.hideMobileNavigationOnPageChange()
-    this.hideAutosuggestBox()
-    this.hideLoginBox()
-    this.hideWishlistBox()
-    this.hideCartBox()
+  const toggleWishlistBox = () => {
+    const { isWishlistBoxVisible } = state
+    isWishlistBoxVisible ? hideWishlistBox() : showWishlistBox()
   }
 
-  toggleWishlistBox = () => {
-    const { isWishlistBoxVisible } = this.state
-
-    isWishlistBoxVisible ? this.hideWishlistBox() : this.showWishlistBox()
+  const toggleCartBox = () => {
+    const { isCartBoxVisible } = state
+    isCartBoxVisible ? hideCartBox() : showCartBox()
   }
 
-  toggleCartBox = () => {
-    const { isCartBoxVisible } = this.state
-
-    isCartBoxVisible ? this.hideCartBox() : this.showCartBox()
-  }
-
-  render() {
-    const { menu = [] } = this.props
-
-    return (
-      <>
-        <header className="header">
-          <Button
-            variant="icon-only"
-            icon="bars"
-            className="header__menu-button"
-            onClick={this.showMobileNavigation}
-          />
-
-          <Link href="/">
-            <img
-              src="/assets/images/header/logo_dummy.svg"
-              alt="Logo"
-              className="header__logo"
-            />
-          </Link>
-
-          <div className="header__outer-container">
-            <InfoLinks />
-
-            <div className="header__inner-container">
-              <Search
-                searchPhrase={this.state.searchPhrase}
-                changeSearchPhrase={this.handleSearchPhraseChange}
-                submitForm={this.handleSearchFormSubmit}
-                activateMobileSearch={this.activateMobileSearch}
-              />
-
-              <Actions
-                isLoginBoxVisible={this.state.isLoginBoxVisible}
-                isWishlistBoxVisible={this.state.isWishlistBoxVisible}
-                isCartBoxVisible={this.state.isCartBoxVisible}
-                toggleLoginBox={this.toggleLoginBox}
-                toggleWishlistBox={this.toggleWishlistBox}
-                toggleCartBox={this.toggleCartBox}
-              />
-            </div>
-          </div>
-        </header>
-
-        {this.state.isAutosuggestBoxVisible && (
-          <AutosuggestBox
-            searchResult={this.state.autosuggestResult}
-            totalResultCount={this.state.totalResultCount}
-            closeSearchPopup={this.hideAutosuggestBox}
-            goToSearchPage={this.handleSearchFormSubmit}
-          />
-        )}
-
-        <GlobalNavigation
-          menu={menu}
-          renderMobileNavigation={this.state.renderMobileNavigation}
-          isMobileNavigationVisible={this.state.isMobileNavigationVisible}
-          hideMobileNavigation={dispatchOverlayClickedEvent} // for simplicity, we just simulate a click on the overlay and let the lifecycle of the components take care of everything
-          mobileSearchInputRef={this.mobileSearchInputRef}
-          searchPhrase={this.state.searchPhrase}
-          changeSearchPhrase={this.handleSearchPhraseChange}
-          submitForm={this.handleSearchFormSubmit}
+  return (
+    <>
+      <header className="header">
+        <Button
+          variant="icon-only"
+          icon="bars"
+          className="header__menu-button"
+          onClick={showMobileNavigation}
         />
-      </>
-    )
-  }
+
+        <Link href="/">
+          <img
+            src="/assets/images/header/logo_dummy.svg"
+            alt="Logo"
+            className="header__logo"
+          />
+        </Link>
+
+        <div className="header__outer-container">
+          <InfoLinks />
+
+          <div className="header__inner-container">
+            <Search
+              searchPhrase={state.searchPhrase}
+              changeSearchPhrase={handleSearchPhraseChange}
+              submitForm={handleSearchFormSubmit}
+              activateMobileSearch={activateMobileSearch}
+            />
+
+            <Actions
+              isLoginBoxVisible={state.isLoginBoxVisible}
+              isWishlistBoxVisible={state.isWishlistBoxVisible}
+              isCartBoxVisible={state.isCartBoxVisible}
+              toggleLoginBox={toggleLoginBox}
+              toggleWishlistBox={toggleWishlistBox}
+              toggleCartBox={toggleCartBox}
+            />
+          </div>
+        </div>
+      </header>
+
+      {state.isAutosuggestBoxVisible && (
+        <AutosuggestBox
+          searchResult={state.autosuggestResult}
+          totalResultCount={state.totalResultCount}
+          closeSearchPopup={hideAutosuggestBox}
+          goToSearchPage={handleSearchFormSubmit}
+        />
+      )}
+
+      <GlobalNavigation
+        menu={props.menu}
+        renderMobileNavigation={state.renderMobileNavigation}
+        isMobileNavigationVisible={state.isMobileNavigationVisible}
+        hideMobileNavigation={dispatchOverlayClickedEvent}
+        mobileSearchInputRef={mobileSearchInputRef}
+        searchPhrase={state.searchPhrase}
+        changeSearchPhrase={handleSearchPhraseChange}
+        submitForm={handleSearchFormSubmit}
+      />
+    </>
+  )
 }
 
 export default Header
