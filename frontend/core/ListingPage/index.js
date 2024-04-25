@@ -16,12 +16,20 @@ export default function ListingPage() {
     queryParams: params,
   })
 
+  const {
+    seoTitle = title,
+    robotIndex: robotIndexFromPageEditor,
+    robotFollow: robotFollowFromPageEditor,
+    ...additionalMetadata
+  } = pageData.data.metadata
+
   return (
     <main>
       <Metadata
-        title={title}
-        robotFollow={robotFollow}
-        robotIndex={robotIndex}
+        title={seoTitle}
+        robotFollow={robotIndexFromPageEditor || robotFollow}
+        robotIndex={robotFollowFromPageEditor || robotIndex}
+        additionalMetadata={additionalMetadata}
       />
 
       <Breadcrumb breadcrumb={pageData.data.self.navigation?.breadcrumb} />

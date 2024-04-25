@@ -72,13 +72,22 @@ function DetailPage() {
     },
   }
 
+  const {
+    seoTitle = pageData.data.self.title,
+    keywords = pageData.data.self.meta_keywords,
+    description = pageData.data.self.meta_description,
+    ...additionalMetadata
+  } = pageData.data.metadata
+
   return (
     <main>
       <Metadata
-        title={pageData.data.self.title}
-        keywords={pageData.data.self.meta_keywords}
-        description={pageData.data.self.meta_description}
+        title={seoTitle}
+        keywords={keywords}
+        description={description}
+        additionalMetadata={additionalMetadata}
       />
+
       <Breadcrumb product={pageData.data.self} />
       <ContentElements
         elements={pageData.data.self.contentElements?.top?.elements}
