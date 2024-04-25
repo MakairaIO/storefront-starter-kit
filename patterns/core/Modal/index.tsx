@@ -9,20 +9,32 @@ import {
 
 const MODAL_ROOT_ID = 'modal-root'
 
-export default function Modal({ children, closeModal, className }) {
-  const [element, setElement] = useState(null)
+type ModalProps = {
+  children: React.ReactNode
+  closeModal: () => void
+  className?: string
+}
+
+export default function Modal({
+  children,
+  closeModal,
+  className,
+}: ModalProps): JSX.Element | null {
+  const [element, setElement] = useState<HTMLElement | null>(null)
 
   useEffect(() => {
     dispatchShowOverlayEvent()
 
     const modalElement = document.getElementById(MODAL_ROOT_ID)
-    setElement(modalElement)
+    if (modalElement) {
+      setElement(modalElement)
 
-    const handleOverlayClick = () => closeModal()
-    window.addEventListener('overlay:clicked', handleOverlayClick)
+      const handleOverlayClick = () => closeModal()
+      window.addEventListener('overlay:clicked', handleOverlayClick)
 
-    return () => {
-      window.removeEventListener('overlay:clicked', handleOverlayClick)
+      return () => {
+        window.removeEventListener('overlay:clicked', handleOverlayClick)
+      }
     }
   }, [closeModal])
 
@@ -46,6 +58,6 @@ export default function Modal({ children, closeModal, className }) {
   )
 }
 
-export function ModalRoot() {
+export function ModalRoot(): JSX.Element {
   return <div id={MODAL_ROOT_ID}></div>
 }
