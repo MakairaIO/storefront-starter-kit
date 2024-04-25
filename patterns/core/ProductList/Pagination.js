@@ -1,101 +1,85 @@
-import { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button } from '../..'
 import { useTranslation } from '../../../utils'
 
-export default class Pagination extends Component {
-  constructor(props) {
-    super(props)
-
-    const { queryParams = {} } = props
+export default function Pagination({
+  queryParams = {},
+  totalProductCount = 0,
+  submitForms,
+}) {
+  const [currentPageNr, setCurrentPageNr] = useState(() => {
     const count = queryParams.count ?? process.env.PRODUCTS_PER_PAGE
     const offset = queryParams.offset ?? 0
-    const currentPageNr = offset / count + 1
+    return offset / count + 1
+  })
 
-    this.state = { currentPageNr }
-  }
+  useEffect(() => {
+    submitForms()
+  }, [currentPageNr])
 
-  calculateTotalNumberOfPages = () => {
-    const { queryParams = {}, totalProductCount = 0 } = this.props
+  const calculateTotalNumberOfPages = () => {
     const count = queryParams.count ?? process.env.PRODUCTS_PER_PAGE
-
     return Math.ceil(totalProductCount / count)
   }
 
-  previousPage = () => {
-    this.setState((prevState) => {
-      return {
-        currentPageNr: prevState.currentPageNr - 1,
-      }
-    }, this.props.submitForms)
+  const previousPage = () => {
+    setCurrentPageNr((prevPage) => prevPage - 1)
   }
 
-  nextPage = () => {
-    this.setState((prevState) => {
-      return {
-        currentPageNr: prevState.currentPageNr + 1,
-      }
-    }, this.props.submitForms)
+  const nextPage = () => {
+    setCurrentPageNr((prevPage) => prevPage + 1)
   }
 
-  firstPage = () => {
-    this.setState({ currentPageNr: 1 }, this.props.submitForms)
+  const firstPage = () => {
+    setCurrentPageNr(1)
   }
 
-  lastPage = () => {
-    const lastPage = this.calculateTotalNumberOfPages()
-
-    this.setState({ currentPageNr: lastPage }, this.props.submitForms)
+  const lastPage = () => {
+    const lastPage = calculateTotalNumberOfPages()
+    setCurrentPageNr(lastPage)
   }
 
-  render() {
-    const { currentPageNr } = this.state
-    const totalNrOfPages = this.calculateTotalNumberOfPages()
-    const isFirstPage = currentPageNr == 1
-    const isLastPage = currentPageNr == totalNrOfPages
+  const totalNrOfPages = calculateTotalNumberOfPages()
+  const isFirstPage = currentPageNr === 1
+  const isLastPage = currentPageNr === totalNrOfPages
+  const canJumpToFirst = currentPageNr > 2
+  const canJumpToLast = totalNrOfPages > 2 && currentPageNr < totalNrOfPages - 1
 
-    const canJumpToFirst = currentPageNr > 2
-    const canJumpToLast =
-      totalNrOfPages > 2 && currentPageNr < totalNrOfPages - 1
+  if (totalNrOfPages === 1) return null
 
-    if (totalNrOfPages == 1) return null
-
-    return (
-      <form className="product-list__pagination">
-        <input type="hidden" name="pageNumber" value={currentPageNr} />
-
-        <Button
-          variant="icon-only"
-          icon="chevron-double-left"
-          disabled={!canJumpToFirst}
-          onClick={this.firstPage}
-        />
-        <Button
-          variant="icon-only"
-          icon="chevron-left"
-          disabled={isFirstPage}
-          onClick={this.previousPage}
-        />
-
-        <PaginationText
-          currentPageNr={currentPageNr}
-          totalNrOfPages={totalNrOfPages}
-        />
-
-        <Button
-          variant="icon-only"
-          icon="chevron-right"
-          disabled={isLastPage}
-          onClick={this.nextPage}
-        />
-        <Button
-          variant="icon-only"
-          icon="chevron-double-right"
-          disabled={!canJumpToLast}
-          onClick={this.lastPage}
-        />
-      </form>
-    )
-  }
+  return (
+    <form className="product-list__pagination">
+      <input type="hidden" name="pageNumber" value={currentPageNr} />
+      <Button
+        variant="icon-only"
+        icon="chevron-double-left"
+        disabled={!canJumpToFirst}
+        onClick={firstPage}
+      />
+      <Button
+        variant="icon-only"
+        icon="chevron-left"
+        disabled={isFirstPage}
+        onClick={previousPage}
+      />
+      <PaginationText
+        currentPageNr={currentPageNr}
+        totalNrOfPages={totalNrOfPages}
+      />
+      <Button
+        variant="icon-only"
+        icon="chevron-right"
+        disabled={isLastPage}
+        onClick={nextPage}
+      />
+      <Button
+        variant="icon-only"
+        icon="chevron-double-right"
+        disabled={!canJumpToLast}
+        onClick={lastPage}
+      />
+    </form>
+  )
 }
 
 function PaginationText(props) {
