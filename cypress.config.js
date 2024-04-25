@@ -6,6 +6,7 @@ const result = dotenv.config({ path: './.env.cypress' })
 const env = result.error ? {} : result.parsed
 
 module.exports = defineConfig({
+  projectId: 'udn3z',
   video: false,
   e2e: {
     setupNodeEvents(on, config) {
