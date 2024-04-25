@@ -1,6 +1,5 @@
-import { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Button } from '../..'
 import {
@@ -10,46 +9,41 @@ import {
 
 const MODAL_ROOT_ID = 'modal-root'
 
-export default class Modal extends Component {
-  static propTypes = {
-    closeModal: PropTypes.func.isRequired,
-  }
+export default function Modal({ children, closeModal, className }) {
+  const [element, setElement] = useState(null)
 
-  componentDidMount() {
+  useEffect(() => {
     dispatchShowOverlayEvent()
 
-    this.element = document.getElementById(MODAL_ROOT_ID)
-    setTimeout(() => this.forceUpdate(), 50) // small delay to account for overlay transitioning in
+    const modalElement = document.getElementById(MODAL_ROOT_ID)
+    setElement(modalElement)
 
-    window.addEventListener('overlay:clicked', this.props.closeModal)
-  }
+    const handleOverlayClick = () => closeModal()
+    window.addEventListener('overlay:clicked', handleOverlayClick)
 
-  componentWillUnmount() {
-    window.removeEventListener('overlay:clicked', this.props.closeModal)
-  }
-
-  render() {
-    if (this.element === undefined) {
-      return null
+    return () => {
+      window.removeEventListener('overlay:clicked', handleOverlayClick)
     }
+  }, [closeModal])
 
-    const { className = '' } = this.props
-    const classes = classNames('modal', className)
-
-    return createPortal(
-      <div className={classes}>
-        <Button
-          variant="link-icon"
-          icon="times"
-          className="modal__close-button"
-          onClick={dispatchOverlayClickedEvent}
-        />
-
-        {this.props.children}
-      </div>,
-      this.element
-    )
+  if (!element) {
+    return null
   }
+
+  const classes = classNames('modal', className)
+
+  return createPortal(
+    <div className={classes}>
+      <Button
+        variant="link-icon"
+        icon="times"
+        className="modal__close-button"
+        onClick={dispatchOverlayClickedEvent}
+      />
+      {children}
+    </div>,
+    element
+  )
 }
 
 export function ModalRoot() {
