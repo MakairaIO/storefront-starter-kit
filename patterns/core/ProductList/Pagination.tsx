@@ -1,14 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import { Button } from '../..'
 import { useTranslation } from '../../../utils'
+import { QueryParams } from '../../../public/assets/type/QueryParams'
 
-export default function Pagination({
+type PaginationProps = {
+  queryParams?: QueryParams
+  totalProductCount?: number
+  submitForms: () => void
+}
+
+const Pagination: React.FC<PaginationProps> = ({
   queryParams = {},
   totalProductCount = 0,
   submitForms,
-}) {
+}) => {
   const [currentPageNr, setCurrentPageNr] = useState(() => {
-    const count = queryParams.count ?? process.env.PRODUCTS_PER_PAGE
+    const count =
+      queryParams.count ?? parseInt(process.env.PRODUCTS_PER_PAGE || '0', 10)
     const offset = queryParams.offset ?? 0
     return offset / count + 1
   })
@@ -17,24 +25,25 @@ export default function Pagination({
     submitForms()
   }, [currentPageNr])
 
-  const calculateTotalNumberOfPages = () => {
-    const count = queryParams.count ?? process.env.PRODUCTS_PER_PAGE
+  const calculateTotalNumberOfPages = (): number => {
+    const count =
+      queryParams.count ?? parseInt(process.env.PRODUCTS_PER_PAGE || '0', 10)
     return Math.ceil(totalProductCount / count)
   }
 
-  const previousPage = () => {
+  const previousPage = (): void => {
     setCurrentPageNr((prevPage) => prevPage - 1)
   }
 
-  const nextPage = () => {
+  const nextPage = (): void => {
     setCurrentPageNr((prevPage) => prevPage + 1)
   }
 
-  const firstPage = () => {
+  const firstPage = (): void => {
     setCurrentPageNr(1)
   }
 
-  const lastPage = () => {
+  const lastPage = (): void => {
     const lastPage = calculateTotalNumberOfPages()
     setCurrentPageNr(lastPage)
   }
@@ -82,9 +91,16 @@ export default function Pagination({
   )
 }
 
-function PaginationText(props) {
+type PaginationTextProps = {
+  currentPageNr: number
+  totalNrOfPages: number
+}
+
+const PaginationText: React.FC<PaginationTextProps> = ({
+  currentPageNr,
+  totalNrOfPages,
+}) => {
   const { t } = useTranslation()
-  const { currentPageNr, totalNrOfPages } = props
 
   return (
     <span className="product-list__pagination-text">
@@ -92,3 +108,5 @@ function PaginationText(props) {
     </span>
   )
 }
+
+export default Pagination
