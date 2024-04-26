@@ -31,7 +31,11 @@
     "cypress": "cypress run --browser chrome",
     "cypress:interactive": "cypress run --browser chrome",
     "release": "semantic-release",
-    "lint:styles": "stylelint patterns/**/*.styl --fix"
+    "lint:styles": "stylelint patterns/**/*.styl --fix",
+    "playwright": "playwright test",
+    "playwright:report": "playwright show-report",
+    "playwright:interactive": "playwright test --ui",
+    "playwright:update": "playwright test --update-snapshots"
   },
   "dependencies": {
     "@makaira/storefront-core": "^1.2.0",
@@ -61,6 +65,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
+    "@playwright/test": "^1.43.1",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^8.0.4",
     "@types/node": "^20.11.16",
