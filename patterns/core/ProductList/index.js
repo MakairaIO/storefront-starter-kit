@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { useEffect, useState } from 'react'
 import FilterButton from './FilterButton'
 import FilterResetButton from './FilterResetButton'
 import Sorter from './Sorter'
@@ -12,110 +12,99 @@ import {
 } from '../../../utils'
 import EmptySearchResult from '../EmptySearchResult'
 
-class ProductList extends Component {
-  constructor(props) {
-    super(props)
+function ProductList(props) {
+  const [isMobileFilterVisible, setIsMobileFilterVisible] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
-    this.state = { isMobileFilterVisible: false, isLoading: false }
-  }
+  useEffect(() => {
+    window.addEventListener('overlay:clicked', hideMobileFilter)
+    return () => {
+      window.removeEventListener('overlay:clicked', hideMobileFilter)
+    }
+  }, [])
 
-  componentDidMount() {
-    window.addEventListener('overlay:clicked', this.hideMobileFilter)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('overlay:clicked', this.hideMobileFilter)
-  }
-
-  showMobileFilter = () => {
+  const showMobileFilter = () => {
     dispatchShowOverlayEvent()
-    this.setState({ isMobileFilterVisible: true })
+    setIsMobileFilterVisible(true)
   }
 
-  hideMobileFilter = () => {
-    this.setState({ isMobileFilterVisible: false })
+  const hideMobileFilter = () => {
+    setIsMobileFilterVisible(false)
   }
 
-  handleFormSubmit = async (options = {}) => {
+  const handleFormSubmit = async (options = {}) => {
     const { resetPagination = false } = options
-
-    this.setState({ isLoading: true })
-    await this.props.submitForms({ resetPagination })
-    this.setState({ isLoading: false })
+    setIsLoading(true)
+    await props.submitForms({ resetPagination })
+    setIsLoading(false)
   }
 
-  handleFormSubmitWithPaginationReset = () => {
-    this.handleFormSubmit({ resetPagination: true })
+  const handleFormSubmitWithPaginationReset = () => {
+    handleFormSubmit({ resetPagination: true })
   }
 
-  handlePagination = () => {
+  const handlePagination = () => {
     scrollTo({ id: 'body' })
-
-    this.handleFormSubmit()
+    handleFormSubmit()
   }
 
-  render() {
-    const {
-      products = [],
-      aggregations = {},
-      resetAllFilters,
-      queryParams = {},
-      totalProductCount = 0,
-      showEmptyResultFeedback = false,
-    } = this.props
+  const {
+    products = [],
+    aggregations = {},
+    resetAllFilters,
+    queryParams = {},
+    totalProductCount = 0,
+    showEmptyResultFeedback = false,
+  } = props
 
-    const numberOfActiveFilters = getNumberOfActiveFilters({ aggregations })
-    const numberOfFilters = Object.keys(aggregations).length
+  const numberOfActiveFilters = getNumberOfActiveFilters({ aggregations })
+  const numberOfFilters = Object.keys(aggregations).length
 
-    return (
-      <section className="product-list">
-        <div className="product-list__actions">
-          {numberOfFilters > 0 && (
-            <FilterButton
-              numberOfActiveFilters={numberOfActiveFilters}
-              showMobileFilter={this.showMobileFilter}
-            />
-          )}
-
-          <FilterResetButton
+  return (
+    <section className="product-list">
+      <div className="product-list__actions">
+        {numberOfFilters > 0 && (
+          <FilterButton
             numberOfActiveFilters={numberOfActiveFilters}
+            showMobileFilter={showMobileFilter}
+          />
+        )}
+
+        <FilterResetButton
+          numberOfActiveFilters={numberOfActiveFilters}
+          resetAllFilters={resetAllFilters}
+        />
+
+        <Sorter queryParams={queryParams} submitForms={handleFormSubmit} />
+      </div>
+
+      {showEmptyResultFeedback && products.length === 0 && (
+        <EmptySearchResult />
+      )}
+
+      {(showEmptyResultFeedback === false || products.length > 0) && (
+        <div className="product-list__wrapper">
+          <ProductListFilter
+            aggregations={aggregations}
+            numberOfActiveFilters={numberOfActiveFilters}
+            totalProductCount={totalProductCount}
+            isMobileFilterVisible={isMobileFilterVisible}
+            hideMobileFilter={dispatchOverlayClickedEvent} // for simplicity, we just simulate a click on the overlay and let the lifecycle of this component take care of everything
+            submitForms={handleFormSubmitWithPaginationReset}
             resetAllFilters={resetAllFilters}
           />
 
-          <Sorter
+          <List
+            products={products}
             queryParams={queryParams}
-            submitForms={this.handleFormSubmit}
+            totalProductCount={totalProductCount}
+            submitForms={handlePagination}
+            isLoading={isLoading}
           />
         </div>
-
-        {showEmptyResultFeedback && products.length === 0 && (
-          <EmptySearchResult />
-        )}
-
-        {(showEmptyResultFeedback === false || products.length > 0) && (
-          <div className="product-list__wrapper">
-            <ProductListFilter
-              aggregations={aggregations}
-              numberOfActiveFilters={numberOfActiveFilters}
-              totalProductCount={totalProductCount}
-              isMobileFilterVisible={this.state.isMobileFilterVisible}
-              hideMobileFilter={dispatchOverlayClickedEvent} // for simplicity, we just simulate a click on the overlay and let the lifecycle of this component take care of everything
-              submitForms={this.handleFormSubmitWithPaginationReset}
-              resetAllFilters={resetAllFilters}
-            />
-
-            <List
-              products={products}
-              queryParams={queryParams}
-              totalProductCount={totalProductCount}
-              submitForms={this.handlePagination}
-              isLoading={this.state.isLoading}
-            />
-          </div>
-        )}
-      </section>
-    )
-  }
+      )}
+    </section>
+  )
 }
 
 export default ProductList
