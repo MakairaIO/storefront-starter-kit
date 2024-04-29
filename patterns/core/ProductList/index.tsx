@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import FilterButton from './FilterButton'
 import FilterResetButton from './FilterResetButton'
 import Sorter from './Sorter'
@@ -11,8 +11,33 @@ import {
   scrollTo,
 } from '../../../utils'
 import EmptySearchResult from '../EmptySearchResult'
+import { Product } from '../../../public/assets/type/Product'
+import { QueryParams } from '../../../public/assets/type/QueryParams'
+import { Aggregation } from '../../../public/assets/type/Aggregation'
 
-function ProductList(props) {
+type Aggregations = {
+  [key: T]: Aggregation
+}
+
+type Props = {
+  products?: Product[]
+  aggregations?: Aggregations
+  resetAllFilters: () => void
+  queryParams?: QueryParams
+  totalProductCount?: number
+  showEmptyResultFeedback?: boolean
+  submitForms: (options?: { resetPagination?: boolean }) => Promise<void>
+}
+
+const ProductList: React.FC<Props> = ({
+  products = [],
+  aggregations = {},
+  resetAllFilters,
+  queryParams = {},
+  totalProductCount = 0,
+  showEmptyResultFeedback = false,
+  submitForms,
+}) => {
   const [isMobileFilterVisible, setIsMobileFilterVisible] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -32,10 +57,12 @@ function ProductList(props) {
     setIsMobileFilterVisible(false)
   }
 
-  const handleFormSubmit = async (options = {}) => {
+  const handleFormSubmit = async (
+    options: { resetPagination?: boolean } = {}
+  ) => {
     const { resetPagination = false } = options
     setIsLoading(true)
-    await props.submitForms({ resetPagination })
+    await submitForms({ resetPagination })
     setIsLoading(false)
   }
 
@@ -47,15 +74,6 @@ function ProductList(props) {
     scrollTo({ id: 'body' })
     handleFormSubmit()
   }
-
-  const {
-    products = [],
-    aggregations = {},
-    resetAllFilters,
-    queryParams = {},
-    totalProductCount = 0,
-    showEmptyResultFeedback = false,
-  } = props
 
   const numberOfActiveFilters = getNumberOfActiveFilters({ aggregations })
   const numberOfFilters = Object.keys(aggregations).length
