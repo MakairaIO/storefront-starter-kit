@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import classNames from 'classnames'
 import { Button } from '../..'
 import {
-  dispatchShowOverlayEvent,
+  dispatchOverlayEvent,
   dispatchOverlayClickedEvent,
 } from '../../../utils'
 
@@ -23,7 +23,7 @@ export default function Modal({
   const [element, setElement] = useState<HTMLElement | null>(null)
 
   useEffect(() => {
-    dispatchShowOverlayEvent()
+    dispatchOverlayEvent('show')
 
     const modalElement = document.getElementById(MODAL_ROOT_ID)
     if (modalElement) {

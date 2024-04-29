@@ -6,7 +6,7 @@ import List from './List'
 import { ProductListFilter } from '../..'
 import {
   getNumberOfActiveFilters,
-  dispatchShowOverlayEvent,
+  dispatchOverlayEvent,
   dispatchOverlayClickedEvent,
   scrollTo,
 } from '../../../utils'
@@ -49,7 +49,7 @@ const ProductList: React.FC<Props> = ({
   }, [])
 
   const showMobileFilter = () => {
-    dispatchShowOverlayEvent()
+    dispatchOverlayEvent(show)
     setIsMobileFilterVisible(true)
   }
 
