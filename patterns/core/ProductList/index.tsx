@@ -49,7 +49,7 @@ const ProductList: React.FC<Props> = ({
   }, [])
 
   const showMobileFilter = () => {
-    dispatchOverlayEvent(show)
+    dispatchOverlayEvent('show')
     setIsMobileFilterVisible(true)
   }
 

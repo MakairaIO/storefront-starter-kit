@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { useState, useEffect } from 'react'
 import Slider from 'rc-slider'
 import isEqual from 'lodash/isEqual'
 
@@ -18,77 +18,67 @@ const styles = {
   },
 }
 
-export default class RangeFilter extends Component {
-  constructor(props) {
-    super(props)
+export default function RangeFilter({ id, min, max, selectedValues = {} }) {
+  const [selectedMin, setSelectedMin] = useState(
+    Math.trunc(selectedValues?.from ?? min)
+  )
+  const [selectedMax, setSelectedMax] = useState(
+    Math.trunc(selectedValues?.to ?? max)
+  )
 
-    const initialState = this.getStateFromProps()
-
-    this.state = initialState
-  }
-
-  componentDidUpdate(prevProps) {
-    // If props change from the outside (e.g. when resetting filters) we need to update
-    // the state of the range slider accordingly
-    if (!isEqual(prevProps.selectedValues, this.props.selectedValues)) {
-      const updatedState = this.getStateFromProps()
-
-      this.setState(updatedState)
+  useEffect(() => {
+    const prevState = { selectedMin, selectedMax }
+    const newState = getStateFromProps()
+    if (!isEqual(prevState, newState)) {
+      setSelectedMin(newState.selectedMin)
+      setSelectedMax(newState.selectedMax)
     }
-  }
+  }, [selectedValues])
 
-  getStateFromProps = () => {
-    const { min, max, selectedValues = {} } = this.props
-
+  const getStateFromProps = () => {
     const selectedMin = Math.trunc(selectedValues?.from ?? min)
     const selectedMax = Math.trunc(selectedValues?.to ?? max)
-
     return { selectedMin, selectedMax }
   }
 
-  handleChange = (values) => {
+  const handleChange = (values) => {
     const [selectedMin, selectedMax] = values
-
-    this.setState({ selectedMin, selectedMax })
+    setSelectedMin(selectedMin)
+    setSelectedMax(selectedMax)
   }
 
-  render() {
-    const { id, min, max } = this.props
-    const { selectedMin, selectedMax } = this.state
-
-    // FIXME: Currently € is hard-coded -> Change to dynamic slider-labels
-    return (
-      <div className="mobile-filter__range-filter">
-        <div>
-          <input
-            type="hidden"
-            className="makaira-filter__input--min"
-            name={`${id}_from`}
-            value={selectedMin}
-          />
-          <input
-            type="hidden"
-            className="makaira-filter__input--max"
-            name={`${id}_to`}
-            value={selectedMax}
-          />
-        </div>
-
-        <span className="mobile-filter__range-filter-label">
-          {selectedMin} € - {selectedMax} €
-        </span>
-
-        <Slider
-          range
-          min={Math.trunc(min)}
-          max={Math.trunc(max)}
-          value={[selectedMin, selectedMax]}
-          onChange={this.handleChange}
-          handleStyle={styles.handleStyle}
-          trackStyle={styles.trackStyle}
-          railStyle={styles.railStyle}
+  // FIXME: Currently € is hard-coded -> Change to dynamic slider-labels
+  return (
+    <div className="mobile-filter__range-filter">
+      <div>
+        <input
+          type="hidden"
+          className="makaira-filter__input--min"
+          name={`${id}_from`}
+          value={selectedMin}
+        />
+        <input
+          type="hidden"
+          className="makaira-filter__input--max"
+          name={`${id}_to`}
+          value={selectedMax}
         />
       </div>
-    )
-  }
+
+      <span className="mobile-filter__range-filter-label">
+        {selectedMin} € - {selectedMax} €
+      </span>
+
+      <Slider
+        range
+        min={Math.trunc(min)}
+        max={Math.trunc(max)}
+        value={[selectedMin, selectedMax]}
+        onChange={handleChange}
+        handleStyle={styles.handleStyle}
+        trackStyle={styles.trackStyle}
+        railStyle={styles.railStyle}
+      />
+    </div>
+  )
 }
