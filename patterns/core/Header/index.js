@@ -7,7 +7,7 @@ import Actions from './Actions'
 import {
   throttle,
   debounce,
-  dispatchShowOverlayEvent,
+  dispatchOverlayEvent,
   dispatchOverlayClickedEvent,
   filterInternalMakairaFields,
 } from '../../../utils'
@@ -85,7 +85,7 @@ class Header extends Component {
   }
 
   showMobileNavigation = () => {
-    dispatchShowOverlayEvent()
+    dispatchOverlayEvent('show')
     this.setState({ isMobileNavigationVisible: true })
   }
 
