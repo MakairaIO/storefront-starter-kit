@@ -1,54 +1,46 @@
-import { Component } from 'react'
+import { useState, useEffect } from 'react'
 import classNames from 'classnames'
 import Router from 'next/router'
 import { dispatchOverlayClickedEvent } from '../../../utils'
 
-export default class Overlay extends Component {
-  state = {
-    isVisible: false,
-  }
+export default function Overlay({ children }) {
+  const [isVisible, setIsVisible] = useState(false)
 
-  componentDidMount() {
-    window.addEventListener('overlay:show', this.showOverlay)
-    window.addEventListener('overlay:hide', this.hideOverlay)
-    window.addEventListener('overlay:clicked', this.hideOverlay)
-    Router.events.on('routeChangeStart', this.hideOverlay)
-  }
+  useEffect(() => {
+    window.addEventListener('overlay:show', showOverlay)
+    window.addEventListener('overlay:hide', hideOverlay)
+    window.addEventListener('overlay:clicked', hideOverlay)
+    Router.events.on('routeChangeStart', hideOverlay)
 
-  componentWillUnmount() {
-    window.removeEventListener('overlay:show', this.showOverlay)
-    window.removeEventListener('overlay:hide', this.hideOverlay)
-    window.removeEventListener('overlay:clicked', this.hideOverlay)
-    Router.events.off('routeChangeStart', this.hideOverlay)
-  }
+    return () => {
+      window.removeEventListener('overlay:show', showOverlay)
+      window.removeEventListener('overlay:hide', hideOverlay)
+      window.removeEventListener('overlay:clicked', hideOverlay)
+      Router.events.off('routeChangeStart', hideOverlay)
+    }
+  }, [])
 
-  showOverlay = () => {
-    this.setState({ isVisible: true })
+  const showOverlay = () => {
+    setIsVisible(true)
     document.querySelector('body').classList.add('body--no-overflow')
   }
 
-  hideOverlay = () => {
-    this.setState({ isVisible: false })
+  const hideOverlay = () => {
+    setIsVisible(false)
     document.querySelector('body').classList.remove('body--no-overflow')
   }
-
-  handleOverlayClick = () => {
-    this.hideOverlay()
+  const handleOverlayClick = () => {
+    hideOverlay()
     dispatchOverlayClickedEvent()
   }
 
-  render() {
-    const { children } = this.props
-    const { isVisible } = this.state
+  const classes = classNames('overlay', {
+    ['overlay--visible']: isVisible,
+  })
 
-    const classes = classNames('overlay', {
-      ['overlay--visible']: isVisible,
-    })
-
-    return (
-      <div className={classes} onClick={this.handleOverlayClick}>
-        {children}
-      </div>
-    )
-  }
+  return (
+    <div className={classes} onClick={() => handleOverlayClick()}>
+      {children}
+    </div>
+  )
 }
