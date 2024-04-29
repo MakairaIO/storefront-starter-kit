@@ -3,8 +3,12 @@ import classNames from 'classnames'
 import Router from 'next/router'
 import { dispatchOverlayClickedEvent } from '../../../utils'
 
-export default function Overlay({ children }) {
-  const [isVisible, setIsVisible] = useState(false)
+type OverlayProps = {
+  children: React.ReactNode
+}
+
+export default function Overlay({ children }: OverlayProps): JSX.Element {
+  const [isVisible, setIsVisible] = useState<boolean>(false)
 
   useEffect(() => {
     window.addEventListener('overlay:show', showOverlay)
