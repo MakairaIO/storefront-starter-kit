@@ -237,7 +237,20 @@ In order to get tie image links we have a utility function `getImageLink` which 
 
 ### <a id="running-tests"></a>3.5 Running Tests
 
+#### Unit Test
+
 - Run tests in watch-mode: `npm run test`
+
+#### Visual Tests
+
+Commands:
+- Run visual tests `npm run playwright`
+- Run visual tests in iteractive mode `npm run playwright:interactive`
+- update Snapshots of visual test `npm run playwright:update`
+
+Results:
+- show report of all tests `npm run playwright:report`
+- find result images in generated order test-results
 
 ### <a id="building"></a>3.4 Building
 

@@ -28,10 +28,12 @@
     "test": "jest --watch",
     "analyze": "ANALYZE=true npm run build",
     "pre-commit": "lint-staged",
-    "cypress": "cypress run --browser chrome",
-    "cypress:interactive": "cypress run --browser chrome",
     "release": "semantic-release",
-    "lint:styles": "stylelint patterns/**/*.styl --fix"
+    "lint:styles": "stylelint patterns/**/*.styl --fix",
+    "playwright": "playwright test",
+    "playwright:report": "playwright show-report",
+    "playwright:interactive": "playwright test --ui",
+    "playwright:update": "playwright test --update-snapshots"
   },
   "dependencies": {
     "@makaira/storefront-core": "^1.2.0",
@@ -61,6 +63,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
+    "@playwright/test": "^1.43.1",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^8.0.4",
     "@types/node": "^20.11.16",
@@ -70,9 +73,7 @@
     "@typescript-eslint/parser": "^6.21.0",
     "autoprefixer": "^10.4.17",
     "chokidar-cli": "^3.0.0",
-    "cypress": "^10.3.1",
     "eslint": "^8.54.0",
-    "eslint-plugin-cypress": "^2.15.1",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
