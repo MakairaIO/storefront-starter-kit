@@ -1,6 +1,14 @@
-export default function Title(props) {
-  const { heading = '', subheading = '', hint = '' } = props
+type Title = {
+  heading?: string
+  subheading?: string
+  hint?: string
+}
 
+const Title: React.FC<Title> = ({
+  heading = '',
+  subheading = '',
+  hint = '',
+}) => {
   return (
     <p className="duo-teaser__title-wrapper">
       {subheading && (
@@ -11,3 +19,5 @@ export default function Title(props) {
     </p>
   )
 }
+
+export default Title
