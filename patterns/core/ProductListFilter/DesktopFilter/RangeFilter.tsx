@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Slider from 'rc-slider'
 import isEqual from 'lodash/isEqual'
+import { RangeProps } from '../../../../public/assets/type/RangeProps'
 
 const handleStyle = {
   backgroundColor: 'var(--neutral-00)',
@@ -18,17 +19,17 @@ const styles = {
   },
 }
 
-export default function RangeFilter({
+const RangeFilter: React.FC<RangeProps> = ({
   id,
   min,
   max,
   selectedValues = {},
   submitForms,
-}) {
-  const [selectedMin, setSelectedMin] = useState(
+}) => {
+  const [selectedMin, setSelectedMin] = useState<number>(
     Math.trunc(selectedValues?.from ?? min)
   )
-  const [selectedMax, setSelectedMax] = useState(
+  const [selectedMax, setSelectedMax] = useState<number>(
     Math.trunc(selectedValues?.to ?? max)
   )
 
@@ -88,3 +89,4 @@ export default function RangeFilter({
     </div>
   )
 }
+export default RangeFilter
