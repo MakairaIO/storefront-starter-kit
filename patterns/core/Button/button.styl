@@ -1,11 +1,11 @@
 .button
   display inline-block
-  color var(--neutral-90)
+  color var(--color-base-content)
   font-size var(--font-small)
   line-height 1.13rem
   letter-spacing 0.02rem
-  background var(--neutral-00)
-  border 0.06rem solid var(--primary)
+  background var(--color-primary-content)
+  border 0.06rem solid var(--color-primary-main)
   border-radius var(--border-radius-small)
   padding var(--spacing-s) var(--spacing-s) var(--spacing-s)
   margin var(--spacing-xs) 0 var(--spacing-xs)
@@ -17,27 +17,27 @@
   &:disabled
     cursor auto
 
-  &--primary
-    background var(--primary)
-    border-color var(--primary)
-    color var(--neutral-00)
+  &--color-primary-main
+    background var(--color-primary-main)
+    border-color var(--color-primary-main)
+    color var(--color-primary-content)
     font-weight var(--font-weight-medium)
 
     &:hover
-      background var(--neutral-90)
+      background var(--color-base-content)
 
     &:active
-      background var(--neutral-60)
+      background var(--color-primary-main)
 
     &:disabled
-      background var(--idle)
-      border-color var(--neutral-30)
-      color var(--neutral-10)
+      background var(--color-primary-content)
+      border-color var(--color-primary-content)
+      color var(--color-base-darker)
 
-  &--primary-alt
-    background var(--secondary)
-    border-color var(--secondary)
-    color var(--neutral-00)
+  &--color-primary-main-alt
+    background var(--color-accent-main)
+    border-color var(--color-accent-main)
+    color var(--color-primary-content)
     font-weight var(--font-weight-medium)
 
     &:hover
@@ -47,67 +47,67 @@
       background var(--button-primary-alt-active)
 
     &:disabled
-      background var(--neutral-30)
-      border-color var(--neutral-30)
+      background var(--color-primary-content)
+      border-color var(--color-primary-content)
 
-  &--secondary
-    background var(--neutral-00)
-    border-color var(--neutral-40)
-    color var(--primary)
+  &--color-accent-main
+    background var(--color-primary-content)
+    border-color var(--color-primary-content)
+    color var(--color-primary-main)
     font-weight var(--font-weight-medium)
 
     &:hover
-      border-color var(--neutral-50)
-      color var(--neutral-90)
+      border-color var(--color-primary-main)
+      color var(--color-base-content)
 
     &:active
-      background var(--neutral-10)
-      border-color var(--primary)
-      color var(--neutral-90)
+      background var(--color-base-darker)
+      border-color var(--color-primary-main)
+      color var(--color-base-content)
 
     &:disabled
-      background var(--neutral-00)
-      border-color var(--neutral-20)
-      color var(--neutral-30)
+      background var(--color-primary-content)
+      border-color var(--color-primary-content)
+      color var(--color-primary-content)
 
-  &--tertiary
-    background var(--neutral-00)
-    border-color var(--neutral-40)
-    color var(--neutral-80)
+  &--color-primary-content
+    background var(--color-primary-content)
+    border-color var(--color-primary-content)
+    color var(--color-base-darkest)
 
     &:hover
-      background var(--idle)
-      border-color var(--neutral-30)
-      color var(--primary)
+      background var(--color-primary-content)
+      border-color var(--color-primary-content)
+      color var(--color-primary-main)
 
     &:active
-      background var(--neutral-00)
-      border-color var(--primary)
-      color var(--neutral-90)
+      background var(--color-primary-content)
+      border-color var(--color-primary-main)
+      color var(--color-base-content)
 
     &:disabled
-      background var(--neutral-00)
-      border-color var(--tertiary)
-      color var(--neutral-30)
+      background var(--color-primary-content)
+      border-color var(--color-primary-content)
+      color var(--color-primary-content)
 
-  &--link
-    color var(--neutral-70)
+  &--color-primary-main
+    color var(--color-primary-main)
     border none
     padding var(--spacing-xs) var(--spacing-s) var(--spacing-xs)
     margin var(--spacing-xs) 0 var(--spacing-xs)
 
     &:hover
-      border 0.06rem solid var(--neutral-40)
+      border 0.06rem solid var(--color-primary-content)
 
     &:active
-      background var(--neutral-40)
-      border 0.06rem solid var(--neutral-40)
-      color var(--neutral-80)
+      background var(--color-primary-content)
+      border 0.06rem solid var(--color-primary-content)
+      color var(--color-base-darkest)
 
     &:disabled
-      background var(--neutral-00)
+      background var(--color-primary-content)
       border none
-      color var(--neutral-30)
+      color var(--color-primary-content)
 
     // Overrides of generic styling for Link-Button
     &.button--icon-right
@@ -127,39 +127,39 @@
     padding var(--spacing-s) 0
 
     &:hover
-      background var(--idle)
-      border-color var(--neutral-30)
-      color var(--primary)
+      background var(--color-primary-content)
+      border-color var(--color-primary-content)
+      color var(--color-primary-main)
 
     &:active
-      background var(--neutral-00)
-      border-color var(--primary)
-      color var(--neutral-90)
+      background var(--color-primary-content)
+      border-color var(--color-primary-main)
+      color var(--color-base-content)
 
     &:disabled
-      background var(--neutral-00)
-      border-color var(--tertiary)
-      color var(--neutral-30)
+      background var(--color-primary-content)
+      border-color var(--color-primary-content)
+      color var(--color-primary-content)
 
 
-  &--link-icon
+  &--color-primary-main-icon
     padding var(--spacing-s) 0
-    background var(--neutral-00)
+    background var(--color-primary-content)
     border none
-    color var(--neutral-90)
+    color var(--color-base-content)
 
     &:hover
-      background var(--neutral-10)
-      border 0.06rem solid var(--neutral-10)
+      background var(--color-base-darker)
+      border 0.06rem solid var(--color-base-darker)
 
     &:active
-      background var(--neutral-20)
-      border 0.06rem solid var(--neutral-20)
+      background var(--color-primary-content)
+      border 0.06rem solid var(--color-primary-content)
 
     &:disabled
-      background var(--neutral-00)
+      background var(--color-primary-content)
       border none
-      color var(--neutral-30)
+      color var(--color-primary-content)
 
   &--icon-right
     .button__text

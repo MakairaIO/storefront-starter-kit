@@ -39,7 +39,7 @@ var(--breakpoint-l) = 71.88rem
     grid-template-columns repeat(4, minmax(0,1fr))
 
 .product-item
-  border-top 0.06rem solid var(--neutral-40)
+  border-top 0.06rem solid var(--color-primary-content)
   padding var(--spacing-l) var(--spacing-s) 0 // top = var(--spacing-l) - var(--spacing-xs) border
   &--highlight
     position relative
@@ -59,7 +59,7 @@ var(--breakpoint-l) = 71.88rem
   display block
   line-height 0.75rem
   letter-spacing 0.19rem
-  color var(--neutral-50)
+  color var(--color-primary-main)
   text-transform uppercase
   text-align center
   margin var(--spacing-xs) 0
@@ -128,7 +128,7 @@ var(--breakpoint-l) = 71.88rem
     transition all 200ms ease-in-out
 
   &--active:before
-    border 0.06rem solid var(--neutral-80)
+    border 0.06rem solid var(--color-base-darkest)
     height calc(100% + 0.38rem)
     width calc(100% + 0.38rem)
 
@@ -149,7 +149,7 @@ var(--breakpoint-l) = 71.88rem
 
   &--white
     background var(--color-base-darker)
-    border 0.06rem solid var(--neutral-80)
+    border 0.06rem solid var(--color-base-darkest)
 
   &--purple
     background var(--color-primary-main)
@@ -218,8 +218,8 @@ var(--breakpoint-l) = 71.88rem
     flex-basis 1.25rem
 
 .product-list__active-filter-hint
-  background var(--secondary)
-  color var(--neutral-00)
+  background var(--color-accent-main)
+  color var(--color-primary-content)
   border-radius var(--border-radius-big)
   font-size var(--font-extrasmall)
   font-weight var(--font-weight-semi-bold)

@@ -1,7 +1,7 @@
 .mobile-filter, .mobile-filter__list
   height 100%
   width 100%
-  background var(--neutral-00)
+  background var(--color-primary-content)
   position fixed
   top 0
   left 0
@@ -13,7 +13,7 @@
   font-weight var(--font-weight-medium)
   line-height 1.13rem
   letter-spacing 0.01rem
-  color var(--neutral-90)
+  color var(--color-base-content)
   transform translateX(-110%) // 110% instead of 100% because of the box-shadow
   transition transform 400ms cubic-bezier(0, 1.02, 0.48, 0.92)
 
@@ -33,12 +33,12 @@
     transform translateX(0)
 
 .mobile-filter__section
-  background var(--neutral-00)
-  border-bottom 0.06rem solid var(--neutral-20)
+  background var(--color-primary-content)
+  border-bottom 0.06rem solid var(--color-primary-content)
 
   // first element gets top border as well
   .mobile-filter__header + &
-    border-top 0.06rem solid var(--neutral-20)
+    border-top 0.06rem solid var(--color-primary-content)
 
 .mobile-filter__button
   display flex
@@ -51,7 +51,7 @@
 .mobile-filter__active-filters
   font-size var(--font-small)
   font-weight var(--font-weight-regular)
-  color var(--neutral-50)
+  color var(--color-primary-main)
   margin-left auto
   max-width clamp(7.50rem, 100%, 9.38rem)
   text-overflow ellipsis
@@ -71,7 +71,7 @@
 .mobile-filter__header, .mobile-filter__list-header
   display flex
   align-items center
-  background var(--neutral-00)
+  background var(--color-primary-content)
   position sticky
   top 0
   padding var(--spacing-m)
@@ -85,13 +85,13 @@
   span
     margin-right var(--spacing-s)
     padding-right var(--spacing-s)
-    border-right 0.06rem solid var(--neutral-40)
+    border-right 0.06rem solid var(--color-primary-content)
 
 .mobile-filter__footer, .mobile-filter__list-footer
   display flex
   justify-content center
   align-items center
-  background var(--neutral-00)
+  background var(--color-primary-content)
   padding var(--spacing-s) 0
   position sticky
   bottom 0
@@ -101,11 +101,11 @@
   align-items center
   font-size var(--font-small)
   letter-spacing 0.01rem
-  background var(--neutral-00)
-  border-bottom 0.06rem solid var(--neutral-20)
+  background var(--color-primary-content)
+  border-bottom 0.06rem solid var(--color-primary-content)
 
   &:first-of-type
-    border-top 0.06rem solid var(--neutral-20)
+    border-top 0.06rem solid var(--color-primary-content)
 
   &--active
     font-weight var(--font-weight-medium)
@@ -123,13 +123,13 @@
     height 0.87rem
     width 0.87rem
     margin-right var(--spacing-s)
-    color var(--neutral-70)
+    color var(--color-primary-main)
 
   input
     display none
 
 .mobile-filter__range-filter
-  background var(--neutral-00)
+  background var(--color-primary-content)
   padding var(--spacing-xl) var(--spacing-m)
 
 .mobile-filter__range-filter-label

@@ -21,7 +21,7 @@
     margin-top var(--spacing-xs)
     padding var(--spacing-s)
     border-radius var(--border-radius-small)
-    border 0.06rem solid var(--neutral-40)
+    border 0.06rem solid var(--color-primary-content)
 
     &.form-field__select
       min-height 2.50rem
@@ -32,7 +32,7 @@
     &.form-field__input[type="text"]:focus,
     &.form-field__input[type="email"]:focus,
     &.form-field__textarea:focus
-      border-color var(--neutral-60)
+      border-color var(--color-primary-main)
       box-shadow unset
       outline none
 
@@ -53,14 +53,14 @@
 
     &.form-field__status--failure
       display block
-      background-color var(--error)
-      border 0.06rem solid var(--error)
+      background-color var(--color-danger-main)
+      border 0.06rem solid var(--color-danger-main)
 
     &.form-field__status--success
       display block
-      background-color var(--positive)
-      border 0.06rem solid var(--positive)
+      background-color var(--color-warning-main)
+      border 0.06rem solid var(--color-warning-main)
 
   .form-field__error
     margin-top var(--spacing-xs)
-    color var(--error)
+    color var(--color-danger-main)

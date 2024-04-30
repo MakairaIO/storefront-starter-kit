@@ -32,7 +32,7 @@
     content ''
     height 0.19rem
     width calc(100% - 1.88rem) // 0.94rem padding on each side of the text
-    background var(--neutral-90)
+    background var(--color-base-content)
     position absolute
     bottom 0
     left 0.94rem
@@ -43,13 +43,13 @@
   grid-gap var(--spacing-m)
   flex-wrap wrap
   width 100%
-  background var(--neutral-00)
+  background var(--color-primary-content)
   position absolute
   top calc(100% + 0.31rem)
   left 0
   z-index var(--z-index-medium)
   padding var(--spacing-l) var(--spacing-m)
-  border 0.06rem solid var(--neutral-40)
+  border 0.06rem solid var(--color-primary-content)
   border-radius var(--border-radius-small)
   box-shadow var(--elevation-l)
 
@@ -69,10 +69,10 @@
   letter-spacing 0.01rem
 
   li
-    border-top 0.06rem solid var(--tertiary)
+    border-top 0.06rem solid var(--color-primary-content)
 
     &:last-of-type
-      border-bottom 0.06rem solid var(--tertiary)
+      border-bottom 0.06rem solid var(--color-primary-content)
 
   a
     display flex
@@ -87,4 +87,4 @@
       height 0.81rem
       width 0.50rem
       margin-left auto
-      color var(--neutral-50)
+      color var(--color-primary-main)
