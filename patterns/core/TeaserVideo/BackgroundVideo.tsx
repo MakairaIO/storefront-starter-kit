@@ -1,15 +1,23 @@
-import { createRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Icon } from '../..'
 
-export default function BackgroundVideo({ videoUrl = '', poster = '' }) {
-  const buttonRef = createRef()
-  const [showButton, setShowButton] = useState(false)
+type VideoProps = {
+  videoUrl?: string
+  poster?: string
+}
+
+const BackgroundVideo: React.FC<VideoProps> = ({
+  videoUrl = '',
+  poster = '',
+}) => {
+  const buttonRef = useRef<HTMLVideoElement>(null)
+  const [showButton, setShowButton] = useState<boolean>(false)
 
   const playPause = () => {
-    if (buttonRef.current.paused) {
-      buttonRef.current.play()
+    if (buttonRef.current?.paused) {
+      buttonRef.current?.play()
     } else {
-      buttonRef.current.pause()
+      buttonRef.current?.pause()
     }
     setShowButton(!showButton)
   }
@@ -36,3 +44,4 @@ export default function BackgroundVideo({ videoUrl = '', poster = '' }) {
     </div>
   )
 }
+export default BackgroundVideo

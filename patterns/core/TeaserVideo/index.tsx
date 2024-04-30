@@ -1,16 +1,32 @@
+import React from 'react'
 import { Heading, Copytext, ConditionalLink, Text, Button } from '../..'
 import BackgroundVideo from './BackgroundVideo'
 import { useTranslation } from '../../../utils'
 
-export default function TeaserVideo({
+interface TeaserVideoProps {
+  heading?: string
+  subheading?: string
+  hint?: string
+  link?: string
+  description?: {
+    heading?: string
+    text?: string
+  }
+  videoUrl?: string
+  poster?: string
+}
+
+const TeaserVideo: React.FC<TeaserVideoProps> = ({
   heading = '',
   subheading = '',
   hint = '',
   link = '',
-  description = {},
-  videoUrl = '',
-  poster = '',
-}) {
+  description,
+  videoUrl,
+  poster,
+}) => {
+  const { t } = useTranslation()
+
   return (
     <section className="video-teaser">
       <BackgroundVideo videoUrl={videoUrl} poster={poster} />
@@ -33,7 +49,7 @@ export default function TeaserVideo({
           {link && (
             <ConditionalLink href={link}>
               <Button className="text--bold" icon="chevron-right">
-                <ButtonText />
+                {t('PRODUCT_TILE_TO_PRODUCT')}
               </Button>
             </ConditionalLink>
           )}
@@ -43,8 +59,5 @@ export default function TeaserVideo({
   )
 }
 
-function ButtonText() {
-  const { t } = useTranslation()
-  return <>{t('PRODUCT_TILE_TO_PRODUCT')}</>
-}
+export default TeaserVideo
 export { default as teaserVideoVariants } from './variants.js'
