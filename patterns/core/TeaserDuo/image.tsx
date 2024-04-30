@@ -1,8 +1,8 @@
 import { useConfiguration } from '../../../utils'
+import { ImageProps } from '../../../public/assets/type/Image'
 
-export default function Image(props) {
+const Image: React.FC<ImageProps> = ({ src = '', alt = '' }) => {
   const { getImageLink } = useConfiguration()
-  const { src = '', alt = '' } = props
 
   const imageLink = getImageLink({ source: src, format: 'auto' })
 
@@ -12,3 +12,5 @@ export default function Image(props) {
     </picture>
   )
 }
+
+export default Image

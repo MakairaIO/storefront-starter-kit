@@ -1,8 +1,16 @@
 import { Button } from '../..'
 
-export default function Overlay(props) {
-  const { heading = '', text = '', showButton = false } = props
+type OverlayProps = {
+  heading?: string
+  text?: string
+  showButton?: boolean
+}
 
+const Overlay: React.FC<OverlayProps> = ({
+  heading = '',
+  text = '',
+  showButton = false,
+}) => {
   return (
     <p className="duo-teaser__overlay">
       {heading && (
@@ -19,3 +27,5 @@ export default function Overlay(props) {
     </p>
   )
 }
+
+export default Overlay
