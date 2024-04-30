@@ -1,56 +1,38 @@
-import { Component, createRef } from 'react'
+import { createRef, useState } from 'react'
 import { Icon } from '../..'
 
-class BackgroundVideo extends Component {
-  constructor(props) {
-    super(props)
-    this.buttonRef = createRef()
-    this.state = {
-      showButton: false,
-    }
-  }
+export default function BackgroundVideo({ videoUrl = '', poster = '' }) {
+  const buttonRef = createRef()
+  const [showButton, setShowButton] = useState(false)
 
-  playPause = () => {
-    if (this.buttonRef.current.paused) {
-      this.buttonRef.current.play()
+  const playPause = () => {
+    if (buttonRef.current.paused) {
+      buttonRef.current.play()
     } else {
-      this.buttonRef.current.pause()
+      buttonRef.current.pause()
     }
-
-    this.setState((prevState) => {
-      return {
-        showButton: !prevState.showButton,
-      }
-    })
+    setShowButton(!showButton)
   }
-
-  render() {
-    const { videoUrl = '', poster = '' } = this.props
-    const { showButton } = this.state
-
-    return (
-      <div className="video-teaser-player">
-        <video
-          ref={this.buttonRef}
-          className="video-teaser__video"
-          loop
-          muted
-          autoPlay
-          {...(poster && { poster: poster })}
-          onClick={this.playPause}
-        >
-          <source src={videoUrl} type="video/mp4" />
-          <source src={videoUrl} type="video/ogg" />
-          Your browser does not support the video tag.
-        </video>
-        <span className="video-teaser__play-wrapper" onClick={this.playPause}>
-          {showButton ? (
-            <Icon symbol="play-circle" className="video-teaser__play-button" />
-          ) : null}
-        </span>
-      </div>
-    )
-  }
+  return (
+    <div className="video-teaser-player">
+      <video
+        ref={buttonRef}
+        className="video-teaser__video"
+        loop
+        muted
+        autoPlay
+        {...(poster && { poster: poster })}
+        onClick={playPause}
+      >
+        <source src={videoUrl} type="video/mp4" />
+        <source src={videoUrl} type="video/ogg" />
+        Your browser does not support the video tag.
+      </video>
+      <span className="video-teaser__play-wrapper" onClick={playPause}>
+        {showButton ? (
+          <Icon symbol="play-circle" className="video-teaser__play-button" />
+        ) : null}
+      </span>
+    </div>
+  )
 }
-
-export default BackgroundVideo
