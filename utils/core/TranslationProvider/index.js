@@ -1,24 +1,18 @@
-import React, { Component, useContext } from 'react'
+import React, { useContext } from 'react'
 import { translations } from '../..'
 
 const TranslationContext = React.createContext()
 
-class TranslationProvider extends Component {
-  static defaultProps = { language: 'de' }
-
-  translate = (key, fallback = '') => {
-    return translations[this.props.language][key] ?? fallback
+function TranslationProvider({ language = 'de', children }) {
+  const translate = (key, fallback = '') => {
+    return translations[language][key] ?? fallback
   }
 
-  render() {
-    return (
-      <TranslationContext.Provider
-        value={{ language: this.props.language, t: this.translate }}
-      >
-        {this.props.children}
-      </TranslationContext.Provider>
-    )
-  }
+  return (
+    <TranslationContext.Provider value={{ language: language, t: translate }}>
+      {children}
+    </TranslationContext.Provider>
+  )
 }
 
 function useTranslation() {
