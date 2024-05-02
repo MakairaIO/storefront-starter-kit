@@ -1,38 +1,34 @@
-import React, { Component, useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { setCookie } from 'nookies'
 import { GlobalDataContext, Matomo } from '../..'
 
-/* First we will make a new context */
 const AbTestingContext = React.createContext()
 
-/* Then create a provider Component */
-class AbTestingProvider extends Component {
-  componentDidMount() {
-    this.initAbTesting()
-  }
+function AbTestingProvider({ children }) {
+  const globalData = useContext(GlobalDataContext)
 
-  initAbTesting = () => {
-    const experiments = this.getExperiments()
+  const initAbTesting = () => {
+    const experiments = getExperiments()
 
     Matomo.init()
     Matomo.enterAbTest({ experiments })
 
-    this.setAbTestCookie({ experiments })
+    setAbTestCookie({ experiments })
   }
 
-  getExperiments = () => {
+  const getExperiments = () => {
     return (
-      this.context.pageData?.experiments ??
-      this.context.searchResult?.experiments ??
+      globalData?.pageData?.experiments ??
+      globalData?.searchResult?.experiments ??
       []
     )
   }
 
-  setAbTestCookie = ({ experiments = [] }) => {
-    if (experiments.length == 0) return
+  const setAbTestCookie = ({ experiments = [] }) => {
+    if (experiments.length === 0) return
 
-    let in180days = new Date()
-    in180days.setSeconds(15552000)
+    const in180days = new Date()
+    in180days.setSeconds(in180days.getSeconds() + 15552000)
 
     setCookie({}, 'mak_experiments', JSON.stringify(experiments), {
       expires: in180days,
@@ -41,8 +37,8 @@ class AbTestingProvider extends Component {
   }
 
   // Utility for frontend experiments
-  isInExperiment = ({ id, variation }) => {
-    const experiments = this.getExperiments()
+  const isInExperiment = ({ id, variation }) => {
+    const experiments = getExperiments()
 
     if (!experiments) return false
 
@@ -55,15 +51,17 @@ class AbTestingProvider extends Component {
     return isParticipantOfExperiment['variation'] == variation
   }
 
-  render() {
-    return (
-      <AbTestingContext.Provider
-        value={{ isInExperiment: this.isInExperiment }}
-      >
-        {this.props.children}
-      </AbTestingContext.Provider>
-    )
-  }
+  useEffect(() => {
+    initAbTesting()
+  }, []) // Only run once on mount
+
+  const value = { isInExperiment }
+
+  return (
+    <AbTestingContext.Provider value={value}>
+      {children}
+    </AbTestingContext.Provider>
+  )
 }
 
 function useAbTesting() {
@@ -72,5 +70,5 @@ function useAbTesting() {
 
 AbTestingProvider.contextType = GlobalDataContext
 
-export default AbTestingContext
 export { AbTestingProvider, useAbTesting }
+export default AbTestingContext
