@@ -1,10 +1,30 @@
-import React, { useContext, useEffect } from 'react'
+import React, { createContext, ReactNode, useContext, useEffect } from 'react'
 import { setCookie } from 'nookies'
 import { GlobalDataContext, Matomo } from '../..'
 
-const AbTestingContext = React.createContext()
+type Experiment = {
+  experiment: string
+  variation: string
+}
 
-function AbTestingProvider({ children }) {
+type AbTestingContextType = {
+  isInExperiment: ({
+    id,
+    variation,
+  }: {
+    id: string
+    variation: string
+  }) => boolean
+}
+const AbTestingContext = createContext<AbTestingContextType | undefined>(
+  undefined
+)
+
+type AbTestingProviderProps = {
+  children: ReactNode
+}
+
+function AbTestingProvider({ children }: AbTestingProviderProps) {
   const globalData = useContext(GlobalDataContext)
 
   const initAbTesting = () => {
@@ -16,7 +36,7 @@ function AbTestingProvider({ children }) {
     setAbTestCookie({ experiments })
   }
 
-  const getExperiments = () => {
+  const getExperiments = (): Experiment[] => {
     return (
       globalData?.pageData?.experiments ??
       globalData?.searchResult?.experiments ??
@@ -24,7 +44,11 @@ function AbTestingProvider({ children }) {
     )
   }
 
-  const setAbTestCookie = ({ experiments = [] }) => {
+  const setAbTestCookie = ({
+    experiments = [],
+  }: {
+    experiments?: Experiment[]
+  }) => {
     if (experiments.length === 0) return
 
     const in180days = new Date()
@@ -37,7 +61,13 @@ function AbTestingProvider({ children }) {
   }
 
   // Utility for frontend experiments
-  const isInExperiment = ({ id, variation }) => {
+  const isInExperiment = ({
+    id,
+    variation,
+  }: {
+    id: string
+    variation: string
+  }): boolean => {
     const experiments = getExperiments()
 
     if (!experiments) return false
@@ -55,7 +85,7 @@ function AbTestingProvider({ children }) {
     initAbTesting()
   }, []) // Only run once on mount
 
-  const value = { isInExperiment }
+  const value: AbTestingContextType = { isInExperiment }
 
   return (
     <AbTestingContext.Provider value={value}>
@@ -67,8 +97,6 @@ function AbTestingProvider({ children }) {
 function useAbTesting() {
   return useContext(AbTestingContext)
 }
-
-AbTestingProvider.contextType = GlobalDataContext
 
 export { AbTestingProvider, useAbTesting }
 export default AbTestingContext
