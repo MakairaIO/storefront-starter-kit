@@ -1,17 +1,24 @@
 export default async function fetchMenuData() {
-  let data
+  let data = null
 
-  if (process.browser && localStorage.getItem('menuData')) {
-    const menuString = localStorage.getItem('menuData')
+  try {
+    if (process.browser && localStorage.getItem('menuData')) {
+      const menuString = localStorage.getItem('menuData')
 
-    if (['undefined', 'null', '[]'].includes(menuString)) {
-      const response = await fetchMenuFromApi()
+      if (['undefined', 'null', '[]'].includes(menuString)) {
+        const response = await fetchMenuFromApi()
 
-      data = response.menu
-    } else {
-      data = JSON.parse(menuString)
+        data = response.menu
+      } else {
+        data = JSON.parse(menuString)
+      }
     }
-  } else {
+  } catch (error) {
+    // iPhone private mode is able to prevent web access localStorage, this will lead to throw error when calling object localStorage
+    console.warn('You are preventing us to access localStorage!')
+  }
+
+  if (!data) {
     const response = await fetchMenuFromApi()
 
     data = response.menu
