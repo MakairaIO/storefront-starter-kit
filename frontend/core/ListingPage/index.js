@@ -16,12 +16,14 @@ export default function ListingPage() {
     queryParams: params,
   })
 
+  const metadata = pageData?.data?.metadata || {}
+
   const {
     seoTitle = title,
     robotIndex: robotIndexFromPageEditor,
     robotFollow: robotFollowFromPageEditor,
     ...additionalMetadata
-  } = pageData.data.metadata
+  } = metadata
 
   return (
     <main>
