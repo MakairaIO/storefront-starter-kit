@@ -42,7 +42,12 @@ class GlobalDataProvider extends Component {
     // parsing big JSON-Strings is more efficient than parsing big
     // Object-literals
     // see: https://v8.dev/blog/cost-of-javascript-2019#json
-    localStorage.setItem('menuData', JSON.stringify(this.state.menuData))
+    try {
+      localStorage.setItem('menuData', JSON.stringify(this.state.menuData))
+    } catch (error) {
+      // iPhone private mode is able to prevent web access localStorage, this will lead to throw error when calling object localStorage
+      console.warn('You are preventing us to access localStorage!')
+    }
   }
 
   render() {
