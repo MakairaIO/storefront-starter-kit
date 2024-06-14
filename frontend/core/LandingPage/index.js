@@ -7,13 +7,15 @@ function Landingpage() {
   const { pageData } = useGlobalData()
   const config = pageData.data.config || {}
 
+  const metadata = pageData?.data?.metadata || {}
+
   const {
     title = '',
     seoTitle,
     robotIndex = 'index',
     robotFollow = 'follow',
     ...additionalMetadata
-  } = pageData.data.metadata
+  } = metadata
 
   if (!config.bottom && !config.top) return null
 
