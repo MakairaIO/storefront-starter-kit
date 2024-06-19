@@ -75,9 +75,9 @@ function DetailPage() {
   const metadata = pageData?.data?.metadata || {}
 
   const {
-    seoTitle = pageData.data.self.title,
-    keywords = pageData.data.self.meta_keywords,
-    description = pageData.data.self.meta_description,
+    seoTitle = pageData?.data?.self?.title,
+    keywords = pageData?.data?.self?.meta_keywords,
+    description = pageData?.data?.self?.meta_description,
     ...additionalMetadata
   } = metadata
 
