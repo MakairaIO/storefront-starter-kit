@@ -6,6 +6,7 @@ export default async function fetchRecommendationData({
   language = '',
   filter = [],
   count = 5,
+  mergeFilter = false,
 }) {
   const builder = new RequestBuilder()
   const constraints = builder.getConstraints({ language })
@@ -16,6 +17,7 @@ export default async function fetchRecommendationData({
     recommendationId,
     productId,
     filter,
+    mergeFilter,
   }
 
   const page = await fetchFromMakaira({ body, isRecommendation: true })

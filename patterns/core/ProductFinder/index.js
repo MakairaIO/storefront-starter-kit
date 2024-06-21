@@ -36,6 +36,7 @@ function ProductFinder(props) {
           count: 100,
           language: language,
           filters,
+          mergeFilter: true,
         })
         const recommentedProducts = res.items
         const formattedProduct = recommentedProducts.map(
