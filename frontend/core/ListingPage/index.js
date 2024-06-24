@@ -16,7 +16,15 @@ export default function ListingPage() {
     queryParams: params,
   })
 
-  const metadata = pageData?.data?.metadata || {}
+  let metadata = pageData?.data?.metadata || {}
+  metadata = Object.keys(metadata).reduce((prev, cur) => {
+    if (metadata[cur]) {
+      prev[cur] = metadata[cur]
+    }
+    return prev
+  }, {})
+
+  console.log(metadata)
 
   const {
     seoTitle = title,
@@ -25,13 +33,15 @@ export default function ListingPage() {
     ...additionalMetadata
   } = metadata
 
+  console.log(title)
+
   return (
     <main>
       <Metadata
-        title={seoTitle}
+        title={title}
         robotFollow={robotIndexFromPageEditor || robotFollow}
         robotIndex={robotFollowFromPageEditor || robotIndex}
-        additionalMetadata={additionalMetadata}
+        additionalMetadata={{ ...additionalMetadata, title: seoTitle }}
       />
 
       <Breadcrumb breadcrumb={pageData.data.self.navigation?.breadcrumb} />

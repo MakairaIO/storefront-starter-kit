@@ -72,22 +72,28 @@ function DetailPage() {
     },
   }
 
-  const metadata = pageData?.data?.metadata || {}
+  let metadata = pageData?.data?.metadata || {}
+  metadata = Object.keys(metadata).reduce((prev, cur) => {
+    if (metadata[cur]) {
+      prev[cur] = metadata[cur]
+    }
+    return prev
+  }, {})
 
   const {
-    seoTitle = pageData.data.self.title,
-    keywords = pageData.data.self.meta_keywords,
-    description = pageData.data.self.meta_description,
+    seoTitle = pageData?.data?.self?.title,
+    keywords = pageData?.data?.self?.meta_keywords,
+    description = pageData?.data?.self?.meta_description,
     ...additionalMetadata
   } = metadata
 
   return (
     <main>
       <Metadata
-        title={seoTitle}
+        title={pageData?.data?.self?.title}
         keywords={keywords}
         description={description}
-        additionalMetadata={additionalMetadata}
+        additionalMetadata={{ ...additionalMetadata, title: seoTitle }}
       />
 
       <Breadcrumb product={pageData.data.self} />
