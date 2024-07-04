@@ -66,6 +66,18 @@ export default function BrowserHintPage() {
                   Google Chrome
                 </Copytext>
               </Link>
+              <Link
+                href="https://apps.apple.com/us/app/safari/id1146562112"
+                className="browser browser--safari"
+              >
+                <img
+                  src="/assets/images/browserHintPage/safari.svg"
+                  alt="Safari Logo"
+                />
+                <Copytext size="aphrodite" element="span">
+                  Safari &gt;= 14
+                </Copytext>
+              </Link>
             </div>
             <img
               className="browser-hint-page__browsers-divider"
