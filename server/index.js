@@ -6,6 +6,7 @@ const allLanguages = require('../config/allLanguages')
 const parser = require('ua-parser-js')
 const bodyParser = require('body-parser')
 const sendSendGridEmail = require('../utils/core/sendSendGridEmail')
+const { createProxyMiddleware } = require('http-proxy-middleware')
 
 const logError = require('./utils/logError')
 
@@ -20,6 +21,47 @@ app
     const server = express()
     server.use(cors({ origin: true, credentials: true }))
     server.use(bodyParser.json())
+
+    if (dev) {
+      let auth = null
+      if (process.env.PROXY_USERNAME && process.env.PROXY_PASSWORD) {
+        auth = `Basic ${Buffer.from(
+          `${process.env.PROXY_USERNAME}:${process.env.PROXY_PASSWORD}`
+        ).toString('base64')}`
+      }
+
+      server.use(
+        '/index.php', // Replace with source url you want to proxy
+        createProxyMiddleware({
+          target: process.env.PROXY_SHOP_DOMAIN, // Replace with your target domain
+          changeOrigin: true,
+          pathRewrite: {
+            '^/index.php': '/index.php', // Replace with source/destination url you want to proxy
+          },
+          onProxyReq: (proxyReq) => {
+            if (auth) {
+              proxyReq.setHeader('Authorization', auth)
+            }
+          },
+          onProxyRes: (proxyRes, req, res) => {
+            // Ensure CORS headers are set
+            res.setHeader('Access-Control-Allow-Origin', '*')
+            res.setHeader(
+              'Access-Control-Allow-Methods',
+              'GET,POST,PUT,DELETE,OPTIONS'
+            )
+            res.setHeader(
+              'Access-Control-Allow-Headers',
+              'Content-Type, Authorization'
+            )
+          },
+          onError: (err, req, res) => {
+            console.error('Proxy error:', err) // Debugging: Log errors
+            res.status(500).send('Proxy error')
+          },
+        })
+      )
+    }
 
     /**
      * Route handler for robots.txt
