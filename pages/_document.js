@@ -9,7 +9,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="de">
         <Head>
           <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
 
