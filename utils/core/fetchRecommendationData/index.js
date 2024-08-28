@@ -4,15 +4,20 @@ export default async function fetchRecommendationData({
   productId = '',
   recommendationId = '',
   language = '',
+  filter = [],
+  count = 5,
+  mergeFilter = false,
 }) {
   const builder = new RequestBuilder()
   const constraints = builder.getConstraints({ language })
 
   const body = {
     constraints,
-    count: 5,
+    count,
     recommendationId,
     productId,
+    filter,
+    mergeFilter,
   }
 
   const page = await fetchFromMakaira({ body, isRecommendation: true })

@@ -17,6 +17,7 @@ export default function ProductTile(props) {
     mak_placement_view_tracking_id,
     handleTrackingEvent,
     handleTrackGoal,
+    dynamicLabel,
   } = props
 
   const [activeVariant, setActiveVariant] = useState()
@@ -61,7 +62,9 @@ export default function ProductTile(props) {
         setActiveVariant={setActiveVariant}
       />
 
-      <Ribbon isVisible={mak_paid_placement} />
+      <Ribbon isVisible={mak_paid_placement || dynamicLabel}>
+        {dynamicLabel || 'highlight'}
+      </Ribbon>
     </article>
   )
 }
