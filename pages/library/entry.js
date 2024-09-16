@@ -104,7 +104,6 @@ export default function Index() {
   return (
     <>
       <Head>
-        {/* eslint-disable-line */}
         <link rel="stylesheet" href="/assets/library/library.css" />
       </Head>
       <div className="pali__wrapper">
