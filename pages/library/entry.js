@@ -104,6 +104,7 @@ export default function Index() {
   return (
     <>
       <Head>
+        {/* eslint-disable-line */}
         <link rel="stylesheet" href="/assets/library/library.css" />
       </Head>
       <div className="pali__wrapper">
@@ -115,7 +116,7 @@ export default function Index() {
 
         <nav className={navigationClasses}>
           <figure className="pali__home-icon">
-            <Image src="/assets/library/makaira-logo.png"/>
+            <Image src="/assets/library/makaira-logo.png" alt="Makaira Logo"/>
           </figure>
 
           <ul className="pali__list">
