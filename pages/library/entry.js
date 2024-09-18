@@ -8,7 +8,6 @@ import {
   ComponentView,
 } from '../../library/internal'
 import Head from 'next/head'
-import Image from 'next/image'
 
 const mainComponents = {
   color: ColorView,
@@ -115,7 +114,7 @@ export default function Index() {
 
         <nav className={navigationClasses}>
           <figure className="pali__home-icon">
-            <Image src="/assets/library/makaira-logo.png" alt="Makaira Logo"/>
+            <img src="/assets/library/makaira-logo.png" alt="logo" />
           </figure>
 
           <ul className="pali__list">
