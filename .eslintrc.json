@@ -1,6 +1,8 @@
 {
-  "extends": "next/core-web-vitals",
+  "plugins": ["jsx-a11y"],
+  "extends": ["plugin:jsx-a11y/strict", "next"],
   "rules": {
-    "@next/next/no-css-tags": "off"
+    "import/no-anonymous-default-export": 0,
+    "@next/next/no-css-tags": 0
   }
 }

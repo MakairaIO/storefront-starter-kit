@@ -10,7 +10,7 @@
   },
   "homepage": "https://github.com/MakairaIO/storefront-starter-kit",
   "scripts": {
-    "lint": "next lint",
+    "lint": "next lint --dir frontend --dir pages --dir patterns",
     "clean": "rimraf public/assets/svgs/icons.svg && rimraf public/assets/styles/main.css",
     "predev": "npm run clean",
     "dev": "npm-run-all --parallel build:config build:svgs dev:*",
