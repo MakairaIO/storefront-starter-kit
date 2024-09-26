@@ -4,90 +4,86 @@
 @import './Wishlist/wishlistBox.styl'
 @import './Cart/cartBox.styl'
 
-$breakpoint-small = 475px
-$breakpoint-medium = 560px
-$breakpoint-large = 800px
-
 .header
   display flex
   align-items center
-  width calc(100% - 3rem) // 1.5rem "padding" on each side
+  width calc(100% - 1.88rem) // 0.94rem "padding" on each side
   margin 0 auto
-  padding 0.6rem 0 0.8rem
-  border-bottom 1px solid var(--neutral-40)
+  padding var(--spacing-xs) 0 var(--spacing-s)
+  border-bottom 0.06rem solid var(--color-primary-content)
 
-  @media (min-width $breakpoint-medium)
-    padding-bottom 0.6rem
+  @media (min-width var(--breakpoint-s))
+    padding-bottom var(--spacing-xs)
 
-  @media (min-width $breakpoint-large)
-    padding 0.6rem 0 0.6rem 1.5rem
+  @media (min-width var(--breakpoint-m))
+    padding var(--spacing-xs) 0 var(--spacing-xs) var(--spacing-m)
 
 
 .header__menu-button
-  margin-right 1.2rem
+  margin-right var(--spacing-s)
 
-  @media (min-width $breakpoint-large)
+  @media (min-width var(--breakpoint-m))
     display none
 
 .header__logo
-  max-height 4rem
+  max-height 2.50rem
 
-  @media (min-width $breakpoint-medium)
-    max-height 6rem
+  @media (min-width var(--breakpoint-s))
+    max-height 3.75rem
 
 .header__actions
   position relative
 
   &--mobile
-    @media (min-width $breakpoint-large)
+    @media (min-width var(--breakpoint-m))
       display none
 
   &--desktop
     display none
 
-    @media (min-width $breakpoint-large)
+    @media (min-width var(--breakpoint-m))
       display block
 
 .header__action
 
   &
-    margin-left 0.6rem
+    margin-left var(--spacing-xs)
 
   &--search
-    margin-right 0.6rem
+    margin-right var(--spacing-xs)
 
-    @media (min-width $breakpoint-small)
+    @media (min-width var(--breakpoint-xs))
       display none
 
 .header__basket-bubble
-  background var(--brand-2)
-  border-radius 7.5px
-  color var(--neutral-00)
-  padding 0 0.8rem
+  background var(--color-danger-main)
+  border-radius var(--border-radius-big)
+  color var(--color-primary-content)
+  padding 0 var(--spacing-s)
   position relative
-  left -0.6rem // half of the 1.2rem margin
+  left -0.37rem // half of the 0.75rem margin
 
 .header__search
   display none
 
-  @media (min-width $breakpoint-small)
+  @media (min-width var(--breakpoint-xs))
     display block
     flex 1
-    max-width 23.5rem
+    max-width 14.69rem
     margin 0 auto
     position relative
 
-  @media (min-width $breakpoint-medium)
-    margin 0 2rem 0 auto
+  @media (min-width var(--breakpoint-s))
+    margin 0 var(--spacing-m) 0 auto
 
-  @media (min-width $breakpoint-large)
-    max-width 29rem
-    margin 0 4rem 0 auto
+  @media (min-width var(--breakpoint-m))
+    max-width 18.13rem
+    margin 0 var(--spacing-xl) 0 auto
 
   .icon
-    height 1.8rem
-    width 3.6rem
-    color var(--neutral-50)
+    height 1.13rem
+    width 2.25rem
+    color var(--color-primary-main)
     position absolute
     left 0
     top 50%
@@ -96,22 +92,22 @@ $breakpoint-large = 800px
 
 .header__search-input
   width 100%
-  padding-left 3.6rem
+  padding-left var(--spacing-xl)
 
   // TODO: Refactor styles into generic <Input> component
-  height 3.6rem
-  font-size 1.3rem
-  line-height 1.8rem
-  color var(--neutral-90)
-  background var(--neutral-00)
-  border 1px solid var(--primary)
-  border-radius 4px
-  margin 0.6rem 0 0.4rem
+  height 2.25rem
+  font-size var(--font-small)
+  line-height 1.13rem
+  color var(--color-base-content)
+  background var(--color-primary-content)
+  border 0.06rem solid var(--color-primary-main)
+  border-radius var(--border-radius-small)
+  margin var(--spacing-xs) 0 var(--spacing-xs)
 
 .header__outer-container
   margin-left auto
 
-  @media (min-width $breakpoint-small)
+  @media (min-width var(--breakpoint-xs))
     flex 1
 
 .header__inner-container
@@ -121,18 +117,18 @@ $breakpoint-large = 800px
 .header__info-links
   display none
 
-  @media (min-width $breakpoint-large)
+  @media (min-width var(--breakpoint-m))
     display flex
     justify-content flex-end
-    padding 0.1rem 0 0.5rem
+    padding var(--spacing-xs) 0 var(--spacing-xs)
 
 .header__info-link, .header__info-links .language-switch button
-  aphrodite()
-  color var(--neutral-50)
+  font-m()
+  color var(--color-primary-main)
   text-decoration none
 
   & + &
-    margin-left 1rem
+    margin-left var(--spacing-s)
 
 .header__info-link
   &:hover
@@ -141,9 +137,9 @@ $breakpoint-large = 800px
 
 .header__info-links .language-switch
   button
-    margin 0 0 0 1rem
-    padding 0.3rem 1rem
+    margin 0 0 0 var(--spacing-s)
+    padding var(--spacing-xs) var(--spacing-s)
 
     .icon
-        height 1rem
-        width 1.8rem
+        height 0.63rem
+        width 1.13rem

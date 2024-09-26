@@ -1,33 +1,31 @@
-$breakpoint-small = 400px
-$breakpoint-medium = 560px
-$breakpoint-large = 1000px
-
 .stream-placement
-  padding 1.2rem 1.5rem
+  padding var(--spacing-s) var(--spacing-m)
 
-  @media (min-width $breakpoint-large = 1000px)
-    padding 1.2rem 2rem
+  @media (min-width var(--breakpoint-m))
+    padding var(--spacing-s) var(--spacing-m)
 
 .stream-placement__list
   display grid
   grid-template-columns repeat(1, minmax(0, 1fr))
-  grid-gap 1.3rem 0
+  grid-gap var(--spacing-m) 0
   width 100%
 
-  @media (min-width $breakpoint-small)
+  --breakpoint-xxs 25rem
+
+  @media (min-width var(--breakpoint-xxs))
     grid-template-columns repeat(2, minmax(0, 1fr))
 
-  @media (min-width $breakpoint-medium)
+  @media (min-width var(--breakpoint-xs))
     grid-template-columns repeat(3, minmax(0, 1fr))
 
-  @media (min-width $breakpoint-large)
-    grid-template-columns repeat(auto-fit, minmax(185px, 27rem))
+  @media (min-width var(--breakpoint-m))
+    grid-template-columns repeat(auto-fit, minmax(11.56rem, 16.88rem))
 
 .stream-placement-item
-  padding 2.3rem 1rem 0
+  padding var(--spacing-l) var(--spacing-s) 0
 
 .stream-placement__text
-  margin-bottom 1.3rem
+  margin-bottom var(--spacing-m)
 
 .stream-placement-item__image
   display flex
@@ -35,32 +33,32 @@ $breakpoint-large = 1000px
 
   img
     max-width 100%
-    max-height 16.2rem
+    max-height 10.12rem
 
 .stream-placement-item__title
   text-align center
 
 .stream-placement-item__manufacturer
   display block
-  line-height 1.2rem
-  letter-spacing 0.3rem
-  color var(--neutral-50)
+  line-height 0.75rem
+  letter-spacing 0.19rem
+  color var(--color-primary-main)
   text-transform uppercase
   text-align center
-  padding 0.2rem 0 0.4rem
-  margin 0.6rem 0
+  padding var(--spacing-xs) 0 var(--spacing-xs)
+  margin var(--spacing-xs) 0
 
 .stream-placement-item__prices
   text-align center
-  padding 0.1rem 0 0.5rem
-  margin-top 0.6rem
+  padding var(--spacing-xs) 0 var(--spacing-xs)
+  margin-top var(--spacing-xs)
 
 .stream-placement-item__price
-  font-size 1.3rem
+  font-size var(--font-small)
   font-weight var(--font-weight-semi-bold)
-  line-height 2.4rem
-  letter-spacing 0.019rem
+  line-height 1.50rem
+  letter-spacing 0.01rem
 
 .stream-placement-item__actions
-  // margin-top 0.7rem
+  // margin-top 0.44rem
   text-align center

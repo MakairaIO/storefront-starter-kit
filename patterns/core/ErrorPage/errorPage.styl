@@ -1,71 +1,68 @@
-$breakpoint-small = 700px
-$breakpoint-medium = 1000px
-
 .error-page
   font-family var(--font-family-regular)
   margin 10vh auto
-  padding 15px
-  max-width 760px
+  padding var(--spacing-m)
+  max-width 47.50rem
 
   h1
-    margin-bottom 0.25em
+    margin-bottom var(--spacing-xs)
 
   h2
-    margin 1.5em auto 0.5em
+    margin var(--spacing-l) auto var(--spacing-s)
 
   .error-page-description
-    margin 1.5em auto 0.5em
+    margin var(--spacing-l) auto var(--spacing-s)
 
   ul.error-page-costumer-solutions
     line-height 1.2
-    margin-bottom 0.5em
+    margin-bottom var(--spacing-s)
     list-style-position inside
 
     li
       list-style-type disc
-      margin-left 1.5em
-      padding-left 0.5em
-      margin-bottom 0.5em
+      margin-left var(--spacing-l)
+      padding-left var(--spacing-s)
+      margin-bottom var(--spacing-s)
 
       a:hover
         text-decoration underline
 
 code.error-page__further-info
   display block
-  padding 0.75em 1.25em
-  background-color #f8f8f8
-  border-radius 8px
+  padding var(--spacing-m) var(--spacing-l)
+  background-color var(--color-base-darker)
+  border-radius var(--border-radius-big)
 
   > span
     display block
     font-weight var(--font-weight-medium)
-    font-size 1.4rem
-    line-height 1.8rem
-    letter-spacing 0.02rem
-    margin-bottom 1.5rem
+    font-size var(--font-small)
+    line-height 1.13rem
+    letter-spacing 0.01rem
+    margin-bottom var(--spacing-m)
 
   p
-    font-size 1.3rem
-    line-height 1.8rem
+    font-size var(--font-small)
+    line-height 1.13rem
 
   ul
-    margin-top 2rem
+    margin-top var(--spacing-m)
     font-family 'courier'
-    font-size 1.3rem
-    line-height 1.8rem
+    font-size var(--font-small)
+    line-height 1.13rem
 
     li
       display flex
       flex-direction column
 
-      @media (min-width $breakpoint-small)
+      @media (min-width var(--breakpoint-s))
         flex-direction row
 
     li + li
-      margin-top 0.5rem
+      margin-top var(--spacing-xs)
 
     span:first-of-type
       font-weight bold
 
-      @media (min-width $breakpoint-small)
-        flex 0 0 9.5rem
+      @media (min-width var(--breakpoint-s))
+        flex 0 0 5.94rem

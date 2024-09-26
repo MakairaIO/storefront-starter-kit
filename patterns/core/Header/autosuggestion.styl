@@ -1,13 +1,11 @@
-$breakpoint-medium = 800px
-
 .autosuggest__image
   display flex
   flex-direction row
-  height 5rem
+  height 3.13rem
 
   picture
     height 100%
-    width 5rem
+    width 3.13rem
     text-align center
 
     img
@@ -15,65 +13,65 @@ $breakpoint-medium = 800px
   .text
     flex 1
     align-self center
-    padding-left 2rem
+    padding-left var(--spacing-m)
 
 .autosuggest-box
   position absolute
   right 0
-  max-width 80rem
+  max-width 50.00rem
   margin-left auto
-  box-shadow inset 0 -1px 0 0 #dcdee0, 0 2px 16px -10px rgba(0,0,0,0.5)
-  border 1px solid var(--neutral-40)
-  padding 3rem 1.5rem
+  box-shadow inset 0 -0.06rem 0 0 var(--color-neutral-content), 0 0.13rem 1.00rem -0.63rem rgba(0,0,0,0.5)
+  border 0.06rem solid var(--color-primary-content)
+  padding var(--spacing-xl) var(--spacing-m)
   z-index var(--z-index-highest)
-  background-color var(--neutral-00)
-  max-height calc(100vh - 6rem)
+  background-color var(--color-primary-content)
+  max-height calc(100vh - 3.75rem)
   overflow-y auto
 
 .autosuggest-box__wrapper
   display flex
   flex-direction column
-  background var(--neutral-00)
+  background var(--color-primary-content)
 
-  @media (min-width $breakpoint-medium)
+  @media (min-width var(--breakpoint-s))
     flex-direction row
-    padding 3rem 2rem
+    padding var(--spacing-xl) var(--spacing-m)
 
   .autosuggest-box__close
     flex none
     position absolute
     top 0
-    right 2rem
+    right 1.25rem
 
 .autosuggest-box__links
     flex 1
 
 .autosuggest-box__products
 .autosuggest-box__link-box
-  margin-bottom 1.5rem
+  margin-bottom var(--spacing-m)
 
 .autosuggest-box__products
   flex 1
 
   .heading
-    @media (min-width $breakpoint-medium)
-      padding-left 2rem
+    @media (min-width var(--breakpoint-s))
+      padding-left var(--spacing-m)
 
 .autosuggest__product-item
-  padding 1rem
+  padding var(--spacing-s)
 
 .autosuggest__link-item
-  margin-bottom 0.5rem
+  margin-bottom var(--spacing-xs)
 
 .autosuggest-box__total-result
   cursor pointer
   display flex
   align-items center
-  padding-top 2rem
-  border-top 1px solid var(--neutral-40)
+  padding-top var(--spacing-m)
+  border-top 0.06rem solid var(--color-primary-content)
 
   .icon--chevron-right
-    width 1rem
+    width 0.63rem
     display inline-block
-    height 1.2rem
-    margin-left 0.6rem
+    height 0.75rem
+    margin-left var(--spacing-xs)

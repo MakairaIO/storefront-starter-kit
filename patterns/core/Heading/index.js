@@ -3,7 +3,7 @@ import { Text } from '../..'
 
 function Heading(props) {
   const {
-    size = 'cupid',
+    size = 'h6',
     weight = 'medium',
     className = '',
     element = 'h1',

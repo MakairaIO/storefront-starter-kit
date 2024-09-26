@@ -39,31 +39,31 @@ export default function ErrorPage(props) {
             : t('ERROR_PAGE_500_TITLE')}
         </title>
       </Head>
-      <Text element="h1" size="isis" weight="bold">
+      <Text element="h1" size="h1" weight="bold">
         {statusCode === 404
           ? t('ERROR_PAGE_404_TITLE')
           : t('ERROR_PAGE_500_TITLE')}
       </Text>
 
-      <Copytext size="eos" className="error-page-description">
+      <Copytext size="h4" className="error-page-description">
         {t('ERROR_PAGE_TEXT_DESCRIPTION')}
       </Copytext>
 
-      <Text element="h2" size="eos" weight="bold">
+      <Text element="h2" size="h4" weight="bold">
         {t('ERROR_PAGE_FOR_COSTUMER')}
       </Text>
       <ul className="error-page-costumer-solutions">
         <li>
           <Link href="/">
-            <Text size="cupid">{t('ERROR_PAGE_FOR_COSTUMER_SOLUTION1')}</Text>
+            <Text size="h6">{t('ERROR_PAGE_FOR_COSTUMER_SOLUTION1')}</Text>
           </Link>
         </li>
         <li>
-          <Text size="cupid">{t('ERROR_PAGE_FOR_COSTUMER_SOLUTION2')}</Text>
+          <Text size="h6">{t('ERROR_PAGE_FOR_COSTUMER_SOLUTION2')}</Text>
         </li>
       </ul>
 
-      <Text element="h2" size="eos" weight="bold">
+      <Text element="h2" size="h4" weight="bold">
         {t('ERROR_PAGE_FURTHER_TITLE')}
       </Text>
 

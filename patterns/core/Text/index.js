@@ -2,7 +2,7 @@ import classNames from 'classnames'
 
 function Text(props) {
   const {
-    size = 'aphrodite',
+    size = 'm',
     weight = 'regular',
     className = '',
     element = 'span',

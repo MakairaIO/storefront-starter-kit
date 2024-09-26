@@ -1,98 +1,94 @@
-$breakpoint-small = 550px
-$breakpoint-medium = 850px
-$breakpoint-large = 1100px
-
 .promotion
-  padding 1.2rem 1.5rem
+  padding var(--spacing-s) var(--spacing-m)
 
-  @media (min-width $breakpoint-large)
-    padding 1.2rem 2rem
+  @media (min-width var(--breakpoint-l))
+    padding var(--spacing-s) var(--spacing-m)
 
 .promotion__container
-  background var(--neutral-90)
-  padding 3.2rem 2rem 3rem
+  background var(--color-base-content)
+  padding var(--spacing-xl) var(--spacing-m) var(--spacing-xl)
 
-  @media (min-width $breakpoint-medium)
+  @media (min-width var(--breakpoint-s))
     display flex
     justify-content center
 
 .promotion__title-wrapper
 .promotion__content-wrapper
-  max-width 34.8rem
+  max-width 21.75rem
   margin 0 auto
   text-align center
 
-  @media (min-width $breakpoint-small)
-    max-width 55rem
+  @media (min-width var(--breakpoint-xs))
+    max-width 34.38rem
 
-  @media (min-width $breakpoint-medium)
+  @media (min-width var(--breakpoint-s))
     flex 1
     max-width none
     margin 0
 
 .promotion__title-wrapper
-  @media (min-width $breakpoint-medium)
-    max-width 32.5rem
-    padding-top 2.4rem
+  @media (min-width var(--breakpoint-s))
+    max-width 20.31rem
+    padding-top var(--spacing-l)
 
 .promotion__content-wrapper
 
-  @media (min-width $breakpoint-medium)
-    max-width 44rem
+  @media (min-width var(--breakpoint-s))
+    max-width 27.50rem
     text-align left
-    margin-left 4rem
-    padding 1.6rem 0 1.6rem 5rem
-    border-left 1px solid var(--neutral-20)
+    margin-left var(--spacing-xl)
+    padding var(--spacing-m) 0 var(--spacing-m) var(--spacing-xl)
+    border-left 0.06rem solid var(--color-primary-content)
 
-  @media (min-width $breakpoint-large)
-    max-width 51rem
-    margin-left 6rem
-    padding 1.6rem 0 1.6rem 6.6rem
+  @media (min-width var(--breakpoint-l))
+    max-width 31.88rem
+    margin-left var(--spacing-xl)
+    padding var(--spacing-m) 0 var(--spacing-m) var(--spacing-xl)
 
 
 .promotion__pre-title
   display block
-  color var(--neutral-50)
-  font-size 1.3rem
+  color var(--color-primary-main)
+  font-size var(--font-small)
   font-weight var(--font-weight-semi-bold)
-  letter-spacing 0.1rem
-  line-height 1.2rem
-  margin-bottom 1.6rem
+  letter-spacing 0.06rem
+  line-height 0.75rem
+  margin-bottom var(--spacing-m)
 
-  @media (min-width $breakpoint-small)
-    margin-bottom 2.8rem
+  @media (min-width var(--breakpoint-xs))
+    margin-bottom var(--spacing-l)
 
 .promotion__title
   display block
-  color var(--secondary)
+  color var(--color-accent-main)
   text-align center
-  margin-bottom 1.8rem
+  margin-bottom var(--spacing-m)
 
-  @media (min-width $breakpoint-small)
-    eos()
+  @media (min-width var(--breakpoint-xs))
+    font-h4()
 
-  @media (min-width $breakpoint-medium)
+  @media (min-width var(--breakpoint-s))
     margin-bottom 0
 
 .promotion__text
-  color var(--neutral-10)
+  color var(--color-base-darker)
 
 .promotion__button
-  margin-top 1.3rem
+  margin-top var(--spacing-m)
 
-  @media (min-width $breakpoint-small)
-    margin-top 1.9rem
+  @media (min-width var(--breakpoint-xs))
+    margin-top var(--spacing-m)
 
-  @media (min-width $breakpoint-large)
-    margin-top 2.5rem
+  @media (min-width var(--breakpoint-l))
+    margin-top var(--spacing-l)
 
 .promotion--inverted
   .promotion__container
-    background var(--neutral-20)
+    background var(--color-primary-content)
 
   .promotion__text
-    color var(--primary)
+    color var(--color-primary-main)
 
   .promotion__content-wrapper
-    border-color var(--primary)
+    border-color var(--color-primary-main)
 

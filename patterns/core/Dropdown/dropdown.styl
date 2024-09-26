@@ -13,7 +13,7 @@
 
     span:first-child
       font-weight var(--font-weight-regular)
-      margin-right 6rem
+      margin-right var(--spacing-xl)
 
     span:last-child
       font-weight var(--font-weight-bold)
@@ -25,7 +25,7 @@
 
   &--visible
     display block
-    background var(--neutral-00)
+    background var(--color-primary-content)
     box-shadow var(--elevation-s)
     position absolute
     top 100%
@@ -37,8 +37,8 @@
     right 0
 
 .dropdown__option
-  line-height 3rem
-  padding 0.4rem 1.5rem
+  line-height 1.88rem
+  padding var(--spacing-xs) var(--spacing-m)
   white-space nowrap
 
   &:hover

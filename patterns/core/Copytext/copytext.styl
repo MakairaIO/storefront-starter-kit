@@ -2,43 +2,43 @@
   // Styling for generic html elements, e.g. in cases
   // of WYSIWYG texts
   h1
-    eos()
+    font-h4()
 
   h2
-    diana()
+    font-h5()
 
   h3
-    cupid()
+    font-h6()
 
   h4
-    bacchus()
+    font-l()
 
   h5
-    aphrodite()
+    font-m()
 
   h6
-    zero()
+    font-s()
 
   h1, h2, h3, h4, h5, h6
     font-weight var(--font-weight-medium)
 
   p
-    margin-bottom 1.2rem
+    margin-bottom var(--spacing-s)
 
   * + p
-    margin-top 0.6rem
+    margin-top var(--spacing-xs)
 
   a
     text-decoration underline
-    color var(--link)
+    color var(--color-primary-main)
     font-weight var(--font-weight-medium)
-    letter-spacing 0.02rem
+    letter-spacing 0.01rem
 
     &:hover
       text-decoration none
 
     &:active
-      color var(--notification)
+      color var(--color-info-main)
       text-decoration none
 
   strong
@@ -46,13 +46,13 @@
 
   ul
   ol
-    padding-left 3.6rem
+    padding-left var(--spacing-xl)
 
     li
-      padding-left 0.2rem
+      padding-left var(--spacing-xs)
 
     li + li
-      margin-top 1.2rem
+      margin-top var(--spacing-s)
 
   ol
     list-style-type decimal
@@ -64,29 +64,29 @@
     li:before
       display block
       content ''
-      height 0.8rem
-      width 0.8rem
-      background var(--neutral-60)
-      border 1px solid var(--primary)
-      border-radius 4px
+      height 0.50rem
+      width 0.50rem
+      background var(--color-primary-main)
+      border 0.06rem solid var(--color-primary-main)
+      border-radius var(--border-radius-small)
       position absolute
-      left -1.6rem
-      top 0.4rem
+      left -1.00rem
+      top 0.25rem
 
   img
     max-width 100%
 
   blockquote
-    font-size 2.1rem
-    line-height 2.4rem
-    padding 1.2rem 0 1.2rem 2rem
-    border-left 3px solid var(--neutral-40)
-    margin-bottom 1.2rem
+    font-size var(--font-h6)
+    line-height 1.50rem
+    padding var(--spacing-s) 0 var(--spacing-s) var(--spacing-m)
+    border-left 0.19rem solid var(--color-primary-content)
+    margin-bottom var(--spacing-s)
 
     cite
       display block
-      font-size 1.3rem
-      line-height 1.8rem
-      color var(--neutral-70)
-      margin-top 0.6rem
+      font-size var(--font-small)
+      line-height 1.13rem
+      color var(--color-primary-main)
+      margin-top var(--spacing-xs)
 

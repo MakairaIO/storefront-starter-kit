@@ -1,81 +1,80 @@
 .cart-modal
-  max-width 75rem!important
+  max-width 46.88rem !important
   top 50%
   transform translate(-50%, -50%)
-  padding 2rem
+  padding var(--spacing-m)
 
   &__content
     text-align center
     display flex
     flex-direction column
-
     justify-content center
     align-items center
 
     &--top
       display flex
       flex-direction column
-      margin-bottom 2rem
+      margin-bottom var(--spacing-m)
 
       &--title
         display flex
         justify-content center
         align-items center
-        margin-bottom 1rem
+        margin-bottom var(--spacing-s)
 
       &--buttons
         display flex
         justify-content center
-        gap 2rem
+        gap var(--spacing-m)
 
     &--bottom
       width 100%
-      border-top 1px solid var(--neutral-40)
-      padding-top 2rem
+      border-top 0.06rem solid var(--color-primary-content)
+      padding-top var(--spacing-m)
 
     &--products
       width 100%
 
       .slick-dots
         display flex
-        margin-top 1.2rem
+        margin-top var(--spacing-s)
         justify-content center
-        
+
         ul
           display flex
           justify-content center
-          // background-color var(--neutral-00)
-          // border: 1px solid var(--neutral-40)
-          // border-radius: 15px
-          padding 2px 3px 12px 
+          // background-color var(--color-primary-content)
+          // border: 0.06rem solid var(--color-primary-content)
+          // border-radius: 0.94rem
+          padding var(--spacing-xs) var(--spacing-xs) var(--spacing-s)
 
           & li button
             cursor pointer
-            padding 5px 7px
+            padding var(--spacing-xs) var(--spacing-s)
 
           & li button span
             display block
-            height 10px
-            width 10px
-            background var(--neutral-40)
-            border-radius 100%
+            height 0.63rem
+            width 0.63rem
+            background var(--color-primary-content)
+            border-radius var(--border-radius-full)
 
           & li.slick-active button span
-            background var(--neutral-50)
+            background var(--color-primary-main)
 
       .slick-prev, .slick-next
         position absolute
         top 35%
-        height 42px
-        width  42px
+        height 2.63rem
+        width 2.63rem
         z-index var(--z-index-low)
         cursor pointer
-        color #495057
+        color var(--color-primary-main)
         -webkit-transition opacity 300ms
         transition opacity 300ms
 
         &:hover
-          opacity 1!important
+          opacity 1 !important
 
       .slick-prev
         left 0

@@ -1,29 +1,27 @@
-$breakpoint-large = 800px
-
 .desktop-navigation__wrapper
   display none
 
-  @media (min-width $breakpoint-large)
+  @media (min-width var(--breakpoint-s))
     display block
-    width calc(100% - 3rem) // 1.5rem "padding" on each side
+    width calc(100% - 1.88rem) // 0.94rem "padding" on each side
     margin 0 auto
-    border-bottom 1px solid var(--neutral-40)
+    border-bottom 0.06rem solid var(--color-primary-main)
 
 // FIXME: Implement behaviour for overflowing menu-entries
 .desktop-navigation
   display flex
-  height 3.5rem
+  height 2.19rem
   position relative
 
 .desktop-navigation__item-link
   display block
   height 100%
-  font-size 1.7rem
-  font-weight var(--font-weight-semi-bold)
-  line-height 3.5rem
-  letter-spacing 0.025rem
-  color var(--neutral-90)
-  padding 0 1.5rem
+  font-size var(--font-regular)
+  font-weight 600
+  line-height var(--spacing-xl)
+  letter-spacing var(--spacing-xs)
+  color var(--color-base-content)
+  padding 0 var(--spacing-m)
   position relative
 
   &:hover
@@ -32,62 +30,61 @@ $breakpoint-large = 800px
   .desktop-navigation__item--expanded &:after
     display block
     content ''
-    height 0.3rem
-    width calc(100% - 3rem) // 1.5rem padding on each side of the text
-    background var(--neutral-90)
+    height 0.19rem
+    width calc(100% - 1.88rem) // 0.94rem padding on each side of the text
+    background var(--color-base-content)
     position absolute
     bottom 0
-    left 1.5rem
+    left 0.94rem
 
 .desktop-navigation__flyout
   display grid
-  grid-template-columns repeat(auto-fill, minmax(21rem, 1fr))
-  grid-gap 2rem
+  grid-template-columns repeat(auto-fill, minmax(13.13rem, 1fr))
+  grid-gap var(--spacing-m)
   flex-wrap wrap
   width 100%
-  background var(--neutral-00)
+  background var(--color-primary-content)
   position absolute
-  top calc(100% + 0.5rem) // 1px for the border
+  top calc(100% + 0.31rem)
   left 0
   z-index var(--z-index-medium)
-  padding 2.5rem 2rem
-  border 1px solid var(--neutral-40)
-  border-radius 4px
+  padding var(--spacing-l) var(--spacing-m)
+  border 0.06rem solid var(--color-primary-content)
+  border-radius var(--border-radius-small)
   box-shadow var(--elevation-l)
-
 
 .desktop-navigation__flyout-column-header
   display flex
   align-items center
-  height 3rem
-  font-size 1.4rem
+  height 1.88rem
+  font-size var(--font-small)
   font-weight var(--font-weight-medium)
-  line-height 1.8rem
-  letter-spacing 0.02rem
+  line-height 1.13rem
+  letter-spacing 0.01rem
 
 .desktop-navigation__flyout-column-list
-  font-size 1.4rem
+  font-size var(--font-small)
   font-weight var(--font-weight-regular)
-  line-height 1.8rem
-  letter-spacing 0.02rem
+  line-height 1.13rem
+  letter-spacing 0.01rem
 
   li
-    border-top 1px solid var(--tertiary)
+    border-top 0.06rem solid var(--color-primary-content)
 
     &:last-of-type
-      border-bottom 1px solid var(--tertiary)
+      border-bottom 0.06rem solid var(--color-primary-content)
 
   a
     display flex
     align-items center
-    padding 0.6rem 0.5rem 0.6rem 0
+    padding var(--spacing-xs) var(--spacing-xs) var(--spacing-xs) 0
 
     span
-      margin-right 0.6rem
+      margin-right var(--spacing-xs)
 
     .icon
-      flex 0 0 0.8rem
-      height 1.3rem
-      width 0.8rem
+      flex 0 0 0.50rem
+      height 0.81rem
+      width 0.50rem
       margin-left auto
-      color var(--neutral-50)
+      color var(--color-primary-main)
