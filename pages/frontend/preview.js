@@ -5,6 +5,7 @@ import {
   ListingPage,
   DetailPage,
   BundlePage,
+  BlogDetailPage,
   HeaderWithProps,
 } from '../../frontend'
 import { BaseLayout } from '../../patterns'
@@ -25,6 +26,7 @@ const pageComponents = {
   category: ListingPage,
   manufacturer: ListingPage,
   'makaira-productgroup': DetailPage,
+  post: BlogDetailPage,
 }
 
 const MAKAIRA_PAGE_EDITOR_VERSION = '1.0'

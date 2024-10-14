@@ -42,6 +42,8 @@ import Ratings, { ratingVariants } from '../patterns/core/Ratings'
 import Home from './examplePages/Home'
 import Listing from './examplePages/Listing'
 import Detail from './examplePages/Detail'
+import BlogDetail from './examplePages/BlogDetail'
+import BlogList from './examplePages/BlogListing'
 import SmartBundle from './examplePages/SmartBundle'
 import ErrorPage from '../patterns/core/ErrorPage'
 
@@ -211,6 +213,18 @@ export default [
     name: 'Detail Page',
     component: Detail,
     variants: [{ name: 'Detail Page Example' }],
+  },
+  {
+    type: 'page',
+    name: 'Blog Listing Page',
+    component: BlogList,
+    variants: [{ name: 'Blog Listing Page Example' }],
+  },
+  {
+    type: 'page',
+    name: 'Blog Detail Page',
+    component: BlogDetail,
+    variants: [{ name: 'Blog Detail Page Example' }],
   },
   {
     type: 'page',

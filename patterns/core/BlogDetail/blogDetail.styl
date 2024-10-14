@@ -1,0 +1,39 @@
+$breakpoint-medium = 992px
+
+.blog-detail
+  width calc(100% - 3rem)
+  margin 0 auto
+
+.blog-detail__image
+  display block
+  width 80%
+  margin 0 auto
+
+  @media (max-width $breakpoint-medium)
+     width 100%
+
+  img
+    max-height 50rem
+
+.blog-detail__heading
+  display flex
+  flex-direction column
+  align-items center
+  max-width 70%
+  margin -48px auto 0
+
+  @media (max-width $breakpoint-medium)
+    max-width 90%
+
+.blog-detail__title
+  display inline-block
+  background-color var(--neutral-00)
+  padding 5px 10px
+  border-radius 4px
+
+.blog-detail__description
+  text-align justify
+
+.blog-detail__date
+  font-style italic
+  color var(--neutral-60)

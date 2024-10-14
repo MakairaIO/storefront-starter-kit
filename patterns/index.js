@@ -51,5 +51,7 @@ export {
 } from './core/Form'
 export { default as AddCartSuccessModal } from './core/AddCartSuccessModal'
 export { NextArrow, PrevArrow } from './core/SliderArrows'
+export { default as BlogDetail } from './core/BlogDetail'
+export { default as BlogList } from './core/BlogList'
 
 /* Add project specific patterns here */
