@@ -1,15 +1,38 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
+import allLanguages from '../config/allLanguages'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx)
 
-    return { ...initialProps }
+    let targetLanguage = 'de' // fallback language
+
+    try {
+      for (let acceptedLanguage of ctx.req.acceptsLanguages()) {
+        const isLanguageSupported = allLanguages.find(
+          (lang) => lang.value == acceptedLanguage
+        )
+
+        if (isLanguageSupported) {
+          targetLanguage = acceptedLanguage
+          break
+        }
+      }
+    } catch (error) {
+      // intentionally left blank since in some edge cases the IE11 seems to be not sending the relevant header
+    }
+
+    return {
+      ...initialProps,
+      language: targetLanguage,
+    }
   }
 
   render() {
+    const { language } = this.props
+
     return (
-      <Html>
+      <Html lang={language}>
         <Head>
           <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
 
