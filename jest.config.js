@@ -5,7 +5,14 @@ const nextJest = require('next/jest')
 const createJestConfig = nextJest({ dir: './' })
 
 // Any custom config you want to pass to Jest
-const customJestConfig = {}
+/** @type {import('jest').Config} */
+const customJestConfig = {
+  globals: {
+    window: {
+      location: {},
+    },
+  },
+}
 
 // createJestConfig is exported in this way to ensure that next/jest can load the Next.js configuration, which is async
 module.exports = createJestConfig(customJestConfig)
