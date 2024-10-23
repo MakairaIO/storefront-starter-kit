@@ -3,11 +3,11 @@ name: Generate & Upload Patch to S3
 on:
   pull_request:
     types: [opened, synchronize]
-  branches:
-    - MAKAIRA-4042
-    - MAKAIRA-4245
-    - MAKAIRA-3775
-    - nexi-checkout
+    branches:
+      - MAKAIRA-4042
+      - MAKAIRA-4245
+      - MAKAIRA-3775
+      - nexi-checkout
 
 jobs:
   generate_patch:
