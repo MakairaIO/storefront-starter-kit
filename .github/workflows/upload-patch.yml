@@ -1,4 +1,4 @@
-name: Generate and Upload Patch to S3
+name: Generate & Upload Patch to S3
 
 on:
   pull_request:
