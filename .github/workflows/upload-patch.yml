@@ -15,7 +15,7 @@ jobs:
           # Extract app-name between square brackets at the start of the title
           if [[ "${{ github.event.pull_request.title }}" =~ ^\[([a-zA-Z0-9_-]+)\] ]]; then
             APP_NAME=${BASH_REMATCH[1]}
-            echo "::set-output name=app_name::$APP_NAME"
+            echo "MY_APP_NAME=$APP_NAME" >> $GITHUB_ENV
           else
             echo "PR title does not match the required pattern."
             exit 1
@@ -27,7 +27,7 @@ jobs:
           ref: refs/pull/${{ github.event.number }}/merge
 
       - name: Generate Patch File with App Name
-        run: git format-patch -1 HEAD --stdout > patch_${{ steps.extract_app_name.outputs.app_name }}.patch
+        run: git format-patch -1 HEAD --stdout > patch_${{ $MY_APP_NAME }}.patch
 
       - name: Upload New Patch to S3
         env:
@@ -36,4 +36,4 @@ jobs:
           AWS_BUCKET: ${{ secrets.AWS_BUCKET_NAME }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
         run: |
-          aws s3 cp patch_${{ steps.extract_app_name.outputs.app_name }}.patch s3://${{ env.AWS_BUCKET }}/
+          aws s3 cp patch_${{ $MY_APP_NAME }}.patch s3://${{ env.AWS_BUCKET }}/
