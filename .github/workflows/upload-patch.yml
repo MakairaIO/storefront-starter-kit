@@ -2,7 +2,7 @@ name: Generate & Upload Patch to S3
 
 on:
   pull_request:
-    types: [opened, synchronized]
+    types: [opened, synchronize]
 
 jobs:
   generate_patch:
