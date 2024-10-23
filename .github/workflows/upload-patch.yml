@@ -8,6 +8,7 @@ on:
       - MAKAIRA-4245
       - MAKAIRA-3775
       - nexi-checkout
+      - MAKAIRA-4488
 
 jobs:
   generate_patch:
@@ -25,9 +26,15 @@ jobs:
             echo "PR title does not match the required pattern."
             exit 1
           fi
+      
+      - name: Checkout PR Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Ensure full commit history is fetched, needed for generating the full patch
+          ref: refs/pull/${{ github.event.number }}/merge
 
       - name: Generate Patch File with App Name
-        run: git format-patch -1 HEAD --stdout > patch_${{ env.MY_APP_NAME }}.patch
+        run: git format-patch origin/${{ github.event.pull_request.base.ref }} --stdout > patch_${{ env.MY_APP_NAME }}.patch
 
       - name: Upload New Patch to S3
         env:
