@@ -7,6 +7,7 @@ import {
   ListingPage,
   DetailPage,
   BundlePage,
+  BlogDetailPage,
 } from '../../frontend'
 import { BaseLayout } from '../../patterns'
 import {
@@ -30,6 +31,7 @@ const pageComponents = {
   category: ListingPage,
   manufacturer: ListingPage,
   'makaira-productgroup': DetailPage,
+  post: BlogDetailPage,
 }
 
 const shopClient = new StorefrontShopAdapterLocal()
