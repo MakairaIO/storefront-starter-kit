@@ -123,7 +123,9 @@ class ConfigurationProvider extends Component {
 
     // currently avif are not supported by cloudflare (https://developers.cloudflare.com/images/image-resizing/format-limitations/)
     // in the future this will be fixed in the worker
-    if (!["jpg", "jpeg", "png", "gif", "webp"].includes(get_url_extension(source))) {
+    if (
+      !['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(get_url_extension(source))
+    ) {
       transformations = null
     }
 
@@ -217,7 +219,7 @@ class ConfigurationProvider extends Component {
 }
 
 function get_url_extension(url) {
-  return url.split(/[#?]/)[0].split('.').pop().trim();
+  return url.split(/[#?]/)[0].split('.').pop().trim()
 }
 
 function useConfiguration() {
