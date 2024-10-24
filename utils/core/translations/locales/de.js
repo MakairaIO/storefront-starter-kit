@@ -118,4 +118,10 @@ export default {
   ADD_TO_CART_MESSAGE_SUCCESS: 'Artikel zum Warenkorb hinzugefügt',
   ADD_TO_CART_BUTTON_GO_TO_CART: 'Zum Warenkorb',
   CONTINUE_SHOPPING: 'Weiter einkaufen',
+  NEXI_DIRECT_CHECKOUT: 'Direkter Checkout',
+  NEXI_DIRECT_CHECKOUT_INFO:
+    'Dieses Produkt kann direkt von dieser Seite gekauft werden.',
+  NEXI_DIRECT_CHECKOUT_BUTTON: 'Jetzt kaufen',
+  NEXI_CHECKOUT_COMPLETED: 'Checkout abgeschlossen!',
+  NEXI_CHECKOUT_COMPLETED_TEXT: 'Vielen Dank für Ihren Einkauf',
 }

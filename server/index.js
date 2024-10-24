@@ -8,6 +8,11 @@ const bodyParser = require('body-parser')
 const sendSendGridEmail = require('../utils/core/sendSendGridEmail')
 
 const logError = require('./utils/logError')
+const {
+  transformNexiItems,
+  fetchItems,
+  fetchNexiCheckout,
+} = require('./utils/nexi')
 
 const dev = process.env.NODE_ENV !== 'production'
 const port = process.env.PORT || process.env.NODE_PORT || 5000
@@ -110,6 +115,61 @@ app
         return res.status(200).end()
       } catch (e) {
         return res.status(e.code).json(e)
+      }
+    })
+
+    // API Call for nexi checkout creation
+    server.post('/api/create-payment', async (req, res) => {
+      const url = 'https://test.api.dibspayment.eu/v1/payments'
+
+      const { items: makairaItems } = req.body
+
+      const items = await fetchItems(makairaItems)
+      const nexiItems = transformNexiItems(items)
+      const checkoutData = await fetchNexiCheckout()
+      const { currency } = checkoutData.checkout
+      delete checkoutData.checkout.currency
+
+      if (!checkoutData.checkout.merchantHandlesConsumerData) {
+        checkoutData.checkout.shippingCountries =
+          checkoutData.checkout.shippingCountries?.map((countryCode) => ({
+            countryCode,
+          }))
+
+        checkoutData.checkout.shipping.countries =
+          checkoutData.checkout.shippingCountries
+      } else {
+        delete checkoutData.checkout.shipping
+        delete checkoutData.checkout.shippingCountries
+      }
+
+      const checkoutPayload = Object.assign(checkoutData, {
+        order: {
+          items: nexiItems,
+          amount: nexiItems.reduce(
+            (acc, item) => acc + item.grossTotalAmount,
+            0
+          ),
+          currency,
+        },
+      })
+
+      console.log(checkoutPayload)
+
+      try {
+        const result = await fetch(url, {
+          method: 'POST',
+          headers: {
+            Authorization: process.env.NEXI_SECRET_KEY,
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(checkoutPayload),
+        })
+
+        return res.status(201).json(await result.json())
+      } catch (e) {
+        return res.status(500).json(e)
       }
     })
 

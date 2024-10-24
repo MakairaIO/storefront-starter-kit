@@ -111,4 +111,10 @@ export default {
   ADD_TO_CART_MESSAGE_SUCCESS: 'Item added to cart',
   ADD_TO_CART_BUTTON_GO_TO_CART: 'Go to the shopping cart',
   CONTINUE_SHOPPING: 'Continue Shopping',
+  NEXI_DIRECT_CHECKOUT: 'Direct Checkout',
+  NEXI_DIRECT_CHECKOUT_INFO:
+    'This product is available to be bought directly from this page.',
+  NEXI_DIRECT_CHECKOUT_BUTTON: 'Buy now',
+  NEXI_CHECKOUT_COMPLETED: 'Checkout completed!',
+  NEXI_CHECKOUT_COMPLETED_TEXT: 'Thank You for your purchase',
 }
