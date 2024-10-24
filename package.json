@@ -101,6 +101,6 @@
     "*.styl": "stylelint --fix"
   },
   "engines": {
-    "node": "18.18.2"
+    "node": "20.18.0"
   }
 }
