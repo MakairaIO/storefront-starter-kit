@@ -18,6 +18,7 @@ jobs:
                 "${{ github.head_ref }}" != "nexi-checkout" ]]; then
             echo "Branch does not match; exiting."
             exit 1
+          fi
             
       - name: Check PR Title and Extract App Name
         id: extract_app_name
