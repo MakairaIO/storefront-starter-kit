@@ -11,8 +11,7 @@ jobs:
     steps:
       - name: Check Source Branch
         run: |
-          if [[ "${{ github.head_ref }}" != "MAKAIRA-4488" && \
-                "${{ github.head_ref }}" != "MAKAIRA-4042" && \
+          if [[ "${{ github.head_ref }}" != "MAKAIRA-4042" && \
                 "${{ github.head_ref }}" != "MAKAIRA-4245" && \
                 "${{ github.head_ref }}" != "MAKAIRA-3775" && \
                 "${{ github.head_ref }}" != "nexi-checkout" ]]; then
