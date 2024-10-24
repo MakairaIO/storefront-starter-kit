@@ -37,11 +37,8 @@ jobs:
           fetch-depth: 0  # Fetch full commit history
           ref: refs/pull/${{ github.event.pull_request.number }}/merge
 
-      - name: Fetch all branches
-        run: git fetch --all
-
       - name: Generate Patch File with App Name
-        run: git diff --binary origin/${{ github.event.pull_request.base.ref }}..${{ github.head_ref }} > patch_${{ env.MY_APP_NAME }}.patch
+        run: git diff --binary origin/stable..origin/${{ github.head_ref }} > patch_${{ env.MY_APP_NAME }}.patch
 
       - name: Upload New Patch to S3
         env:
