@@ -1,39 +1,8 @@
 {
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:cypress/recommended"
-  ],
-  "plugins": [
-    "react-hooks"
-  ],
-  "env": {
-    "node": true,
-    "browser": true,
-    "es6": true,
-    "jest": true
-  },
-  "parser": "@babel/eslint-parser",
-  "parserOptions": {
-    "ecmaVersion": 2018,
-    "sourceType": "module",
-    "requireConfigFile": false,
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "babelOptions": {
-      "presets": ["@babel/preset-react"]
-   }
-  },
-  "globals": {
-    "React": "writable"
-  },
+  "plugins": ["jsx-a11y"],
+  "extends": ["plugin:jsx-a11y/strict", "next"],
   "rules": {
-    "no-unused-vars": ["error", { "ignoreRestSiblings": true }],
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "react/prop-types": "off"
+    "import/no-anonymous-default-export": 0,
+    "@next/next/no-css-tags": 0
   }
 }
