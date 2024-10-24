@@ -32,7 +32,7 @@ jobs:
           fi
       
       - name: Checkout PR Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Ensure full commit history is fetched, needed for generating the full patch
           ref: refs/pull/${{ github.event.number }}/merge
