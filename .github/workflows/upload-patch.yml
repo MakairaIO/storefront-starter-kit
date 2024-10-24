@@ -1,0 +1,50 @@
+name: Generate & Upload Patch to S3
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  generate_patch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Source Branch
+        run: |
+          if [[ "${{ github.head_ref }}" != "MAKAIRA-4042" && \
+                "${{ github.head_ref }}" != "MAKAIRA-4245" && \
+                "${{ github.head_ref }}" != "MAKAIRA-3775" && \
+                "${{ github.head_ref }}" != "nexi-checkout" ]]; then
+            echo "Branch does not match; exiting."
+            exit 1
+          fi
+            
+      - name: Check PR Title and Extract App Name
+        id: extract_app_name
+        run: |
+          # Extract app-name between square brackets at the start of the title
+          if [[ "${{ github.event.pull_request.title }}" =~ ^\[([a-zA-Z0-9_-]+)\] ]]; then
+            APP_NAME=${BASH_REMATCH[1]}
+            echo "MY_APP_NAME=$APP_NAME" >> $GITHUB_ENV
+          else
+            echo "PR title does not match the required pattern."
+            exit 1
+          fi
+      
+      - name: Checkout PR Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Ensure full commit history is fetched, needed for generating the full patch
+          ref: refs/pull/${{ github.event.number }}/merge
+
+      - name: Generate Patch File with App Name
+        run: git format-patch origin/${{ github.event.pull_request.base.ref }} --stdout > patch_${{ env.MY_APP_NAME }}.patch
+
+      - name: Upload New Patch to S3
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_BUCKET: ${{ secrets.AWS_BUCKET_NAME }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+        run: |
+          aws s3 cp patch_${{ env.MY_APP_NAME }}.patch s3://${{ env.AWS_BUCKET }}/ --acl public-read
