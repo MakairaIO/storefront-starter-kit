@@ -14,6 +14,7 @@ import {
   ContactForm,
   NoComponent,
 } from '../..'
+import ProductFinderWithProps from '../ProductFinder/ProductFinderWithProps'
 
 export default function ContentElements(props) {
   const { elements = [] } = props
@@ -34,6 +35,7 @@ export default function ContentElements(props) {
     'video-teaser': TeaserVideo,
     'discovery-image': DiscoveryImage,
     'contact-form': ContactForm,
+    'product-finder': ProductFinderWithProps,
   }
   return (
     <>
