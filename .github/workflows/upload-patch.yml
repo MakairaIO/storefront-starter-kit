@@ -34,11 +34,11 @@ jobs:
       - name: Checkout PR Code
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Ensure full commit history is fetched, needed for generating the full patch
-          ref: refs/pull/${{ github.event.number }}/merge
+          fetch-depth: 0  # Fetch full commit history
+          ref: refs/pull/${{ github.event.pull_request.number }}/merge
 
       - name: Generate Patch File with App Name
-        run: git format-patch origin/${{ github.event.pull_request.base.ref }} --stdout > patch_${{ env.MY_APP_NAME }}.patch
+        run: git diff --binary origin/stable..origin/${{ github.head_ref }} > patch_${{ env.MY_APP_NAME }}.patch
 
       - name: Upload New Patch to S3
         env:
