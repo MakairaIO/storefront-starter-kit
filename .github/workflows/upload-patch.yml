@@ -8,17 +8,17 @@ jobs:
   generate_patch:
     runs-on: ubuntu-latest
 
-    - name: Check Source Branch
-      run: |
-        if [[ "${{ github.head_ref }}" != "MAKAIRA-4488" && \
-              "${{ github.head_ref }}" != "MAKAIRA-4042" && \
-              "${{ github.head_ref }}" != "MAKAIRA-4245" && \
-              "${{ github.head_ref }}" != "MAKAIRA-3775" && \
-              "${{ github.head_ref }}" != "nexi-checkout" ]]; then
-          echo "Branch does not match; exiting."
-          exit 1
-
     steps:
+      - name: Check Source Branch
+        run: |
+          if [[ "${{ github.head_ref }}" != "MAKAIRA-4488" && \
+                "${{ github.head_ref }}" != "MAKAIRA-4042" && \
+                "${{ github.head_ref }}" != "MAKAIRA-4245" && \
+                "${{ github.head_ref }}" != "MAKAIRA-3775" && \
+                "${{ github.head_ref }}" != "nexi-checkout" ]]; then
+            echo "Branch does not match; exiting."
+            exit 1
+            
       - name: Check PR Title and Extract App Name
         id: extract_app_name
         run: |
