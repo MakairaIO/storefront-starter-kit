@@ -38,7 +38,7 @@ jobs:
           ref: refs/pull/${{ github.event.number }}/merge
 
       - name: Generate Patch File with App Name
-        run: git format-patch origin/${{ github.event.pull_request.base.ref }} --stdout > patch_${{ env.MY_APP_NAME }}.patch
+        run: git diff --binary origin/${{ github.event.pull_request.base.ref }}..${{ github.head_ref }} > patch_${{ env.MY_APP_NAME }}.patch
 
       - name: Upload New Patch to S3
         env:
