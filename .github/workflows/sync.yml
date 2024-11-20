@@ -1,0 +1,76 @@
+name: Sync shop adapter branches
+on:
+  push:
+    branches:
+      - stable
+
+jobs:
+  sync:
+    name: Sync
+    if: |
+      !(github.event_name == 'push' && contains(github.event.head_commit.message, '[skip ci]')) &&
+      !(github.event_name == 'pull_request' && contains(join(github.event.pull_request.title, github.event.pull_request.body), '[skip ci]')) &&
+      github.repository == 'MakairaIO/storefront-starter-kit'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        syncBranch: [oxid-essential, shopify, shopware5, plentymarkets]
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: actions/checkout@v3
+        with:
+          ref: refs/heads/${{ matrix.syncBranch }}
+
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+
+      - name: Setup git commit
+        run: |
+          git config user.name "${{ secrets.GIT_USERNAME }}"
+          git config user.email "${{ secrets.GIT_AUTHOR_EMAIL }}"
+          git config user.name "${{ secrets.GIT_USERNAME }}"
+          git config user.name "${{ secrets.GIT_EMAIL }}"
+
+      - name: Checkout sync branch
+        run: git checkout ${{ matrix.syncBranch }}
+
+      - name: Try rebase into sync branch
+        run: git rebase origin/stable
+        continue-on-error: true
+        env:
+          GIT_AUTHOR_NAME: ${{ secrets.GIT_USERNAME }}
+          GIT_AUTHOR_EMAIL: ${{ secrets.GIT_EMAIL }}
+          GIT_COMMITTER_NAME: ${{ secrets.GIT_USERNAME }}
+          GIT_COMMITTER_EMAIL: ${{ secrets.GIT_EMAIL }}
+
+      - name: Push sync branch
+        if: ${{ success() }}
+        run: git push
+        env:
+          GIT_AUTHOR_NAME: ${{ secrets.GIT_USERNAME }}
+          GIT_AUTHOR_EMAIL: ${{ secrets.GIT_EMAIL }}
+          GIT_COMMITTER_NAME: ${{ secrets.GIT_USERNAME }}
+          GIT_COMMITTER_EMAIL: ${{ secrets.GIT_EMAIL }}
+
+      - name: Cancel rebase on sync rebase fail
+        if: ${{  failure() }}
+        run: git rebase --abort
+
+      - name: Create PR on sync rebase fail
+        if: ${{  failure() }}
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: "stable"
+          destination_branch: ${{ matrix.syncBranch }}
+          pr_title: "Pulling stable into ${{ matrix.syncBranch }} after failed auto merge"
+          pr_draft: false
+          github_token: ${{ secrets.GITHUB_TOKEN }}
