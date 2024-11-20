@@ -17,11 +17,11 @@ jobs:
         syncBranch: [oxid-essential, shopify, shopware5, plentymarkets]
       fail-fast: false
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: refs/heads/${{ matrix.syncBranch }}
 
