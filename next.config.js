@@ -1,7 +1,13 @@
-require('dotenv').config()
-
+const dotenv = require('dotenv')
+dotenv.config()
+const env = dotenv.config().parsed || {}
 const path = require('path')
+const webpack = require('webpack')
 const Dotenv = require('dotenv-webpack')
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next])
+  return prev
+}, {})
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
@@ -13,15 +19,8 @@ module.exports = withBundleAnalyzer({
   webpack: (config) => {
     config.plugins = config.plugins || []
 
-    config.plugins = [
-      ...config.plugins,
-
-      // Read the .env file
-      new Dotenv({
-        path: path.join(__dirname, '.env'),
-        systemvars: true,
-      }),
-    ]
+    // Add Dotenv plugin to load environment variables
+    config.plugins.push(new webpack.DefinePlugin(envKeys))
 
     return config
   },
@@ -29,5 +28,25 @@ module.exports = withBundleAnalyzer({
     // Warning: This allows production builds to successfully complete even if
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/suche',
+        destination: '/frontend/search',
+      },
+      {
+        source: '/search',
+        destination: '/frontend/search',
+      },
+      {
+        source: '/preview',
+        destination: '/frontend/preview',
+      },
+      {
+        source: '/:path*',
+        destination: '/frontend/entry',
+      },
+    ]
   },
 })

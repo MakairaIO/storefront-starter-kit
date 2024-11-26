@@ -53,15 +53,6 @@ app
     })
 
     /**
-     * Route handler for preview endpoint.
-     */
-    server.get('/preview', (req, res) => {
-      app.render(req, res, '/frontend/preview', {
-        ...req.params,
-      })
-    })
-
-    /**
      * Route handler for pattern library
      */
     server.get('/pali/variants/:id', (req, res) => {
@@ -72,15 +63,6 @@ app
 
     server.get('/pali', (req, res) => {
       app.render(req, res, '/library/entry', req.query)
-    })
-
-    /**
-     * Generate search routes for each language
-     */
-    allLanguages.forEach((lang) => {
-      server.get(lang.searchRoute, (req, res) => {
-        app.render(req, res, '/frontend/search', req.query)
-      })
     })
 
     server.post('/log-error', (req, res) => {
@@ -111,13 +93,6 @@ app
       } catch (e) {
         return res.status(e.code).json(e)
       }
-    })
-
-    server.get(/^(.*)$/, (req, res) => {
-      app.render(req, res, '/frontend/entry', {
-        seoUrl: req.params[0],
-        ...req.query,
-      })
     })
 
     server.get('*', (req, res) => {
