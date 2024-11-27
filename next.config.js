@@ -6,7 +6,7 @@ const env =
 const webpack = require('webpack')
 const Dotenv = require('dotenv-webpack')
 const envKeys = Object.keys(env).reduce((prev, next) => {
-  prev[`process.env.${next}`] = JSON.stringify(env[next])
+  prev[`process.env.NEXT_PUBLIC_${next}`] = JSON.stringify(env[next])
   return prev
 }, {})
 

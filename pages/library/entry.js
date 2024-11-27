@@ -82,7 +82,7 @@ export default function Index() {
       entry.type === 'component' // catch 'component' type here for backwards compatibility
   )
 
-  if (process.env.PALI_SORT_APLHABETICALLY === 'true') {
+  if (process.env.NEXT_PUBLIC_PALI_SORT_APLHABETICALLY === 'true') {
     pages.sort((a, b) => {
       return a.name.localeCompare(b.name)
     })
