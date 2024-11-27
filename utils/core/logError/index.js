@@ -2,7 +2,7 @@
  * Here you should implement your custom functionality
  * for monitoring and reporting errors.
  */
-const TARGET_STREAM = process.env.GRAYLOG_STREAM
+const TARGET_STREAM = process.env.NEXT_PUBLIC_GRAYLOG_STREAM
 
 export default async function logError(data) {
   if (process.env.NODE_ENV == 'production') {
@@ -13,7 +13,7 @@ export default async function logError(data) {
       }
 
       // NOTE: fields "host" and "message" are mandatory for Graylog-Requests to work, see: https://docs.graylog.org/en/3.2/pages/gelf.html
-      await fetch(`${process.env.SHOP_DOMAIN}/log-error/`, {
+      await fetch(`${process.env.NEXT_PUBLIC_SHOP_DOMAIN}/log-error/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,6 +1,6 @@
 export default {
   init() {
-    const gtmId = process.env.GTM_ID
+    const gtmId = process.env.NEXT_PUBLIC_GTM_ID
 
     if (!gtmId) return null
 
@@ -10,7 +10,7 @@ export default {
 
   addScriptTag(gtmId) {
     const gtmDomain =
-      process.env.GTM_DOMAIN ?? 'https://www.googletagmanager.com'
+      process.env.NEXT_PUBLIC_GTM_DOMAIN ?? 'https://www.googletagmanager.com'
 
     const code = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -25,7 +25,7 @@ export default {
 
   addNoScriptTag(gtmId) {
     const gtmDomain =
-      process.env.GTM_DOMAIN ?? 'https://www.googletagmanager.com'
+      process.env.NEXT_PUBLIC_GTM_DOMAIN ?? 'https://www.googletagmanager.com'
 
     const code = `<iframe src="${gtmDomain}/ns.html?id=${gtmId}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`
 
