@@ -28,6 +28,14 @@ module.exports = withBundleAnalyzer({
         destination: '/frontend/preview',
       },
       {
+        source: '/pali/variants/:id',
+        destination: '/library/entry',
+      },
+      {
+        source: '/pali',
+        destination: '/library/entry',
+      },
+      {
         source: '/:path*',
         destination: '/frontend/entry',
       },
