@@ -55,19 +55,6 @@ app
       }
     })
 
-    /**
-     * Route handler for pattern library
-     */
-    server.get('/pali/variants/:id', (req, res) => {
-      app.render(req, res, '/library/variant', {
-        ...req.params,
-      })
-    })
-
-    server.get('/pali', (req, res) => {
-      app.render(req, res, '/library/entry', req.query)
-    })
-
     server.post('/log-error', (req, res) => {
       logError(req.body)
       res.json()
