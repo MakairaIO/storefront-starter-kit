@@ -19,33 +19,33 @@ export default function FirstLevelNavigationItem(props) {
   })
 
   return (
-    <li
-      className={itemClasses}
-      onMouseEnter={() => {
-        clearTimeout(timerId)
+    <li className={itemClasses}>
+      <button
+        onMouseEnter={() => {
+          clearTimeout(timerId)
 
-        setTimeout(() => toggleExpanded(true), TRANSITION_DELAY_IN_MS)
-      }}
-      onMouseLeave={() => {
-        setTimer(
-          setTimeout(() => {
-            toggleExpanded(false)
-          }, TRANSITION_DELAY_IN_MS)
-        )
-      }}
-    >
-      <ConditionalLink
-        href={link[language]}
-        className="desktop-navigation__item-link"
-        fallbackElement="span"
+          setTimeout(() => toggleExpanded(true), TRANSITION_DELAY_IN_MS)
+        }}
+        onMouseLeave={() => {
+          setTimer(
+            setTimeout(() => {
+              toggleExpanded(false)
+            }, TRANSITION_DELAY_IN_MS)
+          )
+        }}
       >
-        {text[language]}
-      </ConditionalLink>
-
-      <NavigationFlyout
-        isVisible={hasSubcategories && isExpanded}
-        subcategories={children}
-      />
+        <ConditionalLink
+          href={link[language]}
+          className="desktop-navigation__item-link"
+          fallbackElement="span"
+        >
+          {text[language]}
+        </ConditionalLink>
+        <NavigationFlyout
+          isVisible={hasSubcategories && isExpanded}
+          subcategories={children}
+        />
+      </button>
     </li>
   )
 }

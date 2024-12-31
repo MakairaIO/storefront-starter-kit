@@ -35,10 +35,13 @@ function AutosuggestBox(props) {
           </section>
         )}
       </div>
-      <div className="autosuggest-box__total-result" onClick={goToSearchPage}>
+      <button
+        className="autosuggest-box__total-result"
+        onClick={goToSearchPage}
+      >
         {t('FILTER_LABEL_SEE_ALL_RESULTS')(totalResultCount)}
         <Icon symbol="chevron-right" />
-      </div>
+      </button>
     </div>
   )
 }

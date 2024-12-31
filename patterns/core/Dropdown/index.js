@@ -83,7 +83,7 @@ class Dropdown extends Component {
           <span>{selectedOption.label}</span>
         </Button>
 
-        <ul role="listbox" aria-labelledby={id} className={listboxClasses}>
+        <ul aria-labelledby={id} className={listboxClasses}>
           {options.map((option, index) => {
             const { label, value } = option
 
@@ -93,6 +93,7 @@ class Dropdown extends Component {
 
             return (
               <li
+                aria-hidden="true"
                 key={option.value}
                 className={optionClasses}
                 onClick={() => this.handleChange({ index, value })}
