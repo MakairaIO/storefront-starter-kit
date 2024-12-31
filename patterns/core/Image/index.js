@@ -90,7 +90,7 @@ function Image(props) {
             )
           })}
 
-        <img {...imgProps} />
+        <img {...imgProps} alt={imgProps.alt} />
 
         {caption && <figcaption>{caption}</figcaption>}
       </ElementWrapper>
