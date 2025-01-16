@@ -34,6 +34,7 @@ export default function Banner(props) {
 
   useEffect(() => {
     trackGoal(viewTrackingId)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
