@@ -47,7 +47,7 @@ const StarInput = ({
 
   for (let i = 1; i <= maxStars; i++) {
     starComponents.push(
-      <div
+      <button
         key={i}
         onMouseEnter={() => handleStarEnter(i)}
         onMouseLeave={handleStarLeave}
@@ -59,12 +59,12 @@ const StarInput = ({
             'star-input__star--active': isStarActive(i),
           })}
         />
-      </div>
+      </button>
     )
   }
 
   return (
-    <div
+    <button
       className={classNames('star-input', {
         'star-input--disabled': disabled,
       })}
@@ -73,7 +73,7 @@ const StarInput = ({
       onClick={handleZeroStarSelect}
     >
       {starComponents}
-    </div>
+    </button>
   )
 }
 

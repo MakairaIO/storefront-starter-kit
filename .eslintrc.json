@@ -3,6 +3,7 @@
   "extends": ["plugin:jsx-a11y/strict", "next"],
   "rules": {
     "import/no-anonymous-default-export": 0,
-    "@next/next/no-css-tags": 0
+    "@next/next/no-css-tags": 0,
+    "@next/next/no-img-element": 0
   }
 }

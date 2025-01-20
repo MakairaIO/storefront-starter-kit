@@ -87,7 +87,7 @@ app
     })
 
     // DO NOT MODIFY THIS PART!
-    if (process.env.RUNS_ON_HEROKU === 'true') {
+    if (process.env.NEXT_PUBLIC_RUNS_ON_HEROKU === 'true') {
       server.listen('/tmp/nginx.socket', (err) => {
         if (err) throw err
 
