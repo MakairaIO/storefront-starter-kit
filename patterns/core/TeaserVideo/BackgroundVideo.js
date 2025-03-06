@@ -43,11 +43,11 @@ class BackgroundVideo extends Component {
           <source src={videoUrl} type="video/ogg" />
           Your browser does not support the video tag.
         </video>
-        <span className="video-teaser__play-wrapper" onClick={this.playPause}>
+        <button className="video-teaser__play-wrapper" onClick={this.playPause}>
           {showButton ? (
             <Icon symbol="play-circle" className="video-teaser__play-button" />
           ) : null}
-        </span>
+        </button>
       </div>
     )
   }
