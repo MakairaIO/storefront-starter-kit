@@ -28,7 +28,7 @@ app
       res
         .status(200)
         .send(
-          `Sitemap: ${process.env.SHOP_DOMAIN}/${allLanguages[0].value}/sitemap.xml?instance=${process.env.MAKAIRA_API_INSTANCE}`
+          `Sitemap: ${process.env.NEXT_PUBLIC_SHOP_DOMAIN}/${allLanguages[0].value}/sitemap.xml?instance=${process.env.MAKAIRA_API_INSTANCE}`
         )
     })
 
@@ -50,37 +50,6 @@ app
       } else {
         app.render(req, res, '/frontend/browser', req.query)
       }
-    })
-
-    /**
-     * Route handler for preview endpoint.
-     */
-    server.get('/preview', (req, res) => {
-      app.render(req, res, '/frontend/preview', {
-        ...req.params,
-      })
-    })
-
-    /**
-     * Route handler for pattern library
-     */
-    server.get('/pali/variants/:id', (req, res) => {
-      app.render(req, res, '/library/variant', {
-        ...req.params,
-      })
-    })
-
-    server.get('/pali', (req, res) => {
-      app.render(req, res, '/library/entry', req.query)
-    })
-
-    /**
-     * Generate search routes for each language
-     */
-    allLanguages.forEach((lang) => {
-      server.get(lang.searchRoute, (req, res) => {
-        app.render(req, res, '/frontend/search', req.query)
-      })
     })
 
     server.post('/log-error', (req, res) => {
@@ -113,19 +82,12 @@ app
       }
     })
 
-    server.get(/^(.*)$/, (req, res) => {
-      app.render(req, res, '/frontend/entry', {
-        seoUrl: req.params[0],
-        ...req.query,
-      })
-    })
-
     server.get('*', (req, res) => {
       return handle(req, res)
     })
 
     // DO NOT MODIFY THIS PART!
-    if (process.env.RUNS_ON_HEROKU === 'true') {
+    if (process.env.NEXT_PUBLIC_RUNS_ON_HEROKU === 'true') {
       server.listen('/tmp/nginx.socket', (err) => {
         if (err) throw err
 

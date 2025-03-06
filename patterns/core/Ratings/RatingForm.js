@@ -20,6 +20,7 @@ const RatingForm = (product) => {
   useEffect(() => {
     setSubmitStatus('')
     setFormValues(INITIAL_VALUES)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [asPath])
 
   const handleTextChange = (event) => {
