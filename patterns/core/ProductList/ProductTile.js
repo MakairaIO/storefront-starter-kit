@@ -25,6 +25,7 @@ export default function ProductTile(props) {
     if (mak_paid_placement) {
       handleTrackGoal(mak_placement_view_tracking_id)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const classes = classNames('product-item', {

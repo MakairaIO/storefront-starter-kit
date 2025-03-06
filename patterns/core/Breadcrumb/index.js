@@ -33,12 +33,7 @@ const Breadcrumb = ({ breadcrumb = [], product }) => {
 
   return (
     <nav className="breadcrumb">
-      <ol
-        vocab="https://schema.org"
-        typeof="BreadcrumbList"
-        role="list"
-        className="list"
-      >
+      <ol vocab="https://schema.org" typeof="BreadcrumbList" className="list">
         <li className="item">
           <Link href="/" title="Home" isInternalRoute>
             <Icon symbol="home" className="home" />
