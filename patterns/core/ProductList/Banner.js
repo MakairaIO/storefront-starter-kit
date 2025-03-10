@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
-import { useConfiguration } from '../../../utils'
+import { useEffect, useRef } from 'react'
+import { useConfiguration, useLazyLoading } from '../../../utils'
 import { ConditionalLink } from '../..'
 import matomo from '../../../utils/core/tracking/matomo'
 
@@ -15,6 +15,9 @@ export default function Banner(props) {
     viewTrackingId,
     clickTrackingId,
   } = props
+  const imageRef = useRef()
+
+  useLazyLoading({ ref: imageRef })
 
   let imageLinkMobile
   if (imageMobile) {
@@ -31,6 +34,7 @@ export default function Banner(props) {
 
   useEffect(() => {
     trackGoal(viewTrackingId)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -39,7 +43,7 @@ export default function Banner(props) {
       href={link}
       className="product-list__banner"
     >
-      <picture>
+      <picture ref={imageRef}>
         <source data-srcset={imageLinkDesktop} />
         {imageLinkMobile && <source data-srcset={imageLinkDesktop} />}
         <img data-src={imageLinkDesktop} alt={title} />

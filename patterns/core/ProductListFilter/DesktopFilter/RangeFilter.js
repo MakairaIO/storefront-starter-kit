@@ -84,7 +84,7 @@ export default class RangeFilter extends Component {
           max={Math.trunc(max)}
           value={[selectedMin, selectedMax]}
           onChange={this.handleChange}
-          onAfterChange={submitForms}
+          onChangeComplete={submitForms}
           handleStyle={styles.handleStyle}
           trackStyle={styles.trackStyle}
           railStyle={styles.railStyle}

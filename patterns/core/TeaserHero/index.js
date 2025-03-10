@@ -10,7 +10,7 @@ function TeaserHero(props) {
     <section className="hero-teaser">
       <ConditionalLink href={link} className="hero-teaser__container">
         <div className="hero-teaser__image-wrapper">
-          <Image {...image} />
+          <Image {...image} alt={image.alt} />
 
           <Title {...heading} />
         </div>
