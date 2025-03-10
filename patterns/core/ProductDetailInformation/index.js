@@ -43,7 +43,7 @@ function ProductDetailInformation(props) {
         <TopHeader {...props} />
 
         <div className="product-detail-information__wrapper">
-          <Image {...props} activeVariant={activeVariant} />
+          <Image {...props} activeVariant={activeVariant} alt={props.alt} />
 
           <Buybox
             {...props}

@@ -28,14 +28,14 @@ export default function getStructureData(
     },
     manufacturer: {
       '@type': 'Organization',
-      url: `${process.env.SHOP_DOMAIN}/ ${
+      url: `${process.env.NEXT_PUBLIC_SHOP_DOMAIN}/ ${
         (product?.producer?.url || '').startsWith('/')
           ? (product?.producer?.url || '').substr(1)
           : product?.producer?.url || ''
       }`,
       address: region?.title,
     },
-    url: `${process.env.SHOP_DOMAIN}/${
+    url: `${process.env.NEXT_PUBLIC_SHOP_DOMAIN}/${
       (product?.url || '').startsWith('/')
         ? (product?.url || '').substr(1)
         : product?.url || ''

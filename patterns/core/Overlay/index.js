@@ -46,9 +46,9 @@ export default class Overlay extends Component {
     })
 
     return (
-      <div className={classes} onClick={this.handleOverlayClick}>
+      <button className={classes} onClick={this.handleOverlayClick}>
         {children}
-      </div>
+      </button>
     )
   }
 }
