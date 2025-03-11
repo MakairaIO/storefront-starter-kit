@@ -15,7 +15,7 @@ class TeaserDuo extends Component {
             className="duo-teaser__container"
           >
             <div className="duo-teaser__image-wrapper">
-              <Image {...leftTile.image} />
+              <Image {...leftTile.image} alt={leftTile.image.alt} />
               <Title {...leftTile} />
             </div>
             <Overlay
@@ -31,7 +31,7 @@ class TeaserDuo extends Component {
             className="duo-teaser__container"
           >
             <div className="duo-teaser__image-wrapper">
-              <Image {...rightTile.image} />
+              <Image {...rightTile.image} alt={rightTile.image.alt} />
               <Title {...rightTile} />
             </div>
             <Overlay

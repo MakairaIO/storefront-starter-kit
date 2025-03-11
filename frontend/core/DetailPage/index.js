@@ -24,17 +24,21 @@ function DetailPage() {
 
   useEffect(() => {
     async function getProducts() {
-      const response = await fetchRecommendationData({
-        productId,
-        recommendationId: 'similar-products',
-        language,
-      })
+      try {
+        const response = await fetchRecommendationData({
+          productId,
+          recommendationId: 'similar-products',
+          language,
+        })
 
-      const recommendationProducts = response.items
-      const formattedProduct = recommendationProducts.map(
-        (product) => product.fields
-      )
-      setProducts(formattedProduct)
+        const recommendationProducts = response.items
+        const formattedProduct = recommendationProducts.map(
+          (product) => product.fields
+        )
+        setProducts(formattedProduct)
+      } catch (exception) {
+        setProducts([])
+      }
     }
 
     function trackViewEvent() {
@@ -68,13 +72,30 @@ function DetailPage() {
     },
   }
 
+  let metadata = pageData?.data?.metadata || {}
+  metadata = Object.keys(metadata).reduce((prev, cur) => {
+    if (metadata[cur]) {
+      prev[cur] = metadata[cur]
+    }
+    return prev
+  }, {})
+
+  const {
+    seoTitle = pageData?.data?.self?.title,
+    keywords = pageData?.data?.self?.meta_keywords,
+    description = pageData?.data?.self?.meta_description,
+    ...additionalMetadata
+  } = metadata
+
   return (
     <main>
       <Metadata
-        title={pageData.data.self.title}
-        keywords={pageData.data.self.meta_keywords}
-        description={pageData.data.self.meta_description}
+        title={pageData?.data?.self?.title}
+        keywords={keywords}
+        description={description}
+        additionalMetadata={{ ...additionalMetadata, title: seoTitle }}
       />
+
       <Breadcrumb product={pageData.data.self} />
       <ContentElements
         elements={pageData.data.self.contentElements?.top?.elements}
