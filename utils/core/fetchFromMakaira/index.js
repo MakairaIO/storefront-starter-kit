@@ -1,5 +1,5 @@
 function getEndpoint({ isSearch, isSnippet, isRecommendation, isDocument }) {
-  let url = process.env.MAKAIRA_API_URL
+  let url = process.env.NEXT_PUBLIC_MAKAIRA_API_URL
 
   if (isSearch) return url + '/search/public'
 
@@ -25,7 +25,7 @@ export default async function fetchFromMakaira({
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'X-Makaira-Instance': process.env.MAKAIRA_API_INSTANCE,
+      'X-Makaira-Instance': process.env.NEXT_PUBLIC_MAKAIRA_API_INSTANCE,
     },
     body: JSON.stringify(body),
   })

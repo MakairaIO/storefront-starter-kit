@@ -44,17 +44,9 @@ export default function Tile(props) {
   return (
     <ConditionalLink href={link} fallbackElement="div" className={classes}>
       <picture>
-        <source
-          media="(max-width: 549px)"
-          data-srcset={imageLinkSmall}
-          srcSet={lazyLoadingDeactivated ? imageLinkSmall : null}
-        />
-        <source
-          media="(min-width: 550px)"
-          data-srcset={imageLinkLarge}
-          srcSet={lazyLoadingDeactivated ? imageLinkLarge : null}
-        />
-        <img alt={alt} />
+        <source media="(max-width: 549px)" srcSet={imageLinkSmall} />
+        <source media="(min-width: 550px)" srcSet={imageLinkLarge} />
+        <img alt={alt} loading={lazyLoadingDeactivated ? 'eager' : 'lazy'} />
       </picture>
 
       <Content {...content} link={link} />

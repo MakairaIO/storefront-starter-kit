@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { iframeResizer as iframeResizerLib } from 'iframe-resizer/js'
+import { iframeResizer as iframeResizerLib } from '@iframe-resizer/parent'
 
 const IFRAME_RESIZER_CDN =
   'https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.contentWindow.min.js'
@@ -59,6 +59,7 @@ const IframeResizerWrapper = ({ children, iframeResizerOptions }) => {
 
   return (
     <iframe
+      title="iframe-resizer"
       style={{
         width: '100%',
         minHeight: 20,

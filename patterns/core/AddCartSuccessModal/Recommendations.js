@@ -1,17 +1,13 @@
-import { useRef } from 'react'
 import Slider from 'react-slick'
 import { NextArrow, PrevArrow, Heading } from '../..'
-import { useLazyLoading, useTranslation } from '../../../utils'
+import { useTranslation } from '../../../utils'
 import ProductTile from '../StreamPlacement/ProductTile'
 
 export default function Recommendations({ products = [] }) {
   const { t } = useTranslation()
-  const listRef = useRef(null)
-
-  useLazyLoading({ ref: listRef, dependency: products })
 
   return (
-    <div className="cart-modal__content--bottom" ref={listRef}>
+    <div className="cart-modal__content--bottom">
       <Heading>{t('RECOMMENDATION_HEADING')}</Heading>
 
       <Slider
