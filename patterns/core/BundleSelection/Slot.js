@@ -10,8 +10,8 @@ function Image(props) {
   const imgUrl = picture_url_main
     ? picture_url_main
     : contentImage
-    ? getImageLink({ source: contentImage })
-    : '/assets/images/bundleImage/placeholder.png'
+      ? getImageLink({ source: contentImage })
+      : '/assets/images/bundleImage/placeholder.png'
 
   return (
     <div className="bundle-item__image">
@@ -46,30 +46,30 @@ export default function Slot(props) {
 
   return (
     <div className={classes}>
-      <Image {...props} />
+      <Image {...props} alt={props.alt} />
 
       <div className="bundle-item__info">
         <Title {...props} />
 
         <div>
           {slot.content?.button_text && (
-            <div
+            <button
               className="bundle-item__button"
               onClick={() => editSlot(slot.id)}
             >
               <Icon symbol="chevron-right" />
               {slot.content.button_text}
-            </div>
+            </button>
           )}
 
           {slot.product && (
-            <div
+            <button
               className="bundle-item__button"
               onClick={() => deleteSlot(slot.id)}
             >
               <Icon symbol="chevron-right" />
               {t('DELETE_SLOT')}
-            </div>
+            </button>
           )}
         </div>
       </div>
