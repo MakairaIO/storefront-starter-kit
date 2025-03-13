@@ -4,7 +4,7 @@ export default function ProductImage(product) {
   const {
     title = '',
     images = [],
-    activeVariant,
+    activeVariant = false,
     picture_url_main = '',
   } = product
 
@@ -14,31 +14,13 @@ export default function ProductImage(product) {
   if (!imageSource) {
     imageSource = picture_url_main
   }
-  {
-    /* TODO: Refactor once we use native lazy loading */
-  }
-  if (activeVariant) {
-    return (
-      <Image
-        className="product-item__image"
-        alt={title}
-        height="228"
-        lazyload={false}
-        options={{
-          desktop: {
-            source: imageSource,
-            height: 228,
-          },
-        }}
-      />
-    )
-  }
 
   return (
     <Image
       className="product-item__image"
       alt={title}
       height="228"
+      lazyload={activeVariant}
       options={{
         desktop: {
           source: imageSource,

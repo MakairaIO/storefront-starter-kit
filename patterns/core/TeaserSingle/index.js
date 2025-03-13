@@ -1,9 +1,7 @@
-import { useRef } from 'react'
-import { useConfiguration, useLazyLoading } from '../../../utils'
+import { useConfiguration } from '../../../utils'
 import { Heading, Copytext, Button, ConditionalLink } from '../..'
 
 function TeaserSingle(props) {
-  const pictureRef = useRef(null)
   const { getImageLink } = useConfiguration()
   const {
     image = {},
@@ -16,17 +14,15 @@ function TeaserSingle(props) {
 
   const imageLink = getImageLink({ source: image.src })
 
-  useLazyLoading({ ref: pictureRef, dependency: image.src })
-
   return (
     <section className="single-teaser">
       <ConditionalLink href={link} className="single-teaser__image">
-        <picture ref={pictureRef}>
-          {isLazyLoad ? (
-            <img data-src={imageLink} alt={image.alt} />
-          ) : (
-            <img src={imageLink} alt={image.alt} />
-          )}
+        <picture>
+          <img
+            src={imageLink}
+            alt={image.alt}
+            loading={isLazyLoad ? 'lazy' : 'eager'}
+          />
         </picture>
       </ConditionalLink>
 
