@@ -9,9 +9,7 @@ const ProductImage = ({ image }) => {
   const { getImageLink } = useConfiguration()
   const imageLink = getImageLink({ source: image })
 
-  return (
-    <img className="product-image" src={imageLink} alt={'Discovery Image'} />
-  )
+  return <img className="product-image" src={imageLink} alt={'Discovery'} />
 }
 
 class DiscoveryImage extends React.Component {
@@ -65,10 +63,13 @@ class DiscoveryImage extends React.Component {
             })
             return (
               <span
+                role="button"
+                tabIndex={0}
                 className={spotClasses}
                 style={{ top: `${spot.top}%`, left: `${spot.left}%` }}
                 key={`spot-index-${i}`}
                 onClick={() => this.slider.slickGoTo(i)}
+                aria-hidden="true"
               >
                 {i + 1}
               </span>

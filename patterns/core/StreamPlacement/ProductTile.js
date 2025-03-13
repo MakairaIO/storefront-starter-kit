@@ -25,7 +25,7 @@ export default function ProductTile(props) {
     <article className="stream-placement-item">
       <Link href={productDetailUrl}>
         <picture className="stream-placement-item__image">
-          <img data-src={productImage} alt={title} />
+          <img src={productImage} alt={title} loading="lazy" />
         </picture>
 
         <Heading

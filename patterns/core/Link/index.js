@@ -26,7 +26,7 @@ export default function Link(props) {
     const { as, ...htmlAttributes } = rest
 
     return (
-      <NextLink href={href} as={as}>
+      <NextLink href={href} as={as} legacyBehavior>
         <a {...htmlAttributes}>{children}</a>
       </NextLink>
     )
@@ -75,7 +75,7 @@ export default function Link(props) {
     const internalHref = `/frontend/search?${search}`
 
     return (
-      <NextLink href={internalHref} as={externalHref}>
+      <NextLink href={internalHref} as={externalHref} legacyBehavior>
         <a {...rest}>{children}</a>
       </NextLink>
     )
@@ -87,7 +87,7 @@ export default function Link(props) {
   const internalHref = `/frontend/entry?seoUrl=${pathname}&${search}`
 
   return (
-    <NextLink href={internalHref} as={externalHref}>
+    <NextLink href={internalHref} as={externalHref} legacyBehavior>
       <a {...rest}>{children}</a>
     </NextLink>
   )
