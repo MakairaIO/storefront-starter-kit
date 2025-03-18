@@ -8,8 +8,5 @@ export default async function submitSearchForm({ searchPhrase, language }) {
   const seoUrl = languageObject['searchRoute']
   const queryString = qs.stringify({ searchPhrase })
 
-  await Router.push(
-    `/frontend/search?seoUrl=${seoUrl}&${queryString}`,
-    `${seoUrl}?${queryString}`
-  )
+  await Router.push(`${seoUrl}?${queryString}`)
 }
