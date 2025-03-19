@@ -4,6 +4,7 @@ import RangeFilter from './RangeFilter'
 import FilterResetButton from '../../ProductList/FilterResetButton'
 import { Heading } from '../../..'
 import { useTranslation } from '../../../../utils'
+import orderBy from 'lodash/orderBy'
 
 const filterComponents = {
   list_multiselect: MultiSelectFilter,
@@ -26,31 +27,33 @@ export default function DesktopFilter(props) {
 
   return (
     <form className="desktop-filter">
-      {Object.values(aggregations).map((aggregation) => {
-        const { key: id, type, title, min, max } = aggregation
+      {orderBy(Object.values(aggregations), ['position'], ['asc']).map(
+        (aggregation) => {
+          const { key: id, type, title, min, max, position } = aggregation
 
-        const Component = filterComponents[type]
+          const Component = filterComponents[type]
 
-        if (!Component) return null
+          if (!Component) return null
 
-        return (
-          <div key={id} className="desktop-filter__section">
-            <Heading size="bacchus" className="desktop-filter__filter-title">
-              {t(`FILTER_LABEL_${id.toUpperCase()}`, title)}
-            </Heading>
+          return (
+            <div key={id} className="desktop-filter__section">
+              <Heading size="bacchus" className="desktop-filter__filter-title">
+                {t(`FILTER_LABEL_${id.toUpperCase()}`, title)}
+              </Heading>
 
-            <Component
-              // Care: The order of properties matters here, since the aggregations
-              // have a field 'key' which could override our custom-built key below
-              // which we need for properly updating/reseting the RangeFilter
-              {...aggregation}
-              id={id}
-              key={max ? `${id}-${min}-${max}` : id}
-              submitForms={submitForms}
-            />
-          </div>
-        )
-      })}
+              <Component
+                // Care: The order of properties matters here, since the aggregations
+                // have a field 'key' which could override our custom-built key below
+                // which we need for properly updating/reseting the RangeFilter
+                {...aggregation}
+                id={id}
+                key={max ? `${id}-${min}-${max}` : id}
+                submitForms={submitForms}
+              />
+            </div>
+          )
+        }
+      )}
 
       <FilterResetButton
         numberOfActiveFilters={numberOfActiveFilters}
