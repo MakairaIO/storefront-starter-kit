@@ -2,9 +2,11 @@ import allLanguages from '../../../config/allLanguages'
 import { RequestBuilder, fetchFromMakaira } from '../..'
 
 export default async function fetchSearchResult({ ctx }) {
-  const path = ctx.asPath
-    .replace(/\?.*/, '') // remove query string
-    .replace(/\/$/, '') // replace trailing slash to match definition in allLanguages
+  const path =
+    ctx.query.seoUrl ||
+    ''
+      .replace(/\?.*/, '') // remove query string
+      .replace(/\/$/, '') // replace trailing slash to match definition in allLanguages
 
   const languageObject = allLanguages.find((lang) => lang.searchRoute == path)
   const language = languageObject['value']
