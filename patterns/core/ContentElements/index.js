@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import {
   ErrorBoundary,
   ProductPlacement,
@@ -14,9 +15,23 @@ import {
   ContactForm,
   NoComponent,
 } from '../..'
+import { useGlobalData } from '../../../utils'
 
 export default function ContentElements(props) {
   const { elements = [] } = props
+  const { selectedElement } = useGlobalData()
+
+  useEffect(() => {
+    let element
+    if (selectedElement) {
+      element = document.getElementById(selectedElement)
+      element?.scrollIntoView({ behavior: 'smooth' })
+      element?.classList.add('highlight')
+    }
+    return () => {
+      element?.classList.remove('highlight')
+    }
+  }, [selectedElement])
 
   if (elements.length === 0) return null
 
@@ -44,7 +59,9 @@ export default function ContentElements(props) {
 
         return (
           <ErrorBoundary key={index}>
-            <Component {...entry.properties.content} name={entry.component} />
+            <div id={entry.id}>
+              <Component {...entry.properties.content} name={entry.component} />
+            </div>
           </ErrorBoundary>
         )
       })}
