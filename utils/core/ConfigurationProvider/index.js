@@ -52,7 +52,7 @@ class ConfigurationProvider extends Component {
 
     if (typeof source == 'string') {
       // check for shop images
-      if (source.startsWith('https://')) {
+      if (source?.startsWith('https://')) {
         return source
       }
 
@@ -161,7 +161,7 @@ class ConfigurationProvider extends Component {
 
     const transformations = this.getCloudinaryTransformations(rest)
 
-    const versionStr = version
+    const versionStr = version && typeof version.toString === 'function'
       ? version.toString().startsWith('v')
         ? version
         : `v${version}`
