@@ -2,6 +2,8 @@ import { useGlobalData } from '../../../utils'
 import Metadata from '../Metadata'
 import { Breadcrumb, ContentElements } from '../../../patterns'
 import ProductList from './ProductListWithProps'
+import { useEffect } from 'react'
+import matomo from '../../../utils/core/tracking/matomo'
 
 function Landingpage() {
   const { pageData } = useGlobalData()
@@ -16,6 +18,19 @@ function Landingpage() {
     robotFollow = 'follow',
     ...additionalMetadata
   } = metadata
+
+  useEffect(() => {
+    matomo.init()
+    matomo.trackScrollDepth({
+      points: [25, 50, 75, 100], // Customize as needed
+      debug: false // Set to true for debugging
+    })
+    const cleanup = matomo.trackTimeOnPage({
+      intervals: [10, 30, 60, 120], // Customize as needed
+      debug: false // Set to true for debugging
+    })
+    return cleanup
+  }, [])
 
   if (!config.bottom && !config.top) return null
 
