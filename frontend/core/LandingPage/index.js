@@ -25,20 +25,12 @@ function Landingpage() {
   useEffect(() => {
     matomo.init()
 
-    // Track page view on mount and every route change
-    const handleRouteChange = (url) => {
-      if (window._paq) {
-        window._paq.push(['setCustomUrl', url])
-        window._paq.push(['setDocumentTitle', document.title])
-        window._paq.push(['trackPageView'])
-      }
+    // Track the current page view and path
+    if (window._paq) {
+      window._paq.push(['setCustomUrl', window.location.pathname + window.location.search])
+      window._paq.push(['setDocumentTitle', document.title])
+      window._paq.push(['trackPageView'])
     }
-
-    // Initial page view
-    handleRouteChange(window.location.pathname + window.location.search)
-
-    // Listen for route changes
-    router.events.on('routeChangeComplete', handleRouteChange)
 
     matomo.trackScrollDepth({
       points: [25, 50, 75, 100],
@@ -48,12 +40,8 @@ function Landingpage() {
       intervals: [10, 30, 60, 120],
       debug: false
     })
-
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-      cleanup && cleanup()
-    }
-  }, [router.events])
+    return cleanup
+  }, [])
 
   if (!config.bottom && !config.top) return null
 
