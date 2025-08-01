@@ -3,7 +3,6 @@ import Metadata from '../Metadata'
 import { Breadcrumb, ContentElements } from '../../../patterns'
 import ProductList from './ProductListWithProps'
 import { useEffect } from 'react'
-import { useRouter } from 'next/router'
 import matomo from '../../../utils/core/tracking/matomo'
 
 function Landingpage() {
@@ -20,8 +19,6 @@ function Landingpage() {
     ...additionalMetadata
   } = metadata
 
-  const router = useRouter()
-
   useEffect(() => {
     matomo.init()
 
@@ -34,11 +31,11 @@ function Landingpage() {
 
     matomo.trackScrollDepth({
       points: [25, 50, 75, 100],
-      debug: false
+      debug: true
     })
     const cleanup = matomo.trackTimeOnPage({
       intervals: [10, 30, 60, 120],
-      debug: false
+      debug: true
     })
     return cleanup
   }, [])
