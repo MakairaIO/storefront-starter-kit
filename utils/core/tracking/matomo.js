@@ -45,14 +45,19 @@ export default {
         maxScrollDepth = scrollDepth
 
         points.forEach((point) => {
-          if (scrollDepth >= point && !trackedPoints.has(point)) {
+          // Only track if:
+          // - not tracked yet
+          // - AND there is no tracked point greater than this point
+          const hasHigherTracked = Array.from(trackedPoints).some(
+            (tp) => tp > point
+          )
+          if (
+            scrollDepth >= point &&
+            !trackedPoints.has(point) &&
+            !hasHigherTracked
+          ) {
             trackedPoints.add(point)
-            window._paq.push([
-              'trackEvent',
-              'Scroll Depth',
-              `${point}%`,
-              point
-            ])
+            window._paq.push(['trackEvent', 'Scroll Depth', `${point}%`, point])
             if (debug) {
               console.log(`[Matomo] Scroll depth tracked: ${point}%`)
             }
@@ -78,16 +83,13 @@ export default {
       const timeOnPage = Math.round((Date.now() - pageStartTime) / 1000)
 
       intervals.forEach((interval) => {
-        if (
-          timeOnPage >= interval &&
-          !trackedIntervals.has(interval)
-        ) {
+        if (timeOnPage >= interval && !trackedIntervals.has(interval)) {
           trackedIntervals.add(interval)
           window._paq.push([
             'trackEvent',
             'Time on Page',
             `${interval}s`,
-            interval
+            interval,
           ])
 
           if (debug) {

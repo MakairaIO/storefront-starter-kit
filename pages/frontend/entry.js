@@ -23,6 +23,7 @@ import {
 import ErrorPage from '../_error'
 import { ShopProvider } from '@makaira/storefront-react'
 import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
+import matomo from '../../utils/core/tracking/matomo'
 
 const pageComponents = {
   page: LandingPage,
@@ -132,6 +133,15 @@ export default class Index extends Component {
       page_location,
       page_title,
       page_type,
+    })
+    matomo.init()
+    matomo.trackScrollDepth({
+      points: [25, 50, 75, 100],
+      debug: true,
+    })
+    matomo.trackTimeOnPage({
+      intervals: [10, 30, 60, 120],
+      debug: true,
     })
   }
 
