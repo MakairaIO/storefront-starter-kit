@@ -70,17 +70,15 @@ export default {
         ((scrollTop + windowHeight) / documentHeight) * 100
       )
 
+      // This check correctly ensures we only track on downward scrolls into new territory.
       if (scrollDepth > maxScrollDepth) {
         maxScrollDepth = scrollDepth
 
         points.forEach((point) => {
-          const hasHigherTracked = Array.from(trackedPoints).some(
-            (tp) => tp > point
-          )
           if (
             scrollDepth >= point &&
             !trackedPoints.has(point) &&
-            !hasHigherTracked
+            !trackedPoints.values().some((p) => p > point)
           ) {
             trackedPoints.add(point)
             window._paq.push(['trackEvent', 'Scroll Depth', `${point}%`, point])
@@ -95,7 +93,7 @@ export default {
     let scrollTimeout
     scrollEventHandler = () => {
       if (scrollTimeout) clearTimeout(scrollTimeout)
-      scrollTimeout = setTimeout(trackScroll, 300)
+      scrollTimeout = setTimeout(trackScroll, 100)
     }
 
     window.addEventListener('scroll', scrollEventHandler)
