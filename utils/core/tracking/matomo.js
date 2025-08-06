@@ -1,3 +1,26 @@
+let scrollEventHandler = null
+let timeIntervalId = null
+
+/**
+ * Removes the active scroll depth event listener.
+ */
+const untrackScrollDepth = () => {
+  if (scrollEventHandler) {
+    window.removeEventListener('scroll', scrollEventHandler)
+    scrollEventHandler = null
+  }
+}
+
+/**
+ * Clears the active time-on-page interval.
+ */
+const untrackTimeOnPage = () => {
+  if (timeIntervalId) {
+    clearInterval(timeIntervalId)
+    timeIntervalId = null
+  }
+}
+
 export default {
   // See: https://docs.makaira.io/docs/tracking
   init() {
@@ -27,8 +50,14 @@ export default {
     window.__matomoInitialized = true
   },
 
+  /**
+   * Sets up scroll depth tracking for the current page.
+   * It automatically cleans up any previous scroll tracker.
+   */
   trackScrollDepth({ points = [25, 50, 75, 100], debug = false } = {}) {
     if (!window._paq) return
+
+    untrackScrollDepth()
 
     let maxScrollDepth = 0
     const trackedPoints = new Set()
@@ -45,9 +74,6 @@ export default {
         maxScrollDepth = scrollDepth
 
         points.forEach((point) => {
-          // Only track if:
-          // - not tracked yet
-          // - AND there is no tracked point greater than this point
           const hasHigherTracked = Array.from(trackedPoints).some(
             (tp) => tp > point
           )
@@ -67,19 +93,27 @@ export default {
     }
 
     let scrollTimeout
-    window.addEventListener('scroll', () => {
+    scrollEventHandler = () => {
       if (scrollTimeout) clearTimeout(scrollTimeout)
-      scrollTimeout = setTimeout(trackScroll, 100)
-    })
+      scrollTimeout = setTimeout(trackScroll, 300)
+    }
+
+    window.addEventListener('scroll', scrollEventHandler)
   },
 
+  /**
+   * Sets up time-on-page tracking.
+   * It automatically cleans up any previous time tracker.
+   */
   trackTimeOnPage({ intervals = [10, 30, 60, 120], debug = false } = {}) {
     if (!window._paq) return
+
+    untrackTimeOnPage()
 
     const trackedIntervals = new Set()
     const pageStartTime = Date.now()
 
-    const intervalId = setInterval(() => {
+    timeIntervalId = setInterval(() => {
       const timeOnPage = Math.round((Date.now() - pageStartTime) / 1000)
 
       intervals.forEach((interval) => {
@@ -91,23 +125,18 @@ export default {
             `${interval}s`,
             interval,
           ])
-
           if (debug) {
             console.log(`[Matomo] Time on page tracked: ${interval}s`)
           }
         }
       })
     }, 1000)
-
-    // Optionally return a cleanup function
-    return () => clearInterval(intervalId)
   },
+  untrackScrollDepth,
+  untrackTimeOnPage,
 
   enterAbTest({ experiments = [] }) {
-    if (experiments.length == 0) return
-
-    // Matomo has not been initialized
-    if (!window._paq) return
+    if (experiments.length == 0 || !window._paq) return
 
     experiments.forEach((entry) => {
       const { experiment, variation } = entry
