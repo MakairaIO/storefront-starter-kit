@@ -97,6 +97,7 @@ export default class Index extends Component {
   }
 
   componentDidMount() {
+    matomo.init()
     const language = this.props.pageData?.language
 
     if (language) {
@@ -134,7 +135,12 @@ export default class Index extends Component {
       page_title,
       page_type,
     })
-    matomo.init()
+    // Track the current page view and path
+    if (window._paq) {
+      window._paq.push(['setCustomUrl', page_location])
+      window._paq.push(['setDocumentTitle', page_title])
+      window._paq.push(['trackPageView'])
+    }
     matomo.trackScrollDepth({
       points: [25, 50, 75, 100],
       debug: true,
