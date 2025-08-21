@@ -11,10 +11,11 @@ class TeaserVideo extends Component {
       hint = '',
       link = '',
       description = {},
+      anchorId = '',
     } = this.props
 
     return (
-      <section className="video-teaser">
+      <section id={anchorId} className="video-teaser">
         <BackgroundVideo {...this.props} />
         <div className="video-teaser__content">
           <div className="video-teaser__heading">

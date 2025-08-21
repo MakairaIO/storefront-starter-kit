@@ -1,0 +1,196 @@
+$icon-small = 3.6rem
+$icon-large = 4.6rem
+$breakpoint-medium = 768px
+$breakpoint-large = 1366px
+$breakpoint-huge = 1800px
+
+.feature-icons
+  display block
+  position relative
+
+  &__header
+    width 100%
+    margin 0 auto var(--spacer-m)
+
+    @media (min-width $breakpoint-medium)
+      margin-bottom var(--spacer-l)
+
+    @media (min-width $breakpoint-large)
+      margin 0 auto var(--spacer-xl)
+
+  &__grid
+    display flex
+    flex-direction column
+
+    @media (min-width $breakpoint-medium)
+      flex-direction row
+      justify-content center
+
+    @media (min-width $breakpoint-huge)
+      max-width var(--max-width)
+      margin-left auto
+      margin-right auto
+
+  &__row
+    display flex
+    flex-direction column
+
+    @media (min-width $breakpoint-medium)
+      width calc(50% - 12px)
+
+      &:not(:last-child)
+        margin-bottom 0 !important
+        margin-right var(--spacer-l)
+
+    @media (min-width $breakpoint-large)
+      width 100%
+
+      &:not(:last-child)
+        margin-right var(--spacer-xl)
+
+  &__column
+    display flex
+    align-items flex-start
+
+    aside
+      width $icon-small
+      margin-right 0
+
+      @media (min-width $breakpoint-medium)
+        margin-right var(--spacer-xs)
+
+      .icon
+        width $icon-small
+        height $icon-small
+        padding 0 8px 8px
+        margin-bottom 1.2rem
+
+      img
+        width $icon-small
+
+      @media (min-width $breakpoint-large)
+        width $icon-large
+        margin-right var(--spacer-s)
+
+        .icon
+          width $icon-large
+          height $icon-large
+          padding 8px
+
+        img
+          width $icon-large
+
+  &__row:not(:last-child), &__column:not(:last-child)
+    margin-bottom var(--spacer-l)
+
+    @media (min-width $breakpoint-large)
+      margin-bottom var(--spacer-xl)
+
+  &__column
+    margin-bottom var(--spacer-xs)
+
+  &__column &__link
+    display inline-block
+
+  &__text
+    margin-bottom var(--spacer-xs)
+
+    & > p, & > div
+      margin-bottom var(--spacer-xs)
+
+  &__column__content
+    .feature-icons__heading
+      line-height 1.25
+      margin-bottom var(--spacer-xxs)
+
+  &__theme--white
+    background-color var(--white)
+    color var(--black)
+
+    .feature-icons
+      &__header
+        color var(--primary)
+
+      &__column__content
+        .feature-icons__heading
+          color var(--gray)
+
+      &__text
+        color var(--black)
+
+      &__link
+        color var(--primary)
+
+    .icon
+      color var(--gray)
+
+  &__theme--primary, &__theme--none
+    color var(--white)
+
+    a
+      color var(--white)
+
+    .feature-icons
+      &__header
+        color var(--white)
+
+      &__text
+        color var(--white)
+
+      &__link
+        .button--link
+          color var(--white)
+
+  &__theme--primary
+    background var(--radial-gradient)
+
+  &__theme--none
+    background none
+
+  &__reduce-top-space
+    padding-top 0
+
+  &__reduce-max-width
+    @media (min-width $breakpoint-huge)
+      max-width var(--max-width)
+      margin-left auto
+      margin-right auto
+
+  &__alignment--left
+    .feature-icons
+      // &__header
+      // max-width 100%
+      &__heading
+        text-align left
+
+      &__text
+        text-align left
+
+  &__alignment--right
+    .feature-icons
+      &__heading, &__text
+        text-align right
+
+      &__column__content
+        .feature-icons
+          &__heading
+            text-align left
+
+          &__text
+            text-align left
+
+  &__alignment--center
+    .feature-icons
+      &__heading, &__text
+        text-align left
+
+        @media (min-width $breakpoint-medium)
+          text-align center
+
+      &__column__content
+        .feature-icons
+          &__heading
+            text-align left
+
+          &__text
+            text-align left

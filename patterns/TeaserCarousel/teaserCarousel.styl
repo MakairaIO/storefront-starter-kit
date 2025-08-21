@@ -1,0 +1,190 @@
+$breakpoint-small = 600px
+$breakpoint-medium = 768px
+$breakpoint-large = 1366px
+$breakpoint-huge = 1500px
+$breakpoint-gigantic = 1800px
+$breakpoint-hyper = 2560px
+
+.teaser-carousel
+  .heading.byline
+    line-height 1.1
+
+    @media (min-width $breakpoint-medium)
+      line-height 1
+
+  &__headline
+    font-weight var(--font-weight-bold)
+    text-align left
+
+    @media (min-width $breakpoint-huge)
+      margin-bottom 32px
+
+    &::first-line
+      margin-bottom 20px
+
+  &__container
+    display grid
+    grid-template-columns 1fr
+    grid-gap 32px
+
+    @media (min-width $breakpoint-large)
+      grid-template-columns 1fr 1fr
+      grid-gap 48px
+
+    @media (min-width $breakpoint-hyper)
+      grid-template-columns 2fr 1fr
+      grid-gap 60px
+
+  &__column-left
+    margin-top 0
+
+    &__button-wrapper
+      width 100%
+      display flex
+      justify-content center
+      margin-top 24px
+
+      @media (min-width $breakpoint-gigantic)
+        margin-top 32px
+
+    &__meeting-wrapper
+      width 100%
+      display flex
+      justify-content center
+      margin-top 24px
+
+      @media (min-width $breakpoint-gigantic)
+        margin-top 32px
+
+  &__column-right
+    position relative
+    margin 0
+
+  &__animation-container
+    top 0
+    left 0
+    transition all 0.3s ease
+    opacity 1
+    max-width 100%
+
+    &:not(.teaser-carousel__animation-container--active)
+      position absolute
+      opacity 0
+      pointer-events none
+
+    a, picture, img
+      display block
+      max-width 100%
+      height auto
+
+  &__media
+    img
+      filter grayscale(30%)
+
+      &:hover
+        filter grayscale(0)
+
+  &__simple-text
+    font-weight var(--font-weight-regular)
+    font-size 1.5rem
+    line-height 2.2rem
+    margin-bottom var(--spacer-l)
+
+    @media (min-width $breakpoint-huge)
+      column-count 2
+      column-gap 24px
+
+    p
+      margin-bottom 20px
+
+      &:last-child
+        margin-bottom 0
+
+  &__trusties
+    margin-top var(--spacer-xxl)
+    text-align center
+
+    @media (min-width $breakpoint-medium)
+      margin-top var(--spacer-xl)
+
+    &-items
+      display flex
+      justify-content center
+      column-gap 24px
+
+    img
+      margin var(--spacer-l) 0
+      margin-bottom 0
+      max-height 100px
+      filter grayscale(100%)
+
+      &:hover
+        filter grayscale(0)
+
+      @media (min-width $breakpoint-large)
+        margin var(--spacer-l) var(--spacer-xl) 0
+
+  &__theme--white
+    background-color var(--white)
+    color var(--black)
+
+    .teaser-carousel__subline
+      color var(--gray)
+
+    .teaser-carousel__headline
+      color var(--primary)
+
+    .button--secondary
+      &:hover
+        background var(--primary)
+        color var(--white)
+        border 1px solid var(--primary)
+
+  &__theme--primary
+    background var(--radial-gradient)
+    color var(--white)
+
+    .teaser-carousel__subline
+      color var(--white)
+
+    .teaser-carousel__headline
+      color var(--white)
+
+    .button--secondary
+      background-color var(--white)
+      color var(--primary)
+      border-color var(--white)
+
+      &:hover
+        background none
+        color var(--white)
+        border-color var(--white)
+
+  &__theme--none
+    background none
+    color var(--white)
+
+    .teaser-carousel__subline
+      color var(--white)
+
+    .teaser-carousel__headline
+      color var(--white)
+
+    .button--secondary
+      background-color var(--white)
+      color var(--primary)
+      border-color var(--white)
+
+      &:hover
+        background none
+        color var(--white)
+        border-color var(--white)
+
+  &__reduce-top-space
+    padding-top 0
+
+  &__reduce-max-width
+    @media (min-width $breakpoint-hyper)
+      max-width var(--max-width)
+      margin-left auto
+      margin-right auto

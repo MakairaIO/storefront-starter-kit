@@ -1,20 +1,20 @@
+import { useRef } from 'react'
 import classNames from 'classnames'
-import {
-  useTranslation,
-  useConfiguration,
-  getProductDetailUrl,
-} from '../../../utils'
+import { useTranslation, useLazyLoading } from '../../../utils'
 import { Heading, Copytext, Button } from '../..'
 
 function TeaserProducts(props) {
-  const { products = [], variant = 'white' } = props
+  const listRef = useRef(null)
+  const { products = [], variant = 'white', anchorId = '' } = props
+
+  useLazyLoading({ ref: listRef, dependency: products })
 
   if (products.length == 0) return null
 
   const classes = classNames('product-teaser', `product-teaser--${variant}`)
 
   return (
-    <section className={classes}>
+    <section id={anchorId} ref={listRef} className={classes}>
       {products.map((product) => (
         <Teaser key={product.ean} {...product} />
       ))}
@@ -24,34 +24,17 @@ function TeaserProducts(props) {
 
 function Teaser(props) {
   const { t } = useTranslation()
-  const { getImageLink } = useConfiguration()
-  const { title = '', manufacturer_title = '', url = '', images = [] } = props
-
-  const productDetailUrl = getProductDetailUrl({ url })
-
-  const imageLink = getImageLink({
-    source: images[0],
-    height: 289,
-    format: 'auto',
-  })
-
-  const imageLinkRetina = getImageLink({
-    source: images[0],
-    height: 289,
-    pixelRatio: 2,
-    format: 'auto',
-  })
+  const {
+    title = '',
+    manufacturer_title = '',
+    picture_url_main = '',
+    url = '',
+  } = props
 
   return (
     <div className="product-teaser__teaser">
       <picture className="product-teaser__teaser-image">
-        <img
-          src={imageLink}
-          srcSet={`${imageLink} 1x, ${imageLinkRetina} 2x`}
-          alt={title}
-          loading="lazy"
-          height="228"
-        />
+        <img data-src={picture_url_main} alt={title} />
       </picture>
 
       <p className="product-teaser__content">
@@ -72,7 +55,7 @@ function Teaser(props) {
         </Heading>
 
         <Button
-          href={productDetailUrl}
+          href={url}
           icon="chevron-right"
           className="product-teaser__button"
         >

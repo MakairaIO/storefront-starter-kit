@@ -1,0 +1,91 @@
+$breakpoint_medium = 768px
+$breakpoint_large = 990px
+$breakpoint_huge = 1800px
+
+.embedded-video
+  display block
+  color var(--aubergine)
+
+  @media (min-width $breakpoint_large)
+    margin 0 auto
+    // width 977px
+
+  &__heading
+    margin-bottom var(--spacer-m)
+
+    @media (min-width $breakpoint_medium)
+      margin-bottom var(--spacer-l)
+
+    @media (min-width $breakpoint_large)
+      margin-bottom var(--spacer-xl)
+
+  &__text
+    margin-bottom 2rem
+
+    @media (min-width $breakpoint_large)
+      column-count 2
+      column-gap 2.4rem
+      margin-bottom 32px
+
+  &__wrapper
+    margin 0 auto 1.2rem
+    position relative
+    padding-top 56.25% /* 720 / 1280 = 0.5625 */
+    width 100%
+
+    .icon--play-circle-white
+      width 5rem
+
+  &__player
+    width 100%
+    height 100%
+    position absolute
+    top 0
+    left 0
+
+  &__link
+    text-align center
+    line-height 1.8rem
+
+  &__theme--white
+    background-color var(--white)
+    color var(--black)
+
+    .heading
+      color var(--primary)
+
+    .embedded-video__link
+      a
+        color var(--primary)
+
+  &__theme--primary, &__theme--none
+    color var(--white)
+
+    .embedded-video__link
+      a
+        color var(--white)
+        text-decoration underline
+
+  &__theme--primary
+    background var(--radial-gradient)
+
+  &__theme--none
+    background none
+
+  &__reduce-top-space
+    padding-top 0
+
+  &__reduce-max-width
+    @media (min-width $breakpoint_huge)
+      max-width var(--max-width)
+      margin-left auto
+      margin-right auto
+
+  &__alignment--left
+    text-align left
+
+  &__alignment--right
+    text-align right
+
+  &__alignment--center
+    text-align center

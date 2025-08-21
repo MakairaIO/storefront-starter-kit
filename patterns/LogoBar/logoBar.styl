@@ -1,0 +1,196 @@
+$breakpoint-small = 320px
+$breakpoint-medium = 768px
+$breakpoint-large = 990px
+$breakpoint-huge = 1500px
+$breakpoint-gigantic = 1800px
+
+.logo-bar
+  position relative
+
+  &__header
+    margin 0 auto
+
+    @media (min-width $breakpoint-small)
+      width 100%
+
+    @media (min-width $breakpoint-large)
+      max-width 900px
+
+    @media (min-width $breakpoint-huge)
+      max-width 990px
+
+  &__text
+    margin-bottom 16px
+
+    @media (min-width $breakpoint_small)
+      margin-bottom 18px
+
+    @media (min-width $breakpoint-large)
+      text-align center
+
+    @media (min-width $breakpoint-huge)
+      margin-bottom 30px
+
+  &__heading
+    margin-bottom var(--spacer-m)
+
+    @media (min-width $breakpoint-medium)
+      margin-bottom var(--spacer-l)
+
+    @media (min-width $breakpoint-large)
+      margin-bottom var(--spacer-xl)
+      text-align center
+
+  &__content
+    display flex
+    flex-direction row
+    flex-wrap wrap
+    justify-content center
+    margin 0 auto
+
+    @media (min-width $breakpoint-small)
+      gap 8px
+
+    @media (min-width $breakpoint-medium)
+      max-width 972px
+
+    @media (min-width $breakpoint-large)
+      max-width 100%
+      column-gap 40px
+
+    @media (min-width $breakpoint-huge)
+      max-width 1500px
+      column-gap 48px
+
+  &__item
+    border 1px solid var(--white)
+    border-radius var(--spacer-xxs)
+    box-sizing border-box
+    text-align center
+    display flex
+    flex-direction column
+    align-items center
+    justify-content space-between
+    box-sizing border-box
+    width calc(50% - 28px)
+    height 74px
+    margin 6px
+    padding 12px 8px
+
+    @media (min-width $breakpoint-medium)
+      width 127px
+      height 84px
+      padding 20px 12px
+
+    @media (min-width $breakpoint-large)
+      width 177px
+      height 102px
+      margin 10px
+      padding 0 8px
+
+    .icon
+      height 4.4rem
+      color #000000
+
+    img
+      margin-bottom 0
+      max-width 100%
+      height auto
+      object-fit contain
+
+    .text
+      text-align center
+      alpha()
+      font-weight var(--font-weight-medium)
+      color var(--gray)
+
+      @media (min-width $breakpoint-huge)
+        bravo()
+
+    &__wrapper
+      width 100%
+      overflow hidden
+      display flex
+      flex 1
+      justify-content center
+
+    &--hasTitle
+      @media (min-width $breakpoint-medium)
+        padding 20px 12px 12px 12px
+
+      @media (min-width $breakpoint-huge)
+        padding 24px 20px 16px 20px
+
+      img
+        margin-bottom 8px
+        max-width 100%
+        max-height 58px
+
+  &__theme-primary
+    background var(--radial-gradient)
+    color var(--white)
+
+    .heading
+      color var(--white)
+
+    .logo-bar__item
+      background-color var(--white)
+
+  &__theme-white
+    background var(--white)
+    color var(--black)
+
+    .heading
+      color var(--primary)
+
+  &__theme-none
+    background none
+    color var(--white)
+
+    .logo-bar__item
+      background-color var(--white)
+
+  &__reduce-top-space
+    padding-top 0
+
+  &__reduce-max-width
+    @media (min-width $breakpoint-gigantic)
+      max-width var(--max-width)
+      margin-left auto
+      margin-right auto
+
+  &__alignment--left
+    .logo-bar
+      &__header
+        max-width 100%
+
+      &__heading
+        text-align left
+
+      &__text
+        text-align left
+
+  &__alignment--right
+    .logo-bar
+      &__header
+        max-width 100%
+
+      &__heading
+        text-align right
+
+      &__text
+        text-align right
+
+  &__alignment--center
+    .logo-bar
+      &__heading
+        text-align left
+
+        @media (min-width $breakpoint-medium)
+          text-align center
+
+      &__text
+        text-align left
+
+        @media (min-width $breakpoint-medium)
+          text-align center

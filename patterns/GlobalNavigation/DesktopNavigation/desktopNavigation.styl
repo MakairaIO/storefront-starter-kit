@@ -1,0 +1,40 @@
+@import '../variables.styl'
+
+$breakpoint-large = 1366px
+
+.desktop-navigation__wrapper
+  display none
+
+  @media (min-width $breakpoint-large - 1px)
+    display block
+    width calc(100% - 3rem) // 1.5rem "padding" on each side
+    margin 0 auto
+    border-bottom 1px solid var(--neutral-40)
+
+  &.hidden
+    display none !important
+
+// FIXME: Implement behaviour for overflowing menu-entries
+.desktop-navigation
+  display flex
+  position relative
+
+.desktop-navigation__item-link
+  display block
+  echo()
+  font-weight var(--font-weight-bold)
+  color var(--white)
+  margin 0 $space-between-nav-items
+  padding 8px 0
+  position relative
+  border-bottom 3px solid rgba(255, 255, 255, 0)
+
+  &:hover
+    cursor pointer
+    border-bottom 3px solid var(--white)
+
+.active-headCategory
+  border-bottom 3px solid var(--light-primary)
+  color var(--light-primary) !important
+  cursor not-allowed !important
+  pointer-events none !important

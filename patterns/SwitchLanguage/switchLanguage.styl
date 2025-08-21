@@ -1,0 +1,69 @@
+$breakpoint-small = 320px
+$breakpoint-medium = 768px
+$breakpoint-large = 1366px
+
+.switch-language
+  flex 0 0 60px
+  position relative
+  display flex
+  justify-content space-between
+  align-items center
+  margin-right 24px
+  width 60px
+  padding 0 6px
+  height 22px
+  border 2px solid var(--aubergine)
+  border-radius 10px
+  cursor pointer
+  margin-top 4px
+  transition opacity 0.3s ease
+
+  &:hover
+    opacity 0.8
+
+  &:before 
+    position absolute
+    content ''
+    top 0
+    width 50%
+    bottom 0
+    border 1px solid #fff
+    border-radius 8px
+    background-color var(--aubergine)
+    z-index -1
+    transition left 0.3s ease
+  &--de:before 
+    left 0
+  &__item
+    color var(--aubergine)
+    transition color 0.3s ease
+    line-height 0
+  &--de &__item:first-child
+    color #fff
+  &--en &__item:nth-child(2)
+    color #fff
+  &--en:before 
+      left calc(50% - 2px)
+
+  &--dark
+    border-color #fff
+    &:before
+      border-color var(--aubergine)
+      background-color #fff
+  &--dark &__item
+    color #fff
+  &--dark&--de &__item:first-child
+    color var(--aubergine)
+  &--dark&--en &__item:nth-child(2)
+    color var(--aubergine)
+
+  @media (min-width: $breakpoint-medium)
+    margin-top 28px
+    &--dark
+      margin-top 32px
+    
+  @media (min-width: $breakpoint-large)
+    margin-top 40px
+    &--dark
+      margin-top 8px
+

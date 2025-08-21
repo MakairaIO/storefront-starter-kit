@@ -1,0 +1,288 @@
+$breakpoint_medium = 768px
+$breakpoint_large = 1366px
+$breakpoint_huge = 1800px
+
+.stream
+  display block
+
+  a
+    font-weight var(--font-weight-bold)
+
+  & > .copytext
+    margin-bottom var(--spacer-xl)
+
+    & > p
+      margin-bottom var(--spacer-m)
+
+    @media (min-width $breakpoint_large)
+      margin-bottom 44px
+      column-count 2
+      column-gap 24px
+
+  &__tabs
+    margin-top var(--spacer-m)
+    margin-bottom 20px
+
+    & > .copytext
+      cursor pointer
+      font-weight var(--font-weight-bold)
+
+      &:not(:last-child)
+        margin-right 24px
+
+    @media (min-width $breakpoint-medium)
+      margin-top var(--spacer-l)
+
+    @media (min-width $breakpoint_large)
+      margin-top var(--spacer-xl)
+
+  &__releases, &__roadmaps
+    display none
+
+    &--selected
+      display block
+
+  &__release
+    padding-bottom var(--spacer-m)
+    padding-left var(--spacer-l)
+    position relative
+
+    &:before, &:after
+      display block
+      position absolute
+      content ''
+
+    &:before
+      top 3px
+      width 12px
+      height 12px
+      border-radius 50%
+      left 0
+
+    &:after
+      top 19px
+      width 2px
+      height calc(100% - 16px)
+      left 7px
+
+    &__loadmore
+      .heading.level_5
+        cursor pointer
+        bravo()
+        font-weight var(--font-weight-regular)
+
+      &:after
+        display none
+
+      &:before
+        content '\002B'
+        font-weight var(--font-weight-bold)
+        font-size 14px
+        line-height 10px
+        text-align center
+
+      &--less
+        &:before
+          content '\2212'
+
+  &__roadmap
+    & > .heading.level_5
+      margin-bottom 8px
+
+    .tags
+      padding var(--spacer-xxxs) 0
+
+  &__release, &__roadmap
+    & > .heading.level_5
+      font-weight var(--font-weight-bold)
+      margin-bottom var(--spacer-xxs)
+
+    & > p
+      font-weight var(--font-weight-bold)
+      padding-left 16px
+
+    .tags
+      padding var(--spacer-xxs) 0
+      display flex
+      gap 12px
+
+    .tag
+      alpha()
+      display flex
+      align-items center
+      width fit-content
+      padding 4px 16px
+      border-radius 12px
+      margin-right 4px
+      text-transform uppercase
+      font-weight var(--font-weight-bold)
+
+      @media (min-width $breakpoint-medium)
+        padding 6px 16px
+
+      &.current
+        color green
+
+      &.breaking
+        color red
+
+    &__logs
+      li
+        padding-left 18px
+        position relative
+        margin-bottom var(--spacer-xs)
+
+        & > .copytext
+          p:not(:last-child)
+            margin-bottom 8px
+
+        &:after
+          content ''
+          position absolute
+          top 10px
+          left 0
+          display block
+          width 8px
+          height 4px
+          border-radius 2px
+
+  &__roadmap__logs li
+    padding-left 0
+    margin-bottom 0
+
+  &__roadmap__feature
+    margin 24px 0
+
+    li
+      padding-left 0
+
+  &__theme--white
+    background var(--white)
+    color var(--black)
+
+    a
+      color var(--primary)
+
+    .stream
+      &__wrapper
+        .heading
+          color var(--primary)
+
+      &__release, &__roadmap
+        .heading
+          color var(--gray)
+
+      &__release
+        &:before
+          border 2px solid var(--primary)
+
+        &:after
+          background-color var(--primary)
+
+        &:first-child
+          &:before
+            background-color var(--primary)
+
+        &__loadmore
+          &:before
+            color var(--primary)
+
+        &__logs
+          li
+            &:after
+              background-color var(--primary)
+
+      &__tabs
+        & > .copytext
+          &.selected
+            border-bottom 4px solid var(--primary)
+
+    .tag
+      border 2px solid var(--gray)
+      color var(--gray)
+      background none
+
+      &.current
+        border-color green
+
+      &.breaking
+        border-color red
+
+  &__theme--primary, &__theme--none
+    color var(--white)
+
+    a
+      color var(--white)
+      font-weight var(--font-weight-bold)
+      text-decoration underline
+
+    .stream
+      &__release
+        &:before
+          border 2px solid var(--white)
+
+        &:after
+          background-color var(--white)
+
+        &:first-child
+          &:before
+            background-color var(--white)
+
+        &__loadmore
+          &:before
+            color var(--white)
+
+        &__logs
+          li
+            &:after
+              background-color var(--white)
+
+      &__tabs
+        & > .copytext
+          &.selected
+            border-bottom 4px solid var(--white)
+
+    .tag
+      border 1px solid var(--white)
+      color var(--gray)
+      background-color var(--white)
+
+  &__theme--primary
+    background var(--radial-gradient)
+
+  &__theme--none
+    background none
+
+  &__reduce-top-space
+    padding-top 0
+
+  &__reduce-max-width
+    @media (min-width $breakpoint-huge)
+      max-width var(--max-width)
+      margin-left auto
+      margin-right auto
+
+  &__alignment--left
+    text-align left
+    margin-left 0
+    margin-right auto
+
+  &__alignment--right
+    text-align right
+    margin-left auto
+    margin-right 0
+
+  &__alignment--center
+    text-align center
+    margin-left auto
+    margin-right auto
+
+    .stream
+      &__tabs
+        text-align left
+
+      &__release
+        text-align left
+
+      &__roadmap
+        text-align left

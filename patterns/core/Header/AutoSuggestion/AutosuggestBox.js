@@ -5,14 +5,18 @@ import { useTranslation } from '../../../../utils'
 
 function AutosuggestBox(props) {
   const {
-    searchResult = {},
-    totalResultCount = 0,
+    product = {},
+    category = {},
+    links = {},
+    manufacturer = {},
     closeSearchPopup,
     goToSearchPage,
   } = props
+  const linkList = { category, links, manufacturer }
+  const hasLinks = category.count + links.count + manufacturer.count > 0
+  const totalResults =
+    category.total + links.total + manufacturer.total + product.total
   const { t } = useTranslation()
-
-  const { product, ...otherResults } = searchResult
 
   return (
     <div className="autosuggest-box">
@@ -24,10 +28,11 @@ function AutosuggestBox(props) {
           onClick={closeSearchPopup}
         />
 
-        <Links
-          {...otherResults}
-          isVisible={product.total != totalResultCount}
-        />
+        {hasLinks && (
+          <section className="autosuggest-box__links">
+            <Links {...linkList}></Links>
+          </section>
+        )}
 
         {product.count > 0 && (
           <section className="autosuggest-box__products">
@@ -39,7 +44,7 @@ function AutosuggestBox(props) {
         className="autosuggest-box__total-result"
         onClick={goToSearchPage}
       >
-        {t('FILTER_LABEL_SEE_ALL_RESULTS')(totalResultCount)}
+        {t('FILTER_LABEL_SEE_ALL_RESULTS')(totalResults)}
         <Icon symbol="chevron-right" />
       </button>
     </div>

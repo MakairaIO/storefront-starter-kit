@@ -1,0 +1,128 @@
+$icon_size = 2rem
+$icon_padding_vertical = 0
+$icon_wrapper_width = 3.2rem
+$breakpoint-medium = 768px
+$breakpoint-large = 990px
+$breakpoint-huge = 1800px
+
+.usps-icons
+  display block
+
+  .usps-icons__columns
+    display flex
+    flex-direction column
+    flex-wrap wrap
+    width fit-content
+    margin-top -1rem
+
+    @media (min-width $breakpoint-huge)
+      flex-direction row
+      justify-content space-between
+
+    .usps-icons__column-item
+      position relative
+
+      @media (min-width $breakpoint-large)
+        margin-right 24px
+
+        &:last-child
+          margin-right 0
+
+  .usps-icon__row
+    display flex
+    flex-direction row
+    flex-wrap nowrap
+    align-items center
+    margin-top 1rem
+
+    .usps-icon__icon-wrapper
+      min-width $icon_wrapper_width
+
+    .usps-icon__row-icon
+      width $icon_size
+      height $icon_size
+
+    .usps-icon__row-content
+      white-space normal
+      word-break break-word
+      margin-top auto
+      margin-bottom auto
+
+      .heading
+        font-weight var(--font-weight-regular)
+        line-height 1.2
+
+  &__theme--white
+    background-color var(--white)
+
+    .usps-icons__title
+      color var(--primary)
+
+    .usps-icon__row-icon
+      color var(--primary)
+
+    .usps-icon__row-content
+      color var(--black)
+
+  &__theme--primary
+    background var(--radial-gradient)
+
+    .usps-icons__title
+      color var(--white)
+
+    .usps-icon__row-icon
+      color var(--white)
+
+    .usps-icon__row-content
+      color var(--white)
+
+  &__theme--none
+    background none
+
+    .usps-icons__title
+      color var(--white)
+
+    .usps-icon__row-icon
+      color var(--white)
+
+    .usps-icon__row-content
+      color var(--white)
+
+  &__reduce-top-space
+    padding-top 0
+
+  &__reduce-max-width
+    @media (min-width $breakpoint-huge)
+      max-width var(--max-width)
+      margin-left auto
+      margin-right auto
+
+  &__alignment--left
+    .usps-icons
+      &__title
+        text-align left
+
+      &__columns
+        margin-left 0
+
+  &__alignment--right
+    .usps-icons
+      &__title
+        text-align right
+
+      &__columns
+        margin-left auto
+        margin-right 0
+
+  &__alignment--center
+    .usps-icons
+      &__title
+        text-align left
+
+        @media (min-width $breakpoint-medium)
+          text-align center
+
+      &__columns
+        max-width fit-content
+        margin-left auto
+        margin-right auto

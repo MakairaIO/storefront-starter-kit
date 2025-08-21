@@ -1,0 +1,189 @@
+$breakpoint_medium = 768px
+$breakpoint_large = 990px
+$breakpoint_huge = 1800px
+
+.ctaopener
+  display block
+
+  &__wrapper
+    width 100%
+
+    @media (min-width $breakpoint-medium)
+      margin-left auto
+      margin-right auto
+
+  @media (min-width $breakpoint_medium)
+    margin 0 auto
+
+  .microtext
+    margin-top 12px
+
+    @media (min-width $breakpoint_medium)
+      max-width 66.67%
+      margin 12px auto 0
+
+  .copytext
+    & > p
+      margin-bottom var(--spacer-xs)
+
+    &:not(:last-child)
+      margin-bottom var(--spacer-l)
+
+      @media (min-width $breakpoint_medium)
+        margin-bottom var(--spacer-l)
+
+      @media (min-width $breakpoint_large)
+        column-count 1
+        column-gap 24px
+
+  &__actions
+    display flex
+    flex-direction column
+    row-gap 16px
+
+    .button
+      width fit-content
+
+    @media (min-width $breakpoint_medium)
+      .button
+        display flex
+        width fit-content
+        margin-left auto
+        margin-right auto
+        justify-content space-between
+
+      &.button--primary
+        @media (min-width $breakpoint_medium)
+          margin-bottom 0
+
+      @media (min-width $breakpoint_medium)
+        width 100%
+        max-width 100%
+
+    &--no-button
+      margin-top -2.4rem
+
+  &__email
+    text-align center
+    margin-bottom var(--spacer-m)
+
+    @media (min-width $breakpoint_medium)
+      margin-bottom var(--spacer-l)
+
+    .input-icon
+      margin-left auto
+      margin-right auto
+
+  &__theme--white
+    background var(--white) !important
+    color var(--black) !important
+
+    .heading
+      color var(--primary) !important
+
+    .copytext .text
+      color var(--black) !important
+
+    .button
+      background none
+
+      &:hover
+        background var(--primary)
+        color var(--white)
+
+  &__theme--primary
+    background var(--radial-gradient)
+    color var(--white)
+
+    .heading
+      color var(--white) !important
+
+    .text
+      color var(--white) !important
+
+  &__theme--none
+    color var(--white)
+
+    .heading
+      color var(--white) !important
+
+    .text
+      color var(--white) !important
+
+  &__reduce-top-space
+    padding-top 0
+
+  &__reduce-max-width
+    @media (min-width $breakpoint-huge)
+      max-width var(--max-width)
+
+  &__alignment--left
+    .ctaopener__wrapper
+      margin-left 0
+
+      .heading
+        text-align left
+
+      .microtext
+        text-align left
+        margin-left 0
+
+      .copytext, .copytext > p
+        text-align left
+
+      .ctaopener__actions
+        .button
+          margin-left 0
+
+  &__alignment--right
+    .ctaopener__wrapper
+      margin-right 0
+
+      .heading
+        text-align right
+
+      .microtext
+        text-align right
+        margin-right 0
+
+      .copytext, .copytext > p
+        text-align right
+
+      .ctaopener__actions
+        .button
+          margin-right 0
+
+  &__alignment--center
+    .ctaopener__wrapper
+      margin-left auto
+      margin-right auto
+
+      .heading
+        text-align center
+
+      .microtext
+        text-align center
+
+      .copytext, .copytext > p
+        text-align center
+
+        @media (min-width $breakpoint-huge)
+          max-width 800px
+          margin-left auto
+          margin-right auto
+
+      .ctaopener__actions
+        .button
+          margin-left auto
+          margin-right auto
+
+  .cta--trap
+    display flex
+    align-items center
+    justify-content center
+    margin 0 auto
+    width fit-content
+
+    @media (min-width $breakpoint_medium)
+      margin 0 auto
+      max-width 37rem

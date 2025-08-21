@@ -1,7 +1,13 @@
 require('dotenv').config()
 
 const path = require('path')
-
+const allLanguages = require('./config/allLanguages')
+const multiLanguageRoutes = allLanguages
+  .map((data) => [
+    { source: data.blogRoute, destination: '/frontend/blog' },
+    { source: data.searchRoute, destination: '/frontend/search' },
+  ])
+  .flat()
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
@@ -15,14 +21,7 @@ module.exports = withBundleAnalyzer({
   },
   async rewrites() {
     return [
-      {
-        source: '/suche',
-        destination: '/frontend/search',
-      },
-      {
-        source: '/search',
-        destination: '/frontend/search',
-      },
+      ...multiLanguageRoutes,
       {
         source: '/preview',
         destination: '/frontend/preview',

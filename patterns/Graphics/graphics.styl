@@ -1,0 +1,20 @@
+.graphics-component
+  display grid
+  grid-template-columns repeat(auto-fit, minmax(20em, 25rem))
+  justify-content center
+
+  &__item
+    text-align center
+    display flex
+    align-items center
+    justify-content center
+    padding 12px 8px
+    
+    @media (min-width $breakpoint-medium)
+      padding 20px 12px
+
+    @media (min-width $breakpoint-large)
+      padding 24px 20px
+
+    img
+      max-width 100%

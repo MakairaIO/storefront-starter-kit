@@ -1,0 +1,74 @@
+$breakpoint-medium = 768px
+$breakpoint-huge = 1400px
+$breakpoint-gigantic = 1800px
+
+.bookMeeting
+  &__wrapper
+    width 100%
+    display flex
+    justify-content center
+    margin-top 24px
+
+    @media (min-width $breakpoint-gigantic)
+      margin-top 32px
+
+  &__link
+    min-height 42px
+    display inline-flex
+    align-items center
+    padding 0.7rem var(--spacer-l) 0.7rem var(--spacer-l)
+    cursor pointer
+    background-color var(--white)
+    color var(--primary)
+    text-decoration none
+    font-size 15px
+    font-weight var(--font-weight-bold)
+    line-height 2.6rem
+    border-radius 2rem
+    text-align center
+
+    &--text
+      margin-right 4px
+
+    &--icon
+      display inline-flex
+      align-items center
+      margin-top 2px
+
+      .icon
+        width 2rem
+        height 2rem
+
+.meetingModal
+  width 100%
+  display flex
+  align-items center
+  justify-content center
+  padding 0
+
+  @media (min-width $breakpoint-huge)
+    max-width 850px
+
+.modal
+  width 100%
+  margin 0
+  padding 0
+
+  @media (min-width $breakpoint-huge)
+    max-width 850px
+
+.modal__close-button
+  position absolute
+  top 1.6rem
+  right 1.6rem
+
+  @media (min-width $breakpoint-medium)
+    top 2rem
+    right 1.6rem
+
+  @media (min-width $breakpoint-huge)
+    top 3.2rem
+    right 3.2rem
+
+.overlay--visible
+  opacity 0.4

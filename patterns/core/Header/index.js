@@ -9,9 +9,9 @@ import {
   debounce,
   dispatchShowOverlayEvent,
   dispatchOverlayClickedEvent,
-  filterInternalMakairaFields,
 } from '../../../utils'
 import AutosuggestBox from './AutoSuggestion/AutosuggestBox'
+import get from 'lodash/get'
 
 const DESKTOP_MENU_BREAKPOINT = 800
 
@@ -25,7 +25,6 @@ class Header extends Component {
       isAutosuggestBoxVisible: false,
       searchPhrase: '',
       autosuggestResult: {},
-      totalResultCount: 0,
     }
 
     this.handleResize = throttle(this.handleResize, 200)
@@ -65,25 +64,6 @@ class Header extends Component {
     }
   }
 
-  toggleLoginBox = () => {
-    const { isLoginBoxVisible } = this.state
-
-    isLoginBoxVisible ? this.hideLoginBox() : this.showLoginBox()
-  }
-
-  showLoginBox = () => {
-    this.setState({
-      isAutosuggestBoxVisible: false,
-      isLoginBoxVisible: true,
-      isWishlistBoxVisible: false,
-      isCartBoxVisible: false,
-    })
-  }
-
-  hideLoginBox = () => {
-    this.setState({ isLoginBoxVisible: false })
-  }
-
   showMobileNavigation = () => {
     dispatchShowOverlayEvent()
     this.setState({ isMobileNavigationVisible: true })
@@ -94,42 +74,11 @@ class Header extends Component {
   }
 
   showAutosuggestBox = () => {
-    this.setState({
-      isAutosuggestBoxVisible: true,
-      isLoginBoxVisible: false,
-      isCartBoxVisible: false,
-      isWishlistBoxVisible: false,
-    })
+    this.setState({ isAutosuggestBoxVisible: true })
   }
 
   hideAutosuggestBox = () => {
     this.setState({ isAutosuggestBoxVisible: false })
-  }
-
-  showWishlistBox = () => {
-    this.setState({
-      isAutosuggestBoxVisible: false,
-      isLoginBoxVisible: false,
-      isWishlistBoxVisible: true,
-      isCartBoxVisible: false,
-    })
-  }
-
-  hideWishlistBox = () => {
-    this.setState({ isWishlistBoxVisible: false })
-  }
-
-  showCartBox = () => {
-    this.setState({
-      isAutosuggestBoxVisible: false,
-      isLoginBoxVisible: false,
-      isWishlistBoxVisible: false,
-      isCartBoxVisible: true,
-    })
-  }
-
-  hideCartBox = () => {
-    this.setState({ isCartBoxVisible: false })
   }
 
   hideMobileNavigationOnPageChange = () => {
@@ -150,16 +99,14 @@ class Header extends Component {
   }
 
   handleSearchResult = () => {
-    const searchResult = this.state.autosuggestResult
-
-    console.log(Object.values(searchResult))
-
-    const totalResultCount = Object.values(searchResult)
-      .filter((type) => !isNaN(type.total))
-      .reduce((total, resultType) => total + resultType.total, 0)
-
-    if (this.state.searchPhrase && totalResultCount > 0) {
-      this.setState({ totalResultCount }, this.showAutosuggestBox)
+    const result = this.state.autosuggestResult
+    let total =
+      get(result, 'category.total') +
+      get(result, 'links.total') +
+      get(result, 'manufacturer.total') +
+      get(result, 'product.total')
+    if (this.state.searchPhrase && total > 0) {
+      this.showAutosuggestBox()
     } else {
       this.hideAutosuggestBox()
     }
@@ -168,15 +115,8 @@ class Header extends Component {
   fetchAutosuggestResult = async () => {
     const { searchPhrase } = this.state
 
-    if (searchPhrase.length == 0) return
-
     const result = await this.props.fetchAutosuggestResult(searchPhrase)
-    const filteredResult = filterInternalMakairaFields(result)
-
-    this.setState(
-      { autosuggestResult: filteredResult },
-      this.handleSearchResult
-    )
+    this.setState({ autosuggestResult: result }, this.handleSearchResult)
   }
 
   handleSearchFormSubmit = (event) => {
@@ -194,21 +134,6 @@ class Header extends Component {
   handleRouteChange = () => {
     this.hideMobileNavigationOnPageChange()
     this.hideAutosuggestBox()
-    this.hideLoginBox()
-    this.hideWishlistBox()
-    this.hideCartBox()
-  }
-
-  toggleWishlistBox = () => {
-    const { isWishlistBoxVisible } = this.state
-
-    isWishlistBoxVisible ? this.hideWishlistBox() : this.showWishlistBox()
-  }
-
-  toggleCartBox = () => {
-    const { isCartBoxVisible } = this.state
-
-    isCartBoxVisible ? this.hideCartBox() : this.showCartBox()
   }
 
   render() {
@@ -243,22 +168,14 @@ class Header extends Component {
                 activateMobileSearch={this.activateMobileSearch}
               />
 
-              <Actions
-                isLoginBoxVisible={this.state.isLoginBoxVisible}
-                isWishlistBoxVisible={this.state.isWishlistBoxVisible}
-                isCartBoxVisible={this.state.isCartBoxVisible}
-                toggleLoginBox={this.toggleLoginBox}
-                toggleWishlistBox={this.toggleWishlistBox}
-                toggleCartBox={this.toggleCartBox}
-              />
+              <Actions />
             </div>
           </div>
         </header>
 
         {this.state.isAutosuggestBoxVisible && (
           <AutosuggestBox
-            searchResult={this.state.autosuggestResult}
-            totalResultCount={this.state.totalResultCount}
+            {...this.state.autosuggestResult}
             closeSearchPopup={this.hideAutosuggestBox}
             goToSearchPage={this.handleSearchFormSubmit}
           />

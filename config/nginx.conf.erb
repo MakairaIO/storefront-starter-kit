@@ -25,13 +25,6 @@ http {
 	# Must read the body in 5 seconds.
 	client_body_timeout 5;
 
-	# Disable request size checking for all requests. Default value: 1m
-	#
-	# NOTE: If you want to enable this for the storefront,
-	#       add this setting with a different value to the appropriate location section.
-	#       Do not activate it here, because this is the global setting and will be checked first.
-	client_max_body_size 0;
-
 	upstream app_server {
 		server unix:/tmp/nginx.socket fail_timeout=0;
 	}
@@ -40,13 +33,12 @@ http {
 		listen <%= ENV["PORT"] %>;
 		server_name _;
 		keepalive_timeout 5;
-
-		# # Enable this part if you want to use error page failover
-		# proxy_busy_buffers_size   512k;
-		# proxy_buffers   					4 512k;
-		# proxy_buffer_size   			256k;
-		# proxy_intercept_errors 		on;
-		# recursive_error_pages 		on;
+		
+		# always append slash
+		port_in_redirect off;
+		location ~ ^([^.\?]*[^/])$ {
+			return 301 $uri/;
+		}
 
 		location / {
 			# Redirect all traffic to HTTPS
@@ -64,9 +56,6 @@ http {
 			auth_basic           $auth_basic;
 			auth_basic_user_file /app/config/.htpasswd;
 
-			# # Enable error_page if you want to use error page failover
-			# error_page 404 500 501 502 503 504 505 506 507 508 510 511 = @failover_target;
-
 			proxy_set_header      Host $http_host;
 			proxy_set_header      X-Real-IP $http_x_real_ip;
 			proxy_set_header      X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -77,42 +66,8 @@ http {
 			proxy_set_header      Proxy "";
 			proxy_set_header      X-Country-Code $http_x_country_code;
 
-			proxy_redirect 				off;
-			proxy_pass 						http://app_server;
-
-			#	# Enable request size checking for the storefront to prevent data flooding.
-			#	client_max_body_size 1m;
-			}
-
-		location ~ '/sitemap\.xml$' {
-			proxy_set_header      	Host <%= ENV["NEXT_PUBLIC_MAKAIRA_API_URL"].dup.sub!(/^https\:\/\//, "") %>;
-			proxy_set_header      	X-Real-IP $http_x_real_ip;
-			proxy_set_header      	X-Forwarded-For $proxy_add_x_forwarded_for;
-			proxy_set_header      	X-Forwarded-Proto $http_x_forwarded_proto;
-			proxy_set_header      	HTTPS $http_https;
-			proxy_set_header      	Connection "";
-			proxy_set_header      	Proxy "";
-
-			proxy_redirect			off;
-			proxy_pass				<%= ENV["NEXT_PUBLIC_MAKAIRA_API_URL"] %>;
-        }
-
-		# # Failover target
-		# location @failover_target {
-		# 	proxy_pass            http://example.com; # Please put the url of your shop system here
-		# 	proxy_read_timeout    120s;
-		# 	proxy_connect_timeout 15s;
-		# 	proxy_send_timeout    90s;
-		# 	proxy_set_header      Host "SHOP.makria.io"; # Please put the address of this storefront here
-		# 	proxy_set_header      X-Real-IP $http_x_real_ip;
-		# 	proxy_set_header      X-Forwarded-For $proxy_add_x_forwarded_for;
-		# 	proxy_set_header      X-Forwarded-Proto $http_x_forwarded_proto;
-		# 	proxy_set_header      HTTPS $http_https;
-		# }
-
-		# # Custom location with direct failover
-		# location ~* ^(/api/) {
-		# 	try_files /dev/null @failover_target;
-		# }
+			proxy_redirect        off;
+			proxy_pass            http://app_server;
+		}
 	}
 }

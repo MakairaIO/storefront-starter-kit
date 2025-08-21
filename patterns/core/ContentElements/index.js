@@ -1,8 +1,5 @@
-import { useEffect } from 'react'
 import {
-  ErrorBoundary,
   ProductPlacement,
-  StreamPlacement,
   Promotion,
   TeaserHero,
   TeaserGrid,
@@ -12,44 +9,36 @@ import {
   TeaserDuo,
   TeaserVideo,
   DiscoveryImage,
-  ContactForm,
+  TeaserEnhanced,
   NoComponent,
 } from '../..'
-import { useGlobalData } from '../../../utils'
+import Divider from '../../Divider'
+import LogoBar from '../../LogoBar'
+import TeaserSimple from '../../TeaserSimple'
 
 export default function ContentElements(props) {
   const { elements = [] } = props
-  const { selectedElement } = useGlobalData()
-
-  useEffect(() => {
-    let element
-    if (selectedElement) {
-      element = document.getElementById(selectedElement)
-      element?.scrollIntoView({ behavior: 'smooth' })
-      element?.classList.add('highlight')
-    }
-    return () => {
-      element?.classList.remove('highlight')
-    }
-  }, [selectedElement])
 
   if (elements.length === 0) return null
 
   // Declare your additional content patterns here
   const components = {
     'product-placement': ProductPlacement,
-    'stream-placement': StreamPlacement,
     promotion: Promotion,
     'teaser-hero': TeaserHero,
     'teaser-grid': TeaserGrid,
     'teaser-single': TeaserSingle,
+    'teaser-enhanced': TeaserEnhanced,
     'teaser-products': TeaserProducts,
+    'teaser-simple': TeaserSimple,
     'multi-column-text': MultiColumnText,
     'duo-teaser': TeaserDuo,
     'video-teaser': TeaserVideo,
     'discovery-image': DiscoveryImage,
-    'contact-form': ContactForm,
+    'logo-bar': LogoBar,
+    divider: Divider,
   }
+
   return (
     <>
       {elements.map((entry, index) => {
@@ -57,12 +46,12 @@ export default function ContentElements(props) {
 
         if (!Component) return null
 
-        return (
-          <ErrorBoundary key={index}>
-            <div id={entry.id}>
-              <Component {...entry.properties.content} name={entry.component} />
-            </div>
-          </ErrorBoundary>
+        return entry.component === 'divider' ? (
+          <Component {...entry.properties.content} />
+        ) : (
+          <div className="content-element" key={index}>
+            <Component {...entry.properties.content} name={entry.component} />
+          </div>
         )
       })}
     </>

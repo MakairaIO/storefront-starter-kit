@@ -1,0 +1,46 @@
+$breakpoint-large = 1200px
+$breakpoint-medium = 992px
+$breakpoint-small = 640px
+
+.blog-detail
+  max-width 1200px
+  margin 0 auto
+  padding 24px 80px 32px
+
+  @media (max-width $breakpoint-medium)
+    padding 48px 40px
+
+  @media (max-width $breakpoint-small)
+    gap 60px
+
+.blog-detail__image
+  display block
+  width 100%
+  margin 0 auto 15px
+  text-align center
+
+  @media (max-width $breakpoint-medium)
+     width 100%
+
+  img
+    width 100%
+    max-height 45rem
+    object-fit contain
+
+.blog-detail__heading
+  display flex
+  flex-direction column
+  align-items center
+  text-align center
+  margin auto
+  color white
+
+.blog-detail__title
+  padding 5px 10px
+  font-size 28px
+  margin-bottom 15px
+
+.blog-detail__date
+  font-style italic
+  color var(--neutral-60)
+  font-size 18px

@@ -1,0 +1,79 @@
+$breakpoint_medium = 768px
+$breakpoint_large = 990px
+$breakpoint-huge = 1500px
+
+.heading
+  font-weight var(--font-weight-bold)
+  display block
+
+  &.level_0
+    foxtrot()
+    margin-bottom var(--spacer-m)
+
+    @media (min-width $breakpoint_medium)
+      line-height 1
+      margin-bottom var(--spacer-l)
+
+  &.level_1
+    foxtrot()
+
+    @media (min-width $breakpoint_medium)
+      hotel()
+
+    @media (min-width $breakpoint_large)
+      india()
+
+  &.level_2
+    echo()
+
+    @media (min-width $breakpoint_medium)
+      foxtrot()
+
+    @media (min-width $breakpoint_large)
+      golf()
+
+  &.level_3
+    delta()
+
+    @media (min-width $breakpoint_medium)
+      delta()
+
+    @media (min-width $breakpoint_large)
+      echo()
+
+  &.level_4
+    delta()
+
+    @media (min-width $breakpoint_medium)
+      delta()
+
+    @media (min-width $breakpoint_large)
+      delta()
+
+  &.level_5
+    charlie()
+
+    @media (min-width $breakpoint_medium)
+      charlie()
+
+    @media (min-width $breakpoint_large)
+      charlie()
+
+  &.level_6
+    charlie()
+
+    @media (min-width $breakpoint_medium)
+      charlie()
+
+    @media (min-width $breakpoint_large)
+      delta()
+
+  &.byline
+    font-weight var(--font-weight-regular)
+    delta()
+
+    @media (min-width $breakpoint_medium)
+      echo()
+
+    @media (min-width $breakpoint_large)
+      echo()

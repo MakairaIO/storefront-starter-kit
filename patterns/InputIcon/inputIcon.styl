@@ -1,0 +1,49 @@
+$breakpoint-small = 320px
+$breakpoint-medium = 768px
+$breakpoint-large = 1366px
+
+.input-icon
+  display flex
+  background-color var(--white)
+  height 4rem
+  border-radius 2rem
+  border 1px solid var(--white)
+  padding-left 16px
+
+  label
+    display flex
+    align-items center
+    justify-content space-between
+    width 100%
+
+  input
+    background none
+    border none
+    charlie()
+    font-weight var(--font-weight-medium)
+    width calc(100% - 16px)
+    color var(--black)
+
+    &:focus
+      outline none
+
+    &::placeholder
+      color #CBD4D6
+
+  .button--icon-only
+    padding 0
+    border-radius 0
+
+  .icon
+    width 46px
+    height 40px
+    background-color var(--primary)
+    border-top-right-radius 20px
+    border-bottom-right-radius 20px
+    display flex
+    align-items center
+    margin-right -1px
+
+    svg
+      height 22px
+      fill #ffffff

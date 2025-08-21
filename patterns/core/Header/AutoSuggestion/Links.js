@@ -1,16 +1,33 @@
+import { useTranslation } from '../../../../utils'
 import LinkComponent from './LinkComponent'
 
 function Links(props) {
-  const { isVisible = false, ...otherResults } = props
+  const { category = {}, links = {}, manufacturer = {} } = props
+  const { t } = useTranslation()
 
-  if (!isVisible) return null
+  const linksLabel =
+    links.count > 1 ? t('FILTER_LABEL_LINKS') : t('FILTER_LABEL_LINK')
+  const categoryLabel =
+    links.count > 1 ? t('FILTER_LABEL_CATEGORIES') : t('FILTER_LABEL_CATEGORY')
+  const manufacturerLabel =
+    links.count > 1
+      ? t('FILTER_LABEL_MANUFACTURERS')
+      : t('FILTER_LABEL_MANUFACTURER')
 
   return (
-    <section className="autosuggest-box__links">
-      {Object.entries(otherResults).map(([type, data]) => (
-        <LinkComponent key={type} type={type} {...data} />
-      ))}
-    </section>
+    <>
+      <LinkComponent
+        {...category}
+        label={categoryLabel}
+        titleProp="category_title"
+      />
+      <LinkComponent {...links} label={linksLabel} titleProp="title" />
+      <LinkComponent
+        {...manufacturer}
+        label={manufacturerLabel}
+        titleProp="manufacturer_title"
+      />
+    </>
   )
 }
 

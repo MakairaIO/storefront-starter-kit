@@ -1,0 +1,54 @@
+$breakpoint-small = 320px
+$breakpoint-medium = 768px
+$breakpoint-large = 1366px
+$imageRatio = (651 / 977)
+
+.simple-opener
+  &__theme--white
+    background-color var(--white)
+    color var(--black)
+
+    .heading
+      color var(--primary)
+
+  &__theme--primary
+    background var(--radial-gradient)
+    color var(--white)
+
+    .heading
+      color var(--white)
+
+  &__heading
+    color var(--white)
+    font-weight 900
+    margin-bottom var(--spacer-m)
+    golf()
+
+    @media (min-width $breakpoint_medium)
+      margin-bottom var(--spacer-l)
+      hotel()
+
+    @media (min-width $breakpoint_large)
+      margin-bottom var(--spacer-xl)
+      india()
+
+  &__image
+    display flex
+    justify-content center
+    align-items center
+    width 100%
+    height calc(100% * $imageRatio)
+
+    // @media (min-width $breakpoint-medium)
+    // margin-bottom var(--spacer-xxxl)
+    @media (min-width $breakpoint-large)
+      margin-bottom var(--spacer-xxxxl)
+
+    img
+      width auto
+      height auto
+      max-width 100%
+      max-height 100%
+
+  &__reduced-top-space
+    padding-top 0

@@ -1,0 +1,191 @@
+$breakpoint-large = 1366px
+$breakpoint-medium = 768px
+$breakpoint-small = 320px
+
+.content-element--special-footer, .content-element--full-footer
+  width auto
+  margin-bottom 0
+
+.footer
+  display flex
+  flex-direction column
+  text-align center
+  color var(--white)
+  width 100%
+
+  &__column-left
+    display flex
+    flex-direction column
+    align-items center
+
+    @media (min-width $breakpoint-medium)
+      flex-direction row
+
+    @media (min-width $breakpoint-large)
+      .footer__social
+        display none
+
+  &__row
+    display flex
+    align-items center
+    flex-direction column
+
+    @media (min-width $breakpoint-medium)
+      // flex-direction row
+      // text-align center
+      padding-bottom 16px
+      border-bottom 1px solid rgba(255, 255, 255, 0.2)
+
+      .heading
+        margin-top 32px
+        echo()
+
+    @media (min-width $breakpoint-large)
+      width 1200px
+      margin-left auto
+      margin-right auto
+
+  &__sub
+    text-align center
+
+    @media (min-width $breakpoint-large)
+      display flex
+      flex-direction column
+      text-align center
+
+  .input-icon
+    width 260px
+    margin 16px auto 0
+
+    @media (min-width $breakpoint-medium)
+      margin 16px auto 0
+
+    @media (min-width $breakpoint-large)
+      margin-top 32px
+      width 50%
+
+  &__logo__wrapper
+    width 210px
+
+  &__logo
+    margin-bottom var(--spacer-l)
+
+  &__newslettertext
+    opacity 0.8
+    margin-top var(--spacer-s)
+    font-size 13px
+    line-height 1.25
+
+    a
+      color var(--white)
+      font-weight 700
+      text-decoration underline
+
+      &:hover
+        color lighten(#48c8fe, 20%)
+
+    @media (min-width $breakpoint-medium)
+      max-width 60%
+      margin-left auto
+      margin-right auto
+      margin-bottom var(--spacer-xs)
+
+  &__heading
+    text-align left
+    text-transform uppercase
+    margin-top var(--spacer-l)
+    color var(--white)
+
+  &__heading__sub
+    text-align left
+    text-transform none
+    margin-top var(--spacer-m)
+    color var(--sunny)
+    font-weight var(--font-weight-regular)
+
+  &__address
+    text-align left
+
+    & > p
+      margin-bottom var(--spacer-xxs)
+
+  &__links
+    &__row
+      width 100%
+      display flex
+
+      @media (min-width $breakpoint-medium)
+        flex-direction column
+
+        &__col
+          width 100%
+
+    &__col
+      width 100%
+
+  &__tag-list
+    text-align left
+
+    .footer__social
+      display none
+
+    @media (min-width $breakpoint-large)
+      .footer__social
+        display block
+
+  &__tags
+    margin-top 4px
+    text-align left
+    list-style none
+
+    li
+      display inline-block
+      margin-top 8px
+      text-align left
+      height 32px
+      border-radius 16px
+      padding var(--spacer-xxxs) var(--spacer-xxs)
+      background-color rgba(255, 255, 255, 0.15)
+      margin-right var(--spacer-xxs)
+
+  &__icons
+    text-align left
+
+  &__social-icon
+    width 32px
+    height 32px
+    margin-top 12px
+    margin-right 16px
+    color var(--white)
+
+.footer__services__row
+  .footer__column-left
+    @media (min-width $breakpoint-medium)
+      width 100%
+      display flex
+      align-items center
+      justify-content center
+
+  .footer__links-wrapper
+    display flex
+    width 100%
+    justify-content space-around
+
+    @media (min-width $breakpoint-medium)
+      margin-top var(--spacer-xs)
+      margin-left auto
+      margin-right auto
+      max-width 600px
+
+@media (min-width $breakpoint-large)
+  .footer__services__row
+    display flex
+    width 1200px
+    margin-left auto
+    margin-right auto
+
+    & > div
+      width 50%
+
+    .footer__column-left > div
+      width 50%

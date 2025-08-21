@@ -4,12 +4,12 @@ import { Heading, Copytext } from '../..'
 function MultiColumnText(props) {
   const {
     heading = '',
-    headingAlign = 'left',
     columnLeft = '',
     columnMiddle = '',
     columnRight = '',
     backgroundColor = '',
     textColor = 'dark',
+    anchorId = '',
   } = props
 
   const sectionClasses = classNames('multi-column-text__section', {
@@ -26,12 +26,10 @@ function MultiColumnText(props) {
     ['multi-column-text--3-column']: columnMiddle != '' && columnRight != '',
   })
 
-  const headingClass = `heading-${headingAlign}`
-
   return (
-    <section className={sectionClasses}>
+    <section id={anchorId} className={sectionClasses}>
       <div className={wrapperClasses}>
-        {heading && <Heading className={headingClass}>{heading}</Heading>}
+        {heading && <Heading>{heading}</Heading>}
 
         <Copytext
           dangerouslySetInnerHTML={{ __html: columnLeft }}

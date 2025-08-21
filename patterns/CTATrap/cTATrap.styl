@@ -1,0 +1,173 @@
+$breakpoint_medium = 768px
+$breakpoint_large = 1366px
+$breakpoint-huge = 1800px
+
+.ctatrap
+  display block
+
+  .ctaopener
+    padding 0
+    background none
+    color var(--white)
+
+    @media (min-width $breakpoint-medium)
+      padding 0 !important
+
+    .byline
+      margin-bottom 0
+
+    .button
+      margin-top var(--spacer-m)
+
+      @media (min-width $breakpoint-medium)
+        margin-top var(--spacer-l)
+
+      @media (min-width $breakpoint-large)
+        margin-top var(--spacer-xl)
+
+    &__email
+      margin-top var(--spacer-m)
+
+      @media (min-width $breakpoint-medium)
+        margin-top var(--spacer-l)
+
+      @media (min-width $breakpoint-large)
+        margin-top var(--spacer-xl)
+
+      .button
+        margin-top 0
+
+      input
+        color var(--gray)
+
+    &__wrapper
+      @media (min-width $breakpoint_medium)
+        max-width 500px
+        margin-left auto
+        margin-right auto
+
+        .copytext
+          @media (min-width $breakpoint-medium)
+            max-width 100%
+
+          @media (min-width $breakpoint-large)
+            max-width 900px
+
+      @media (min-width $breakpoint_large)
+        max-width 880px
+
+      @media (min-width $breakpoint-huge)
+        max-width 990px
+
+      .microtext
+        margin-top var(--spacer-m)
+
+        p
+          margin-bottom 0
+
+          @media (min-width $breakpoint-large)
+            max-width 80%
+            margin-left auto
+            margin-right auto
+
+        @media (min-width $breakpoint_medium)
+          margin-top var(--spacer-m)
+
+    &__email
+      @media (min-width $breakpoint_medium)
+        .input-icon
+          width 370px
+          max-width 370px
+
+    &__image
+      width 100%
+      margin var(--spacer-m) auto
+
+      @media (min-width $breakpoint_medium)
+        margin var(--spacer-l) auto
+        max-width 37rem
+
+      &--left
+        text-align left
+
+      &--right
+        text-align right
+
+      &--center
+        text-align center
+
+  &__theme--white
+    background var(--white)
+    color var(--black)
+
+    .heading
+      color var(--primary)
+
+    .byline
+      color var(--gray) !important
+
+    .microtext
+      p
+        color var(--gray) !important
+
+    .button
+      color var(--primary)
+
+      &:hover
+        color var(--white)
+        background-color var(--primary)
+
+  &__theme--primary
+    background var(--radial-gradient)
+    color var(--white)
+
+    .heading
+      color var(--white)
+
+    .button
+      &:hover
+        color var(--white)
+        border-color var(--white)
+
+  &__reduce-top-space
+    padding-top 0
+
+  &__reduce-max-width
+    @media (min-width $breakpoint-huge)
+      max-width var(--max-width)
+      margin-left auto
+      margin-right auto
+
+  &__alignment--left
+    .ctaopener__wrapper
+      text-align left
+
+      .heading
+        text-align left
+
+      .copytext:not(:last-child)
+        text-align left
+
+  &__alignment--right
+    .ctaopener__wrapper
+      text-align right
+
+      .heading
+        text-align right
+
+      .copytext
+        margin-left auto
+
+      .copytext:not(:last-child)
+        text-align right
+
+  &__alignment--center
+    .ctaopener__wrapper
+      text-align left
+
+      @media (min-width $breakpoint-medium)
+        text-align center
+
+      .copytext
+        margin-left auto
+        margin-right auto

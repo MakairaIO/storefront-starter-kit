@@ -2,7 +2,7 @@ const default_props = {
   ean: '4260040558015',
   datatype: 'makaira-productgroup',
   price: 289,
-  picture_url_main: 'assets/images/productDetailInformation/example.jpg',
+  picture_url_main: '/assets/images/productDetailInformation/example.jpg',
   id: '106060',
   title: 'SONY KD-55XG8577 LED TV (4K UHD)',
   attributeStr: [

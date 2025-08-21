@@ -1,0 +1,58 @@
+﻿$breakpoint-medium = 768px
+$breakpoint-large = 990px
+$breakpoint-huge = 1800px
+
+.hubspot-form-with-text
+  display flex
+  flex-direction column
+  align-items center
+  justify-content center
+
+  @media (min-width $breakpoint-medium)
+    flex-direction row
+
+  &--text-left
+    flex-direction column-reverse
+
+    @media (min-width $breakpoint-medium)
+      flex-direction row-reverse
+
+  &__form
+    padding 0 2rem
+    min-width 100%
+
+    @media (min-width $breakpoint-medium)
+      min-width 680px
+
+    .contact-form__container
+      width 70%
+
+    script[data-hubspot-rendered='true'] ~ img.contact-form__loading
+      display none
+
+  &__text
+    padding 0 2rem
+    margin-bottom 24px
+    charlie()
+    text-align center
+
+  &__theme--white
+    background var(--white)
+    color var(--black)
+
+  &__theme--primary
+    background var(--radial-gradient)
+    color var(--white)
+
+  &__theme--none
+    background none
+    color var(--white)
+
+  &__reduce-top-space
+    padding-top 0
+
+  &__reduce-max-width
+    @media (min-width $breakpoint-huge)
+      max-width var(--max-width)
+      margin-left auto
+      margin-right auto

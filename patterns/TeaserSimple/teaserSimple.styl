@@ -1,0 +1,272 @@
+$breakpoint_small = 500px
+$breakpoint_medium = 768px
+$breakpoint_large = 1366px
+$breakpoint_huge = 1800px
+
+.teaser-simple
+  display flex
+  flex-direction column
+
+  &__column
+    display flex
+    flex-direction column
+    justify-content flex-start
+
+    &:not(:last-child)
+      margin-bottom 48px
+
+      @media (min-width $breakpoint_medium)
+        margin-bottom 64px
+
+    &--reduce-max-width
+      @media (min-width $breakpoint_huge)
+        min-width var(--max-width)
+        max-width var(--max-width)
+        margin-left auto
+        margin-right auto
+
+  &__header
+    & > *:last-child
+      margin-bottom 20px
+
+      @media (min-width $breakpoint_medium)
+        margin-bottom 24px
+
+      @media (min-width $breakpoint_large)
+        margin-bottom 32px
+
+  &__text-container
+    display flex
+    flex-direction column
+    flex-wrap wrap
+
+    @media (min-width $breakpoint-medium)
+      flex-wrap nowrap
+      row-gap 24px
+
+    @media (min-width $breakpoint_large)
+      margin 0
+      flex-direction row
+
+  &__text-full
+    width 100%
+    margin-bottom 16px
+
+    @media (min-width $breakpoint_large)
+      margin-bottom 16px
+
+    .heading
+      charlie()
+      font-weight var(--font-weight-medium)
+
+  &__text-column
+    @media (min-width $breakpoint_small)
+      &:not(:first-child)
+        margin-top 20px
+
+    @media (min-width $breakpoint_medium)
+      justify-content space-between
+
+      &:not(:first-child)
+        margin-top 0
+
+      &:not(:last-child)
+        margin-right 24px
+
+    @media (min-width $breakpoint_large)
+      &:not(:first-child)
+        margin-top 24px
+
+    &--media
+      max-width 90%
+
+      @media (min-width $breakpoint-medium)
+        max-width 100%
+
+      @media (min-width $breakpoint-large)
+        max-width 768px
+
+    &--content
+      flex 1
+
+    &--button
+      display flex
+      justify-content center
+      margin-top var(--spacer-s)
+
+      @media (min-width $breakpoint-medium)
+        margin-top var(--spacer-m) !important
+
+      @media (min-width $breakpoint-large)
+        margin-top var(--spacer-xl) !important
+
+  &__text
+    margin-top var(--spacer-s)
+
+    @media (min-width $breakpoint-medium)
+      margin-top 0
+
+    p
+      margin-bottom 20px
+
+    h1, h2, h3, h4
+      margin-bottom 8px
+      font-weight var(--font-weight-bold)
+      delta()
+
+      @media (min-width $breakpoint_medium)
+        delta()
+
+      @media (min-width $breakpoint_large)
+        delta()
+
+    & > *:last-child
+      margin-bottom 0
+
+  &__subheading
+    margin-bottom 8px
+
+  &__header
+    margin-bottom var(--spacer-m)
+
+    .heading
+      margin-bottom 0
+
+    @media (min-width $breakpoint-medium)
+      margin-bottom var(--spacer-l)
+
+    @media (min-width $breakpoint-large)
+      margin-bottom var(--spacer-xl)
+
+  &__button
+    width fit-content
+
+    .button__text
+      width 100%
+
+  &__image
+    width 100%
+
+    @media (min-width $breakpoint_medium)
+      width 100%
+      margin 0 !important
+
+  &__text-column-container
+    @media (min-width $breakpoint-medium)
+      column-count 1
+      column-gap 24px
+
+  &__theme--white
+    background var(--white)
+    color var(--black)
+
+    .teaser-simple__byline
+      color var(--gray)
+
+    .teaser-simple__heading
+      color var(--primary)
+
+    .teaser-simple__text
+      color var(--black)
+
+      h3
+        color var(--primary)
+
+    .button--secondary
+      &:hover
+        background var(--primary)
+        border-color var(--primary)
+        color var(--white)
+
+  &__theme--primary
+    background var(--radial-gradient)
+    color var(--white)
+
+    .teaser-simple__byline
+      color var(--white)
+
+    .teaser-simple__heading
+      color var(--white)
+
+    .teaser-simple__text
+      color var(--white)
+
+      a
+        color var(--white)
+        text-decoration underline
+
+      .heading
+        color var(--white)
+
+      h3
+        color var(--white)
+
+  &__theme--none
+    background none
+    color var(--white)
+
+    .teaser-simple__byline
+      color var(--white)
+
+    .teaser-simple__heading
+      color var(--white)
+
+    .teaser-simple__text
+      color var(--white)
+
+      a
+        color var(--white)
+        text-decoration underline
+
+      .heading
+        color var(--white)
+
+      h3
+        color var(--white)
+
+  &__reduce-top-space
+    padding-top 0
+
+  &__alignment--left
+    .teaser-simple
+      &__header
+        text-align left
+
+      &__text-container
+        text-align left
+
+      &__text-column--button
+        justify-content center
+
+        @media (min-width $breakpoint-large)
+          justify-content flex-start
+
+  &__alignment--right
+    .teaser-simple
+      &__header
+        text-align right
+
+      &__text-container
+        text-align right
+
+      &__text-column--button
+        justify-content flex-end
+
+  &__alignment--center
+    .teaser-simple
+      &__header
+        text-align center
+
+      &__text-container
+        text-align center
+
+        @media (min-width $breakpoint-large)
+          max-width 880px
+          margin-left auto
+          margin-right auto
+
+        @media (min-width $breakpoint-huge)
+          max-width 1000px
+
+      &__text-column--button
+        justify-content center

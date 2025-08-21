@@ -8,11 +8,11 @@ export {
   ConfigurationProvider,
   useConfiguration,
 } from './core/ConfigurationProvider'
-export {
-  default as TranslationContext,
-  TranslationProvider,
-  useTranslation,
-} from './core/TranslationProvider'
+// export {
+//   default as TranslationContext,
+//   TranslationProvider,
+//   useTranslation,
+// } from './core/TranslationProvider'
 export {
   default as AbTestingContext,
   AbTestingProvider,
@@ -35,7 +35,7 @@ export { default as fetchPageData } from './core/fetchPageData'
 export { default as fetchSearchResult } from './core/fetchSearchResult'
 export { default as fetchSnippetData } from './core/fetchSnippetData'
 export { default as fetchRecommendationData } from './core/fetchRecommendationData'
-export { default as fetchDocumentData } from './core/fetchDocumentData'
+// export { default as fetchDocumentData } from './core/fetchDocumentData'
 export { default as fetchFromMakaira } from './core/fetchFromMakaira'
 export { default as getFullUrl } from './core/getFullUrl'
 export { default as isMailToLink } from './core/isMailToLink'
@@ -75,3 +75,12 @@ export {
 } from './core/useAddToCart'
 export { default as getStructureData } from './core/getStructureData'
 /* Add project specific utils here */
+export { default as dispatchShowInformationEvent } from './dispatchShowInformationEvent'
+export {
+  default as TranslationContext,
+  TranslationProvider,
+  useTranslation,
+} from './TranslationProvider'
+export { default as isOnPageAnchorLink } from './isOnPageAnchorLink'
+export { default as formatDate } from './formatDate'
+export { default as fetchDocumentData } from './fetchDocumentData'

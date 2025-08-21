@@ -1,26 +1,20 @@
 import { Heading, Text, Link } from '../..'
 import ProductPrices from './ProductPrices'
 import ProductActions from './ProductActions'
-import { getProductDetailUrl, useConfiguration } from '../../../utils'
 
 export default function ProductTile(props) {
-  const { title = '', images = [], manufacturer_title = '', url = '' } = props
-
-  const { getImageLink } = useConfiguration()
-
-  const productDetailUrl = getProductDetailUrl({ url })
-
-  const imageLink = getImageLink({
-    source: images[0],
-    width: 250,
-    format: 'auto',
-  })
+  const {
+    title = '',
+    picture_url_main = '',
+    manufacturer_title = '',
+    url = '',
+  } = props
 
   return (
     <article className="product-placement-item">
-      <Link href={productDetailUrl}>
+      <Link href={url}>
         <picture className="product-placement-item__image">
-          <img src={imageLink} alt={title} loading="lazy" />
+          <img data-src={picture_url_main} alt={title} />
         </picture>
 
         <Heading

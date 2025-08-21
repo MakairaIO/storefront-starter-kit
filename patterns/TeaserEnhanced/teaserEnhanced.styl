@@ -1,0 +1,242 @@
+$breakpoint_small = 320px
+$breakpoint_medium = 768px
+$breakpoint_large = 990px
+$breakpoint-huge = 1800px
+
+.teaser-enhanced
+  &__item
+    display flex
+
+    &:not(:last-child)
+      margin-bottom 40px
+
+      @media (min-width $breakpoint_medium)
+        margin-bottom 64px
+
+      @media (min-width $breakpoint_large)
+        margin-bottom 80px
+
+    .teaser-simple
+      flex 1
+      padding 0
+
+    .teaser-simple__text-column-container
+      column-count 1
+      column-gap 0
+
+    .teaser-simple__text-column-container--two-columns
+      @media (min-width $breakpoint-medium)
+        column-count 1
+        column-gap 0
+
+      @media (min-width $breakpoint_large)
+        column-count 2
+        column-gap 24px
+
+    .teaser-simple__text-column--button
+      text-align left
+
+    .teaser-simple__header
+      margin-bottom var(--spacer-m)
+
+      @media (min-width $breakpoint-medium)
+        margin-bottom var(--spacer-l)
+
+    .heading
+      margin-bottom 0
+
+    @media (min-width $breakpoint_medium)
+      .teaser-simple__text-column--content
+        width 40%
+        flex 0 0 40%
+
+        @media (min-width $breakpoint-medium)
+          width 100%
+          flex 1
+
+        @media (min-width $breakpoint-large)
+          flex 1
+
+      .teaser-simple__text-column--media
+        width calc(60% - 24px)
+        flex 0 0 calc(60% - 24px)
+
+        @media (min-width $breakpoint-medium)
+          width 100%
+          flex 1
+
+        @media (min-width $breakpoint-large)
+          flex 1
+          max-width 40%
+
+      .teaser-simple__image
+        float right
+        max-width 800px
+        min-width 768px
+        width 100%
+
+        @media (min-width $breakpoint-medium)
+          min-width 100%
+          max-width 100%
+
+      .teaser-simple__heading
+        margin-left 0
+
+      .teaser-simple__text-container
+        margin 0
+
+      .teaser-simple__button
+        margin 24px 0 0 calc(50% + 106px)
+
+      .teaser-simple__byline
+        margin-left 0 !important
+
+      .teaser-simple__text-column--content
+        width 100%
+
+        @media (min-width $breakpoint-medium)
+          margin-left 24px
+
+        @media (min-width $breakpoint-large)
+          margin-left 48px
+
+      .teaser-simple__image
+        float right
+        max-width 800px
+        min-width 768px
+        width 100%
+
+      .teaser-simple__text-container
+        flex-direction row
+
+      .teaser-simple__text-column--button
+        .teaser-simple__button
+          margin 0
+
+    &--left
+      .teaser-simple__text-container
+        margin-left 0
+
+        @media (min-width $breakpoint_medium)
+          .teaser-simple__text-column
+            margin-right 0
+
+            &:not(:last-child)
+              margin-left 0
+
+      .teaser-simple__image
+        margin-right 0
+
+        @media (min-width $breakpoint_medium)
+          float left
+
+      @media (min-width $breakpoint_large)
+        .teaser-simple__button
+          margin 24px 0 0
+
+    &--reduce-max-width
+      @media (min-width $breakpoint-huge)
+        max-width var(--max-width)
+        margin-left auto
+        margin-right auto
+
+  .teaser-simple__caption
+    margin-top var(--spacer-xxs)
+
+    @media (min-width $breakpoint_small)
+      text-align right
+      margin-right var(--spacer-s)
+
+      &--left
+        text-align left
+        margin-left var(--spacer-s)
+
+    @media (min-width $breakpoint_medium)
+      text-align right
+      margin-right 0
+      margin-left 0
+      margin-top var(--spacer-xs)
+
+      &--left
+        text-align left
+
+    &--link
+      color var(--primary)
+      margin-left 0.3rem
+
+  &__theme--white
+    background-color var(--white)
+    color var(--black)
+
+    .teaser-simple__byline
+      color var(--gray)
+
+    .teaser-simple__heading
+      color var(--primary)
+
+    .teaser-simple__text
+      color var(--black)
+
+      h3, h4
+        color var(--primary)
+
+    .button--secondary
+      &:hover
+        background var(--primary)
+        color var(--white)
+        border 1px solid var(--primary)
+
+    .teaser-simple__caption
+      color var(--gray)
+
+  &__theme--primary
+    background var(--radial-gradient)
+    color var(--white)
+
+    .teaser-simple
+      background none
+
+    .teaser-simple__byline
+      color var(--white)
+
+    .teaser-simple__heading
+      color var(--white)
+
+    .teaser-simple__text
+      color var(--white)
+
+      h3
+        color var(--white)
+
+    .teaser-simple__caption--link
+      color var(--white)
+      text-decoration underline
+
+  &__theme--none
+    background none
+    color var(--white)
+
+    .teaser-simple
+      background none
+
+    .teaser-simple__byline
+      color var(--white)
+
+    .teaser-simple__heading
+      color var(--white)
+
+    .teaser-simple__text
+      color var(--white)
+
+      p
+        color var(--white) !important
+
+      h2, h3
+        color var(--white) !important
+
+    .teaser-simple__caption--link
+      color var(--white)
+      text-decoration underline
+
+  &__reduce-top-space
+    padding-top 0

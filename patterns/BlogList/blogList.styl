@@ -1,0 +1,75 @@
+$breakpoint-large = 1200px
+$breakpoint-medium = 992px
+$breakpoint-small = 640px
+
+.blog-list
+  width calc(100% - 3rem)
+  padding 64px 80px
+  margin 0 auto
+  display grid
+  grid-template-columns repeat(3, 1fr)
+  gap 48px
+
+  @media (max-width $breakpoint-medium)
+    grid-template-columns repeat(2, 1fr)
+    padding 48px 40px
+    gap 32px
+
+  @media (max-width $breakpoint-small)
+    grid-template-columns 1fr
+    gap 60px
+
+.blog-list__content
+  display flex
+  flex-direction column
+
+.blog-list__tile
+  width 100%
+
+.blog-list__image
+  position relative
+  width 100%
+  padding-top 75%
+  overflow hidden
+  display inline-block
+  margin-bottom 15px
+
+  img
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+    object-fit cover
+
+.blog-list__title
+  overflow hidden
+  display -webkit-box
+  -webkit-line-clamp 2
+  -webkit-box-orient vertical
+  color white
+  margin-bottom 10px
+
+.blog-list__date
+  font-style italic
+  background-color var(--neutral-00)
+  display inline-block
+  text-align center
+  padding 0 4px
+  margin-left auto
+  margin-right 4px
+  margin-bottom 8px
+  color white
+
+.blog-list__description
+  overflow hidden
+  display -webkit-box
+  -webkit-line-clamp 3
+  -webkit-box-orient vertical
+  color white
+  font-size 15px
+  line-height 1.3
+
+.blog-list__load-more
+  text-align center
+  grid-column 1 / -1

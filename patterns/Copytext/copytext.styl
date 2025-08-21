@@ -1,0 +1,89 @@
+$breakpoint_medium = 768px
+$breakpoint_large = 1366px
+
+.copytext
+  a
+    font-weight bold
+    color var(--primary)
+
+    &:hover
+      text-decoration underline
+
+  strong
+    font-weight var(--font-weight-bold)
+
+  em
+    font-weight var(--font-weight-regular)
+    font-style italic
+
+  ul, ol
+    padding-left 3.6rem
+
+    li
+      padding-left 0.2rem
+
+    li + li
+      margin-top 1.2rem
+
+  ol
+    list-style-type decimal
+
+  ul
+    li
+      position relative
+
+    li:before
+      display block
+      content '\2022'
+      height 0.8rem
+      width 0.8rem
+      border 1px solid var(--white)
+      border-radius 4px
+      position absolute
+      left -1.6rem
+      top 4px
+
+  img
+    max-width 100%
+
+  blockquote
+    font-size 2.1rem
+    line-height 2.4rem
+    padding 1.2rem 0 1.2rem 2rem
+    border-left 3px solid var(--neutral-40)
+    margin-bottom 1.2rem
+
+    cite
+      display block
+      font-size 1.3rem
+      line-height 1.8rem
+      color var(--neutral-70)
+      margin-top 0.6rem
+
+  &.quote
+    delta()
+    font-weight var(--font-weight-light)
+
+    @media (min-width $breakpoint_medium)
+      delta()
+
+    @media (min-width $breakpoint_large)
+      delta()
+
+  &.microtext
+    alpha()
+
+    @media (min-width $breakpoint_medium)
+      alpha()
+
+    @media (min-width $breakpoint_large)
+      alpha()
+
+  &.caption
+    alpha()
+
+    @media (min-width $breakpoint_medium)
+      alpha()
+
+    @media (min-width $breakpoint_large)
+      bravo()

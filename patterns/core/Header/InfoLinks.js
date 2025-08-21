@@ -1,6 +1,5 @@
 import { useTranslation } from '../../../utils'
 import { Link } from '../..'
-import LanguageSwitch from './LanguageSwitch'
 
 export default function InfoLinks() {
   const { t } = useTranslation()
@@ -16,7 +15,6 @@ export default function InfoLinks() {
       <Link href={t('INFO_LINK_SHIPPING')} className="header__info-link">
         {t('INFO_TEXT_SHIPPING')}
       </Link>
-      <LanguageSwitch />
     </nav>
   )
 }

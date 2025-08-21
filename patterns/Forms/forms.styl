@@ -1,0 +1,59 @@
+$breakpoint_medium = 768px
+$breakpoint_large = 1366px
+
+.form
+  display block
+  max-width 86rem
+  padding 1.5rem
+  color var(--aubergine)
+  width calc(100% + 3rem)
+  margin 0 auto 0 -1.5rem
+
+  @media (min-width $breakpoint_medium)
+    border-radius 8px
+    max-width 52rem
+    margin 0 auto
+    padding 3.2rem
+
+  @media (min-width $breakpoint_large)
+    max-width 86rem
+
+  &__row
+    margin 1rem 0
+
+  .error
+    color var(--fire)
+
+  .form__input
+    display block
+    padding 0 1.6rem
+    border-radius 2rem
+    border 1px solid var(--fire)
+    width 100%
+    font-weight var(--font-weight-medium)
+    color var(--aubergine)
+    &:focus
+      outline none
+    &.error
+      border-color var(--fire)
+
+  input.form__input
+    height 4rem
+
+  textarea.form__input
+    padding 0.8rem 1.6rem
+
+  .form__actions
+    text-align center
+    margin-top var(--spacer-l)
+
+  &.form--teal
+    background-color var(--teal)
+    color var(--white)
+
+  &.form--sunny
+    background-color var(--sunny)
+
+  &.form--aubergine
+    background-color var(--aubergine)
+    color var(--white)

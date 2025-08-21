@@ -1,41 +1,26 @@
+import { useRef } from 'react'
 import classNames from 'classnames'
+import { useLazyLoading } from '../../../utils'
 import Tile from './Tile'
 
 function TeaserGrid(props) {
-  const {
-    tiles = {},
-    variant = 'default',
-    lazyLoadingDeactivated = false,
-  } = props
+  const { tiles = {}, variant = 'default', anchorId = '' } = props
   const { topRight, left, middle, bottomRight } = tiles
+  const sectionRef = useRef(null)
 
   const classes = classNames('teaser-grid', `teaser-grid--${variant}`)
 
+  useLazyLoading({ ref: sectionRef, dependency: tiles })
+
   return (
-    <section className={classes}>
-      <Tile
-        {...topRight}
-        className="teaser-grid__tile--top-right"
-        lazyLoadingDeactivated={lazyLoadingDeactivated}
-      />
+    <section id={anchorId} ref={sectionRef} className={classes}>
+      <Tile {...topRight} className="teaser-grid__tile--top-right" />
 
-      <Tile
-        {...left}
-        className="teaser-grid__tile--left"
-        lazyLoadingDeactivated={lazyLoadingDeactivated}
-      />
+      <Tile {...left} className="teaser-grid__tile--left" />
 
-      <Tile
-        {...bottomRight}
-        className="teaser-grid__tile--bottom-right"
-        lazyLoadingDeactivated={lazyLoadingDeactivated}
-      />
+      <Tile {...bottomRight} className="teaser-grid__tile--bottom-right" />
 
-      <Tile
-        {...middle}
-        className="teaser-grid__tile--middle"
-        lazyLoadingDeactivated={lazyLoadingDeactivated}
-      />
+      <Tile {...middle} className="teaser-grid__tile--middle" />
     </section>
   )
 }

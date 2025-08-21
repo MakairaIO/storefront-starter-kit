@@ -4,7 +4,6 @@ import ActiveFilters from './ActiveFilters'
 import MobileFilterList from './MobileFilterList'
 import { useTranslation } from '../../../../utils'
 import { Icon, Heading, Button } from '../../..'
-import orderBy from 'lodash/orderBy'
 
 export default function MobileFilter(props) {
   const { t } = useTranslation()
@@ -41,42 +40,40 @@ export default function MobileFilter(props) {
         )}
       </div>
 
-      {orderBy(Object.values(aggregations), ['position'], ['asc']).map(
-        (aggregation) => {
-          const { key: id, title, min, max } = aggregation
+      {Object.values(aggregations).map((aggregation) => {
+        const { key: id, title, min, max } = aggregation
 
-          return (
-            <div key={id} className="mobile-filter__section">
-              <button
-                type="button"
-                className="mobile-filter__button"
-                onClick={() => setVisibleFilter(id)}
-              >
-                {t(`FILTER_LABEL_${id.toUpperCase()}`, title)}
+        return (
+          <div key={id} className="mobile-filter__section">
+            <button
+              type="button"
+              className="mobile-filter__button"
+              onClick={() => setVisibleFilter(id)}
+            >
+              {t(`FILTER_LABEL_${id.toUpperCase()}`, title)}
 
-                <ActiveFilters {...aggregation} />
+              <ActiveFilters {...aggregation} />
 
-                <Icon
-                  symbol="chevron-right"
-                  className="mobile-filter__button-chevron"
-                />
-              </button>
-
-              <MobileFilterList
-                // Care: The order of properties matters here, since the aggregations
-                // have a field 'key' which could override our custom-built key below
-                // which we need for properly updating/reseting the RangeFilter
-                {...aggregation}
-                id={id}
-                key={max ? `${id}-${min}-${max}` : id}
-                isVisible={visibleFilter == id}
-                closeFilter={() => setVisibleFilter(null)}
-                submitForms={submitForms}
+              <Icon
+                symbol="chevron-right"
+                className="mobile-filter__button-chevron"
               />
-            </div>
-          )
-        }
-      )}
+            </button>
+
+            <MobileFilterList
+              // Care: The order of properties matters here, since the aggregations
+              // have a field 'key' which could override our custom-built key below
+              // which we need for properly updating/reseting the RangeFilter
+              {...aggregation}
+              id={id}
+              key={max ? `${id}-${min}-${max}` : id}
+              isVisible={visibleFilter == id}
+              closeFilter={() => setVisibleFilter(null)}
+              submitForms={submitForms}
+            />
+          </div>
+        )
+      })}
 
       <div className="mobile-filter__footer">
         <Button variant="primary" icon="check" onClick={hideMobileFilter}>

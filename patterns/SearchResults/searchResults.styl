@@ -1,0 +1,37 @@
+$breakpoint_small = 320px
+$breakpoint_medium = 768px
+$breakpoint_large = 1366px
+
+.search-results
+  display block
+  color var(--aubergine)
+  margin-bottom  var(--spacer-xxl)
+  margin-left auto
+  margin-right auto
+  width calc(100% - 30px)
+
+  @media (min-width $breakpoint_medium)
+    width 83.33%
+    margin-bottom var(--spacer-xxxxl)
+    
+  @media (min-width $breakpoint_large)
+    margin-bottom var(--spacer-xxxxxl)
+    width 66.67%
+    max-width 800px
+
+  &__page
+    border-bottom 1px solid #CBD4D6
+    padding-bottom var(--spacer-xxs)
+    margin-bottom var(--spacer-xxs)
+
+  .heading.level_2
+    margin-bottom var(--spacer-xxs)
+
+    @media (min-width $breakpoint_medium)
+      margin-bottom var(--spacer-xs)
+
+    @media (min-width $breakpoint_large)
+      margin-bottom var(--spacer-m)
+  
+  .heading.level_4
+    margin-bottom var(--spacer-xxs)

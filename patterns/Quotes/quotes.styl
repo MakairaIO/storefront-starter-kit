@@ -1,0 +1,161 @@
+$breakpoint_medium = 768px
+$breakpoint_large = 1366px
+$breakpoint_huge = 1800px
+
+.quotes
+  display block
+  color var(--white)
+
+  &__theme--white
+    background-color var(--white)
+    color var(--black)
+
+  &__theme--primary, &__theme--none
+    color var(--white)
+
+    .quote
+      color var(--white)
+
+  &__theme--primary
+    background var(--radial-gradient)
+
+  &__theme--none
+    background none
+
+  &__reduce-top-space
+    margin-top 0
+
+  &__reduce-max-width
+    @media (min-width $breakpoint_huge)
+      max-width var(--max-width)
+      margin-left auto
+      margin-right auto
+
+  &__alignment--left
+    .quote--left
+      margin-left 0
+
+  &__alignment--right
+    .quote--left
+      margin-right 0
+
+  &__alignment--center
+    .quote--left
+      margin-left auto
+      margin-right auto
+
+.quote
+  display block
+  color var(--black)
+
+  @media (min-width $breakpoint-large)
+    max-width 880px
+
+  &__multiple-quotes
+    margin-bottom 48px
+
+    &:last-child
+      margin-bottom 0
+
+  &__text
+    padding-top 8px
+    padding-bottom 16px
+    margin-bottom 12px
+    border-bottom 1px solid #CBD4D6
+    position relative
+
+    &:after
+      content ''
+      position absolute
+      bottom -4px
+      left 35px
+      display inline-block
+      width 5px
+      height 5px
+      background-color var(--white)
+      border solid #CBD4D6
+      border-width 0 1px 1px 0
+      transform rotate(45deg)
+      -webkit-transform rotate(45deg)
+
+    @media (min-width $breakpoint_medium)
+      text-align left
+      margin-left auto
+      margin-right auto
+      padding-top 0
+      padding-bottom 16px
+      margin-bottom 20px
+
+      &:after
+        left 132px
+
+  &__user
+    display flex
+    align-items center
+
+    @media (min-width $breakpoint_medium)
+      width fit-content
+      margin 0 auto
+
+    .avatar
+      margin-right 12px
+      width 80px
+      flex 0 0 80px
+
+  @media (min-width $breakpoint-large)
+    display flex
+    width 83.33%
+    margin-left auto
+    margin-right auto
+    align-items center
+
+    &__text
+      border-bottom 0
+      border-right 1px solid #CBD4D6
+      margin 0
+      padding-right 20px
+      padding-bottom 0
+      max-width 50%
+
+      &:after
+        transform rotate(-45deg)
+        -webkit-transform rotate(-45deg)
+        left unset
+        bottom unset
+        right -4px
+        top 48px
+
+    &__user
+      margin-left 20px
+      width fit-content
+      max-width 50%
+      flex 1
+
+    &--right
+      flex-direction row-reverse
+
+      .quote__text
+        border-bottom 0
+        border-right 0
+        padding-right 0
+        border-left 1px solid #CBD4D6
+        padding-left 20px
+
+        &:after
+          transform rotate(135deg)
+          -webkit-transform rotate(135deg)
+          left -4px
+          bottom unset
+          right unset
+          top 48px
+
+      .quote__user
+        flex-direction row-reverse
+        margin 12px 20px 0 0
+
+        .avatar
+          margin-right 0
+          margin-left 12px
+
+        .user-info
+          text-align right

@@ -17,13 +17,8 @@ import {
   redirect,
   redirectToDetailPageOnSingleHit,
   redirectOnSearchRedirectHit,
-  GTM,
 } from '../../utils'
 import ErrorPage from '../_error'
-import { ShopProvider } from '@makaira/storefront-react'
-import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
-
-const shopClient = new StorefrontShopAdapterLocal()
 
 export default class Index extends Component {
   static async getInitialProps(ctx) {
@@ -57,44 +52,6 @@ export default class Index extends Component {
     }
   }
 
-  componentDidMount() {
-    const language = this.props.searchResult?.language
-
-    if (language) {
-      GTM.trackEvent({
-        event: 'init',
-        country: language,
-        language: language,
-      })
-
-      this.trackSearchEvent()
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    // Check for Error Page
-    if (Object.entries(this.props).length === 0) return
-
-    // We only want to track a page view if the search phrase was actually changed
-    const shouldTrackSearch =
-      prevProps.params?.searchPhrase !== this.props.params?.searchPhrase
-
-    if (shouldTrackSearch) {
-      this.trackSearchEvent()
-    }
-  }
-
-  trackSearchEvent = () => {
-    const search_term = this.props.params?.searchPhrase ?? ''
-    const search_result_count = this.props.searchResult?.product?.count ?? 0
-
-    GTM.trackEvent({
-      event: 'search',
-      search_term,
-      search_result_count,
-    })
-  }
-
   render() {
     if (Object.entries(this.props).length === 0) {
       return <ErrorPage statusCode={500} />
@@ -104,25 +61,23 @@ export default class Index extends Component {
     const { language } = searchResult
 
     return (
-      <ShopProvider client={shopClient}>
-        <GlobalDataProvider {...this.props}>
-          <ConfigurationProvider
-            assetUrl={process.env.NEXT_PUBLIC_MAKAIRA_ASSET_URL}
-          >
-            <TranslationProvider language={language}>
-              <AbTestingProvider>
-                <BaseLayout>
-                  <HeaderWithProps />
+      <GlobalDataProvider {...this.props}>
+        <ConfigurationProvider
+          assetUrl={process.env.NEXT_PUBLIC_MAKAIRA_ASSET_URL}
+        >
+          <TranslationProvider language={language}>
+            <AbTestingProvider>
+              <BaseLayout>
+                <HeaderWithProps />
 
-                  <SearchResultPage />
+                <SearchResultPage />
 
-                  <FooterWithProps />
-                </BaseLayout>
-              </AbTestingProvider>
-            </TranslationProvider>
-          </ConfigurationProvider>
-        </GlobalDataProvider>
-      </ShopProvider>
+                <FooterWithProps />
+              </BaseLayout>
+            </AbTestingProvider>
+          </TranslationProvider>
+        </ConfigurationProvider>
+      </GlobalDataProvider>
     )
   }
 }

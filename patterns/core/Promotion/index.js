@@ -7,13 +7,13 @@ function Promotion(props) {
     heading = {},
     content = {},
     variant = 'default',
-    // invert = false,
+    anchorId = '',
   } = props
 
   const classes = classNames('promotion', `promotion--${variant}`)
 
   return (
-    <section className={classes}>
+    <section id={anchorId} className={classes}>
       <div className="promotion__container">
         <Title {...heading} />
 

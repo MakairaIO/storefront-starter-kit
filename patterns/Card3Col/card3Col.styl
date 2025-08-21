@@ -1,0 +1,138 @@
+// @, &--first-tile-smaller
+// @media screen and (min-width $breakpoint-medium)
+// grid-template-columns 33.33333% auto
+
+// &--last-tile-smaller
+// @media screen and (min-width $breakpoint-medium)
+// grid-template-columns auto 33.33333%
+
+// @, &--first-tiles-$breakpoint-smaller
+// @media screen and (min-width $breakpoint-small)
+// grid-template-columns 1fr 1fr
+
+// > :last-child
+// grid-column span 2
+
+// @media screen and (min-width $breakpoint-large)
+// grid-template-columns 1fr 1fr 2fr
+
+// > :last-child
+// grid-column auto
+$breakpoint-smaller = 500px
+$breakpoint-medium = 768px
+// @media screen and (min-width $breakpoint-small)
+$breakpoint-large = 990px
+$breakpoint_huge = 1800px
+
+.card-3-col
+  display grid
+  gap 24px
+
+  &__wrapper
+    display grid
+    gap 24px
+    grid-auto-rows 1fr
+    grid-template-columns 1fr
+    width 100%
+
+    @media (min-width $breakpoint-medium)
+      grid-template-columns 1fr 1fr
+
+    @media (min-width $breakpoint-large)
+      grid-template-columns 1fr 1fr 1fr
+
+  .card
+    height 100%
+
+    &__item
+      height 100%
+      display flex
+      flex-direction column
+      justify-content space-between
+      text-align center
+      border-radius 12px
+
+      @media (min-width $breakpoint-large)
+        max-width 400px
+
+      @media (min-width $breakpoint_huge)
+        max-width 500px
+
+      .icon
+        width 32px
+        height 32px
+
+        @media (min-width $breakpoint-medium)
+          width 48px
+          height 48px
+
+        @media (min-width $breakpoint-large)
+          width 40px
+          height 40px
+
+      .heading
+        margin 16px 0
+
+        @media (min-width $breakpoint-medium)
+          margin-top 24px
+
+      .copytext
+        max-width 100%
+
+        iframe
+          max-width 100%
+
+      .button
+        charlie()
+
+  &__image
+    background-size contain
+    background-position 50% 50%
+    width 100%
+    min-height 250px
+    max-height 250px
+    margin-bottom 24px
+    border-radius 4px
+
+  // grid-column auto
+  &__theme--primary
+    background var(--radial-gradient)
+    color var(--white)
+
+    & .button
+      color var(--primary)
+
+    .card__item
+      background-color var(--white)
+      color var(--black)
+
+  &__theme--white
+    background-color var(--white)
+    color var(--black)
+
+    .card__item
+      background-color var(--dark-primary)
+      color var(--white)
+
+    & .button
+      color var(--white)
+
+  &__theme--none
+    background-color none
+    color var(--white)
+
+    .card__item
+      background-color var(--white)
+      color var(--black)
+
+    & .button
+      color var(--primary)
+
+  &__reduce-top-space
+    padding-top 0
+
+  &__reduce-max-width
+    @media (min-width $breakpoint_huge)
+      max-width var(--max-width)
+      margin-left auto
+      margin-right auto

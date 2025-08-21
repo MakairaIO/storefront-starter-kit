@@ -5,9 +5,8 @@ const products = [
     datatype: 'makaira-productgroup',
     price: 19.95,
     manufacturerid: 'a92c2fafa451c079cea1a3ba7d8e85f6',
-    images: [
+    picture_url_main:
       'https://www.ludwig-von-kapff.de/media/catalog/product/6/6/661002-stolichnaya-1liter.png',
-    ],
     title: 'Stolichnaya Vodka 40% vol - 1 L',
     url: '/stolichnaya-40-1-0-l-661002.html',
     longdesc:
@@ -19,9 +18,8 @@ const products = [
     datatype: 'makaira-productgroup',
     price: 22.95,
     manufacturerid: '547d98be1247fe489a9222f2b6d731a9',
-    images: [
+    picture_url_main:
       'https://www.ludwig-von-kapff.de/media/catalog/product/4/6/460212-boodles-london-dry-gin.png',
-    ],
     title: 'Boodles Gin London Dry Gin - 40% vol',
     url: '/boodles-london-dry-gin-40-0-7l-460212.html',
     longdesc:
@@ -33,9 +31,8 @@ const products = [
     datatype: 'makaira-productgroup',
     price: 49.95,
     manufacturerid: 'a92c2fafa451c079cea1a3ba7d8e85f6',
-    images: [
+    picture_url_main:
       'https://www.ludwig-von-kapff.de/media/catalog/product/8/6/860879-stolichnaya-elit_1.png',
-    ],
     title: 'Stolichnaya Elit Vodka 40% vol',
     url: '/stolichnaya-elit-40-0-7-l-860879.html',
     longdesc:
@@ -47,9 +44,8 @@ const products = [
     datatype: 'makaira-productgroup',
     price: 39.95,
     manufacturerid: '1758b7e2997684eb1f30651267a8d2b8',
-    images: [
+    picture_url_main:
       'https://www.ludwig-von-kapff.de/media/catalog/product/6/6/660401-gin-mare.png',
-    ],
     title: 'Gin Mare 42,7% vol',
     url: '/gin-mare-660401.html',
     longdesc:
@@ -61,9 +57,8 @@ const products = [
     datatype: 'makaira-productgroup',
     price: 14.95,
     manufacturerid: 'a92c2fafa451c079cea1a3ba7d8e85f6',
-    images: [
+    picture_url_main:
       'https://www.ludwig-von-kapff.de/media/catalog/product/6/6/661008-stoli-hot.png',
-    ],
     title: 'Stoli Hot Vodka 37,5% vol',
     url: '/stoli-hot-37-5-0-7-l-3-ktn-661008.html',
     longdesc:
@@ -75,9 +70,8 @@ const products = [
     datatype: 'makaira-productgroup',
     price: 34.95,
     manufacturerid: '609259e4ae39549818acbc025fe13e10',
-    images: [
+    picture_url_main:
       'https://www.ludwig-von-kapff.de/media/catalog/product/1/7/178012-soil-u-soul-trenz-gin.png',
-    ],
     title: 'Soil & Soul Gin Handcrafted Riesling Gin - 44% vol - 0,5 L',
     url: '/trenz-soil-soul-handcrafted-gin-178012.html',
     longdesc:

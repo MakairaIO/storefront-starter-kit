@@ -2,10 +2,9 @@ import { Component } from 'react'
 import {
   FooterWithProps,
   LandingPage,
+  BlogPage,
   ListingPage,
   DetailPage,
-  BundlePage,
-  HeaderWithProps,
 } from '../../frontend'
 import { BaseLayout } from '../../patterns'
 import {
@@ -16,12 +15,10 @@ import {
   fetchMenuData,
 } from '../../utils'
 import Head from 'next/head'
-import { ShopProvider } from '@makaira/storefront-react'
-import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
 
 const pageComponents = {
   page: LandingPage,
-  bundle: BundlePage,
+  blog: BlogPage,
   category: ListingPage,
   manufacturer: ListingPage,
   'makaira-productgroup': DetailPage,
@@ -38,8 +35,6 @@ function NoIndexMeta() {
   )
 }
 
-const shopClient = new StorefrontShopAdapterLocal()
-
 /**
  * Preview-Page that is only used for the makaira backend content editor preview.
  * Won't request makaira API before page load and instead listen for preview
@@ -54,7 +49,6 @@ export default class Index extends Component {
         type: 'loading',
       },
       isPreview: true,
-      selectedElement: '',
     }
   }
 
@@ -88,10 +82,10 @@ export default class Index extends Component {
   updateStateForPreview = (event) => {
     const { source, payload, action } = event.data
 
-    // // Check if we get the data from makaira backend or from localhost
+    // Check if we get the data from makaira backend or from localhost
     if (event.origin !== process.env.NEXT_PUBLIC_MAKAIRA_API_URL) return
 
-    // // Check if it is also send by the makaira backend
+    // Check if it is also send by the makaira backend
     if (source !== 'makaira-bridge') return
 
     // The makaira backend wants to know which version of the page editor preview
@@ -105,16 +99,9 @@ export default class Index extends Component {
         },
         event.origin
       )
-      return
       // Update the GlobalDataProvider when we receive new page data from the makaira backend.
-    }
-    if (action === 'update') {
+    } else if (action === 'update') {
       this.setState({ pageData: payload.data, isPreview: true })
-      return
-    }
-
-    if (action === 'selected-element') {
-      this.setState({ selectedElement: payload })
     }
   }
 
@@ -131,30 +118,27 @@ export default class Index extends Component {
     // We expect in the structure of the store, that params is already an object,
     // so we need to provide it here to the GlobalDataProvider.
     return (
-      <ShopProvider client={shopClient}>
-        <GlobalDataProvider
-          {...this.state}
-          params={{}}
-          menuData={this.props.menuData}
+      <GlobalDataProvider
+        {...this.state}
+        params={{}}
+        menuData={this.props.menuData}
+      >
+        <ConfigurationProvider
+          assetUrl={process.env.NEXT_PUBLIC_MAKAIRA_ASSET_URL}
         >
-          <ConfigurationProvider
-            assetUrl={process.env.NEXT_PUBLIC_MAKAIRA_ASSET_URL}
-          >
-            <TranslationProvider language={language}>
-              <AbTestingProvider>
-                <BaseLayout>
-                  <NoIndexMeta />
-                  <HeaderWithProps />
+          <TranslationProvider language={language}>
+            <AbTestingProvider>
+              <BaseLayout>
+                <NoIndexMeta />
 
-                  <PageComponent />
+                <PageComponent />
 
-                  <FooterWithProps />
-                </BaseLayout>
-              </AbTestingProvider>
-            </TranslationProvider>
-          </ConfigurationProvider>
-        </GlobalDataProvider>
-      </ShopProvider>
+                <FooterWithProps />
+              </BaseLayout>
+            </AbTestingProvider>
+          </TranslationProvider>
+        </ConfigurationProvider>
+      </GlobalDataProvider>
     )
   }
 }

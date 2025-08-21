@@ -5,17 +5,17 @@ import Title from './title'
 import Overlay from './overlay'
 class TeaserDuo extends Component {
   render() {
-    const { leftTile = {}, rightTile = {} } = this.props
+    const { leftTile = {}, rightTile = {}, anchorId = '' } = this.props
 
     return (
-      <section className="duo-teaser-box">
+      <section id={anchorId} className="duo-teaser-box">
         <div className="duo-teaser">
           <ConditionalLink
             href={leftTile.link}
             className="duo-teaser__container"
           >
             <div className="duo-teaser__image-wrapper">
-              <Image {...leftTile.image} alt={leftTile.image.alt} />
+              <Image {...leftTile.image} />
               <Title {...leftTile} />
             </div>
             <Overlay
@@ -31,7 +31,7 @@ class TeaserDuo extends Component {
             className="duo-teaser__container"
           >
             <div className="duo-teaser__image-wrapper">
-              <Image {...rightTile.image} alt={rightTile.image.alt} />
+              <Image {...rightTile.image} />
               <Title {...rightTile} />
             </div>
             <Overlay

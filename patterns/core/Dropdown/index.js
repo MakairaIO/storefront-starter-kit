@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Component } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
@@ -82,8 +83,7 @@ class Dropdown extends Component {
 
           <span>{selectedOption.label}</span>
         </Button>
-
-        <ul aria-labelledby={id} className={listboxClasses}>
+        <ul role="listbox" aria-labelledby={id} className={listboxClasses}>
           {options.map((option, index) => {
             const { label, value } = option
 
@@ -93,7 +93,6 @@ class Dropdown extends Component {
 
             return (
               <li
-                aria-hidden="true"
                 key={option.value}
                 className={optionClasses}
                 onClick={() => this.handleChange({ index, value })}
@@ -113,11 +112,11 @@ class Dropdown extends Component {
 Dropdown.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  value: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
-      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      value: PropTypes.value,
     })
   ),
   anchor: PropTypes.oneOf(['left', 'right']),

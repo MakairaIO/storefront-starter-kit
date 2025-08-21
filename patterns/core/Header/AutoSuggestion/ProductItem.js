@@ -1,52 +1,28 @@
-import { Button, Link, Text } from '../../..'
-import { getProductDetailUrl, useConfiguration } from '../../../../utils'
+import { Link, Text } from '../../..'
+import { useRef } from 'react'
+import { useLazyLoading } from '../../../../utils'
 
 function ProductItem(props) {
-  const { getImageLink } = useConfiguration()
-  const {
-    title = '',
-    images = [],
-    url = '',
-    showRemoveButton,
-    onRemoveClick,
-  } = props
+  const [href = '', src = '', title = ''] = [
+    props.url,
+    props.picture_url_main,
+    props.title,
+  ]
+  const pictureRef = useRef(null)
 
-  const productDetailUrl = getProductDetailUrl({ url })
-
-  const imageLink = getImageLink({
-    source: images[0],
-    height: 50,
-  })
-
-  const imageLinkRetina = getImageLink({
-    source: images[0],
-    height: 50,
-    pixelRatio: 2,
-  })
+  useLazyLoading({ ref: pictureRef, dependency: src })
 
   return (
     <li className="autosuggest__product-item">
-      <Link href={productDetailUrl} className="autosuggest__image">
-        <picture>
-          <img
-            src={imageLink}
-            srcSet={`${imageLink} 1x, ${imageLinkRetina} 2x`}
-            alt={title}
-            height="50"
-          />
+      <Link href={href} className="autosuggest__image">
+        <picture ref={pictureRef}>
+          <img data-src={src} alt={title} />
         </picture>
 
         <Text size="aphrodite" weight="600" className="">
           {title}
         </Text>
       </Link>
-      {showRemoveButton && (
-        <Button
-          onClick={() => onRemoveClick(props.id)}
-          icon="times"
-          variant="link"
-        />
-      )}
     </li>
   )
 }

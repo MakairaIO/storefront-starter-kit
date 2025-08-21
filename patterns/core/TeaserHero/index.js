@@ -4,13 +4,19 @@ import Title from './Title'
 import Overlay from './Overlay'
 
 function TeaserHero(props) {
-  const { heading = {}, overlay = {}, image = {}, link = '' } = props
+  const {
+    heading = {},
+    overlay = {},
+    image = {},
+    link = '',
+    anchorId = '',
+  } = props
 
   return (
-    <section className="hero-teaser">
+    <section id={anchorId} className="hero-teaser">
       <ConditionalLink href={link} className="hero-teaser__container">
         <div className="hero-teaser__image-wrapper">
-          <Image {...image} alt={image.alt} />
+          <Image {...image} />
 
           <Title {...heading} />
         </div>

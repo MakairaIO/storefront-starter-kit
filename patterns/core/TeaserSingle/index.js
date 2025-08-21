@@ -1,28 +1,28 @@
-import { useConfiguration } from '../../../utils'
+import { useRef } from 'react'
+import { useConfiguration, useLazyLoading } from '../../../utils'
 import { Heading, Copytext, Button, ConditionalLink } from '../..'
 
 function TeaserSingle(props) {
+  const pictureRef = useRef(null)
   const { getImageLink } = useConfiguration()
   const {
     image = {},
     content = {},
     button = {},
     link = '',
-    isLazyLoad = true,
+    anchorId = '',
   } = props
   const { heading = '', text = '' } = content
 
   const imageLink = getImageLink({ source: image.src })
 
+  useLazyLoading({ ref: pictureRef, dependency: image.src })
+
   return (
-    <section className="single-teaser">
+    <section id={anchorId} className="single-teaser">
       <ConditionalLink href={link} className="single-teaser__image">
-        <picture>
-          <img
-            src={imageLink}
-            alt={image.alt}
-            loading={isLazyLoad ? 'lazy' : 'eager'}
-          />
+        <picture ref={pictureRef}>
+          <img data-src={imageLink} alt={image.alt} />
         </picture>
       </ConditionalLink>
 

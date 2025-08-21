@@ -9,7 +9,6 @@ function Button(props) {
     iconPosition = 'right',
     href = '',
     children,
-    loading = false,
     ...rest
   } = props
 
@@ -17,18 +16,16 @@ function Button(props) {
     [`button--${variant}`]: variant,
     [`button--icon`]: icon,
     [`button--icon-${iconPosition}`]: icon && iconPosition && children,
-    ['button--loading']: loading,
   })
 
   // Separate check to properly render disabled link-buttons
   const { disabled } = rest
-  if (disabled || loading) {
+  if (disabled) {
     return (
       <button className={classes} type="button" disabled={disabled}>
         <span className="button__text">{children}</span>
 
-        {icon && !loading && <Icon symbol={icon} />}
-        {loading && <Icon symbol="spinner" />}
+        {icon && <Icon symbol={icon} />}
       </button>
     )
   }
@@ -43,8 +40,7 @@ function Button(props) {
     >
       {children && <span className="button__text">{children}</span>}
 
-      {icon && !loading && <Icon symbol={icon} />}
-      {loading && <Icon symbol="spinner" />}
+      {icon && <Icon symbol={icon} />}
     </ConditionalLink>
   )
 }

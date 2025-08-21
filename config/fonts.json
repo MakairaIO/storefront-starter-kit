@@ -1,1 +1,37 @@
-{}
+{
+  "FuturaBT Light": {
+    "family": "FuturaBT",
+    "fileName": "FuturaBT-Light",
+    "weight": 300,
+    "isItalic": false,
+    "fileTypes": ["woff2", "woff"]
+  },
+  "FuturaBT Regular": {
+    "family": "FuturaBT",
+    "fileName": "FuturaBT-Medium",
+    "weight": 500,
+    "isItalic": false,
+    "fileTypes": ["woff2", "woff"]
+  },
+  "FuturaBT Regular Italic": {
+    "family": "FuturaBT",
+    "fileName": "FuturaBT-MediumItalic",
+    "weight": 500,
+    "isItalic": true,
+    "fileTypes": ["woff2", "woff"]
+  },
+  "FuturaBT Medium": {
+    "family": "FuturaBT",
+    "fileName": "FuturaBT-Bold",
+    "weight": 700,
+    "isItalic": false,
+    "fileTypes": ["woff2", "woff"]
+  },
+  "FuturaBT Bold": {
+    "family": "FuturaBT",
+    "fileName": "FuturaBT-Heavy",
+    "weight": 900,
+    "isItalic": false,
+    "fileTypes": ["woff2", "woff"]
+  }
+}

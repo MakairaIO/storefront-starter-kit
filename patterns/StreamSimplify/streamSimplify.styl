@@ -1,0 +1,172 @@
+$breakpoint_medium = 768px
+$breakpoint_large = 1366px
+
+.stream-simplify
+  display block
+  color var(--aubergine)
+
+  @media (min-width $breakpoint_medium)
+    max-width 450px
+    margin 0 auto
+
+  @media (min-width $breakpoint_large)
+    max-width 780px
+
+  & > .heading.level_2
+    text-align center
+    margin-bottom var(--spacer-xs)
+
+    @media (min-width $breakpoint_medium)
+      margin-bottom var(--spacer-s)
+    
+    @media (min-width $breakpoint_large)
+      margin-bottom var(--spacer-m)
+
+  & > .copytext
+    margin-bottom var(--spacer-xl)
+
+    & > p
+      margin-bottom var(--spacer-m)
+    
+    @media (min-width $breakpoint_large)
+      margin-bottom 44px
+      column-count 2
+      column-gap 24px
+
+  &__tabs
+    margin-bottom 20px
+
+    & > .copytext
+      cursor pointer
+      font-weight var(--font-weight-bold)
+      border-bottom 4px solid var(--white)
+
+      &:not(:last-child)
+        margin-right 24px
+        
+      &.selected
+        border-bottom 4px solid var(--aubergine)
+  
+  &__releases
+  &__roadmaps
+    display none
+    &&--selected
+      display block
+
+  &__release
+    padding-bottom var(--spacer-m)
+    padding-left var(--spacer-l)
+    position relative
+
+    &:before
+    &:after
+      display block
+      position absolute
+      content ''
+
+    &:before
+      top 3px
+      width 12px
+      height 12px
+      border-radius 50%
+      left 0
+      border 2px solid var(--fire)
+
+    &:after
+      top 19px
+      width 2px
+      height calc(100% - 16px)
+      left 7px
+      background-color var(--fire)
+
+    &:first-child
+      &:before
+        background-color var(--fire)
+
+    &&__loadmore
+      .heading.level_5
+        cursor pointer
+        bravo()
+        font-weight var(--font-weight-regular)
+
+      &:after
+        display none
+      &:before
+        content '\002B'
+        font-weight var(--font-weight-bold)
+        color var(--fire)
+        font-size 14px
+        line-height 10px
+        text-align center
+
+      &&--less
+        &:before
+          content '\2212'
+
+  &__roadmap
+    padding-left var(--spacer-l)
+
+    & > .heading.level_5
+      margin-bottom 8px
+    
+    .tags
+      padding var(--spacer-xxxs) 0
+
+  &__release
+  &__roadmap
+    & > .heading.level_5
+      font-weight var(--font-weight-bold)
+      color var(--fire)
+
+    .tags
+      padding var(--spacer-xxs) 0
+
+    .tag
+      alpha()
+      height 18px
+      padding 2px 8px
+      border-radius 12px
+      margin-right 4px
+      text-transform uppercase
+      border 1px solid var(--aubergine)
+      background-color var(--misty)
+      font-weight var(--font-weight-bold)
+
+      &.current
+        color var(--white)
+        background-color var(--aubergine)
+
+      &.breaking
+        color var(--white)
+        background-color var(--fire)
+
+    &__logs
+      ul
+        padding 0
+
+      li
+        list-style-type none
+        padding-left 18px !important
+        position relative
+        margin-bottom var(--spacer-xs)
+
+        & > .copytext
+          p:not(:last-child)
+            margin-bottom 12px
+
+            @media (min-width $breakpoint_large)
+              margin-bottom 16px
+
+        &:before
+          content unset !important
+
+        &:after
+          content ''
+          position absolute
+          top 10px
+          left 0
+          display block
+          width 8px
+          height 4px
+          border-radius 2px
+          background-color var(--aubergine)

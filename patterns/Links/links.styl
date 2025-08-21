@@ -1,0 +1,53 @@
+$breakpoint-large = 800px
+
+.links
+  display flex
+
+  &__link
+    color var(--teal)
+    border none
+    padding var(--spacer-xxxs) var(--spacer-xs)
+    margin 0
+    height auto
+    border-radius var(--spacer-xxs)
+    bravo()
+    font-weight var(--font-weight-bold)
+
+    @media (min-width $breakpoint-large)
+      charlie()
+      margin 0 var(--spacer-xxxs)
+
+    &:hover
+      color darken(#63B6C8, 15%)
+      text-decoration underline
+
+    &--active
+      color var(--white)
+      background var(--teal)
+
+      &:hover
+        color var(--white)
+        background darken(#63b6c8, 15%)
+        text-decoration none
+
+  &--fire
+    .links__link
+      color var(--fire)
+
+      &--active
+        color var(--white)
+        background var(--fire)
+
+        &:hover
+          background darken(#eb6e68, 15%)
+
+  &--aubergine
+    .links__link
+      color var(--aubergine)
+
+      &--active
+        color var(--white)
+        background var(--aubergine)
+
+        &:hover
+          background darken(#61304d, 15%)

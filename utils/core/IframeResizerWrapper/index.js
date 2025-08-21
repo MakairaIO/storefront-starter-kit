@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { iframeResizer as iframeResizerLib } from '@iframe-resizer/parent'
+import iframeResizer from '@iframe-resizer/parent'
 
 const IFRAME_RESIZER_CDN =
   'https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.contentWindow.min.js'
@@ -22,7 +22,7 @@ const IframeResizerWrapper = ({ children, iframeResizerOptions }) => {
 
     if (!frame || finished) return
 
-    iframeResizerLib(iframeResizerOptions, frame)
+    iframeResizer({ license: 'GPLv3', ...iframeResizerOptions }, frame)
   }
 
   const injectIframeResizerUrl = () => {

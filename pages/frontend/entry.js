@@ -1,12 +1,12 @@
 import { Component } from 'react'
 import qs from 'qs'
 import {
-  HeaderWithProps,
-  FooterWithProps,
   LandingPage,
+  BlogPage,
   ListingPage,
   DetailPage,
-  BundlePage,
+  HeaderWithProps,
+  FooterWithProps,
 } from '../../frontend'
 import { BaseLayout } from '../../patterns'
 import {
@@ -18,21 +18,18 @@ import {
   fetchMenuData,
   redirect,
   wait,
-  GTM,
 } from '../../utils'
 import ErrorPage from '../_error'
-import { ShopProvider } from '@makaira/storefront-react'
-import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
+import BlogDetailPage from '../../patterns/BlogDetailPage'
 
 const pageComponents = {
   page: LandingPage,
-  bundle: BundlePage,
+  blog: BlogPage,
   category: ListingPage,
   manufacturer: ListingPage,
   'makaira-productgroup': DetailPage,
+  post: BlogDetailPage,
 }
-
-const shopClient = new StorefrontShopAdapterLocal()
 
 export default class Index extends Component {
   static async getInitialProps(ctx) {
@@ -55,8 +52,6 @@ export default class Index extends Component {
 
       return { menuData, pageData, params }
     } catch (error) {
-      console.error(error)
-
       /**
        * Catching an error inside getInitialProps means that - in most cases - the
        * current URL was not found in any ElasticSearch document.
@@ -95,44 +90,31 @@ export default class Index extends Component {
     }
   }
 
-  componentDidMount() {
-    const language = this.props.pageData?.language
+  getHeaderFooterContent() {
+    const { pageData } = this.props
+    const topElements = pageData.data.self?.contentElements?.top?.elements || []
+    const bottomElements =
+      pageData.data.self?.contentElements?.bottom?.elements || []
+    const elements = [...topElements, ...bottomElements]
 
-    if (language) {
-      GTM.trackEvent({
-        event: 'init',
-        country: language,
-        language: language,
-      })
+    let header = { variant: 'full' }
+    let footer = { variant: 'full' }
 
-      this.trackPageViewEvent()
+    const customHeader = elements.find(
+      (el) => el.component === 'reduced-header'
+    )
+    if (customHeader) {
+      header = customHeader?.properties?.content
     }
-  }
 
-  componentDidUpdate(prevProps) {
-    // Check for Error Page
-    if (Object.entries(this.props).length === 0) return
-
-    // We only want to track a page view if the page was actually changed
-    const shouldTrackView =
-      prevProps.pageData?.data?.id !== this.props.pageData?.data?.id
-
-    if (shouldTrackView) {
-      this.trackPageViewEvent()
+    const customFooter = elements.find(
+      (el) => el.component === 'special-footer'
+    )
+    if (customFooter) {
+      footer = customFooter?.properties?.content
     }
-  }
 
-  trackPageViewEvent = () => {
-    const page_location = document.location.origin + document.location.pathname
-    const page_title = document.title
-    const page_type = this.props.pageData?.type
-
-    GTM.trackEvent({
-      event: 'page_view',
-      page_location,
-      page_title,
-      page_type,
-    })
+    return { header, footer }
   }
 
   render() {
@@ -143,27 +125,24 @@ export default class Index extends Component {
     const { pageData } = this.props
     const { type, language } = pageData
     const PageComponent = pageComponents[type]
+    const content = this.getHeaderFooterContent()
 
     return (
-      <ShopProvider client={shopClient}>
-        <GlobalDataProvider {...this.props}>
-          <ConfigurationProvider
-            assetUrl={process.env.NEXT_PUBLIC_MAKAIRA_ASSET_URL}
-          >
-            <TranslationProvider language={language}>
-              <AbTestingProvider>
-                <BaseLayout>
-                  <HeaderWithProps />
+      <GlobalDataProvider {...this.props}>
+        <ConfigurationProvider assetUrl={process.env.MAKAIRA_ASSET_URL}>
+          <TranslationProvider language={language}>
+            <AbTestingProvider>
+              <BaseLayout>
+                <HeaderWithProps {...content.header} />
 
-                  <PageComponent />
+                <PageComponent />
 
-                  <FooterWithProps />
-                </BaseLayout>
-              </AbTestingProvider>
-            </TranslationProvider>
-          </ConfigurationProvider>
-        </GlobalDataProvider>
-      </ShopProvider>
+                <FooterWithProps {...content.footer} />
+              </BaseLayout>
+            </AbTestingProvider>
+          </TranslationProvider>
+        </ConfigurationProvider>
+      </GlobalDataProvider>
     )
   }
 }

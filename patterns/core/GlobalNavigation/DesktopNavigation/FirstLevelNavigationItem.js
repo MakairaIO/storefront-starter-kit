@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useState } from 'react'
 import classNames from 'classnames'
 import { useTranslation } from '../../../../utils'
@@ -19,33 +20,33 @@ export default function FirstLevelNavigationItem(props) {
   })
 
   return (
-    <li className={itemClasses}>
-      <button
-        onMouseEnter={() => {
-          clearTimeout(timerId)
+    <li
+      className={itemClasses}
+      onMouseEnter={() => {
+        clearTimeout(timerId)
 
-          setTimeout(() => toggleExpanded(true), TRANSITION_DELAY_IN_MS)
-        }}
-        onMouseLeave={() => {
-          setTimer(
-            setTimeout(() => {
-              toggleExpanded(false)
-            }, TRANSITION_DELAY_IN_MS)
-          )
-        }}
+        setTimeout(() => toggleExpanded(true), TRANSITION_DELAY_IN_MS)
+      }}
+      onMouseLeave={() => {
+        setTimer(
+          setTimeout(() => {
+            toggleExpanded(false)
+          }, TRANSITION_DELAY_IN_MS)
+        )
+      }}
+    >
+      <ConditionalLink
+        href={link[language]}
+        className="desktop-navigation__item-link"
+        fallbackElement="span"
       >
-        <ConditionalLink
-          href={link[language]}
-          className="desktop-navigation__item-link"
-          fallbackElement="span"
-        >
-          {text[language]}
-        </ConditionalLink>
-        <NavigationFlyout
-          isVisible={hasSubcategories && isExpanded}
-          subcategories={children}
-        />
-      </button>
+        {text[language]}
+      </ConditionalLink>
+
+      <NavigationFlyout
+        isVisible={hasSubcategories && isExpanded}
+        subcategories={children}
+      />
     </li>
   )
 }

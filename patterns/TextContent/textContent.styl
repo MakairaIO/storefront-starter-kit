@@ -1,0 +1,80 @@
+$breakpoint_medium = 768px
+$breakpoint_large = 1366px
+$breakpoint_huge = 1800px
+
+.text-content
+  display block
+  color var(--white)
+
+  @media (min-width $breakpoint_medium)
+    max-width 100%
+    margin-left auto
+    margin-right auto
+
+  &__heading
+    margin-bottom var(--spacer-l)
+
+    @media (min-width $breakpoint_medium)
+      margin-bottom var(--spacer-s)
+
+    @media (min-width $breakpoint_large)
+      margin-bottom var(--spacer-m)
+
+  &__text
+    &
+      p, h2, h3, h4, h5
+        margin-bottom var(--spacer-m)
+
+    & > h2, h3, h4, h5
+      font-weight var(--font-weight-bold)
+      delta()
+
+      @media (min-width $breakpoint_medium)
+        delta()
+
+      @media (min-width $breakpoint_large)
+        echo()
+
+    & p:last-child
+      margin-bottom 0
+
+  &__theme--white
+    color var(--black)
+    background-color var(--white)
+
+    .heading
+      color var(--primary)
+
+  &__theme--primary
+    color var(--white)
+    background var(--radial-gradient)
+
+  &__reduce-top-space
+    padding-top 0
+
+  &__reduce-max-width
+    @media (min-width $breakpoint_huge)
+      max-width var(--max-width)
+      margin-left auto
+      margin-right auto
+
+  &__alignment--left
+    .text-content__text
+      text-align left
+
+  &__alignment--right
+    .text-content__text
+      text-align right
+
+  &__alignment--center
+    .heading
+      text-align left
+
+      @media (min-width $breakpoint-medium)
+        text-align center
+
+    .text-content__text
+      text-align left
+
+      @media (min-width $breakpoint-medium)
+        text-align center

@@ -12,7 +12,7 @@ function createDeclaration(entry, assetPath) {
         format = `'truetype'`
       }
 
-      const pathToFile = `url('${assetPath}${fileName}.${type}')`
+      const pathToFile = `url('${assetPath}${fileName}/font.${type}')`
 
       return pathToFile + ' format(' + format + ')'
     })

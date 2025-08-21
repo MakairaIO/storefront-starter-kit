@@ -1,0 +1,45 @@
+
+.text-column
+  display flex
+  flex-direction column
+  gap var(--spacer-m)
+
+  .content--left
+    text-align left
+  .content--right
+    text-align right
+  .content--center
+    text-align center
+
+  @media (min-width $breakpoint_medium)
+    flex-direction row
+
+  &__column
+    flex 1
+
+    .embedded-video__wrapper
+      width 100%
+      margin 0
+
+  &__heading
+    color var(--aubergine)
+    font-weight var(--font-weight-bold)
+    margin-bottom var(--spacer-m)
+
+    @media (min-width $breakpoint_medium)
+      margin-bottom var(--spacer-l)
+
+    @media (min-width $breakpoint_large)
+      margin-bottom var(--spacer-xl)
+
+  &__text 
+    color var(--aubergine)
+
+  &__button
+    margin-top var(--spacer-m)
+
+    @media (min-width $breakpoint_medium)
+      margin-top var(--spacer-l)
+
+    @media (min-width $breakpoint_large)
+      margin-top var(--spacer-xl)

@@ -1,1 +1,68 @@
-{}
+{
+  "Alpha": {
+    "mixin": "alpha",
+    "size": 10,
+    "line": 12,
+    "spacing": 0.3
+  },
+  "Bravo": {
+    "mixin": "bravo",
+    "size": 13,
+    "line": 18,
+    "spacing": 0.2
+  },
+  "Charlie": {
+    "mixin": "charlie",
+    "size": 15,
+    "line": 22,
+    "spacing": 0
+  },
+  "Delta": {
+    "mixin": "delta",
+    "size": 18,
+    "line": 26,
+    "spacing": 0
+  },
+  "Echo": {
+    "mixin": "echo",
+    "size": 20,
+    "line": 26,
+    "spacing": -0.2
+  },
+  "Foxtrot": {
+    "mixin": "foxtrot",
+    "size": 30,
+    "line": 34,
+    "spacing": -0.4
+  },
+  "Golf": {
+    "mixin": "golf",
+    "size": 38,
+    "line": 43,
+    "spacing": -0.5
+  },
+  "Hotel": {
+    "mixin": "hotel",
+    "size": 50,
+    "line": 54,
+    "spacing": -0.7
+  },
+  "India": {
+    "mixin": "india",
+    "size": 64,
+    "line": 67,
+    "spacing": -1
+  },
+  "Juliet": {
+    "mixin": "juliet",
+    "size": 80,
+    "line": 84,
+    "spacing": -2
+  },
+  "Kilo": {
+    "mixin": "kilo",
+    "size": 105,
+    "line": 110,
+    "spacing": -2.5
+  }
+}

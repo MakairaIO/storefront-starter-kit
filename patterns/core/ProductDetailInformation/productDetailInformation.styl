@@ -27,7 +27,10 @@ $breakpoint-huge = 1200px
 
   @media (min-width $breakpoint-huge)
     display grid
-    grid-template-areas "img buy" "img desc" "img desc"
+    grid-template-areas \
+      "img buy" \
+      "img desc" \
+      "img desc"
     grid-template-columns 1fr 1fr
 
 .product-detail-information__prices
@@ -59,45 +62,31 @@ $breakpoint-huge = 1200px
   line-height 3rem
 
 .product-detail-information__image
-  margin 0 -1.5rem 1.2rem
+  margin 0 -1.5rem 1.2rem // negative margin to accomodate for the 1.5rem padding of the container on the left/right
   position relative
-  max-height 60rem
-  height 50vh
-  display flex
-  justify-content center
-  align-items center
-  object-fit cover
 
   @media (min-width $breakpoint-small)
+    // max-width 47rem
     margin 0 auto 1.2rem
 
   @media (min-width $breakpoint-medium)
     flex 1 0 50%
 
+  @media (min-width $breakpoint-large)
+    // max-width 78rem
+
   @media (min-width $breakpoint-huge)
     grid-area img
 
   picture
-    height 100%
     display flex
     justify-content center
 
   img
-    width 100%
+    // max-width calc(100% + 3rem) // +3rem for the 1.5rem negative margin on the left/right
 
-.product-detail-information__magnifier--tap
-  height 100%
-
-  > div
-    height 100%
-    display flex
-
-  > div > img
-    max-height 100%
-    max-width 100%
-    margin auto
-    width auto !important
-
+    @media (min-width $breakpoint-small)
+      // max-width 100%
 
 .product-detail-information__image-button
   position absolute
@@ -107,6 +96,20 @@ $breakpoint-huge = 1200px
   color var(--neutral-00)
 
 .product-detail-information__buybox
+  @media (min-width $breakpoint-small)
+    display flex
+    flex-wrap wrap
+
+  @media (min-width $breakpoint-medium)
+    flex 1 0 50%
+    flex-wrap nowrap
+    flex-direction column
+    padding-left 2rem
+
+  @media (min-width $breakpoint-large)
+    flex-direction row
+    flex-wrap wrap
+
   @media (min-width $breakpoint-huge)
     grid-area buy
     padding-left 4rem
@@ -133,25 +136,23 @@ $breakpoint-huge = 1200px
 .product-detail-information__variants
   margin-bottom 0.6rem
 
+  @media (min-width $breakpoint-small)
+    flex 0 0 50%
+    margin-left auto
+
+  @media (min-width $breakpoint-medium)
+    flex 0
+    margin 0
+
+  @media (min-width $breakpoint-large)
+    flex 1
+    display flex
+    flex-direction column
+    justify-content flex-end
+    margin-bottom 0.6rem
+
 .product-detail-information__variant-select
   width 100%
-
-.product-detail-information__variants
-  margin-top 2.4rem
-
-.product-detail-information__pill
-  margin 0.7rem 0.5rem 0.2rem 0
-  padding 1rem 2rem
-  border-radius 40px
-  border 1px solid var(--neutral-80)
-
-  &--active
-    background var(--neutral-100)
-    border-colorv var(--neutral-100)
-    color var(--neutral-00)
-
-  &:hover
-    cursor pointer
 
 .product-detail-information__buxbox-info
   flex 1
@@ -190,20 +191,17 @@ $breakpoint-huge = 1200px
   flex 1 0 100%
   display flex
   justify-content space-between
-  margin-top 2.4rem
-  flex-wrap wrap
+  margin-top 1.2rem
 
   @media (min-width $breakpoint-tiny)
     justify-content normal
-
-  @media (min-width $breakpoint-small)
-    flex-wrap unset
 
   @media (min-width $breakpoint-medium)
     flex 0 0 auto
 
   @media (min-width $breakpoint-large)
     flex 1 0 100%
+    margin-top 0
 
 .product-detail-information__quantity-select
   margin 0 0.5rem
@@ -238,15 +236,3 @@ $breakpoint-huge = 1200px
     @media (min-width $breakpoint-medium)
       column-gap 2rem
 
-.product-detail-information__add-bundle
-  flex-grow 2
-
-  @media (min-width $breakpoint-small)
-    flex-grow unset
-    margin-left 1rem
-
-.product-detail-information__add-cart
-  flex-grow 2
-
-  @media (min-width $breakpoint-tiny)
-    flex-grow unset

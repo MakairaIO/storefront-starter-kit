@@ -7,18 +7,17 @@ export default function BrowserHintPage() {
   return (
     <main className="browser-hint-page">
       <img
+        height={200}
         className="browser-hint-page__logo"
-        src="/assets/images/header/logo_dummy.svg"
+        src="/assets/images/header/logo.svg"
         alt="Logo"
       />
 
       <div className="browser-hint-page__content">
-        <Heading size="diana" weight="bold">
+        <Heading size="foxtrot" weight="bold" element="h1">
           {t('BROWSER_HINT_PAGE_HEADING')}
         </Heading>
-        <Heading size="bacchus" element="h2">
-          {t('BROWSER_HINT_PAGE_SUB_HEADING')}
-        </Heading>
+        <Heading size="echo">{t('BROWSER_HINT_PAGE_SUB_HEADING')}</Heading>
 
         <div className="browser-hint-page__column-wrapper">
           <Copytext
@@ -36,7 +35,7 @@ export default function BrowserHintPage() {
         </div>
       </div>
       <div className="browser-hint-page__browsers">
-        <Heading size="bacchus" weight="bold">
+        <Heading size="echo" weight="bold">
           {t('BROWSER_HINT_PAGE_DOWNLOAD_HINT')}
         </Heading>
         <div className="browser-hint-page__browsers-list">

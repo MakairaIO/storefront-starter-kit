@@ -1,0 +1,61 @@
+
+.teaser-haft-haft
+  display block
+
+  .content--left
+    text-align left
+  .content--right
+    text-align right
+  .content--center
+    text-align center
+
+  .teaser-haft-haft__columns
+
+    display flex
+    flex-direction column
+    gap var(--spacer-m)
+    word-break break-word
+
+    @media (min-width $breakpoint_medium)
+      flex-direction row
+
+    &--media-text
+      flex-direction column-reverse
+
+      @media (min-width $breakpoint_medium)
+        flex-direction row-reverse
+
+  &__column
+    flex 0 0 50%
+    @media (min-width $breakpoint_medium)
+      width 50%
+
+    .embedded-video__wrapper
+      width 100%
+      margin 0
+
+  &__heading
+    color var(--aubergine)
+    font-weight var(--font-weight-bold)
+    margin-bottom var(--spacer-m)
+
+    @media (min-width $breakpoint_medium)
+      margin-bottom var(--spacer-l)
+
+    @media (min-width $breakpoint_large)
+      margin-bottom var(--spacer-xl)
+
+  &__text 
+    color var(--aubergine)
+
+  &__button
+    margin-top var(--spacer-m)
+
+    @media (min-width $breakpoint_medium)
+      margin-top var(--spacer-l)
+
+    @media (min-width $breakpoint_large)
+      margin-top var(--spacer-xl)
+
+  &__image
+    max-width 100%

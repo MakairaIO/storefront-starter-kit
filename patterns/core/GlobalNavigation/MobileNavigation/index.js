@@ -2,7 +2,6 @@ import classNames from 'classnames'
 import { Button, Icon } from '../../..'
 import NavigationItem from './NavigationItem'
 import InfoLinks from './InfoLinks'
-import LanguageSwitch from '../../Header/LanguageSwitch'
 
 export default function MobileNavigation(props) {
   const {
@@ -43,8 +42,6 @@ export default function MobileNavigation(props) {
             />
           </label>
         </form>
-
-        <LanguageSwitch />
       </div>
 
       <nav className="mobile-navigation" arial-label="Primary Navigation">

@@ -1,1 +1,104 @@
-{}
+{
+  "White": {
+    "value": "#FFFFFF",
+    "variableName": "--white",
+    "group": "white"
+  },
+  "Dark": {
+    "value": "#4f5967",
+    "variableName": "--dark",
+    "group": "dark"
+  },
+  "Aubergine": {
+    "value": "#61304D",
+    "variableName": "--aubergine",
+    "group": "core"
+  },
+  "Misty": {
+    "value": "#ECF2F3",
+    "variableName": "--misty",
+    "group": "core"
+  },
+  "Sunny": {
+    "value": "#F5BF33",
+    "variableName": "--sunny",
+    "group": "core"
+  },
+  "Fire": {
+    "value": "#EB6E68",
+    "variableName": "--fire",
+    "group": "core"
+  },
+  "Teal": {
+    "value": "#63B6C8",
+    "variableName": "--teal",
+    "group": "core"
+  },
+
+  "Aubergine for tables": {
+    "value": "#FFF4FB",
+    "variableName": "--table-aubergine",
+    "group": "table"
+  },
+  "Misty for tables": {
+    "value": "#F8FBFC",
+    "variableName": "--table-misty",
+    "group": "table"
+  },
+  "Sunny for tables": {
+    "value": "#FFFAED",
+    "variableName": "--table-sunny",
+    "group": "table"
+  },
+  "Fire for tables": {
+    "value": "#FFF2F1",
+    "variableName": "--table-fire",
+    "group": "table"
+  },
+  "Teal for tables": {
+    "value": "#F0F8FA",
+    "variableName": "--table-teal",
+    "group": "table"
+  },
+
+  "Text White": {
+    "value": "#FFFFFF",
+    "variableName": "--text-white",
+    "group": "text"
+  },
+  "Text Aubergine": {
+    "value": "#61304D",
+    "variableName": "--text-aubergine",
+    "group": "text"
+  },
+  "Text Teal": {
+    "value": "#63B6C8",
+    "variableName": "--text-teal",
+    "group": "text"
+  },
+  "Primary": {
+    "value": "#009fe3",
+    "variableName": "--primary",
+    "group": "core"
+  },
+  "Black": {
+    "value": "#001017",
+    "variableName": "--black",
+    "group": "core"
+  },
+  "Gray": {
+    "value": "#334045",
+    "variableName": "--gray",
+    "group": "core"
+  },
+  "Dark Primary": {
+    "value": "#0084BC",
+    "variableName": "--dark-primary",
+    "group": "core"
+  },
+  "Light Primary": {
+    "value": "#80cff1",
+    "variableName": "--light-primary",
+    "group": "core"
+  }
+}

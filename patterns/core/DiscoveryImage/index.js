@@ -36,7 +36,7 @@ class DiscoveryImage extends React.Component {
   }
 
   render() {
-    const { discoveryImage } = this.props
+    const { discoveryImage, anchorId = '' } = this.props
     const { image = '', spots = [] } = discoveryImage
     const { slideIndex, centerPadding } = this.state
 
@@ -54,7 +54,7 @@ class DiscoveryImage extends React.Component {
     }
 
     return (
-      <section ref={this.diRef} className="discovery-image">
+      <section id={anchorId} ref={this.diRef} className="discovery-image">
         <div className="spots">
           <ProductImage image={image} />
           {spots.map((spot, i) => {
@@ -62,17 +62,14 @@ class DiscoveryImage extends React.Component {
               ['spot__active']: slideIndex === i,
             })
             return (
-              <span
-                role="button"
-                tabIndex={0}
+              <button
                 className={spotClasses}
                 style={{ top: `${spot.top}%`, left: `${spot.left}%` }}
                 key={`spot-index-${i}`}
                 onClick={() => this.slider.slickGoTo(i)}
-                aria-hidden="true"
               >
                 {i + 1}
-              </span>
+              </button>
             )
           })}
         </div>
@@ -94,7 +91,7 @@ class DiscoveryImage extends React.Component {
             </Slider>
           ) : (
             <div className="slick-active">
-              <ProductTile {...spots[0]?.product[0]} isLazyLoad={false}>
+              <ProductTile {...spots[0].product[0]} isLazyLoad={false}>
                 <span className="spot product-spot-index">1</span>
               </ProductTile>
             </div>

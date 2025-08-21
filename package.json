@@ -35,11 +35,14 @@
     "lint:styles": "stylelint patterns/**/*.styl --fix"
   },
   "dependencies": {
+    "@iframe-resizer/child": "^5.5.2",
     "@iframe-resizer/parent": "^5.3.3",
+    "@iframe-resizer/react": "^5.5.2",
     "@makaira/storefront-react": "^1.6.7",
     "@makaira/storefront-shop-adapter-local": "^1.6.5",
     "@next/bundle-analyzer": "^15.0.0",
     "@next/env": "^15.0.3",
+    "@vanyapr/react-image-magnifiers": "^1.4.2",
     "body-parser": "^1.20.2",
     "classnames": "^2.3.2",
     "cors": "^2.8.5",
@@ -53,6 +56,8 @@
     "rc-slider": "^11.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-helmet": "^6.1.0",
+    "react-player": "^3.3.1",
     "react-slick": "^0.30.0",
     "stylus": "^0.64.0",
     "ua-parser-js": "^2.0.0"

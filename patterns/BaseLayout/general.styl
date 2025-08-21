@@ -1,0 +1,140 @@
+$breakpoint-small = 600px
+$breakpoint-medium = 768px
+$breakpoint-large = 990px
+$breakpoint-huge = 1500px
+$breakpoint-gigantic = 1920px
+$breakpoint-hyper = 2560px
+
+/* Webkit-basierte Browser */
+::-webkit-scrollbar
+  width 12px
+  height 12px
+
+::-webkit-scrollbar-track
+  background transparent
+
+::-webkit-scrollbar-thumb
+  background-color rgba(0, 0, 0, 0.5)
+  border-radius 10px
+  border 2px solid transparent
+  background-clip padding-box
+
+/* Firefox */
+*
+  scrollbar-width thin
+  scrollbar-color rgba(0, 0, 0, 0.5) transparent
+
+html
+  font-smooth always
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+  width 100%
+
+body
+  width 100vw
+  overflow-x hidden
+  font-size 10px
+  -ms-overflow-style -ms-autohiding-scrollbar
+
+body:before
+  content ''
+  position fixed
+  top 0
+  left 0
+  width 100%
+  height 100vh
+  background-image linear-gradient(45deg, #009fe3 0%, #000 100%), url('/assets/images/backgrounds/bg_water.svg')
+  background-repeat no-repeat
+  background-position center center
+  background-attachment fixed
+  z-index -1
+
+.body--no-overflow
+  overflow hidden
+
+.site-wrapper
+  max-width 100vw
+  margin 0 auto
+  position relative
+  font-family var(--font-family-regular)
+  font-size var(--font-size-base)
+
+  .bg-svg
+    background-image url('/assets/images/backgrounds/bg_water.svg')
+    background-repeat no-repeat
+    position fixed
+    top -2%
+    left -25%
+    width 100%
+    height 100vh
+    opacity 0.4
+    z-index -1
+
+    @media (min-width $breakpoint-small)
+      top -3%
+      left -20%
+      opacity 0.5
+
+    @media (min-width $breakpoint-medium)
+      top -5%
+      left -25%
+      opacity 0.4
+
+    @media (min-width $breakpoint-large)
+      top -10%
+      left -40%
+      opacity 0.5
+
+a
+  text-decoration inherit
+  color currentColor
+
+  &:hover
+    color var(--primary)
+
+// cookiebot layout
+#CybotCookiebotDialog br, #CybotCookiebotDialog div, #CybotCookiebotDialog td, #CybotCookiebotDialog a
+  font-family var(--font-family-regular) !important
+  font-size 1.5rem !important
+  line-height 2.2rem !important
+
+a.CybotCookiebotDialogBodyButton
+  display inline-block
+  delta()
+  border-radius 2rem
+  padding 0.8rem var(--spacer-l) !important
+  text-align center
+  font-weight var(--font-weight-bold)
+  background var(--fire)
+  border-color var(--fire)
+  color var(--white)
+
+  &:hover:not(:disabled)
+    background darken(#EB6E68, 15%)
+
+#CybotCookiebotDialogDetailBodyContent
+  height auto !important
+
+#CybotCookiebotDialogBodyButtons .CybotCookiebotDialogBodyLink, #CybotCookiebotDialogBodyLevelDetailsButton
+  background-position right 17px !important
+
+#CybotCookiebotDialogDetailBodyContentTabsAbout
+  display none
+
+#CybotCookiebotDialogDetailBodyContentCookieContainerTypes
+  padding-top 0 !important
+
+input[type=checkbox].CybotCookiebotDialogBodyLevelButton.CybotCookiebotDialogBodyLevelButtonDisabled+label, input[type=checkbox].CybotCookiebotDialogBodyLevelButton+label
+  top 4px !important
+
+.pattern
+  padding 32px 24px
+
+  @media (min-width $breakpoint-small)
+    padding 40px 40px
+
+  @media (min-width $breakpoint-medium)
+    padding 48px 40px
+
+  @media (min-width $breakpoint-large)
+    padding 64px 80px

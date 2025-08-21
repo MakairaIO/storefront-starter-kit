@@ -6,6 +6,7 @@ import {
   stripQuery,
   stripSlashes,
   useTranslation,
+  isOnPageAnchorLink,
 } from '../../../utils'
 
 /**
@@ -26,13 +27,13 @@ export default function Link(props) {
     const { as, ...htmlAttributes } = rest
 
     return (
-      <NextLink href={href} as={as} legacyBehavior>
+      <NextLink href={href} as={as}>
         <a {...htmlAttributes}>{children}</a>
       </NextLink>
     )
   }
 
-  if (isMailToLink(href)) {
+  if (isMailToLink(href) || isOnPageAnchorLink(href)) {
     return (
       <a href={href} {...rest}>
         {children}

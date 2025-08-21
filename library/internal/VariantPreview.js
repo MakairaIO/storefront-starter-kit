@@ -90,6 +90,10 @@ export default function VariantPreview({
                       rel="stylesheet"
                       type="text/css"
                     />
+                    <script
+                      async
+                      src="/node_modules/@iframe-resizer/child/index.umd.js"
+                    ></script>
                     <SVGSprite />
 
                     <Component {...variant.props} />
