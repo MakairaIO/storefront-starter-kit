@@ -36,7 +36,7 @@
 
 ### <a id="prerequisites"></a>1.1 Prerequisites
 
-- [Node.js](https://nodejs.org/) v16.13.0
+- [Node.js](https://nodejs.org/) v22.14.0
 - recommended OS: Linux or Mac
 
 ### <a id="installation"></a>1.2 Installation
