@@ -55,11 +55,20 @@ export default {
   },
 
   trackPageView({ pageTitle, pageUrl } = {}) {
+    console.log('[Matomo] trackPageView called', { pageTitle, pageUrl })
+    console.log('[Matomo] isDirectTrackingEnabled:', this.isDirectTrackingEnabled())
+
     // Direct tracking is disabled by default to avoid double tracking with GTM
-    if (!this.isDirectTrackingEnabled()) return
+    if (!this.isDirectTrackingEnabled()) {
+      console.log('[Matomo] trackPageView skipped - direct tracking disabled')
+      return
+    }
 
     // Matomo has not been initialized
-    if (!window._paq) return
+    if (!window._paq) {
+      console.log('[Matomo] trackPageView skipped - _paq not initialized')
+      return
+    }
 
     if (pageUrl) {
       window._paq.push(['setCustomUrl', pageUrl])
@@ -70,19 +79,33 @@ export default {
     }
 
     window._paq.push(['trackPageView'])
+    console.log('[Matomo] trackPageView sent!')
   },
 
   trackSiteSearch({ keyword, category, resultsCount } = {}) {
+    console.log('[Matomo] trackSiteSearch called', { keyword, category, resultsCount })
+    console.log('[Matomo] isDirectTrackingEnabled:', this.isDirectTrackingEnabled())
+
     // Direct tracking is disabled by default to avoid double tracking with GTM
-    if (!this.isDirectTrackingEnabled()) return
+    if (!this.isDirectTrackingEnabled()) {
+      console.log('[Matomo] trackSiteSearch skipped - direct tracking disabled')
+      return
+    }
 
     // Matomo has not been initialized
-    if (!window._paq) return
+    if (!window._paq) {
+      console.log('[Matomo] trackSiteSearch skipped - _paq not initialized')
+      return
+    }
 
     // keyword is required for Matomo's trackSiteSearch
-    if (!keyword) return
+    if (!keyword) {
+      console.log('[Matomo] trackSiteSearch skipped - no keyword')
+      return
+    }
 
     window._paq.push(['trackSiteSearch', keyword, category, resultsCount])
+    console.log('[Matomo] trackSiteSearch sent!')
   },
 
   /**
