@@ -18,6 +18,7 @@ import {
   redirectToDetailPageOnSingleHit,
   redirectOnSearchRedirectHit,
   GTM,
+  Matomo,
 } from '../../utils'
 import ErrorPage from '../_error'
 import { ShopProvider } from '@makaira/storefront-react'
@@ -92,6 +93,11 @@ export default class Index extends Component {
       event: 'search',
       search_term,
       search_result_count,
+    })
+
+    Matomo.trackSiteSearch({
+      keyword: search_term,
+      resultsCount: search_result_count,
     })
   }
 

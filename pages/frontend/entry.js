@@ -19,6 +19,7 @@ import {
   redirect,
   wait,
   GTM,
+  Matomo,
 } from '../../utils'
 import ErrorPage from '../_error'
 import { ShopProvider } from '@makaira/storefront-react'
@@ -132,6 +133,11 @@ export default class Index extends Component {
       page_location,
       page_title,
       page_type,
+    })
+
+    Matomo.trackPageView({
+      pageTitle: page_title,
+      pageUrl: page_location,
     })
   }
 

@@ -22,6 +22,41 @@ export default {
     s.parentNode.insertBefore(g, s)
   },
 
+  isDirectTrackingEnabled() {
+    return process.env.NEXT_PUBLIC_MATOMO_DIRECT_TRACKING === 'true'
+  },
+
+  trackPageView({ pageTitle, pageUrl } = {}) {
+    // Direct tracking is disabled by default to avoid double tracking with GTM
+    if (!this.isDirectTrackingEnabled()) return
+
+    // Matomo has not been initialized
+    if (!window._paq) return
+
+    if (pageUrl) {
+      window._paq.push(['setCustomUrl', pageUrl])
+    }
+
+    if (pageTitle) {
+      window._paq.push(['setDocumentTitle', pageTitle])
+    }
+
+    window._paq.push(['trackPageView'])
+  },
+
+  trackSiteSearch({ keyword, category, resultsCount } = {}) {
+    // Direct tracking is disabled by default to avoid double tracking with GTM
+    if (!this.isDirectTrackingEnabled()) return
+
+    // Matomo has not been initialized
+    if (!window._paq) return
+
+    // keyword is required for Matomo's trackSiteSearch
+    if (!keyword) return
+
+    window._paq.push(['trackSiteSearch', keyword, category, resultsCount])
+  },
+
   enterAbTest({ experiments = [] }) {
     if (experiments.length == 0) return
 
