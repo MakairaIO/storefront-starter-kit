@@ -36,7 +36,7 @@
 
 ### <a id="prerequisites"></a>1.1 Prerequisites
 
-- [Node.js](https://nodejs.org/) v16.13.0
+- [Node.js](https://nodejs.org/) v22.14.0
 - recommended OS: Linux or Mac
 
 ### <a id="installation"></a>1.2 Installation
@@ -243,11 +243,50 @@ In order to get tie image links we have a utility function `getImageLink` which 
 
 Just push to the GitHub Repository in the stable branch - we will cover everything else.
 
-## <a id="faq"></a>4. FAQ
+## <a id="tracking"></a>4. Tracking
 
 ---
 
-### <a id="external-css-libraries"></a>4.1 Adding external CSS libraries
+The Storefront supports tracking via Google Tag Manager (GTM) and Matomo.
+
+### <a id="tracking-gtm"></a>4.1 Google Tag Manager
+
+GTM is enabled by setting the `NEXT_PUBLIC_GTM_ID` environment variable. All tracking events (page views, searches, etc.) are pushed to the GTM `dataLayer`. You can then configure your analytics tools (GA4, Matomo, etc.) within GTM.
+
+Available data layer events:
+- `page_view` - with `page_location`, `page_title`, `page_type`
+- `search` - with `search_term`, `search_result_count`
+- `init` - with `country`, `language`
+
+See the [Makaira documentation](https://docs.makaira.io/docs/data-layer-variables) for a complete list of available data layer variables.
+
+### <a id="tracking-matomo"></a>4.2 Matomo
+
+Matomo is initialized when `NEXT_PUBLIC_MAKAIRA_TRACKING_ID` is set. By default, Matomo only handles:
+- Link tracking (automatic)
+- A/B test tracking
+- Goal tracking
+
+#### Direct Page View and Search Tracking
+
+If you want Matomo to track page views and site searches directly (without GTM), set:
+
+```
+NEXT_PUBLIC_MATOMO_DIRECT_TRACKING=true
+```
+
+**Important:** If you already track Matomo page views via GTM, do **not** enable this option to avoid double tracking.
+
+| Tracking Method | Page Views | Searches | When to Use |
+|-----------------|------------|----------|-------------|
+| GTM only (default) | via GTM | via GTM | When using GTM for all analytics |
+| Direct Matomo | Direct | Direct | When not using GTM for Matomo |
+
+## <a id="faq"></a>5. FAQ
+
+---
+
+### <a id="external-css-libraries"></a>5.1 Adding external CSS libraries
 
 If you want to use external CSS libraries you can install them using NPM and include the necessary files.
 
@@ -260,7 +299,7 @@ If you want to use external CSS libraries you can install them using NPM and inc
    - Import directly in the application entry file `pages/_app.js`:
      `import 'bootstrap/dist/css/bootstrap.css'`
 
-### <a id="ie11-compatibility"></a>4.2 IE11 Compatability
+### <a id="ie11-compatibility"></a>5.2 IE11 Compatability
 
 By default, this application is not supporting IE11. Therefore, we have a middleware in `server/index.js` that detects if a user is coming with IE and if so, we render a page which suggests downloading a modern browser.
 
@@ -283,7 +322,7 @@ module.exports = {
 }
 ```
 
-### <a id="update-robots-txt"></a>4.3 Updating the robots.txt
+### <a id="update-robots-txt"></a>5.3 Updating the robots.txt
 
 To archive a dynamic sitemap based on the deployed shop domain and the api instance connected with in the `robots.txt` we serve it by the `server/index.js`. You can adjust the response by the handler to your needs.
 

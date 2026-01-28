@@ -19,11 +19,11 @@ import {
   redirect,
   wait,
   GTM,
+  Matomo,
 } from '../../utils'
 import ErrorPage from '../_error'
 import { ShopProvider } from '@makaira/storefront-react'
 import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
-import matomo from '../../utils/core/tracking/matomo'
 
 const pageComponents = {
   page: LandingPage,
@@ -97,7 +97,7 @@ export default class Index extends Component {
   }
 
   componentDidMount() {
-    matomo.init()
+    Matomo.init()
     const language = this.props.pageData?.language
 
     if (language) {
@@ -135,17 +135,18 @@ export default class Index extends Component {
       page_title,
       page_type,
     })
-    // Track the current page view and path
-    if (window._paq) {
-      window._paq.push(['setCustomUrl', page_location])
-      window._paq.push(['setDocumentTitle', page_title])
-      window._paq.push(['trackPageView'])
-    }
-    matomo.trackScrollDepth({
+
+    Matomo.trackPageView({
+      pageTitle: page_title,
+      pageUrl: page_location,
+    })
+
+    Matomo.trackScrollDepth({
       points: [25, 50, 75, 100],
       debug: true,
     })
-    matomo.trackTimeOnPage({
+
+    Matomo.trackTimeOnPage({
       intervals: [10, 30, 60, 120],
       debug: true,
     })
