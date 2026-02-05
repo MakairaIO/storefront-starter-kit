@@ -40,11 +40,11 @@ export default {
   ERROR_PAGE_FURTHER_TITLE: 'Die technischen Daten',
   BROWSER_HINT_PAGE_HEADING: 'Leider gibt es ein Problem mit Ihrem Browser!',
   BROWSER_HINT_PAGE_SUB_HEADING:
-    'Wie es scheint benutzten Sie den Microsoft Internet Explorer',
+    'Wie es scheint benutzten Sie einen veralteten Browser',
   BROWSER_HINT_PAGE_TEXT_TOP:
     '“Ja, und?” höre ich Sie mit Verwunderung fragen. Recht haben Sie. Hat der Browser Ihnen doch die letzten Jahrzehnte immer gute Dienste erwiesen. Und jetzt soll da irgendetwas nicht stimmen? <br/><br/> Wir hatten nicht gehofft diejenigen sein zu müssen, die Ihnen die News überbringen, aber leider werden sehr viele aktuelle Technologien von Ihrem Browser nicht mehr unterstützt. Aus diesem Grund haben wir uns dazu entschieden Ihnen lieber eine Empfehlung für einen modernen Browser zu machen als eine halbgare Lösung zusammenzubasteln, die am Ende kaum eine Chance auf Wartbareit durch uns und Zufriedenheit bei Ihnen hat.',
   BROWSER_HINT_PAGE_TEXT_BOTTOM:
-    'Nehmen wir uns also einen Moment und gedenken der wunderschönen Surferlebnisse, die Sie mit dem Internet Explorer hatte und schließen diese tief in unsere schönen Erinnerungen ein … hach ja … der Hamsterdance, die Blueballmachine, die Lycos Suchmaschine, … Schön war es. <br/><br/> So, und nun kann man auch mit tränenfreien Auge in die Zukunft schauen, und Sie sind mit einem neuen frischen Browser wieder ganz vorne dabei. <br/><br/> Bitte wählen Sie doch einfach einen zum Download aus, mit beiden kommen Sie gut durch den Alltag. Versprochen, wir nutzen diese auch beide bei der Entwicklung.',
+    'Nehmen wir uns also einen Moment und gedenken der wunderschönen Surferlebnisse, die Sie mit Ihrem veralteten Browser hatten und schließen diese tief in unsere schönen Erinnerungen ein … hach ja … der Hamsterdance, die Blueballmachine, die Lycos Suchmaschine, … Schön war es. <br/><br/> So, und nun kann man auch mit tränenfreien Auge in die Zukunft schauen, und Sie sind mit einem neuen frischen Browser wieder ganz vorne dabei. <br/><br/> Bitte wählen Sie doch einfach einen zum Download aus, mit beiden kommen Sie gut durch den Alltag. Versprochen, wir nutzen diese auch beide bei der Entwicklung.',
   BROWSER_HINT_PAGE_DOWNLOAD_HINT:
     'Jetzt kostenlos einen modernen Browser downloaden',
   BROWSER_HINT_PAGE_RECOMMENDATIONS: 'Unsere Empfehlungen',

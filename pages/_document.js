@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Script from 'next/script'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -17,7 +18,8 @@ export default class MyDocument extends Document {
           <link rel="dns-prefetch" href="https://cdn.polyfill.io" />
           <link rel="preconnect" href="https://cdn.polyfill.io" />
            */}
-
+          {/* polyfill for old browser with no difinition of class constructor */}
+          <Script src="https://unpkg.com/event-target@latest/min.js" async />
           <Favicon />
         </Head>
         <body id="body">
