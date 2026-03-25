@@ -76,4 +76,11 @@ export {
 export { default as getStructureData } from './core/getStructureData'
 export { default as getUserIntentSettings } from './core/getUserIntentSettings'
 
+/* Shopify Customer Account API Auth */
+export {
+  ShopifyAuthContext,
+  ShopifyAuthProvider,
+  useShopifyAuth,
+} from './core/shopifyAuth'
+
 /* Add project specific utils here */
