@@ -45,10 +45,13 @@ app
     server.use((req, res, next) => {
       const ua = parser(req.headers['user-agent'])
 
-      if ('IE' !== ua.browser.name) {
-        next()
-      } else {
+      if (
+        'IE' === ua.browser.name ||
+        (ua.browser.name.includes('Safari') && ua.browser.major < 14)
+      ) {
         app.render(req, res, '/frontend/browser', req.query)
+      } else {
+        next()
       }
     })
 
@@ -80,6 +83,13 @@ app
       } catch (e) {
         return res.status(e.code).json(e)
       }
+    })
+
+    /**
+     * Route handler for Shopify OAuth callback
+     */
+    server.get('/auth/callback', (req, res) => {
+      app.render(req, res, '/frontend/auth/callback', { ...req.query })
     })
 
     server.get('*', (req, res) => {

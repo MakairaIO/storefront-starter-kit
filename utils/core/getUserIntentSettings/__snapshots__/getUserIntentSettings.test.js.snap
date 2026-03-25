@@ -1,0 +1,185 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getUserIntentSettings() Should return right structure multi intent different setting 1`] = `
+Object {
+  "pageElapsed": Array [
+    Object {
+      "documents": Array [
+        Object {
+          "ctaType": "slidein",
+          "id": "2",
+          "updatedAt": "2023-07-31T13:41:07+00:00",
+        },
+      ],
+      "value": 10,
+    },
+  ],
+  "pageExit": Array [
+    Object {
+      "ctaType": "slidein",
+      "id": "1",
+      "updatedAt": "2023-08-03T14:52:20+00:00",
+    },
+  ],
+  "pageInactivity": Array [
+    Object {
+      "documents": Array [
+        Object {
+          "ctaType": "slidein",
+          "id": "2",
+          "updatedAt": "2023-07-31T13:41:07+00:00",
+        },
+      ],
+      "value": 20,
+    },
+  ],
+  "pageScroll": Array [
+    Object {
+      "documents": Array [
+        Object {
+          "ctaType": "slidein",
+          "id": "1",
+          "updatedAt": "2023-08-03T14:52:20+00:00",
+        },
+      ],
+      "value": 40,
+    },
+  ],
+}
+`;
+
+exports[`getUserIntentSettings() Should return right structure multi intent same setting different CTAType 1`] = `
+Object {
+  "pageElapsed": Array [],
+  "pageExit": Array [
+    Object {
+      "ctaType": "slidein",
+      "id": "2",
+      "updatedAt": "2023-07-31T13:41:07+00:00",
+    },
+    Object {
+      "ctaType": "popup",
+      "id": "1",
+      "updatedAt": "2023-08-03T14:52:20+00:00",
+    },
+  ],
+  "pageInactivity": Array [],
+  "pageScroll": Array [
+    Object {
+      "documents": Array [
+        Object {
+          "ctaType": "slidein",
+          "id": "2",
+          "updatedAt": "2023-07-31T13:41:07+00:00",
+        },
+        Object {
+          "ctaType": "popup",
+          "id": "1",
+          "updatedAt": "2023-08-03T14:52:20+00:00",
+        },
+      ],
+      "value": 40,
+    },
+  ],
+}
+`;
+
+exports[`getUserIntentSettings() Should return right structure multi intent same setting same CTAType 1`] = `
+Object {
+  "pageElapsed": Array [],
+  "pageExit": Array [
+    Object {
+      "ctaType": "slidein",
+      "id": "1",
+      "updatedAt": "2023-08-03T14:52:20+00:00",
+    },
+  ],
+  "pageInactivity": Array [],
+  "pageScroll": Array [
+    Object {
+      "documents": Array [
+        Object {
+          "ctaType": "slidein",
+          "id": "1",
+          "updatedAt": "2023-08-03T14:52:20+00:00",
+        },
+      ],
+      "value": 40,
+    },
+  ],
+}
+`;
+
+exports[`getUserIntentSettings() Should return right structure single intent 1`] = `
+Object {
+  "pageElapsed": Array [
+    Object {
+      "documents": Array [
+        Object {
+          "ctaType": "slidein",
+          "id": "1",
+          "updatedAt": "2023-08-03T14:52:20+00:00",
+        },
+      ],
+      "value": 10,
+    },
+  ],
+  "pageExit": Array [
+    Object {
+      "ctaType": "slidein",
+      "id": "1",
+      "updatedAt": "2023-08-03T14:52:20+00:00",
+    },
+  ],
+  "pageInactivity": Array [
+    Object {
+      "documents": Array [
+        Object {
+          "ctaType": "slidein",
+          "id": "1",
+          "updatedAt": "2023-08-03T14:52:20+00:00",
+        },
+      ],
+      "value": 20,
+    },
+  ],
+  "pageScroll": Array [
+    Object {
+      "documents": Array [
+        Object {
+          "ctaType": "slidein",
+          "id": "1",
+          "updatedAt": "2023-08-03T14:52:20+00:00",
+        },
+      ],
+      "value": 40,
+    },
+  ],
+}
+`;
+
+exports[`getUserIntentSettings() Should return right structure single intent 2 1`] = `
+Object {
+  "pageElapsed": Array [],
+  "pageExit": Array [
+    Object {
+      "ctaType": "slidein",
+      "id": "1",
+      "updatedAt": "2023-08-03T14:52:20+00:00",
+    },
+  ],
+  "pageInactivity": Array [],
+  "pageScroll": Array [
+    Object {
+      "documents": Array [
+        Object {
+          "ctaType": "slidein",
+          "id": "1",
+          "updatedAt": "2023-08-03T14:52:20+00:00",
+        },
+      ],
+      "value": 40,
+    },
+  ],
+}
+`;

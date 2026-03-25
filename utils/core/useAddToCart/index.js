@@ -1,8 +1,8 @@
+import { useShopClient } from '@makaira/storefront-react'
 import { useCallback, useState } from 'react'
 import fetchRecommendationData from '../fetchRecommendationData'
 import { useTranslation } from '../TranslationProvider'
 import { GTM, prepareTrackingItem } from '../../index'
-import { useShopClient } from '@makaira/storefront-react'
 
 export const ADD_TO_CART_DISPATCH_EVENT_NAME = 'addToCart:success'
 

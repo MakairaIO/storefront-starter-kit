@@ -14,15 +14,15 @@ import {
   ConfigurationProvider,
   TranslationProvider,
   AbTestingProvider,
+  ShopifyAuthProvider,
   fetchPageData,
   fetchMenuData,
   redirect,
   wait,
   GTM,
+  Matomo,
 } from '../../utils'
 import ErrorPage from '../_error'
-import { ShopProvider } from '@makaira/storefront-react'
-import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
 
 const pageComponents = {
   page: LandingPage,
@@ -31,8 +31,6 @@ const pageComponents = {
   manufacturer: ListingPage,
   'makaira-productgroup': DetailPage,
 }
-
-const shopClient = new StorefrontShopAdapterLocal()
 
 export default class Index extends Component {
   static async getInitialProps(ctx) {
@@ -96,6 +94,7 @@ export default class Index extends Component {
   }
 
   componentDidMount() {
+    Matomo.init()
     const language = this.props.pageData?.language
 
     if (language) {
@@ -133,6 +132,21 @@ export default class Index extends Component {
       page_title,
       page_type,
     })
+
+    Matomo.trackPageView({
+      pageTitle: page_title,
+      pageUrl: page_location,
+    })
+
+    Matomo.trackScrollDepth({
+      points: [25, 50, 75, 100],
+      debug: true,
+    })
+
+    Matomo.trackTimeOnPage({
+      intervals: [10, 30, 60, 120],
+      debug: true,
+    })
   }
 
   render() {
@@ -145,7 +159,7 @@ export default class Index extends Component {
     const PageComponent = pageComponents[type]
 
     return (
-      <ShopProvider client={shopClient}>
+      <ShopifyAuthProvider>
         <GlobalDataProvider {...this.props}>
           <ConfigurationProvider
             assetUrl={process.env.NEXT_PUBLIC_MAKAIRA_ASSET_URL}
@@ -163,7 +177,7 @@ export default class Index extends Component {
             </TranslationProvider>
           </ConfigurationProvider>
         </GlobalDataProvider>
-      </ShopProvider>
+      </ShopifyAuthProvider>
     )
   }
 }

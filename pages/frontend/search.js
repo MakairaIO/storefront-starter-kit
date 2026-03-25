@@ -12,18 +12,16 @@ import {
   ConfigurationProvider,
   TranslationProvider,
   AbTestingProvider,
+  ShopifyAuthProvider,
   fetchSearchResult,
   fetchMenuData,
   redirect,
   redirectToDetailPageOnSingleHit,
   redirectOnSearchRedirectHit,
   GTM,
+  Matomo,
 } from '../../utils'
 import ErrorPage from '../_error'
-import { ShopProvider } from '@makaira/storefront-react'
-import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
-
-const shopClient = new StorefrontShopAdapterLocal()
 
 export default class Index extends Component {
   static async getInitialProps(ctx) {
@@ -93,6 +91,11 @@ export default class Index extends Component {
       search_term,
       search_result_count,
     })
+
+    Matomo.trackSiteSearch({
+      keyword: search_term,
+      resultsCount: search_result_count,
+    })
   }
 
   render() {
@@ -104,7 +107,7 @@ export default class Index extends Component {
     const { language } = searchResult
 
     return (
-      <ShopProvider client={shopClient}>
+      <ShopifyAuthProvider>
         <GlobalDataProvider {...this.props}>
           <ConfigurationProvider
             assetUrl={process.env.NEXT_PUBLIC_MAKAIRA_ASSET_URL}
@@ -122,7 +125,7 @@ export default class Index extends Component {
             </TranslationProvider>
           </ConfigurationProvider>
         </GlobalDataProvider>
-      </ShopProvider>
+      </ShopifyAuthProvider>
     )
   }
 }

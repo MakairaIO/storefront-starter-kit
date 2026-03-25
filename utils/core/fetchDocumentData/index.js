@@ -5,6 +5,7 @@ export default async function fetchDocumentData({
   datatype = '',
   fields = [],
   ids = [],
+  includeContent = false,
 }) {
   const builder = new RequestBuilder()
   const constraints = builder.getConstraints({ language })
@@ -14,6 +15,7 @@ export default async function fetchDocumentData({
     datatype,
     fields,
     ids,
+    includeContent,
   }
 
   const page = await fetchFromMakaira({ body, isDocument: true })
