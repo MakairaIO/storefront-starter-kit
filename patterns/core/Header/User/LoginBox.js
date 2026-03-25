@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import UserForm from './UserForm'
 import LoginForm from './LoginForm'
-import PasswordForgotForm from './PasswordForgotForm'
 import { Button, Text } from '../../..'
 
 import FlyoutBox from '../FlyoutBox'
-import { useShopUser } from '@makaira/storefront-react'
+import { useShopifyAuth } from '../../../../utils'
 
 const Form = ({
   title,
@@ -56,27 +55,13 @@ const Form = ({
 }
 
 const LoginBox = () => {
-  const { user } = useShopUser()
+  const { user, isAuthenticated } = useShopifyAuth()
 
-  const [showPasswordForgot, setShowPasswordForgot] = useState(false)
-
-  const handlePasswordForgetSwitch = () => {
-    setShowPasswordForgot(true)
+  if (isAuthenticated && user) {
+    return <UserForm user={user} />
   }
 
-  const handleBackToLogin = () => {
-    setShowPasswordForgot(false)
-  }
-
-  if (user?.user) {
-    return <UserForm user={user.user} />
-  }
-
-  if (showPasswordForgot) {
-    return <PasswordForgotForm onBackToLogin={handleBackToLogin} />
-  }
-
-  return <LoginForm onPasswordForgetSwitch={handlePasswordForgetSwitch} />
+  return <LoginForm />
 }
 
 export default LoginBox
