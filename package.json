@@ -86,7 +86,7 @@
     "stylelint": "^16.0.0",
     "stylelint-stylus": "^1.0.0",
     "svgstore-cli": "^2.0.1",
-    "typescript": "^5.0.0"
+    "typescript": "^6.0.0"
   },
   "sideEffects": [
     "*.css"
