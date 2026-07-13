@@ -36,6 +36,10 @@ module.exports = withBundleAnalyzer({
         destination: '/library/entry',
       },
       {
+        source: '/auth/callback',
+        destination: '/frontend/auth/callback',
+      },
+      {
         source: '/:path*',
         destination: '/frontend/entry',
       },

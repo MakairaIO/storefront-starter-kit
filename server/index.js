@@ -82,6 +82,13 @@ app
       }
     })
 
+    /**
+     * Route handler for Shopify OAuth callback
+     */
+    server.get('/auth/callback', (req, res) => {
+      app.render(req, res, '/frontend/auth/callback', { ...req.query })
+    })
+
     server.get('*', (req, res) => {
       return handle(req, res)
     })
