@@ -12,6 +12,7 @@ import {
   ConfigurationProvider,
   TranslationProvider,
   AbTestingProvider,
+  ShopifyAuthProvider,
   fetchSearchResult,
   fetchMenuData,
   redirect,
@@ -20,10 +21,6 @@ import {
   GTM,
 } from '../../utils'
 import ErrorPage from '../_error'
-import { ShopProvider } from '@makaira/storefront-react'
-import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
-
-const shopClient = new StorefrontShopAdapterLocal()
 
 export default class Index extends Component {
   static async getInitialProps(ctx) {
@@ -104,7 +101,7 @@ export default class Index extends Component {
     const { language } = searchResult
 
     return (
-      <ShopProvider client={shopClient}>
+      <ShopifyAuthProvider>
         <GlobalDataProvider {...this.props}>
           <ConfigurationProvider
             assetUrl={process.env.NEXT_PUBLIC_MAKAIRA_ASSET_URL}
@@ -122,7 +119,7 @@ export default class Index extends Component {
             </TranslationProvider>
           </ConfigurationProvider>
         </GlobalDataProvider>
-      </ShopProvider>
+      </ShopifyAuthProvider>
     )
   }
 }
