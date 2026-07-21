@@ -1,7 +1,11 @@
-import { Button } from '../../..'
 import { Form } from './LoginBox'
 import { useState } from 'react'
 import { useTranslation, useShopifyAuth } from '../../../../utils'
+
+const getWelcomeName = (user) => {
+  const fullName = [user.firstname, user.lastname].filter(Boolean).join(' ')
+  return fullName || user.email || ''
+}
 
 const UserForm = ({ user }) => {
   const { logout } = useShopifyAuth()
@@ -17,24 +21,14 @@ const UserForm = ({ user }) => {
 
   return (
     <Form
-      title={t('USER_WELCOME')(`${user.firstname} ${user.lastname}`)}
+      title={t('USER_WELCOME')(getWelcomeName(user))}
       buttonVariant="primary-alt"
       buttonText={t('LOGOUT')}
       buttonIcon="logout"
       formId="login-box__logout"
       onSubmit={handleLogout}
       loading={loading}
-    >
-      <Button
-        variant="secondary"
-        icon="user"
-        iconPosition="left"
-        className="login-box__button"
-        href="/my-account"
-      >
-        {t('USER_ACCOUNT')}
-      </Button>
-    </Form>
+    />
   )
 }
 
