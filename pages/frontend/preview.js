@@ -54,6 +54,7 @@ export default class Index extends Component {
         type: 'loading',
       },
       isPreview: true,
+      selectedElement: '',
     }
   }
 
@@ -87,10 +88,10 @@ export default class Index extends Component {
   updateStateForPreview = (event) => {
     const { source, payload, action } = event.data
 
-    // Check if we get the data from makaira backend or from localhost
+    // // Check if we get the data from makaira backend or from localhost
     if (event.origin !== process.env.NEXT_PUBLIC_MAKAIRA_API_URL) return
 
-    // Check if it is also send by the makaira backend
+    // // Check if it is also send by the makaira backend
     if (source !== 'makaira-bridge') return
 
     // The makaira backend wants to know which version of the page editor preview
@@ -104,9 +105,16 @@ export default class Index extends Component {
         },
         event.origin
       )
+      return
       // Update the GlobalDataProvider when we receive new page data from the makaira backend.
-    } else if (action === 'update') {
+    }
+    if (action === 'update') {
       this.setState({ pageData: payload.data, isPreview: true })
+      return
+    }
+
+    if (action === 'selected-element') {
+      this.setState({ selectedElement: payload })
     }
   }
 

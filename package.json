@@ -1,6 +1,6 @@
 {
   "name": "storefront-starter-kit",
-  "version": "1.18.1",
+  "version": "1.19.1",
   "description": "Makaira Storefront",
   "author": "René Mäkeler <rm@marmalade.group>",
   "private": true,
@@ -47,7 +47,7 @@
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "lodash": "^4.17.21",
-    "next": "^15.0.3",
+    "next": "^15.0.5",
     "nookies": "^2.5.2",
     "prop-types": "^15.8.1",
     "qs": "^6.11.2",

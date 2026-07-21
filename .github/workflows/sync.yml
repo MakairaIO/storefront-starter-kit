@@ -54,7 +54,7 @@ jobs:
 
       - name: Push sync branch
         if: ${{ success() }}
-        run: git push
+        run: git push origin ${{ matrix.syncBranch }}
         env:
           GIT_AUTHOR_NAME: ${{ secrets.GIT_USERNAME }}
           GIT_AUTHOR_EMAIL: ${{ secrets.GIT_EMAIL }}

@@ -17,7 +17,7 @@ const LanguageSwitch = () => {
 
   function onSwitchLanguage({ value: newLanguage }) {
     if (currentLanguage !== newLanguage) {
-      const href = pageData?.data?.self?.selfLinks?.[newLanguage]
+      const href = pageData?.data?.self?.selfLinks?.[newLanguage] || ''
 
       push(
         `${href.startsWith('/') ? '' : '/'}${
