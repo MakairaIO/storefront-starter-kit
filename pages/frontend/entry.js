@@ -14,6 +14,7 @@ import {
   ConfigurationProvider,
   TranslationProvider,
   AbTestingProvider,
+  ShopifyAuthProvider,
   fetchPageData,
   fetchMenuData,
   redirect,
@@ -21,9 +22,6 @@ import {
   GTM,
 } from '../../utils'
 import ErrorPage from '../_error'
-import { ShopProvider } from '@makaira/storefront-react'
-// eslint-disable-next-line import/no-unresolved
-import { StorefrontShopAdapterShopify } from '@makaira/storefront-shop-adapter-shopify'
 
 const pageComponents = {
   page: LandingPage,
@@ -32,10 +30,6 @@ const pageComponents = {
   manufacturer: ListingPage,
   'makaira-productgroup': DetailPage,
 }
-const shopClient = new StorefrontShopAdapterShopify({
-  url: process.env.STOREFRONT_DOMAIN,
-  accessToken: process.env.STOREFRONT_API_KEY,
-})
 
 export default class Index extends Component {
   static async getInitialProps(ctx) {
@@ -148,7 +142,7 @@ export default class Index extends Component {
     const PageComponent = pageComponents[type]
 
     return (
-      <ShopProvider client={shopClient}>
+      <ShopifyAuthProvider>
         <GlobalDataProvider {...this.props}>
           <ConfigurationProvider
             assetUrl={process.env.NEXT_PUBLIC_MAKAIRA_ASSET_URL}
@@ -166,7 +160,7 @@ export default class Index extends Component {
             </TranslationProvider>
           </ConfigurationProvider>
         </GlobalDataProvider>
-      </ShopProvider>
+      </ShopifyAuthProvider>
     )
   }
 }

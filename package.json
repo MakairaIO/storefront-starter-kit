@@ -37,8 +37,8 @@
   "dependencies": {
     "@iframe-resizer/parent": "^5.3.3",
     "@makaira/storefront-react": "^1.6.7",
-    "@makaira/storefront-shop-adapter-shopify": "^1.0.0",
-    "@makaira/storefront-shop-adapter-local": "^1.6.5",
+    "@makaira/storefront-shop-adapter-shopify": "2.1.0",
+    "@makaira/storefront-shop-adapter-local": "1.6.7",
     "@next/bundle-analyzer": "^15.0.0",
     "@next/env": "^15.0.3",
     "body-parser": "^1.20.2",
