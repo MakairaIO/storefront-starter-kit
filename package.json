@@ -40,7 +40,7 @@
     "@makaira/storefront-shop-adapter-local": "^1.6.5",
     "@next/bundle-analyzer": "^15.0.0",
     "@next/env": "^15.0.3",
-    "body-parser": "^1.20.2",
+    "body-parser": "^2.0.0",
     "classnames": "^2.3.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
