@@ -102,6 +102,6 @@
     "*.styl": "stylelint --fix"
   },
   "engines": {
-    "node": "22.14.0"
+    "node": "22.23.2"
   }
 }
