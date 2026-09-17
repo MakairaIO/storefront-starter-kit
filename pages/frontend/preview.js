@@ -29,6 +29,17 @@ const pageComponents = {
 
 const MAKAIRA_PAGE_EDITOR_VERSION = '1.0'
 
+const isAllowedPreviewOrigin = (origin) => {
+  if (origin === process.env.NEXT_PUBLIC_MAKAIRA_API_URL) return true
+
+  try {
+    const { hostname } = new URL(origin)
+    return hostname === 'localhost' || hostname === '127.0.0.1'
+  } catch {
+    return false
+  }
+}
+
 function NoIndexMeta() {
   return (
     <Head>
@@ -88,8 +99,8 @@ export default class Index extends Component {
   updateStateForPreview = (event) => {
     const { source, payload, action } = event.data
 
-    // // Check if we get the data from makaira backend or from localhost
-    if (event.origin !== process.env.NEXT_PUBLIC_MAKAIRA_API_URL) return
+    // Accept the Makaira backend and local admin UI (localhost preview iframe).
+    if (!isAllowedPreviewOrigin(event.origin)) return
 
     // // Check if it is also send by the makaira backend
     if (source !== 'makaira-bridge') return
