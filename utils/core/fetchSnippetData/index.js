@@ -1,7 +1,11 @@
 import { RequestBuilder, fetchFromMakaira } from '../..'
 
-export default async function fetchSnippetData({ ids = [], language = '' }) {
-  const builder = new RequestBuilder()
+export default async function fetchSnippetData({
+  ids = [],
+  language = '',
+  ctx = {},
+}) {
+  const builder = new RequestBuilder(ctx)
   const constraints = builder.getConstraints({ language })
 
   const body = {
@@ -11,5 +15,5 @@ export default async function fetchSnippetData({ ids = [], language = '' }) {
 
   const page = await fetchFromMakaira({ body, isSnippet: true })
 
-  return page
+  return Array.isArray(page) ? page : []
 }

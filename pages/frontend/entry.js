@@ -16,6 +16,7 @@ import {
   AbTestingProvider,
   fetchPageData,
   fetchMenuData,
+  resolvePageContentSnippets,
   redirect,
   wait,
   GTM,
@@ -53,6 +54,11 @@ export default class Index extends Component {
 
         redirect({ ctx, target, code })
       }
+
+      await resolvePageContentSnippets(pageData, {
+        language: pageData.language,
+        ctx,
+      })
 
       return { menuData, pageData, params }
     } catch (error) {

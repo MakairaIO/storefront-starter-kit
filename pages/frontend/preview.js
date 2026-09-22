@@ -14,6 +14,7 @@ import {
   TranslationProvider,
   AbTestingProvider,
   fetchMenuData,
+  resolvePageContentSnippets,
 } from '../../utils'
 import Head from 'next/head'
 import { ShopProvider } from '@makaira/storefront-react'
@@ -53,8 +54,9 @@ const shopClient = new StorefrontShopAdapterLocal()
 
 /**
  * Preview-Page that is only used for the makaira backend content editor preview.
- * Won't request makaira API before page load and instead listen for preview
- * data via the postMessage-API from the makaira backend.
+ * Won't request the makaira page API before load. Page data arrives via
+ * postMessage from the makaira backend; content-snippet placeholders are then
+ * resolved via /enterprise/snippets.
  */
 export default class Index extends Component {
   constructor(props) {
@@ -96,7 +98,7 @@ export default class Index extends Component {
    *
    * @param event
    */
-  updateStateForPreview = (event) => {
+  updateStateForPreview = async (event) => {
     const { source, payload, action } = event.data
 
     // Accept the Makaira backend and local admin UI (localhost preview iframe).
@@ -120,7 +122,16 @@ export default class Index extends Component {
       // Update the GlobalDataProvider when we receive new page data from the makaira backend.
     }
     if (action === 'update') {
-      this.setState({ pageData: payload.data, isPreview: true })
+      const pageData = payload.data
+      const { language } = pageData
+
+      try {
+        await resolvePageContentSnippets(pageData, { language })
+      } catch (error) {
+        console.error(error)
+      }
+
+      this.setState({ pageData, isPreview: true })
       return
     }
 
