@@ -1,4 +1,5 @@
 import { RequestBuilder, fetchFromMakaira } from '../..'
+import normalizeSnippetResponse from './normalizeSnippetResponse'
 
 export default async function fetchSnippetData({
   ids = [],
@@ -15,5 +16,5 @@ export default async function fetchSnippetData({
 
   const page = await fetchFromMakaira({ body, isSnippet: true })
 
-  return Array.isArray(page) ? page : []
+  return normalizeSnippetResponse(page)
 }

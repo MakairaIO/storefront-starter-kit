@@ -37,6 +37,7 @@ export { default as fetchSnippetData } from './core/fetchSnippetData'
 export {
   default as insertContentSnippets,
   resolvePageContentSnippets,
+  getSnippetElements,
 } from './core/insertContentSnippets'
 export { default as fetchRecommendationData } from './core/fetchRecommendationData'
 export { default as fetchDocumentData } from './core/fetchDocumentData'

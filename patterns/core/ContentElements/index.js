@@ -15,6 +15,7 @@ import {
   ContactForm,
   NoComponent,
 } from '../..'
+import ContentSnippet from '../ContentSnippet'
 import { useGlobalData } from '../../../utils'
 
 export default function ContentElements(props) {
@@ -49,6 +50,7 @@ export default function ContentElements(props) {
     'video-teaser': TeaserVideo,
     'discovery-image': DiscoveryImage,
     'contact-form': ContactForm,
+    'content-snippet': ContentSnippet,
   }
   return (
     <>

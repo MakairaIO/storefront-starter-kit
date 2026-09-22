@@ -1,11 +1,15 @@
 import fetchSnippetData from '../fetchSnippetData'
 
-function getSnippetElements(snippet) {
+export function getSnippetElements(snippet) {
   return (
     snippet.data?.config?.top?.elements ??
     snippet.data?.config?.main?.elements ??
     []
   )
+}
+
+function sameSnippetId(left, right) {
+  return String(left ?? '') === String(right ?? '')
 }
 
 export default async function insertContentSnippets(
@@ -45,7 +49,7 @@ export default async function insertContentSnippets(
     let snippetElementIndex = nextElements.findIndex(
       (item) =>
         item.component === 'content-snippet' &&
-        item.properties?.content?.snippetId === snippetId
+        sameSnippetId(item.properties?.content?.snippetId, snippetId)
     )
 
     while (snippetElementIndex !== -1) {
@@ -58,7 +62,7 @@ export default async function insertContentSnippets(
       snippetElementIndex = nextElements.findIndex(
         (item) =>
           item.component === 'content-snippet' &&
-          item.properties?.content?.snippetId === snippetId
+          sameSnippetId(item.properties?.content?.snippetId, snippetId)
       )
     }
   })
@@ -74,6 +78,7 @@ export async function resolvePageContentSnippets(pageData, options = {}) {
   const slots = [
     pageData.data.config?.top,
     pageData.data.config?.bottom,
+    pageData.data.config?.main,
     pageData.data.self?.contentElements?.top,
     pageData.data.self?.contentElements?.bottom,
   ].filter((slot) => Array.isArray(slot?.elements))
