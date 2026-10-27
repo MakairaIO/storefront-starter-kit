@@ -18,12 +18,10 @@ import {
   redirectToDetailPageOnSingleHit,
   redirectOnSearchRedirectHit,
   GTM,
+  shopClient,
 } from '../../utils'
 import ErrorPage from '../_error'
 import { ShopProvider } from '@makaira/storefront-react'
-import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
-
-const shopClient = new StorefrontShopAdapterLocal()
 
 export default class Index extends Component {
   static async getInitialProps(ctx) {

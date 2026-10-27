@@ -22,7 +22,7 @@ function ProductItem(props) {
   })
 
   const handleRemoveItem = () => {
-    client.cart.removeItem({ input: { product: { id } } })
+    client.cart.removeItem({ input: { lineItemIds: [id] } })
   }
 
   return (

@@ -1,7 +1,14 @@
 import { Button } from '../..'
 import { useAddToCart, useTranslation } from '../../../utils'
 
-export default function ProductActions({ id, images, price, title, url }) {
+export default function ProductActions({
+  id,
+  images,
+  price,
+  title,
+  url,
+  'makaira-product': variants,
+}) {
   const { t } = useTranslation()
   const { addToCart, loading } = useAddToCart()
 
@@ -9,6 +16,7 @@ export default function ProductActions({ id, images, price, title, url }) {
     e.stopPropagation()
     e.preventDefault()
     addToCart({
+      'makaira-product': variants,
       productId: id,
       images,
       price,

@@ -14,10 +14,10 @@ import {
   TranslationProvider,
   AbTestingProvider,
   fetchMenuData,
+  shopClient,
 } from '../../utils'
 import Head from 'next/head'
 import { ShopProvider } from '@makaira/storefront-react'
-import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
 
 const pageComponents = {
   page: LandingPage,
@@ -37,8 +37,6 @@ function NoIndexMeta() {
     </Head>
   )
 }
-
-const shopClient = new StorefrontShopAdapterLocal()
 
 /**
  * Preview-Page that is only used for the makaira backend content editor preview.

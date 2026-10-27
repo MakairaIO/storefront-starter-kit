@@ -3,6 +3,7 @@ import { useAddToCart, useTranslation } from '../../../utils'
 
 export default function ProductActions({
   productId,
+  'makaira-product': variants,
   images,
   price,
   title,
@@ -15,6 +16,7 @@ export default function ProductActions({
     e.stopPropagation()
     e.preventDefault()
     addToCart({
+      'makaira-product': variants,
       productId,
       images,
       price,

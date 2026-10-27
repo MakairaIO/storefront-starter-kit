@@ -2,10 +2,11 @@ import { Text, Button } from '../../../index'
 import ProductList from './ProductList'
 import { useShopCart } from '@makaira/storefront-react'
 import FlyoutBox from '../FlyoutBox'
-import { useTranslation } from '../../../../utils'
+import { useTranslation, useCheckout } from '../../../../utils'
 const Cart = () => {
   const { t } = useTranslation()
   const { cart } = useShopCart()
+  const { loading, goToCheckout } = useCheckout()
 
   return (
     <FlyoutBox>
@@ -22,13 +23,13 @@ const Cart = () => {
           <ProductList products={cart.items} />
 
           <Button
-            type="submit"
             variant="primary"
             className="cart-box__button"
             iconPosition="left"
-            href="#todo"
+            loading={loading}
+            onClick={goToCheckout}
           >
-            {t('CART_TO_FULL_OVERVIEW')}
+            {t('CART_TO_CHECKOUT')}
           </Button>
         </>
       )}

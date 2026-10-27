@@ -1,8 +1,8 @@
 import '@makaira/storefront-react'
-import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
+import { StorefrontShopAdapterShopify } from '@makaira/storefront-shop-adapter-shopify'
 
 declare module '@makaira/storefront-react' {
   interface StorefrontReactCustomClient {
-    client: StorefrontShopAdapterLocal
+    client: StorefrontShopAdapterShopify
   }
 }

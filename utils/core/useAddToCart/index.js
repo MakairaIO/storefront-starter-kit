@@ -13,7 +13,16 @@ export default function useAddToCart() {
 
   const addToCart = useCallback(
     async (
-      { productId, images, price, title, url, activeVariant, quantity },
+      {
+        productId,
+        images,
+        price,
+        title,
+        url,
+        activeVariant,
+        quantity,
+        'makaira-product': variants,
+      },
       { skipRecommendations, skipPopup } = {
         skipRecommendations: false,
         skipPopup: false,
@@ -22,11 +31,15 @@ export default function useAddToCart() {
       setLoading(true)
 
       try {
+        const variant =
+          activeVariant ?? (Array.isArray(variants) ? variants[0] : variants)
+        const variantId = variant?.id ?? productId
+
         const promises = [
           await client.cart.addItem({
             input: {
               quantity,
-              product: { id: productId },
+              product: { id: variantId },
               images,
               price,
               title,
@@ -54,7 +67,12 @@ export default function useAddToCart() {
           GTM.trackEvent({
             event: 'add_to_cart',
             ecommerce: {
-              items: [prepareTrackingItem(activeVariant, quantity)],
+              items: [
+                prepareTrackingItem(
+                  variant ?? { id: productId, title, price },
+                  quantity
+                ),
+              ],
             },
             _clear: true,
           })

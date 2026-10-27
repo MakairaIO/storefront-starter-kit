@@ -73,5 +73,7 @@ export {
   default as useAddToCart,
   ADD_TO_CART_DISPATCH_EVENT_NAME,
 } from './core/useAddToCart'
+export { default as useCheckout } from './core/useCheckout'
+export { default as shopClient } from './core/shopClient'
 export { default as getStructureData } from './core/getStructureData'
 /* Add project specific utils here */

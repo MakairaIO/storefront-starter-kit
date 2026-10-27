@@ -12,6 +12,7 @@ export default function ProductActions({
   bundles,
   addToBundle,
   productId,
+  'makaira-product': variants,
   images,
   price,
   title,
@@ -78,7 +79,16 @@ export default function ProductActions({
   function onAddToCart(e) {
     e.stopPropagation()
     e.preventDefault()
-    addToCart({ productId, title, images, price, url, quantity, activeVariant })
+    addToCart({
+      'makaira-product': variants,
+      productId,
+      title,
+      images,
+      price,
+      url,
+      quantity,
+      activeVariant,
+    })
   }
 
   return (

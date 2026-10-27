@@ -2,16 +2,17 @@ import {
   useTranslation,
   dispatchOverlayClickedEvent,
   ADD_TO_CART_DISPATCH_EVENT_NAME,
+  useCheckout,
 } from '../../../utils'
 import { Modal, Button, Heading } from '../..'
-import allLanguages from '../../../config/allLanguages'
 import { useEffect, useState } from 'react'
 import Recommendations from './Recommendations'
 import { useRouter } from 'next/router'
 
 export default function AddCartSuccessModal() {
-  const { t, language } = useTranslation()
+  const { t } = useTranslation()
   const { asPath } = useRouter()
+  const { loading, goToCheckout } = useCheckout()
 
   const [{ isVisible, recommendations }, setState] = useState({
     isVisible: false,
@@ -53,8 +54,6 @@ export default function AddCartSuccessModal() {
 
   if (!isVisible) return null
 
-  const currentLanguage = allLanguages.find((lang) => lang.value === language)
-
   const products = (recommendations?.items ?? []).map((item) => item.fields)
 
   return (
@@ -75,12 +74,11 @@ export default function AddCartSuccessModal() {
             <Button
               variant="primary"
               size="small"
-              isInternalRoute={true}
-              href="/frontend/cart"
-              as={currentLanguage.cartRoute || '/warenkorb'}
+              loading={loading}
+              onClick={goToCheckout}
               className="cart-modal__cart-btn"
             >
-              {t('ADD_TO_CART_BUTTON_GO_TO_CART')}
+              {t('CART_TO_CHECKOUT')}
             </Button>
             <Button
               onClick={onContinueShopping}
