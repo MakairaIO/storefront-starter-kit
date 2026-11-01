@@ -1,18 +1,17 @@
 import { Button } from '../../..'
 import { Form } from './LoginBox'
 import { useState } from 'react'
-import { useTranslation } from '../../../../utils'
-import { useShopClient } from '@makaira/storefront-react'
+import { useTranslation, useShopifyAuth } from '../../../../utils'
 
 const UserForm = ({ user }) => {
-  const { client } = useShopClient()
+  const { logout } = useShopifyAuth()
   const { t } = useTranslation()
 
   const [loading, setLoading] = useState(false)
 
   const handleLogout = async () => {
     setLoading(true)
-    await client.user.logout({ input: {} })
+    logout()
     setLoading(false)
   }
 

@@ -13,11 +13,10 @@ import {
   ConfigurationProvider,
   TranslationProvider,
   AbTestingProvider,
+  ShopifyAuthProvider,
   fetchMenuData,
 } from '../../utils'
 import Head from 'next/head'
-import { ShopProvider } from '@makaira/storefront-react'
-import { StorefrontShopAdapterLocal } from '@makaira/storefront-shop-adapter-local'
 
 const pageComponents = {
   page: LandingPage,
@@ -37,8 +36,6 @@ function NoIndexMeta() {
     </Head>
   )
 }
-
-const shopClient = new StorefrontShopAdapterLocal()
 
 /**
  * Preview-Page that is only used for the makaira backend content editor preview.
@@ -131,7 +128,7 @@ export default class Index extends Component {
     // We expect in the structure of the store, that params is already an object,
     // so we need to provide it here to the GlobalDataProvider.
     return (
-      <ShopProvider client={shopClient}>
+      <ShopifyAuthProvider>
         <GlobalDataProvider
           {...this.state}
           params={{}}
@@ -154,7 +151,7 @@ export default class Index extends Component {
             </TranslationProvider>
           </ConfigurationProvider>
         </GlobalDataProvider>
-      </ShopProvider>
+      </ShopifyAuthProvider>
     )
   }
 }

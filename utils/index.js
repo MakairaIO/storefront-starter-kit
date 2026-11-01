@@ -74,4 +74,12 @@ export {
   ADD_TO_CART_DISPATCH_EVENT_NAME,
 } from './core/useAddToCart'
 export { default as getStructureData } from './core/getStructureData'
+
+/* Shopify Customer Account API Auth */
+export {
+  ShopifyAuthContext,
+  ShopifyAuthProvider,
+  useShopifyAuth,
+} from './core/shopifyAuth'
+
 /* Add project specific utils here */
