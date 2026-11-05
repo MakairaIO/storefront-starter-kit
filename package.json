@@ -58,8 +58,8 @@
     "ua-parser-js": "^2.0.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.23.3",
-    "@babel/preset-react": "^7.23.3",
+    "@babel/eslint-parser": "^8.0.0",
+    "@babel/preset-react": "^8.0.0",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^8.0.4",
     "@types/react": "^18.2.37",
