@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
 const sendSendGridEmail = require('../utils/core/sendSendGridEmail')
 
 const logError = require('./utils/logError')
+const { registerMcpRoutes } = require('./mcp')
 
 const dev = process.env.NODE_ENV !== 'production'
 const port = process.env.PORT || process.env.NODE_PORT || 5000
@@ -20,6 +21,11 @@ app
     const server = express()
     server.use(cors({ origin: true, credentials: true }))
     server.use(bodyParser.json())
+
+    /**
+     * MCP endpoint for AI agents, see server/mcp.js
+     */
+    registerMcpRoutes(server)
 
     /**
      * Route handler for robots.txt
@@ -47,7 +53,7 @@ app
 
       if (
         'IE' === ua.browser.name ||
-        (ua.browser.name.includes('Safari') && ua.browser.major < 14)
+        (ua.browser.name?.includes('Safari') && ua.browser.major < 14)
       ) {
         app.render(req, res, '/frontend/browser', req.query)
       } else {
