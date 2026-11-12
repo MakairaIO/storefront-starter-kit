@@ -74,6 +74,70 @@ function mapProduct(product, descriptionLength = SHORT_DESCRIPTION_LENGTH) {
   }
 }
 
+const MAX_FILTER_VALUES = 30
+
+function flattenCategoryTree(values, parentTitle = '') {
+  return Object.values(values ?? {}).flatMap((category) => {
+    const title = parentTitle
+      ? `${parentTitle} > ${category.title}`
+      : category.title
+
+    return [
+      { value: category.key, title, count: category.count },
+      ...flattenCategoryTree(category.subtree, title),
+    ]
+  })
+}
+
+/**
+ * Turns the search aggregations into the filters an agent can apply in a
+ * follow-up search: list values for "filters", min/max for "ranges".
+ */
+function mapFilters(aggregations = {}) {
+  return Object.values(aggregations).flatMap((aggregation) => {
+    const { key, title, type } = aggregation
+
+    if (type.startsWith('range_slider')) {
+      const min = Number(aggregation.min)
+      const max = Number(aggregation.max)
+
+      if (!(max > min)) return []
+
+      return [{ key, title, kind: 'range', min, max }]
+    }
+
+    const values =
+      type === 'categorytree'
+        ? flattenCategoryTree(aggregation.values)
+        : Object.values(aggregation.values ?? {}).map((value) => ({
+            value: value.key,
+            count: value.count,
+          }))
+
+    if (values.length === 0) return []
+
+    return [
+      {
+        key,
+        title,
+        kind: 'list',
+        values: values.slice(0, MAX_FILTER_VALUES),
+      },
+    ]
+  })
+}
+
+function buildAggregations(filters = {}, ranges = {}) {
+  const aggregations = { ...filters }
+
+  for (const [key, { from, to }] of Object.entries(ranges)) {
+    if (from !== undefined) aggregations[`${key}_from`] = from
+    if (to !== undefined) aggregations[`${key}_to`] = to
+  }
+
+  return aggregations
+}
+
 function getConstraints(language) {
   return {
     'query.shop_id': SHOP_ID,
@@ -122,21 +186,40 @@ function createServer() {
     {
       title: 'Search products',
       description:
-        'Searches the shop catalogue with the shop search, including its ranking and merchandising. Returns matching products with title, price, product page URL, image and a short description.',
+        'Searches the shop catalogue with the shop search, including its ranking and merchandising. Returns matching products with title, price, product page URL, image and a short description, plus the filters available for the result (e.g. manufacturer, colour, category, price range). To narrow down, repeat the search with "filters" (list values by filter key) and/or "ranges" (from/to by filter key), using only keys and values from a previous result.',
       inputSchema: {
         query: z.string().min(1).describe('Search phrase'),
         language: languageSchema,
         limit: z.number().int().min(1).max(MAX_RESULTS).default(10),
         offset: z.number().int().min(0).default(0),
+        filters: z
+          .record(z.string(), z.array(z.string()).min(1))
+          .optional()
+          .describe(
+            'List filters: filter key -> selected values, e.g. {"manu": ["Core Kiteboarding"]}'
+          ),
+        ranges: z
+          .record(
+            z.string(),
+            z.object({
+              from: z.number().optional(),
+              to: z.number().optional(),
+            })
+          )
+          .optional()
+          .describe(
+            'Range filters: filter key -> {from, to}, e.g. {"price": {"to": 500}}'
+          ),
       },
       annotations: { readOnlyHint: true, openWorldHint: false },
     },
-    async ({ query, language, limit, offset }) => {
+    async ({ query, language, limit, offset, filters, ranges }) => {
       try {
         const result = await fetchFromMakaira('/search/public', {
           searchPhrase: query,
           isSearch: true,
-          enableAggregations: false,
+          enableAggregations: true,
+          aggregations: buildAggregations(filters, ranges),
           count: limit,
           offset,
           constraints: getConstraints(language),
@@ -147,6 +230,7 @@ function createServer() {
           products: (result.product?.items ?? []).map((item) =>
             mapProduct(item)
           ),
+          filters: mapFilters(result.product?.aggregations),
         })
       } catch (error) {
         return toolError(error)
@@ -295,4 +379,10 @@ function registerMcpRoutes(server) {
   )
 }
 
-module.exports = { registerMcpRoutes, mapProduct, stripHtml }
+module.exports = {
+  registerMcpRoutes,
+  mapProduct,
+  mapFilters,
+  buildAggregations,
+  stripHtml,
+}
