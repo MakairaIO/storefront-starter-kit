@@ -4,47 +4,43 @@ export default function FooterWithProps() {
   // use mock data for now
   const footerData = [
     {
-      heading: 'Products',
+      heading: 'Shop',
       links: [
         {
-          text: 'Gin',
+          text: 'New arrivals',
           link: '#todo',
         },
         {
-          text: 'Vodka',
+          text: 'Sale',
           link: '#todo',
         },
         {
-          text: 'Wine',
+          text: 'Brands',
           link: '#todo',
         },
         {
-          text: 'Non-Alcoholics',
-          link: '#todo',
-        },
-        {
-          text: 'Party Drinks',
+          text: 'Gift cards',
           link: '#todo',
         },
       ],
     },
     {
-      heading: 'Services',
+      heading: 'Service',
       links: [
         {
-          text: 'Pay one, Get two',
+          text: 'Shipping',
           link: '#todo',
         },
         {
-          text: 'Lifetime insurance',
+          text: 'Returns',
           link: '#todo',
         },
         {
-          text: 'Money back guarantee',
+          text: 'Payment methods',
           link: '#todo',
         },
         {
-          text: 'Repair services',
+          text: 'FAQ',
           link: '#todo',
         },
       ],
@@ -53,36 +49,36 @@ export default function FooterWithProps() {
       heading: 'Company',
       links: [
         {
-          text: 'Who we are',
+          text: 'About us',
           link: '#todo',
         },
         {
-          text: 'What we do',
+          text: 'Contact',
           link: '#todo',
         },
         {
-          text: 'Working with us',
+          text: 'Careers',
           link: '#todo',
         },
         {
           text: 'Blog',
           link: '#todo',
         },
-        {
-          text: 'Jobs',
-          link: '#todo',
-        },
       ],
     },
     {
-      heading: 'Support',
+      heading: 'Legal',
       links: [
         {
-          text: 'For customers',
+          text: 'Imprint',
           link: '#todo',
         },
         {
-          text: 'For businesses',
+          text: 'Privacy policy',
+          link: '#todo',
+        },
+        {
+          text: 'Terms & conditions',
           link: '#todo',
         },
       ],
