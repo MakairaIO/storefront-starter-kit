@@ -6,6 +6,7 @@ function ProductItem(props) {
   const {
     title = '',
     images = [],
+    picture_url_main = '',
     url = '',
     showRemoveButton,
     onRemoveClick,
@@ -14,12 +15,12 @@ function ProductItem(props) {
   const productDetailUrl = getProductDetailUrl({ url })
 
   const imageLink = getImageLink({
-    source: images[0],
+    source: images[0] || picture_url_main,
     height: 50,
   })
 
   const imageLinkRetina = getImageLink({
-    source: images[0],
+    source: images[0] || picture_url_main,
     height: 50,
     pixelRatio: 2,
   })

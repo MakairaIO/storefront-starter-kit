@@ -25,18 +25,24 @@ function TeaserProducts(props) {
 function Teaser(props) {
   const { t } = useTranslation()
   const { getImageLink } = useConfiguration()
-  const { title = '', manufacturer_title = '', url = '', images = [] } = props
+  const {
+    title = '',
+    manufacturer_title = '',
+    url = '',
+    images = [],
+    picture_url_main = '',
+  } = props
 
   const productDetailUrl = getProductDetailUrl({ url })
 
   const imageLink = getImageLink({
-    source: images[0],
+    source: images[0] || picture_url_main,
     height: 289,
     format: 'auto',
   })
 
   const imageLinkRetina = getImageLink({
-    source: images[0],
+    source: images[0] || picture_url_main,
     height: 289,
     pixelRatio: 2,
     format: 'auto',
