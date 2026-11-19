@@ -103,6 +103,8 @@ export default {
   CART: 'Cart',
   CART_EMPTY: 'No products in the shopping cart.',
   CART_TO_CHECKOUT: 'Go to checkout',
+  CHECKOUT_UNAVAILABLE:
+    'Checkout is currently unavailable. Please try again later.',
   WISHLIST: 'Wishlist',
   WISHLIST_EMPTY: 'No products on the wishlist.',
   WISHLIST_TO_FULL_OVERVIEW: 'View wishlist',

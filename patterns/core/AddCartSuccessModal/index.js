@@ -12,7 +12,7 @@ import { useRouter } from 'next/router'
 export default function AddCartSuccessModal() {
   const { t } = useTranslation()
   const { asPath } = useRouter()
-  const { loading, goToCheckout } = useCheckout()
+  const { loading, error, goToCheckout } = useCheckout()
 
   const [{ isVisible, recommendations }, setState] = useState({
     isVisible: false,
@@ -89,6 +89,11 @@ export default function AddCartSuccessModal() {
               {t('CONTINUE_SHOPPING')}
             </Button>
           </div>
+          {error && (
+            <p className="cart-modal__error" role="alert">
+              {t('CHECKOUT_UNAVAILABLE')}
+            </p>
+          )}
         </div>
         {products.length > 0 && <Recommendations products={products} />}
       </div>

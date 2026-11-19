@@ -110,6 +110,8 @@ export default {
   CART: 'Warenkorb',
   CART_EMPTY: 'Keine Produkte im Warenkorb.',
   CART_TO_CHECKOUT: 'Zur Kasse',
+  CHECKOUT_UNAVAILABLE:
+    'Der Checkout ist derzeit nicht verfügbar. Bitte versuchen Sie es später erneut.',
   WISHLIST: 'Merkliste',
   WISHLIST_EMPTY: 'Keine Produkte auf der Merkliste.',
   WISHLIST_TO_FULL_OVERVIEW: 'Zur Merkliste',

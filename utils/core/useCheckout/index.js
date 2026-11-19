@@ -11,15 +11,23 @@ export function getCheckoutUrl(raw = {}) {
 export default function useCheckout() {
   const { client } = useShopClient()
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
 
   const goToCheckout = useCallback(async () => {
     setLoading(true)
+    setError(false)
 
-    const { raw, error } = await client.cart.getCart()
-    const url = getCheckoutUrl(raw)
+    let url
+    try {
+      const { raw, error: cartError } = await client.cart.getCart()
+      url = cartError ? undefined : getCheckoutUrl(raw)
+      if (!url) console.error('Shopify checkout unavailable:', cartError)
+    } catch (e) {
+      console.error('Shopify checkout unavailable:', e)
+    }
 
-    if (error || !url) {
-      console.error('Shopify checkout unavailable:', error)
+    if (!url) {
+      setError(true)
       setLoading(false)
       return
     }
@@ -27,5 +35,5 @@ export default function useCheckout() {
     window.location.href = url
   }, [client])
 
-  return { loading, goToCheckout }
+  return { loading, error, goToCheckout }
 }

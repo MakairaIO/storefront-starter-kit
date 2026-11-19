@@ -6,7 +6,7 @@ import { useTranslation, useCheckout } from '../../../../utils'
 const Cart = () => {
   const { t } = useTranslation()
   const { cart } = useShopCart()
-  const { loading, goToCheckout } = useCheckout()
+  const { loading, error, goToCheckout } = useCheckout()
 
   return (
     <FlyoutBox>
@@ -31,6 +31,12 @@ const Cart = () => {
           >
             {t('CART_TO_CHECKOUT')}
           </Button>
+
+          {error && (
+            <Text className="cart-box__error" element="p" role="alert">
+              {t('CHECKOUT_UNAVAILABLE')}
+            </Text>
+          )}
         </>
       )}
     </FlyoutBox>
