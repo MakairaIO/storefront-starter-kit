@@ -23,15 +23,17 @@ export default function useAddToCart() {
       setLoading(true)
 
       try {
+        const variants = product['makaira-product']
+        const variant =
+          product.activeVariant ??
+          (Array.isArray(variants) ? variants[0] : variants)
+        // Shopify needs the variant id; it must win over the product's own `id`.
+        const variantId = variant?.id ?? product.productId ?? product.id
+
         const promises = [
           client.cart.addItem({
             input: {
-              product: {
-                id: Array.isArray(product['makaira-product'])
-                  ? product['makaira-product'][0]?.id
-                  : product['makaira-product']?.id,
-                ...product,
-              },
+              product: { ...product, id: variantId },
               quantity,
             },
           }),
@@ -56,7 +58,16 @@ export default function useAddToCart() {
           GTM.trackEvent({
             event: 'add_to_cart',
             ecommerce: {
-              items: [prepareTrackingItem(product.activeVariant, quantity)],
+              items: [
+                prepareTrackingItem(
+                  variant ?? {
+                    id: variantId,
+                    title: product.title,
+                    price: product.price,
+                  },
+                  quantity
+                ),
+              ],
             },
             _clear: true,
           })

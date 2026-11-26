@@ -93,13 +93,14 @@ export default {
     `Search results for ${searchPhrase}`,
   CART: 'Cart',
   CART_EMPTY: 'No products in the shopping cart.',
-  CART_TO_FULL_OVERVIEW: 'View shopping cart',
+  CART_TO_CHECKOUT: 'Go to checkout',
+  CHECKOUT_UNAVAILABLE:
+    'Checkout is currently unavailable. Please try again later.',
   WISHLIST: 'Wishlist',
   WISHLIST_EMPTY: 'No products on the wishlist.',
   WISHLIST_TO_FULL_OVERVIEW: 'View wishlist',
   de: 'Deutsch',
   en: 'English',
   ADD_TO_CART_MESSAGE_SUCCESS: 'Item added to cart',
-  ADD_TO_CART_BUTTON_GO_TO_CART: 'Go to the shopping cart',
   CONTINUE_SHOPPING: 'Continue Shopping',
 }
