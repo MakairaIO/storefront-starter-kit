@@ -37,6 +37,18 @@ export default {
     _paq.push(['setTrackerUrl', u + 'piwik.php'])
     _paq.push(['setSiteId', process.env.NEXT_PUBLIC_MAKAIRA_TRACKING_ID])
 
+    // Stage only (MAKAIRA-5257): mirror every hit to the parallel Matomo 5
+    // instance until the cutover. An unreachable tracker only fails its own
+    // requests, and if piwik.js cannot be loaded the tracker script is taken
+    // from Matomo 5 instead, so tracking keeps working with either one down.
+    var mirror =
+      window.location.hostname === 'stage.makaira.cloud'
+        ? 'https://matomo5.k8s.makaira.io/'
+        : null
+    if (mirror) {
+      _paq.push(['addTracker', mirror + 'matomo.php', trackingId])
+    }
+
     var d = document,
       g = d.createElement('script'),
       s = d.getElementsByTagName('script')[0]
@@ -44,6 +56,14 @@ export default {
     g.async = true
     g.defer = true
     g.src = u + 'piwik.js'
+    if (mirror) {
+      g.onerror = function () {
+        var f = d.createElement('script')
+        f.async = true
+        f.src = mirror + 'matomo.js'
+        d.head.appendChild(f)
+      }
+    }
     s.parentNode.insertBefore(g, s)
 
     // Mark as initialized
@@ -56,7 +76,10 @@ export default {
 
   trackPageView({ pageTitle, pageUrl } = {}) {
     console.log('[Matomo] trackPageView called', { pageTitle, pageUrl })
-    console.log('[Matomo] isDirectTrackingEnabled:', this.isDirectTrackingEnabled())
+    console.log(
+      '[Matomo] isDirectTrackingEnabled:',
+      this.isDirectTrackingEnabled()
+    )
 
     // Direct tracking is disabled by default to avoid double tracking with GTM
     if (!this.isDirectTrackingEnabled()) {
@@ -83,8 +106,15 @@ export default {
   },
 
   trackSiteSearch({ keyword, category, resultsCount } = {}) {
-    console.log('[Matomo] trackSiteSearch called', { keyword, category, resultsCount })
-    console.log('[Matomo] isDirectTrackingEnabled:', this.isDirectTrackingEnabled())
+    console.log('[Matomo] trackSiteSearch called', {
+      keyword,
+      category,
+      resultsCount,
+    })
+    console.log(
+      '[Matomo] isDirectTrackingEnabled:',
+      this.isDirectTrackingEnabled()
+    )
 
     // Direct tracking is disabled by default to avoid double tracking with GTM
     if (!this.isDirectTrackingEnabled()) {
